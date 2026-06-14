@@ -1,72 +1,61 @@
-"""Ingest official open price data from the КЗП "Колко струва" portal.
+"""Ingest the real КЗП "Колко струва" open-data export.
 
-Source: https://kolkostruva.bg/opendata — the state portal where chains with
-turnover over 10M BGN are legally required to publish daily prices for the ~101
-consumer-basket product groups, including a promo flag. It exposes downloadable
-open-data files per date plus a historical archive (which lets us backfill the
-90-day window on day one).
+The official export (kolkostruva.bg/opendata) is a ZIP with **one CSV per
+retail chain**, named like ``Лидл България_131071587.csv`` /
+``ФАНТАСТИКО (ФАНТАСТИКО ГРУП ООД)_206255903.csv`` (display name, optional legal
+entity in parentheses, ``_<ЕИК>`` suffix). Each CSV is quoted, comma-delimited
+UTF-8 with this header:
 
-STATUS: the exact file format (CSV vs JSON) and column names are PROVISIONAL.
-The host is not reachable from the current sandbox (network egress allowlist),
-so the field mapping in ``COLUMN_MAP`` is a best guess. Once the host is
-allowlisted, download one sample file and finalise ``COLUMN_MAP`` / the format
-sniffing in ``parse_rows`` — the rest of the pipeline stays the same.
+    "Населено място","Търговски обект","Наименование на продукта",
+    "Код на продукта","Категория","Цена на дребно","Цена в промоция"
+
+Two fields live *outside* the rows:
+* the **chain** comes from the file name, and
+* the **date** comes from the export (the ZIP name / the day you downloaded it).
+
+"Цена в промоция" is empty unless the item is on promotion; when present it is
+the price the shopper pays, and we mark the observation ``is_promo``.
 """
 
 from __future__ import annotations
 
 import csv
 import io
-import json
+import re
 from dataclasses import dataclass
 from datetime import date
 from decimal import Decimal, InvalidOperation
-from typing import Iterable, Iterator
+from pathlib import Path
+from typing import Iterator
 
 from ..config import settings
+
+# Exact КЗП column headers.
+COL_REGION = "Населено място"
+COL_STORE = "Търговски обект"
+COL_NAME = "Наименование на продукта"
+COL_CODE = "Код на продукта"
+COL_CATEGORY = "Категория"
+COL_RETAIL = "Цена на дребно"
+COL_PROMO = "Цена в промоция"
 
 
 @dataclass(frozen=True)
 class RawPriceRow:
-    """A normalised row, decoupled from the source file's exact shape."""
-
     chain_name: str
     product_name: str
-    price: Decimal
+    price: Decimal  # the promo price when on promotion, else the retail price
     observed_on: date
     is_promo: bool = False
-    store_external_id: str | None = None
+    retail_price: Decimal | None = None
+    store: str | None = None
     region: str | None = None
-    product_external_id: str | None = None
-    basket_group: str | None = None
-
-
-# PROVISIONAL mapping from source field names -> RawPriceRow fields. Multiple
-# candidates per field because the published column names are not yet confirmed.
-COLUMN_MAP: dict[str, tuple[str, ...]] = {
-    "chain_name": ("chain", "verige", "targovska_veriga", "merchant"),
-    "product_name": ("product", "stoka", "naименование", "name"),
-    "price": ("price", "cena", "edinichna_cena"),
-    "observed_on": ("date", "data", "den"),
-    "is_promo": ("promo", "promotsiya", "is_promo"),
-    "store_external_id": ("store_id", "obekt_id", "obekt"),
-    "region": ("region", "oblast"),
-    "product_external_id": ("product_id", "stoka_id", "ean", "barcode"),
-    "basket_group": ("group", "grupa", "kosnitsa_grupa"),
-}
-
-_TRUE = {"1", "true", "da", "да", "yes", "y", "promo"}
-
-
-def _pick(row: dict[str, str], candidates: tuple[str, ...]) -> str | None:
-    for key in candidates:
-        if key in row and row[key] not in (None, ""):
-            return row[key]
-    return None
+    product_code: str | None = None
+    category: str | None = None
 
 
 def _to_decimal(value: str | None) -> Decimal | None:
-    if value is None:
+    if value is None or str(value).strip() == "":
         return None
     try:
         return Decimal(str(value).replace(",", ".").strip())
@@ -74,78 +63,61 @@ def _to_decimal(value: str | None) -> Decimal | None:
         return None
 
 
-def _to_date(value: str | None) -> date | None:
-    if value is None:
-        return None
-    text = str(value).strip()
-    for fmt in ("%Y-%m-%d", "%d.%m.%Y", "%d/%m/%Y"):
-        try:
-            from datetime import datetime
-
-            return datetime.strptime(text, fmt).date()
-        except ValueError:
-            continue
-    return None
+def chain_name_from_filename(name: str) -> str:
+    """``"ФАНТАСТИКО (ФАНТАСТИКО ГРУП ООД)_206255903.csv"`` -> ``"ФАНТАСТИКО"``."""
+    stem = Path(name).stem
+    stem = re.sub(r"_\d+$", "", stem)  # drop the _<ЕИК> suffix
+    stem = re.split(r"\s*\(", stem, maxsplit=1)[0]  # drop the legal-entity parenthetical
+    return stem.strip()
 
 
-def _row_from_mapping(row: dict[str, str]) -> RawPriceRow | None:
-    """Map one source dict onto a RawPriceRow, skipping unusable rows."""
-    chain = _pick(row, COLUMN_MAP["chain_name"])
-    product = _pick(row, COLUMN_MAP["product_name"])
-    price = _to_decimal(_pick(row, COLUMN_MAP["price"]))
-    observed = _to_date(_pick(row, COLUMN_MAP["observed_on"]))
-    if not (chain and product and price is not None and observed is not None):
-        return None
-    promo_raw = (_pick(row, COLUMN_MAP["is_promo"]) or "").strip().lower()
-    return RawPriceRow(
-        chain_name=chain.strip(),
-        product_name=product.strip(),
-        price=price,
-        observed_on=observed,
-        is_promo=promo_raw in _TRUE,
-        store_external_id=_pick(row, COLUMN_MAP["store_external_id"]),
-        region=_pick(row, COLUMN_MAP["region"]),
-        product_external_id=_pick(row, COLUMN_MAP["product_external_id"]),
-        basket_group=_pick(row, COLUMN_MAP["basket_group"]),
-    )
-
-
-def parse_rows(content: bytes | str) -> Iterator[RawPriceRow]:
-    """Parse a downloaded open-data file (CSV or JSON) into RawPriceRows.
-
-    Format is sniffed: a leading ``[`` or ``{`` is treated as JSON, otherwise
-    CSV. Both paths funnel through ``_row_from_mapping`` so the column mapping
-    lives in exactly one place.
-    """
-    text = content.decode("utf-8") if isinstance(content, bytes) else content
-    stripped = text.lstrip()
-
-    if stripped.startswith("[") or stripped.startswith("{"):
-        data = json.loads(text)
-        records: Iterable = data if isinstance(data, list) else data.get("data", [])
-        for rec in records:
-            if isinstance(rec, dict):
-                mapped = _row_from_mapping({str(k): v for k, v in rec.items()})
-                if mapped:
-                    yield mapped
-        return
-
+def parse_chain_csv(
+    content: bytes | str, chain_name: str, observed_on: date
+) -> Iterator[RawPriceRow]:
+    """Parse one chain's КЗП CSV into normalised rows."""
+    text = content.decode("utf-8-sig") if isinstance(content, bytes) else content
     reader = csv.DictReader(io.StringIO(text))
-    for rec in reader:
-        mapped = _row_from_mapping({str(k): (v or "") for k, v in rec.items()})
-        if mapped:
-            yield mapped
+    for r in reader:
+        name = (r.get(COL_NAME) or "").strip()
+        retail = _to_decimal(r.get(COL_RETAIL))
+        promo = _to_decimal(r.get(COL_PROMO))
+        price = promo if promo is not None else retail
+        if not name or price is None:
+            continue
+        yield RawPriceRow(
+            chain_name=chain_name,
+            product_name=name,
+            price=price,
+            observed_on=observed_on,
+            is_promo=promo is not None,
+            retail_price=retail,
+            store=(r.get(COL_STORE) or None),
+            region=(r.get(COL_REGION) or None),
+            product_code=(r.get(COL_CODE) or None),
+            category=(r.get(COL_CATEGORY) or None),
+        )
+
+
+def parse_export(directory: str | Path, observed_on: date) -> Iterator[RawPriceRow]:
+    """Parse every ``*.csv`` in an unzipped КЗП export directory.
+
+    The chain name is derived from each file name; ``observed_on`` is the export
+    date (the ZIP is one day's snapshot).
+    """
+    for csv_path in sorted(Path(directory).glob("*.csv")):
+        chain = chain_name_from_filename(csv_path.name)
+        yield from parse_chain_csv(csv_path.read_bytes(), chain, observed_on)
 
 
 def fetch_opendata(day: date, base_url: str | None = None) -> bytes:
-    """Download the open-data file for ``day``.
+    """Download the export ZIP for ``day``.
 
-    PROVISIONAL: the URL shape is a guess (``{base}?date=YYYY-MM-DD``). Confirm
-    the real endpoint once the host is reachable, then adjust here only.
+    PROVISIONAL: the exact URL shape is confirmed once the host is reachable
+    (kolkostruva.bg is currently outside this environment's egress allowlist).
     """
     import httpx  # imported lazily so the module loads without the 'ingest' extra
 
     url = base_url or settings.kolkostruva_base_url
-    resp = httpx.get(url, params={"date": day.isoformat()}, timeout=60.0)
+    resp = httpx.get(url, params={"date": day.isoformat()}, timeout=120.0)
     resp.raise_for_status()
     return resp.content
