@@ -59,6 +59,18 @@ BASKET: dict[str, re.Pattern] = {
     "eggs":   re.compile(r"\bяйца\b.{0,10}10\s*бр|10\s*бр.{0,10}\bяйца\b", re.IGNORECASE),
     "coffee": re.compile(r"(мляно|смляно)\s*кафе", re.IGNORECASE),
     "bread":  re.compile(r"\bхляб\b(?!.*(баниц|тутманик|кашкавалк|кор[ии]|тостер))", re.IGNORECASE),
+    "yogurt":   re.compile(r'кисело\s*мляко\b.{0,20}(3[.,]6|4[.,]0?|2[.,]9)\s*%', re.IGNORECASE),
+    "feta":     re.compile(r'\bсирене\b.{0,30}(краве|бяло|саламура|сал\.)', re.IGNORECASE),
+    "chicken":  re.compile(r'пилешко\s*(бутче|филе|гърди)', re.IGNORECASE),
+    "tomatoes": re.compile(r'\bдомати\b.{0,20}(на\s*)?кг', re.IGNORECASE),
+    "bananas":  re.compile(r'\bбанани\b.{0,10}(кг|на\s*кг)', re.IGNORECASE),
+    "pasta":    re.compile(r'(макарон|спагет).{0,25}(500|400|250)\s*г', re.IGNORECASE),
+    "water":    re.compile(r'(минерална|изворна)\s*вода.{0,15}1[,.]5\s*л', re.IGNORECASE),
+    "potato":   re.compile(r'\bкартоф.{0,12}(четкани|мити|пресни|бял).{0,10}кг|\bкартоф.{0,5}(кг\.?\s*$|на\s*кг)', re.IGNORECASE),
+    "onion":    re.compile(r'\bлук\b.{0,8}(жълт|червен|на\s*кг)|лук\s+на\s*кг', re.IGNORECASE),
+    "salt":     re.compile(r'(трапезна|готварска|йодирана).{0,10}сол|сол.{0,10}(1\s*кг|500\s*г)', re.IGNORECASE),
+    "apple":    re.compile(r'\bябълки\b.{0,10}(кг|на\s*кг)', re.IGNORECASE),
+    "cucumber": re.compile(r'\bкраставиц.{0,10}(кг|на\s*кг)', re.IGNORECASE),
 }
 
 UNIT_INFO: dict[str, tuple[str, Decimal]] = {
@@ -72,6 +84,18 @@ UNIT_INFO: dict[str, tuple[str, Decimal]] = {
     "eggs":   ("pcs", Decimal("10")),
     "coffee": ("kg",  Decimal("0.25")),
     "bread":  ("kg",  Decimal("0.7")),
+    "yogurt":   ("kg",  Decimal("0.4")),
+    "feta":     ("kg",  Decimal("0.25")),
+    "chicken":  ("kg",  Decimal("1")),
+    "tomatoes": ("kg",  Decimal("1")),
+    "bananas":  ("kg",  Decimal("1")),
+    "pasta":    ("kg",  Decimal("0.4")),
+    "water":    ("l",   Decimal("1.5")),
+    "potato":   ("kg",  Decimal("1")),
+    "onion":    ("kg",  Decimal("1")),
+    "salt":     ("kg",  Decimal("1")),
+    "apple":    ("kg",  Decimal("1")),
+    "cucumber": ("kg",  Decimal("1")),
 }
 
 REF = date(2026, 6, 13)
