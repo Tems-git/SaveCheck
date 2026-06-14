@@ -5,6 +5,7 @@ window.SAVECHECK_DEMO = {
     {
       "id": "milk",
       "unit_kind": "l",
+      "is_promo": false,
       "verdict": "yellow",
       "reason_code": "cosmetic",
       "discount_pct": 0,
@@ -404,6 +405,7 @@ window.SAVECHECK_DEMO = {
     {
       "id": "oil",
       "unit_kind": "l",
+      "is_promo": false,
       "verdict": "yellow",
       "reason_code": "cosmetic",
       "discount_pct": 0,
@@ -799,6 +801,7 @@ window.SAVECHECK_DEMO = {
     {
       "id": "cheese",
       "unit_kind": "kg",
+      "is_promo": false,
       "verdict": "yellow",
       "reason_code": "cosmetic",
       "discount_pct": 0,
@@ -1202,6 +1205,7 @@ window.SAVECHECK_DEMO = {
     {
       "id": "butter",
       "unit_kind": "kg",
+      "is_promo": false,
       "verdict": "yellow",
       "reason_code": "cosmetic",
       "discount_pct": 0,
@@ -1601,8 +1605,9 @@ window.SAVECHECK_DEMO = {
     {
       "id": "sugar",
       "unit_kind": "kg",
-      "verdict": "yellow",
-      "reason_code": "cosmetic",
+      "is_promo": true,
+      "verdict": "red",
+      "reason_code": "fake_not_below",
       "discount_pct": 0,
       "current_price": 0.95,
       "current_unit_price": 0.95,
@@ -2000,6 +2005,7 @@ window.SAVECHECK_DEMO = {
     {
       "id": "flour",
       "unit_kind": "kg",
+      "is_promo": true,
       "verdict": "yellow",
       "reason_code": "cosmetic",
       "discount_pct": 7,
@@ -2399,6 +2405,7 @@ window.SAVECHECK_DEMO = {
     {
       "id": "rice",
       "unit_kind": "kg",
+      "is_promo": false,
       "verdict": "yellow",
       "reason_code": "cosmetic",
       "discount_pct": 10,
@@ -2794,6 +2801,7 @@ window.SAVECHECK_DEMO = {
     {
       "id": "eggs",
       "unit_kind": "pcs",
+      "is_promo": true,
       "verdict": "green",
       "reason_code": "real",
       "discount_pct": 34,
@@ -3189,6 +3197,7 @@ window.SAVECHECK_DEMO = {
     {
       "id": "coffee",
       "unit_kind": "kg",
+      "is_promo": false,
       "verdict": "yellow",
       "reason_code": "cosmetic",
       "discount_pct": 0,
@@ -3584,6 +3593,7 @@ window.SAVECHECK_DEMO = {
     {
       "id": "bread",
       "unit_kind": "kg",
+      "is_promo": true,
       "verdict": "green",
       "reason_code": "real",
       "discount_pct": 36,
@@ -3987,6 +3997,7 @@ window.SAVECHECK_DEMO = {
     {
       "id": "yogurt",
       "unit_kind": "kg",
+      "is_promo": false,
       "verdict": "green",
       "reason_code": "real",
       "discount_pct": 22,
@@ -4386,6 +4397,7 @@ window.SAVECHECK_DEMO = {
     {
       "id": "feta",
       "unit_kind": "kg",
+      "is_promo": false,
       "verdict": "yellow",
       "reason_code": "cosmetic",
       "discount_pct": 0,
@@ -4789,6 +4801,7 @@ window.SAVECHECK_DEMO = {
     {
       "id": "chicken",
       "unit_kind": "kg",
+      "is_promo": false,
       "verdict": "yellow",
       "reason_code": "cosmetic",
       "discount_pct": 5,
@@ -5188,6 +5201,7 @@ window.SAVECHECK_DEMO = {
     {
       "id": "tomatoes",
       "unit_kind": "kg",
+      "is_promo": false,
       "verdict": "yellow",
       "reason_code": "cosmetic",
       "discount_pct": 34,
@@ -5583,6 +5597,7 @@ window.SAVECHECK_DEMO = {
     {
       "id": "bananas",
       "unit_kind": "kg",
+      "is_promo": false,
       "verdict": "yellow",
       "reason_code": "cosmetic",
       "discount_pct": 0,
@@ -5974,6 +5989,7 @@ window.SAVECHECK_DEMO = {
     {
       "id": "pasta",
       "unit_kind": "kg",
+      "is_promo": true,
       "verdict": "green",
       "reason_code": "real",
       "discount_pct": 38,
@@ -6373,6 +6389,7 @@ window.SAVECHECK_DEMO = {
     {
       "id": "water",
       "unit_kind": "l",
+      "is_promo": false,
       "verdict": "yellow",
       "reason_code": "cosmetic",
       "discount_pct": 0,
@@ -6772,6 +6789,7 @@ window.SAVECHECK_DEMO = {
     {
       "id": "potato",
       "unit_kind": "kg",
+      "is_promo": false,
       "verdict": "yellow",
       "reason_code": "cosmetic",
       "discount_pct": 0,
@@ -7163,6 +7181,7 @@ window.SAVECHECK_DEMO = {
     {
       "id": "onion",
       "unit_kind": "kg",
+      "is_promo": false,
       "verdict": "yellow",
       "reason_code": "cosmetic",
       "discount_pct": -20,
@@ -7558,6 +7577,7 @@ window.SAVECHECK_DEMO = {
     {
       "id": "salt",
       "unit_kind": "kg",
+      "is_promo": false,
       "verdict": "yellow",
       "reason_code": "cosmetic",
       "discount_pct": 0,
@@ -7953,6 +7973,7 @@ window.SAVECHECK_DEMO = {
     {
       "id": "apple",
       "unit_kind": "kg",
+      "is_promo": false,
       "verdict": "yellow",
       "reason_code": "cosmetic",
       "discount_pct": 0,
@@ -8344,6 +8365,7 @@ window.SAVECHECK_DEMO = {
     {
       "id": "cucumber",
       "unit_kind": "kg",
+      "is_promo": false,
       "verdict": "yellow",
       "reason_code": "cosmetic",
       "discount_pct": 33,
@@ -8786,5 +8808,47 @@ window.SAVECHECK_DEMO = {
         "reason_code": "missing"
       }
     ]
-  }
+  },
+  "titans": [
+    {
+      "chain": "Lidl",
+      "real": 80,
+      "fake": 43,
+      "total_promos": 123,
+      "real_pct": 65,
+      "products_tracked": 20
+    },
+    {
+      "chain": "Kaufland",
+      "real": 158,
+      "fake": 346,
+      "total_promos": 504,
+      "real_pct": 31,
+      "products_tracked": 21
+    },
+    {
+      "chain": "Billa",
+      "real": 14,
+      "fake": 56,
+      "total_promos": 70,
+      "real_pct": 20,
+      "products_tracked": 17
+    },
+    {
+      "chain": "Fantastico",
+      "real": 89,
+      "fake": 104,
+      "total_promos": 193,
+      "real_pct": 46,
+      "products_tracked": 10
+    },
+    {
+      "chain": "T Market",
+      "real": 50,
+      "fake": 107,
+      "total_promos": 157,
+      "real_pct": 32,
+      "products_tracked": 16
+    }
+  ]
 };
