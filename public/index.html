@@ -94,6 +94,33 @@
   .ctable td:first-child { text-align:left; font-weight:600; padding-left:8px; }
   .ctable td.tmin { color:var(--green); font-weight:800; }
   .ctable .tpack { color:var(--muted); font-size:10px; font-weight:500; }
+  .titan-card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:14px 16px; margin-bottom:10px; }
+  .titan-rank { font-size:22px; line-height:1; margin-right:10px; }
+  .titan-name { font-size:15px; font-weight:800; flex:1; }
+  .titan-score { font-size:17px; font-weight:900; font-variant-numeric:tabular-nums; }
+  .titan-bar-wrap { margin:8px 0 5px; height:9px; background:#ece7df; border-radius:999px; overflow:hidden; display:flex; }
+  .titan-bar-real { background:var(--green); border-radius:999px 0 0 999px; }
+  .titan-bar-fake { background:var(--red); }
+  .titan-meta { display:flex; justify-content:space-between; font-size:11.5px; }
+  .titan-hero { background:linear-gradient(135deg,#15803d,#166534); color:#fff; border-radius:18px; padding:14px 16px; margin-bottom:12px; }
+  .titan-hero .th-title { font-size:17px; font-weight:900; letter-spacing:-.01em; margin-bottom:3px; }
+  .titan-hero .th-sub { font-size:12px; opacity:.9; line-height:1.4; }
+  .search-wrap { padding:10px 14px 0; }
+  .search-wrap input {
+    width:100%; border:1.5px solid var(--line); border-radius:12px;
+    padding:9px 14px; font-size:14px; background:var(--card); color:var(--ink);
+    outline:none; font-family:inherit;
+  }
+  .search-wrap input:focus { border-color:var(--green); }
+  .cadd { width:28px; height:28px; border-radius:50%; border:1.5px solid var(--green); background:none; cursor:pointer; font-size:15px; font-weight:800; display:flex; align-items:center; justify-content:center; flex:none; color:var(--green); line-height:1; padding:0; }
+  .cadd.in { background:var(--green); color:#fff; }
+  .advice-box { background:#eaf5ee; border:1.5px solid var(--green); border-radius:14px; padding:12px 14px; margin-bottom:12px; }
+  .advice-box .advice-lbl { font-size:10.5px; font-weight:700; color:var(--green-d); text-transform:uppercase; letter-spacing:.04em; }
+  .advice-box .advice-chain { font-size:17px; font-weight:800; margin:3px 0 1px; }
+  .advice-box .advice-sub { font-size:12px; color:var(--muted); }
+  .srow { display:flex; justify-content:space-between; align-items:center; padding:8px 2px; border-top:1px solid var(--line); font-size:13px; }
+  .srow .scov { font-size:11px; color:var(--muted); margin-left:6px; }
+  .srow.sbest span:first-child { color:var(--green); font-weight:700; }
   .bottomnav { display:flex; background:var(--card); border-top:1px solid var(--line); }
   .bottomnav button {
     flex:1; border:0; background:none; cursor:pointer; padding:9px 4px 12px; color:var(--muted);
@@ -120,6 +147,7 @@
     <div class="flags" id="flags"></div>
   </div>
   <div class="hero" id="hero"></div>
+  <div class="search-wrap" id="search-wrap" style="display:none"><input type="search" id="search-input" oninput="doSearch(this.value)" /></div>
   <div class="scroll">
     <div class="cards" id="cards"></div>
     <div class="panel" id="panel"></div>
@@ -273,51 +301,117 @@ const PRODUCTS = {
   tomatoes:{ name:{bg:'Домати',sr:'Paradajz',mk:'Домати',ro:'Roșii',el:'Ντομάτες',tr:'Domates',sq:'Domate',bs:'Paradajz',hr:'Rajčica',sl:'Paradižnik'},
            pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
   oliveoil:{ name:{bg:'Зехтин',el:'Ελαιόλαδο'}, pack:{bg:'1 л',el:'1 λ'} },
-  pasta: { name:{bg:'Макарони',el:'Μακαρόνια'}, pack:{bg:'500 г',el:'500 γρ'} },
-  feta:  { name:{bg:'Сирене',el:'Φέτα'}, pack:{bg:'400 г',el:'400 γρ'} },
-  bananas:{ name:{bg:'Банани',el:'Μπανάνες'}, pack:{bg:'1 кг',el:'1 κιλό'} },
-  chicken:{ name:{bg:'Пилешко',el:'Κοτόπουλο'}, pack:{bg:'1 кг',el:'1 κιλό'} },
-  water: { name:{bg:'Минерална вода',el:'Νερό'}, pack:{bg:'1.5 л',el:'1,5 λ'} },
+  pasta: { name:{bg:'Макарони',sr:'Testenine',mk:'Тестенини',ro:'Paste',el:'Μακαρόνια',tr:'Makarna',sq:'Makarona',bs:'Tjestenina',hr:'Tjestenina',sl:'Testenine'},
+           pack:{bg:'400 г',sr:'400 g',mk:'400 г',ro:'400 g',el:'400 γρ',tr:'400 g',sq:'400 g',bs:'400 g',hr:'400 g',sl:'400 g'} },
+  feta:  { name:{bg:'Сирене',sr:'Beli sir',mk:'Бело сирење',ro:'Brânză albă',el:'Φέτα',tr:'Beyaz peynir',sq:'Djathë i bardhë',bs:'Bijeli sir',hr:'Bijeli sir',sl:'Beli sir'},
+           pack:{bg:'250 г',sr:'250 g',mk:'250 г',ro:'250 g',el:'250 γρ',tr:'250 g',sq:'250 g',bs:'250 g',hr:'250 g',sl:'250 g'} },
+  bananas:{ name:{bg:'Банани',sr:'Banane',mk:'Банани',ro:'Banane',el:'Μπανάνες',tr:'Muz',sq:'Banane',bs:'Banane',hr:'Banane',sl:'Banane'},
+           pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
+  chicken:{ name:{bg:'Пилешко',sr:'Piletina',mk:'Пилешко',ro:'Pui',el:'Κοτόπουλο',tr:'Tavuk',sq:'Mish pule',bs:'Piletina',hr:'Piletina',sl:'Piščanec'},
+           pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
+  water: { name:{bg:'Минерална вода',sr:'Mineralna voda',mk:'Минерална вода',ro:'Apă minerală',el:'Νερό',tr:'Maden suyu',sq:'Ujë mineral',bs:'Mineralna voda',hr:'Mineralna voda',sl:'Mineralna voda'},
+           pack:{bg:'1,5 л',sr:'1,5 l',mk:'1,5 л',ro:'1,5 l',el:'1,5 λ',tr:'1,5 L',sq:'1,5 l',bs:'1,5 l',hr:'1,5 l',sl:'1,5 l'} },
   // Fridge items (стълб 2) — also appear in basket with pack info.
   eggs:  { name:{bg:'Яйца',sr:'Jaja',mk:'Јајца',ro:'Ouă',el:'Αυγά',tr:'Yumurta',sq:'Vezë',bs:'Jaja',hr:'Jaja',sl:'Jajca'},
            pack:{bg:'10 бр',sr:'10 kom',mk:'10 бр',ro:'10 buc',el:'10 τεμ',tr:'10 adet',sq:'10 copë',bs:'10 kom',hr:'10 kom',sl:'10 kos'} },
   butter:{ name:{bg:'Краве масло',sr:'Puter',mk:'Путер',ro:'Unt',el:'Βούτυρο',tr:'Tereyağı',sq:'Gjalpë',bs:'Maslac',hr:'Maslac',sl:'Maslo'},
            pack:{bg:'250 г',sr:'250 g',mk:'250 г',ro:'250 g',el:'250 γρ',tr:'250 g',sq:'250 g',bs:'250 g',hr:'250 g',sl:'250 g'} },
-  yogurt:{ name:{bg:'Кисело мляко',sr:'Jogurt',mk:'Кисело млеко',ro:'Iaurt',el:'Γιαούρτι',tr:'Yoğurt',sq:'Kos',bs:'Jogurt',hr:'Jogurt',sl:'Jogurt'} },
+  yogurt:{ name:{bg:'Кисело мляко',sr:'Jogurt',mk:'Кисело млеко',ro:'Iaurt',el:'Γιαούρτι',tr:'Yoğurt',sq:'Kos',bs:'Jogurt',hr:'Jogurt',sl:'Jogurt'},
+           pack:{bg:'400 г',sr:'400 g',mk:'400 г',ro:'400 g',el:'400 γρ',tr:'400 g',sq:'400 g',bs:'400 g',hr:'400 g',sl:'400 g'} },
+  potato: { name:{bg:'Картофи',sr:'Krompir',mk:'Компир',ro:'Cartofi',el:'Πατάτες',tr:'Patates',sq:'Patate',bs:'Krompir',hr:'Krumpir',sl:'Krompir'},
+             pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
+  onion:  { name:{bg:'Лук',sr:'Crni luk',mk:'Кромид лук',ro:'Ceapă',el:'Κρεμμύδι',tr:'Soğan',sq:'Qepë',bs:'Crni luk',hr:'Crni luk',sl:'Čebula'},
+             pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
+  apple:  { name:{bg:'Ябълки',sr:'Jabuke',mk:'Јаболки',ro:'Mere',el:'Μήλα',tr:'Elma',sq:'Mollë',bs:'Jabuke',hr:'Jabuke',sl:'Jabolka'},
+             pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
+  salt:   { name:{bg:'Сол',sr:'So',mk:'Сол',ro:'Sare',el:'Αλάτι',tr:'Tuz',sq:'Kripë',bs:'So',hr:'Sol',sl:'Sol'},
+             pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
+  cucumber:{ name:{bg:'Краставици',sr:'Krastavac',mk:'Краставица',ro:'Castraveți',el:'Αγγούρια',tr:'Salatalık',sq:'Kastravec',bs:'Krastavac',hr:'Krastavac',sl:'Kumara'},
+             pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
 };
 
 // Extra UI strings for tabs / chains / basket, keyed by language.
 const BX = {
-  bg:{ tabProducts:'Продукти', tabBasket:'Кошница', tabFridge:'Хладилник', tabTable:'Таблица', chains:'Цени по вериги', cheapest:'най-евтина',
+  bg:{ tabProducts:'Продукти', tabBasket:'Кошница', tabFridge:'Хладилник', tabTable:'Таблица', tabTitans:'Титани', chains:'Цени по вериги', cheapest:'най-евтина',
        basketTitle:'Цена на кошницата по верига', cheapestBasket:'Най-евтина кошница', save:'спестяваш', perItem:'Най-евтино по продукт',
-       recognized:'Разпознато в хладилника', shopping:'Списък за пазаруване', missing:'липсва', low:'свършва' },
-  sr:{ tabProducts:'Proizvodi', tabBasket:'Korpa', tabFridge:'Frižider', tabTable:'Tabela', chains:'Cene po lancima', cheapest:'najjeftinije',
+       recognized:'Разпознато в хладилника', shopping:'Списък за пазаруване', missing:'липсва', low:'свършва',
+       search:'Търси продукт…',
+       cartTitle:'Моят списък', cartEmpty:'Добави продукти с ✚', storeAdvice:'Откъде да пазарувам?',
+       covers:'покрива', of:'от', artItems:'арт.', clearCart:'Изчисти', noData:'Не предлага',
+       titansTitle:'Битката на Титаните', titansSub:'Реални срещу фалшиви промоции — последните 30 дни',
+       titansReal:'реални', titansFake:'фалшиви', titansNoPromos:'без промоции', titansTracked:'проследени продукта' },
+  sr:{ tabProducts:'Proizvodi', tabBasket:'Korpa', tabFridge:'Frižider', tabTable:'Tabela', tabTitans:'Titani', chains:'Cene po lancima', cheapest:'najjeftinije',
        basketTitle:'Cena korpe po lancu', cheapestBasket:'Najjeftinija korpa', save:'uštedite', perItem:'Najjeftinije po proizvodu',
-       recognized:'Prepoznato u frižideru', shopping:'Lista za kupovinu', missing:'nedostaje', low:'pri kraju' },
-  mk:{ tabProducts:'Производи', tabBasket:'Кошница', tabFridge:'Фрижидер', tabTable:'Табела', chains:'Цени по синџири', cheapest:'најевтино',
+       recognized:'Prepoznato u frižideru', shopping:'Lista za kupovinu', missing:'nedostaje', low:'pri kraju',
+       search:'Pretraži…',
+       cartTitle:'Moja lista', cartEmpty:'Dodaj proizvode sa ✚', storeAdvice:'Gde da kupujem?',
+       covers:'pokriva', of:'od', artItems:'art.', clearCart:'Obriši', noData:'Nema',
+       titansTitle:'Bitka Titana', titansSub:'Prave vs. lažne akcije — poslednjih 30 dana',
+       titansReal:'prave', titansFake:'lažne', titansNoPromos:'bez akcija', titansTracked:'praćena proizvoda' },
+  mk:{ tabProducts:'Производи', tabBasket:'Кошница', tabFridge:'Фрижидер', tabTable:'Табела', tabTitans:'Титани', chains:'Цени по синџири', cheapest:'најевтино',
        basketTitle:'Цена на кошницата по синџир', cheapestBasket:'Најевтина кошница', save:'заштедуваш', perItem:'Најевтино по производ',
-       recognized:'Препознато во фрижидерот', shopping:'Список за пазарување', missing:'недостасува', low:'снемнува' },
-  ro:{ tabProducts:'Produse', tabBasket:'Coș', tabFridge:'Frigider', tabTable:'Tabel', chains:'Prețuri pe lanțuri', cheapest:'cel mai ieftin',
+       recognized:'Препознато во фрижидерот', shopping:'Список за пазарување', missing:'недостасува', low:'снемнува',
+       search:'Пребарај…',
+       cartTitle:'Мојата листа', cartEmpty:'Додај производи со ✚', storeAdvice:'Каде да пазарувам?',
+       covers:'покрива', of:'од', artItems:'арт.', clearCart:'Исчисти', noData:'Нема',
+       titansTitle:'Битката на Титаните', titansSub:'Вистински наспроти лажни промоции — последните 30 дена',
+       titansReal:'вистински', titansFake:'лажни', titansNoPromos:'без промоции', titansTracked:'следени производи' },
+  ro:{ tabProducts:'Produse', tabBasket:'Coș', tabFridge:'Frigider', tabTable:'Tabel', tabTitans:'Titani', chains:'Prețuri pe lanțuri', cheapest:'cel mai ieftin',
        basketTitle:'Costul coșului pe lanț', cheapestBasket:'Cel mai ieftin coș', save:'economisești', perItem:'Cel mai ieftin pe produs',
-       recognized:'Recunoscut în frigider', shopping:'Listă de cumpărături', missing:'lipsește', low:'se termină' },
-  el:{ tabProducts:'Προϊόντα', tabBasket:'Καλάθι', tabFridge:'Ψυγείο', tabTable:'Πίνακας', chains:'Τιμές ανά αλυσίδα', cheapest:'φθηνότερο',
+       recognized:'Recunoscut în frigider', shopping:'Listă de cumpărături', missing:'lipsește', low:'se termină',
+       search:'Caută produs…',
+       cartTitle:'Lista mea', cartEmpty:'Adaugă produse cu ✚', storeAdvice:'De unde să cumpăr?',
+       covers:'acoperă', of:'din', artItems:'art.', clearCart:'Șterge', noData:'Indisponibil',
+       titansTitle:'Bătălia Titanilor', titansSub:'Reduceri reale vs. false — ultimele 30 de zile',
+       titansReal:'reale', titansFake:'false', titansNoPromos:'fără promoții', titansTracked:'produse monitorizate' },
+  el:{ tabProducts:'Προϊόντα', tabBasket:'Καλάθι', tabFridge:'Ψυγείο', tabTable:'Πίνακας', tabTitans:'Τιτάνες', chains:'Τιμές ανά αλυσίδα', cheapest:'φθηνότερο',
        basketTitle:'Κόστος καλαθιού ανά αλυσίδα', cheapestBasket:'Φθηνότερο καλάθι', save:'εξοικονομείς', perItem:'Φθηνότερο ανά προϊόν',
-       recognized:'Αναγνωρίστηκαν στο ψυγείο', shopping:'Λίστα αγορών', missing:'λείπει', low:'τελειώνει' },
-  tr:{ tabProducts:'Ürünler', tabBasket:'Sepet', tabFridge:'Buzdolabı', tabTable:'Tablo', chains:'Zincirlere göre fiyatlar', cheapest:'en ucuz',
+       recognized:'Αναγνωρίστηκαν στο ψυγείο', shopping:'Λίστα αγορών', missing:'λείπει', low:'τελειώνει',
+       search:'Αναζήτηση…',
+       cartTitle:'Η λίστα μου', cartEmpty:'Πρόσθεσε προϊόντα με ✚', storeAdvice:'Πού να ψωνίσω;',
+       covers:'καλύπτει', of:'από', artItems:'αρ.', clearCart:'Καθαρισμός', noData:'Μη διαθ.',
+       titansTitle:'Μάχη των Τιτάνων', titansSub:'Αληθινές vs. ψεύτικες προσφορές — τελευταίες 30 ημέρες',
+       titansReal:'αληθινές', titansFake:'ψεύτικες', titansNoPromos:'χωρίς προσφορές', titansTracked:'προϊόντα παρακολούθησης' },
+  tr:{ tabProducts:'Ürünler', tabBasket:'Sepet', tabFridge:'Buzdolabı', tabTable:'Tablo', tabTitans:'Titanlar', chains:'Zincirlere göre fiyatlar', cheapest:'en ucuz',
        basketTitle:'Zincire göre sepet tutarı', cheapestBasket:'En ucuz sepet', save:'tasarruf', perItem:'Ürün başına en ucuz',
-       recognized:'Buzdolabında tanındı', shopping:'Alışveriş listesi', missing:'eksik', low:'azalıyor' },
-  sq:{ tabProducts:'Produktet', tabBasket:'Shporta', tabFridge:'Frigorifer', tabTable:'Tabelë', chains:'Çmimet sipas zinxhirëve', cheapest:'më i liri',
+       recognized:'Buzdolabında tanındı', shopping:'Alışveriş listesi', missing:'eksik', low:'azalıyor',
+       search:'Ürün ara…',
+       cartTitle:'Listem', cartEmpty:'✚ ile ürün ekle', storeAdvice:'Nerede alışveriş yapmalıyım?',
+       covers:'karşılar', of:'/', artItems:'ürün', clearCart:'Temizle', noData:'Yok',
+       titansTitle:'Titanların Savaşı', titansSub:'Gerçek vs. sahte indirimler — son 30 gün',
+       titansReal:'gerçek', titansFake:'sahte', titansNoPromos:'kampanya yok', titansTracked:'takip edilen ürün' },
+  sq:{ tabProducts:'Produktet', tabBasket:'Shporta', tabFridge:'Frigorifer', tabTable:'Tabelë', tabTitans:'Titanët', chains:'Çmimet sipas zinxhirëve', cheapest:'më i liri',
        basketTitle:'Kostoja e shportës sipas zinxhirit', cheapestBasket:'Shporta më e lirë', save:'kurseni', perItem:'Më i liri për produkt',
-       recognized:'Të njohura në frigorifer', shopping:'Lista e blerjeve', missing:'mungon', low:'po mbaron' },
-  bs:{ tabProducts:'Proizvodi', tabBasket:'Korpa', tabFridge:'Frižider', tabTable:'Tabela', chains:'Cijene po lancima', cheapest:'najjeftinije',
+       recognized:'Të njohura në frigorifer', shopping:'Lista e blerjeve', missing:'mungon', low:'po mbaron',
+       search:'Kërko produkt…',
+       cartTitle:'Lista ime', cartEmpty:'Shto produkte me ✚', storeAdvice:'Ku të blej?',
+       covers:'mbulon', of:'nga', artItems:'art.', clearCart:'Fshi', noData:'Pa disponueshëm',
+       titansTitle:'Beteja e Titanëve', titansSub:'Zbritje reale vs. të rreme — 30 ditët e fundit',
+       titansReal:'reale', titansFake:'të rreme', titansNoPromos:'pa oferta', titansTracked:'produkte të ndjekura' },
+  bs:{ tabProducts:'Proizvodi', tabBasket:'Korpa', tabFridge:'Frižider', tabTable:'Tabela', tabTitans:'Titani', chains:'Cijene po lancima', cheapest:'najjeftinije',
        basketTitle:'Cijena korpe po lancu', cheapestBasket:'Najjeftinija korpa', save:'uštedite', perItem:'Najjeftinije po proizvodu',
-       recognized:'Prepoznato u frižideru', shopping:'Lista za kupovinu', missing:'nedostaje', low:'pri kraju' },
-  hr:{ tabProducts:'Proizvodi', tabBasket:'Košarica', tabFridge:'Hladnjak', tabTable:'Tablica', chains:'Cijene po lancima', cheapest:'najjeftinije',
+       recognized:'Prepoznato u frižideru', shopping:'Lista za kupovinu', missing:'nedostaje', low:'pri kraju',
+       search:'Pretraži…',
+       cartTitle:'Moja lista', cartEmpty:'Dodaj proizvode sa ✚', storeAdvice:'Gdje kupovati?',
+       covers:'pokriva', of:'od', artItems:'art.', clearCart:'Obriši', noData:'Nema',
+       titansTitle:'Bitka Titana', titansSub:'Prave vs. lažne akcije — posljednjih 30 dana',
+       titansReal:'prave', titansFake:'lažne', titansNoPromos:'bez akcija', titansTracked:'praćena proizvoda' },
+  hr:{ tabProducts:'Proizvodi', tabBasket:'Košarica', tabFridge:'Hladnjak', tabTable:'Tablica', tabTitans:'Titani', chains:'Cijene po lancima', cheapest:'najjeftinije',
        basketTitle:'Cijena košarice po lancu', cheapestBasket:'Najjeftinija košarica', save:'uštedite', perItem:'Najjeftinije po proizvodu',
-       recognized:'Prepoznato u hladnjaku', shopping:'Popis za kupnju', missing:'nedostaje', low:'pri kraju' },
-  sl:{ tabProducts:'Izdelki', tabBasket:'Košarica', tabFridge:'Hladilnik', tabTable:'Tabela', chains:'Cene po trgovinah', cheapest:'najceneje',
+       recognized:'Prepoznato u hladnjaku', shopping:'Popis za kupnju', missing:'nedostaje', low:'pri kraju',
+       search:'Traži…',
+       cartTitle:'Moja lista', cartEmpty:'Dodaj proizvode s ✚', storeAdvice:'Gdje kupovati?',
+       covers:'pokriva', of:'od', artItems:'art.', clearCart:'Obriši', noData:'Nema',
+       titansTitle:'Bitka Titana', titansSub:'Prave vs. lažne akcije — zadnjih 30 dana',
+       titansReal:'prave', titansFake:'lažne', titansNoPromos:'bez akcija', titansTracked:'praćena proizvoda' },
+  sl:{ tabProducts:'Izdelki', tabBasket:'Košarica', tabFridge:'Hladilnik', tabTable:'Tabela', tabTitans:'Titani', chains:'Cene po trgovinah', cheapest:'najceneje',
        basketTitle:'Cena košarice po trgovini', cheapestBasket:'Najcenejša košarica', save:'prihranite', perItem:'Najceneje po izdelku',
-       recognized:'Prepoznano v hladilniku', shopping:'Nakupovalni seznam', missing:'manjka', low:'zmanjkuje' },
+       recognized:'Prepoznano v hladilniku', shopping:'Nakupovalni seznam', missing:'manjka', low:'zmanjkuje',
+       search:'Iskanje…',
+       cartTitle:'Moj seznam', cartEmpty:'Dodaj izdelke z ✚', storeAdvice:'Kje kupovati?',
+       covers:'pokriva', of:'od', artItems:'art.', clearCart:'Počisti', noData:'Ni na voljo',
+       titansTitle:'Bitka Titanov', titansSub:'Prave vs. lažne akcije — zadnjih 30 dni',
+       titansReal:'prave', titansFake:'lažne', titansNoPromos:'brez akcij', titansTracked:'sledenih izdelkov' },
 };
 
 // Hero strings (savings dashboard).
@@ -338,12 +432,13 @@ const EMOJI = {
   milk:'🥛', oil:'🌻', cheese:'🧀', coffee:'☕', flour:'🌾', sugar:'🍬',
   bread:'🍞', rice:'🍚', tomatoes:'🍅', oliveoil:'🫒', pasta:'🍝', feta:'🧆',
   bananas:'🍌', chicken:'🍗', water:'💧', eggs:'🥚', butter:'🧈', yogurt:'🥛',
+  potato:'🥔', onion:'🧅', apple:'🍎', salt:'🧂', cucumber:'🥒',
 };
 const emojiOf = id => EMOJI[id] || '🛒';
 
 const DEMO = (window.SAVECHECK_DEMO || {products:[]});
 const products = DEMO.products;
-let active = -1, country = COUNTRIES[0], view = 'products';
+let active = -1, country = COUNTRIES[0], view = 'products', query = '', cart = {};
 
 // Store chains per market — a mix of domestic and foreign (international)
 // chains. Illustrative: real footprints vary.
@@ -400,24 +495,55 @@ function renderChrome() {
 
 // Single-screen accordion: one compact row per product; tap to expand its
 // chart + summary inline, without leaving the screen.
+function doSearch(q) { query = q.trim().toLowerCase(); active = -1; renderProducts(); }
+function toggleCart(id) {
+  cart[id] = cart[id] ? 0 : 1;
+  renderProducts();
+  renderTabs(); // update badge on basket tab
+}
+function cartIds() { return Object.keys(cart).filter(id => cart[id]); }
+function cartSize() { return cartIds().length; }
+function analyzeStores() {
+  const ids = cartIds();
+  if (!ids.length) return [];
+  const chainSet = new Set();
+  ids.forEach(id => { const p = products.find(p => p.id === id); if (p) offersFor(p).forEach(o => chainSet.add(o.chain)); });
+  return Array.from(chainSet).map(chain => {
+    let total = 0; const covered = [], missing = [];
+    ids.forEach(id => {
+      const p = products.find(p => p.id === id);
+      if (!p) return;
+      const offer = offersFor(p).find(o => o.chain === chain);
+      if (offer) { total += offer.price; covered.push(id); }
+      else missing.push(id);
+    });
+    return { chain, total, covered, missing };
+  }).sort((a, b) => b.covered.length - a.covered.length || a.total - b.total);
+}
+
 function renderProducts() {
-  document.getElementById('cards').innerHTML = products.map((p, i) => {
+  const filtered = query
+    ? products.filter(p => { const m = PRODUCTS[p.id]; const n = m ? (m.name[country.lang] || m.name.bg || '') : p.id; return n.toLowerCase().includes(query); })
+    : products;
+  document.getElementById('cards').innerHTML = filtered.map((p, i) => {
     const meta = PRODUCTS[p.id];
     const on = i === active;
     const disc = p.discount_pct != null && p.discount_pct > 0
         ? `<em style="color:${C.green}">−${p.discount_pct}%</em>` : '';
     const unit = p.current_unit_price == null ? ''
         : ` <small>· ${disp(p.current_unit_price*country.fx)} ${unitLabel(p.unit_kind)}</small>`;
+    const inCart = !!cart[p.id];
     const rowHtml = `
       <button class="prow ${on?'on':''}" onclick="select(${i})">
         <span class="ill">${emojiOf(p.id)}</span>
         <span class="pnm">${meta.name[country.lang]} <span class="vtag" style="background:${C[p.verdict]}">${TAG[p.verdict][country.lang]}</span><small>${meta.pack[country.lang]}${unit}</small></span>
+        <span class="cadd ${inCart?'in':''}" role="button" tabindex="0" onclick="event.stopPropagation();toggleCart('${p.id}')">${inCart?'✓':'+'}</span>
         <span class="ppr">${money(p.current_price)}${disc}</span>
       </button>`;
     return rowHtml + (on ? detailHTML(p) : '');
   }).join('');
-  if (active >= 0 && active < products.length) {
-    drawChart(products[active], C[products[active].verdict]);
+  if (active >= 0 && active < filtered.length) {
+    drawChart(filtered[active], C[filtered[active].verdict]);
   }
 }
 
@@ -470,7 +596,9 @@ function renderHero() {
 
 function renderTabs() {
   const X = BX[country.lang];
-  const items = [['products', '🏷️', X.tabProducts], ['basket', '🛒', X.tabBasket], ['table', '📊', X.tabTable], ['fridge', '🧊', X.tabFridge]];
+  const n = cartSize();
+  const basketLbl = n ? `${X.tabBasket} <span style="background:var(--green);color:#fff;font-size:9px;border-radius:999px;padding:1px 5px;font-weight:800">${n}</span>` : X.tabBasket;
+  const items = [['products', '🏷️', X.tabProducts], ['basket', '🛒', basketLbl], ['table', '📊', X.tabTable], ['titans', '⚔️', X.tabTitans], ['fridge', '🧊', X.tabFridge]];
   document.getElementById('tabs').innerHTML = items.map(([v, ic, lbl]) =>
     `<button class="${view===v?'on':''}" onclick="setView('${v}')"><span class="ic">${ic}</span>${lbl}</button>`).join('');
 }
@@ -496,25 +624,55 @@ function renderFridge() {
 }
 
 function renderBasket() {
-  const X = BX[country.lang], chains = CHAINS_BY_COUNTRY[country.code] || [];
-  const totals = chains.map(c => {
-    let t = 0; products.forEach(p => { const o = offersFor(p).find(o => o.chain === c); if (o) t += o.price; });
-    return { chain: c, total: t };
-  }).sort((a, b) => a.total - b.total);
-  const max = Math.max(...totals.map(t => t.total)), best = totals[0];
-  const rows = totals.map((t, i) => {
-    const badge = i===0 ? `<span class="bbadge">${X.cheapestBasket}</span>` : '';
-    const save = i===0 ? `<span class="save">${X.save} ${money(max - best.total)}</span>` : '';
-    return `<div class="brow ${i===0?'best':''}"><span>${t.chain}${badge}</span><span>${money(t.total)}${save}</span></div>`;
+  const X = BX[country.lang];
+  const ids = cartIds();
+  if (!ids.length) {
+    document.getElementById('basket').innerHTML = `
+      <div class="panel" style="text-align:center;padding:28px 16px;color:var(--muted)">
+        <div style="font-size:36px;margin-bottom:10px">🛒</div>
+        <div style="font-size:14px">${X.cartEmpty}</div>
+      </div>`;
+    return;
+  }
+  // Cart items list
+  const itemRows = ids.map(id => {
+    const p = products.find(p => p.id === id), meta = PRODUCTS[id];
+    const name = meta ? (meta.name[country.lang] || meta.name.bg) : id;
+    const price = p ? money(p.current_price) : '';
+    return `<div class="irow">
+      <span>${emojiOf(id)} ${name}</span>
+      <span>${price} <button class="cadd in" style="width:22px;height:22px;font-size:12px;margin-left:6px" onclick="toggleCart('${id}')">✕</button></span>
+    </div>`;
   }).join('');
-  const items = products.map(p => {
-    const o = offersFor(p)[0], meta = PRODUCTS[p.id];
-    return `<div class="irow"><span>${meta.name[country.lang]}</span><span>${o.chain} · ${money(o.price)}</span></div>`;
+
+  // Store analysis
+  const analysis = analyzeStores();
+  const n = ids.length;
+  const storeRows = analysis.map((s, i) => {
+    const pct = s.covered.length + '/' + n;
+    const missTxt = s.missing.length ? ` · ${X.noData}: ${s.missing.map(id => { const m = PRODUCTS[id]; return m ? (m.name[country.lang] || m.name.bg) : id; }).join(', ')}` : '';
+    return `<div class="srow ${i===0?'sbest':''}">
+      <span>${i===0?'✓ ':''}${s.chain}<span class="scov">${X.covers} ${pct} ${X.artItems}${missTxt}</span></span>
+      <span style="font-variant-numeric:tabular-nums;font-weight:700">${money(s.total)}</span>
+    </div>`;
   }).join('');
+
+  // Best advice box
+  const best = analysis[0];
+  const bestMiss = best.missing.length ? ` · ${X.noData}: ${best.missing.map(id => { const m = PRODUCTS[id]; return m ? (m.name[country.lang] || m.name.bg) : id; }).join(', ')}` : '';
   document.getElementById('basket').innerHTML = `
+    <div class="advice-box">
+      <div class="advice-lbl">${X.storeAdvice}</div>
+      <div class="advice-chain">${best.chain} — ${money(best.total)}</div>
+      <div class="advice-sub">${best.covered.length} ${X.of} ${n} ${X.artItems}${bestMiss}</div>
+    </div>
     <div class="panel">
-      <div class="otitle">${X.basketTitle}</div>${rows}
-      <div class="otitle" style="margin-top:14px">${X.perItem}</div>${items}
+      <div class="otitle">${X.cartTitle} <button onclick="cart={};render()" style="border:0;background:none;color:var(--muted);font-size:11px;cursor:pointer;float:right">${X.clearCart}</button></div>
+      ${itemRows}
+    </div>
+    <div class="panel" style="margin-top:12px">
+      <div class="otitle">${X.storeAdvice}</div>
+      ${storeRows}
     </div>`;
 }
 
@@ -605,20 +763,66 @@ function drawChart(p, col) {
   });
 }
 
+function renderTitans() {
+  const X = BX[country.lang];
+  const data = (DEMO.titans || []).slice().sort((a, b) => {
+    const ra = a.total_promos ? a.real / a.total_promos : -1;
+    const rb = b.total_promos ? b.real / b.total_promos : -1;
+    return rb - ra;
+  });
+  const medals = ['🥇', '🥈', '🥉', '4.', '5.'];
+  const cards = data.map((t, i) => {
+    const hasPromos = t.total_promos > 0;
+    const realPct = hasPromos ? Math.round(100 * t.real / t.total_promos) : null;
+    const fakePct = hasPromos ? 100 - realPct : null;
+    const bar = hasPromos ? `
+      <div class="titan-bar-wrap">
+        <div class="titan-bar-real" style="width:${realPct}%"></div>
+        <div class="titan-bar-fake" style="flex:1"></div>
+      </div>
+      <div class="titan-meta">
+        <span style="color:var(--green)">✓ ${t.real} ${X.titansReal}</span>
+        <span style="color:var(--red)">✕ ${t.fake} ${X.titansFake}</span>
+      </div>` : `<div style="color:var(--muted);font-size:12px;margin-top:6px">${X.titansNoPromos}</div>`;
+    const scoreStyle = !hasPromos ? 'color:var(--muted)' : realPct >= 70 ? 'color:var(--green)' : realPct >= 40 ? 'color:var(--yellow)' : 'color:var(--red)';
+    const scoreText = hasPromos ? `${realPct}%` : '—';
+    return `<div class="titan-card">
+      <div style="display:flex;align-items:center;gap:6px">
+        <span class="titan-rank">${medals[i] || (i+1+'.')}</span>
+        <span class="titan-name">${t.chain}</span>
+        <span class="titan-score" style="${scoreStyle}">${scoreText}</span>
+      </div>
+      ${bar}
+      <div style="font-size:11px;color:var(--muted);margin-top:5px">${t.products_tracked} ${X.titansTracked}</div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('basket').innerHTML = `
+    <div class="titan-hero">
+      <div class="th-title">⚔️ ${X.titansTitle}</div>
+      <div class="th-sub">${X.titansSub}</div>
+    </div>
+    ${cards || '<div style="color:var(--muted);font-size:14px;text-align:center;padding:20px">—</div>'}`;
+}
+
 function render() {
   renderFlags(); renderChrome(); renderHero(); renderTabs();
   const prod = view === 'products';
   document.getElementById('cards').style.display = prod ? '' : 'none';
   document.getElementById('panel').style.display = 'none';
   document.getElementById('basket').style.display = prod ? 'none' : '';
+  const sw = document.getElementById('search-wrap');
+  sw.style.display = prod ? '' : 'none';
+  if (prod) document.getElementById('search-input').placeholder = BX[country.lang].search;
   if (prod) { renderProducts(); }
   else if (view === 'basket') { renderBasket(); }
   else if (view === 'table') { renderTable(); }
+  else if (view === 'titans') { renderTitans(); }
   else { renderFridge(); }
 }
 function select(i){ active = (active === i ? -1 : i); renderProducts(); }
 function setCountry(i){ country = COUNTRIES[i]; document.documentElement.lang = country.lang; render(); }
-function setView(v){ view = v; render(); }
+function setView(v){ view = v; if(v !== 'products'){ query=''; } render(); }
 
 render();
 </script>
