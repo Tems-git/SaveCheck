@@ -9,8 +9,12 @@
 <script src="./brochures.js"></script>
 <style>
   :root {
-    --green:#16a34a; --green-d:#15803d; --yellow:#f59e0b; --red:#dc2626; --gray:#6b7280;
-    --ink:#1c1917; --muted:#78716c; --line:#ece7df; --card:#ffffff; --cream:#f6f3ec;
+    --green:#16a34a; --green-d:#15803d; --green-bg:#eaf5ee;
+    --yellow:#d97706; --red:#dc2626; --gray:#6b7280;
+    --ink:#111827; --muted:#6b7280; --line:#f0ece4; --card:#ffffff; --cream:#f5f1ea;
+    --t-xs:10px; --t-sm:12px; --t-base:14px; --t-md:15px; --t-lg:17px; --t-xl:22px; --t-2xl:28px;
+    --shadow-card:0 1px 2px rgba(0,0,0,.06),0 2px 8px rgba(0,0,0,.08);
+    --shadow-raised:0 4px 16px rgba(0,0,0,.12);
   }
   * { box-sizing:border-box; }
   body {
@@ -45,7 +49,7 @@
   .hero .amt { font-size:30px; font-weight:800; letter-spacing:-.02em; margin-top:2px; }
   .hero .meta { font-size:12px; opacity:.95; margin-top:3px; }
   .scroll { padding:14px; }
-  .cards { background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden; }
+  .cards { background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden; box-shadow:var(--shadow-card); }
   .prow {
     display:flex; align-items:center; gap:11px; width:100%; border:0; background:none; cursor:pointer;
     padding:11px 13px; text-align:left; border-top:1px solid var(--line);
@@ -61,7 +65,7 @@
   .prow .ppr em { display:block; font-style:normal; font-size:11px; font-weight:700; margin-top:1px; }
   .detail { padding:2px 13px 14px; background:#fcfcfb; border-top:1px solid var(--line); }
   .detail .badge { margin-top:10px; }
-  .panel { background:var(--card); border:1px solid var(--line); border-radius:18px; padding:16px; margin-top:12px; }
+  .panel { background:var(--card); border:1px solid var(--line); border-radius:18px; padding:16px; margin-top:12px; box-shadow:var(--shadow-card); }
   .badge {
     display:inline-flex; align-items:center; gap:8px; color:#fff; font-weight:750; font-size:13.5px;
     padding:7px 13px; border-radius:999px;
@@ -129,6 +133,29 @@
   .scan-btn { width:100%; background:var(--green); color:#fff; border:0; border-radius:14px; padding:13px; font-size:15px; font-weight:800; cursor:pointer; margin-bottom:12px; }
   .scan-result-card { background:var(--card); border:1px solid var(--line); border-radius:18px; padding:16px; }
   .scan-ean { font-size:10.5px; color:var(--muted); margin-top:8px; }
+  /* ── Home tab ── */
+  .home-hero { background:linear-gradient(135deg,#16a34a,#15803d); color:#fff; border-radius:20px; padding:20px; margin-bottom:6px; box-shadow:0 8px 24px rgba(22,163,74,.28); }
+  .home-hero-lbl { font-size:var(--t-sm); opacity:.9; font-weight:600; letter-spacing:.01em; }
+  .home-hero-amt { font-size:var(--t-2xl); font-weight:900; letter-spacing:-.03em; margin-top:2px; line-height:1; }
+  .home-hero-meta { font-size:var(--t-sm); opacity:.9; margin-top:6px; }
+  .section-label { font-size:var(--t-xs); font-weight:750; color:var(--muted); text-transform:uppercase; letter-spacing:.07em; margin:16px 0 8px; }
+  .deal-scroll { display:flex; gap:10px; overflow-x:auto; padding:0 14px 6px; margin:0 -14px; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; }
+  .deal-scroll::-webkit-scrollbar { display:none; }
+  .deal-card { flex:none; width:110px; background:var(--card); border-radius:16px; padding:13px 12px 11px; box-shadow:var(--shadow-card); cursor:pointer; scroll-snap-align:start; transition:transform .12s; }
+  .deal-card:active { transform:scale(.96); }
+  .deal-emoji { font-size:28px; margin-bottom:6px; line-height:1; }
+  .deal-name { font-size:11px; font-weight:700; line-height:1.3; margin-bottom:5px; color:var(--ink); }
+  .deal-disc { font-size:var(--t-xl); font-weight:900; letter-spacing:-.02em; line-height:1; }
+  .deal-price { font-size:var(--t-xs); color:var(--muted); margin-top:2px; font-variant-numeric:tabular-nums; }
+  .card-block { background:var(--card); border-radius:16px; overflow:hidden; box-shadow:var(--shadow-card); margin-bottom:12px; }
+  .mini-titan { display:flex; align-items:center; gap:10px; padding:11px 14px; border-top:1px solid var(--line); }
+  .mini-titan:first-child { border-top:0; }
+  /* ── Sub-tabs (pill toggle) ── */
+  #sub-tabs-wrap { padding:10px 14px 0; }
+  .sub-tabs { display:flex; gap:4px; background:var(--cream); border-radius:13px; padding:3px; border:1px solid var(--line); }
+  .sub-tabs button { flex:1; border:0; background:none; cursor:pointer; padding:7px 6px; border-radius:10px; font-size:var(--t-sm); font-weight:700; color:var(--muted); font-family:inherit; line-height:1.2; white-space:nowrap; transition:all .15s; }
+  .sub-tabs button.active { background:var(--card); color:var(--ink); box-shadow:0 1px 4px rgba(0,0,0,.10); }
+  /* ── Search ── */
   .search-wrap { padding:10px 14px 0; }
   .search-wrap input {
     width:100%; border:1.5px solid var(--line); border-radius:12px;
@@ -145,12 +172,13 @@
   .srow { display:flex; justify-content:space-between; align-items:center; padding:8px 2px; border-top:1px solid var(--line); font-size:13px; }
   .srow .scov { font-size:11px; color:var(--muted); margin-left:6px; }
   .srow.sbest span:first-child { color:var(--green); font-weight:700; }
-  .bottomnav { display:flex; background:var(--card); border-top:1px solid var(--line); }
+  .bottomnav { display:flex; background:var(--card); border-top:1px solid var(--line); padding-bottom:env(safe-area-inset-bottom,0); }
   .bottomnav button {
-    flex:1; border:0; background:none; cursor:pointer; padding:9px 4px 12px; color:var(--muted);
-    font-size:11px; font-weight:600; display:flex; flex-direction:column; align-items:center; gap:3px;
+    flex:1; border:0; background:none; cursor:pointer; padding:8px 4px 10px; color:var(--muted);
+    font-size:10px; font-weight:600; display:flex; flex-direction:column; align-items:center; gap:2px; position:relative;
   }
-  .bottomnav button .ic { font-size:18px; line-height:1; }
+  .bottomnav button .ic { width:22px; height:22px; display:block; }
+  .bottomnav button .ic svg { width:100%; height:100%; display:block; }
   .bottomnav button.on { color:var(--green-d); }
   footer { color:var(--muted); font-size:11px; line-height:1.5; max-width:430px; margin:14px auto 0; text-align:center; padding:0 16px; }
 </style>
@@ -170,7 +198,8 @@
     </div>
     <div class="flags" id="flags"></div>
   </div>
-  <div class="hero" id="hero"></div>
+  <div class="hero" id="hero" style="display:none"></div>
+  <div id="sub-tabs-wrap"></div>
   <div class="search-wrap" id="search-wrap" style="display:none"><input type="search" id="search-input" oninput="doSearch(this.value)" /></div>
   <div class="scroll">
     <div class="cards" id="cards"></div>
@@ -518,6 +547,21 @@ const BX = {
        scanMatched:'Prepoznan kot' },
 };
 
+// Extra BX keys for new 4-tab architecture.
+const BX_EX = {
+  bg: { tabHome:'Начало', tabShop:'Пазарувай', tabPromos:'Промоции', homeDeals:'Реални промоции', homeNoDeals:'Няма реални промоции' },
+  sr: { tabHome:'Početna', tabShop:'Kupovina', tabPromos:'Akcije', homeDeals:'Prave akcije', homeNoDeals:'Nema pravih akcija danas' },
+  mk: { tabHome:'Дома', tabShop:'Купувај', tabPromos:'Промоции', homeDeals:'Вистински промоции', homeNoDeals:'Нема вистински промоции' },
+  ro: { tabHome:'Acasă', tabShop:'Cumpărături', tabPromos:'Promoții', homeDeals:'Reduceri reale', homeNoDeals:'Fără reduceri reale azi' },
+  el: { tabHome:'Αρχική', tabShop:'Αγορά', tabPromos:'Προσφορές', homeDeals:'Αληθινές προσφορές', homeNoDeals:'Δεν υπάρχουν σήμερα' },
+  tr: { tabHome:'Ana Sayfa', tabShop:'Alışveriş', tabPromos:'Kampanyalar', homeDeals:'Gerçek indirimler', homeNoDeals:'Bugün gerçek indirim yok' },
+  sq: { tabHome:'Kryesorja', tabShop:'Blej', tabPromos:'Ofertat', homeDeals:'Oferta reale', homeNoDeals:'Nuk ka oferta reale sot' },
+  bs: { tabHome:'Početna', tabShop:'Kupovina', tabPromos:'Akcije', homeDeals:'Prave akcije', homeNoDeals:'Nema pravih akcija' },
+  hr: { tabHome:'Početna', tabShop:'Kupovina', tabPromos:'Akcije', homeDeals:'Prave akcije', homeNoDeals:'Nema pravih akcija' },
+  sl: { tabHome:'Domov', tabShop:'Nakup', tabPromos:'Akcije', homeDeals:'Prave akcije', homeNoDeals:'Danes ni pravih akcij' },
+};
+Object.keys(BX_EX).forEach(lang => BX[lang] && Object.assign(BX[lang], BX_EX[lang]));
+
 // Hero strings (savings dashboard).
 const HX = {
   bg:{ saved:'Спестяваш с реалните промоции', promos:'реални промоции' },
@@ -542,7 +586,8 @@ const emojiOf = id => EMOJI[id] || '🛒';
 
 const DEMO = (window.SAVECHECK_DEMO || {products:[]});
 const products = DEMO.products;
-let active = -1, country = COUNTRIES[0], view = 'products', query = '', cart = {};
+let active = -1, country = COUNTRIES[0], view = 'home', query = '', cart = {};
+let shopTab = 'products', promosTab = 'brochures';
 let scanStream = null;
 
 // Store chains per market — a mix of domestic and foreign (international)
@@ -702,10 +747,21 @@ function renderHero() {
 function renderTabs() {
   const X = BX[country.lang];
   const n = cartSize();
-  const basketLbl = n ? `${X.tabBasket} <span style="background:var(--green);color:#fff;font-size:9px;border-radius:999px;padding:1px 5px;font-weight:800">${n}</span>` : X.tabBasket;
-  const items = [['products', '🏷️', X.tabProducts], ['basket', '🛒', basketLbl], ['brochures', '📋', X.tabBrochures], ['table', '📊', X.tabTable], ['titans', '⚔️', X.tabTitans], ['scan', '📱', X.tabScan], ['fridge', '🧊', X.tabFridge]];
-  document.getElementById('tabs').innerHTML = items.map(([v, ic, lbl]) =>
-    `<button class="${view===v?'on':''}" onclick="setView('${v}')"><span class="ic">${ic}</span>${lbl}</button>`).join('');
+  const badge = n ? `<span style="position:absolute;top:7px;right:calc(50% - 20px);min-width:14px;height:14px;background:var(--green);color:#fff;font-size:8px;border-radius:999px;padding:0 3px;font-weight:900;line-height:14px;text-align:center">${n}</span>` : '';
+  const SVG = {
+    home:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>`,
+    shop:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 1.98 1.61h9.72a2 2 0 0 0 1.98-1.67L23 6H6"/></svg>`,
+    promos:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>`,
+    scan:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>`,
+  };
+  const items = [
+    ['home',   SVG.home,   X.tabHome,   ''],
+    ['shop',   SVG.shop,   X.tabShop,   badge],
+    ['promos', SVG.promos, X.tabPromos, ''],
+    ['scan',   SVG.scan,   X.tabScan,   ''],
+  ];
+  document.getElementById('tabs').innerHTML = items.map(([v, ic, lbl, ex]) =>
+    `<button class="${view===v?'on':''}" onclick="setView('${v}')"><span class="ic">${ic}</span>${lbl}${ex}</button>`).join('');
 }
 
 function renderFridge() {
@@ -964,6 +1020,65 @@ function renderTitans() {
     ${cards || '<div style="color:var(--muted);font-size:14px;text-align:center;padding:20px">—</div>'}`;
 }
 
+function renderHome() {
+  const X = BX[country.lang], H = HX[country.lang];
+  let saved = 0, realCount = 0;
+  products.forEach(p => {
+    if (p.median_90 != null && p.current_price != null) {
+      const d = p.median_90 - p.current_price;
+      if (d > 0 && p.verdict === 'green') { saved += d; realCount++; }
+    }
+  });
+  const deals = products
+    .filter(p => p.verdict === 'green' && p.discount_pct > 0)
+    .sort((a, b) => b.discount_pct - a.discount_pct)
+    .slice(0, 7);
+  const titans = (DEMO.titans || []).slice()
+    .sort((a, b) => {
+      const ra = a.total_promos ? a.real / a.total_promos : -1;
+      const rb = b.total_promos ? b.real / b.total_promos : -1;
+      return rb - ra;
+    }).slice(0, 3);
+
+  const dealsHTML = deals.length
+    ? deals.map(p => {
+        const meta = PRODUCTS[p.id], idx = products.indexOf(p);
+        return `<div class="deal-card" onclick="setView('shop');shopTab='products';setTimeout(()=>select(${idx}),80)">
+          <div class="deal-emoji">${emojiOf(p.id)}</div>
+          <div class="deal-name">${meta.name[country.lang]||meta.name.bg}</div>
+          <div class="deal-disc" style="color:var(--green)">−${p.discount_pct}%</div>
+          <div class="deal-price">${money(p.current_price)}</div>
+        </div>`;
+      }).join('')
+    : `<div style="color:var(--muted);font-size:var(--t-sm);padding:2px 0 10px">${X.homeNoDeals}</div>`;
+
+  const titansHTML = titans.map((t, i) => {
+    const medals = ['🥇','🥈','🥉'];
+    const pct = t.total_promos ? Math.round(100 * t.real / t.total_promos) : null;
+    const col = pct == null ? 'var(--muted)' : pct >= 70 ? 'var(--green)' : pct >= 40 ? 'var(--yellow)' : 'var(--red)';
+    return `<div class="mini-titan">
+      <span style="font-size:18px;line-height:1">${medals[i]}</span>
+      <span style="flex:1;font-weight:700;font-size:var(--t-base)">${t.chain}</span>
+      <span style="font-weight:900;font-size:var(--t-lg);color:${col}">${pct != null ? pct+'%' : '—'}</span>
+    </div>`;
+  }).join('');
+
+  document.getElementById('basket').innerHTML = `
+    <div class="home-hero">
+      <div class="home-hero-lbl">${H.saved}</div>
+      <div class="home-hero-amt">${disp(saved * country.fx)} ${country.sym}</div>
+      <div class="home-hero-meta">🟢 ${realCount} ${H.promos}</div>
+    </div>
+    <div class="section-label">${X.homeDeals}</div>
+    ${deals.length ? `<div class="deal-scroll">${dealsHTML}</div>` : dealsHTML}
+    ${titans.length ? `
+    <div class="section-label" style="margin-top:14px">${X.titansTitle}</div>
+    <div class="card-block">${titansHTML}
+      <div style="text-align:center;padding:9px;border-top:1px solid var(--line);font-size:var(--t-sm);color:var(--green);font-weight:700;cursor:pointer"
+           onclick="setView('promos');promosTab='titans';render()">→ ${X.tabTitans}</div>
+    </div>` : ''}`;
+}
+
 function renderScan() {
   const X = BX[country.lang];
   document.getElementById('basket').innerHTML = `
@@ -1088,25 +1203,54 @@ function showScanResult(ean, name, match) {
 }
 
 function render() {
-  renderFlags(); renderChrome(); renderHero(); renderTabs();
-  const prod = view === 'products';
-  document.getElementById('cards').style.display = prod ? '' : 'none';
+  renderFlags(); renderChrome(); renderTabs();
+  const X = BX[country.lang];
+  const isShop = view === 'shop';
+  const isProd = isShop && shopTab === 'products';
+
+  document.getElementById('hero').style.display = 'none';
+  document.getElementById('cards').style.display = isProd ? '' : 'none';
   document.getElementById('panel').style.display = 'none';
-  document.getElementById('basket').style.display = prod ? 'none' : '';
+  document.getElementById('basket').style.display = isProd ? 'none' : '';
+
   const sw = document.getElementById('search-wrap');
-  sw.style.display = prod ? '' : 'none';
-  if (prod) document.getElementById('search-input').placeholder = BX[country.lang].search;
-  if (prod) { renderProducts(); }
-  else if (view === 'basket') { renderBasket(); }
-  else if (view === 'table') { renderTable(); }
-  else if (view === 'brochures') { renderBrochures(); }
-  else if (view === 'titans') { renderTitans(); }
+  sw.style.display = isProd ? '' : 'none';
+  if (isProd) document.getElementById('search-input').placeholder = X.search;
+
+  // Sub-tabs
+  const stw = document.getElementById('sub-tabs-wrap');
+  if (isShop) {
+    const n = cartSize();
+    const cb = n ? `<span style="background:var(--green);color:#fff;font-size:9px;border-radius:999px;padding:0 5px;font-weight:800;margin-left:3px;line-height:1.6">${n}</span>` : '';
+    stw.innerHTML = `<div class="sub-tabs">
+      <button class="${shopTab==='products'?'active':''}" onclick="shopTab='products';render()">${X.tabProducts}</button>
+      <button class="${shopTab==='basket'?'active':''}" onclick="shopTab='basket';render()">${X.tabBasket}${cb}</button>
+      <button class="${shopTab==='fridge'?'active':''}" onclick="shopTab='fridge';render()">${X.tabFridge}</button>
+    </div>`;
+  } else if (view === 'promos') {
+    stw.innerHTML = `<div class="sub-tabs">
+      <button class="${promosTab==='brochures'?'active':''}" onclick="promosTab='brochures';render()">${X.tabBrochures}</button>
+      <button class="${promosTab==='titans'?'active':''}" onclick="promosTab='titans';render()">${X.tabTitans}</button>
+    </div>`;
+  } else {
+    stw.innerHTML = '';
+  }
+
+  if (view === 'home') { renderHome(); }
+  else if (isShop) {
+    if (shopTab === 'products') renderProducts();
+    else if (shopTab === 'basket') renderBasket();
+    else renderFridge();
+  }
+  else if (view === 'promos') {
+    if (promosTab === 'brochures') renderBrochures();
+    else renderTitans();
+  }
   else if (view === 'scan') { renderScan(); }
-  else { renderFridge(); }
 }
 function select(i){ active = (active === i ? -1 : i); renderProducts(); }
 function setCountry(i){ country = COUNTRIES[i]; document.documentElement.lang = country.lang; render(); }
-function setView(v){ if (v !== 'scan') stopScanner(); view = v; if(v !== 'products'){ query=''; } render(); }
+function setView(v){ if (v !== 'scan') stopScanner(); view = v; if (v !== 'shop' || shopTab !== 'products') query = ''; render(); }
 
 render();
 </script>
