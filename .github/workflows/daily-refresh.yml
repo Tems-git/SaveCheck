@@ -1,0 +1,86 @@
+name: Daily KZP price refresh
+
+on:
+  schedule:
+    - cron: '0 5 * * *'   # 05:00 UTC = 08:00 EET — after KZP publishes
+  workflow_dispatch:        # allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -e ".[ingest]" --quiet
+
+      - name: Get cache key date
+        id: date
+        run: echo "week=$(date -u +%Y-W%W)" >> "$GITHUB_OUTPUT"
+
+      - name: Restore ZIP cache
+        uses: actions/cache@v4
+        with:
+          path: /tmp/kzp_zips
+          key: kzp-zips-${{ steps.date.outputs.week }}
+          restore-keys: kzp-zips-
+
+      - name: Download KZP ZIPs
+        run: |
+          mkdir -p /tmp/kzp_zips
+          EXISTING=$(ls /tmp/kzp_zips/*.zip 2>/dev/null | wc -l)
+          echo "Cached ZIPs: ${EXISTING}"
+
+          # Full backfill on a cold cache; otherwise just the last 3 days.
+          DAYS=$( [ "$EXISTING" -lt 30 ] && echo 91 || echo 3 )
+          echo "Downloading last ${DAYS} days…"
+
+          for OFFSET in $(seq 0 "$DAYS"); do
+            D=$(date -u -d "${OFFSET} days ago" +%Y-%m-%d)
+            FILE="/tmp/kzp_zips/${D}.zip"
+            if [ ! -f "$FILE" ]; then
+              curl -fsSL --retry 3 --retry-delay 5 \
+                -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" \
+                "https://kolkostruva.bg/opendata_files/${D}.zip" \
+                -o "${FILE}.tmp" \
+                && mv "${FILE}.tmp" "$FILE" \
+                || { rm -f "${FILE}.tmp"; echo "  Not available: ${D}"; }
+            fi
+          done
+
+          TOTAL=$(ls /tmp/kzp_zips/*.zip 2>/dev/null | wc -l)
+          echo "Total ZIPs available: ${TOTAL}"
+          if [ "$TOTAL" -lt 10 ]; then
+            echo "::error::Too few ZIPs (${TOTAL}) — aborting"
+            exit 1
+          fi
+
+      - name: Generate data.js
+        run: python scripts/gen_demo_data.py --zip-dir /tmp/kzp_zips
+
+      - name: Generate brochures.js
+        run: python scripts/gen_brochures.py --zip-dir /tmp/kzp_zips
+
+      - name: Commit updated data files
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/data.js public/brochures.js
+          if git diff --staged --quiet; then
+            echo "No data changes — nothing to commit."
+          else
+            DATE=$(date -u +%Y-%m-%d)
+            git commit -m "Daily KZP refresh: ${DATE}"
+            git push
+          fi
