@@ -99,7 +99,7 @@ UNIT_INFO: dict[str, tuple[str, Decimal]] = {
     "cucumber": ("kg",  Decimal("1")),
 }
 
-REF = date(2026, 6, 13)
+REF: date = date(2026, 6, 13)  # overridden in main() from latest ZIP
 
 
 # ---------------------------------------------------------------------------
@@ -358,6 +358,15 @@ def main() -> None:
     args = parser.parse_args()
 
     zip_dir = Path(args.zip_dir)
+
+    # Auto-detect reference date from the latest available ZIP.
+    zips = sorted(zip_dir.glob("*.zip"))
+    if not zips:
+        raise FileNotFoundError(f"No ZIP files found in {zip_dir}")
+    global REF
+    REF = date.fromisoformat(zips[-1].stem)
+    print(f"Reference date: {REF} (from {zips[-1].name})")
+
     print(f"Loading ZIPs from {zip_dir} …")
     series = load_all_zips(zip_dir)
 

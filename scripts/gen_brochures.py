@@ -29,7 +29,6 @@ from gen_demo_data import BASKET, CHAIN_DISPLAY, MAIN_CHAINS, PRIMARY_ORDER, loa
 
 import argparse
 
-REF = date(2026, 6, 13)
 MAX_ITEMS_PER_CHAIN = 80  # cap to keep brochures.js small
 
 
@@ -137,9 +136,9 @@ def main() -> None:
     if not zips:
         raise FileNotFoundError(f"No ZIPs in {zip_dir}")
 
-    # Use latest available ZIP
     latest_zip = zips[-1]
     ref = date.fromisoformat(latest_zip.stem)
+    print(f"Reference date: {ref} (from {latest_zip.name})")
 
     print(f"Loading 90-day basket series for Omnibus verdicts…")
     basket_series = load_all_zips(zip_dir)
