@@ -76,7 +76,7 @@ def evaluate(
     discount = (stats.median_90 - current) / stats.median_90
     near_floor = current <= stats.min_90 * (Decimal(1) + cfg.near_floor_pct)
     # Omnibus: a genuine discount must beat the lowest price of the prior 30 days.
-    cheaper_than_prior = stats.min_30_prior is None or current < stats.min_30_prior
+    cheaper_than_prior = stats.min_30_prior is None or current <= stats.min_30_prior
 
     pct = (discount * 100).quantize(Decimal("1"))
 

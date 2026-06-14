@@ -2794,8 +2794,8 @@ window.SAVECHECK_DEMO = {
     {
       "id": "eggs",
       "unit_kind": "pcs",
-      "verdict": "yellow",
-      "reason_code": "cosmetic",
+      "verdict": "green",
+      "reason_code": "real",
       "discount_pct": 34,
       "current_price": 1.99,
       "current_unit_price": 0.199,
@@ -3584,8 +3584,8 @@ window.SAVECHECK_DEMO = {
     {
       "id": "bread",
       "unit_kind": "kg",
-      "verdict": "yellow",
-      "reason_code": "cosmetic",
+      "verdict": "green",
+      "reason_code": "real",
       "discount_pct": 36,
       "current_price": 0.49,
       "current_unit_price": 0.7,
