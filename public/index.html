@@ -506,7 +506,7 @@ function renderProducts() {
       <button class="prow ${on?'on':''}" onclick="select(${i})">
         <span class="ill">${emojiOf(p.id)}</span>
         <span class="pnm">${meta.name[country.lang]} <span class="vtag" style="background:${C[p.verdict]}">${TAG[p.verdict][country.lang]}</span><small>${meta.pack[country.lang]}${unit}</small></span>
-        <button class="cadd ${inCart?'in':''}" onclick="event.stopPropagation();toggleCart('${p.id}')" title="${inCart?'✓':'+'}">${inCart?'✓':'+'}</button>
+        <span class="cadd ${inCart?'in':''}" role="button" tabindex="0" onclick="event.stopPropagation();toggleCart('${p.id}')">${inCart?'✓':'+'}</span>
         <span class="ppr">${money(p.current_price)}${disc}</span>
       </button>`;
     return rowHtml + (on ? detailHTML(p) : '');
