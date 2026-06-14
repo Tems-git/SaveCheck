@@ -1,8 +1,4 @@
-"""Tests for the open-data parser (pure stdlib: csv/json). No network needed.
-
-These lock in the parser's behaviour against the PROVISIONAL column mapping so
-that when the real format is confirmed, any change is caught here.
-"""
+"""Tests for the real КЗП kolkostruva parser. Pure stdlib; no network needed."""
 
 from __future__ import annotations
 
@@ -13,54 +9,64 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from savecheck.ingest.kolkostruva import parse_rows  # noqa: E402
+from savecheck.ingest.kolkostruva import (  # noqa: E402
+    chain_name_from_filename,
+    parse_chain_csv,
+)
+
+DAY = date(2026, 6, 12)
+
+REAL_CSV = (
+    '"Населено място","Търговски обект","Наименование на продукта",'
+    '"Код на продукта","Категория","Цена на дребно","Цена в промоция"\n'
+    '"14218","114 - Габрово/ул. Свищовска 68","Слънчогледово олио 1Л","6810910","42","2.04",""\n'
+    '"68134","Ф01 - ОБОРИЩЕ","Прясно мляко 1Л","001102","6","2.19","1.89"\n'
+    '"68134","Ф01 - ОБОРИЩЕ","","000000","6","9.99",""\n'  # nameless -> skipped
+)
 
 
-def test_parse_csv_basic():
-    csv_text = (
-        "chain,product,price,date,promo\n"
-        "Lidl,Прясно мляко 1L,2.49,2026-06-13,1\n"
-        "Kaufland,Прясно мляко 1L,2,80,\n"  # note: comma decimal handled
-    )
-    rows = list(parse_rows(csv_text))
-    assert len(rows) == 1  # the malformed comma-as-extra-column row is skipped
-    assert rows[0].chain_name == "Lidl"
-    assert rows[0].price == Decimal("2.49")
-    assert rows[0].observed_on == date(2026, 6, 13)
-    assert rows[0].is_promo is True
+def test_chain_name_from_filename():
+    assert chain_name_from_filename("Лидл България_131071587.csv") == "Лидл България"
+    assert chain_name_from_filename(
+        "ФАНТАСТИКО (ФАНТАСТИКО ГРУП ООД)_206255903.csv"
+    ) == "ФАНТАСТИКО"
+    assert chain_name_from_filename("eBag (Кънвиниънс АД)_204786976.csv") == "eBag"
 
 
-def test_parse_csv_comma_decimal():
-    csv_text = "chain;product;price;date\n"  # header only sanity check below
-    # Use a clean 4-column CSV where price uses a comma decimal separator.
-    csv_text = "chain,product,price,date\nBilla,Олио 1L,3,2026-06-13\n"
-    rows = list(parse_rows(csv_text))
-    assert rows[0].price == Decimal("3")
+def test_parse_skips_nameless_rows():
+    rows = list(parse_chain_csv(REAL_CSV, "Лидл", DAY))
+    assert len(rows) == 2
 
 
-def test_parse_json_list():
-    json_text = (
-        '[{"verige": "Billa", "stoka": "Олио 1L", "cena": "3,49", '
-        '"data": "13.06.2026", "promotsiya": "да"}]'
-    )
-    rows = list(parse_rows(json_text))
-    assert len(rows) == 1
-    assert rows[0].chain_name == "Billa"
-    assert rows[0].price == Decimal("3.49")
-    assert rows[0].observed_on == date(2026, 6, 13)
-    assert rows[0].is_promo is True
+def test_retail_row_is_not_promo():
+    rows = list(parse_chain_csv(REAL_CSV, "Лидл", DAY))
+    oil = rows[0]
+    assert oil.chain_name == "Лидл"
+    assert oil.product_name == "Слънчогледово олио 1Л"
+    assert oil.price == Decimal("2.04")
+    assert oil.is_promo is False
+    assert oil.observed_on == DAY
 
 
-def test_parse_json_wrapped_in_data_key():
-    json_text = '{"data": [{"chain": "Lidl", "product": "Яйца M 10бр", "price": "2.99", "date": "2026-06-01"}]}'
-    rows = list(parse_rows(json_text))
-    assert len(rows) == 1
-    assert rows[0].is_promo is False
+def test_promo_row_uses_promo_price():
+    rows = list(parse_chain_csv(REAL_CSV, "Фантастико", DAY))
+    milk = rows[1]
+    assert milk.is_promo is True
+    assert milk.price == Decimal("1.89")  # shopper pays the promo price
+    assert milk.retail_price == Decimal("2.19")
+    assert milk.product_code == "001102"
 
 
-def test_unmappable_rows_are_skipped():
-    rows = list(parse_rows("foo,bar\n1,2\n"))
-    assert rows == []
+def test_metadata_fields_captured():
+    rows = list(parse_chain_csv(REAL_CSV, "Лидл", DAY))
+    assert rows[0].region == "14218"
+    assert rows[0].store == "114 - Габрово/ул. Свищовска 68"
+    assert rows[0].category == "42"
+
+
+def test_bytes_with_bom_decode():
+    rows = list(parse_chain_csv(REAL_CSV.encode("utf-8-sig"), "Лидл", DAY))
+    assert len(rows) == 2
 
 
 if __name__ == "__main__":
