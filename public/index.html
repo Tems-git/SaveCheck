@@ -47,14 +47,17 @@
     max-width:430px; margin:0 auto; background:var(--cream); border:1px solid var(--line);
     border-radius:34px; overflow:hidden; box-shadow:0 30px 70px rgba(28,25,23,.20);
   }
-  .appbar { background:var(--card); padding:16px 16px; border-bottom:1px solid var(--line); }
-  .brand { display:flex; align-items:center; gap:12px; }
-  .brand .logo { width:58px; height:58px; flex:none; object-fit:contain; }
-  .brand-text { display:flex; flex-direction:column; gap:3px; }
-  .brand h1 { font-size:30px; margin:0; letter-spacing:-.03em; font-weight:800; line-height:1.05; }
+  .appbar { background:var(--card); padding:14px 14px; border-bottom:1px solid var(--line); }
+  .brand { display:flex; align-items:center; gap:8px; }
+  .brand .logo { width:54px; height:54px; flex:none; object-fit:contain; }
+  .brand-text { display:flex; flex-direction:column; gap:2px; }
+  .brand h1 { font-size:24px; margin:0; letter-spacing:-.03em; font-weight:800; line-height:1.05; }
   .brand h1 b { color:var(--green); }
-  .brand-tagline { font-size:13px; color:var(--muted); font-weight:600; letter-spacing:.01em; }
-  .country-picker { position:relative; margin-left:auto; }
+  .brand-tagline { font-size:11px; color:var(--muted); font-weight:600; letter-spacing:.01em; }
+  .appbar-right { margin-left:auto; display:flex; align-items:center; gap:8px; flex:none; }
+  .scan-quick { flex:none; width:40px; height:40px; display:flex; align-items:center; justify-content:center; border:0; border-radius:11px; background:var(--green); color:#fff; cursor:pointer; padding:0; }
+  .scan-quick svg { width:20px; height:20px; stroke:#fff; fill:none; stroke-width:2; }
+  .country-picker { position:relative; }
   .cp-trigger { display:flex; align-items:center; gap:5px; border:1px solid var(--line); background:var(--cream); border-radius:11px; cursor:pointer; padding:8px 11px; font-size:18px; line-height:1; }
   .cp-trigger .cc { font-size:10px; font-weight:700; color:var(--muted); }
   .cp-chev { width:10px; height:10px; stroke:var(--muted); transition:transform .2s; flex:none; }
@@ -270,17 +273,22 @@
         <h1>Save<b>Check</b></h1>
         <div class="brand-tagline">Цените под лупа</div>
       </div>
-      <div class="country-picker" id="country-picker">
-        <button class="cp-trigger" id="cp-trigger" onclick="toggleCountryPicker()">
-          <span id="cp-flag">🇧🇬</span>
-          <span id="cp-code" class="cc">BG</span>
-          <svg class="cp-chev" viewBox="0 0 10 10" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3.5L5 6.5L8 3.5"/></svg>
+      <div class="appbar-right">
+        <button class="scan-quick" onclick="setView('scan')" aria-label="Сканирай баркод">
+          <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
         </button>
-        <div class="cp-menu" id="flags"></div>
+        <div class="country-picker" id="country-picker">
+          <button class="cp-trigger" id="cp-trigger" onclick="toggleCountryPicker()">
+            <span id="cp-flag">🇧🇬</span>
+            <span id="cp-code" class="cc">BG</span>
+            <svg class="cp-chev" viewBox="0 0 10 10" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3.5L5 6.5L8 3.5"/></svg>
+          </button>
+          <div class="cp-menu" id="flags"></div>
+        </div>
+        <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" aria-label="Смени тема">
+          <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
+        </button>
       </div>
-      <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" aria-label="Смени тема">
-        <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
-      </button>
     </div>
   </div>
   <div class="hero" id="hero" style="display:none"></div>
