@@ -645,16 +645,16 @@ Object.keys(BX_EX).forEach(lang => BX[lang] && Object.assign(BX[lang], BX_EX[lan
 const FILTER_ALL = { bg:'Всички', sr:'Sve', mk:'Сите', ro:'Toate', el:'Όλα', tr:'Tümü', sq:'Të gjitha', bs:'Sve', hr:'Sve', sl:'Vse' };
 const NO_MATCH = { bg:'Няма продукти в тази категория', sr:'Nema proizvoda u ovoj kategoriji', mk:'Нема производи во оваа категорија', ro:'Niciun produs în această categorie', el:'Δεν υπάρχουν προϊόντα σε αυτή την κατηγορία', tr:'Bu kategoride ürün yok', sq:'Nuk ka produkte në këtë kategori', bs:'Nema proizvoda u ovoj kategoriji', hr:'Nema proizvoda u ovoj kategoriji', sl:'Ni izdelkov v tej kategoriji' };
 const HX = {
-  bg:{ saved:'Спестяваш с реалните промоции', promos:'реални промоции' },
-  sr:{ saved:'Štedite uz prave akcije', promos:'pravih akcija' },
-  mk:{ saved:'Заштедуваш со вистинските промоции', promos:'вистински промоции' },
-  ro:{ saved:'Economisești cu reducerile reale', promos:'reduceri reale' },
-  el:{ saved:'Εξοικονομείς με τις αληθινές προσφορές', promos:'αληθινές προσφορές' },
-  tr:{ saved:'Gerçek indirimlerle tasarruf', promos:'gerçek indirim' },
-  sq:{ saved:'Kurseni me ofertat e vërteta', promos:'oferta të vërteta' },
-  bs:{ saved:'Štedite uz prave akcije', promos:'pravih akcija' },
-  hr:{ saved:'Štedite uz prave akcije', promos:'pravih akcija' },
-  sl:{ saved:'Prihranite s pravimi akcijami', promos:'pravih akcij' },
+  bg:{ saved:'Спестяваш с реалните промоции', promos:'реални промоции', caught:'Хванахме', fakes:'фалшиви промоции', period:'последните 30 дни' },
+  sr:{ saved:'Štedite uz prave akcije', promos:'pravih akcija', caught:'Uhvatili smo', fakes:'lažnih akcija', period:'poslednjih 30 dana' },
+  mk:{ saved:'Заштедуваш со вистинските промоции', promos:'вистински промоции', caught:'Фативме', fakes:'лажни промоции', period:'последните 30 дена' },
+  ro:{ saved:'Economisești cu reducerile reale', promos:'reduceri reale', caught:'Am prins', fakes:'reduceri false', period:'ultimele 30 de zile' },
+  el:{ saved:'Εξοικονομείς με τις αληθινές προσφορές', promos:'αληθινές προσφορές', caught:'Εντοπίσαμε', fakes:'ψεύτικες προσφορές', period:'τελευταίες 30 ημέρες' },
+  tr:{ saved:'Gerçek indirimlerle tasarruf', promos:'gerçek indirim', caught:'Yakaladık', fakes:'sahte indirim', period:'son 30 gün' },
+  sq:{ saved:'Kurseni me ofertat e vërteta', promos:'oferta të vërteta', caught:'Kapëm', fakes:'oferta të rreme', period:'30 ditët e fundit' },
+  bs:{ saved:'Štedite uz prave akcije', promos:'pravih akcija', caught:'Uhvatili smo', fakes:'lažnih akcija', period:'posljednjih 30 dana' },
+  hr:{ saved:'Štedite uz prave akcije', promos:'pravih akcija', caught:'Uhvatili smo', fakes:'lažnih akcija', period:'zadnjih 30 dana' },
+  sl:{ saved:'Prihranite s pravimi akcijami', promos:'pravih akcij', caught:'Ujeli smo', fakes:'lažnih akcij', period:'zadnjih 30 dni' },
 };
 
 const EMOJI = {
