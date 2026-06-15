@@ -12,6 +12,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="./og.svg" />
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@zxing/library@0.21.3/umd/index.min.js"></script>
 <script src="./data.js"></script>
 <script src="./brochures.js"></script>
 <style>
@@ -226,7 +227,14 @@
     outline:none; font-family:inherit;
   }
   .search-wrap input:focus { border-color:var(--green); }
-  .cadd { width:28px; height:28px; border-radius:50%; border:1.5px solid var(--green); background:none; cursor:pointer; font-size:15px; font-weight:800; display:flex; align-items:center; justify-content:center; flex:none; color:var(--green); line-height:1; padding:0; }
+  .filter-wrap { padding:10px 14px 0; display:flex; gap:6px; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .filter-wrap::-webkit-scrollbar { display:none; }
+  .fchip { flex:none; border:1.5px solid var(--line); background:var(--card); border-radius:999px; padding:6px 12px; font-size:12px; font-weight:700; color:var(--muted); cursor:pointer; font-family:inherit; display:flex; align-items:center; gap:5px; white-space:nowrap; line-height:1; transition:background .12s,color .12s,border-color .12s; }
+  .fchip .fc-n { font-weight:800; opacity:.65; }
+  .fchip.active { color:#fff; border-color:transparent; }
+  .fchip.active .fc-n { opacity:.85; }
+  .empty-filter { text-align:center; padding:28px 16px; color:var(--muted); font-size:14px; }
+  .cadd { width:28px; height:28px; border-radius:50%; border:1.5px solid var(--green); background:none; cursor:pointer; font-size:15px; font-weight:800; display:flex; align-items:center; justify-content:center; flex:none; color:var(--green); line-height:1; padding:0; font-family:inherit; }
   .cadd.in { background:var(--green); color:#fff; }
   .advice-box { background:#eaf5ee; border:1.5px solid var(--green); border-radius:14px; padding:12px 14px; margin-bottom:12px; }
   .advice-box .advice-lbl { font-size:10.5px; font-weight:700; color:var(--green-d); text-transform:uppercase; letter-spacing:.04em; }
@@ -271,6 +279,7 @@
   <div class="hero" id="hero" style="display:none"></div>
   <div id="sub-tabs-wrap"></div>
   <div class="search-wrap" id="search-wrap" style="display:none"><input type="search" id="search-input" oninput="doSearch(this.value)" /></div>
+  <div class="filter-wrap" id="filter-wrap" style="display:none"></div>
   <div class="scroll">
     <div class="cards" id="cards"></div>
     <div class="panel" id="panel"></div>
@@ -633,6 +642,8 @@ const BX_EX = {
 Object.keys(BX_EX).forEach(lang => BX[lang] && Object.assign(BX[lang], BX_EX[lang]));
 
 // Hero strings (savings dashboard).
+const FILTER_ALL = { bg:'Всички', sr:'Sve', mk:'Сите', ro:'Toate', el:'Όλα', tr:'Tümü', sq:'Të gjitha', bs:'Sve', hr:'Sve', sl:'Vse' };
+const NO_MATCH = { bg:'Няма продукти в тази категория', sr:'Nema proizvoda u ovoj kategoriji', mk:'Нема производи во оваа категорија', ro:'Niciun produs în această categorie', el:'Δεν υπάρχουν προϊόντα σε αυτή την κατηγορία', tr:'Bu kategoride ürün yok', sq:'Nuk ka produkte në këtë kategori', bs:'Nema proizvoda u ovoj kategoriji', hr:'Nema proizvoda u ovoj kategoriji', sl:'Ni izdelkov v tej kategoriji' };
 const HX = {
   bg:{ saved:'Спестяваш с реалните промоции', promos:'реални промоции' },
   sr:{ saved:'Štedite uz prave akcije', promos:'pravih akcija' },
@@ -693,6 +704,7 @@ const DEMO = (window.SAVECHECK_DEMO || {products:[]});
 const products = DEMO.products;
 let active = -1, country = COUNTRIES[0], view = 'home', query = '', cart = {};
 let shopTab = 'products', promosTab = 'brochures';
+let verdictFilter = 'all';
 let scanStream = null;
 
 // Store chains per market — a mix of domestic and foreign (international)
@@ -771,6 +783,21 @@ function renderChrome() {
 // Single-screen accordion: one compact row per product; tap to expand its
 // chart + summary inline, without leaving the screen.
 function doSearch(q) { query = q.trim().toLowerCase(); active = -1; renderProducts(); }
+
+const VERDICT_FILTERS = ['all', 'green', 'red', 'yellow'];
+function renderFilters() {
+  const counts = { all: products.length, green: 0, yellow: 0, red: 0, gray: 0 };
+  products.forEach(p => { if (counts[p.verdict] != null) counts[p.verdict]++; });
+  document.getElementById('filter-wrap').innerHTML = VERDICT_FILTERS.map(key => {
+    const label = key === 'all' ? FILTER_ALL[country.lang] : TAG[key][country.lang];
+    const col = key === 'all' ? 'var(--ink)' : C[key];
+    const active = verdictFilter === key;
+    const style = active ? `background:${col};border-color:transparent;color:#fff` : '';
+    return `<button class="fchip ${active ? 'active' : ''}" style="${style}" onclick="setFilter('${key}')">${label} <span class="fc-n">${counts[key]}</span></button>`;
+  }).join('');
+}
+function setFilter(f) { verdictFilter = f; active = -1; renderProducts(); renderFilters(); }
+function rowKey(e, i) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(i); } }
 function toggleCart(id) {
   cart[id] = cart[id] ? 0 : 1;
   renderProducts();
@@ -813,9 +840,14 @@ function sparkline(series, w=58, h=20) {
 }
 
 function renderProducts() {
-  const filtered = query
+  let filtered = query
     ? products.filter(p => { const m = PRODUCTS[p.id]; const n = m ? (m.name[country.lang] || m.name.bg || '') : p.id; return n.toLowerCase().includes(query); })
     : products;
+  if (verdictFilter !== 'all') filtered = filtered.filter(p => p.verdict === verdictFilter);
+  if (!filtered.length) {
+    document.getElementById('cards').innerHTML = `<div class="empty-filter">${NO_MATCH[country.lang]}</div>`;
+    return;
+  }
   document.getElementById('cards').innerHTML = filtered.map((p, i) => {
     const meta = PRODUCTS[p.id];
     const on = i === active;
@@ -825,12 +857,12 @@ function renderProducts() {
         : ` <small>· ${disp(p.current_unit_price*country.fx)} ${unitLabel(p.unit_kind)}</small>`;
     const inCart = !!cart[p.id];
     const rowHtml = `
-      <button class="prow ${on?'on':''}" onclick="select(${i})" data-v="${p.verdict}" style="--vc:${C[p.verdict]}">
+      <div class="prow ${on?'on':''}" role="button" tabindex="0" onclick="select(${i})" onkeydown="rowKey(event,${i})" data-v="${p.verdict}" style="--vc:${C[p.verdict]}">
         <span class="ill">${productIcon(p.id)}</span>
         <span class="pnm">${meta.name[country.lang]} <span class="vtag" style="background:${C[p.verdict]}">${TAG[p.verdict][country.lang]}</span><small>${meta.pack[country.lang]}${unit}</small></span>
-        <span class="cadd ${inCart?'in':''}" role="button" tabindex="0" onclick="event.stopPropagation();toggleCart('${p.id}')">${inCart?'✓':'+'}</span>
+        <button class="cadd ${inCart?'in':''}" onclick="event.stopPropagation();toggleCart('${p.id}')" aria-label="${meta.name[country.lang]}">${inCart?'✓':'+'}</button>
         <span class="ppr">${money(p.current_price)}${disc}${sparkline(p.series)}</span>
-      </button>`;
+      </div>`;
     return rowHtml + (on ? detailHTML(p) : '');
   }).join('');
   if (active >= 0 && active < filtered.length) {
@@ -1221,63 +1253,88 @@ function renderScan() {
     <div id="scan-output"></div>`;
 }
 
+// Barcode scanning works through two engines: the native BarcodeDetector
+// (Chrome/Android) when present, otherwise the ZXing library loaded from CDN
+// — which also covers iOS Safari, where BarcodeDetector is unavailable.
+let zxingReader = null;
+function getZxingReader() {
+  if (!zxingReader && window.ZXing) zxingReader = new ZXing.BrowserMultiFormatReader();
+  return zxingReader;
+}
+const hasNativeBD = () => ('BarcodeDetector' in window);
+const fileFallbackHTML = X => `<div class="scan-result-card" style="text-align:center">
+    <div style="color:var(--muted);margin-bottom:10px">${X.scanNoBD}</div>
+    <label style="display:inline-block;background:var(--green);color:#fff;padding:8px 16px;border-radius:10px;cursor:pointer;font-weight:700;font-size:14px">
+      ${X.scanFile}<input type="file" accept="image/*" capture="environment" style="display:none" onchange="scanFile(this)">
+    </label>
+  </div>`;
+
 async function startScanner() {
   const X = BX[country.lang];
   const output = document.getElementById('scan-output');
-  if (!('BarcodeDetector' in window)) {
-    output.innerHTML = `<div class="scan-result-card" style="text-align:center">
-      <div style="color:var(--muted);margin-bottom:10px">${X.scanNoBD}</div>
-      <label style="display:inline-block;background:var(--green);color:#fff;padding:8px 16px;border-radius:10px;cursor:pointer;font-weight:700;font-size:14px">
-        ${X.scanFile}<input type="file" accept="image/*" capture="environment" style="display:none" onchange="scanFile(this)">
-      </label>
-    </div>`;
-    return;
-  }
+  // No live engine at all → offer photo upload.
+  if (!hasNativeBD() && !window.ZXing) { output.innerHTML = fileFallbackHTML(X); return; }
   output.innerHTML = `<div class="scan-wrap"><video id="scan-video" autoplay playsinline muted></video>
     <div class="scan-frame"></div><div class="scan-hint">${X.scanHint}</div></div>`;
+  const video = document.getElementById('scan-video');
   try {
-    scanStream = await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}});
-    const video = document.getElementById('scan-video');
-    video.srcObject = scanStream;
-    const detector = new BarcodeDetector({formats:['ean_13','ean_8','upc_a','upc_e']});
-    const detect = async () => {
-      if (!scanStream) return;
-      try {
-        const codes = await detector.detect(video);
-        if (codes.length) { stopScanner(); await handleBarcode(codes[0].rawValue); }
-        else requestAnimationFrame(detect);
-      } catch(e) { requestAnimationFrame(detect); }
-    };
-    await video.play(); detect();
+    if (hasNativeBD()) {
+      scanStream = await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}});
+      video.srcObject = scanStream;
+      const detector = new BarcodeDetector({formats:['ean_13','ean_8','upc_a','upc_e']});
+      const detect = async () => {
+        if (!scanStream) return;
+        try {
+          const codes = await detector.detect(video);
+          if (codes.length) { stopScanner(); await handleBarcode(codes[0].rawValue); }
+          else requestAnimationFrame(detect);
+        } catch(e) { requestAnimationFrame(detect); }
+      };
+      await video.play(); detect();
+    } else {
+      // ZXing path (iOS Safari etc.)
+      const reader = getZxingReader();
+      await reader.decodeFromConstraints({video:{facingMode:'environment'}}, video, (result) => {
+        if (result) { stopScanner(); handleBarcode(result.getText()); }
+      });
+      scanStream = video.srcObject || null;
+    }
   } catch(e) {
     output.innerHTML = `<div class="scan-result-card" style="text-align:center;color:var(--red)">Camera error: ${e.message}</div>`;
   }
 }
 
 function stopScanner() {
-  if (scanStream) { scanStream.getTracks().forEach(t => t.stop()); scanStream = null; }
+  if (zxingReader) { try { zxingReader.reset(); } catch(e){} }
+  if (scanStream && scanStream.getTracks) scanStream.getTracks().forEach(t => t.stop());
+  scanStream = null;
 }
 
 async function scanFile(input) {
   const file = input.files[0]; if (!file) return;
   const X = BX[country.lang];
-  document.getElementById('scan-output').innerHTML = `<div class="scan-result-card" style="text-align:center;color:var(--muted)">${X.scanLookup}</div>`;
-  const img = new Image();
+  const output = document.getElementById('scan-output');
+  output.innerHTML = `<div class="scan-result-card" style="text-align:center;color:var(--muted)">${X.scanLookup}</div>`;
   const url = URL.createObjectURL(file);
-  img.src = url;
-  img.onload = async () => {
-    try {
+  const notFound = () => {
+    output.innerHTML =
+      `<div class="scan-result-card" style="text-align:center;color:var(--muted)">${X.scanUnknown}</div>
+       <button class="scan-btn" style="margin-top:12px" onclick="renderScan()">${X.scanAgain}</button>`;
+  };
+  try {
+    let raw = null;
+    if (hasNativeBD()) {
+      const img = await new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = rej; im.src = url; });
       const detector = new BarcodeDetector({formats:['ean_13','ean_8','upc_a','upc_e']});
       const codes = await detector.detect(img);
-      if (codes.length) { await handleBarcode(codes[0].rawValue); }
-      else {
-        document.getElementById('scan-output').innerHTML =
-          `<div class="scan-result-card" style="text-align:center;color:var(--muted)">${X.scanUnknown}</div>
-           <button class="scan-btn" style="margin-top:12px" onclick="renderScan()">${X.scanAgain}</button>`;
-      }
-    } catch(e) { console.error(e); }
-    URL.revokeObjectURL(url);
-  };
+      if (codes.length) raw = codes[0].rawValue;
+    } else if (window.ZXing) {
+      const result = await getZxingReader().decodeFromImageUrl(url);
+      raw = result && result.getText();
+    }
+    if (raw) await handleBarcode(raw); else notFound();
+  } catch(e) { notFound(); }
+  URL.revokeObjectURL(url);
 }
 
 async function handleBarcode(ean) {
@@ -1351,6 +1408,10 @@ function render() {
   const sw = document.getElementById('search-wrap');
   sw.style.display = isProd ? '' : 'none';
   if (isProd) document.getElementById('search-input').placeholder = X.search;
+
+  const fw = document.getElementById('filter-wrap');
+  fw.style.display = isProd ? '' : 'none';
+  if (isProd) renderFilters();
 
   // Sub-tabs
   const stw = document.getElementById('sub-tabs-wrap');
