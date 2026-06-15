@@ -169,12 +169,13 @@
   .scan-result-card { background:var(--card); border:1px solid var(--line); border-radius:18px; padding:16px; }
   .scan-ean { font-size:10.5px; color:var(--muted); margin-top:8px; }
   /* ── Home tab ── */
-  .home-hero { background:linear-gradient(135deg,#16a34a,#15803d); color:#fff; border-radius:20px; padding:16px 18px; margin-bottom:6px; box-shadow:0 8px 24px rgba(22,163,74,.28); display:flex; align-items:center; gap:14px; }
-  .hh-amt { flex:1; font-size:var(--t-2xl); font-weight:900; letter-spacing:-.03em; line-height:1; }
-  .hh-collage { display:grid; grid-template-columns:1fr 1fr; gap:5px; flex:none; }
-  .hh-cimg { width:50px; height:50px; border-radius:13px; background:rgba(255,255,255,.18); display:flex; align-items:center; justify-content:center; overflow:hidden; }
-  .hh-cimg img { width:40px; height:40px; object-fit:contain; display:block; }
-  .hh-cimg svg { width:32px; height:32px; display:block; }
+  .home-hero { border-radius:20px; margin-bottom:6px; box-shadow:0 8px 24px rgba(22,163,74,.28); display:flex; align-items:stretch; overflow:hidden; }
+  .hh-left { flex:1; background:linear-gradient(135deg,#16a34a,#15803d); color:#fff; padding:16px 18px; display:flex; flex-direction:column; justify-content:center; gap:4px; }
+  .hh-lbl { font-size:11.5px; opacity:.82; font-weight:600; letter-spacing:.01em; }
+  .hh-amt { font-size:var(--t-2xl); font-weight:900; letter-spacing:-.03em; line-height:1; }
+  .hh-sub { font-size:11.5px; opacity:.78; }
+  .hh-banner { width:155px; flex:none; }
+  .hh-banner img { width:100%; height:100%; object-fit:cover; object-position:left center; display:block; }
   .section-label { font-size:var(--t-xs); font-weight:750; color:var(--muted); text-transform:uppercase; letter-spacing:.07em; margin:16px 0 8px; }
   .deal-scroll { display:flex; gap:10px; overflow-x:auto; padding:0 14px 6px; margin:0 -14px; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; }
   .deal-scroll::-webkit-scrollbar { display:none; }
@@ -1153,10 +1154,6 @@ function renderHome() {
       return rb - ra;
     }).slice(0, 3);
 
-  const collageHTML = deals.slice(0, 4)
-    .map(p => `<div class="hh-cimg">${productIcon(p.id)}</div>`)
-    .join('');
-
   const titansHTML = titans.map((t, i) => {
     const medals = ['🥇','🥈','🥉'];
     const pct = t.total_promos ? Math.round(100 * t.real / t.total_promos) : null;
@@ -1170,8 +1167,12 @@ function renderHome() {
 
   document.getElementById('basket').innerHTML = `
     <div class="home-hero">
-      <div class="hh-amt">${disp(saved * country.fx)} ${country.sym}</div>
-      ${collageHTML ? `<div class="hh-collage">${collageHTML}</div>` : ''}
+      <div class="hh-left">
+        <div class="hh-lbl">${H.saved}</div>
+        <div class="hh-amt">${disp(saved * country.fx)} ${country.sym}</div>
+        <div class="hh-sub">🟢 ${realCount} ${H.promos}</div>
+      </div>
+      <div class="hh-banner"><img src="./img/hero-banner.png" alt="" loading="eager"></div>
     </div>
     ${titans.length ? `
     <div class="section-label" style="margin-top:14px">${X.titansTitle}</div>
