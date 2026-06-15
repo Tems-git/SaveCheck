@@ -3,98 +3,75 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Hook Variants — SaveCheck</title>
+<title>Hook Wording — SaveCheck</title>
 <style>
   :root {
     --green:#16a34a; --green-d:#15803d; --green-bg:#eaf5ee;
-    --red:#dc2626; --ink:#111827; --muted:#6b7280; --line:#f0ece4; --card:#ffffff; --cream:#f5f1ea;
+    --red:#dc2626; --amber:#d97706; --ink:#111827; --muted:#6b7280; --line:#f0ece4; --card:#ffffff;
   }
   body { margin:0; background:radial-gradient(1100px 560px at 50% -8%,#e9f5ed,#e6e0d5); font-family:-apple-system,Segoe UI,Roboto,sans-serif; color:var(--ink); padding:28px 14px 60px; }
   .wrap { max-width:402px; margin:0 auto; }
-  h2 { font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; margin:26px 0 8px; }
-  .vlabel { font-size:12px; font-weight:800; color:var(--green-d); margin:22px 0 6px; }
-  /* shared hero for context */
-  .home-hero { border-radius:20px; box-shadow:0 4px 16px rgba(22,163,74,.12); display:flex; align-items:stretch; overflow:hidden; border:2px solid var(--green); background:var(--card); }
-  .hh-left { flex:1; padding:16px 18px; display:flex; flex-direction:column; justify-content:center; gap:4px; }
-  .hh-lbl { font-size:11.5px; color:var(--green); font-weight:600; }
-  .hh-amt { font-size:28px; font-weight:900; letter-spacing:-.03em; line-height:1; color:var(--green); }
-  .hh-sub { font-size:11.5px; color:var(--muted); }
-  .hh-banner { width:150px; flex:none; padding:8px 14px 8px 0; background:url('./img/hero-banner.png') no-repeat center/108%; background-origin:content-box; }
-
-  /* A — light red alert bar */
-  .hookA { display:flex; align-items:center; gap:11px; background:color-mix(in srgb,var(--red) 8%,var(--card)); border:1.5px solid color-mix(in srgb,var(--red) 32%,var(--card)); border-radius:16px; padding:12px 14px; margin-top:10px; cursor:pointer; }
-  .hookA .ic { font-size:21px; flex:none; }
-  .hookA .tx { flex:1; }
-  .hookA .big { font-weight:800; font-size:14px; }
-  .hookA .big b { color:var(--red); }
-  .hookA .sub { font-size:11.5px; color:var(--muted); margin-top:1px; }
-  .hookA .arr { color:var(--red); font-weight:800; font-size:16px; }
+  h2 { font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; margin:8px 0 4px; }
+  .note { font-size:12px; color:var(--muted); margin-bottom:8px; line-height:1.5; }
+  .vlabel { font-size:12px; font-weight:800; color:var(--green-d); margin:24px 0 7px; }
 
   /* B — bold filled banner */
-  .hookB { display:flex; align-items:center; gap:12px; background:linear-gradient(135deg,#ef4444,#dc2626); color:#fff; border-radius:16px; padding:14px 16px; margin-top:10px; cursor:pointer; box-shadow:0 8px 20px rgba(220,38,38,.28); }
+  .hookB { display:flex; align-items:center; gap:12px; background:linear-gradient(135deg,#f59e0b,#d97706); color:#fff; border-radius:16px; padding:14px 16px; margin-bottom:8px; cursor:pointer; box-shadow:0 8px 20px rgba(217,119,6,.28); }
+  .hookB.red { background:linear-gradient(135deg,#ef4444,#dc2626); box-shadow:0 8px 20px rgba(220,38,38,.28); }
   .hookB .ic { font-size:24px; flex:none; }
   .hookB .tx { flex:1; }
   .hookB .big { font-weight:900; font-size:15px; letter-spacing:-.01em; }
-  .hookB .sub { font-size:11.5px; opacity:.9; margin-top:1px; }
+  .hookB .sub { font-size:11.5px; opacity:.92; margin-top:1px; }
   .hookB .arr { font-weight:800; font-size:18px; opacity:.9; }
 
-  /* C — split stat (real vs fake) */
-  .hookC { display:flex; gap:10px; margin-top:10px; }
+  /* C — split stat */
+  .hookC { display:flex; gap:10px; margin-bottom:8px; }
   .hookC .stat { flex:1; border-radius:16px; padding:12px 14px; border:1.5px solid; }
   .hookC .stat.real { background:var(--green-bg); border-color:color-mix(in srgb,var(--green) 35%,var(--card)); }
-  .hookC .stat.fake { background:color-mix(in srgb,var(--red) 8%,var(--card)); border-color:color-mix(in srgb,var(--red) 32%,var(--card)); cursor:pointer; }
+  .hookC .stat.fake { background:color-mix(in srgb,var(--amber) 10%,var(--card)); border-color:color-mix(in srgb,var(--amber) 35%,var(--card)); cursor:pointer; }
   .hookC .n { font-size:26px; font-weight:900; line-height:1; letter-spacing:-.02em; }
   .hookC .real .n { color:var(--green); }
-  .hookC .fake .n { color:var(--red); }
-  .hookC .l { font-size:11px; font-weight:700; color:var(--muted); margin-top:4px; }
-
-  /* D — minimal inline pill */
-  .hookD { display:inline-flex; align-items:center; gap:7px; background:color-mix(in srgb,var(--red) 10%,var(--card)); color:var(--red); border-radius:999px; padding:7px 13px; margin-top:12px; font-size:13px; font-weight:800; cursor:pointer; }
-  .hookD .dot { width:8px; height:8px; border-radius:50%; background:var(--red); }
+  .hookC .fake .n { color:var(--amber); }
+  .hookC .l { font-size:11px; font-weight:700; color:var(--muted); margin-top:4px; line-height:1.3; }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h2>Куката — „хванати фалшиви промоции" (с пример 23)</h2>
+  <h2>По-меки формулировки (без „фалшиви")</h2>
+  <p class="note">Целта: фактическо твърдение, базирано на методологията (цената не е реално по-ниска от 30-дневното дъно), не обвинение към веригите.</p>
 
-  <div class="vlabel">A — Светла червена лента</div>
-  <div class="home-hero">
-    <div class="hh-left"><div class="hh-lbl">Спестяваш с реалните промоции</div><div class="hh-amt">9,78 €</div><div class="hh-sub">🟢 4 реални промоции</div></div>
-    <div class="hh-banner"></div>
-  </div>
-  <div class="hookA">
-    <span class="ic">🛡️</span>
-    <span class="tx"><div class="big">Хванахме <b>23 фалшиви промоции</b></div><div class="sub">последните 30 дни · виж кои →</div></span>
-    <span class="arr">›</span>
-  </div>
-
-  <div class="vlabel">B — Плътна червена лента (най-силна)</div>
-  <div class="home-hero">
-    <div class="hh-left"><div class="hh-lbl">Спестяваш с реалните промоции</div><div class="hh-amt">9,78 €</div><div class="hh-sub">🟢 4 реални промоции</div></div>
-    <div class="hh-banner"></div>
-  </div>
+  <div class="vlabel">B1 — „без реална отстъпка" (най-безопасно, кехлибар)</div>
   <div class="hookB">
-    <span class="ic">⚠️</span>
-    <span class="tx"><div class="big">Хванахме 23 фалшиви промоции</div><div class="sub">последните 30 дни — не се хващай!</div></span>
+    <span class="ic">🔍</span>
+    <span class="tx"><div class="big">23 промоции без реална отстъпка</div><div class="sub">проверени последните 30 дни</div></span>
     <span class="arr">›</span>
   </div>
 
-  <div class="vlabel">C — Две числа: реални vs фалшиви</div>
-  <div class="home-hero">
-    <div class="hh-left"><div class="hh-lbl">Спестяваш с реалните промоции</div><div class="hh-amt">9,78 €</div><div class="hh-sub">🟢 4 реални промоции</div></div>
-    <div class="hh-banner"></div>
+  <div class="vlabel">B2 — „подвеждащи" (по-силно, червено)</div>
+  <div class="hookB red">
+    <span class="ic">⚠️</span>
+    <span class="tx"><div class="big">23 подвеждащи промоции</div><div class="sub">последните 30 дни — внимавай</div></span>
+    <span class="arr">›</span>
   </div>
+
+  <div class="vlabel">B3 — позитивен обрат (фокус върху ползата)</div>
+  <div class="hookB">
+    <span class="ic">🛡️</span>
+    <span class="tx"><div class="big">Проверихме 64 промоции за теб</div><div class="sub">23 се оказаха без реална отстъпка ›</div></span>
+    <span class="arr">›</span>
+  </div>
+
+  <div class="vlabel">C1 — две числа: реални / без отстъпка</div>
   <div class="hookC">
     <div class="stat real"><div class="n">41</div><div class="l">🟢 реални промоции</div></div>
-    <div class="stat fake"><div class="n">23</div><div class="l">🔴 фалшиви — виж ›</div></div>
+    <div class="stat fake"><div class="n">23</div><div class="l">🟡 без реална отстъпка ›</div></div>
   </div>
 
-  <div class="vlabel">D — Минимално балонче</div>
-  <div class="home-hero">
-    <div class="hh-left"><div class="hh-lbl">Спестяваш с реалните промоции</div><div class="hh-amt">9,78 €</div><div class="hh-sub">🟢 4 реални промоции</div></div>
-    <div class="hh-banner"></div>
+  <div class="vlabel">C2 — две числа: реални / подвеждащи</div>
+  <div class="hookC">
+    <div class="stat real"><div class="n">41</div><div class="l">🟢 реални</div></div>
+    <div class="stat fake"><div class="n">23</div><div class="l">🟡 подвеждащи ›</div></div>
   </div>
-  <div class="hookD"><span class="dot"></span> 23 фалшиви промоции уловени този месец ›</div>
 </div>
 </body>
 </html>
