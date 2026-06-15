@@ -84,12 +84,12 @@
   .prow.on { background:color-mix(in srgb, var(--vc, var(--green)) 7%, var(--card)); }
   .prow .dot { width:11px; height:11px; border-radius:50%; flex:none; }
   .prow .ill {
-    width:44px; height:44px; border-radius:13px;
+    width:48px; height:48px; border-radius:14px;
     background:var(--card);
     box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--vc, var(--line)) 28%, var(--line));
-    display:flex; align-items:center; justify-content:center; flex:none;
+    display:flex; align-items:center; justify-content:center; flex:none; overflow:hidden;
   }
-  .prow .ill svg { width:36px; height:36px; display:block; }
+  .prow .ill svg, .prow .ill img { width:40px; height:40px; display:block; object-fit:contain; }
   .picon { display:inline-flex; width:20px; height:20px; vertical-align:-5px; }
   .picon svg { width:100%; height:100%; }
   .vtag { display:inline-block; font-size:9px; font-weight:800; color:#fff; padding:2px 7px; border-radius:999px; margin-left:5px; vertical-align:middle; letter-spacing:.03em; }
@@ -175,10 +175,10 @@
   .section-label { font-size:var(--t-xs); font-weight:750; color:var(--muted); text-transform:uppercase; letter-spacing:.07em; margin:16px 0 8px; }
   .deal-scroll { display:flex; gap:10px; overflow-x:auto; padding:0 14px 6px; margin:0 -14px; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; }
   .deal-scroll::-webkit-scrollbar { display:none; }
-  .deal-card { flex:none; width:110px; background:var(--card); border-radius:16px; padding:13px 12px 11px; box-shadow:var(--shadow-card); cursor:pointer; scroll-snap-align:start; transition:transform .12s; }
+  .deal-card { flex:none; width:120px; background:var(--card); border-radius:18px; padding:13px 12px 11px; box-shadow:var(--shadow-card); cursor:pointer; scroll-snap-align:start; transition:transform .12s; }
   .deal-card:active { transform:scale(.96); }
-  .deal-emoji { width:46px; height:46px; border-radius:13px; background:color-mix(in srgb, var(--vc, var(--green)) 9%, var(--card)); display:flex; align-items:center; justify-content:center; margin-bottom:8px; }
-  .deal-emoji svg { width:38px; height:38px; display:block; }
+  .deal-emoji { width:64px; height:64px; border-radius:16px; background:color-mix(in srgb, var(--vc, var(--green)) 9%, var(--card)); display:flex; align-items:center; justify-content:center; margin-bottom:8px; overflow:hidden; }
+  .deal-emoji svg, .deal-emoji img { width:54px; height:54px; display:block; object-fit:contain; }
   .deal-name { font-size:11px; font-weight:700; line-height:1.3; margin-bottom:5px; color:var(--ink); }
   .deal-disc { font-size:var(--t-xl); font-weight:900; letter-spacing:-.02em; line-height:1; }
   .deal-price { font-size:var(--t-xs); color:var(--muted); margin-top:2px; font-variant-numeric:tabular-nums; }
@@ -671,7 +671,11 @@ const PROD_SVG = {
   cucumber:'<svg viewBox="0 0 40 40"><g transform="rotate(-35 20 20)"><rect x="6" y="15" width="28" height="11" rx="5.5" fill="#65a30d" stroke="#4d7c0f" stroke-width="1.2"/><rect x="9" y="17" width="22" height="7" rx="3.5" fill="#84cc16" opacity=".6"/><circle cx="14" cy="20.5" r="1" fill="#3f6212"/><circle cx="20" cy="20.5" r="1" fill="#3f6212"/><circle cx="26" cy="20.5" r="1" fill="#3f6212"/></g></svg>',
   _default:'<svg viewBox="0 0 40 40"><path d="M9 14h22l-2 16a3 3 0 0 1-3 3H14a3 3 0 0 1-3-3L9 14z" fill="#16a34a" opacity=".14"/><path d="M9 14h22l-2 16a3 3 0 0 1-3 3H14a3 3 0 0 1-3-3L9 14z" fill="none" stroke="#16a34a" stroke-width="1.5"/><path d="M15 14l2-6M25 14l-2-6" stroke="#16a34a" stroke-width="1.6" stroke-linecap="round"/></svg>',
 };
-const productIcon = id => PROD_SVG[id] || PROD_SVG._default;
+const productIcon = id => {
+  const hasPng = ['milk','oil','cheese','coffee','flour','sugar','bread','rice','tomatoes','oliveoil','pasta','feta','bananas','chicken','water','eggs','butter','yogurt','potato','onion','apple','salt','cucumber'].includes(id);
+  if (hasPng) return `<img src="./img/${id}.png" alt="${id}" width="40" height="40" style="object-fit:contain;display:block;">`;
+  return PROD_SVG[id] || PROD_SVG._default;
+};
 const picon = id => `<span class="picon">${productIcon(id)}</span>`;
 
 const DEMO = (window.SAVECHECK_DEMO || {products:[]});
