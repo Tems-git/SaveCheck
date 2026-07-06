@@ -1,10 +1,10 @@
 window.SAVECHECK_BROCHURES = {
-  "for_date": "2026-07-04",
-  "week_label": "4.7 – 5.7.2026",
+  "for_date": "2026-07-05",
+  "week_label": "5.7 – 5.7.2026",
   "chains": [
     {
       "chain": "Lidl",
-      "total_promos": 41,
+      "total_promos": 40,
       "items": [
         {
           "name": "Домати на кг",
@@ -152,6 +152,13 @@ window.SAVECHECK_BROCHURES = {
           "category": "67"
         },
         {
+          "name": "Корнишони на кг",
+          "price": 1.39,
+          "retail": 1.99,
+          "claimed_pct": 30,
+          "category": "58"
+        },
+        {
           "name": "Точени кори за баница фини",
           "price": 0.85,
           "retail": 1.22,
@@ -166,6 +173,13 @@ window.SAVECHECK_BROCHURES = {
           "category": "27"
         },
         {
+          "name": "Кафе еспресо бар",
+          "price": 2.59,
+          "retail": 3.49,
+          "claimed_pct": 26,
+          "category": "70"
+        },
+        {
           "name": "Кафе Россо",
           "price": 2.79,
           "retail": 3.79,
@@ -176,13 +190,6 @@ window.SAVECHECK_BROCHURES = {
           "name": "Кафе голд",
           "price": 3.19,
           "retail": 4.29,
-          "claimed_pct": 26,
-          "category": "70"
-        },
-        {
-          "name": "Кафе еспресо бар",
-          "price": 2.59,
-          "retail": 3.49,
           "claimed_pct": 26,
           "category": "70"
         },
@@ -215,11 +222,11 @@ window.SAVECHECK_BROCHURES = {
           "category": "7"
         },
         {
-          "name": "Корнишони на кг",
-          "price": 1.59,
-          "retail": 1.99,
+          "name": "Пресни яйца,М, от подово отглеждани",
+          "price": 1.99,
+          "retail": 2.5,
           "claimed_pct": 20,
-          "category": "58"
+          "category": "31"
         },
         {
           "name": "Zlatno Dobrudzhansko Слънч. масло",
@@ -236,20 +243,6 @@ window.SAVECHECK_BROCHURES = {
           "category": "67"
         },
         {
-          "name": "Свинско месо за готвене, ок.750г-ат",
-          "price": 4.69,
-          "retail": 5.87,
-          "claimed_pct": 20,
-          "category": "22"
-        },
-        {
-          "name": "Пресни яйца,М, от подово отглеждани",
-          "price": 1.99,
-          "retail": 2.5,
-          "claimed_pct": 20,
-          "category": "31"
-        },
-        {
           "name": "Шпек БУРГАС XXL",
           "price": 2.49,
           "retail": 3.06,
@@ -257,11 +250,11 @@ window.SAVECHECK_BROCHURES = {
           "category": "28"
         },
         {
-          "name": "Familia Фини точени кори",
-          "price": 1.79,
-          "retail": 2.19,
+          "name": "Обикновени бисквити",
+          "price": 0.92,
+          "retail": 1.12,
           "claimed_pct": 18,
-          "category": "5"
+          "category": "66"
         },
         {
           "name": "Jeleznitsa Бяло саламурено сирене",
@@ -271,11 +264,18 @@ window.SAVECHECK_BROCHURES = {
           "category": "9"
         },
         {
-          "name": "Обикновени бисквити",
-          "price": 0.92,
-          "retail": 1.12,
+          "name": "Familia Фини точени кори",
+          "price": 1.79,
+          "retail": 2.19,
           "claimed_pct": 18,
-          "category": "66"
+          "category": "5"
+        },
+        {
+          "name": "Pirinsko Бира 4,4% алк. 9,8°Р",
+          "price": 1.3,
+          "retail": 1.54,
+          "claimed_pct": 16,
+          "category": "74"
         },
         {
           "name": "Лютеница едромляна",
@@ -290,13 +290,6 @@ window.SAVECHECK_BROCHURES = {
           "retail": 5.11,
           "claimed_pct": 16,
           "category": "11"
-        },
-        {
-          "name": "Pirinsko Бира 4,4% алк. 9,8°Р",
-          "price": 1.3,
-          "retail": 1.54,
-          "claimed_pct": 16,
-          "category": "74"
         },
         {
           "name": "Пресни яйца разм.L,подово отглежд",
@@ -337,33 +330,14 @@ window.SAVECHECK_BROCHURES = {
     },
     {
       "chain": "Billa",
-      "total_promos": 3,
+      "total_promos": 1,
       "items": [
         {
-          "name": "КРАВЕ МАСЛО 250 ГР САЯНА",
-          "price": 2.59,
-          "retail": 3.27,
-          "claimed_pct": 21,
-          "category": "12",
-          "basket_id": "butter",
-          "verdict": "red",
-          "omnibus_pct": -89,
-          "min_30_prior": 0.99,
-          "median_90": 1.37
-        },
-        {
-          "name": "КИС.МЛЯКО САЯНА 3 6% 400 ГР",
-          "price": 0.69,
-          "retail": 0.79,
-          "claimed_pct": 13,
-          "category": "7"
-        },
-        {
-          "name": "КРАВЕ СИРЕНЕ ВЕРЕЯ 200 ГР ВАКУУМ",
-          "price": 2.85,
-          "retail": 3.16,
-          "claimed_pct": 10,
-          "category": "9"
+          "name": "*БЕНАЛГИН ТАБЛ. Х 20 - АКТАВИС",
+          "price": 2.9,
+          "retail": 3.25,
+          "claimed_pct": 11,
+          "category": "87"
         }
       ]
     },
