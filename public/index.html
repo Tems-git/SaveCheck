@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- build: home hook bar v2 -->
+<!-- build: home hook bar v2 + smart-search -->
 <html lang="bg">
 <head>
 <meta charset="utf-8" />
@@ -64,11 +64,14 @@
   .brand h1 b { color:var(--green); }
   .brand-tagline { font-size:11px; color:var(--muted); font-weight:600; letter-spacing:.01em; }
   .appbar-search { display:flex; align-items:center; gap:8px; margin-top:12px; }
-  .search-field { flex:1; display:flex; align-items:center; gap:8px; background:var(--cream); border:1.5px solid var(--line); border-radius:12px; padding:0 12px; transition:border-color .15s; }
+  .search-field { flex:1; display:flex; align-items:center; gap:8px; background:var(--cream); border:1.5px solid var(--line); border-radius:12px; padding:0 12px; transition:border-color .15s; position:relative; }
   .search-field:focus-within { border-color:var(--green); }
   .search-field svg { width:17px; height:17px; stroke:var(--muted); fill:none; stroke-width:2; flex:none; }
   .search-field input { flex:1; border:0; background:none; outline:none; font-family:inherit; font-size:14px; color:var(--ink); padding:11px 0; min-width:0; }
   .search-field input::placeholder { color:var(--muted); }
+  .search-spinner { width:14px; height:14px; border:2px solid var(--line); border-top-color:var(--green); border-radius:50%; animation:spin .6s linear infinite; display:none; flex:none; }
+  .search-spinner.active { display:block; }
+  @keyframes spin { to { transform:rotate(360deg); } }
   .scan-quick { flex:none; width:44px; height:44px; display:flex; align-items:center; justify-content:center; border:1.5px solid var(--line); border-radius:12px; background:var(--cream); color:var(--green); cursor:pointer; padding:0; transition:border-color .15s; }
   .scan-quick:hover { border-color:var(--green); }
   .scan-quick svg { width:21px; height:21px; stroke:var(--green); fill:none; stroke-width:2; }
@@ -86,6 +89,10 @@
   .cp-menu button.active .cc { color:var(--green-d); }
   .theme-btn { border:0; background:none; cursor:pointer; color:var(--muted); padding:4px; line-height:1; border-radius:8px; transition:color .15s; flex:none; }
   .theme-btn:hover { color:var(--ink); }
+  /* AI message box */
+  .ai-msg { margin:8px 14px 0; background:var(--green-bg); border:1px solid color-mix(in srgb,var(--green) 30%,transparent); border-radius:10px; padding:9px 13px; font-size:13px; color:var(--green-d); line-height:1.4; animation:fadeUp .2s ease-out; }
+  .ai-msg.err { background:#fef2f2; border-color:#fecaca; color:var(--red); }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
   .hero {
     margin:14px 14px 0; color:#fff; border-radius:18px; padding:15px 17px;
     background:linear-gradient(135deg,#16a34a,#15803d); box-shadow:0 12px 26px rgba(22,163,74,.28);
@@ -322,13 +329,15 @@
     <div class="appbar-search">
       <div class="search-field">
         <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg>
-        <input type="search" id="search-input" oninput="doSearch(this.value)" />
+        <input type="search" id="search-input" oninput="onSearchInput(this.value)" onkeydown="onSearchKey(event)" />
+        <div class="search-spinner" id="search-spinner"></div>
       </div>
       <button class="scan-quick" onclick="setView('scan')" aria-label="Сканирай баркод">
         <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
       </button>
     </div>
   </div>
+  <div id="ai-msg-box"></div>
   <div class="hero" id="hero" style="display:none"></div>
   <div id="sub-tabs-wrap"></div>
   <div class="filter-wrap" id="filter-wrap" style="display:none"></div>
@@ -345,9 +354,7 @@
 const C = { red:'#dc2626', green:'#16a34a', yellow:'#f59e0b', gray:'#6b7280' };
 const ICON = { red:'✕', green:'✓', yellow:'≈', gray:'?' };
 
-// code -> language. fx multiplies the BGN base price; dec = currency decimals.
 const COUNTRIES = [
-  // Only Bulgaria and Greece for now — both on the euro.
   { code:'BG', flag:'🇧🇬', lang:'bg', fx:0.5113, sym:'€', dec:2 },
   { code:'GR', flag:'🇬🇷', lang:'el', fx:0.5113, sym:'€', dec:2 },
 ];
@@ -356,108 +363,73 @@ const UI = {
   bg:{ tagline:'Сравнява цената с историята за 90 дни и казва дали промоцията е реална.',
        now:'Сега', avg:'Средна цена (90 дни)', low:'Най-ниска (90 дни)', high:'Най-висока (90 дни)',
        floor30:'Дъно за последните 30 дни', price:'цена', avgLeg:'средна (90д)',
-       footer:'Демо с примерни данни, изчислени от реалното ядро (логика по духа на EU Omnibus). Референция за намалението е най-ниската цена през предходните 30 дни, не „старата цена“ от етикета.' },
+       footer:'Демо с примерни данни, изчислени от реалното ядро (логика по духа на EU Omnibus). Референция за намалението е най-ниската цена през предходните 30 дни, не „старата цена" от етикета.',
+       searchPlaceholder:'Търси или питай… "яде ми се риба"' },
   sr:{ tagline:'Upoređuje cenu sa istorijom od 90 dana i kaže da li je akcija prava.',
        now:'Sada', avg:'Prosečna cena (90 dana)', low:'Najniža (90 dana)', high:'Najviša (90 dana)',
        floor30:'Dno poslednjih 30 dana', price:'cena', avgLeg:'prosek (90d)',
-       footer:'Demo sa primerima podataka, izračunato pravim jezgrom (logika u duhu EU Omnibus). Referenca za sniženje je najniža cena u prethodnih 30 dana, a ne „stara cena“ sa etikete.' },
+       footer:'Demo sa primerima podataka, izračunato pravim jezgrom (logika u duhu EU Omnibus). Referenca za sniženje je najniža cena u prethodnih 30 dana, a ne „stara cena" sa etikete.',
+       searchPlaceholder:'Pretraži ili pitaj…' },
   ro:{ tagline:'Compară prețul cu istoricul de 90 de zile și spune dacă reducerea e reală.',
        now:'Acum', avg:'Preț mediu (90 zile)', low:'Cel mai mic (90 zile)', high:'Cel mai mare (90 zile)',
        floor30:'Minim ultimele 30 zile', price:'preț', avgLeg:'medie (90z)',
-       footer:'Demo cu date exemplificative, calculate de nucleul real (logică în spiritul EU Omnibus). Referința reducerii este cel mai mic preț din ultimele 30 de zile, nu „prețul vechi” de pe etichetă.' },
+       footer:'Demo cu date exemplificative, calculate de nucleul real (logică în spiritul EU Omnibus). Referința reducerii este cel mai mic preț din ultimele 30 de zile, nu „prețul vechi" de pe etichetă.',
+       searchPlaceholder:'Caută sau întreabă…' },
   el:{ tagline:'Συγκρίνει την τιμή με το ιστορικό 90 ημερών και λέει αν η προσφορά είναι αληθινή.',
        now:'Τώρα', avg:'Μέση τιμή (90 ημ.)', low:'Χαμηλότερη (90 ημ.)', high:'Υψηλότερη (90 ημ.)',
        floor30:'Ελάχιστο τελευτ. 30 ημ.', price:'τιμή', avgLeg:'μέσος (90η)',
-       footer:'Επίδειξη με ενδεικτικά δεδομένα, υπολογισμένα από τον πραγματικό πυρήνα (λογική στο πνεύμα της EU Omnibus). Η αναφορά της έκπτωσης είναι η χαμηλότερη τιμή των προηγούμενων 30 ημερών, όχι η «παλιά τιμή» της ετικέτας.' },
+       footer:'Επίδειξη με ενδεικτικά δεδομένα, υπολογισμένα από τον πραγματικό πυρήνα (λογική στο πνεύμα της EU Omnibus). Η αναφορά της έκπτωσης είναι η χαμηλότερη τιμή των προηγούμενων 30 ημερών, όχι η «παλιά τιμή» της ετικέτας.',
+       searchPlaceholder:'Αναζήτηση ή ρώτα… "θέλω ψάρι"' },
   mk:{ tagline:'Ја споредува цената со историјата за 90 дена и кажува дали промоцијата е вистинска.',
        now:'Сега', avg:'Просечна цена (90 дена)', low:'Најниска (90 дена)', high:'Највисока (90 дена)',
        floor30:'Дно последни 30 дена', price:'цена', avgLeg:'просек (90д)',
-       footer:'Демо со примерни податоци, пресметани од вистинското јадро (логика во духот на ЕУ Omnibus). Референца за попустот е најниската цена во претходните 30 дена, не „старата цена“ од етикетата.' },
+       footer:'Демо со примерни податоци, пресметани од вистинското јадро (логика во духот на ЕУ Omnibus). Референца за попустот е најниската цена во претходните 30 дена, не „старата цена" од етикетата.',
+       searchPlaceholder:'Пребарај или прашај…' },
   tr:{ tagline:'Fiyatı 90 günlük geçmişle karşılaştırır ve indirimin gerçek olup olmadığını söyler.',
        now:'Şimdi', avg:'Ortalama fiyat (90 gün)', low:'En düşük (90 gün)', high:'En yüksek (90 gün)',
        floor30:'Son 30 günün dibi', price:'fiyat', avgLeg:'ortalama (90g)',
-       footer:'Örnek verilerle demo, gerçek çekirdek tarafından hesaplanmıştır (AB Omnibus mantığı). İndirim referansı, etiketteki „eski fiyat" değil, önceki 30 gündeki en düşük fiyattır.' },
+       footer:'Örnek verilerle demo, gerçek çekirdek tarafından hesaplanmıştır (AB Omnibus mantığı). İndirim referansı, etiketteki „eski fiyat\" değil, önceki 30 gündeki en düşük fiyattır.',
+       searchPlaceholder:'Ara veya sor…' },
   sq:{ tagline:'Krahason çmimin me historikun 90-ditor dhe thotë nëse oferta është e vërtetë.',
        now:'Tani', avg:'Çmimi mesatar (90 ditë)', low:'Më i ulëti (90 ditë)', high:'Më i larti (90 ditë)',
        floor30:'Minimumi 30 ditët e fundit', price:'çmimi', avgLeg:'mesatar (90d)',
-       footer:'Demo me të dhëna shembull, llogaritur nga bërthama reale (logjika në frymën e EU Omnibus). Referenca e zbritjes është çmimi më i ulët i 30 ditëve të mëparshme, jo „çmimi i vjetër" në etiketë.' },
+       footer:'Demo me të dhëna shembull, llogaritur nga bërthama reale (logjika në frymën e EU Omnibus). Referenca e zbritjes është çmimi më i ulët i 30 ditëve të mëparshme, jo „çmimi i vjetër\" në etiketë.',
+       searchPlaceholder:'Kërko ose pyet…' },
   bs:{ tagline:'Upoređuje cijenu sa historijom od 90 dana i kaže da li je akcija prava.',
        now:'Sada', avg:'Prosječna cijena (90 dana)', low:'Najniža (90 dana)', high:'Najviša (90 dana)',
        floor30:'Dno posljednjih 30 dana', price:'cijena', avgLeg:'prosjek (90d)',
-       footer:'Demo sa primjerima podataka, izračunato pravim jezgrom (logika u duhu EU Omnibus). Referenca za sniženje je najniža cijena u prethodnih 30 dana, a ne „stara cijena“ sa etikete.' },
+       footer:'Demo sa primjerima podataka, izračunato pravim jezgrom (logika u duhu EU Omnibus). Referenca za sniženje je najniža cijena u prethodnih 30 dana, a ne „stara cijena" sa etikete.',
+       searchPlaceholder:'Pretraži ili pitaj…' },
   hr:{ tagline:'Uspoređuje cijenu s poviješću od 90 dana i kaže je li akcija prava.',
        now:'Sada', avg:'Prosječna cijena (90 dana)', low:'Najniža (90 dana)', high:'Najviša (90 dana)',
        floor30:'Dno zadnjih 30 dana', price:'cijena', avgLeg:'prosjek (90d)',
-       footer:'Demo s primjerima podataka, izračunato pravom jezgrom (logika u duhu EU Omnibus). Referenca za sniženje je najniža cijena u prethodnih 30 dana, a ne „stara cijena“ s etikete.' },
+       footer:'Demo s primjerima podataka, izračunato pravom jezgrom (logika u duhu EU Omnibus). Referenca za sniženje je najniža cijena u prethodnih 30 dana, a ne „stara cijena" s etikete.',
+       searchPlaceholder:'Traži ili pitaj…' },
   sl:{ tagline:'Primerja ceno z zgodovino 90 dni in pove, ali je akcija resnična.',
        now:'Zdaj', avg:'Povprečna cena (90 dni)', low:'Najnižja (90 dni)', high:'Najvišja (90 dni)',
        floor30:'Dno zadnjih 30 dni', price:'cena', avgLeg:'povprečje (90d)',
-       footer:'Predstavitev z vzorčnimi podatki, izračunano z resničnim jedrom (logika v duhu EU Omnibus). Referenca za znižanje je najnižja cena v prejšnjih 30 dneh, ne „stara cena“ na etiketi.' },
+       footer:'Predstavitev z vzorčnimi podatki, izračunano z resničnim jedrom (logika v duhu EU Omnibus). Referenca za znižanje je najnižja cena v prejšnjih 30 dneh, ne „stara cena" na etiketi.',
+       searchPlaceholder:'Išči ali vprašaj…' },
 };
 
-const TAG = {  // short pill on cards
+const TAG = {
   green:{bg:'Реална',sr:'Prava',mk:'Вистинска',ro:'Reală',el:'Αληθινή',tr:'Gerçek',sq:'E vërtetë',bs:'Prava',hr:'Prava',sl:'Resnična'},
   yellow:{bg:'Обичайна',sr:'Uobičajena',mk:'Вообичаена',ro:'Obișnuită',el:'Συνηθισμένη',tr:'Olağan',sq:'E zakonshme',bs:'Uobičajena',hr:'Uobičajena',sl:'Običajna'},
   red:{bg:'Фалшива',sr:'Lažna',mk:'Лажна',ro:'Falsă',el:'Ψεύτικη',tr:'Sahte',sq:'E rreme',bs:'Lažna',hr:'Lažna',sl:'Lažna'},
   gray:{bg:'Няма данни',sr:'Nema podataka',mk:'Нема податоци',ro:'Fără date',el:'Χωρίς δεδ.',tr:'Veri yok',sq:'Pa të dhëna',bs:'Nema podataka',hr:'Nema podataka',sl:'Ni podatkov'},
 };
-const BADGE = {  // big label in detail
+const BADGE = {
   green:{bg:'РЕАЛНА ПРОМОЦИЯ',sr:'PRAVA AKCIJA',mk:'ВИСТИНСКА ПРОМОЦИЈА',ro:'REDUCERE REALĂ',el:'ΑΛΗΘΙΝΗ ΠΡΟΣΦΟΡΑ',tr:'GERÇEK İNDİRİM',sq:'OFERTË E VËRTETË',bs:'PRAVA AKCIJA',hr:'PRAVA AKCIJA',sl:'RESNIČNA AKCIJA'},
   yellow:{bg:'ОБИЧАЙНА ЦЕНА',sr:'UOBIČAJENA CENA',mk:'ВООБИЧАЕНА ЦЕНА',ro:'PREȚ OBIȘNUIT',el:'ΣΥΝΗΘΙΣΜΕΝΗ ΤΙΜΗ',tr:'OLAĞAN FİYAT',sq:'ÇMIM I ZAKONSHËM',bs:'UOBIČAJENA CIJENA',hr:'UOBIČAJENA CIJENA',sl:'OBIČAJNA CENA'},
   red:{bg:'ФАЛШИВА ПРОМОЦИЯ',sr:'LAŽNA AKCIJA',mk:'ЛАЖНА ПРОМОЦИЈА',ro:'REDUCERE FALSĂ',el:'ΨΕΥΤΙΚΗ ΠΡΟΣΦΟΡΑ',tr:'SAHTE İNDİRİM',sq:'OFERTË E RREME',bs:'LAŽNA AKCIJA',hr:'LAŽNA AKCIJA',sl:'LAŽNA AKCIJA'},
   gray:{bg:'НЯМА ДОСТАТЪЧНО ДАННИ',sr:'NEMA DOVOLJNO PODATAKA',mk:'НЕДОВОЛНО ПОДАТОЦИ',ro:'DATE INSUFICIENTE',el:'ΑΝΕΠΑΡΚΗ ΔΕΔΟΜΕΝΑ',tr:'YETERSİZ VERİ',sq:'TË DHËNA TË PAMJAFTUESHME',bs:'NEMA DOVOLJNO PODATAKA',hr:'NEDOVOLJNO PODATAKA',sl:'PREMALO PODATKOV'},
 };
 const REASONS = {
-  real:{ bg:p=>`Реално намаление: ${p}% под обичайната цена, близо до 90-дневното дъно.`,
-         sr:p=>`Pravo sniženje: ${p}% ispod uobičajene cene, blizu dna za 90 dana.`,
-         mk:p=>`Вистинско намалување: ${p}% под вообичаената цена, близу до дното за 90 дена.`,
-         ro:p=>`Reducere reală: ${p}% sub prețul obișnuit, aproape de minimul pe 90 de zile.`,
-         el:p=>`Αληθινή έκπτωση: ${p}% κάτω από τη συνήθη τιμή, κοντά στο ελάχιστο 90 ημερών.`,
-         tr:p=>`Gerçek indirim: olağan fiyatın %${p} altında, 90 günlük dibe yakın.`,
-         sq:p=>`Zbritje reale: ${p}% nën çmimin e zakonshëm, afër minimumit 90-ditor.`,
-         bs:p=>`Pravo sniženje: ${p}% ispod uobičajene cijene, blizu dna za 90 dana.`,
-         hr:p=>`Pravo sniženje: ${p}% ispod uobičajene cijene, blizu dna za 90 dana.`,
-         sl:p=>`Resnično znižanje: ${p}% pod običajno ceno, blizu dna za 90 dni.` },
-  cosmetic:{ bg:p=>`Малка реална отстъпка: ${p}% под обичайната цена.`,
-         sr:p=>`Malo pravo sniženje: ${p}% ispod uobičajene cene.`,
-         mk:p=>`Мал вистински попуст: ${p}% под вообичаената цена.`,
-         ro:p=>`Mică reducere reală: ${p}% sub prețul obișnuit.`,
-         el:p=>`Μικρή πραγματική έκπτωση: ${p}% κάτω από τη συνήθη τιμή.`,
-         tr:p=>`Küçük gerçek indirim: olağan fiyatın %${p} altında.`,
-         sq:p=>`Zbritje e vogël reale: ${p}% nën çmimin e zakonshëm.`,
-         bs:p=>`Malo pravo sniženje: ${p}% ispod uobičajene cijene.`,
-         hr:p=>`Malo pravo sniženje: ${p}% ispod uobičajene cijene.`,
-         sl:p=>`Majhno resnično znižanje: ${p}% pod običajno ceno.` },
-  fake_not_below:{ bg:()=>`Фалшива промоция: не е по-евтино от обичайното за последните 30 дни.`,
-         sr:()=>`Lažna akcija: nije jeftinije nego uobičajeno u poslednjih 30 dana.`,
-         mk:()=>`Лажна промоција: не е поевтино од вообичаеното во последните 30 дена.`,
-         ro:()=>`Reducere falsă: nu e mai ieftin decât în mod obișnuit în ultimele 30 de zile.`,
-         el:()=>`Ψεύτικη προσφορά: δεν είναι φθηνότερο από το σύνηθες των τελευταίων 30 ημερών.`,
-         tr:()=>`Sahte indirim: son 30 günün olağanından daha ucuz değil.`,
-         sq:()=>`Ofertë e rreme: nuk është më lirë se zakonisht në 30 ditët e fundit.`,
-         bs:()=>`Lažna akcija: nije jeftinije nego uobičajeno u posljednjih 30 dana.`,
-         hr:()=>`Lažna akcija: nije jeftinije nego uobičajeno u zadnjih 30 dana.`,
-         sl:()=>`Lažna akcija: ni ceneje kot običajno v zadnjih 30 dneh.` },
-  fake_equal:{ bg:()=>`Фалшива промоция: цената е на нивото на обичайната.`,
-         sr:()=>`Lažna akcija: cena je na nivou uobičajene.`,
-         mk:()=>`Лажна промоција: цената е на ниво на вообичаената.`,
-         ro:()=>`Reducere falsă: prețul e la nivelul obișnuit.`,
-         el:()=>`Ψεύτικη προσφορά: η τιμή είναι στο συνηθισμένο επίπεδο.`,
-         tr:()=>`Sahte indirim: fiyat olağan seviyede.`,
-         sq:()=>`Ofertë e rreme: çmimi është në nivelin e zakonshëm.`,
-         bs:()=>`Lažna akcija: cijena je na nivou uobičajene.`,
-         hr:()=>`Lažna akcija: cijena je na razini uobičajene.`,
-         sl:()=>`Lažna akcija: cena je na ravni običajne.` },
-  unknown:{ bg:()=>`Няма достатъчно история на цената, за да преценим.`,
-         sr:()=>`Nema dovoljno istorije cene za procenu.`,
-         mk:()=>`Нема доволно историја на цената за да процениме.`,
-         ro:()=>`Nu există suficient istoric de preț pentru evaluare.`,
-         el:()=>`Δεν υπάρχει αρκετό ιστορικό τιμής για αξιολόγηση.`,
-         tr:()=>`Değerlendirmek için yeterli fiyat geçmişi yok.`,
-         sq:()=>`Nuk ka mjaftueshëm historik çmimi për të vlerësuar.`,
-         bs:()=>`Nema dovoljno historije cijene za procjenu.`,
-         hr:()=>`Nema dovoljno povijesti cijene za procjenu.`,
-         sl:()=>`Ni dovolj zgodovine cen za oceno.` },
+  real:{ bg:p=>`Реално намаление: ${p}% под обичайната цена, близо до 90-дневното дъно.`,sr:p=>`Pravo sniženje: ${p}% ispod uobičajene cene, blizu dna za 90 dana.`,mk:p=>`Вистинско намалување: ${p}% под вообичаената цена, близу до дното за 90 дена.`,ro:p=>`Reducere reală: ${p}% sub prețul obișnuit, aproape de minimul pe 90 de zile.`,el:p=>`Αληθινή έκπτωση: ${p}% κάτω από τη συνήθη τιμή, κοντά στο ελάχιστο 90 ημερών.`,tr:p=>`Gerçek indirim: olağan fiyatın %${p} altında, 90 günlük dibe yakın.`,sq:p=>`Zbritje reale: ${p}% nën çmimin e zakonshëm, afër minimumit 90-ditor.`,bs:p=>`Pravo sniženje: ${p}% ispod uobičajene cijene, blizu dna za 90 dana.`,hr:p=>`Pravo sniženje: ${p}% ispod uobičajene cijene, blizu dna za 90 dana.`,sl:p=>`Resnično znižanje: ${p}% pod običajno ceno, blizu dna za 90 dni.` },
+  cosmetic:{ bg:p=>`Малка реална отстъпка: ${p}% под обичайната цена.`,sr:p=>`Malo pravo sniženje: ${p}% ispod uobičajene cene.`,mk:p=>`Мал вистински попуст: ${p}% под вообичаената цена.`,ro:p=>`Mică reducere reală: ${p}% sub prețul obișnuit.`,el:p=>`Μικρή πραγματική έκπτωση: ${p}% κάτω από τη συνήθη τιμή.`,tr:p=>`Küçük gerçek indirim: olağan fiyatın %${p} altında.`,sq:p=>`Zbritje e vogël reale: ${p}% nën çmimin e zakonshëm.`,bs:p=>`Malo pravo sniženje: ${p}% ispod uobičajene cijene.`,hr:p=>`Malo pravo sniženje: ${p}% ispod uobičajene cijene.`,sl:p=>`Majhno resnično znižanje: ${p}% pod običajno ceno.` },
+  fake_not_below:{ bg:()=>`Фалшива промоция: не е по-евтино от обичайното за последните 30 дни.`,sr:()=>`Lažna akcija: nije jeftinije nego uobičajeno u poslednjih 30 dana.`,mk:()=>`Лажна промоција: не е поевтино од вообичаеното во последните 30 дена.`,ro:()=>`Reducere falsă: nu e mai ieftin decât în mod obișnuit în ultimele 30 de zile.`,el:()=>`Ψεύτικη προσφορά: δεν είναι φθηνότερο από το σύνηθες των τελευταίων 30 ημερών.`,tr:()=>`Sahte indirim: son 30 günün olağanından daha ucuz değil.`,sq:()=>`Ofertë e rreme: nuk është më lirë se zakonisht në 30 ditët e fundit.`,bs:()=>`Lažna akcija: nije jeftinije nego uobičajeno u posljednjih 30 dana.`,hr:()=>`Lažna akcija: nije jeftinije nego uobičajeno u zadnjih 30 dana.`,sl:()=>`Lažna akcija: ni ceneje kot običajno v zadnjih 30 dneh.` },
+  fake_equal:{ bg:()=>`Фалшива промоция: цената е на нивото на обичайната.`,sr:()=>`Lažna akcija: cena je na nivou uobičajene.`,mk:()=>`Лажна промоција: цената е на ниво на вообичаената.`,ro:()=>`Reducere falsă: prețul e la nivelul obișnuit.`,el:()=>`Ψεύτικη προσφορά: η τιμή είναι στο συνηθισμένο επίπεδο.`,tr:()=>`Sahte indirim: fiyat olağan seviyede.`,sq:()=>`Ofertë e rreme: çmimi është në nivelin e zakonshëm.`,bs:()=>`Lažna akcija: cijena je na nivou uobičajene.`,hr:()=>`Lažna akcija: cijena je na razini uobičajene.`,sl:()=>`Lažna akcija: cena je na ravni običajne.` },
+  unknown:{ bg:()=>`Няма достатъчно история на цената, за да преценим.`,sr:()=>`Nema dovoljno istorije cene za procenu.`,mk:()=>`Нема доволно историја на цената за да процениме.`,ro:()=>`Nu există suficient istoric de preț pentru evaluare.`,el:()=>`Δεν υπάρχει αρκετό ιστορικό τιμής για αξιολόγηση.`,tr:()=>`Değerlendirmek için yeterli fiyat geçmişi yok.`,sq:()=>`Nuk ka mjaftueshëm historik çmimi për të vlerësuar.`,bs:()=>`Nema dovoljno historije cijene za procjenu.`,hr:()=>`Nema dovoljno povijesti cijene za procjenu.`,sl:()=>`Ni dovolj zgodovine cen za oceno.` },
 };
 const UNIT = {
   l:{bg:'л',sr:'l',mk:'л',ro:'l',el:'λ',tr:'L',sq:'l',bs:'l',hr:'l',sl:'l'},
@@ -466,264 +438,58 @@ const UNIT = {
   pack:{bg:'оп.',sr:'pak',mk:'оп.',ro:'pachet',el:'συσκ.',tr:'paket',sq:'pako',bs:'pak',hr:'pak',sl:'pak'},
 };
 const PRODUCTS = {
-  milk:  { name:{bg:'Прясно мляко',sr:'Sveže mleko',mk:'Свежо млеко',ro:'Lapte proaspăt',el:'Φρέσκο γάλα',tr:'Taze süt',sq:'Qumësht i freskët',bs:'Svježe mlijeko',hr:'Svježe mlijeko',sl:'Sveže mleko'},
-           pack:{bg:'1 л',sr:'1 l',mk:'1 л',ro:'1 l',el:'1 λ',tr:'1 L',sq:'1 l',bs:'1 l',hr:'1 l',sl:'1 l'} },
-  oil:   { name:{bg:'Олио',sr:'Ulje',mk:'Олио',ro:'Ulei',el:'Ηλιέλαιο',tr:'Ayçiçek yağı',sq:'Vaj luledielli',bs:'Suncokretovo ulje',hr:'Suncokretovo ulje',sl:'Sončnično olje'},
-           pack:{bg:'1 л',sr:'1 l',mk:'1 л',ro:'1 l',el:'1 λ',tr:'1 L',sq:'1 l',bs:'1 l',hr:'1 l',sl:'1 l'} },
-  cheese:{ name:{bg:'Кашкавал',sr:'Kačkavalj',mk:'Кашкавал',ro:'Cașcaval',el:'Κασέρι',tr:'Kaşar peyniri',sq:'Kaçkavall',bs:'Kačkavalj',hr:'Kačkavalj',sl:'Kačkavalj'},
-           pack:{bg:'400 г',sr:'400 g',mk:'400 г',ro:'400 g',el:'400 γρ',tr:'400 g',sq:'400 g',bs:'400 g',hr:'400 g',sl:'400 g'} },
-  coffee:{ name:{bg:'Кафе',sr:'Kafa',mk:'Кафе',ro:'Cafea',el:'Καφές',tr:'Kahve',sq:'Kafe',bs:'Kafa',hr:'Kava',sl:'Kava'},
-           pack:{bg:'250 г',sr:'250 g',mk:'250 г',ro:'250 g',el:'250 γρ',tr:'250 g',sq:'250 g',bs:'250 g',hr:'250 g',sl:'250 g'} },
-  flour: { name:{bg:'Брашно',sr:'Brašno',mk:'Брашно',ro:'Făină',el:'Αλεύρι',tr:'Un',sq:'Miell',bs:'Brašno',hr:'Brašno',sl:'Moka'},
-           pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
-  sugar: { name:{bg:'Захар',sr:'Šećer',mk:'Шеќер',ro:'Zahăr',el:'Ζάχαρη',tr:'Şeker',sq:'Sheqer',bs:'Šećer',hr:'Šećer',sl:'Sladkor'},
-           pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
-  bread: { name:{bg:'Хляб',sr:'Hleb',mk:'Леб',ro:'Pâine',el:'Ψωμί',tr:'Ekmek',sq:'Bukë',bs:'Hljeb',hr:'Kruh',sl:'Kruh'},
-           pack:{bg:'700 г',sr:'700 g',mk:'700 г',ro:'700 g',el:'700 γρ',tr:'700 g',sq:'700 g',bs:'700 g',hr:'700 g',sl:'700 g'} },
-  rice:  { name:{bg:'Ориз',sr:'Pirinač',mk:'Ориз',ro:'Orez',el:'Ρύζι',tr:'Pirinç',sq:'Oriz',bs:'Riža',hr:'Riža',sl:'Riž'},
-           pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
-  tomatoes:{ name:{bg:'Домати',sr:'Paradajz',mk:'Домати',ro:'Roșii',el:'Ντομάτες',tr:'Domates',sq:'Domate',bs:'Paradajz',hr:'Rajčica',sl:'Paradižnik'},
-           pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
+  milk:  { name:{bg:'Прясно мляко',sr:'Sveže mleko',mk:'Свежо млеко',ro:'Lapte proaspăt',el:'Φρέσκο γάλα',tr:'Taze süt',sq:'Qumësht i freskët',bs:'Svježe mlijeko',hr:'Svježe mlijeko',sl:'Sveže mleko'}, pack:{bg:'1 л',sr:'1 l',mk:'1 л',ro:'1 l',el:'1 λ',tr:'1 L',sq:'1 l',bs:'1 l',hr:'1 l',sl:'1 l'} },
+  oil:   { name:{bg:'Олио',sr:'Ulje',mk:'Олио',ro:'Ulei',el:'Ηλιέλαιο',tr:'Ayçiçek yağı',sq:'Vaj luledielli',bs:'Suncokretovo ulje',hr:'Suncokretovo ulje',sl:'Sončnično olje'}, pack:{bg:'1 л',sr:'1 l',mk:'1 л',ro:'1 l',el:'1 λ',tr:'1 L',sq:'1 l',bs:'1 l',hr:'1 l',sl:'1 l'} },
+  cheese:{ name:{bg:'Кашкавал',sr:'Kačkavalj',mk:'Кашкавал',ro:'Cașcaval',el:'Κασέρι',tr:'Kaşar peyniri',sq:'Kaçkavall',bs:'Kačkavalj',hr:'Kačkavalj',sl:'Kačkavalj'}, pack:{bg:'400 г',sr:'400 g',mk:'400 г',ro:'400 g',el:'400 γρ',tr:'400 g',sq:'400 g',bs:'400 g',hr:'400 g',sl:'400 g'} },
+  coffee:{ name:{bg:'Кафе',sr:'Kafa',mk:'Кафе',ro:'Cafea',el:'Καφές',tr:'Kahve',sq:'Kafe',bs:'Kafa',hr:'Kava',sl:'Kava'}, pack:{bg:'250 г',sr:'250 g',mk:'250 г',ro:'250 g',el:'250 γρ',tr:'250 g',sq:'250 g',bs:'250 g',hr:'250 g',sl:'250 g'} },
+  flour: { name:{bg:'Брашно',sr:'Brašno',mk:'Брашно',ro:'Făină',el:'Αλεύρι',tr:'Un',sq:'Miell',bs:'Brašno',hr:'Brašno',sl:'Moka'}, pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
+  sugar: { name:{bg:'Захар',sr:'Šećer',mk:'Шеќер',ro:'Zahăr',el:'Ζάχαρη',tr:'Şeker',sq:'Sheqer',bs:'Šećer',hr:'Šećer',sl:'Sladkor'}, pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
+  bread: { name:{bg:'Хляб',sr:'Hleb',mk:'Леб',ro:'Pâine',el:'Ψωμί',tr:'Ekmek',sq:'Bukë',bs:'Hljeb',hr:'Kruh',sl:'Kruh'}, pack:{bg:'700 г',sr:'700 g',mk:'700 г',ro:'700 g',el:'700 γρ',tr:'700 g',sq:'700 g',bs:'700 g',hr:'700 g',sl:'700 g'} },
+  rice:  { name:{bg:'Ориз',sr:'Pirinač',mk:'Ориз',ro:'Orez',el:'Ρύζι',tr:'Pirinç',sq:'Oriz',bs:'Riža',hr:'Riža',sl:'Riž'}, pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
+  tomatoes:{ name:{bg:'Домати',sr:'Paradajz',mk:'Домати',ro:'Roșii',el:'Ντομάτες',tr:'Domates',sq:'Domate',bs:'Paradajz',hr:'Rajčica',sl:'Paradižnik'}, pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
   oliveoil:{ name:{bg:'Зехтин',el:'Ελαιόλαδο'}, pack:{bg:'1 л',el:'1 λ'} },
-  pasta: { name:{bg:'Макарони',sr:'Testenine',mk:'Тестенини',ro:'Paste',el:'Μακαρόνια',tr:'Makarna',sq:'Makarona',bs:'Tjestenina',hr:'Tjestenina',sl:'Testenine'},
-           pack:{bg:'400 г',sr:'400 g',mk:'400 г',ro:'400 g',el:'400 γρ',tr:'400 g',sq:'400 g',bs:'400 g',hr:'400 g',sl:'400 g'} },
-  feta:  { name:{bg:'Сирене',sr:'Beli sir',mk:'Бело сирење',ro:'Brânză albă',el:'Φέτα',tr:'Beyaz peynir',sq:'Djathë i bardhë',bs:'Bijeli sir',hr:'Bijeli sir',sl:'Beli sir'},
-           pack:{bg:'250 г',sr:'250 g',mk:'250 г',ro:'250 g',el:'250 γρ',tr:'250 g',sq:'250 g',bs:'250 g',hr:'250 g',sl:'250 g'} },
-  bananas:{ name:{bg:'Банани',sr:'Banane',mk:'Банани',ro:'Banane',el:'Μπανάνες',tr:'Muz',sq:'Banane',bs:'Banane',hr:'Banane',sl:'Banane'},
-           pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
-  chicken:{ name:{bg:'Пилешко',sr:'Piletina',mk:'Пилешко',ro:'Pui',el:'Κοτόπουλο',tr:'Tavuk',sq:'Mish pule',bs:'Piletina',hr:'Piletina',sl:'Piščanec'},
-           pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
-  water: { name:{bg:'Минерална вода',sr:'Mineralna voda',mk:'Минерална вода',ro:'Apă minerală',el:'Νερό',tr:'Maden suyu',sq:'Ujë mineral',bs:'Mineralna voda',hr:'Mineralna voda',sl:'Mineralna voda'},
-           pack:{bg:'1,5 л',sr:'1,5 l',mk:'1,5 л',ro:'1,5 l',el:'1,5 λ',tr:'1,5 L',sq:'1,5 l',bs:'1,5 l',hr:'1,5 l',sl:'1,5 l'} },
-  // Fridge items (стълб 2) — also appear in basket with pack info.
-  eggs:  { name:{bg:'Яйца',sr:'Jaja',mk:'Јајца',ro:'Ouă',el:'Αυγά',tr:'Yumurta',sq:'Vezë',bs:'Jaja',hr:'Jaja',sl:'Jajca'},
-           pack:{bg:'10 бр',sr:'10 kom',mk:'10 бр',ro:'10 buc',el:'10 τεμ',tr:'10 adet',sq:'10 copë',bs:'10 kom',hr:'10 kom',sl:'10 kos'} },
-  butter:{ name:{bg:'Краве масло',sr:'Puter',mk:'Путер',ro:'Unt',el:'Βούτυρο',tr:'Tereyağı',sq:'Gjalpë',bs:'Maslac',hr:'Maslac',sl:'Maslo'},
-           pack:{bg:'250 г',sr:'250 g',mk:'250 г',ro:'250 g',el:'250 γρ',tr:'250 g',sq:'250 g',bs:'250 g',hr:'250 g',sl:'250 g'} },
-  yogurt:{ name:{bg:'Кисело мляко',sr:'Jogurt',mk:'Кисело млеко',ro:'Iaurt',el:'Γιαούρτι',tr:'Yoğurt',sq:'Kos',bs:'Jogurt',hr:'Jogurt',sl:'Jogurt'},
-           pack:{bg:'400 г',sr:'400 g',mk:'400 г',ro:'400 g',el:'400 γρ',tr:'400 g',sq:'400 g',bs:'400 g',hr:'400 g',sl:'400 g'} },
-  potato: { name:{bg:'Картофи',sr:'Krompir',mk:'Компир',ro:'Cartofi',el:'Πατάτες',tr:'Patates',sq:'Patate',bs:'Krompir',hr:'Krumpir',sl:'Krompir'},
-             pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
-  onion:  { name:{bg:'Лук',sr:'Crni luk',mk:'Кромид лук',ro:'Ceapă',el:'Κρεμμύδι',tr:'Soğan',sq:'Qepë',bs:'Crni luk',hr:'Crni luk',sl:'Čebula'},
-             pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
-  apple:  { name:{bg:'Ябълки',sr:'Jabuke',mk:'Јаболки',ro:'Mere',el:'Μήλα',tr:'Elma',sq:'Mollë',bs:'Jabuke',hr:'Jabuke',sl:'Jabolka'},
-             pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
-  salt:   { name:{bg:'Сол',sr:'So',mk:'Сол',ro:'Sare',el:'Αλάτι',tr:'Tuz',sq:'Kripë',bs:'So',hr:'Sol',sl:'Sol'},
-             pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
-  cucumber:{ name:{bg:'Краставици',sr:'Krastavac',mk:'Краставица',ro:'Castraveți',el:'Αγγούρια',tr:'Salatalık',sq:'Kastravec',bs:'Krastavac',hr:'Krastavac',sl:'Kumara'},
-             pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
+  pasta: { name:{bg:'Макарони',sr:'Testenine',mk:'Тестенини',ro:'Paste',el:'Μακαρόνια',tr:'Makarna',sq:'Makarona',bs:'Tjestenina',hr:'Tjestenina',sl:'Testenine'}, pack:{bg:'400 г',sr:'400 g',mk:'400 г',ro:'400 g',el:'400 γρ',tr:'400 g',sq:'400 g',bs:'400 g',hr:'400 g',sl:'400 g'} },
+  feta:  { name:{bg:'Сирене',sr:'Beli sir',mk:'Бело сирење',ro:'Brânză albă',el:'Φέτα',tr:'Beyaz peynir',sq:'Djathë i bardhë',bs:'Bijeli sir',hr:'Bijeli sir',sl:'Beli sir'}, pack:{bg:'250 г',sr:'250 g',mk:'250 г',ro:'250 g',el:'250 γρ',tr:'250 g',sq:'250 g',bs:'250 g',hr:'250 g',sl:'250 g'} },
+  bananas:{ name:{bg:'Банани',sr:'Banane',mk:'Банани',ro:'Banane',el:'Μπανάνες',tr:'Muz',sq:'Banane',bs:'Banane',hr:'Banane',sl:'Banane'}, pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
+  chicken:{ name:{bg:'Пилешко',sr:'Piletina',mk:'Пилешко',ro:'Pui',el:'Κοτόπουλο',tr:'Tavuk',sq:'Mish pule',bs:'Piletina',hr:'Piletina',sl:'Piščanec'}, pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
+  water: { name:{bg:'Минерална вода',sr:'Mineralna voda',mk:'Минерална вода',ro:'Apă minerală',el:'Νερό',tr:'Maden suyu',sq:'Ujë mineral',bs:'Mineralna voda',hr:'Mineralna voda',sl:'Mineralna voda'}, pack:{bg:'1,5 л',sr:'1,5 l',mk:'1,5 л',ro:'1,5 l',el:'1,5 λ',tr:'1,5 L',sq:'1,5 l',bs:'1,5 l',hr:'1,5 l',sl:'1,5 l'} },
+  eggs:  { name:{bg:'Яйца',sr:'Jaja',mk:'Јајца',ro:'Ouă',el:'Αυγά',tr:'Yumurta',sq:'Vezë',bs:'Jaja',hr:'Jaja',sl:'Jajca'}, pack:{bg:'10 бр',sr:'10 kom',mk:'10 бр',ro:'10 buc',el:'10 τεμ',tr:'10 adet',sq:'10 copë',bs:'10 kom',hr:'10 kom',sl:'10 kos'} },
+  butter:{ name:{bg:'Краве масло',sr:'Puter',mk:'Путер',ro:'Unt',el:'Βούτυρο',tr:'Tereyağı',sq:'Gjalpë',bs:'Maslac',hr:'Maslac',sl:'Maslo'}, pack:{bg:'250 г',sr:'250 g',mk:'250 г',ro:'250 g',el:'250 γρ',tr:'250 g',sq:'250 g',bs:'250 g',hr:'250 g',sl:'250 g'} },
+  yogurt:{ name:{bg:'Кисело мляко',sr:'Jogurt',mk:'Кисело млеко',ro:'Iaurt',el:'Γιαούρτι',tr:'Yoğurt',sq:'Kos',bs:'Jogurt',hr:'Jogurt',sl:'Jogurt'}, pack:{bg:'400 г',sr:'400 g',mk:'400 г',ro:'400 g',el:'400 γρ',tr:'400 g',sq:'400 g',bs:'400 g',hr:'400 g',sl:'400 g'} },
+  potato: { name:{bg:'Картофи',sr:'Krompir',mk:'Компир',ro:'Cartofi',el:'Πατάτες',tr:'Patates',sq:'Patate',bs:'Krompir',hr:'Krumpir',sl:'Krompir'}, pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
+  onion:  { name:{bg:'Лук',sr:'Crni luk',mk:'Кромид лук',ro:'Ceapă',el:'Κρεμμύδι',tr:'Soğan',sq:'Qepë',bs:'Crni luk',hr:'Crni luk',sl:'Čebula'}, pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
+  apple:  { name:{bg:'Ябълки',sr:'Jabuke',mk:'Јаболки',ro:'Mere',el:'Μήλα',tr:'Elma',sq:'Mollë',bs:'Jabuke',hr:'Jabuke',sl:'Jabolka'}, pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
+  salt:   { name:{bg:'Сол',sr:'So',mk:'Сол',ro:'Sare',el:'Αλάτι',tr:'Tuz',sq:'Kripë',bs:'So',hr:'Sol',sl:'Sol'}, pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
+  cucumber:{ name:{bg:'Краставици',sr:'Krastavac',mk:'Краставица',ro:'Castraveți',el:'Αγγούρια',tr:'Salatalık',sq:'Kastravec',bs:'Krastavac',hr:'Krastavac',sl:'Kumara'}, pack:{bg:'1 кг',sr:'1 kg',mk:'1 кг',ro:'1 kg',el:'1 κιλό',tr:'1 kg',sq:'1 kg',bs:'1 kg',hr:'1 kg',sl:'1 kg'} },
 };
 
-// Extra UI strings for tabs / chains / basket, keyed by language.
 const BX = {
-  bg:{ tabProducts:'Продукти', tabBasket:'Кошница', tabFridge:'Хладилник', tabTable:'Таблица', tabTitans:'Титани', chains:'Цени по вериги', cheapest:'най-евтина',
-       basketTitle:'Цена на кошницата по верига', cheapestBasket:'Най-евтина кошница', save:'спестяваш', perItem:'Най-евтино по продукт',
-       recognized:'Разпознато в хладилника', shopping:'Списък за пазаруване', missing:'липсва', low:'свършва',
-       search:'Търси продукт…',
-       cartTitle:'Моят списък', cartEmpty:'Добави продукти с ✚', storeAdvice:'Откъде да пазарувам?',
-       covers:'покрива', of:'от', artItems:'арт.', clearCart:'Изчисти', noData:'Не предлага',
-       titansTitle:'Битката на Титаните', titansSub:'Реални срещу фалшиви промоции — последните 30 дни',
-       titansReal:'реални', titansFake:'фалшиви', titansNoPromos:'без промоции', titansTracked:'проследени продукта',
-       tabBrochures:'Брошури', brochTitle:'Тази седмица', brochSub:'Верифицирани промо оферти по верига',
-       brochFake:'Фалшива!', brochReal:'Реална', brochClaimed:'обявена', brochNoData:'Без брошура',
-       brochPromos:'промоции', brochExpand:'Виж всички', brochCollapse:'Скрий',
-       tabScan:'Скенер', scanBtn:'Сканирай баркод', scanHint:'Насочи камерата към баркода',
-       scanLookup:'Търся продукт…', scanNotTracked:'Продуктът не е в следения ни списък',
-       scanUnknown:'Продуктът не е разпознат', scanAgain:'Сканирай пак',
-       scanNoBD:'Скенерът работи в Chrome. Пробвай с файл:', scanFile:'Избери снимка',
-       scanMatched:'Разпознат като' },
-  sr:{ tabProducts:'Proizvodi', tabBasket:'Korpa', tabFridge:'Frižider', tabTable:'Tabela', tabTitans:'Titani', chains:'Cene po lancima', cheapest:'najjeftinije',
-       basketTitle:'Cena korpe po lancu', cheapestBasket:'Najjeftinija korpa', save:'uštedite', perItem:'Najjeftinije po proizvodu',
-       recognized:'Prepoznato u frižideru', shopping:'Lista za kupovinu', missing:'nedostaje', low:'pri kraju',
-       search:'Pretraži…',
-       cartTitle:'Moja lista', cartEmpty:'Dodaj proizvode sa ✚', storeAdvice:'Gde da kupujem?',
-       covers:'pokriva', of:'od', artItems:'art.', clearCart:'Obriši', noData:'Nema',
-       titansTitle:'Bitka Titana', titansSub:'Prave vs. lažne akcije — poslednjih 30 dana',
-       titansReal:'prave', titansFake:'lažne', titansNoPromos:'bez akcija', titansTracked:'praćena proizvoda',
-       tabBrochures:'Brošure', brochTitle:'Ova nedelja', brochSub:'Verifikovane promo ponude po lancu',
-       brochFake:'Lažna!', brochReal:'Prava', brochClaimed:'objavljena', brochNoData:'Nema brošure',
-       brochPromos:'akcija', brochExpand:'Vidi sve', brochCollapse:'Sakrij',
-       tabScan:'Skener', scanBtn:'Skeniraj barkod', scanHint:'Usmeri kameru ka barkodu',
-       scanLookup:'Tražim proizvod…', scanNotTracked:'Proizvod nije u našoj listi',
-       scanUnknown:'Proizvod nije prepoznat', scanAgain:'Skeniraj ponovo',
-       scanNoBD:'Skener radi u Chrome-u. Pokušaj sa fajlom:', scanFile:'Izaberi sliku',
-       scanMatched:'Prepoznat kao' },
-  mk:{ tabProducts:'Производи', tabBasket:'Кошница', tabFridge:'Фрижидер', tabTable:'Табела', tabTitans:'Титани', chains:'Цени по синџири', cheapest:'најевтино',
-       basketTitle:'Цена на кошницата по синџир', cheapestBasket:'Најевтина кошница', save:'заштедуваш', perItem:'Најевтино по производ',
-       recognized:'Препознато во фрижидерот', shopping:'Список за пазарување', missing:'недостасува', low:'снемнува',
-       search:'Пребарај…',
-       cartTitle:'Мојата листа', cartEmpty:'Додај производи со ✚', storeAdvice:'Каде да пазарувам?',
-       covers:'покрива', of:'од', artItems:'арт.', clearCart:'Исчисти', noData:'Нема',
-       titansTitle:'Битката на Титаните', titansSub:'Вистински наспроти лажни промоции — последните 30 дена',
-       titansReal:'вистински', titansFake:'лажни', titansNoPromos:'без промоции', titansTracked:'следени производи',
-       tabBrochures:'Брошури', brochTitle:'Оваа седмица', brochSub:'Верифицирани промо понуди по синџир',
-       brochFake:'Лажна!', brochReal:'Вистинска', brochClaimed:'објавена', brochNoData:'Нема брошура',
-       brochPromos:'промоции', brochExpand:'Види ги сите', brochCollapse:'Сокриј',
-       tabScan:'Скенер', scanBtn:'Скенирај баркод', scanHint:'Насочи ја камерата кон баркодот',
-       scanLookup:'Барам производ…', scanNotTracked:'Производот не е во нашата листа',
-       scanUnknown:'Производот не е препознаен', scanAgain:'Скенирај пак',
-       scanNoBD:'Скенерот работи во Chrome. Обиди се со датотека:', scanFile:'Избери слика',
-       scanMatched:'Препознаен како' },
-  ro:{ tabProducts:'Produse', tabBasket:'Coș', tabFridge:'Frigider', tabTable:'Tabel', tabTitans:'Titani', chains:'Prețuri pe lanțuri', cheapest:'cel mai ieftin',
-       basketTitle:'Costul coșului pe lanț', cheapestBasket:'Cel mai ieftin coș', save:'economisești', perItem:'Cel mai ieftin pe produs',
-       recognized:'Recunoscut în frigider', shopping:'Listă de cumpărături', missing:'lipsește', low:'se termină',
-       search:'Caută produs…',
-       cartTitle:'Lista mea', cartEmpty:'Adaugă produse cu ✚', storeAdvice:'De unde să cumpăr?',
-       covers:'acoperă', of:'din', artItems:'art.', clearCart:'Șterge', noData:'Indisponibil',
-       titansTitle:'Bătălia Titanilor', titansSub:'Reduceri reale vs. false — ultimele 30 de zile',
-       titansReal:'reale', titansFake:'false', titansNoPromos:'fără promoții', titansTracked:'produse monitorizate',
-       tabBrochures:'Broșuri', brochTitle:'Săptămâna asta', brochSub:'Oferte promo verificate pe lanț',
-       brochFake:'Falsă!', brochReal:'Reală', brochClaimed:'declarată', brochNoData:'Fără broșură',
-       brochPromos:'promoții', brochExpand:'Vezi toate', brochCollapse:'Ascunde',
-       tabScan:'Scanner', scanBtn:'Scanează cod de bare', scanHint:'Îndreptați camera spre cod',
-       scanLookup:'Caut produsul…', scanNotTracked:'Produsul nu este în lista noastră',
-       scanUnknown:'Produs nerecunoscut', scanAgain:'Scanează din nou',
-       scanNoBD:'Scannerul funcționează în Chrome. Încearcă cu fișier:', scanFile:'Alege imagine',
-       scanMatched:'Recunoscut ca' },
-  el:{ tabProducts:'Προϊόντα', tabBasket:'Καλάθι', tabFridge:'Ψυγείο', tabTable:'Πίνακας', tabTitans:'Τιτάνες', chains:'Τιμές ανά αλυσίδα', cheapest:'φθηνότερο',
-       basketTitle:'Κόστος καλαθιού ανά αλυσίδα', cheapestBasket:'Φθηνότερο καλάθι', save:'εξοικονομείς', perItem:'Φθηνότερο ανά προϊόν',
-       recognized:'Αναγνωρίστηκαν στο ψυγείο', shopping:'Λίστα αγορών', missing:'λείπει', low:'τελειώνει',
-       search:'Αναζήτηση…',
-       cartTitle:'Η λίστα μου', cartEmpty:'Πρόσθεσε προϊόντα με ✚', storeAdvice:'Πού να ψωνίσω;',
-       covers:'καλύπτει', of:'από', artItems:'αρ.', clearCart:'Καθαρισμός', noData:'Μη διαθ.',
-       titansTitle:'Μάχη των Τιτάνων', titansSub:'Αληθινές vs. ψεύτικες προσφορές — τελευταίες 30 ημέρες',
-       titansReal:'αληθινές', titansFake:'ψεύτικες', titansNoPromos:'χωρίς προσφορές', titansTracked:'προϊόντα παρακολούθησης',
-       tabBrochures:'Φυλλάδια', brochTitle:'Αυτή την εβδομάδα', brochSub:'Επαληθευμένες προσφορές ανά αλυσίδα',
-       brochFake:'Ψεύτικη!', brochReal:'Αληθινή', brochClaimed:'δηλωθείσα', brochNoData:'Χωρίς φυλλάδιο',
-       brochPromos:'προσφορές', brochExpand:'Δες όλες', brochCollapse:'Απόκρυψη',
-       tabScan:'Σκάνερ', scanBtn:'Σάρωσε barcode', scanHint:'Στρέψε κάμερα στο barcode',
-       scanLookup:'Ψάχνω προϊόν…', scanNotTracked:'Το προϊόν δεν βρίσκεται στη λίστα μας',
-       scanUnknown:'Το προϊόν δεν αναγνωρίστηκε', scanAgain:'Σάρωσε ξανά',
-       scanNoBD:'Το σκάνερ λειτουργεί στο Chrome. Δοκιμάστε με αρχείο:', scanFile:'Επιλέξτε εικόνα',
-       scanMatched:'Αναγνωρίστηκε ως' },
-  tr:{ tabProducts:'Ürünler', tabBasket:'Sepet', tabFridge:'Buzdolabı', tabTable:'Tablo', tabTitans:'Titanlar', chains:'Zincirlere göre fiyatlar', cheapest:'en ucuz',
-       basketTitle:'Zincire göre sepet tutarı', cheapestBasket:'En ucuz sepet', save:'tasarruf', perItem:'Ürün başına en ucuz',
-       recognized:'Buzdolabında tanındı', shopping:'Alışveriş listesi', missing:'eksik', low:'azalıyor',
-       search:'Ürün ara…',
-       cartTitle:'Listem', cartEmpty:'✚ ile ürün ekle', storeAdvice:'Nerede alışveriş yapmalıyım?',
-       covers:'karşılar', of:'/', artItems:'ürün', clearCart:'Temizle', noData:'Yok',
-       titansTitle:'Titanların Savaşı', titansSub:'Gerçek vs. sahte indirimler — son 30 gün',
-       titansReal:'gerçek', titansFake:'sahte', titansNoPromos:'kampanya yok', titansTracked:'takip edilen ürün',
-       tabBrochures:'Broşürler', brochTitle:'Bu hafta', brochSub:'Zincire göre doğrulanmış kampanyalar',
-       brochFake:'Sahte!', brochReal:'Gerçek', brochClaimed:'ilan edilen', brochNoData:'Broşür yok',
-       brochPromos:'kampanya', brochExpand:'Tümünü gör', brochCollapse:'Gizle',
-       tabScan:'Tarayıcı', scanBtn:'Barkod Tara', scanHint:'Kamerayı barkoda doğrult',
-       scanLookup:'Ürün aranıyor…', scanNotTracked:'Ürün takip listemizde yok',
-       scanUnknown:'Ürün tanınmadı', scanAgain:'Tekrar tara',
-       scanNoBD:"Tarayıcı Chrome'da çalışır. Dosyayla deneyin:", scanFile:'Resim seç',
-       scanMatched:'Tanındı:' },
-  sq:{ tabProducts:'Produktet', tabBasket:'Shporta', tabFridge:'Frigorifer', tabTable:'Tabelë', tabTitans:'Titanët', chains:'Çmimet sipas zinxhirëve', cheapest:'më i liri',
-       basketTitle:'Kostoja e shportës sipas zinxhirit', cheapestBasket:'Shporta më e lirë', save:'kurseni', perItem:'Më i liri për produkt',
-       recognized:'Të njohura në frigorifer', shopping:'Lista e blerjeve', missing:'mungon', low:'po mbaron',
-       search:'Kërko produkt…',
-       cartTitle:'Lista ime', cartEmpty:'Shto produkte me ✚', storeAdvice:'Ku të blej?',
-       covers:'mbulon', of:'nga', artItems:'art.', clearCart:'Fshi', noData:'Pa disponueshëm',
-       titansTitle:'Beteja e Titanëve', titansSub:'Zbritje reale vs. të rreme — 30 ditët e fundit',
-       titansReal:'reale', titansFake:'të rreme', titansNoPromos:'pa oferta', titansTracked:'produkte të ndjekura',
-       tabBrochures:'Fletushka', brochTitle:'Kjo javë', brochSub:'Oferta promo të verifikuara sipas zinxhirit',
-       brochFake:'E rreme!', brochReal:'E vërtetë', brochClaimed:'e deklaruar', brochNoData:'Pa fletushkë',
-       brochPromos:'oferta', brochExpand:'Shiko të gjitha', brochCollapse:'Fshih',
-       tabScan:'Skaner', scanBtn:'Skano barkod', scanHint:'Drejtoje kamerën te barkodi',
-       scanLookup:'Po kërkoj produktin…', scanNotTracked:'Produkti nuk është në listën tonë',
-       scanUnknown:'Produkti nuk u njoh', scanAgain:'Skano përsëri',
-       scanNoBD:'Skaneri funksionon në Chrome. Provoni me skedar:', scanFile:'Zgjidh imazh',
-       scanMatched:'U njoh si' },
-  bs:{ tabProducts:'Proizvodi', tabBasket:'Korpa', tabFridge:'Frižider', tabTable:'Tabela', tabTitans:'Titani', chains:'Cijene po lancima', cheapest:'najjeftinije',
-       basketTitle:'Cijena korpe po lancu', cheapestBasket:'Najjeftinija korpa', save:'uštedite', perItem:'Najjeftinije po proizvodu',
-       recognized:'Prepoznato u frižideru', shopping:'Lista za kupovinu', missing:'nedostaje', low:'pri kraju',
-       search:'Pretraži…',
-       cartTitle:'Moja lista', cartEmpty:'Dodaj proizvode sa ✚', storeAdvice:'Gdje kupovati?',
-       covers:'pokriva', of:'od', artItems:'art.', clearCart:'Obriši', noData:'Nema',
-       titansTitle:'Bitka Titana', titansSub:'Prave vs. lažne akcije — posljednjih 30 dana',
-       titansReal:'prave', titansFake:'lažne', titansNoPromos:'bez akcija', titansTracked:'praćena proizvoda',
-       tabBrochures:'Brošure', brochTitle:'Ovaj tjedan', brochSub:'Verificirane promo ponude po lancu',
-       brochFake:'Lažna!', brochReal:'Prava', brochClaimed:'objavljena', brochNoData:'Nema brošure',
-       brochPromos:'akcija', brochExpand:'Vidi sve', brochCollapse:'Sakrij',
-       tabScan:'Skener', scanBtn:'Skeniraj barkod', scanHint:'Usmjeri kameru prema barkodu',
-       scanLookup:'Tražim proizvod…', scanNotTracked:'Proizvod nije na našoj listi',
-       scanUnknown:'Proizvod nije prepoznat', scanAgain:'Skeniraj ponovo',
-       scanNoBD:'Skener radi u Chrome-u. Pokušajte s datotekom:', scanFile:'Odaberi sliku',
-       scanMatched:'Prepoznat kao' },
-  hr:{ tabProducts:'Proizvodi', tabBasket:'Košarica', tabFridge:'Hladnjak', tabTable:'Tablica', tabTitans:'Titani', chains:'Cijene po lancima', cheapest:'najjeftinije',
-       basketTitle:'Cijena košarice po lancu', cheapestBasket:'Najjeftinija košarica', save:'uštedite', perItem:'Najjeftinije po proizvodu',
-       recognized:'Prepoznato u hladnjaku', shopping:'Popis za kupnju', missing:'nedostaje', low:'pri kraju',
-       search:'Traži…',
-       cartTitle:'Moja lista', cartEmpty:'Dodaj proizvode s ✚', storeAdvice:'Gdje kupovati?',
-       covers:'pokriva', of:'od', artItems:'art.', clearCart:'Obriši', noData:'Nema',
-       titansTitle:'Bitka Titana', titansSub:'Prave vs. lažne akcije — zadnjih 30 dana',
-       titansReal:'prave', titansFake:'lažne', titansNoPromos:'bez akcija', titansTracked:'praćena proizvoda',
-       tabBrochures:'Letci', brochTitle:'Ovaj tjedan', brochSub:'Verificirane promo ponude po lancu',
-       brochFake:'Lažna!', brochReal:'Prava', brochClaimed:'objavljena', brochNoData:'Nema letka',
-       brochPromos:'akcija', brochExpand:'Vidi sve', brochCollapse:'Sakrij',
-       tabScan:'Skener', scanBtn:'Skeniraj barkod', scanHint:'Usmjeri kameru prema barkodu',
-       scanLookup:'Tražim proizvod…', scanNotTracked:'Proizvod nije na našom popisu',
-       scanUnknown:'Proizvod nije prepoznat', scanAgain:'Skeniraj ponovo',
-       scanNoBD:'Skener radi u Chromeu. Pokušaj s datotekom:', scanFile:'Odaberi sliku',
-       scanMatched:'Prepoznat kao' },
-  sl:{ tabProducts:'Izdelki', tabBasket:'Košarica', tabFridge:'Hladilnik', tabTable:'Tabela', tabTitans:'Titani', chains:'Cene po trgovinah', cheapest:'najceneje',
-       basketTitle:'Cena košarice po trgovini', cheapestBasket:'Najcenejša košarica', save:'prihranite', perItem:'Najceneje po izdelku',
-       recognized:'Prepoznano v hladilniku', shopping:'Nakupovalni seznam', missing:'manjka', low:'zmanjkuje',
-       search:'Iskanje…',
-       cartTitle:'Moj seznam', cartEmpty:'Dodaj izdelke z ✚', storeAdvice:'Kje kupovati?',
-       covers:'pokriva', of:'od', artItems:'art.', clearCart:'Počisti', noData:'Ni na voljo',
-       titansTitle:'Bitka Titanov', titansSub:'Prave vs. lažne akcije — zadnjih 30 dni',
-       titansReal:'prave', titansFake:'lažne', titansNoPromos:'brez akcij', titansTracked:'sledenih izdelkov',
-       tabBrochures:'Letaki', brochTitle:'Ta teden', brochSub:'Preverjene promo ponudbe po trgovini',
-       brochFake:'Lažna!', brochReal:'Prava', brochClaimed:'navedena', brochNoData:'Ni letaka',
-       brochPromos:'akcij', brochExpand:'Prikaži vse', brochCollapse:'Skrij',
-       tabScan:'Skener', scanBtn:'Skeniraj črtno kodo', scanHint:'Usmeri kamero na črtno kodo',
-       scanLookup:'Iščem izdelek…', scanNotTracked:'Izdelek ni na našem seznamu',
-       scanUnknown:'Izdelek ni prepoznan', scanAgain:'Skeniraj znova',
-       scanNoBD:'Skener deluje v Chromu. Poskusite z datoteko:', scanFile:'Izberi sliko',
-       scanMatched:'Prepoznan kot' },
+  bg:{ tabProducts:'Продукти', tabBasket:'Кошница', tabFridge:'Хладилник', tabTable:'Таблица', tabTitans:'Титани', chains:'Цени по вериги', cheapest:'най-евтина', basketTitle:'Цена на кошницата по верига', cheapestBasket:'Най-евтина кошница', save:'спестяваш', perItem:'Най-евтино по продукт', recognized:'Разпознато в хладилника', shopping:'Списък за пазаруване', missing:'липсва', low:'свършва', search:'Търси продукт…', cartTitle:'Моят списък', cartEmpty:'Добави продукти с ✚', storeAdvice:'Откъде да пазарувам?', covers:'покрива', of:'от', artItems:'арт.', clearCart:'Изчисти', noData:'Не предлага', titansTitle:'Битката на Титаните', titansSub:'Реални срещу фалшиви промоции — последните 30 дни', titansReal:'реални', titansFake:'фалшиви', titansNoPromos:'без промоции', titansTracked:'проследени продукта', tabBrochures:'Брошури', brochTitle:'Тази седмица', brochSub:'Верифицирани промо оферти по верига', brochFake:'Фалшива!', brochReal:'Реална', brochClaimed:'обявена', brochNoData:'Без брошура', brochPromos:'промоции', brochExpand:'Виж всички', brochCollapse:'Скрий', tabScan:'Скенер', scanBtn:'Сканирай баркод', scanHint:'Насочи камерата към баркода', scanLookup:'Търся продукт…', scanNotTracked:'Продуктът не е в следения ни списък', scanUnknown:'Продуктът не е разпознат', scanAgain:'Сканирай пак', scanNoBD:'Скенерът работи в Chrome. Пробвай с файл:', scanFile:'Избери снимка', scanMatched:'Разпознат като' },
+  sr:{ tabProducts:'Proizvodi', tabBasket:'Korpa', tabFridge:'Frižider', tabTable:'Tabela', tabTitans:'Titani', chains:'Cene po lancima', cheapest:'najjeftinije', basketTitle:'Cena korpe po lancu', cheapestBasket:'Najjeftinija korpa', save:'uštedite', perItem:'Najjeftinije po proizvodu', recognized:'Prepoznato u frižideru', shopping:'Lista za kupovinu', missing:'nedostaje', low:'pri kraju', search:'Pretraži…', cartTitle:'Moja lista', cartEmpty:'Dodaj proizvode sa ✚', storeAdvice:'Gde da kupujem?', covers:'pokriva', of:'od', artItems:'art.', clearCart:'Obriši', noData:'Nema', titansTitle:'Bitka Titana', titansSub:'Prave vs. lažne akcije — poslednjih 30 dana', titansReal:'prave', titansFake:'lažne', titansNoPromos:'bez akcija', titansTracked:'praćena proizvoda', tabBrochures:'Brošure', brochTitle:'Ova nedelja', brochSub:'Verifikovane promo ponude po lancu', brochFake:'Lažna!', brochReal:'Prava', brochClaimed:'objavljena', brochNoData:'Nema brošure', brochPromos:'akcija', brochExpand:'Vidi sve', brochCollapse:'Sakrij', tabScan:'Skener', scanBtn:'Skeniraj barkod', scanHint:'Usmeri kameru ka barkodu', scanLookup:'Tražim proizvod…', scanNotTracked:'Proizvod nije u našoj listi', scanUnknown:'Proizvod nije prepoznat', scanAgain:'Skeniraj ponovo', scanNoBD:'Skener radi u Chrome-u. Pokušaj sa fajlom:', scanFile:'Izaberi sliku', scanMatched:'Prepoznat kao' },
+  mk:{ tabProducts:'Производи', tabBasket:'Кошница', tabFridge:'Фрижидер', tabTable:'Табела', tabTitans:'Титани', chains:'Цени по синџири', cheapest:'најевтино', basketTitle:'Цена на кошницата по синџир', cheapestBasket:'Најевтина кошница', save:'заштедуваш', perItem:'Најевтино по производ', recognized:'Препознато во фрижидерот', shopping:'Список за пазарување', missing:'недостасува', low:'снемнува', search:'Пребарај…', cartTitle:'Мојата листа', cartEmpty:'Додај производи со ✚', storeAdvice:'Каде да пазарувам?', covers:'покрива', of:'од', artItems:'арт.', clearCart:'Исчисти', noData:'Нема', titansTitle:'Битката на Титаните', titansSub:'Вистински наспроти лажни промоции — последните 30 дена', titansReal:'вистински', titansFake:'лажни', titansNoPromos:'без промоции', titansTracked:'следени производи', tabBrochures:'Брошури', brochTitle:'Оваа седмица', brochSub:'Верифицирани промо понуди по синџир', brochFake:'Лажна!', brochReal:'Вистинска', brochClaimed:'објавена', brochNoData:'Нема брошура', brochPromos:'промоции', brochExpand:'Види ги сите', brochCollapse:'Сокриј', tabScan:'Скенер', scanBtn:'Скенирај баркод', scanHint:'Насочи ја камерата кон баркодот', scanLookup:'Барам производ…', scanNotTracked:'Производот не е во нашата листа', scanUnknown:'Производот не е препознаен', scanAgain:'Скенирај пак', scanNoBD:'Скенерот работи во Chrome. Обиди се со датотека:', scanFile:'Избери слика', scanMatched:'Препознаен како' },
+  ro:{ tabProducts:'Produse', tabBasket:'Coș', tabFridge:'Frigider', tabTable:'Tabel', tabTitans:'Titani', chains:'Prețuri pe lanțuri', cheapest:'cel mai ieftin', basketTitle:'Costul coșului pe lanț', cheapestBasket:'Cel mai ieftin coș', save:'economisești', perItem:'Cel mai ieftin pe produs', recognized:'Recunoscut în frigider', shopping:'Listă de cumpărături', missing:'lipsește', low:'se termină', search:'Caută produs…', cartTitle:'Lista mea', cartEmpty:'Adaugă produse cu ✚', storeAdvice:'De unde să cumpăr?', covers:'acoperă', of:'din', artItems:'art.', clearCart:'Șterge', noData:'Indisponibil', titansTitle:'Bătălia Titanilor', titansSub:'Reduceri reale vs. false — ultimele 30 de zile', titansReal:'reale', titansFake:'false', titansNoPromos:'fără promoții', titansTracked:'produse monitorizate', tabBrochures:'Broșuri', brochTitle:'Săptămâna asta', brochSub:'Oferte promo verificate pe lanț', brochFake:'Falsă!', brochReal:'Reală', brochClaimed:'declarată', brochNoData:'Fără broșură', brochPromos:'promoții', brochExpand:'Vezi toate', brochCollapse:'Ascunde', tabScan:'Scanner', scanBtn:'Scanează cod de bare', scanHint:'Îndreptați camera spre cod', scanLookup:'Caut produsul…', scanNotTracked:'Produsul nu este în lista noastră', scanUnknown:'Produs nerecunoscut', scanAgain:'Scanează din nou', scanNoBD:'Scannerul funcționează în Chrome. Încearcă cu fișier:', scanFile:'Alege imagine', scanMatched:'Recunoscut ca' },
+  el:{ tabProducts:'Προϊόντα', tabBasket:'Καλάθι', tabFridge:'Ψυγείο', tabTable:'Πίνακας', tabTitans:'Τιτάνες', chains:'Τιμές ανά αλυσίδα', cheapest:'φθηνότερο', basketTitle:'Κόστος καλαθιού ανά αλυσίδα', cheapestBasket:'Φθηνότερο καλάθι', save:'εξοικονομείς', perItem:'Φθηνότερο ανά προϊόν', recognized:'Αναγνωρίστηκαν στο ψυγείο', shopping:'Λίστα αγορών', missing:'λείπει', low:'τελειώνει', search:'Αναζήτηση…', cartTitle:'Η λίστα μου', cartEmpty:'Πρόσθεσε προϊόντα με ✚', storeAdvice:'Πού να ψωνίσω;', covers:'καλύπτει', of:'από', artItems:'αρ.', clearCart:'Καθαρισμός', noData:'Μη διαθ.', titansTitle:'Μάχη των Τιτάνων', titansSub:'Αληθινές vs. ψεύτικες προσφορές — τελευταίες 30 ημέρες', titansReal:'αληθινές', titansFake:'ψεύτικες', titansNoPromos:'χωρίς προσφορές', titansTracked:'προϊόντα παρακολούθησης', tabBrochures:'Φυλλάδια', brochTitle:'Αυτή την εβδομάδα', brochSub:'Επαληθευμένες προσφορές ανά αλυσίδα', brochFake:'Ψεύτικη!', brochReal:'Αληθινή', brochClaimed:'δηλωθείσα', brochNoData:'Χωρίς φυλλάδιο', brochPromos:'προσφορές', brochExpand:'Δες όλες', brochCollapse:'Απόκρυψη', tabScan:'Σκάνερ', scanBtn:'Σάρωσε barcode', scanHint:'Στρέψε κάμερα στο barcode', scanLookup:'Ψάχνω προϊόν…', scanNotTracked:'Το προϊόν δεν βρίσκεται στη λίστα μας', scanUnknown:'Το προϊόν δεν αναγνωρίστηκε', scanAgain:'Σάρωσε ξανά', scanNoBD:'Το σκάνερ λειτουργεί στο Chrome. Δοκιμάστε με αρχείο:', scanFile:'Επιλέξτε εικόνα', scanMatched:'Αναγνωρίστηκε ως' },
+  tr:{ tabProducts:'Ürünler', tabBasket:'Sepet', tabFridge:'Buzdolabı', tabTable:'Tablo', tabTitans:'Titanlar', chains:'Zincirlere göre fiyatlar', cheapest:'en ucuz', basketTitle:'Zincire göre sepet tutarı', cheapestBasket:'En ucuz sepet', save:'tasarruf', perItem:'Ürün başına en ucuz', recognized:'Buzdolabında tanındı', shopping:'Alışveriş listesi', missing:'eksik', low:'azalıyor', search:'Ürün ara…', cartTitle:'Listem', cartEmpty:'✚ ile ürün ekle', storeAdvice:'Nerede alışveriş yapmalıyım?', covers:'karşılar', of:'/', artItems:'ürün', clearCart:'Temizle', noData:'Yok', titansTitle:'Titanların Savaşı', titansSub:'Gerçek vs. sahte indirimler — son 30 gün', titansReal:'gerçek', titansFake:'sahte', titansNoPromos:'kampanya yok', titansTracked:'takip edilen ürün', tabBrochures:'Broşürler', brochTitle:'Bu hafta', brochSub:'Zincire göre doğrulanmış kampanyalar', brochFake:'Sahte!', brochReal:'Gerçek', brochClaimed:'ilan edilen', brochNoData:'Broşür yok', brochPromos:'kampanya', brochExpand:'Tümünü gör', brochCollapse:'Gizle', tabScan:'Tarayıcı', scanBtn:'Barkod Tara', scanHint:'Kamerayı barkoda doğrult', scanLookup:'Ürün aranıyor…', scanNotTracked:'Ürün takip listemizde yok', scanUnknown:'Ürün tanınmadı', scanAgain:'Tekrar tara', scanNoBD:"Tarayıcı Chrome'da çalışır. Dosyayla deneyin:", scanFile:'Resim seç', scanMatched:'Tanındı:' },
+  sq:{ tabProducts:'Produktet', tabBasket:'Shporta', tabFridge:'Frigorifer', tabTable:'Tabelë', tabTitans:'Titanët', chains:'Çmimet sipas zinxhirëve', cheapest:'më i liri', basketTitle:'Kostoja e shportës sipas zinxhirit', cheapestBasket:'Shporta më e lirë', save:'kurseni', perItem:'Më i liri për produkt', recognized:'Të njohura në frigorifer', shopping:'Lista e blerjeve', missing:'mungon', low:'po mbaron', search:'Kërko produkt…', cartTitle:'Lista ime', cartEmpty:'Shto produkte me ✚', storeAdvice:'Ku të blej?', covers:'mbulon', of:'nga', artItems:'art.', clearCart:'Fshi', noData:'Pa disponueshëm', titansTitle:'Beteja e Titanëve', titansSub:'Zbritje reale vs. të rreme — 30 ditët e fundit', titansReal:'reale', titansFake:'të rreme', titansNoPromos:'pa oferta', titansTracked:'produkte të ndjekura', tabBrochures:'Fletushka', brochTitle:'Kjo javë', brochSub:'Oferta promo të verifikuara sipas zinxhirit', brochFake:'E rreme!', brochReal:'E vërtetë', brochClaimed:'e deklaruar', brochNoData:'Pa fletushkë', brochPromos:'oferta', brochExpand:'Shiko të gjitha', brochCollapse:'Fshih', tabScan:'Skaner', scanBtn:'Skano barkod', scanHint:'Drejtoje kamerën te barkodi', scanLookup:'Po kërkoj produktin…', scanNotTracked:'Produkti nuk është në listën tonë', scanUnknown:'Produkti nuk u njoh', scanAgain:'Skano përsëri', scanNoBD:'Skaneri funksionon në Chrome. Provoni me skedar:', scanFile:'Zgjidh imazh', scanMatched:'U njoh si' },
+  bs:{ tabProducts:'Proizvodi', tabBasket:'Korpa', tabFridge:'Frižider', tabTable:'Tabela', tabTitans:'Titani', chains:'Cijene po lancima', cheapest:'najjeftinije', basketTitle:'Cijena korpe po lancu', cheapestBasket:'Najjeftinija korpa', save:'uštedite', perItem:'Najjeftinije po proizvodu', recognized:'Prepoznato u frižideru', shopping:'Lista za kupovinu', missing:'nedostaje', low:'pri kraju', search:'Pretraži…', cartTitle:'Moja lista', cartEmpty:'Dodaj proizvode sa ✚', storeAdvice:'Gdje kupovati?', covers:'pokriva', of:'od', artItems:'art.', clearCart:'Obriši', noData:'Nema', titansTitle:'Bitka Titana', titansSub:'Prave vs. lažne akcije — posljednjih 30 dana', titansReal:'prave', titansFake:'lažne', titansNoPromos:'bez akcija', titansTracked:'praćena proizvoda', tabBrochures:'Brošure', brochTitle:'Ovaj tjedan', brochSub:'Verificirane promo ponude po lancu', brochFake:'Lažna!', brochReal:'Prava', brochClaimed:'objavljena', brochNoData:'Nema brošure', brochPromos:'akcija', brochExpand:'Vidi sve', brochCollapse:'Sakrij', tabScan:'Skener', scanBtn:'Skeniraj barkod', scanHint:'Usmjeri kameru prema barkodu', scanLookup:'Tražim proizvod…', scanNotTracked:'Proizvod nije na našoj listi', scanUnknown:'Proizvod nije prepoznat', scanAgain:'Skeniraj ponovo', scanNoBD:'Skener radi u Chrome-u. Pokušajte s datotekom:', scanFile:'Odaberi sliku', scanMatched:'Prepoznat kao' },
+  hr:{ tabProducts:'Proizvodi', tabBasket:'Košarica', tabFridge:'Hladnjak', tabTable:'Tablica', tabTitans:'Titani', chains:'Cijene po lancima', cheapest:'najjeftinije', basketTitle:'Cijena košarice po lancu', cheapestBasket:'Najjeftinija košarica', save:'uštedite', perItem:'Najjeftinije po proizvodu', recognized:'Prepoznato u hladnjaku', shopping:'Popis za kupnju', missing:'nedostaje', low:'pri kraju', search:'Traži…', cartTitle:'Moja lista', cartEmpty:'Dodaj proizvode s ✚', storeAdvice:'Gdje kupovati?', covers:'pokriva', of:'od', artItems:'art.', clearCart:'Obriši', noData:'Nema', titansTitle:'Bitka Titana', titansSub:'Prave vs. lažne akcije — zadnjih 30 dana', titansReal:'prave', titansFake:'lažne', titansNoPromos:'bez akcija', titansTracked:'praćena proizvoda', tabBrochures:'Letci', brochTitle:'Ovaj tjedan', brochSub:'Verificirane promo ponude po lancu', brochFake:'Lažna!', brochReal:'Prava', brochClaimed:'objavljena', brochNoData:'Nema letka', brochPromos:'akcija', brochExpand:'Vidi sve', brochCollapse:'Sakrij', tabScan:'Skener', scanBtn:'Skeniraj barkod', scanHint:'Usmjeri kameru prema barkodu', scanLookup:'Tražim proizvod…', scanNotTracked:'Proizvod nije na našom popisu', scanUnknown:'Proizvod nije prepoznat', scanAgain:'Skeniraj ponovo', scanNoBD:'Skener radi u Chromeu. Pokušaj s datotekom:', scanFile:'Odaberi sliku', scanMatched:'Prepoznat kao' },
+  sl:{ tabProducts:'Izdelki', tabBasket:'Košarica', tabFridge:'Hladilnik', tabTable:'Tabela', tabTitans:'Titani', chains:'Cene po trgovinah', cheapest:'najceneje', basketTitle:'Cena košarice po trgovini', cheapestBasket:'Najcenejša košarica', save:'prihranite', perItem:'Najceneje po izdelku', recognized:'Prepoznano v hladilniku', shopping:'Nakupovalni seznam', missing:'manjka', low:'zmanjkuje', search:'Iskanje…', cartTitle:'Moj seznam', cartEmpty:'Dodaj izdelke z ✚', storeAdvice:'Kje kupovati?', covers:'pokriva', of:'od', artItems:'art.', clearCart:'Počisti', noData:'Ni na voljo', titansTitle:'Bitka Titanov', titansSub:'Prave vs. lažne akcije — zadnjih 30 dni', titansReal:'prave', titansFake:'lažne', titansNoPromos:'brez akcij', titansTracked:'sledenih izdelkov', tabBrochures:'Letaki', brochTitle:'Ta teden', brochSub:'Preverjene promo ponudbe po trgovini', brochFake:'Lažna!', brochReal:'Prava', brochClaimed:'navedena', brochNoData:'Ni letaka', brochPromos:'akcij', brochExpand:'Prikaži vse', brochCollapse:'Skrij', tabScan:'Skener', scanBtn:'Skeniraj črtno kodo', scanHint:'Usmeri kamero na črtno kodo', scanLookup:'Iščem izdelek…', scanNotTracked:'Izdelek ni na našem seznamu', scanUnknown:'Izdelek ni prepoznan', scanAgain:'Skeniraj znova', scanNoBD:'Skener deluje v Chromu. Poskusite z datoteko:', scanFile:'Izberi sliko', scanMatched:'Prepoznan kot' },
 };
 
-// Extra BX keys for new 4-tab architecture.
 const BX_EX = {
-  bg: { tabHome:'Начало', tabShop:'Пазарувай', tabPromos:'Промоции', homeDeals:'Реални промоции', homeNoDeals:'Няма реални промоции',
-        tabRecipes:'Рецепти', recipeAdd:'Добави', recipeAddAll:'+ Добави всичко в списъка', recipeAddedAll:'✓ Всички са в списъка',
-        recipeHint:'Избери рецепта → добави съставките в списъка', recipeMin:'мин', recipeServ:'порции', recipeIng:'съставки',
-        listCustomPh:'Добави продукт ръчно…', listRealPromos:'реални промоции в списъка', listSave:'Спестяваш', listCustomTitle:'Мои продукти' },
-  sr: { tabHome:'Početna', tabShop:'Kupovina', tabPromos:'Akcije', homeDeals:'Prave akcije', homeNoDeals:'Nema pravih akcija danas',
-        tabRecipes:'Recepti', recipeAdd:'Dodaj', recipeAddAll:'+ Dodaj sve na listu', recipeAddedAll:'✓ Sve je na listi',
-        recipeHint:'Odaberi recept → dodaj sastojke na listu', recipeMin:'min', recipeServ:'porcije', recipeIng:'sastojci',
-        listCustomPh:'Dodaj ručno…', listRealPromos:'pravih akcija na listi', listSave:'Štedite', listCustomTitle:'Moji proizvodi' },
-  mk: { tabHome:'Дома', tabShop:'Купувај', tabPromos:'Промоции', homeDeals:'Вистински промоции', homeNoDeals:'Нема вистински промоции',
-        tabRecipes:'Рецепти', recipeAdd:'Додај', recipeAddAll:'+ Додај сè во листата', recipeAddedAll:'✓ Сè е во листата',
-        recipeHint:'Избери рецепт → додај состојки во листата', recipeMin:'мин', recipeServ:'порции', recipeIng:'состојки',
-        listCustomPh:'Додај рачно…', listRealPromos:'вистински промоции во листата', listSave:'Заштедуваш', listCustomTitle:'Мои производи' },
-  ro: { tabHome:'Acasă', tabShop:'Cumpărături', tabPromos:'Promoții', homeDeals:'Reduceri reale', homeNoDeals:'Fără reduceri reale azi',
-        tabRecipes:'Rețete', recipeAdd:'Adaugă', recipeAddAll:'+ Adaugă tot pe listă', recipeAddedAll:'✓ Totul e pe listă',
-        recipeHint:'Alege o rețetă → adaugă ingredientele pe listă', recipeMin:'min', recipeServ:'porții', recipeIng:'ingrediente',
-        listCustomPh:'Adaugă manual…', listRealPromos:'reduceri reale pe listă', listSave:'Economisești', listCustomTitle:'Produsele mele' },
-  el: { tabHome:'Αρχική', tabShop:'Αγορά', tabPromos:'Προσφορές', homeDeals:'Αληθινές προσφορές', homeNoDeals:'Δεν υπάρχουν σήμερα',
-        tabRecipes:'Συνταγές', recipeAdd:'Προσθήκη', recipeAddAll:'+ Προσθήκη όλων', recipeAddedAll:'✓ Όλα στη λίστα',
-        recipeHint:'Επίλεξε συνταγή → πρόσθεσε υλικά', recipeMin:'λεπτά', recipeServ:'μερίδες', recipeIng:'υλικά',
-        listCustomPh:'Πρόσθεσε χειροκίνητα…', listRealPromos:'αληθινές προσφορές στη λίστα', listSave:'Εξοικονομείς', listCustomTitle:'Τα προϊόντα μου' },
-  tr: { tabHome:'Ana Sayfa', tabShop:'Alışveriş', tabPromos:'Kampanyalar', homeDeals:'Gerçek indirimler', homeNoDeals:'Bugün gerçek indirim yok',
-        tabRecipes:'Tarifler', recipeAdd:'Ekle', recipeAddAll:'+ Hepsini listeye ekle', recipeAddedAll:'✓ Hepsi listede',
-        recipeHint:'Tarif seç → malzemeleri listeye ekle', recipeMin:'dk', recipeServ:'porsiyon', recipeIng:'malzeme',
-        listCustomPh:'Manuel ekle…', listRealPromos:'gerçek indirim listede', listSave:'Tasarruf', listCustomTitle:'Ürünlerim' },
-  sq: { tabHome:'Kryesorja', tabShop:'Blej', tabPromos:'Ofertat', homeDeals:'Oferta reale', homeNoDeals:'Nuk ka oferta reale sot',
-        tabRecipes:'Receta', recipeAdd:'Shto', recipeAddAll:'+ Shto të gjitha', recipeAddedAll:'✓ Të gjitha janë',
-        recipeHint:'Zgjedh recetë → shto përbërësit', recipeMin:'min', recipeServ:'porcione', recipeIng:'përbërës',
-        listCustomPh:'Shto manualisht…', listRealPromos:'oferta reale në listë', listSave:'Kurseni', listCustomTitle:'Produktet e mia' },
-  bs: { tabHome:'Početna', tabShop:'Kupovina', tabPromos:'Akcije', homeDeals:'Prave akcije', homeNoDeals:'Nema pravih akcija',
-        tabRecipes:'Recepti', recipeAdd:'Dodaj', recipeAddAll:'+ Dodaj sve na listu', recipeAddedAll:'✓ Sve je na listi',
-        recipeHint:'Odaberi recept → dodaj sastojke na listu', recipeMin:'min', recipeServ:'porcije', recipeIng:'sastojci',
-        listCustomPh:'Dodaj ručno…', listRealPromos:'pravih akcija na listi', listSave:'Štedite', listCustomTitle:'Moji proizvodi' },
-  hr: { tabHome:'Početna', tabShop:'Kupovina', tabPromos:'Akcije', homeDeals:'Prave akcije', homeNoDeals:'Nema pravih akcija',
-        tabRecipes:'Recepti', recipeAdd:'Dodaj', recipeAddAll:'+ Dodaj sve na popis', recipeAddedAll:'✓ Sve je na popisu',
-        recipeHint:'Odaberi recept → dodaj sastojke na popis', recipeMin:'min', recipeServ:'porcije', recipeIng:'sastojci',
-        listCustomPh:'Dodaj ručno…', listRealPromos:'pravih akcija na popisu', listSave:'Štedite', listCustomTitle:'Moji proizvodi' },
-  sl: { tabHome:'Domov', tabShop:'Nakup', tabPromos:'Akcije', homeDeals:'Prave akcije', homeNoDeals:'Danes ni pravih akcij',
-        tabRecipes:'Recepti', recipeAdd:'Dodaj', recipeAddAll:'+ Dodaj vse na seznam', recipeAddedAll:'✓ Vse je na seznamu',
-        recipeHint:'Izberi recept → dodaj sestavine na seznam', recipeMin:'min', recipeServ:'porcije', recipeIng:'sestavin',
-        listCustomPh:'Dodaj ročno…', listRealPromos:'pravih akcij na seznamu', listSave:'Prihranite', listCustomTitle:'Moji izdelki' },
+  bg: { tabHome:'Начало', tabShop:'Пазарувай', tabPromos:'Промоции', homeDeals:'Реални промоции', homeNoDeals:'Няма реални промоции', tabRecipes:'Рецепти', recipeAdd:'Добави', recipeAddAll:'+ Добави всичко в списъка', recipeAddedAll:'✓ Всички са в списъка', recipeHint:'Избери рецепта → добави съставките в списъка', recipeMin:'мин', recipeServ:'порции', recipeIng:'съставки', listCustomPh:'Добави продукт ръчно…', listRealPromos:'реални промоции в списъка', listSave:'Спестяваш', listCustomTitle:'Мои продукти' },
+  sr: { tabHome:'Početna', tabShop:'Kupovina', tabPromos:'Akcije', homeDeals:'Prave akcije', homeNoDeals:'Nema pravih akcija danas', tabRecipes:'Recepti', recipeAdd:'Dodaj', recipeAddAll:'+ Dodaj sve na listu', recipeAddedAll:'✓ Sve je na listi', recipeHint:'Odaberi recept → dodaj sastojke na listu', recipeMin:'min', recipeServ:'porcije', recipeIng:'sastojci', listCustomPh:'Dodaj ručno…', listRealPromos:'pravih akcija na listi', listSave:'Štedite', listCustomTitle:'Moji proizvodi' },
+  mk: { tabHome:'Дома', tabShop:'Купувај', tabPromos:'Промоции', homeDeals:'Вистински промоции', homeNoDeals:'Нема вистински промоции', tabRecipes:'Рецепти', recipeAdd:'Додај', recipeAddAll:'+ Додај сè во листата', recipeAddedAll:'✓ Сè е во листата', recipeHint:'Избери рецепт → додај состојки во листата', recipeMin:'мин', recipeServ:'порции', recipeIng:'состојки', listCustomPh:'Додај рачно…', listRealPromos:'вистински промоции во листата', listSave:'Заштедуваш', listCustomTitle:'Мои производи' },
+  ro: { tabHome:'Acasă', tabShop:'Cumpărături', tabPromos:'Promoții', homeDeals:'Reduceri reale', homeNoDeals:'Fără reduceri reale azi', tabRecipes:'Rețete', recipeAdd:'Adaugă', recipeAddAll:'+ Adaugă tot pe listă', recipeAddedAll:'✓ Totul e pe listă', recipeHint:'Alege o rețetă → adaugă ingredientele pe listă', recipeMin:'min', recipeServ:'porții', recipeIng:'ingrediente', listCustomPh:'Adaugă manual…', listRealPromos:'reduceri reale pe listă', listSave:'Economisești', listCustomTitle:'Produsele mele' },
+  el: { tabHome:'Αρχική', tabShop:'Αγορά', tabPromos:'Προσφορές', homeDeals:'Αληθινές προσφορές', homeNoDeals:'Δεν υπάρχουν σήμερα', tabRecipes:'Συνταγές', recipeAdd:'Προσθήκη', recipeAddAll:'+ Προσθήκη όλων', recipeAddedAll:'✓ Όλα στη λίστα', recipeHint:'Επίλεξε συνταγή → πρόσθεσε υλικά', recipeMin:'λεπτά', recipeServ:'μερίδες', recipeIng:'υλικά', listCustomPh:'Πρόσθεσε χειροκίνητα…', listRealPromos:'αληθινές προσφορές στη λίστα', listSave:'Εξοικονομείς', listCustomTitle:'Τα προϊόντα μου' },
+  tr: { tabHome:'Ana Sayfa', tabShop:'Alışveriş', tabPromos:'Kampanyalar', homeDeals:'Gerçek indirimler', homeNoDeals:'Bugün gerçek indirim yok', tabRecipes:'Tarifler', recipeAdd:'Ekle', recipeAddAll:'+ Hepsini listeye ekle', recipeAddedAll:'✓ Hepsi listede', recipeHint:'Tarif seç → malzemeleri listeye ekle', recipeMin:'dk', recipeServ:'porsiyon', recipeIng:'malzeme', listCustomPh:'Manuel ekle…', listRealPromos:'gerçek indirim listede', listSave:'Tasarruf', listCustomTitle:'Ürünlerim' },
+  sq: { tabHome:'Kryesorja', tabShop:'Blej', tabPromos:'Ofertat', homeDeals:'Oferta reale', homeNoDeals:'Nuk ka oferta reale sot', tabRecipes:'Receta', recipeAdd:'Shto', recipeAddAll:'+ Shto të gjitha', recipeAddedAll:'✓ Të gjitha janë', recipeHint:'Zgjedh recetë → shto përbërësit', recipeMin:'min', recipeServ:'porcione', recipeIng:'përbërës', listCustomPh:'Shto manualisht…', listRealPromos:'oferta reale në listë', listSave:'Kurseni', listCustomTitle:'Produktet e mia' },
+  bs: { tabHome:'Početna', tabShop:'Kupovina', tabPromos:'Akcije', homeDeals:'Prave akcije', homeNoDeals:'Nema pravih akcija', tabRecipes:'Recepti', recipeAdd:'Dodaj', recipeAddAll:'+ Dodaj sve na listu', recipeAddedAll:'✓ Sve je na listi', recipeHint:'Odaberi recept → dodaj sastojke na listu', recipeMin:'min', recipeServ:'porcije', recipeIng:'sastojci', listCustomPh:'Dodaj ručno…', listRealPromos:'pravih akcija na listi', listSave:'Štedite', listCustomTitle:'Moji proizvodi' },
+  hr: { tabHome:'Početna', tabShop:'Kupovina', tabPromos:'Akcije', homeDeals:'Prave akcije', homeNoDeals:'Nema pravih akcija', tabRecipes:'Recepti', recipeAdd:'Dodaj', recipeAddAll:'+ Dodaj sve na popis', recipeAddedAll:'✓ Sve je na popisu', recipeHint:'Odaberi recept → dodaj sastojke na popis', recipeMin:'min', recipeServ:'porcije', recipeIng:'sastojci', listCustomPh:'Dodaj ručno…', listRealPromos:'pravih akcija na popisu', listSave:'Štedite', listCustomTitle:'Moji proizvodi' },
+  sl: { tabHome:'Domov', tabShop:'Nakup', tabPromos:'Akcije', homeDeals:'Prave akcije', homeNoDeals:'Danes ni pravih akcij', tabRecipes:'Recepti', recipeAdd:'Dodaj', recipeAddAll:'+ Dodaj vse na seznam', recipeAddedAll:'✓ Vse je na seznamu', recipeHint:'Izberi recept → dodaj sestavine na seznam', recipeMin:'min', recipeServ:'porcije', recipeIng:'sestavin', listCustomPh:'Dodaj ročno…', listRealPromos:'pravih akcij na seznamu', listSave:'Prihranite', listCustomTitle:'Moji izdelki' },
 };
 Object.keys(BX_EX).forEach(lang => BX[lang] && Object.assign(BX[lang], BX_EX[lang]));
 
-// Hero strings (savings dashboard).
 const FILTER_ALL = { bg:'Всички', sr:'Sve', mk:'Сите', ro:'Toate', el:'Όλα', tr:'Tümü', sq:'Të gjitha', bs:'Sve', hr:'Sve', sl:'Vse' };
 const NO_MATCH = { bg:'Няма продукти в тази категория', sr:'Nema proizvoda u ovoj kategoriji', mk:'Нема производи во оваа категорија', ro:'Niciun produs în această categorie', el:'Δεν υπάρχουν προϊόντα σε αυτή την κατηγορία', tr:'Bu kategoride ürün yok', sq:'Nuk ka produkte në këtë kategori', bs:'Nema proizvoda u ovoj kategoriji', hr:'Nema proizvoda u ovoj kategoriji', sl:'Ni izdelkov v tej kategoriji' };
 const HX = {
@@ -739,59 +505,22 @@ const HX = {
   sl:{ saved:'Prihranite s pravimi akcijami', promos:'pravih akcij', fakes:'zavajajočih akcij', period:'zadnjih 30 dni' },
 };
 
-const EMOJI = {
-  milk:'🥛', oil:'🌻', cheese:'🧀', coffee:'☕', flour:'🌾', sugar:'🍬',
-  bread:'🍞', rice:'🍚', tomatoes:'🍅', oliveoil:'🫒', pasta:'🍝', feta:'🧆',
-  bananas:'🍌', chicken:'🍗', water:'💧', eggs:'🥚', butter:'🧈', yogurt:'🥛',
-  potato:'🥔', onion:'🧅', apple:'🍎', salt:'🧂', cucumber:'🥒',
-};
+const EMOJI = { milk:'🥛', oil:'🌻', cheese:'🧀', coffee:'☕', flour:'🌾', sugar:'🍬', bread:'🍞', rice:'🍚', tomatoes:'🍅', oliveoil:'🫒', pasta:'🍝', feta:'🧆', bananas:'🍌', chicken:'🍗', water:'💧', eggs:'🥚', butter:'🧈', yogurt:'🥛', potato:'🥔', onion:'🧅', apple:'🍎', salt:'🧂', cucumber:'🥒' };
 const emojiOf = id => EMOJI[id] || '🛒';
 
 const RECIPES = [
-  { id:'shopska', icon:'🥗',
-    name:{bg:'Шопска салата',sr:'Šopska salata',mk:'Шопска салата',ro:'Salată Şopska',el:'Σόπσκα σαλάτα',tr:'Şopska salatası',sq:'Sallata Shopska',bs:'Šopska salata',hr:'Šopska salata',sl:'Šopska solata'},
-    time:15, servings:4,
-    ingredients:[{id:'tomatoes',qty:'500 г'},{id:'cucumber',qty:'2 бр.'},{id:'feta',qty:'200 г'},{id:'oliveoil',qty:'3 с.л.'},{id:'salt',qty:'на вкус'}] },
-  { id:'omlet', icon:'🍳',
-    name:{bg:'Омлет',sr:'Omlet',mk:'Омлет',ro:'Omletă',el:'Ομελέτα',tr:'Omlet',sq:'Omëletë',bs:'Omlet',hr:'Omlet',sl:'Omleta'},
-    time:10, servings:2,
-    ingredients:[{id:'eggs',qty:'3 бр.'},{id:'milk',qty:'50 мл'},{id:'butter',qty:'1 с.л.'},{id:'salt',qty:'на вкус'}] },
-  { id:'smoothie', icon:'🍌',
-    name:{bg:'Банански смути',sr:'Bananin smoothie',mk:'Банански смути',ro:'Smoothie de banane',el:'Smoothie μπανάνας',tr:'Muzlu smoothie',sq:'Smoothie me banane',bs:'Bananin smoothie',hr:'Bananin smoothie',sl:'Bananin smoothie'},
-    time:5, servings:2,
-    ingredients:[{id:'bananas',qty:'2 бр.'},{id:'milk',qty:'300 мл'},{id:'yogurt',qty:'150 г'}] },
-  { id:'pileshka_supa', icon:'🍲',
-    name:{bg:'Пилешка супа',sr:'Pileća čorba',mk:'Пилешка чорба',ro:'Supă de pui',el:'Κοτόσουπα',tr:'Tavuk çorbası',sq:'Supë pule',bs:'Pileća čorba',hr:'Pileća juha',sl:'Piščančja juha'},
-    time:60, servings:4,
-    ingredients:[{id:'chicken',qty:'600 г'},{id:'potato',qty:'2 бр.'},{id:'onion',qty:'1 бр.'},{id:'salt',qty:'на вкус'}] },
-  { id:'banica', icon:'🥐',
-    name:{bg:'Баница',sr:'Banica',mk:'Баница',ro:'Banica',el:'Μπάνιτσα',tr:'Banitsa',sq:'Banica',bs:'Banica',hr:'Banica',sl:'Banica'},
-    time:45, servings:8,
-    ingredients:[{id:'flour',qty:'500 г'},{id:'eggs',qty:'3 бр.'},{id:'feta',qty:'400 г'},{id:'butter',qty:'100 г'}] },
-  { id:'pileshko_oriz', icon:'🍗',
-    name:{bg:'Пилешко с ориз',sr:'Piletina s pirinčem',mk:'Пилешко со ориз',ro:'Pui cu orez',el:'Κοτόπουλο με ρύζι',tr:'Tavuklu pilav',sq:'Pulë me oriz',bs:'Piletina s rižom',hr:'Piletina s rižom',sl:'Piščanec z rižem'},
-    time:40, servings:4,
-    ingredients:[{id:'chicken',qty:'500 г'},{id:'rice',qty:'200 г'},{id:'onion',qty:'1 бр.'},{id:'salt',qty:'на вкус'}] },
-  { id:'pasta', icon:'🍝',
-    name:{bg:'Спагети с масло',sr:'Špagete s puterom',mk:'Шпагети со масло',ro:'Spaghete cu unt',el:'Μακαρόνια με βούτυρο',tr:'Tereyağlı spagetti',sq:'Spageta me gjalpë',bs:'Špagete s maslacem',hr:'Špagete s maslacem',sl:'Špagetke z maslom'},
-    time:20, servings:2,
-    ingredients:[{id:'pasta',qty:'200 г'},{id:'butter',qty:'2 с.л.'},{id:'salt',qty:'на вкус'}] },
-  { id:'kartofena_salata', icon:'🥔',
-    name:{bg:'Картофена салата',sr:'Krompir salata',mk:'Компирска салата',ro:'Salată de cartofi',el:'Πατατοσαλάτα',tr:'Patates salatası',sq:'Sallata me patate',bs:'Krompir salata',hr:'Krumpirova salata',sl:'Krompirjeva solata'},
-    time:30, servings:4,
-    ingredients:[{id:'potato',qty:'500 г'},{id:'onion',qty:'1 бр.'},{id:'oliveoil',qty:'3 с.л.'},{id:'salt',qty:'на вкус'}] },
-  { id:'zakuska', icon:'☕',
-    name:{bg:'Закуска с кафе',sr:'Doručak s kafom',mk:'Појадок со кафе',ro:'Mic dejun cu cafea',el:'Πρωινό με καφέ',tr:'Kahveli kahvaltı',sq:'Mëngjes me kafe',bs:'Doručak s kafom',hr:'Doručak s kavom',sl:'Zajtrk s kavo'},
-    time:10, servings:1,
-    ingredients:[{id:'coffee',qty:'1 к.л.'},{id:'milk',qty:'200 мл'},{id:'sugar',qty:'1 к.л.'},{id:'bread',qty:'2 филии'},{id:'butter',qty:'1 с.л.'}] },
-  { id:'yogurt_apple', icon:'🍎',
-    name:{bg:'Кисело мляко с ябълка',sr:'Jogurt s jabukom',mk:'Кисело млеко со јаболко',ro:'Iaurt cu măr',el:'Γιαούρτι με μήλο',tr:'Elmalı yoğurt',sq:'Kos me mollë',bs:'Jogurt s jabukom',hr:'Jogurt s jabukom',sl:'Jogurt z jabolkom'},
-    time:5, servings:1,
-    ingredients:[{id:'yogurt',qty:'200 г'},{id:'apple',qty:'1 бр.'}] },
+  { id:'shopska', icon:'🥗', name:{bg:'Шопска салата',sr:'Šopska salata',mk:'Шопска салата',ro:'Salată Şopska',el:'Σόπσκα σαλάτα',tr:'Şopska salatası',sq:'Sallata Shopska',bs:'Šopska salata',hr:'Šopska salata',sl:'Šopska solata'}, time:15, servings:4, ingredients:[{id:'tomatoes',qty:'500 г'},{id:'cucumber',qty:'2 бр.'},{id:'feta',qty:'200 г'},{id:'oliveoil',qty:'3 с.л.'},{id:'salt',qty:'на вкус'}] },
+  { id:'omlet', icon:'🍳', name:{bg:'Омлет',sr:'Omlet',mk:'Омлет',ro:'Omletă',el:'Ομελέτα',tr:'Omlet',sq:'Omëletë',bs:'Omlet',hr:'Omlet',sl:'Omleta'}, time:10, servings:2, ingredients:[{id:'eggs',qty:'3 бр.'},{id:'milk',qty:'50 мл'},{id:'butter',qty:'1 с.л.'},{id:'salt',qty:'на вкус'}] },
+  { id:'smoothie', icon:'🍌', name:{bg:'Банански смути',sr:'Bananin smoothie',mk:'Банански смути',ro:'Smoothie de banane',el:'Smoothie μπανάνας',tr:'Muzlu smoothie',sq:'Smoothie me banane',bs:'Bananin smoothie',hr:'Bananin smoothie',sl:'Bananin smoothie'}, time:5, servings:2, ingredients:[{id:'bananas',qty:'2 бр.'},{id:'milk',qty:'300 мл'},{id:'yogurt',qty:'150 г'}] },
+  { id:'pileshka_supa', icon:'🍲', name:{bg:'Пилешка супа',sr:'Pileća čorba',mk:'Пилешка чорба',ro:'Supă de pui',el:'Κοτόσουπα',tr:'Tavuk çorbası',sq:'Supë pule',bs:'Pileća čorba',hr:'Pileća juha',sl:'Piščančja juha'}, time:60, servings:4, ingredients:[{id:'chicken',qty:'600 г'},{id:'potato',qty:'2 бр.'},{id:'onion',qty:'1 бр.'},{id:'salt',qty:'на вкус'}] },
+  { id:'banica', icon:'🥐', name:{bg:'Баница',sr:'Banica',mk:'Баница',ro:'Banica',el:'Μπάνιτσα',tr:'Banitsa',sq:'Banica',bs:'Banica',hr:'Banica',sl:'Banica'}, time:45, servings:8, ingredients:[{id:'flour',qty:'500 г'},{id:'eggs',qty:'3 бр.'},{id:'feta',qty:'400 г'},{id:'butter',qty:'100 г'}] },
+  { id:'pileshko_oriz', icon:'🍗', name:{bg:'Пилешко с ориз',sr:'Piletina s pirinčem',mk:'Пилешко со ориз',ro:'Pui cu orez',el:'Κοτόπουλο με ρύζι',tr:'Tavuklu pilav',sq:'Pulë me oriz',bs:'Piletina s rižom',hr:'Piletina s rižom',sl:'Piščanec z rižem'}, time:40, servings:4, ingredients:[{id:'chicken',qty:'500 г'},{id:'rice',qty:'200 г'},{id:'onion',qty:'1 бр.'},{id:'salt',qty:'на вкус'}] },
+  { id:'pasta', icon:'🍝', name:{bg:'Спагети с масло',sr:'Špagete s puterom',mk:'Шпагети со масло',ro:'Spaghete cu unt',el:'Μακαρόνια με βούτυρο',tr:'Tereyağlı spagetti',sq:'Spageta me gjalpë',bs:'Špagete s maslacem',hr:'Špagete s maslacem',sl:'Špagetke z maslom'}, time:20, servings:2, ingredients:[{id:'pasta',qty:'200 г'},{id:'butter',qty:'2 с.л.'},{id:'salt',qty:'на вкус'}] },
+  { id:'kartofena_salata', icon:'🥔', name:{bg:'Картофена салата',sr:'Krompir salata',mk:'Компирска салата',ro:'Salată de cartofi',el:'Πατατοσαλάτα',tr:'Patates salatası',sq:'Sallata me patate',bs:'Krompir salata',hr:'Krumpirova salata',sl:'Krompirjeva solata'}, time:30, servings:4, ingredients:[{id:'potato',qty:'500 г'},{id:'onion',qty:'1 бр.'},{id:'oliveoil',qty:'3 с.л.'},{id:'salt',qty:'на вкус'}] },
+  { id:'zakuska', icon:'☕', name:{bg:'Закуска с кафе',sr:'Doručak s kafom',mk:'Појадок со кафе',ro:'Mic dejun cu cafea',el:'Πρωινό με καφέ',tr:'Kahveli kahvaltı',sq:'Mëngjes me kafe',bs:'Doručak s kafom',hr:'Doručak s kavom',sl:'Zajtrk s kavo'}, time:10, servings:1, ingredients:[{id:'coffee',qty:'1 к.л.'},{id:'milk',qty:'200 мл'},{id:'sugar',qty:'1 к.л.'},{id:'bread',qty:'2 филии'},{id:'butter',qty:'1 с.л.'}] },
+  { id:'yogurt_apple', icon:'🍎', name:{bg:'Кисело мляко с ябълка',sr:'Jogurt s jabukom',mk:'Кисело млеко со јаболко',ro:'Iaurt cu măr',el:'Γιαούρτι με μήλο',tr:'Elmalı yoğurt',sq:'Kos me mollë',bs:'Jogurt s jabukom',hr:'Jogurt s jabukom',sl:'Jogurt z jabolkom'}, time:5, servings:1, ingredients:[{id:'yogurt',qty:'200 г'},{id:'apple',qty:'1 бр.'}] },
 ];
 
-// Hand-authored flat SVG product illustrations (viewBox 0 0 40 40).
-// Replaces emoji with a consistent, theme-friendly icon set — zero deps.
 const PROD_SVG = {
   milk:'<svg viewBox="0 0 40 40"><path d="M12 16l8-6 8 6v18a2 2 0 0 1-2 2H14a2 2 0 0 1-2-2V16z" fill="#e3eefb" stroke="#9cc0ec" stroke-width="1.5"/><path d="M12 16l8-6 8 6z" fill="#cfe2fa"/><rect x="17" y="20" width="6" height="9" rx="1" fill="#3b82f6"/></svg>',
   oil:'<svg viewBox="0 0 40 40"><rect x="16" y="6" width="8" height="5" rx="1" fill="#f59e0b"/><path d="M15 13h10l2 6v15a3 3 0 0 1-3 3H16a3 3 0 0 1-3-3V19l2-6z" fill="#fcd34d" stroke="#eab308" stroke-width="1.2"/><rect x="16" y="22" width="8" height="9" rx="1.5" fill="#fff" opacity=".55"/></svg>',
@@ -834,8 +563,18 @@ let scanStream = null;
 let openRecipe = null;
 let customList = [];
 
-// Store chains per market — a mix of domestic and foreign (international)
-// chains. Illustrative: real footprints vary.
+// ── Smart Search state ────────────────────────────────────────────────────
+let aiFilterIds = null;   // null=всичко, []=0 резултата, [id,...]=AI резултати
+let chainFilter = null;   // верига за локален филтър
+let searchDebounceTimer = null;
+
+// Кирилични псевдоними за вериги
+const CHAIN_ALIASES = {
+  'лидл':'Lidl', 'кауфланд':'Kaufland', 'кауф':'Kaufland',
+  'була':'Billa', 'фантастико':'Fantastico', 'фантас':'Fantastico',
+  'т маркет':'T Market', 'тмаркет':'T Market',
+};
+
 const CHAINS_BY_COUNTRY = {
   BG:['Lidl','Kaufland','Billa','Fantastico'],
   RS:['Lidl','Maxi','Idea','Univerexport'],
@@ -850,16 +589,98 @@ const CHAINS_BY_COUNTRY = {
   GR:['Sklavenitis','AB Vasilopoulos','Lidl','Masoutis'],
   TR:['BİM','A101','Migros','Carrefour'],
 };
-// Deterministic per-(chain,product) spread [0,12%] — fallback for non-BG markets.
+
+function matchChain(q) {
+  const ql = q.trim().toLowerCase();
+  if (CHAIN_ALIASES[ql]) return CHAIN_ALIASES[ql];
+  const aliasMatch = Object.keys(CHAIN_ALIASES).find(a => a.startsWith(ql) && ql.length >= 3);
+  if (aliasMatch) return CHAIN_ALIASES[aliasMatch];
+  const chains = CHAINS_BY_COUNTRY[country.code] || [];
+  return chains.find(c => c.toLowerCase().startsWith(ql) || ql.startsWith(c.toLowerCase())) || null;
+}
+
+function showAiMsg(msg, isErr=false) {
+  const box = document.getElementById('ai-msg-box');
+  if (!box) return;
+  box.innerHTML = msg ? `<div class="ai-msg${isErr?' err':''}">${msg}</div>` : '';
+}
+
+function looksNatural(q) {
+  if (q.trim().split(/\s+/).length >= 2) return true;
+  return !products.some(p => {
+    const meta = PRODUCTS[p.id]; if (!meta) return false;
+    const name = (meta.name[country.lang] || meta.name.bg || '').toLowerCase();
+    return name.includes(q.toLowerCase());
+  });
+}
+
+async function doSmartSearch(q) {
+  const spinner = document.getElementById('search-spinner');
+  if (spinner) spinner.classList.add('active');
+  showAiMsg('');
+  const catalog = products.map(p => {
+    const offers = offersFor(p);
+    return { id:p.id, name_bg:(PRODUCTS[p.id]?.name?.bg||p.id), verdict:p.verdict, discount_pct:p.discount_pct||0, current_price:p.current_price, best_chain:offers[0]?.chain||'' };
+  });
+  try {
+    const res = await fetch('/api/search', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({query:q, products:catalog, lang:country.lang}) });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error||'Грешка');
+    aiFilterIds = data.ids || []; chainFilter = null; query = '';
+    showAiMsg(data.message || '');
+    renderProducts();
+  } catch(err) {
+    aiFilterIds=null; chainFilter=null; query=q.toLowerCase();
+    showAiMsg('⚠️ ' + err.message, true);
+    renderProducts();
+  } finally {
+    if (spinner) spinner.classList.remove('active');
+  }
+}
+
+function onSearchInput(val) {
+  clearTimeout(searchDebounceTimer);
+  if (!val) { aiFilterIds=null; chainFilter=null; query=''; showAiMsg(''); renderProducts(); return; }
+  // Верига → веднага локално
+  const chain = matchChain(val);
+  if (chain) {
+    aiFilterIds=null; chainFilter=chain; query='';
+    showAiMsg(`Цени в ${chain}`);
+    if (!(view==='shop' && shopTab==='products')) { view='shop'; shopTab='products'; render(); } else renderProducts();
+    return;
+  }
+  // Кратко/точно → локално търсене
+  if (val.length < 3 || !looksNatural(val)) {
+    aiFilterIds=null; chainFilter=null; query=val.toLowerCase(); showAiMsg('');
+    if (query && !(view==='shop' && shopTab==='products')) { view='shop'; shopTab='products'; render(); } else renderProducts();
+  } else {
+    // Естествен език → debounce 800ms
+    searchDebounceTimer = setTimeout(() => {
+      if (!(view==='shop' && shopTab==='products')) { view='shop'; shopTab='products'; render(); }
+      doSmartSearch(val);
+    }, 800);
+  }
+}
+function onSearchKey(e) {
+  if (e.key === 'Enter') {
+    clearTimeout(searchDebounceTimer);
+    const val = e.target.value;
+    if (!val) return;
+    const chain = matchChain(val);
+    if (chain) { onSearchInput(val); return; }
+    if (!(view==='shop' && shopTab==='products')) { view='shop'; shopTab='products'; render(); }
+    doSmartSearch(val);
+  }
+}
+// ── End Smart Search ──────────────────────────────────────────────────────
+
 function chainDelta(chain, pid) {
   let h = 0; const s = chain + '|' + pid;
   for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
   return (h % 13) / 100;
 }
 function offersFor(p) {
-  // Use real chain prices from data.js when available (BG market).
   if (p.offers && p.offers.length) return p.offers.map(o => ({...o}));
-  // Fallback: synthetic spread for other markets.
   const chains = CHAINS_BY_COUNTRY[country.code] || [];
   const raw = chains.map(c => ({ chain: c, d: chainDelta(c, p.id) }));
   const minD = Math.min(...raw.map(r => r.d));
@@ -868,8 +689,8 @@ function offersFor(p) {
 }
 
 const ddmm = iso => { if(!iso) return ''; const [ , m, d] = iso.split('-'); return d + '.' + m; };
-const disp = x => x.toFixed(country.dec).replace('.', ',');        // a converted number
-const money = vBgn => vBgn == null ? '—' : disp(vBgn * country.fx) + ' ' + country.sym;
+const disp = x => x.toFixed(country.dec).replace('.', ',');
+const money = vBgn => vBgn == null ? '—' : disp(vBgn * country.fx) + ' ' + country.sym;
 const unitLabel = kind => country.sym + '/' + UNIT[kind][country.lang];
 const unitWord = kind => (UNIT[kind] ? UNIT[kind][country.lang] : '');
 const fmtQty = v => Number.isInteger(v) ? String(v) : String(Math.round(v * 100) / 100);
@@ -907,20 +728,6 @@ function renderChrome() {
   document.getElementById('footer').textContent = t().footer;
 }
 
-// Single-screen accordion: one compact row per product; tap to expand its
-// chart + summary inline, without leaving the screen.
-function doSearch(q) {
-  query = q.trim().toLowerCase();
-  active = -1;
-  // Search lives in the header now — typing from any tab jumps to the product list.
-  if (query && !(view === 'shop' && shopTab === 'products')) {
-    view = 'shop'; shopTab = 'products';
-    render();
-  } else {
-    renderProducts();
-  }
-}
-
 const VERDICT_FILTERS = ['all', 'green', 'red', 'yellow'];
 function renderFilters() {
   const counts = { all: products.length, green: 0, yellow: 0, red: 0, gray: 0 };
@@ -935,11 +742,7 @@ function renderFilters() {
 }
 function setFilter(f) { verdictFilter = f; active = -1; renderProducts(); renderFilters(); }
 function rowKey(e, i) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(i); } }
-function toggleCart(id) {
-  cart[id] = cart[id] ? 0 : 1;
-  renderProducts();
-  renderTabs(); // update badge on basket tab
-}
+function toggleCart(id) { cart[id] = cart[id] ? 0 : 1; renderProducts(); renderTabs(); }
 function cartIds() { return Object.keys(cart).filter(id => cart[id]); }
 function cartSize() { return cartIds().length; }
 function analyzeStores() {
@@ -977,14 +780,35 @@ function sparkline(series, w=58, h=20) {
 }
 
 function renderProducts() {
-  let filtered = query
-    ? products.filter(p => { const m = PRODUCTS[p.id]; const n = m ? (m.name[country.lang] || m.name.bg || '') : p.id; return n.toLowerCase().includes(query); })
-    : products;
-  if (verdictFilter !== 'all') filtered = filtered.filter(p => p.verdict === verdictFilter);
+  let filtered;
+
+  if (chainFilter) {
+    // Верига филтър → всички продукти сортирани по цена в тази верига
+    filtered = products.slice().sort((a,b) => {
+      const pa = offersFor(a).find(o=>o.chain===chainFilter)?.price ?? Infinity;
+      const pb = offersFor(b).find(o=>o.chain===chainFilter)?.price ?? Infinity;
+      return pa - pb;
+    });
+  } else if (aiFilterIds !== null) {
+    // AI резултати
+    filtered = aiFilterIds.map(id => products.find(p => p.id === id)).filter(Boolean);
+    if (!filtered.length) {
+      document.getElementById('cards').innerHTML = `<div class="empty-filter">Няма намерени продукти</div>`;
+      return;
+    }
+  } else {
+    // Обичайно търсене
+    filtered = query
+      ? products.filter(p => { const m = PRODUCTS[p.id]; const n = m ? (m.name[country.lang] || m.name.bg || '') : p.id; return n.toLowerCase().includes(query); })
+      : products;
+    if (verdictFilter !== 'all') filtered = filtered.filter(p => p.verdict === verdictFilter);
+  }
+
   if (!filtered.length) {
     document.getElementById('cards').innerHTML = `<div class="empty-filter">${NO_MATCH[country.lang]}</div>`;
     return;
   }
+
   document.getElementById('cards').innerHTML = filtered.map((p, i) => {
     const meta = PRODUCTS[p.id];
     const on = i === active;
@@ -993,12 +817,15 @@ function renderProducts() {
     const unit = p.current_unit_price == null ? ''
         : ` <small>· ${disp(p.current_unit_price*country.fx)} ${unitLabel(p.unit_kind)}</small>`;
     const inCart = !!cart[p.id];
+    // При верига филтър показваме цената за тази верига
+    const chainPrice = chainFilter ? offersFor(p).find(o=>o.chain===chainFilter)?.price : null;
+    const displayMoney = chainPrice != null ? money(chainPrice) : money(p.current_price);
     const rowHtml = `
       <div class="prow ${on?'on':''}" role="button" tabindex="0" onclick="select(${i})" onkeydown="rowKey(event,${i})" data-v="${p.verdict}" style="--vc:${C[p.verdict]}">
         <span class="ill">${productIcon(p.id)}</span>
         <span class="pnm">${meta.name[country.lang]} <span class="vtag" style="background:${C[p.verdict]}">${TAG[p.verdict][country.lang]}</span><small>${meta.pack[country.lang]}${unit}</small></span>
         <button class="cadd ${inCart?'in':''}" onclick="event.stopPropagation();toggleCart('${p.id}')" aria-label="${meta.name[country.lang]}">${inCart?'✓':'+'}</button>
-        <span class="ppr">${money(p.current_price)}${disc}${sparkline(p.series)}</span>
+        <span class="ppr">${displayMoney}${disc}${sparkline(p.series)}</span>
       </div>`;
     return rowHtml + (on ? detailHTML(p) : '');
   }).join('');
@@ -1035,7 +862,6 @@ function row(pillColor, label, value, dateIso) {
   const date = dateIso ? ` <span class="date">· ${ddmm(dateIso)}</span>` : '';
   return `<tr><td>${pill}${label}</td><td>${value}${date}</td></tr>`;
 }
-
 
 function renderHero() {
   const H = HX[country.lang];
@@ -1081,7 +907,7 @@ function renderFridge() {
     <div class="irow"><span>${picon(r.id)} ${nameOf(r.id)}</span>
       <span>${fmtQty(r.quantity)} ${unitWord(r.unit)} · ${Math.round(r.confidence*100)}%</span></div>`).join('');
   const shopping = F.shopping.map(s => {
-    const prod = products.find(p => p.id === s.id);  // links to стълб 1 verdict
+    const prod = products.find(p => p.id === s.id);
     const pill = prod ? `<span class="tag" style="background:${C[prod.verdict]};margin-left:7px">${TAG[prod.verdict][country.lang]}</span>` : '';
     const reason = s.reason_code === 'missing' ? X.missing : X.low;
     return `<div class="brow"><span>${picon(s.id)} ${nameOf(s.id)}${pill}</span>
@@ -1127,7 +953,6 @@ function renderBasket() {
     return;
   }
 
-  // Savings summary for tracked items in list
   let listSaved = 0, realInList = 0;
   ids.forEach(id => {
     const p = products.find(p => p.id === id);
@@ -1144,7 +969,6 @@ function renderBasket() {
       <span class="ls-amt">${X.listSave} ${disp(listSaved * country.fx)} ${country.sym}</span>
     </div>` : '';
 
-  // Items with verdict badge
   const itemRows = ids.map(id => {
     const p = products.find(p => p.id === id), meta = PRODUCTS[id];
     const name = meta ? (meta.name[lang] || meta.name.bg) : id;
@@ -1156,7 +980,6 @@ function renderBasket() {
     </div>`;
   }).join('');
 
-  // Store analysis
   const analysis = analyzeStores();
   const n = ids.length;
   const storeRows = analysis.map((s, i) => {
@@ -1325,7 +1148,7 @@ function drawChart(p, col) {
       plugins:{
         zones:{ median:medianDisp },
         legend:{ display:true, labels:{ boxWidth:12, font:{size:11} } },
-        tooltip:{ callbacks:{ label:c => c.dataset.label + ': ' + disp(c.parsed.y) + ' ' + country.sym } },
+        tooltip:{ callbacks:{ label:c => c.dataset.label + ': ' + disp(c.parsed.y) + ' ' + country.sym } },
       },
       scales:{
         x:{ ticks:{ maxTicksLimit:7, font:{size:10}, color:'#94a3b8' }, grid:{ display:false } },
@@ -1336,7 +1159,7 @@ function drawChart(p, col) {
   });
 }
 
-let brochOpen = {};  // chain → expanded bool
+let brochOpen = {};
 
 function renderBrochures() {
   const X = BX[country.lang];
@@ -1352,7 +1175,7 @@ function renderBrochures() {
     return `<span style="background:${col};color:#fff;font-size:9px;font-weight:750;padding:1px 6px;border-radius:999px;margin-left:5px">${label}</span>`;
   };
   const chains = BD.chains.map(ch => {
-    const isOpen = brochOpen[ch.chain] !== false;  // open by default
+    const isOpen = brochOpen[ch.chain] !== false;
     const items = ch.items;
     const fakeN = items.filter(it => it.verdict === 'red').length;
     const realN = items.filter(it => it.verdict === 'green').length;
@@ -1401,7 +1224,6 @@ function renderTitans() {
   const cards = data.map((t, i) => {
     const hasPromos = t.total_promos > 0;
     const realPct = hasPromos ? Math.round(100 * t.real / t.total_promos) : null;
-    const fakePct = hasPromos ? 100 - realPct : null;
     const bar = hasPromos ? `
       <div class="titan-bar-wrap">
         <div class="titan-bar-real" style="width:${realPct}%"></div>
@@ -1412,18 +1234,16 @@ function renderTitans() {
         <span style="color:var(--red)">✕ ${t.fake} ${X.titansFake}</span>
       </div>` : `<div style="color:var(--muted);font-size:12px;margin-top:6px">${X.titansNoPromos}</div>`;
     const scoreStyle = !hasPromos ? 'color:var(--muted)' : realPct >= 70 ? 'color:var(--green)' : realPct >= 40 ? 'color:var(--yellow)' : 'color:var(--red)';
-    const scoreText = hasPromos ? `${realPct}%` : '—';
     return `<div class="titan-card">
       <div style="display:flex;align-items:center;gap:6px">
         <span class="titan-rank">${medals[i] || (i+1+'.')}</span>
         <span class="titan-name">${t.chain}</span>
-        <span class="titan-score" style="${scoreStyle}">${scoreText}</span>
+        <span class="titan-score" style="${scoreStyle}">${hasPromos?realPct+'%':'—'}</span>
       </div>
       ${bar}
       <div style="font-size:11px;color:var(--muted);margin-top:5px">${t.products_tracked} ${X.titansTracked}</div>
     </div>`;
   }).join('');
-
   document.getElementById('basket').innerHTML = `
     <div class="titan-hero">
       <div class="th-title">⚔️ ${X.titansTitle}</div>
@@ -1434,31 +1254,20 @@ function renderTitans() {
 
 function renderHome() {
   const X = BX[country.lang], H = HX[country.lang];
-
-  // Savings from REAL promotions only (verdict green), summed over the cart items
-  // — or all tracked products when the cart is empty. Each item contributes how much
-  // its current price is below its usual 90-day price.
   const cartItems = cartIds();
   const targetIds = cartItems.length ? cartItems : products.map(p => p.id);
   let saved = 0, realCount = 0;
   targetIds.forEach(id => {
     const p = products.find(p => p.id === id);
     if (!p || p.median_90 == null || p.current_price == null) return;
-    if (p.verdict === 'green' && p.median_90 - p.current_price > 0) {
-      saved += p.median_90 - p.current_price;
-      realCount++;
-    }
+    if (p.verdict === 'green' && p.median_90 - p.current_price > 0) { saved += p.median_90 - p.current_price; realCount++; }
   });
-
   const fakesCaught = (DEMO.titans || []).reduce((s, t) => s + (t.fake || 0), 0);
-
-  const titans = (DEMO.titans || []).slice()
-    .sort((a, b) => {
-      const ra = a.total_promos ? a.real / a.total_promos : -1;
-      const rb = b.total_promos ? b.real / b.total_promos : -1;
-      return rb - ra;
-    }).slice(0, 3);
-
+  const titans = (DEMO.titans || []).slice().sort((a, b) => {
+    const ra = a.total_promos ? a.real / a.total_promos : -1;
+    const rb = b.total_promos ? b.real / b.total_promos : -1;
+    return rb - ra;
+  }).slice(0, 3);
   const titansHTML = titans.map((t, i) => {
     const medals = ['🥇','🥈','🥉'];
     const pct = t.total_promos ? Math.round(100 * t.real / t.total_promos) : null;
@@ -1469,7 +1278,6 @@ function renderHome() {
       <span style="font-weight:900;font-size:var(--t-lg);color:${col}">${pct != null ? pct+'%' : '—'}</span>
     </div>`;
   }).join('');
-
   document.getElementById('basket').innerHTML = `
     <div class="home-hero">
       <div class="hh-left">
@@ -1512,9 +1320,6 @@ function renderScan() {
     <div id="scan-output"></div>`;
 }
 
-// Barcode scanning works through two engines: the native BarcodeDetector
-// (Chrome/Android) when present, otherwise the ZXing library loaded from CDN
-// — which also covers iOS Safari, where BarcodeDetector is unavailable.
 let zxingReader = null;
 function getZxingReader() {
   if (!zxingReader && window.ZXing) zxingReader = new ZXing.BrowserMultiFormatReader();
@@ -1531,7 +1336,6 @@ const fileFallbackHTML = X => `<div class="scan-result-card" style="text-align:c
 async function startScanner() {
   const X = BX[country.lang];
   const output = document.getElementById('scan-output');
-  // No live engine at all → offer photo upload.
   if (!hasNativeBD() && !window.ZXing) { output.innerHTML = fileFallbackHTML(X); return; }
   output.innerHTML = `<div class="scan-wrap"><video id="scan-video" autoplay playsinline muted></video>
     <div class="scan-frame"></div><div class="scan-hint">${X.scanHint}</div></div>`;
@@ -1551,7 +1355,6 @@ async function startScanner() {
       };
       await video.play(); detect();
     } else {
-      // ZXing path (iOS Safari etc.)
       const reader = getZxingReader();
       await reader.decodeFromConstraints({video:{facingMode:'environment'}}, video, (result) => {
         if (result) { stopScanner(); handleBarcode(result.getText()); }
@@ -1668,11 +1471,13 @@ function render() {
   document.getElementById('panel').style.display = 'none';
   document.getElementById('basket').style.display = isProd ? 'none' : '';
 
-  document.getElementById('search-input').placeholder = X.search;
+  // Search placeholder
+  const si = document.getElementById('search-input');
+  if (si) si.placeholder = UI[country.lang].searchPlaceholder || BX[country.lang].search;
 
   const fw = document.getElementById('filter-wrap');
-  fw.style.display = isProd ? '' : 'none';
-  if (isProd) renderFilters();
+  fw.style.display = (isProd && !chainFilter && aiFilterIds === null) ? '' : 'none';
+  if (isProd && !chainFilter && aiFilterIds === null) renderFilters();
 
   // Sub-tabs
   const stw = document.getElementById('sub-tabs-wrap');
@@ -1721,7 +1526,7 @@ function setView(v){
   if (v !== 'scan') stopScanner();
   view = v;
   if (v !== 'shop' || shopTab !== 'products') {
-    query = '';
+    query = ''; aiFilterIds = null; chainFilter = null; showAiMsg('');
     const si = document.getElementById('search-input'); if (si) si.value = '';
   }
   render();
@@ -1730,10 +1535,9 @@ function setView(v){
 
 render();
 
-// ── Theme (dark / light) ──────────────────────────────────────────────────
+// ── Theme ─────────────────────────────────────────────────────────────────
 const MOON = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
 const SUN  = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>';
-
 function applyTheme(t) {
   document.documentElement.dataset.theme = t;
   const icon = document.getElementById('theme-icon');
