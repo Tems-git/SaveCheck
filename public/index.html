@@ -732,8 +732,12 @@ function setFilter(f) { verdictFilter = f; active = -1; renderProducts(); render
 function renderChainChips() {
   const X = BX[country.lang];
   const chains = CHAINS_BY_COUNTRY[country.code] || [];
-  const chips = [`<button class="fchip ${!chainFilter ? 'active' : ''}" onclick="setChainFilter(null)">${X.allChains}</button>`]
-    .concat(chains.map(c => `<button class="fchip ${chainFilter===c ? 'active' : ''}" onclick="setChainFilter('${c}')">${c}</button>`));
+  const allOn = !chainFilter;
+  const chips = [`<button class="fchip ${allOn ? 'active' : ''}" style="${allOn ? 'background:var(--ink);border-color:transparent;color:#fff' : ''}" onclick="setChainFilter(null)">${X.allChains}</button>`]
+    .concat(chains.map(c => {
+      const on = chainFilter === c;
+      return `<button class="fchip ${on ? 'active' : ''}" style="${on ? 'background:var(--green);border-color:transparent;color:#fff' : ''}" onclick="setChainFilter('${c}')">${c}</button>`;
+    }));
   document.getElementById('chain-wrap').innerHTML = chips.join('');
 }
 function setChainFilter(chain) {
