@@ -55,8 +55,10 @@
   .phone {
     max-width:430px; margin:0 auto; background:var(--cream); border:1px solid var(--line);
     border-radius:34px; overflow:hidden; box-shadow:0 30px 70px rgba(28,25,23,.20);
+    display:flex; flex-direction:column;
+    height:calc(100vh - 60px); height:calc(100dvh - 60px); max-height:860px;
   }
-  .appbar { background:var(--card); padding:14px 14px; border-bottom:1px solid var(--line); }
+  .appbar { background:var(--card); padding:14px 14px; border-bottom:1px solid var(--line); flex:none; }
   .brand { display:flex; align-items:center; gap:8px; }
   .brand .logo { width:54px; height:54px; flex:none; object-fit:contain; }
   .brand-text { display:flex; flex-direction:column; gap:2px; }
@@ -100,7 +102,7 @@
   .hero .lbl { font-size:12px; opacity:.92; font-weight:600; }
   .hero .amt { font-size:30px; font-weight:800; letter-spacing:-.02em; margin-top:2px; }
   .hero .meta { font-size:12px; opacity:.95; margin-top:3px; }
-  .scroll { padding:14px; }
+  .scroll { padding:14px; flex:1; min-height:0; overflow-y:auto; -webkit-overflow-scrolling:touch; }
   .cards { background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden; box-shadow:var(--shadow-card); }
   .prow {
     display:flex; align-items:center; gap:11px; width:100%; border:0; background:none; cursor:pointer;
@@ -275,7 +277,7 @@
   .srow { display:flex; justify-content:space-between; align-items:center; padding:8px 2px; border-top:1px solid var(--line); font-size:13px; }
   .srow .scov { font-size:11px; color:var(--muted); margin-left:6px; }
   .srow.sbest span:first-child { color:var(--green); font-weight:700; }
-  .bottomnav { display:flex; background:var(--card); border-top:1px solid var(--line); padding-bottom:env(safe-area-inset-bottom,0); }
+  .bottomnav { display:flex; background:var(--card); border-top:1px solid var(--line); padding-bottom:env(safe-area-inset-bottom,0); flex:none; }
   .bottomnav button {
     flex:1; border:0; background:none; cursor:pointer; padding:8px 4px 10px; color:var(--muted);
     font-size:10px; font-weight:600; display:flex; flex-direction:column; align-items:center; gap:2px; position:relative;
