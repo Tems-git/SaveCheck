@@ -747,7 +747,11 @@ function setChainFilter(chain) {
   renderProducts(); renderChainChips();
 }
 function rowKey(e, i) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(i); } }
-function toggleCart(id) { cart[id] = cart[id] ? 0 : 1; renderProducts(); renderTabs(); }
+function toggleCart(id) {
+  cart[id] = cart[id] ? 0 : 1;
+  renderTabs();
+  if (view === 'shop' && shopTab === 'basket') renderBasket(); else renderProducts();
+}
 function cartIds() { return Object.keys(cart).filter(id => cart[id]); }
 function cartSize() { return cartIds().length; }
 function analyzeStores() {
