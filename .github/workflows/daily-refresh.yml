@@ -82,5 +82,6 @@ jobs:
           else
             DATE=$(date -u +%Y-%m-%d)
             git commit -m "Daily KZP refresh: ${DATE}"
+            git pull --rebase origin main
             git push
           fi
