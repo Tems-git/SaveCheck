@@ -1192,7 +1192,7 @@ function renderBrochures() {
     return `<span style="background:${col};color:#fff;font-size:9px;font-weight:750;padding:1px 6px;border-radius:999px;margin-left:5px">${label}</span>`;
   };
   const chains = BD.chains.map(ch => {
-    const isOpen = brochOpen[ch.chain] !== false;
+    const isOpen = brochOpen[ch.chain] === true;
     const items = ch.items;
     const fakeN = items.filter(it => it.verdict === 'red').length;
     const realN = items.filter(it => it.verdict === 'green').length;
