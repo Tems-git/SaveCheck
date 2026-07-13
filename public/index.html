@@ -332,7 +332,7 @@
         <input type="search" id="search-input" oninput="onSearchInput(this.value)" onkeydown="onSearchKey(event)" />
         <div class="search-spinner" id="search-spinner"></div>
       </div>
-      <button class="scan-quick" onclick="setView('scan')" aria-label="Сканирай баркод">
+      <button class="scan-quick" style="display:none" onclick="setView('scan')" aria-label="Сканирай баркод">
         <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
       </button>
     </div>
@@ -649,27 +649,16 @@ function onSearchInput(val) {
     if (!(view==='shop' && shopTab==='products')) { view='shop'; shopTab='products'; render(); } else renderProducts();
     return;
   }
-  // Кратко/точно → локално търсене
-  if (val.length < 3 || !looksNatural(val)) {
-    aiFilterIds=null; chainFilter=null; query=val.toLowerCase(); showAiMsg('');
-    if (query && !(view==='shop' && shopTab==='products')) { view='shop'; shopTab='products'; render(); } else renderProducts();
-  } else {
-    // Естествен език → debounce 800ms
-    searchDebounceTimer = setTimeout(() => {
-      if (!(view==='shop' && shopTab==='products')) { view='shop'; shopTab='products'; render(); }
-      doSmartSearch(val);
-    }, 800);
-  }
+  // Локално търсене (AI изключен за MVP)
+  aiFilterIds=null; chainFilter=null; query=val.toLowerCase(); showAiMsg('');
+  if (query && !(view==='shop' && shopTab==='products')) { view='shop'; shopTab='products'; render(); } else renderProducts();
 }
 function onSearchKey(e) {
   if (e.key === 'Enter') {
     clearTimeout(searchDebounceTimer);
     const val = e.target.value;
     if (!val) return;
-    const chain = matchChain(val);
-    if (chain) { onSearchInput(val); return; }
-    if (!(view==='shop' && shopTab==='products')) { view='shop'; shopTab='products'; render(); }
-    doSmartSearch(val);
+    onSearchInput(val);
   }
 }
 // ── End Smart Search ──────────────────────────────────────────────────────
@@ -894,7 +883,6 @@ function renderTabs() {
     ['home',   SVG.home,   X.tabHome,   ''],
     ['shop',   SVG.shop,   X.tabShop,   badge],
     ['promos', SVG.promos, X.tabPromos, ''],
-    ['scan',   SVG.scan,   X.tabScan,   ''],
   ];
   document.getElementById('tabs').innerHTML = items.map(([v, ic, lbl, ex]) =>
     `<button class="${view===v?'on':''}" onclick="setView('${v}')"><span class="ic">${ic}</span>${lbl}${ex}</button>`).join('');
@@ -1487,7 +1475,6 @@ function render() {
     stw.innerHTML = `<div class="sub-tabs">
       <button class="${shopTab==='products'?'active':''}" onclick="setShopTab('products')">${X.tabProducts}</button>
       <button class="${shopTab==='basket'?'active':''}" onclick="setShopTab('basket')">${X.tabBasket}${cb}</button>
-      <button class="${shopTab==='recipes'?'active':''}" onclick="setShopTab('recipes')">${X.tabRecipes}</button>
     </div>`;
   } else if (view === 'promos') {
     stw.innerHTML = `<div class="sub-tabs">
