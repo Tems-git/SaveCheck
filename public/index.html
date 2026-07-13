@@ -749,7 +749,7 @@ function setChainFilter(chain) {
 function rowKey(e, i) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(i); } }
 function toggleCart(id) {
   cart[id] = cart[id] ? 0 : 1;
-  renderTabs();
+  renderTabs(); renderSubTabs();
   if (view === 'shop' && shopTab === 'basket') renderBasket(); else renderProducts();
 }
 function cartIds() { return Object.keys(cart).filter(id => cart[id]); }
@@ -1032,12 +1032,12 @@ function addCustomItem() {
   if (!val) return;
   customList.push(val);
   inp.value = '';
-  renderBasket();
+  renderBasket(); renderSubTabs();
 }
 
 function removeCustomItem(i) {
   customList.splice(i, 1);
-  renderBasket();
+  renderBasket(); renderSubTabs();
 }
 
 function addRecipeToCart(recipeId) {
@@ -1475,6 +1475,26 @@ function showScanResult(ean, name, match) {
   document.getElementById('scan-output').innerHTML = html;
 }
 
+function renderSubTabs() {
+  const X = BX[country.lang];
+  const isShop = view === 'shop';
+  const stw = document.getElementById('sub-tabs-wrap');
+  if (isShop) {
+    const n = cartSize() + customList.length;
+    const cb = n ? `<span style="background:var(--green);color:#fff;font-size:9px;border-radius:999px;padding:0 5px;font-weight:800;margin-left:3px;line-height:1.6">${n}</span>` : '';
+    stw.innerHTML = `<div class="sub-tabs">
+      <button class="${shopTab==='products'?'active':''}" onclick="setShopTab('products')">${X.tabProducts}</button>
+      <button class="${shopTab==='basket'?'active':''}" onclick="setShopTab('basket')">${X.tabBasket}${cb}</button>
+    </div>`;
+  } else if (view === 'promos') {
+    stw.innerHTML = `<div class="sub-tabs">
+      <button class="${promosTab==='brochures'?'active':''}" onclick="setPromosTab('brochures')">${X.tabBrochures}</button>
+      <button class="${promosTab==='titans'?'active':''}" onclick="setPromosTab('titans')">${X.tabTitans}</button>
+    </div>`;
+  } else {
+    stw.innerHTML = '';
+  }
+}
 function render() {
   renderFlags(); renderChrome(); renderTabs();
   const X = BX[country.lang];
@@ -1499,22 +1519,7 @@ function render() {
   if (isProd && aiFilterIds === null) renderChainChips();
 
   // Sub-tabs
-  const stw = document.getElementById('sub-tabs-wrap');
-  if (isShop) {
-    const n = cartSize() + customList.length;
-    const cb = n ? `<span style="background:var(--green);color:#fff;font-size:9px;border-radius:999px;padding:0 5px;font-weight:800;margin-left:3px;line-height:1.6">${n}</span>` : '';
-    stw.innerHTML = `<div class="sub-tabs">
-      <button class="${shopTab==='products'?'active':''}" onclick="setShopTab('products')">${X.tabProducts}</button>
-      <button class="${shopTab==='basket'?'active':''}" onclick="setShopTab('basket')">${X.tabBasket}${cb}</button>
-    </div>`;
-  } else if (view === 'promos') {
-    stw.innerHTML = `<div class="sub-tabs">
-      <button class="${promosTab==='brochures'?'active':''}" onclick="setPromosTab('brochures')">${X.tabBrochures}</button>
-      <button class="${promosTab==='titans'?'active':''}" onclick="setPromosTab('titans')">${X.tabTitans}</button>
-    </div>`;
-  } else {
-    stw.innerHTML = '';
-  }
+  renderSubTabs();
 
   if (view === 'home') { renderHome(); }
   else if (isShop) {
