@@ -340,6 +340,7 @@
   <div id="ai-msg-box"></div>
   <div class="hero" id="hero" style="display:none"></div>
   <div id="sub-tabs-wrap"></div>
+  <div class="filter-wrap" id="chain-wrap" style="display:none"></div>
   <div class="filter-wrap" id="filter-wrap" style="display:none"></div>
   <div class="scroll">
     <div class="cards" id="cards"></div>
@@ -462,11 +463,11 @@ const PRODUCTS = {
 };
 
 const BX = {
-  bg:{ tabProducts:'Продукти', tabBasket:'Кошница', tabFridge:'Хладилник', tabTable:'Таблица', tabTitans:'Титани', chains:'Цени по вериги', cheapest:'най-евтина', basketTitle:'Цена на кошницата по верига', cheapestBasket:'Най-евтина кошница', save:'спестяваш', perItem:'Най-евтино по продукт', recognized:'Разпознато в хладилника', shopping:'Списък за пазаруване', missing:'липсва', low:'свършва', search:'Търси продукт…', cartTitle:'Моят списък', cartEmpty:'Добави продукти с ✚', storeAdvice:'Откъде да пазарувам?', covers:'покрива', of:'от', artItems:'арт.', clearCart:'Изчисти', noData:'Не предлага', titansTitle:'Битката на Титаните', titansSub:'Реални срещу фалшиви промоции — последните 30 дни', titansReal:'реални', titansFake:'фалшиви', titansNoPromos:'без промоции', titansTracked:'проследени продукта', tabBrochures:'Брошури', brochTitle:'Тази седмица', brochSub:'Верифицирани промо оферти по верига', brochFake:'Фалшива!', brochReal:'Реална', brochClaimed:'обявена', brochNoData:'Без брошура', brochPromos:'промоции', brochExpand:'Виж всички', brochCollapse:'Скрий', tabScan:'Скенер', scanBtn:'Сканирай баркод', scanHint:'Насочи камерата към баркода', scanLookup:'Търся продукт…', scanNotTracked:'Продуктът не е в следения ни списък', scanUnknown:'Продуктът не е разпознат', scanAgain:'Сканирай пак', scanNoBD:'Скенерът работи в Chrome. Пробвай с файл:', scanFile:'Избери снимка', scanMatched:'Разпознат като' },
+  bg:{ tabProducts:'Продукти', tabBasket:'Кошница', tabFridge:'Хладилник', tabTable:'Таблица', tabTitans:'Титани', chains:'Цени по вериги', cheapest:'най-евтина', basketTitle:'Цена на кошницата по верига', cheapestBasket:'Най-евтина кошница', save:'спестяваш', perItem:'Най-евтино по продукт', recognized:'Разпознато в хладилника', shopping:'Списък за пазаруване', missing:'липсва', low:'свършва', search:'Търси продукт…', cartTitle:'Моят списък', cartEmpty:'Добави продукти с ✚', storeAdvice:'Откъде да пазарувам?', covers:'покрива', of:'от', artItems:'арт.', clearCart:'Изчисти', noData:'Не предлага', titansTitle:'Битката на Титаните', titansSub:'Реални срещу фалшиви промоции — последните 30 дни', titansReal:'реални', titansFake:'фалшиви', titansNoPromos:'без промоции', titansTracked:'проследени продукта', tabBrochures:'Брошури', brochTitle:'Тази седмица', brochSub:'Верифицирани промо оферти по верига', brochFake:'Фалшива!', brochReal:'Реална', brochClaimed:'обявена', brochNoData:'Без брошура', brochPromos:'промоции', brochExpand:'Виж всички', brochCollapse:'Скрий', tabScan:'Скенер', scanBtn:'Сканирай баркод', scanHint:'Насочи камерата към баркода', scanLookup:'Търся продукт…', scanNotTracked:'Продуктът не е в следения ни списък', scanUnknown:'Продуктът не е разпознат', scanAgain:'Сканирай пак', scanNoBD:'Скенерът работи в Chrome. Пробвай с файл:', scanFile:'Избери снимка', scanMatched:'Разпознат като', whereShopping:'Къде пазаруваш?', allChains:'Всички' },
   sr:{ tabProducts:'Proizvodi', tabBasket:'Korpa', tabFridge:'Frižider', tabTable:'Tabela', tabTitans:'Titani', chains:'Cene po lancima', cheapest:'najjeftinije', basketTitle:'Cena korpe po lancu', cheapestBasket:'Najjeftinija korpa', save:'uštedite', perItem:'Najjeftinije po proizvodu', recognized:'Prepoznato u frižideru', shopping:'Lista za kupovinu', missing:'nedostaje', low:'pri kraju', search:'Pretraži…', cartTitle:'Moja lista', cartEmpty:'Dodaj proizvode sa ✚', storeAdvice:'Gde da kupujem?', covers:'pokriva', of:'od', artItems:'art.', clearCart:'Obriši', noData:'Nema', titansTitle:'Bitka Titana', titansSub:'Prave vs. lažne akcije — poslednjih 30 dana', titansReal:'prave', titansFake:'lažne', titansNoPromos:'bez akcija', titansTracked:'praćena proizvoda', tabBrochures:'Brošure', brochTitle:'Ova nedelja', brochSub:'Verifikovane promo ponude po lancu', brochFake:'Lažna!', brochReal:'Prava', brochClaimed:'objavljena', brochNoData:'Nema brošure', brochPromos:'akcija', brochExpand:'Vidi sve', brochCollapse:'Sakrij', tabScan:'Skener', scanBtn:'Skeniraj barkod', scanHint:'Usmeri kameru ka barkodu', scanLookup:'Tražim proizvod…', scanNotTracked:'Proizvod nije u našoj listi', scanUnknown:'Proizvod nije prepoznat', scanAgain:'Skeniraj ponovo', scanNoBD:'Skener radi u Chrome-u. Pokušaj sa fajlom:', scanFile:'Izaberi sliku', scanMatched:'Prepoznat kao' },
   mk:{ tabProducts:'Производи', tabBasket:'Кошница', tabFridge:'Фрижидер', tabTable:'Табела', tabTitans:'Титани', chains:'Цени по синџири', cheapest:'најевтино', basketTitle:'Цена на кошницата по синџир', cheapestBasket:'Најевтина кошница', save:'заштедуваш', perItem:'Најевтино по производ', recognized:'Препознато во фрижидерот', shopping:'Список за пазарување', missing:'недостасува', low:'снемнува', search:'Пребарај…', cartTitle:'Мојата листа', cartEmpty:'Додај производи со ✚', storeAdvice:'Каде да пазарувам?', covers:'покрива', of:'од', artItems:'арт.', clearCart:'Исчисти', noData:'Нема', titansTitle:'Битката на Титаните', titansSub:'Вистински наспроти лажни промоции — последните 30 дена', titansReal:'вистински', titansFake:'лажни', titansNoPromos:'без промоции', titansTracked:'следени производи', tabBrochures:'Брошури', brochTitle:'Оваа седмица', brochSub:'Верифицирани промо понуди по синџир', brochFake:'Лажна!', brochReal:'Вистинска', brochClaimed:'објавена', brochNoData:'Нема брошура', brochPromos:'промоции', brochExpand:'Види ги сите', brochCollapse:'Сокриј', tabScan:'Скенер', scanBtn:'Скенирај баркод', scanHint:'Насочи ја камерата кон баркодот', scanLookup:'Барам производ…', scanNotTracked:'Производот не е во нашата листа', scanUnknown:'Производот не е препознаен', scanAgain:'Скенирај пак', scanNoBD:'Скенерот работи во Chrome. Обиди се со датотека:', scanFile:'Избери слика', scanMatched:'Препознаен како' },
   ro:{ tabProducts:'Produse', tabBasket:'Coș', tabFridge:'Frigider', tabTable:'Tabel', tabTitans:'Titani', chains:'Prețuri pe lanțuri', cheapest:'cel mai ieftin', basketTitle:'Costul coșului pe lanț', cheapestBasket:'Cel mai ieftin coș', save:'economisești', perItem:'Cel mai ieftin pe produs', recognized:'Recunoscut în frigider', shopping:'Listă de cumpărături', missing:'lipsește', low:'se termină', search:'Caută produs…', cartTitle:'Lista mea', cartEmpty:'Adaugă produse cu ✚', storeAdvice:'De unde să cumpăr?', covers:'acoperă', of:'din', artItems:'art.', clearCart:'Șterge', noData:'Indisponibil', titansTitle:'Bătălia Titanilor', titansSub:'Reduceri reale vs. false — ultimele 30 de zile', titansReal:'reale', titansFake:'false', titansNoPromos:'fără promoții', titansTracked:'produse monitorizate', tabBrochures:'Broșuri', brochTitle:'Săptămâna asta', brochSub:'Oferte promo verificate pe lanț', brochFake:'Falsă!', brochReal:'Reală', brochClaimed:'declarată', brochNoData:'Fără broșură', brochPromos:'promoții', brochExpand:'Vezi toate', brochCollapse:'Ascunde', tabScan:'Scanner', scanBtn:'Scanează cod de bare', scanHint:'Îndreptați camera spre cod', scanLookup:'Caut produsul…', scanNotTracked:'Produsul nu este în lista noastră', scanUnknown:'Produs nerecunoscut', scanAgain:'Scanează din nou', scanNoBD:'Scannerul funcționează în Chrome. Încearcă cu fișier:', scanFile:'Alege imagine', scanMatched:'Recunoscut ca' },
-  el:{ tabProducts:'Προϊόντα', tabBasket:'Καλάθι', tabFridge:'Ψυγείο', tabTable:'Πίνακας', tabTitans:'Τιτάνες', chains:'Τιμές ανά αλυσίδα', cheapest:'φθηνότερο', basketTitle:'Κόστος καλαθιού ανά αλυσίδα', cheapestBasket:'Φθηνότερο καλάθι', save:'εξοικονομείς', perItem:'Φθηνότερο ανά προϊόν', recognized:'Αναγνωρίστηκαν στο ψυγείο', shopping:'Λίστα αγορών', missing:'λείπει', low:'τελειώνει', search:'Αναζήτηση…', cartTitle:'Η λίστα μου', cartEmpty:'Πρόσθεσε προϊόντα με ✚', storeAdvice:'Πού να ψωνίσω;', covers:'καλύπτει', of:'από', artItems:'αρ.', clearCart:'Καθαρισμός', noData:'Μη διαθ.', titansTitle:'Μάχη των Τιτάνων', titansSub:'Αληθινές vs. ψεύτικες προσφορές — τελευταίες 30 ημέρες', titansReal:'αληθινές', titansFake:'ψεύτικες', titansNoPromos:'χωρίς προσφορές', titansTracked:'προϊόντα παρακολούθησης', tabBrochures:'Φυλλάδια', brochTitle:'Αυτή την εβδομάδα', brochSub:'Επαληθευμένες προσφορές ανά αλυσίδα', brochFake:'Ψεύτικη!', brochReal:'Αληθινή', brochClaimed:'δηλωθείσα', brochNoData:'Χωρίς φυλλάδιο', brochPromos:'προσφορές', brochExpand:'Δες όλες', brochCollapse:'Απόκρυψη', tabScan:'Σκάνερ', scanBtn:'Σάρωσε barcode', scanHint:'Στρέψε κάμερα στο barcode', scanLookup:'Ψάχνω προϊόν…', scanNotTracked:'Το προϊόν δεν βρίσκεται στη λίστα μας', scanUnknown:'Το προϊόν δεν αναγνωρίστηκε', scanAgain:'Σάρωσε ξανά', scanNoBD:'Το σκάνερ λειτουργεί στο Chrome. Δοκιμάστε με αρχείο:', scanFile:'Επιλέξτε εικόνα', scanMatched:'Αναγνωρίστηκε ως' },
+  el:{ tabProducts:'Προϊόντα', tabBasket:'Καλάθι', tabFridge:'Ψυγείο', tabTable:'Πίνακας', tabTitans:'Τιτάνες', chains:'Τιμές ανά αλυσίδα', cheapest:'φθηνότερο', basketTitle:'Κόστος καλαθιού ανά αλυσίδα', cheapestBasket:'Φθηνότερο καλάθι', save:'εξοικονομείς', perItem:'Φθηνότερο ανά προϊόν', recognized:'Αναγνωρίστηκαν στο ψυγείο', shopping:'Λίστα αγορών', missing:'λείπει', low:'τελειώνει', search:'Αναζήτηση…', cartTitle:'Η λίστα μου', cartEmpty:'Πρόσθεσε προϊόντα με ✚', storeAdvice:'Πού να ψωνίσω;', covers:'καλύπτει', of:'από', artItems:'αρ.', clearCart:'Καθαρισμός', noData:'Μη διαθ.', titansTitle:'Μάχη των Τιτάνων', titansSub:'Αληθινές vs. ψεύτικες προσφορές — τελευταίες 30 ημέρες', titansReal:'αληθινές', titansFake:'ψεύτικες', titansNoPromos:'χωρίς προσφορές', titansTracked:'προϊόντα παρακολούθησης', tabBrochures:'Φυλλάδια', brochTitle:'Αυτή την εβδομάδα', brochSub:'Επαληθευμένες προσφορές ανά αλυσίδα', brochFake:'Ψεύτικη!', brochReal:'Αληθινή', brochClaimed:'δηλωθείσα', brochNoData:'Χωρίς φυλλάδιο', brochPromos:'προσφορές', brochExpand:'Δες όλες', brochCollapse:'Απόκρυψη', tabScan:'Σκάνερ', scanBtn:'Σάρωσε barcode', scanHint:'Στρέψε κάμερα στο barcode', scanLookup:'Ψάχνω προϊόν…', scanNotTracked:'Το προϊόν δεν βρίσκεται στη λίστα μας', scanUnknown:'Το προϊόν δεν αναγνωρίστηκε', scanAgain:'Σάρωσε ξανά', scanNoBD:'Το σκάνερ λειτουργεί στο Chrome. Δοκιμάστε με αρχείο:', scanFile:'Επιλέξτε εικόνα', scanMatched:'Αναγνωρίστηκε ως', whereShopping:'Πού ψωνίζεις;', allChains:'Όλα' },
   tr:{ tabProducts:'Ürünler', tabBasket:'Sepet', tabFridge:'Buzdolabı', tabTable:'Tablo', tabTitans:'Titanlar', chains:'Zincirlere göre fiyatlar', cheapest:'en ucuz', basketTitle:'Zincire göre sepet tutarı', cheapestBasket:'En ucuz sepet', save:'tasarruf', perItem:'Ürün başına en ucuz', recognized:'Buzdolabında tanındı', shopping:'Alışveriş listesi', missing:'eksik', low:'azalıyor', search:'Ürün ara…', cartTitle:'Listem', cartEmpty:'✚ ile ürün ekle', storeAdvice:'Nerede alışveriş yapmalıyım?', covers:'karşılar', of:'/', artItems:'ürün', clearCart:'Temizle', noData:'Yok', titansTitle:'Titanların Savaşı', titansSub:'Gerçek vs. sahte indirimler — son 30 gün', titansReal:'gerçek', titansFake:'sahte', titansNoPromos:'kampanya yok', titansTracked:'takip edilen ürün', tabBrochures:'Broşürler', brochTitle:'Bu hafta', brochSub:'Zincire göre doğrulanmış kampanyalar', brochFake:'Sahte!', brochReal:'Gerçek', brochClaimed:'ilan edilen', brochNoData:'Broşür yok', brochPromos:'kampanya', brochExpand:'Tümünü gör', brochCollapse:'Gizle', tabScan:'Tarayıcı', scanBtn:'Barkod Tara', scanHint:'Kamerayı barkoda doğrult', scanLookup:'Ürün aranıyor…', scanNotTracked:'Ürün takip listemizde yok', scanUnknown:'Ürün tanınmadı', scanAgain:'Tekrar tara', scanNoBD:"Tarayıcı Chrome'da çalışır. Dosyayla deneyin:", scanFile:'Resim seç', scanMatched:'Tanındı:' },
   sq:{ tabProducts:'Produktet', tabBasket:'Shporta', tabFridge:'Frigorifer', tabTable:'Tabelë', tabTitans:'Titanët', chains:'Çmimet sipas zinxhirëve', cheapest:'më i liri', basketTitle:'Kostoja e shportës sipas zinxhirit', cheapestBasket:'Shporta më e lirë', save:'kurseni', perItem:'Më i liri për produkt', recognized:'Të njohura në frigorifer', shopping:'Lista e blerjeve', missing:'mungon', low:'po mbaron', search:'Kërko produkt…', cartTitle:'Lista ime', cartEmpty:'Shto produkte me ✚', storeAdvice:'Ku të blej?', covers:'mbulon', of:'nga', artItems:'art.', clearCart:'Fshi', noData:'Pa disponueshëm', titansTitle:'Beteja e Titanëve', titansSub:'Zbritje reale vs. të rreme — 30 ditët e fundit', titansReal:'reale', titansFake:'të rreme', titansNoPromos:'pa oferta', titansTracked:'produkte të ndjekura', tabBrochures:'Fletushka', brochTitle:'Kjo javë', brochSub:'Oferta promo të verifikuara sipas zinxhirit', brochFake:'E rreme!', brochReal:'E vërtetë', brochClaimed:'e deklaruar', brochNoData:'Pa fletushkë', brochPromos:'oferta', brochExpand:'Shiko të gjitha', brochCollapse:'Fshih', tabScan:'Skaner', scanBtn:'Skano barkod', scanHint:'Drejtoje kamerën te barkodi', scanLookup:'Po kërkoj produktin…', scanNotTracked:'Produkti nuk është në listën tonë', scanUnknown:'Produkti nuk u njoh', scanAgain:'Skano përsëri', scanNoBD:'Skaneri funksionon në Chrome. Provoni me skedar:', scanFile:'Zgjidh imazh', scanMatched:'U njoh si' },
   bs:{ tabProducts:'Proizvodi', tabBasket:'Korpa', tabFridge:'Frižider', tabTable:'Tabela', tabTitans:'Titani', chains:'Cijene po lancima', cheapest:'najjeftinije', basketTitle:'Cijena korpe po lancu', cheapestBasket:'Najjeftinija korpa', save:'uštedite', perItem:'Najjeftinije po proizvodu', recognized:'Prepoznato u frižideru', shopping:'Lista za kupovinu', missing:'nedostaje', low:'pri kraju', search:'Pretraži…', cartTitle:'Moja lista', cartEmpty:'Dodaj proizvode sa ✚', storeAdvice:'Gdje kupovati?', covers:'pokriva', of:'od', artItems:'art.', clearCart:'Obriši', noData:'Nema', titansTitle:'Bitka Titana', titansSub:'Prave vs. lažne akcije — posljednjih 30 dana', titansReal:'prave', titansFake:'lažne', titansNoPromos:'bez akcija', titansTracked:'praćena proizvoda', tabBrochures:'Brošure', brochTitle:'Ovaj tjedan', brochSub:'Verificirane promo ponude po lancu', brochFake:'Lažna!', brochReal:'Prava', brochClaimed:'objavljena', brochNoData:'Nema brošure', brochPromos:'akcija', brochExpand:'Vidi sve', brochCollapse:'Sakrij', tabScan:'Skener', scanBtn:'Skeniraj barkod', scanHint:'Usmjeri kameru prema barkodu', scanLookup:'Tražim proizvod…', scanNotTracked:'Proizvod nije na našoj listi', scanUnknown:'Proizvod nije prepoznat', scanAgain:'Skeniraj ponovo', scanNoBD:'Skener radi u Chrome-u. Pokušajte s datotekom:', scanFile:'Odaberi sliku', scanMatched:'Prepoznat kao' },
@@ -638,18 +639,18 @@ async function doSmartSearch(q) {
 
 function onSearchInput(val) {
   clearTimeout(searchDebounceTimer);
-  if (!val) { aiFilterIds=null; chainFilter=null; query=''; showAiMsg(''); renderProducts(); return; }
+  if (!val) { aiFilterIds=null; chainFilter=null; query=''; showAiMsg(''); renderProducts(); renderChainChips(); return; }
   // Верига → веднага локално
   const chain = matchChain(val);
   if (chain) {
     aiFilterIds=null; chainFilter=chain; query='';
     showAiMsg(`Цени в ${chain}`);
-    if (!(view==='shop' && shopTab==='products')) { view='shop'; shopTab='products'; render(); } else renderProducts();
+    if (!(view==='shop' && shopTab==='products')) { view='shop'; shopTab='products'; render(); } else { renderProducts(); renderChainChips(); }
     return;
   }
   // Локално търсене (AI изключен за MVP)
   aiFilterIds=null; chainFilter=null; query=val.toLowerCase(); showAiMsg('');
-  if (query && !(view==='shop' && shopTab==='products')) { view='shop'; shopTab='products'; render(); } else renderProducts();
+  if (query && !(view==='shop' && shopTab==='products')) { view='shop'; shopTab='products'; render(); } else { renderProducts(); renderChainChips(); }
 }
 function onSearchKey(e) {
   if (e.key === 'Enter') {
@@ -728,6 +729,19 @@ function renderFilters() {
   }).join('');
 }
 function setFilter(f) { verdictFilter = f; active = -1; renderProducts(); renderFilters(); }
+function renderChainChips() {
+  const X = BX[country.lang];
+  const chains = CHAINS_BY_COUNTRY[country.code] || [];
+  const chips = [`<button class="fchip ${!chainFilter ? 'active' : ''}" onclick="setChainFilter(null)">${X.allChains}</button>`]
+    .concat(chains.map(c => `<button class="fchip ${chainFilter===c ? 'active' : ''}" onclick="setChainFilter('${c}')">${c}</button>`));
+  document.getElementById('chain-wrap').innerHTML = chips.join('');
+}
+function setChainFilter(chain) {
+  chainFilter = chain; aiFilterIds = null; query = '';
+  const si = document.getElementById('search-input'); if (si) si.value = '';
+  active = -1;
+  renderProducts(); renderChainChips();
+}
 function rowKey(e, i) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(i); } }
 function toggleCart(id) { cart[id] = cart[id] ? 0 : 1; renderProducts(); renderTabs(); }
 function cartIds() { return Object.keys(cart).filter(id => cart[id]); }
@@ -770,8 +784,15 @@ function renderProducts() {
   let filtered;
 
   if (chainFilter) {
-    // Верига филтър → всички продукти сортирани по цена в тази верига
-    filtered = products.slice().sort((a,b) => {
+    // Верига филтър → най-големите РЕАЛНИ промоции в тази верига първо, не най-евтиното
+    const rank = { green:0, yellow:1, red:2, gray:3 };
+    filtered = products.slice();
+    if (verdictFilter !== 'all') filtered = filtered.filter(p => p.verdict === verdictFilter);
+    filtered.sort((a, b) => {
+      const ra = rank[a.verdict] ?? 9, rb = rank[b.verdict] ?? 9;
+      if (ra !== rb) return ra - rb;
+      const da = a.discount_pct || 0, db = b.discount_pct || 0;
+      if (da !== db) return db - da;
       const pa = offersFor(a).find(o=>o.chain===chainFilter)?.price ?? Infinity;
       const pb = offersFor(b).find(o=>o.chain===chainFilter)?.price ?? Infinity;
       return pa - pb;
@@ -1462,8 +1483,12 @@ function render() {
   if (si) si.placeholder = UI[country.lang].searchPlaceholder || BX[country.lang].search;
 
   const fw = document.getElementById('filter-wrap');
-  fw.style.display = (isProd && !chainFilter && aiFilterIds === null) ? '' : 'none';
-  if (isProd && !chainFilter && aiFilterIds === null) renderFilters();
+  fw.style.display = (isProd && aiFilterIds === null) ? '' : 'none';
+  if (isProd && aiFilterIds === null) renderFilters();
+
+  const cw = document.getElementById('chain-wrap');
+  cw.style.display = (isProd && aiFilterIds === null) ? '' : 'none';
+  if (isProd && aiFilterIds === null) renderChainChips();
 
   // Sub-tabs
   const stw = document.getElementById('sub-tabs-wrap');
