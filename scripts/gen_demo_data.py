@@ -1,7 +1,17 @@
 """Generate the demo dataset for the web preview from REAL KZP price data.
 
-Reads the daily ZIP exports from a local cache directory, builds price histories
-for a basket of products across the main BG chains, and writes public/data.js.
+Reads the daily ZIP exports from a local cache directory and produces:
+  * ``public/products.js`` — product-first snapshot: every offering (product
+    at a chain) observed at least 3 times in the last 30 days, with current
+    price, Omnibus verdict when the item is on promo, KZP category and
+    matching BASKET tags. This is the dataset the search / home feed / cart
+    reads from.
+  * ``public/data.js`` — legacy 22-category snapshot, produced for backward
+    compatibility with the current Products tab (category chips + charts).
+    The category series is reconstructed from the product-first index by
+    picking the cheapest matching product per day per chain — same behaviour
+    as before, just derived from the new model.
+  * chain scorecard ("Битката на титаните") over the last 30 days.
 
     python scripts/gen_demo_data.py [--zip-dir /tmp/kzp_zips]
 
@@ -16,7 +26,8 @@ import json
 import re
 import sys
 import zipfile
-from collections import defaultdict
+from collections import Counter, defaultdict
+from dataclasses import dataclass, field
 from datetime import date, timedelta
 from decimal import Decimal
 from pathlib import Path
@@ -45,9 +56,12 @@ CHAIN_DISPLAY: dict[str, str] = {
     "T Market":         "T Market",
 }
 MAIN_CHAINS = set(CHAIN_DISPLAY)
+PRIMARY_ORDER = ["Lidl", "Kaufland", "Billa", "Fantastico", "T Market"]
 
 # ---------------------------------------------------------------------------
-# Basket: product id → regex matching product names in КЗП data
+# BASKET: 22 curated product categories used as *tags* on top of the
+# product-first index (a product can match 0..N of these). Also drives the
+# legacy category-level Products tab until Slice 2 replaces it.
 # ---------------------------------------------------------------------------
 BASKET: dict[str, re.Pattern] = {
     "milk":   re.compile(r"прясно мляко.{0,10}(1|1[,.]0)\s*л", re.IGNORECASE),
@@ -103,34 +117,61 @@ REF: date = date(2026, 6, 13)  # overridden in main() from latest ZIP
 
 
 # ---------------------------------------------------------------------------
-# Loading ZIPs (using main's parse_chain_csv + chain_name_from_filename)
+# Product-first data model
 # ---------------------------------------------------------------------------
 
-def load_all_zips(zip_dir: Path) -> tuple[
-    dict[str, dict[str, list[PricePoint]]],
-    dict[str, dict[str, dict[str, list[PricePoint]]]],
-]:
-    """Load price history at two granularities from all cached ZIPs.
+_WHITESPACE_RE = re.compile(r"\s+")
+_TRAILING_PUNCT_RE = re.compile(r"[.,;:!\-\s]+$")
 
-    Returns (category_series, variant_series):
 
-    category_series: {product_id: {display_chain: [PricePoint, ...]}} — the
-    cheapest matching item per day, per chain. Used for the Products/Titans
-    overview (unchanged from before — one representative number per staple).
+def normalize_name(name: str) -> str:
+    """Lowercase + collapse whitespace + strip trailing punctuation. Used as
+    the fallback dedup key when a chain doesn't supply product_code.
 
-    variant_series: {product_id: {display_chain: {variant_key: [PricePoint, ...]}}}
-    — separate history per *specific* product (by code, falling back to name)
-    within each category. Used to verify individual brochure items against
-    their own price history instead of a blended category-wide one, so e.g.
-    a pricier brand's real discount isn't judged against a cheaper brand's
-    typical price.
+    Conservative on purpose — same 15-word promo header written with an extra
+    space between "400" and "г" would otherwise be treated as two products.
+    We do NOT fold diacritics or normalize units yet: risk of false merges
+    outweighs the benefit at this stage."""
+    if not name:
+        return ""
+    n = name.lower().strip()
+    n = _WHITESPACE_RE.sub(" ", n)
+    n = _TRAILING_PUNCT_RE.sub("", n)
+    return n
+
+
+def product_key(code: str | None, name: str) -> str:
+    """Stable id for a product. Prefers product_code when the chain provides
+    one; falls back to a normalised form of the display name.
+
+    The prefix ("code:" / "name:") makes the source of the key explicit and
+    guarantees two products with the same numeric code and the same
+    normalised name can't collide across chains that use different code
+    schemes."""
+    if code and code.strip():
+        return f"code:{code.strip()}"
+    return f"name:{normalize_name(name)}"
+
+
+@dataclass
+class ProductOffering:
+    """One product as sold at one specific chain, over the observed window."""
+    key: str
+    name: str          # most recently seen display name
+    code: str | None
+    kzp_category: str | None
+    chain: str
+    points: list[PricePoint] = field(default_factory=list)
+    # per-day retail (from "Цена на дребно" column); used for claimed_pct
+    retail_prices: dict[date, Decimal] = field(default_factory=dict)
+
+
+def load_all_products(zip_dir: Path) -> dict[tuple[str, str], ProductOffering]:
+    """Load every product observed in the KZP feed, keyed by
+    ``(product_key, chain)``. No BASKET filter applied here — the 22
+    categories are treated as tags at the presentation layer.
     """
-    series: dict[str, dict[str, list[PricePoint]]] = {
-        pid: defaultdict(list) for pid in BASKET
-    }
-    variant_series: dict[str, dict[str, dict[str, list[PricePoint]]]] = {
-        pid: defaultdict(lambda: defaultdict(list)) for pid in BASKET
-    }
+    offerings: dict[tuple[str, str], ProductOffering] = {}
 
     zips = sorted(zip_dir.glob("*.zip"))
     if not zips:
@@ -143,7 +184,8 @@ def load_all_zips(zip_dir: Path) -> tuple[
             continue
 
         print(f"  {zip_path.name}…", end="", flush=True)
-        count = 0
+        rows_seen = 0
+        offerings_new = 0
 
         with zipfile.ZipFile(zip_path) as zf:
             for entry in zf.namelist():
@@ -154,43 +196,85 @@ def load_all_zips(zip_dir: Path) -> tuple[
                     continue
                 display = CHAIN_DISPLAY[chain_raw]
 
-                day_best: dict[str, tuple[Decimal, bool]] = {}  # product_id → (price, is_promo)
-                variant_best: dict[tuple[str, str], tuple[Decimal, bool]] = {}  # (product_id, variant_key) → (price, is_promo)
                 with zf.open(entry) as raw:
                     csv_bytes = raw.read()
+
+                # First pass: pick the cheapest observation per (key, day).
+                # A single CSV can list the same product multiple times (per
+                # store); we want ONE price per chain per day.
+                day_best: dict[str, tuple[Decimal, bool, Decimal | None, str, str | None, str | None]] = {}
                 for row in parse_chain_csv(csv_bytes, chain_raw, d):
                     if row.price <= 0:
                         continue
-                    for pid, pat in BASKET.items():
-                        if pat.search(row.product_name):
-                            existing = day_best.get(pid)
-                            if existing is None or row.price < existing[0]:
-                                day_best[pid] = (row.price, row.is_promo)
+                    rows_seen += 1
+                    k = product_key(row.product_code, row.product_name)
+                    existing = day_best.get(k)
+                    if existing is None or row.price < existing[0]:
+                        day_best[k] = (
+                            row.price, row.is_promo, row.retail_price,
+                            row.product_name, row.product_code, row.category,
+                        )
 
-                            vkey = (row.product_code or row.product_name).strip().lower()
-                            vexisting = variant_best.get((pid, vkey))
-                            if vexisting is None or row.price < vexisting[0]:
-                                variant_best[(pid, vkey)] = (row.price, row.is_promo)
+                # Second pass: fold today's observations into the index.
+                for k, (price, is_promo, retail, name, code, category) in day_best.items():
+                    off_key = (k, display)
+                    off = offerings.get(off_key)
+                    if off is None:
+                        off = ProductOffering(
+                            key=k, name=name, code=code, kzp_category=category,
+                            chain=display,
+                        )
+                        offerings[off_key] = off
+                        offerings_new += 1
+                    off.points.append(PricePoint(day=d, price=price, is_promo=is_promo))
+                    if retail is not None:
+                        off.retail_prices[d] = retail
+                    # Refresh display metadata (chains sometimes fix typos or
+                    # add detail over time; keep the latest).
+                    off.name = name
+                    if category:
+                        off.kzp_category = category
 
-                            count += 1
-                            break
+        print(f" rows={rows_seen} new_offerings={offerings_new}")
 
-                for pid, (price, is_promo) in day_best.items():
-                    series[pid][display].append(PricePoint(day=d, price=price, is_promo=is_promo))
-                for (pid, vkey), (price, is_promo) in variant_best.items():
-                    variant_series[pid][display][vkey].append(PricePoint(day=d, price=price, is_promo=is_promo))
-
-        print(f" {count} hits")
-
-    return series, variant_series
+    return offerings
 
 
 # ---------------------------------------------------------------------------
-# Building product entries
+# Backward-compat bridge: rebuild the old category-level series from the
+# product-first index, so build_entry / build_chain_scorecard keep working.
 # ---------------------------------------------------------------------------
 
-PRIMARY_ORDER = ["Lidl", "Kaufland", "Billa", "Fantastico", "T Market"]
+def build_legacy_category_series(
+    offerings: dict[tuple[str, str], ProductOffering],
+) -> dict[str, dict[str, list[PricePoint]]]:
+    """For each BASKET category and chain, pick the cheapest observation per
+    day across all products matching the category's regex — same behaviour as
+    the old load_all_zips (category = "cheapest match today")."""
+    # {pid: {chain: {day: PricePoint}}}
+    tmp: dict[str, dict[str, dict[date, PricePoint]]] = {
+        pid: defaultdict(dict) for pid in BASKET
+    }
 
+    for (_, chain), off in offerings.items():
+        for pid, pat in BASKET.items():
+            if not pat.search(off.name):
+                continue
+            bucket = tmp[pid][chain]
+            for pt in off.points:
+                cur = bucket.get(pt.day)
+                if cur is None or pt.price < cur.price:
+                    bucket[pt.day] = pt
+
+    return {
+        pid: {chain: sorted(pts.values(), key=lambda p: p.day) for chain, pts in chains.items()}
+        for pid, chains in tmp.items()
+    }
+
+
+# ---------------------------------------------------------------------------
+# Legacy 22-category snapshot (drives current Products tab — public/data.js)
+# ---------------------------------------------------------------------------
 
 def _reason_code(result, stats) -> str:
     if result.verdict is Verdict.REAL:
@@ -256,10 +340,6 @@ def _compute_chain_stats(pts: list[PricePoint]) -> dict | None:
 def build_entry(pid: str, chain_series: dict[str, list[PricePoint]]) -> dict | None:
     unit_kind, size_base = UNIT_INFO[pid]
 
-    # Full stats per chain (not just one "primary" chain) — needed so the UI
-    # can show correct chain-specific price/verdict/chart when someone
-    # filters by a chain, instead of always falling back to one arbitrary
-    # chain's numbers regardless of which one is selected.
     by_chain: dict[str, dict] = {}
     for c in PRIMARY_ORDER:
         stats = _compute_chain_stats(chain_series.get(c, []))
@@ -271,14 +351,9 @@ def build_entry(pid: str, chain_series: dict[str, list[PricePoint]]) -> dict | N
         print(f"  WARNING: no data for {pid}")
         return None
 
-    # Represent the product by whichever chain is cheapest *today*. Realness
-    # of a promo is a separate axis from price — a verified-real discount at
-    # a pricier chain can still cost more than a plain (or even fake-promo)
-    # price elsewhere, so "real" shouldn't outrank "cheaper" as the default.
     best_chain = min(by_chain, key=lambda c: by_chain[c]["current_price"])
     best = by_chain[best_chain]
 
-    # Real chain prices for the "offers" section (today's snapshot per chain)
     offers = []
     for c in PRIMARY_ORDER:
         cpts = chain_series.get(c, [])
@@ -314,10 +389,134 @@ def build_entry(pid: str, chain_series: dict[str, list[PricePoint]]) -> dict | N
 
 
 # ---------------------------------------------------------------------------
+# Product-first snapshot (new — drives public/products.js and, later, search
+# and the top-deals home feed)
+# ---------------------------------------------------------------------------
+
+# UI state = flat 5-value label the frontend groups by. Keep separate from
+# reason_code (Omnibus internals) so the UI doesn't have to translate.
+STATE_FROM_VERDICT: dict[Verdict, str] = {
+    Verdict.REAL:     "real",        # promo, verified against 90-day history
+    Verdict.COSMETIC: "cosmetic",    # small discount, not statistically real
+    Verdict.FAKE:     "fake",        # promo but NOT below 30-day min
+    Verdict.UNKNOWN:  "unverified",  # promo, insufficient history
+}
+
+
+def _compute_product_snapshot(off: ProductOffering) -> dict | None:
+    """Current-day snapshot for one offering. Returns None if the offering
+    has no observation within a few days of REF (drop stale)."""
+    if not off.points:
+        return None
+
+    pts = sorted(off.points, key=lambda p: p.day)
+
+    current_pts = [p for p in pts if p.day == REF]
+    if not current_pts:
+        recent = [p for p in pts if p.day >= REF - timedelta(days=3)]
+        if not recent:
+            return None
+        current_pts = [max(recent, key=lambda p: p.day)]
+
+    current = min(current_pts, key=lambda p: p.price)
+    is_promo_today = any(p.is_promo for p in current_pts)
+
+    # Retail on the current day if available, else latest known retail.
+    retail_today: float | None = None
+    for cp in sorted(current_pts, key=lambda p: p.day, reverse=True):
+        r = off.retail_prices.get(cp.day)
+        if r is not None:
+            retail_today = float(r)
+            break
+    if retail_today is None and off.retail_prices:
+        latest = max(off.retail_prices.keys())
+        retail_today = float(off.retail_prices[latest])
+
+    claimed_pct: int | None = None
+    if retail_today is not None and retail_today > 0 and retail_today > float(current.price):
+        claimed_pct = round((retail_today - float(current.price)) / retail_today * 100)
+
+    result: dict = {
+        "id": off.key,
+        "name": off.name,
+        "code": off.code,
+        "chain": off.chain,
+        "price": float(current.price),
+        "retail": retail_today,
+        "claimed_pct": claimed_pct,
+        "is_promo": is_promo_today,
+        "kzp_category": off.kzp_category,
+        "observed_on": current.day.isoformat(),
+    }
+
+    # BASKET category tags (which of the 22 curated regexes this product
+    # matches, 0..N). Used by the UI to filter/group the product feed.
+    tags = [pid for pid, pat in BASKET.items() if pat.search(off.name)]
+    if tags:
+        result["category_tags"] = tags
+
+    # Omnibus verdict — only meaningful when the item is on promo today.
+    if is_promo_today:
+        if len(pts) >= 3:
+            res = evaluate_series(pts, REF, is_promo=True)
+            result["state"] = STATE_FROM_VERDICT[res.verdict]
+            result["reason_code"] = _reason_code(res, res.stats)
+            if res.discount_vs_median is not None:
+                result["omnibus_pct"] = round(float(res.discount_vs_median) * 100)
+            if res.stats.min_30_prior is not None:
+                result["min_30_prior"] = float(res.stats.min_30_prior)
+            if res.stats.median_90 is not None:
+                result["median_90"] = float(res.stats.median_90)
+        else:
+            result["state"] = "unverified"
+    else:
+        result["state"] = "regular"
+
+    return result
+
+
+def build_products_dataset(
+    offerings: dict[tuple[str, str], ProductOffering],
+) -> list[dict]:
+    """Compact product-first dataset (drives public/products.js).
+
+    Filter: an offering must appear at least 3 times in the last 30 days.
+    This drops one-off items that only showed up in a single brochure but
+    aren't part of the regular assortment — they'd otherwise clutter the
+    search UI without adding signal."""
+    min_recent = REF - timedelta(days=30)
+    products: list[dict] = []
+    dropped_sparse = 0
+
+    for off in offerings.values():
+        recent = sum(1 for p in off.points if min_recent <= p.day <= REF)
+        if recent < 3:
+            dropped_sparse += 1
+            continue
+        snap = _compute_product_snapshot(off)
+        if snap is None:
+            continue
+        snap["obs_30d"] = recent
+        snap["obs_total"] = len(off.points)
+        products.append(snap)
+
+    products.sort(key=lambda p: (p["chain"], p["name"]))
+    print(f"  → {len(products)} products kept, {dropped_sparse} dropped (< 3 obs in last 30d)")
+
+    state_counts = Counter(p.get("state") for p in products)
+    for st in ("real", "cosmetic", "fake", "unverified", "regular"):
+        n = state_counts.get(st, 0)
+        if n:
+            print(f"      {st:<12} {n}")
+
+    return products
+
+
+# ---------------------------------------------------------------------------
 # Битката на титаните — chain-level real vs fake promo scorecard
 # ---------------------------------------------------------------------------
 
-SCORECARD_DAYS = 30  # look back 30 days for promo events
+SCORECARD_DAYS = 30
 
 
 def build_chain_scorecard(
@@ -422,7 +621,6 @@ def main() -> None:
 
     zip_dir = Path(args.zip_dir)
 
-    # Auto-detect reference date from the latest available ZIP.
     zips = sorted(zip_dir.glob("*.zip"))
     if not zips:
         raise FileNotFoundError(f"No ZIP files found in {zip_dir}")
@@ -430,35 +628,61 @@ def main() -> None:
     REF = date.fromisoformat(zips[-1].stem)
     print(f"Reference date: {REF} (from {zips[-1].name})")
 
-    print(f"Loading ZIPs from {zip_dir} …")
-    series, _variant_series = load_all_zips(zip_dir)
+    print(f"Loading product-first index from {zip_dir} …")
+    offerings = load_all_products(zip_dir)
+    print(f"  → {len(offerings)} distinct (product, chain) offerings")
 
-    products = []
+    print("\nBuilding product-first dataset (products.js) …")
+    products_dataset = build_products_dataset(offerings)
+
+    print("\nBuilding legacy 22-category dataset (data.js) …")
+    legacy_series = build_legacy_category_series(offerings)
+    legacy_products = []
     for pid in BASKET:
-        entry = build_entry(pid, series[pid])
+        entry = build_entry(pid, legacy_series[pid])
         if entry:
-            products.append(entry)
+            legacy_products.append(entry)
             promo_tag = " [PROMO]" if entry.get("is_promo") else ""
             chains_str = ", ".join(f"{o['chain']} {o['price']:.2f}" for o in entry["offers"])
             print(f"  {pid:<10} {entry['verdict']:<7} {entry['current_price']:.2f} BGN{promo_tag}  [{chains_str}]")
 
     print("\nBattle of the Titans — chain scorecard (last 30 days):")
-    titans = build_chain_scorecard(series)
+    titans = build_chain_scorecard(legacy_series)
 
-    payload = {
+    # ---- data.js (legacy 22-category dataset, unchanged shape) ----
+    data_payload = {
         "generated_for": REF.isoformat(),
         "base_currency": "BGN",
-        "products": products,
+        "products": legacy_products,
         "fridge": build_fridge(),
         "titans": titans,
     }
-
-    out = ROOT / "public" / "data.js"
-    out.write_text(
-        "window.SAVECHECK_DEMO = " + json.dumps(payload, ensure_ascii=False, indent=2) + ";\n",
+    data_out = ROOT / "public" / "data.js"
+    data_out.write_text(
+        "window.SAVECHECK_DEMO = " + json.dumps(data_payload, ensure_ascii=False, indent=2) + ";\n",
         encoding="utf-8",
     )
-    print(f"\nWrote {out}  ({len(products)} products)")
+    print(f"\nWrote {data_out}  ({len(legacy_products)} legacy category entries, "
+          f"{data_out.stat().st_size / 1024:.1f} KB)")
+
+    # ---- products.js (product-first snapshot, new) ----
+    products_payload = {
+        "generated_for": REF.isoformat(),
+        "base_currency": "BGN",
+        "min_obs_days": 3,           # filter parameter (surfaced in "How it works")
+        "recency_window_days": 30,
+        "products": products_dataset,
+    }
+    products_out = ROOT / "public" / "products.js"
+    products_out.write_text(
+        "window.SAVECHECK_PRODUCTS = " + json.dumps(products_payload, ensure_ascii=False, separators=(",", ":")) + ";\n",
+        encoding="utf-8",
+    )
+    size_kb = products_out.stat().st_size / 1024
+    print(f"Wrote {products_out}  ({len(products_dataset)} products, {size_kb:.1f} KB)")
+    if size_kb > 2048:
+        print(f"  ⚠  products.js exceeds 2 MB — consider tightening the min_obs filter "
+              f"or moving history to an API endpoint before Slice 2.")
 
 
 if __name__ == "__main__":

@@ -1,8 +1,9 @@
 """Generate per-chain promotional brochure summaries with Omnibus verdicts.
 
 Reads the latest KZP ZIP, extracts ALL products with "Цена в промоция" filled,
-deduplicates by product code, runs the Omnibus verdict on known basket items,
-and writes public/brochures.js.
+deduplicates by product code, runs the Omnibus verdict on known basket items
+against their OWN 90-day variant history (from the product-first index), and
+writes public/brochures.js.
 
     python scripts/gen_brochures.py [--zip-dir /tmp/kzp_zips]
 """
@@ -21,11 +22,19 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from savecheck.ingest.kolkostruva import chain_name_from_filename, parse_chain_csv  # noqa: E402
-from savecheck.pricing import PricePoint, Verdict, evaluate_series  # noqa: E402
+from savecheck.pricing import Verdict, evaluate_series  # noqa: E402
 
-# Reuse basket + chain config from gen_demo_data.
+# Reuse basket + chain config + product-first loader from gen_demo_data.
 sys.path.insert(0, str(ROOT / "scripts"))
-from gen_demo_data import BASKET, CHAIN_DISPLAY, MAIN_CHAINS, PRIMARY_ORDER, load_all_zips  # noqa: E402
+from gen_demo_data import (  # noqa: E402
+    BASKET,
+    CHAIN_DISPLAY,
+    MAIN_CHAINS,
+    PRIMARY_ORDER,
+    ProductOffering,
+    load_all_products,
+    product_key,
+)
 
 import argparse
 
@@ -41,16 +50,17 @@ def _claimed_pct(retail: Decimal | None, promo: Decimal) -> int | None:
 def extract_chain_promos(
     zip_path: Path,
     ref: date,
-    variant_series: dict[str, dict[str, dict[str, list[PricePoint]]]],
+    offerings: dict[tuple[str, str], ProductOffering],
 ) -> dict[str, list[dict]]:
-    """Return {display_chain: [item, ...]} for all promo products in the ZIP.
+    """Return ``{display_chain: [item, ...]}`` for all promo products in the ZIP.
 
     Each item matching one of the curated basket categories is verified
-    against its OWN price history (by product code, falling back to name)
-    rather than a category-wide blended series — so a pricier brand's real
-    discount isn't judged against a cheaper brand's typical price, and vice
-    versa. Items with fewer than 3 of their own price points stay unverified
-    (still shown, just without a real/fake badge) rather than guessing.
+    against its OWN 90-day price history (looked up in the product-first
+    ``offerings`` index by ``product_key``) rather than a category-wide
+    blended series — so a pricier brand's real discount isn't judged against
+    a cheaper brand's typical price. Items with fewer than 3 of their own
+    price points stay unverified (still shown, just without a real/fake
+    badge) rather than guessing.
     """
     result: dict[str, dict[str, dict]] = defaultdict(dict)  # chain → code/name → data
 
@@ -99,14 +109,13 @@ def extract_chain_promos(
             }
 
             # Omnibus verdict — matched against THIS item's own variant
-            # history, not a blended category series (avoids mislabeling a
-            # pricier brand's real discount as fake just because a cheaper
-            # variant of the same category dominates the category baseline).
+            # history from the product-first offerings index.
             for pid, pat in BASKET.items():
                 if pat.search(d["name"]):
                     item["basket_id"] = pid
-                    vkey = (d["code"] or d["name"]).strip().lower()
-                    pts_for_variant = variant_series.get(pid, {}).get(c, {}).get(vkey, [])
+                    key = product_key(d["code"], d["name"])
+                    off = offerings.get((key, c))
+                    pts_for_variant = off.points if off else []
                     if len(pts_for_variant) >= 3:
                         pts = sorted(pts_for_variant, key=lambda p: p.day)
                         today_pts = [p for p in pts if p.day == ref]
@@ -153,11 +162,12 @@ def main() -> None:
     ref = date.fromisoformat(latest_zip.stem)
     print(f"Reference date: {ref} (from {latest_zip.name})")
 
-    print(f"Loading 90-day basket series for Omnibus verdicts…")
-    _category_series, variant_series = load_all_zips(zip_dir)
+    print(f"Loading product-first index for Omnibus verdicts…")
+    offerings = load_all_products(zip_dir)
+    print(f"  → {len(offerings)} distinct (product, chain) offerings")
 
     print(f"Extracting promos from {latest_zip.name}…")
-    chains_data = extract_chain_promos(latest_zip, ref, variant_series)
+    chains_data = extract_chain_promos(latest_zip, ref, offerings)
 
     # Week label: ref through the Sunday of ref's week
     week_end = ref + timedelta(days=6 - ref.weekday())
