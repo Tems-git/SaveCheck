@@ -41,9 +41,17 @@ def _claimed_pct(retail: Decimal | None, promo: Decimal) -> int | None:
 def extract_chain_promos(
     zip_path: Path,
     ref: date,
-    basket_series: dict[str, dict[str, list[PricePoint]]],
+    variant_series: dict[str, dict[str, dict[str, list[PricePoint]]]],
 ) -> dict[str, list[dict]]:
-    """Return {display_chain: [item, ...]} for all promo products in the ZIP."""
+    """Return {display_chain: [item, ...]} for all promo products in the ZIP.
+
+    Each item matching one of the curated basket categories is verified
+    against its OWN price history (by product code, falling back to name)
+    rather than a category-wide blended series — so a pricier brand's real
+    discount isn't judged against a cheaper brand's typical price, and vice
+    versa. Items with fewer than 3 of their own price points stay unverified
+    (still shown, just without a real/fake badge) rather than guessing.
+    """
     result: dict[str, dict[str, dict]] = defaultdict(dict)  # chain → code/name → data
 
     with zipfile.ZipFile(zip_path) as zf:
@@ -90,17 +98,21 @@ def extract_chain_promos(
                 "category": d["category"],
             }
 
-            # Omnibus verdict for basket products
+            # Omnibus verdict — matched against THIS item's own variant
+            # history, not a blended category series (avoids mislabeling a
+            # pricier brand's real discount as fake just because a cheaper
+            # variant of the same category dominates the category baseline).
             for pid, pat in BASKET.items():
                 if pat.search(d["name"]):
-                    pts_for_chain = basket_series.get(pid, {}).get(c, [])
-                    if pts_for_chain:
-                        pts = sorted(pts_for_chain, key=lambda p: p.day)
+                    item["basket_id"] = pid
+                    vkey = (d["code"] or d["name"]).strip().lower()
+                    pts_for_variant = variant_series.get(pid, {}).get(c, {}).get(vkey, [])
+                    if len(pts_for_variant) >= 3:
+                        pts = sorted(pts_for_variant, key=lambda p: p.day)
                         today_pts = [p for p in pts if p.day == ref]
                         is_promo_today = any(p.is_promo for p in today_pts)
                         res = evaluate_series(pts, ref, is_promo=is_promo_today)
                         s = res.stats
-                        item["basket_id"] = pid
                         item["verdict"] = res.verdict.value
                         item["omnibus_pct"] = (
                             round(float(res.discount_vs_median) * 100)
@@ -108,6 +120,7 @@ def extract_chain_promos(
                         )
                         item["min_30_prior"] = float(s.min_30_prior) if s.min_30_prior else None
                         item["median_90"] = float(s.median_90) if s.median_90 else None
+                    # else: not enough history for THIS specific product → stays unverified
                     break
 
             items.append(item)
@@ -141,10 +154,10 @@ def main() -> None:
     print(f"Reference date: {ref} (from {latest_zip.name})")
 
     print(f"Loading 90-day basket series for Omnibus verdicts…")
-    basket_series = load_all_zips(zip_dir)
+    _category_series, variant_series = load_all_zips(zip_dir)
 
     print(f"Extracting promos from {latest_zip.name}…")
-    chains_data = extract_chain_promos(latest_zip, ref, basket_series)
+    chains_data = extract_chain_promos(latest_zip, ref, variant_series)
 
     # Week label: ref through the Sunday of ref's week
     week_end = ref + timedelta(days=6 - ref.weekday())
