@@ -720,8 +720,14 @@ function renderChrome() {
 
 const VERDICT_FILTERS = ['all', 'green', 'red', 'yellow'];
 function renderFilters() {
-  const counts = { all: products.length, green: 0, yellow: 0, red: 0, gray: 0 };
-  products.forEach(p => { if (counts[p.verdict] != null) counts[p.verdict]++; });
+  // Броячите трябва да отговарят на избраната верига, не на "по подразбиране"
+  // (най-евтината) верига за всеки продукт — иначе цифрите не съвпадат с
+  // реално показаните редове, докато е избран chain chip.
+  const items = chainFilter
+    ? products.filter(p => p.by_chain && p.by_chain[chainFilter]).map(p => p.by_chain[chainFilter])
+    : products;
+  const counts = { all: items.length, green: 0, yellow: 0, red: 0, gray: 0 };
+  items.forEach(v => { if (counts[v.verdict] != null) counts[v.verdict]++; });
   document.getElementById('filter-wrap').innerHTML = VERDICT_FILTERS.map(key => {
     const label = key === 'all' ? FILTER_ALL[country.lang] : TAG[key][country.lang];
     const col = key === 'all' ? 'var(--ink)' : C[key];
@@ -747,6 +753,15 @@ function setChainFilter(chain) {
   const si = document.getElementById('search-input'); if (si) si.value = '';
   active = -1;
   renderProducts(); renderChainChips();
+}
+function productView(p) {
+  // When a chain chip is active and this product has chain-specific stats,
+  // show THAT chain's price/verdict/chart — not the default (cheapest)
+  // chain's numbers regardless of what's selected.
+  if (chainFilter && p.by_chain && p.by_chain[chainFilter]) {
+    return { ...p, ...p.by_chain[chainFilter] };
+  }
+  return p;
 }
 function chainExtrasHTML(chain) {
   const BD = window.SAVECHECK_BROCHURES;
@@ -840,18 +855,18 @@ function renderProducts() {
   let filtered;
 
   if (chainFilter) {
-    // Верига филтър → най-големите РЕАЛНИ промоции в тази верига първо, не най-евтиното
+    // Верига филтър → най-големите РЕАЛНИ промоции В ТАЗИ верига първо, не
+    // най-евтиното — и не по verdict-а на друга (по-евтина) верига.
     const rank = { green:0, yellow:1, red:2, gray:3 };
-    filtered = products.slice();
-    if (verdictFilter !== 'all') filtered = filtered.filter(p => p.verdict === verdictFilter);
+    filtered = products.filter(p => p.by_chain && p.by_chain[chainFilter]);
+    if (verdictFilter !== 'all') filtered = filtered.filter(p => p.by_chain[chainFilter].verdict === verdictFilter);
     filtered.sort((a, b) => {
-      const ra = rank[a.verdict] ?? 9, rb = rank[b.verdict] ?? 9;
+      const va = a.by_chain[chainFilter], vb = b.by_chain[chainFilter];
+      const ra = rank[va.verdict] ?? 9, rb = rank[vb.verdict] ?? 9;
       if (ra !== rb) return ra - rb;
-      const da = a.discount_pct || 0, db = b.discount_pct || 0;
+      const da = va.discount_pct || 0, db = vb.discount_pct || 0;
       if (da !== db) return db - da;
-      const pa = offersFor(a).find(o=>o.chain===chainFilter)?.price ?? Infinity;
-      const pb = offersFor(b).find(o=>o.chain===chainFilter)?.price ?? Infinity;
-      return pa - pb;
+      return (va.current_price ?? Infinity) - (vb.current_price ?? Infinity);
     });
   } else if (aiFilterIds !== null) {
     // AI резултати
@@ -874,27 +889,26 @@ function renderProducts() {
   }
 
   document.getElementById('cards').innerHTML = filtered.map((p, i) => {
+    const v = productView(p);
     const meta = PRODUCTS[p.id];
     const on = i === active;
-    const disc = p.discount_pct != null && p.discount_pct > 0
-        ? `<em style="background:${C[p.verdict]}">−${p.discount_pct}%</em>` : '';
-    const unit = p.current_unit_price == null ? ''
-        : ` <small>· ${disp(p.current_unit_price*country.fx)} ${unitLabel(p.unit_kind)}</small>`;
+    const disc = v.discount_pct != null && v.discount_pct > 0
+        ? `<em style="background:${C[v.verdict]}">−${v.discount_pct}%</em>` : '';
+    const unit = v.current_unit_price == null ? ''
+        : ` <small>· ${disp(v.current_unit_price*country.fx)} ${unitLabel(p.unit_kind)}</small>`;
     const inCart = !!cart[p.id];
-    // При верига филтър показваме цената за тази верига
-    const chainPrice = chainFilter ? offersFor(p).find(o=>o.chain===chainFilter)?.price : null;
-    const displayMoney = chainPrice != null ? money(chainPrice) : money(p.current_price);
     const rowHtml = `
-      <div class="prow ${on?'on':''}" role="button" tabindex="0" onclick="select(${i})" onkeydown="rowKey(event,${i})" data-v="${p.verdict}" style="--vc:${C[p.verdict]}">
+      <div class="prow ${on?'on':''}" role="button" tabindex="0" onclick="select(${i})" onkeydown="rowKey(event,${i})" data-v="${v.verdict}" style="--vc:${C[v.verdict]}">
         <span class="ill">${productIcon(p.id)}</span>
-        <span class="pnm">${meta.name[country.lang]} <span class="vtag" style="background:${C[p.verdict]}">${TAG[p.verdict][country.lang]}</span><small>${meta.pack[country.lang]}${unit}</small></span>
+        <span class="pnm">${meta.name[country.lang]} <span class="vtag" style="background:${C[v.verdict]}">${TAG[v.verdict][country.lang]}</span><small>${meta.pack[country.lang]}${unit}</small></span>
         <button class="cadd ${inCart?'in':''}" onclick="event.stopPropagation();toggleCart('${p.id}')" aria-label="${meta.name[country.lang]}">${inCart?'✓':'+'}</button>
-        <span class="ppr">${displayMoney}${disc}${sparkline(p.series)}</span>
+        <span class="ppr">${money(v.current_price)}${disc}${sparkline(v.series)}</span>
       </div>`;
-    return rowHtml + (on ? detailHTML(p) : '');
+    return rowHtml + (on ? detailHTML(v) : '');
   }).join('') + (chainFilter ? chainExtrasHTML(chainFilter) : '');
   if (active >= 0 && active < filtered.length) {
-    drawChart(filtered[active], C[filtered[active].verdict]);
+    const v = productView(filtered[active]);
+    drawChart(v, C[v.verdict]);
   }
 }
 
