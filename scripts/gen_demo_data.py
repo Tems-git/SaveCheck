@@ -215,21 +215,13 @@ def _recent_day_at(chart_series, value) -> str | None:
     return found.isoformat() if found else None
 
 
-def build_entry(pid: str, chain_series: dict[str, list[PricePoint]]) -> dict | None:
-    unit_kind, size_base = UNIT_INFO[pid]
+def _compute_chain_stats(pts: list[PricePoint]) -> dict | None:
+    """Full Omnibus stats/chart for one product at one specific chain."""
+    if len(pts) < 3:
+        return None
+    pts = sorted(pts, key=lambda p: p.day)
     f = lambda v: float(v) if v is not None else None  # noqa: E731
 
-    primary = next((c for c in PRIMARY_ORDER if chain_series.get(c)), None)
-    if primary is None:
-        print(f"  WARNING: no data for {pid}")
-        return None
-
-    pts = sorted(chain_series[primary], key=lambda p: p.day)
-    if len(pts) < 3:
-        print(f"  WARNING: too few points for {pid}/{primary}: {len(pts)}")
-        return None
-
-    # Use real KZP is_promo flag for today (or the most recent available day)
     current_pts = [p for p in pts if p.day == REF]
     if not current_pts:
         recent = [p for p in pts if p.day >= REF - timedelta(days=3)]
@@ -237,10 +229,56 @@ def build_entry(pid: str, chain_series: dict[str, list[PricePoint]]) -> dict | N
     is_promo_today = any(p.is_promo for p in current_pts)
     result = evaluate_series(pts, REF, is_promo=is_promo_today)
     s = result.stats
+    if s.current_price is None:
+        return None
     chart = build_chart(pts, REF)
     disc = result.discount_vs_median
 
-    # Real chain prices for the "offers" section
+    return {
+        "is_promo": is_promo_today,
+        "verdict": {
+            Verdict.REAL: "green", Verdict.COSMETIC: "yellow",
+            Verdict.FAKE: "red",  Verdict.UNKNOWN: "gray",
+        }[result.verdict],
+        "reason_code": _reason_code(result, s),
+        "discount_pct": round(float(disc) * 100) if disc is not None else None,
+        "current_price": f(s.current_price),
+        "median_90": f(s.median_90),
+        "min_90": f(s.min_90),
+        "max_90": f(s.max_90),
+        "min_30_prior": f(s.min_30_prior),
+        "lowest_day": _recent_day_at(chart.series, s.min_90),
+        "highest_day": _recent_day_at(chart.series, s.max_90),
+        "series": [{"day": p.day.isoformat(), "price": float(p.price)} for p in chart.series],
+    }
+
+
+def build_entry(pid: str, chain_series: dict[str, list[PricePoint]]) -> dict | None:
+    unit_kind, size_base = UNIT_INFO[pid]
+
+    # Full stats per chain (not just one "primary" chain) — needed so the UI
+    # can show correct chain-specific price/verdict/chart when someone
+    # filters by a chain, instead of always falling back to one arbitrary
+    # chain's numbers regardless of which one is selected.
+    by_chain: dict[str, dict] = {}
+    for c in PRIMARY_ORDER:
+        stats = _compute_chain_stats(chain_series.get(c, []))
+        if stats:
+            stats["current_unit_price"] = round(stats["current_price"] / float(size_base), 4)
+            by_chain[c] = stats
+
+    if not by_chain:
+        print(f"  WARNING: no data for {pid}")
+        return None
+
+    # Represent the product by whichever chain is cheapest *today*. Realness
+    # of a promo is a separate axis from price — a verified-real discount at
+    # a pricier chain can still cost more than a plain (or even fake-promo)
+    # price elsewhere, so "real" shouldn't outrank "cheaper" as the default.
+    best_chain = min(by_chain, key=lambda c: by_chain[c]["current_price"])
+    best = by_chain[best_chain]
+
+    # Real chain prices for the "offers" section (today's snapshot per chain)
     offers = []
     for c in PRIMARY_ORDER:
         cpts = chain_series.get(c, [])
@@ -256,26 +294,22 @@ def build_entry(pid: str, chain_series: dict[str, list[PricePoint]]) -> dict | N
     return {
         "id": pid,
         "unit_kind": unit_kind,
-        "is_promo": is_promo_today,
-        "verdict": {
-            Verdict.REAL: "green", Verdict.COSMETIC: "yellow",
-            Verdict.FAKE: "red",  Verdict.UNKNOWN: "gray",
-        }[result.verdict],
-        "reason_code": _reason_code(result, s),
-        "discount_pct": round(float(disc) * 100) if disc is not None else None,
-        "current_price": f(s.current_price),
-        "current_unit_price": (
-            round(float(s.current_price) / float(size_base), 4)
-            if s.current_price is not None else None
-        ),
-        "median_90": f(s.median_90),
-        "min_90": f(s.min_90),
-        "max_90": f(s.max_90),
-        "min_30_prior": f(s.min_30_prior),
-        "lowest_day": _recent_day_at(chart.series, s.min_90),
-        "highest_day": _recent_day_at(chart.series, s.max_90),
-        "series": [{"day": p.day.isoformat(), "price": float(p.price)} for p in chart.series],
+        "best_chain": best_chain,
+        "is_promo": best["is_promo"],
+        "verdict": best["verdict"],
+        "reason_code": best["reason_code"],
+        "discount_pct": best["discount_pct"],
+        "current_price": best["current_price"],
+        "current_unit_price": best["current_unit_price"],
+        "median_90": best["median_90"],
+        "min_90": best["min_90"],
+        "max_90": best["max_90"],
+        "min_30_prior": best["min_30_prior"],
+        "lowest_day": best["lowest_day"],
+        "highest_day": best["highest_day"],
+        "series": best["series"],
         "offers": offers,
+        "by_chain": by_chain,
     }
 
 
