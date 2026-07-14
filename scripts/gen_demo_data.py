@@ -106,10 +106,30 @@ REF: date = date(2026, 6, 13)  # overridden in main() from latest ZIP
 # Loading ZIPs (using main's parse_chain_csv + chain_name_from_filename)
 # ---------------------------------------------------------------------------
 
-def load_all_zips(zip_dir: Path) -> dict[str, dict[str, list[PricePoint]]]:
-    """Return {product_id: {display_chain: [PricePoint, ...]}} from all ZIPs."""
+def load_all_zips(zip_dir: Path) -> tuple[
+    dict[str, dict[str, list[PricePoint]]],
+    dict[str, dict[str, dict[str, list[PricePoint]]]],
+]:
+    """Load price history at two granularities from all cached ZIPs.
+
+    Returns (category_series, variant_series):
+
+    category_series: {product_id: {display_chain: [PricePoint, ...]}} — the
+    cheapest matching item per day, per chain. Used for the Products/Titans
+    overview (unchanged from before — one representative number per staple).
+
+    variant_series: {product_id: {display_chain: {variant_key: [PricePoint, ...]}}}
+    — separate history per *specific* product (by code, falling back to name)
+    within each category. Used to verify individual brochure items against
+    their own price history instead of a blended category-wide one, so e.g.
+    a pricier brand's real discount isn't judged against a cheaper brand's
+    typical price.
+    """
     series: dict[str, dict[str, list[PricePoint]]] = {
         pid: defaultdict(list) for pid in BASKET
+    }
+    variant_series: dict[str, dict[str, dict[str, list[PricePoint]]]] = {
+        pid: defaultdict(lambda: defaultdict(list)) for pid in BASKET
     }
 
     zips = sorted(zip_dir.glob("*.zip"))
@@ -135,6 +155,7 @@ def load_all_zips(zip_dir: Path) -> dict[str, dict[str, list[PricePoint]]]:
                 display = CHAIN_DISPLAY[chain_raw]
 
                 day_best: dict[str, tuple[Decimal, bool]] = {}  # product_id → (price, is_promo)
+                variant_best: dict[tuple[str, str], tuple[Decimal, bool]] = {}  # (product_id, variant_key) → (price, is_promo)
                 with zf.open(entry) as raw:
                     csv_bytes = raw.read()
                 for row in parse_chain_csv(csv_bytes, chain_raw, d):
@@ -145,15 +166,23 @@ def load_all_zips(zip_dir: Path) -> dict[str, dict[str, list[PricePoint]]]:
                             existing = day_best.get(pid)
                             if existing is None or row.price < existing[0]:
                                 day_best[pid] = (row.price, row.is_promo)
+
+                            vkey = (row.product_code or row.product_name).strip().lower()
+                            vexisting = variant_best.get((pid, vkey))
+                            if vexisting is None or row.price < vexisting[0]:
+                                variant_best[(pid, vkey)] = (row.price, row.is_promo)
+
                             count += 1
                             break
 
                 for pid, (price, is_promo) in day_best.items():
                     series[pid][display].append(PricePoint(day=d, price=price, is_promo=is_promo))
+                for (pid, vkey), (price, is_promo) in variant_best.items():
+                    variant_series[pid][display][vkey].append(PricePoint(day=d, price=price, is_promo=is_promo))
 
         print(f" {count} hits")
 
-    return series
+    return series, variant_series
 
 
 # ---------------------------------------------------------------------------
@@ -368,7 +397,7 @@ def main() -> None:
     print(f"Reference date: {REF} (from {zips[-1].name})")
 
     print(f"Loading ZIPs from {zip_dir} …")
-    series = load_all_zips(zip_dir)
+    series, _variant_series = load_all_zips(zip_dir)
 
     products = []
     for pid in BASKET:
