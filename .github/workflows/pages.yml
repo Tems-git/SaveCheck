@@ -1,8 +1,6 @@
-name: Deploy site to GitHub Pages
+name: Deploy site to GitHub Pages (disabled — Vercel is the live site)
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
