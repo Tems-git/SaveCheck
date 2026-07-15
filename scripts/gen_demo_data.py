@@ -6,6 +6,10 @@ Reads the daily ZIP exports from a local cache directory and produces:
     price, Omnibus verdict when the item is on promo, KZP category and
     matching BASKET tags. This is the dataset the search / home feed / cart
     reads from.
+  * ``public/products-history.js`` — per-product 90-day price series for
+    every offering in products.js, in a compact ``[day_offset, price,
+    is_promo]`` triplet form. Loaded lazily by the UI when the user opens
+    a product detail view.
   * ``public/data.js`` — legacy 22-category snapshot, produced for backward
     compatibility with the current Products tab (category chips + charts).
     The category series is reconstructed from the product-first index by
@@ -477,18 +481,23 @@ def _compute_product_snapshot(off: ProductOffering) -> dict | None:
 
 def build_products_dataset(
     offerings: dict[tuple[str, str], ProductOffering],
-) -> list[dict]:
+) -> tuple[list[dict], set[tuple[str, str]]]:
     """Compact product-first dataset (drives public/products.js).
 
     Filter: an offering must appear at least 3 times in the last 30 days.
     This drops one-off items that only showed up in a single brochure but
     aren't part of the regular assortment — they'd otherwise clutter the
-    search UI without adding signal."""
+    search UI without adding signal.
+
+    Returns (list_of_snapshots, set_of_kept_offering_keys). The second value
+    is used by build_products_history_dataset so the two datasets stay
+    perfectly aligned on which (product, chain) pairs they cover."""
     min_recent = REF - timedelta(days=30)
     products: list[dict] = []
+    kept: set[tuple[str, str]] = set()
     dropped_sparse = 0
 
-    for off in offerings.values():
+    for off_key, off in offerings.items():
         recent = sum(1 for p in off.points if min_recent <= p.day <= REF)
         if recent < 3:
             dropped_sparse += 1
@@ -499,6 +508,7 @@ def build_products_dataset(
         snap["obs_30d"] = recent
         snap["obs_total"] = len(off.points)
         products.append(snap)
+        kept.add(off_key)
 
     products.sort(key=lambda p: (p["chain"], p["name"]))
     print(f"  → {len(products)} products kept, {dropped_sparse} dropped (< 3 obs in last 30d)")
@@ -509,7 +519,61 @@ def build_products_dataset(
         if n:
             print(f"      {st:<12} {n}")
 
-    return products
+    return products, kept
+
+
+# ---------------------------------------------------------------------------
+# Product-first history (new — drives public/products-history.js)
+# ---------------------------------------------------------------------------
+
+def build_products_history_dataset(
+    offerings: dict[tuple[str, str], ProductOffering],
+    kept_keys: set[tuple[str, str]],
+    window_days: int = 90,
+) -> dict:
+    """Full price history per (product, chain), for offerings that made it
+    into products.js.
+
+    Point format is a compact 3-element array: ``[day_offset, price, is_promo]``,
+    where ``day_offset`` is days back from REF (0 = REF, 1 = day before, ...).
+    This shaves ~35% off the naive ISO-date format and is trivial for the UI
+    to expand: ``new Date(refMs - offset * 86400000)``.
+
+    Nested shape keeps chains grouped under each product so the UI can look
+    up "history for this product across all chains it's sold in" without
+    scanning the whole dataset."""
+    cutoff = REF - timedelta(days=window_days)
+    products: dict[str, dict[str, list]] = {}
+    total_points = 0
+
+    for off_key in kept_keys:
+        off = offerings.get(off_key)
+        if off is None:
+            continue
+        pts = sorted(
+            (p for p in off.points if cutoff <= p.day <= REF),
+            key=lambda p: p.day,
+        )
+        if not pts:
+            continue
+        compact = [
+            [(REF - p.day).days, float(p.price), 1 if p.is_promo else 0]
+            for p in pts
+        ]
+        products.setdefault(off.key, {})[off.chain] = compact
+        total_points += len(compact)
+
+    avg = total_points / max(1, sum(len(v) for v in products.values())) if products else 0
+    print(f"  → {len(products)} products, {total_points} points total "
+          f"({avg:.1f} avg per (product,chain))")
+
+    return {
+        "generated_for": REF.isoformat(),
+        "ref_day": REF.isoformat(),
+        "window_days": window_days,
+        "point_schema": ["day_offset_from_ref", "price", "is_promo_01"],
+        "products": products,
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -633,7 +697,10 @@ def main() -> None:
     print(f"  → {len(offerings)} distinct (product, chain) offerings")
 
     print("\nBuilding product-first dataset (products.js) …")
-    products_dataset = build_products_dataset(offerings)
+    products_dataset, kept_keys = build_products_dataset(offerings)
+
+    print("\nBuilding product history dataset (products-history.js) …")
+    history_dataset = build_products_history_dataset(offerings, kept_keys)
 
     print("\nBuilding legacy 22-category dataset (data.js) …")
     legacy_series = build_legacy_category_series(offerings)
@@ -683,6 +750,18 @@ def main() -> None:
     if size_kb > 2048:
         print(f"  ⚠  products.js exceeds 2 MB — consider tightening the min_obs filter "
               f"or moving history to an API endpoint before Slice 2.")
+
+    # ---- products-history.js (per-product 90-day series, new) ----
+    history_out = ROOT / "public" / "products-history.js"
+    history_out.write_text(
+        "window.SAVECHECK_HISTORY = " + json.dumps(history_dataset, ensure_ascii=False, separators=(",", ":")) + ";\n",
+        encoding="utf-8",
+    )
+    hist_size_mb = history_out.stat().st_size / 1024 / 1024
+    print(f"Wrote {history_out}  ({hist_size_mb:.2f} MB)")
+    if hist_size_mb > 25:
+        print(f"  ⚠  products-history.js exceeds 25 MB — time to migrate to an API endpoint "
+              f"(Vercel Edge Function + KV) rather than static hosting.")
 
 
 if __name__ == "__main__":
