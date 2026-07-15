@@ -14,32 +14,36 @@
 КЗП open data (kolkostruva.bg)
         │  ZIP с CSV по вериги, всеки ден
         ▼
-gen_demo_data.py  ──►  public/data.js
-gen_brochures.py  ──►  public/brochures.js
+gen_demo_data.py  ──►  public/data.js               (22-категорийна витрина, legacy)
+                  ──►  public/products.js           (product-first snapshot)
+                  ──►  public/products-history.js   (90-дневна история per оферта)
+gen_brochures.py  ──►  public/brochures.js          (седмични промоции с fallback)
         │
         ▼  (GitHub Actions, всеки ден 08:00 EET)
 Vercel auto-deploy ──► Live сайт
 ```
 
-За всеки продукт се изчислява **Omnibus verdict**:
+За всяка оферта (продукт × верига) се изчислява **Omnibus state**:
 
-| Verdict | Значение |
-|---------|----------|
-| 🟢 **РЕАЛНА** | Цената е по-ниска от дъното за последните 30 дни |
-| 🔴 **ФАЛШИВА** | Промоцията е налична, но цената не е по-ниска от обичайното |
-| 🟡 **ОБИЧАЙНА** | Малко под медианата, но без значително намаление |
-| ⚪ **НЯМА ДАННИ** | Недостатъчна история |
+| State | Значение |
+|-------|----------|
+| 🟢 **real** | Цената е под най-ниската за последните 30 дни — реална икономия |
+| 🟡 **cosmetic** | Малка отстъпка спрямо медианата, но не значителна |
+| 🔴 **fake** | Обявена промоция, но цената НЕ е под 30-дневното дъно |
+| ⚪ **unverified** | Обявена промоция, но има под 3 наблюдения за 30 дни |
+| **regular** | Не е обявена като промо (без иконка на карти-те) |
 
-Присъдата се смята **поотделно за всяка верига** (`by_chain`) — цената, показана по подразбиране за продукт, е винаги от най-евтината верига в момента (не от тази с "най-честната" промоция), за да не се възнаграждава изкуствено завишена базова цена.
+Присъдата се смята **поотделно за всеки конкретен продукт в конкретна верига**, срещу собствената му 90-дневна крива — не срещу блендната категория. Така 400-грамов кашкавал „Домлян БДС" в Kaufland се сравнява със себе си от вчера, не с най-евтиния кашкавал в категорията.
 
 ---
 
 ## Функционалности
 
-- **Хедър** — лого (тап → Начало) + слоган + държава; ред с **глобална търсачка** (локално търсене, без AI).
-- **🏠 Начало** — Hero с реалните спестявания (акварелен банер) + лента-кука „**N подвеждащи промоции**" (последните 30 дни) + мини класация на Титаните
-- **🛒 Пазарувай** — 22 проследени продукта (базова кошница) с филтър **„Къде пазаруваш?"** по верига (Lidl / Kaufland / Billa / Fantastico — цена, присъда и графика се преизчисляват за избраната верига), филтър по присъда (Всички / 🟢 Реална / 🔴 Фалшива / 🟡 Обичайна), 90-дневна графика, кошница с анализ по верига
-- **🏷️ Промоции** — Всички промо оферти тази седмица по верига (секциите са свити по подразбиране), верифицирани срещу собствената история на всеки конкретен продукт (не блендната категория) + **Битката на Титаните** (класация коя верига лъже най-много)
+- **🏠 Начало** — hero с реалните спестявания (акварелен банер) + лента-кука „**N подвеждащи промоции**" (последните 30 дни) + **търсене** и **филтър по верига** над списъка с топ реални промоции (6 бр., подредени по omnibus %) + мини класация на Титаните
+- **Click на карта** → отваря детайл-модал с product name, chain, badge за state + обяснение, current price + retail + omnibus %, и **90-дневна графика на цената** (промо дни в червено, обичайни в тъмно сиво). Графиката се захранва от `products-history.js`, който се зарежда lazy при първия click (~1 сек, 6 MB → 0.87 MB gzip).
+- **Търсене** — глобална търсачка (пише се където и да си, скача те в Начало). Пише „кашкавал" → показва всички кашкавали (5956 продукта общо), подредени по state (real → cosmetic → regular → unverified → fake), после по цена.
+- **🏷️ Промоции** — всички промо оферти тази седмица по верига (секциите са свити по подразбиране), верифицирани срещу собствената история на всеки конкретен продукт. При липсваща верига за деня — fallback до 3 дни назад с маркер „от 13.7". **Битката на Титаните** (класация коя верига лъже най-много) е втори таб.
+- **🛒 Пазарувай** — legacy 22-продуктова кошница с филтър по верига и по verdict (постепенно ще бъде премахнат в полза на глобалната търсачка + кошница в модалa)
 - **10 езика** — BG, SR, MK, RO, EL, TR, SQ, BS, HR, SL
 
 > Скенерът за баркод и таб „Рецепти" съществуват в кодовата база, но са скрити в текущия MVP интерфейс.
@@ -50,7 +54,7 @@ Vercel auto-deploy ──► Live сайт
 
 ```
 kolkostruva.bg/opendata_files/YYYY-MM-DD.zip
-    └── ЛидлБългария_131071587.csv
+    └── ЛидлБългария_*.csv
     └── Kaufland_*.csv
     └── BILLA_*.csv
     └── ФАНТАСТИКО_*.csv
@@ -62,7 +66,13 @@ kolkostruva.bg/opendata_files/YYYY-MM-DD.zip
 
 Когато `Цена в промоция` е попълнена → `is_promo = True` → се проверява дали е по-евтино от `min_30_prior`.
 
-`gen_demo_data.py` следи всеки продукт на две нива: категория (най-евтиното съвпадение на регекс на ден — захранва Продукти/Титани) и по конкретен вариант/марка в рамките на всяка верига (`by_chain`, захранва верификацията на брошурните артикули срещу собствената им история, а не блендна категория).
+`gen_demo_data.py` работи в **product-first** модел: индексира **всеки** продукт в КЗП feed-а (не само 22-те кураторски категории) като `(product_key, chain)` двойка. `product_key` използва `product_code` когато е наличен, иначе нормализирано име (lowercase + collapsed whitespace + trailing punct стрипнат). За текущия dataset това дава **5956 уникални оферти** от 5 вериги.
+
+Три output-a се генерират в един pass:
+
+- **`products.js`** — compact current-snapshot: name, chain, price, retail, is_promo, state, omnibus_pct, KZP category, BASKET category tags (0..N). Filter: минимум 3 наблюдения за последните 30 дни. ~1.8 MB.
+- **`products-history.js`** — full 90-day price history per оферта, в компактен `[day_offset, price, is_promo]` формат. Nested `{product_key: {chain: [[o,p,s], ...]}}`. Loaded lazy при първо отваряне на детайл-модал. ~6 MB uncompressed / 0.87 MB gzip.
+- **`data.js`** — legacy 22-категорийна витрина, реконструирана от product-first index-a чрез „най-евтин мач на ден на верига". Захранва Пазарувай tab-а до неговото пълно премахване.
 
 ---
 
@@ -73,7 +83,7 @@ kolkostruva.bg/opendata_files/YYYY-MM-DD.zip
 | Frontend | Single-file HTML/CSS/JS (vanilla, no framework) |
 | Charts | Chart.js 4.4 |
 | Barcode | Native `BarcodeDetector` + [ZXing](https://github.com/zxing-js/library) 0.21 fallback (в кода, скрит в текущия UI) |
-| Data | `window.SAVECHECK_DEMO` + `window.SAVECHECK_BROCHURES` (JS globals) |
+| Data | `window.SAVECHECK_PRODUCTS` (snapshot) + `window.SAVECHECK_HISTORY` (lazy) + `window.SAVECHECK_BROCHURES` + `window.SAVECHECK_DEMO` (legacy) |
 | Backend | Python 3.11+ (`src/savecheck/`) |
 | Pricing engine | `savecheck.pricing` — `evaluate_series()`, `compute_stats()` |
 | Ingest | `savecheck.ingest.kolkostruva` — парсва КЗП CSV |
@@ -102,7 +112,7 @@ for i in $(seq 0 90); do
     -o "/tmp/kzp_zips/${D}.zip" 2>/dev/null || true
 done
 
-# 4. Генерирай data files
+# 4. Генерирай data files (data.js + products.js + products-history.js)
 python scripts/gen_demo_data.py --zip-dir /tmp/kzp_zips
 python scripts/gen_brochures.py --zip-dir /tmp/kzp_zips
 
@@ -124,7 +134,7 @@ pytest tests/ -v
 `.github/workflows/daily-refresh.yml` — стартира всеки ден в 08:00 EET (05:00 UTC):
 
 1. Изтегля последните ZIP-ове от КЗП (кеширва ги за седмицата)
-2. Пуска `gen_demo_data.py` → `public/data.js`
+2. Пуска `gen_demo_data.py` → `public/data.js`, `public/products.js`, `public/products-history.js`
 3. Пуска `gen_brochures.py` → `public/brochures.js`
 4. `git commit && git push` ако има промени
 5. Vercel автоматично деплойва новия commit
@@ -138,19 +148,21 @@ pytest tests/ -v
 ```
 SaveCheck/
 ├── public/
-│   ├── index.html          # Цялото приложение (single-file)
-│   ├── data.js             # Генерирани данни (SAVECHECK_DEMO)
-│   ├── brochures.js        # Седмични промоции (SAVECHECK_BROCHURES)
-│   └── og.svg               # Open Graph image
+│   ├── index.html                # Цялото приложение (single-file)
+│   ├── data.js                   # Legacy 22-cat снимка (SAVECHECK_DEMO)
+│   ├── products.js               # Product-first snapshot (SAVECHECK_PRODUCTS)
+│   ├── products-history.js       # 90-day history, lazy loaded (SAVECHECK_HISTORY)
+│   ├── brochures.js              # Седмични промоции (SAVECHECK_BROCHURES)
+│   └── og.svg                    # Open Graph image
 ├── src/savecheck/
 │   ├── pricing/
-│   │   ├── verdict.py      # evaluate_series() — Omnibus логика
-│   │   └── aggregates.py   # compute_stats() — 30/90-дневни статистики
+│   │   ├── verdict.py            # evaluate_series() — Omnibus логика
+│   │   └── aggregates.py         # compute_stats() — 30/90-дневни статистики
 │   └── ingest/
-│       └── kolkostruva.py  # Парсване на КЗП CSV
+│       └── kolkostruva.py        # Парсване на КЗП CSV
 ├── scripts/
-│   ├── gen_demo_data.py    # Генерира data.js
-│   └── gen_brochures.py    # Генерира brochures.js
+│   ├── gen_demo_data.py          # Генерира data.js + products.js + products-history.js
+│   └── gen_brochures.py          # Генерира brochures.js
 ├── tests/
 └── .github/workflows/
     └── daily-refresh.yml
