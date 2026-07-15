@@ -1331,6 +1331,9 @@ function renderTitans() {
 
 function renderHome() {
   const X = BX[country.lang], H = HX[country.lang];
+  const PRODS = window.SAVECHECK_PRODUCTS?.products || [];
+  const topDeals = PRODS.filter(p => p.state === 'real' && (p.omnibus_pct || 0) >= 15).sort((a, b) => (b.omnibus_pct || 0) - (a.omnibus_pct || 0)).slice(0, 12);
+  const dealsHTML = topDeals.map(p => `<div style="display:flex;gap:10px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line)"><span style="font-size:16px;line-height:1">🟢</span><div style="flex:1;min-width:0"><div style="font-size:11px;color:var(--muted);font-weight:600">${p.chain}</div><div style="font-size:13px;font-weight:700;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${p.name}</div></div><div style="text-align:right;flex-shrink:0"><div style="font-size:15px;font-weight:800;color:var(--green)">${disp(p.price * country.fx)} ${country.sym}</div>${p.retail ? `<div style="font-size:11px;color:var(--muted);text-decoration:line-through">${disp(p.retail * country.fx)}</div>` : ''}<div style="font-size:11px;font-weight:700;color:var(--red)">−${p.omnibus_pct}%</div></div></div>`).join('');
   const cartItems = cartIds();
   const targetIds = cartItems.length ? cartItems : products.map(p => p.id);
   let saved = 0, realCount = 0;
@@ -1382,6 +1385,7 @@ function renderHome() {
         <span class="fh-arr">›</span>
       </div>`;
     })() : ''}
+    ${topDeals.length ? `<div class="section-label" style="margin-top:14px">🔥 Топ реални промоции</div><div class="card-block">${dealsHTML}</div>` : ''}
     ${titans.length ? `
     <div class="section-label" style="margin-top:14px">${X.titansTitle}</div>
     <div class="card-block">${titansHTML}
