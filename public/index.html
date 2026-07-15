@@ -560,6 +560,7 @@ const DEMO = (window.SAVECHECK_DEMO || {products:[]});
 const products = DEMO.products;
 let active = -1, country = COUNTRIES[0], view = 'home', query = '', cart = {};
 let shopTab = 'products', promosTab = 'brochures';
+let homeChain = null, homeQuery = '';
 let verdictFilter = 'all';
 let scanStream = null;
 let openRecipe = null;
@@ -642,18 +643,22 @@ async function doSmartSearch(q) {
 
 function onSearchInput(val) {
   clearTimeout(searchDebounceTimer);
-  if (!val) { aiFilterIds=null; chainFilter=null; query=''; showAiMsg(''); renderProducts(); renderChainChips(); return; }
-  // Верига → веднага локално
   const chain = matchChain(val);
   if (chain) {
-    aiFilterIds=null; chainFilter=chain; query='';
+    homeChain = chain; homeQuery = '';
     showAiMsg(`Цени в ${chain}`);
-    if (!(view==='shop' && shopTab==='products')) { view='shop'; shopTab='products'; render(); } else { renderProducts(); renderChainChips(); }
+    if (view !== 'home') { view='home'; render(); } else { renderHome(); }
     return;
   }
-  // Локално търсене (AI изключен за MVP)
-  aiFilterIds=null; chainFilter=null; query=val.toLowerCase(); showAiMsg('');
-  if (query && !(view==='shop' && shopTab==='products')) { view='shop'; shopTab='products'; render(); } else { renderProducts(); renderChainChips(); }
+  if (!val) {
+    homeQuery = '';
+    showAiMsg('');
+    if (view !== 'home') { view='home'; render(); } else { renderHome(); }
+    return;
+  }
+  homeQuery = val.toLowerCase();
+  showAiMsg('');
+  if (view !== 'home') { view='home'; render(); } else { renderHome(); }
 }
 function onSearchKey(e) {
   if (e.key === 'Enter') {
@@ -1333,8 +1338,18 @@ function renderTitans() {
 function renderHome() {
   const X = BX[country.lang], H = HX[country.lang];
   const PRODS = window.SAVECHECK_PRODUCTS?.products || [];
-  const topDeals = PRODS.filter(p => p.state === 'real' && (p.omnibus_pct || 0) >= 15).sort((a, b) => (b.omnibus_pct || 0) - (a.omnibus_pct || 0)).slice(0, 12);
-  const dealsHTML = topDeals.map(p => `<div style="display:flex;gap:10px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line)"><span style="font-size:16px;line-height:1">🟢</span><div style="flex:1;min-width:0"><div style="font-size:11px;color:var(--muted);font-weight:600">${p.chain}</div><div style="font-size:13px;font-weight:700;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${p.name}</div></div><div style="text-align:right;flex-shrink:0"><div style="font-size:15px;font-weight:800;color:var(--green)">${disp(p.price * country.fx)} ${country.sym}</div>${p.retail ? `<div style="font-size:11px;color:var(--muted);text-decoration:line-through">${disp(p.retail * country.fx)}</div>` : ''}<div style="font-size:11px;font-weight:700;color:var(--red)">−${p.omnibus_pct}%</div></div></div>`).join('');
+  const chainFiltered = homeChain ? PRODS.filter(p => p.chain === homeChain) : PRODS;
+  const stateRank = { real: 0, cosmetic: 1, regular: 2, unverified: 3, fake: 4 };
+  let visible;
+  if (homeQuery) {
+    visible = chainFiltered.filter(p => p.name.toLowerCase().includes(homeQuery)).sort((a, b) => (stateRank[a.state] - stateRank[b.state]) || (a.price - b.price)).slice(0, 30);
+  } else {
+    visible = chainFiltered.filter(p => p.state === 'real' && (p.omnibus_pct || 0) >= 15).sort((a, b) => (b.omnibus_pct || 0) - (a.omnibus_pct || 0)).slice(0, 12);
+  }
+  const stateIcon = { real: '🟢', cosmetic: '🟡', fake: '🔴', unverified: '⚪', regular: '💠' };
+  const dealsHTML = visible.map(p => `<div style="display:flex;gap:10px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line)"><span style="font-size:16px;line-height:1">${stateIcon[p.state]||'💠'}</span><div style="flex:1;min-width:0"><div style="font-size:11px;color:var(--muted);font-weight:600">${p.chain}</div><div style="font-size:13px;font-weight:700;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${p.name}</div></div><div style="text-align:right;flex-shrink:0"><div style="font-size:15px;font-weight:800;color:${p.state==='regular'?'var(--fg)':'var(--green)'}">${disp(p.price * country.fx)} ${country.sym}</div>${p.retail ? `<div style="font-size:11px;color:var(--muted);text-decoration:line-through">${disp(p.retail * country.fx)}</div>` : ''}${p.omnibus_pct ? `<div style="font-size:11px;font-weight:700;color:var(--red)">−${p.omnibus_pct}%</div>` : ''}</div></div>`).join('');
+  const chainChipsHTML = `<div style="display:flex;gap:6px;padding:8px 2px 4px;overflow-x:auto;-webkit-overflow-scrolling:touch">${[null,'Lidl','Kaufland','Billa','Fantastico','T Market'].map(c => `<button onclick="homeChain=${c===null?'null':`'${c}'`};renderHome()" style="flex-shrink:0;padding:6px 12px;border:1px solid ${homeChain===c?'var(--green)':'var(--line)'};background:${homeChain===c?'var(--green)':'var(--card)'};color:${homeChain===c?'#fff':'var(--fg)'};border-radius:999px;font-size:12px;font-weight:700;cursor:pointer">${c||'Всички'}</button>`).join('')}</div>`;
+  const sectionLabel = homeQuery ? `🔍 Резултати за "${homeQuery}" (${visible.length})` : `🔥 Топ реални промоции`;
   const cartItems = cartIds();
   const targetIds = cartItems.length ? cartItems : products.map(p => p.id);
   let saved = 0, realCount = 0;
@@ -1386,7 +1401,9 @@ function renderHome() {
         <span class="fh-arr">›</span>
       </div>`;
     })() : ''}
-    ${topDeals.length ? `<div class="section-label" style="margin-top:14px">🔥 Топ реални промоции</div><div class="card-block">${dealsHTML}</div>` : ''}
+    <div class="section-label" style="margin-top:14px">${sectionLabel}</div>
+    ${chainChipsHTML}
+    ${visible.length ? `<div class="card-block">${dealsHTML}</div>` : `<div class="panel" style="text-align:center;padding:20px;color:var(--muted)">Няма продукти по този филтър</div>`}
     ${titans.length ? `
     <div class="section-label" style="margin-top:14px">${X.titansTitle}</div>
     <div class="card-block">${titansHTML}
