@@ -320,6 +320,7 @@
         <h1>Save<b>Check</b></h1>
         <div class="brand-tagline">Цените под лупа</div>
       </div>
+      <button id="cart-btn" style="display:none;align-items:center;gap:4px;background:none;border:none;padding:6px 8px;cursor:pointer;position:relative;color:var(--fg);font-size:20px;line-height:1" onclick="openCart()" aria-label="Кошница">🛒<span id="cart-badge" style="background:var(--green);color:#fff;font-size:10px;font-weight:800;padding:1px 6px;border-radius:999px;line-height:1.3;min-width:14px;text-align:center">0</span></button>
       <div class="country-picker" id="country-picker">
         <button class="cp-trigger" id="cp-trigger" onclick="toggleCountryPicker()">
           <span id="cp-flag">🇧🇬</span>
@@ -561,6 +562,15 @@ const products = DEMO.products;
 let active = -1, country = COUNTRIES[0], view = 'home', query = '', cart = {};
 let shopTab = 'products', promosTab = 'brochures';
 let homeChain = null, homeQuery = '';
+let pcart = [];
+try { pcart = JSON.parse(localStorage.getItem('savecheck_pcart_v1') || '[]'); } catch(e) { pcart = []; }
+document.addEventListener('DOMContentLoaded', () => setTimeout(updateCartBadge, 100));
+function pcartSave() { try { localStorage.setItem('savecheck_pcart_v1', JSON.stringify(pcart)); } catch(e) {} }
+function pcartHas(id, chain) { return pcart.some(x => x.id === id && x.chain === chain); }
+function pcartAdd(p) { if (!pcartHas(p.id, p.chain)) { pcart.push({ id: p.id, name: p.name, chain: p.chain, price: p.price, retail: p.retail, category_tags: p.category_tags || [] }); pcartSave(); } }
+function pcartRemove(id, chain) { pcart = pcart.filter(x => !(x.id === id && x.chain === chain)); pcartSave(); }
+function pcartCount() { return pcart.length; }
+function updateCartBadge() { const btn = document.getElementById('cart-btn'); const badge = document.getElementById('cart-badge'); if (!btn) return; const n = pcartCount(); btn.style.display = n > 0 ? 'inline-flex' : 'none'; if (badge) badge.textContent = n; }
 let verdictFilter = 'all';
 let scanStream = null;
 let openRecipe = null;
@@ -976,7 +986,6 @@ function renderTabs() {
   };
   const items = [
     ['home',   SVG.home,   X.tabHome,   ''],
-    ['shop',   SVG.shop,   X.tabShop,   badge],
     ['promos', SVG.promos, X.tabPromos, ''],
   ];
   document.getElementById('tabs').innerHTML = items.map(([v, ic, lbl, ex]) =>
@@ -1469,6 +1478,9 @@ async function openProductDetail(p) {
       ${p.min_30_prior != null ? `<div style="font-size:11px;color:var(--muted)">Най-ниска цена за 30 дни: <b>${disp(p.min_30_prior * fx)} ${sym}</b>${p.median_90 != null ? ` · Медиана за 90 дни: <b>${disp(p.median_90 * fx)} ${sym}</b>` : ''}</div>` : ''}
     </div>
     ${points.length ? `<div style="padding:0 12px 18px"><canvas id="prod-chart" style="max-height:220px"></canvas><div style="font-size:11px;color:var(--muted);text-align:center;margin-top:6px">${points.length} наблюдения за последните ${H.window_days} дни · 🔴 промо · ⚫ обичайна</div></div>` : '<div style="padding:20px;text-align:center;color:var(--muted)">Няма данни за история</div>'}
+    <div style="padding:0 18px 18px">
+      ${pcartHas(p.id, p.chain) ? `<button onclick="pcartRemove('${p.id.replace(/'/g,"\\'")}','${p.chain}');updateCartBadge();openProductDetail(${JSON.stringify(p).replace(/</g,'&lt;').replace(/'/g,'&#39;')})" style="width:100%;padding:14px;background:var(--card);border:2px solid var(--green);border-radius:12px;font-size:15px;font-weight:800;color:var(--green);cursor:pointer">✓ В кошницата — махни</button>` : `<button onclick="pcartAdd(${JSON.stringify(p).replace(/</g,'&lt;').replace(/'/g,'&#39;')});updateCartBadge();openProductDetail(${JSON.stringify(p).replace(/</g,'&lt;').replace(/'/g,'&#39;')})" style="width:100%;padding:14px;background:var(--green);border:none;border-radius:12px;font-size:15px;font-weight:800;color:#fff;cursor:pointer;box-shadow:0 4px 12px rgba(22,163,74,0.25)">➕ Добави в кошницата</button>`}
+    </div>
   `;
   if (points.length) {
     if (__prodChart) { __prodChart.destroy(); __prodChart = null; }
@@ -1514,6 +1526,36 @@ function closeProductDetail() {
   modal.style.display = 'none';
   document.body.style.overflow = '';
   if (__prodChart) { __prodChart.destroy(); __prodChart = null; }
+}
+
+function openCart() {
+  const modal = document.getElementById('cart-modal');
+  const content = document.getElementById('cart-modal-content');
+  const sym = country.sym, fx = country.fx;
+  if (pcart.length === 0) {
+    content.innerHTML = `<div style="padding:40px 20px;text-align:center;color:var(--muted)"><div style="font-size:32px;margin-bottom:8px">🛒</div><div style="font-weight:700;margin-bottom:6px">Кошницата е празна</div><div style="font-size:13px">Отвори продукт и натисни „Добави в кошницата".</div></div>`;
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    return;
+  }
+  const chainTotals = {};
+  pcart.forEach(it => { chainTotals[it.chain] = (chainTotals[it.chain] || 0) + it.price; });
+  const chains = Object.entries(chainTotals).sort((a, b) => a[1] - b[1]);
+  const best = chains[0];
+  const worst = chains[chains.length - 1];
+  const savedVsWorst = worst && best[0] !== worst[0] ? worst[1] - best[1] : 0;
+  const currentTotal = pcart.reduce((s, it) => s + it.price, 0);
+  const itemsHTML = pcart.map(it => `<div style="display:flex;gap:10px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line)"><div style="flex:1;min-width:0"><div style="font-size:11px;color:var(--muted);font-weight:600">${it.chain}</div><div style="font-size:13px;font-weight:700;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${it.name}</div></div><div style="font-size:14px;font-weight:800">${disp(it.price * fx)} ${sym}</div><button onclick="pcartRemove('${it.id.replace(/'/g,"\\'")}','${it.chain}');updateCartBadge();openCart()" style="background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;padding:4px 6px;line-height:1" aria-label="Махни">×</button></div>`).join('');
+  const chainRows = chains.map(([c, total]) => `<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 12px;font-size:13px"><span>${c}</span><span style="font-weight:${c===best[0]?'800':'600'};color:${c===best[0]?'var(--green)':'var(--fg)'}">${disp(total * fx)} ${sym}</span></div>`).join('');
+  content.innerHTML = `<div style="padding:18px 18px 8px"><div style="font-size:18px;font-weight:800;margin-bottom:2px">Моята кошница</div><div style="font-size:12px;color:var(--muted)">${pcart.length} ${pcart.length===1?'продукт':'продукта'} · общо ${disp(currentTotal * fx)} ${sym}</div></div><div style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--card)">${itemsHTML}</div>${chains.length > 1 ? `<div style="padding:14px 6px 6px"><div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:0 12px 6px">Общо по вериги</div>${chainRows}</div>` : ''}${savedVsWorst > 0.01 ? `<div style="margin:14px 18px 18px;padding:12px 14px;background:linear-gradient(135deg,#dcfce7,#bbf7d0);border-radius:12px"><div style="font-size:12px;color:#166534;font-weight:700;margin-bottom:2px">💡 Съвет за спестяване</div><div style="font-size:13px;color:#14532d;line-height:1.4">Ако купуваш всичко в <b>${best[0]}</b>, ще платиш <b>${disp(best[1] * fx)} ${sym}</b> — с <b>${disp(savedVsWorst * fx)} ${sym}</b> по-евтино от най-скъпата верига.</div></div>` : ''}<div style="padding:0 18px 18px"><button onclick="if(confirm('Изчисти цялата кошница?')){pcart=[];pcartSave();updateCartBadge();closeCart()}" style="width:100%;padding:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer">Изчисти кошницата</button></div>`;
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCart() {
+  const modal = document.getElementById('cart-modal');
+  modal.style.display = 'none';
+  document.body.style.overflow = '';
 }
 
 function renderScan() {
@@ -1769,6 +1811,12 @@ function toggleTheme() {
   <div style="background:var(--card);width:100%;max-width:560px;max-height:92vh;overflow-y:auto;border-radius:20px 20px 0 0;box-shadow:0 -8px 32px rgba(0,0,0,0.2);position:relative">
     <button onclick="closeProductDetail()" style="position:absolute;top:10px;right:10px;width:32px;height:32px;border:none;background:rgba(0,0,0,0.05);border-radius:50%;font-size:20px;line-height:1;cursor:pointer;color:var(--muted);z-index:2">×</button>
     <div id="prod-modal-content"></div>
+  </div>
+</div>
+<div id="cart-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9999;align-items:flex-end;justify-content:center;padding:0" onclick="if(event.target===this)closeCart()">
+  <div style="background:var(--card);width:100%;max-width:560px;max-height:92vh;overflow-y:auto;border-radius:20px 20px 0 0;box-shadow:0 -8px 32px rgba(0,0,0,0.2);position:relative">
+    <button onclick="closeCart()" style="position:absolute;top:10px;right:10px;width:32px;height:32px;border:none;background:rgba(0,0,0,0.05);border-radius:50%;font-size:20px;line-height:1;cursor:pointer;color:var(--muted);z-index:2">×</button>
+    <div id="cart-modal-content"></div>
   </div>
 </div>
 </body>
