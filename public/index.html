@@ -570,7 +570,7 @@ function pcartHas(id, chain) { return pcart.some(x => x.id === id && x.chain ===
 function pcartAdd(p) { if (!pcartHas(p.id, p.chain)) { pcart.push({ id: p.id, name: p.name, chain: p.chain, price: p.price, retail: p.retail, category_tags: p.category_tags || [] }); pcartSave(); } }
 function pcartRemove(id, chain) { pcart = pcart.filter(x => !(x.id === id && x.chain === chain)); pcartSave(); }
 function pcartCount() { return pcart.length; }
-function updateCartBadge() { const btn = document.getElementById('cart-btn'); const badge = document.getElementById('cart-badge'); if (!btn) return; const n = pcartCount(); btn.style.display = n > 0 ? 'inline-flex' : 'none'; if (badge) badge.textContent = n; }
+function updateCartBadge() { const btn = document.getElementById('cart-btn'); const badge = document.getElementById('cart-badge'); if (!btn) return; const n = pcartCount(); btn.style.display = 'inline-flex'; if (badge) { badge.style.display = n > 0 ? 'inline' : 'none'; badge.textContent = n; } }
 let verdictFilter = 'all';
 let scanStream = null;
 let openRecipe = null;
