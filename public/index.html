@@ -1448,6 +1448,9 @@ let __prodChart = null;
 async function openProductDetail(p) {
   if (!p) return;
   window.__prodModalCurrent = p;
+  const refDayISO = window.SAVECHECK_PRODUCTS?.generated_for || '';
+  const isStale = p.observed_on && refDayISO && p.observed_on !== refDayISO;
+  const staleDD = isStale ? `${+p.observed_on.slice(8,10)}.${+p.observed_on.slice(5,7)}` : '';
   const modal = document.getElementById('prod-modal');
   const content = document.getElementById('prod-modal-content');
   content.innerHTML = `<div style="text-align:center;padding:40px;color:var(--muted)">Зареждам история…</div>`;
@@ -1478,13 +1481,13 @@ async function openProductDetail(p) {
       <div style="font-size:11px;color:var(--muted);font-weight:600;margin-bottom:4px">${p.chain}${p.kzp_category ? ' · ' + p.kzp_category : ''}</div>
       <div style="font-size:16px;font-weight:800;line-height:1.3;margin-bottom:10px">${p.name}</div>
       <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px">
-        <span style="font-size:26px;font-weight:900;color:${p.state==='regular'?'var(--fg)':'var(--green)'}">${disp(p.price * fx)} ${sym}</span>
+        <span style="font-size:26px;font-weight:900;color:${(p.state==='regular' || isStale)?'var(--fg)':'var(--green)'}">${disp(p.price * fx)} ${sym}</span>
         ${p.retail ? `<span style="font-size:14px;color:var(--muted);text-decoration:line-through">${disp(p.retail * fx)} ${sym}</span>` : ''}
-        ${p.omnibus_pct ? `<span style="font-size:14px;font-weight:800;color:var(--red)">−${p.omnibus_pct}%</span>` : ''}
+        ${(p.omnibus_pct && !isStale) ? `<span style="font-size:14px;font-weight:800;color:var(--red)">−${p.omnibus_pct}%</span>` : ''}
       </div>
-      <div style="display:inline-block;padding:5px 10px;background:${badgeColor[p.state]||'#94a3b8'};color:#fff;font-size:12px;font-weight:750;border-radius:999px;margin-bottom:8px">${stateLabel[p.state] || p.state}</div>
-      <div style="font-size:12px;color:var(--muted);line-height:1.4;margin-bottom:6px">${stateExplain[p.state] || ''}</div>
-      ${p.min_30_prior != null ? `<div style="font-size:11px;color:var(--muted)">Най-ниска цена за 30 дни: <b>${disp(p.min_30_prior * fx)} ${sym}</b>${p.median_90 != null ? ` · Медиана за 90 дни: <b>${disp(p.median_90 * fx)} ${sym}</b>` : ''}</div>` : ''}
+      <div style="display:inline-block;padding:5px 10px;background:${isStale ? '#94a3b8' : (badgeColor[p.state]||'#94a3b8')};color:#fff;font-size:12px;font-weight:750;border-radius:999px;margin-bottom:8px">${isStale ? `⏱ Промо от ${staleDD}` : (stateLabel[p.state] || p.state)}</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.4;margin-bottom:6px">${isStale ? `Тази промоционална цена е от ${staleDD}. Веригата все още не е публикувала актуални данни за днес, така че не сме сигурни дали още важи.` : (stateExplain[p.state] || '')}</div>
+      ${(p.min_30_prior != null && !isStale) ? `<div style="font-size:11px;color:var(--muted)">Най-ниска цена за 30 дни: <b>${disp(p.min_30_prior * fx)} ${sym}</b>${p.median_90 != null ? ` · Медиана за 90 дни: <b>${disp(p.median_90 * fx)} ${sym}</b>` : ''}</div>` : ''}
     </div>
     ${points.length ? `<div style="padding:0 12px 18px"><canvas id="prod-chart" style="max-height:220px"></canvas><div style="font-size:11px;color:var(--muted);text-align:center;margin-top:6px">${points.length} наблюдения за последните ${H.window_days} дни · 🔴 промо · ⚫ обичайна</div></div>` : '<div style="padding:20px;text-align:center;color:var(--muted)">Няма данни за история</div>'}
     <div style="padding:0 18px 18px">
