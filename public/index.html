@@ -731,7 +731,7 @@ document.addEventListener('click', e => {
 });
 
 function renderChrome() {
-  document.getElementById('footer').textContent = t().footer;
+  document.getElementById('footer').innerHTML = t().footer + ' <a href="#" onclick="event.preventDefault();showInfo()" style="color:var(--green);font-weight:700;text-decoration:none;white-space:nowrap">Как работи?</a>';
 }
 
 const VERDICT_FILTERS = ['all', 'green', 'red', 'yellow'];
@@ -1529,6 +1529,42 @@ function closeProductDetail() {
   if (__prodChart) { __prodChart.destroy(); __prodChart = null; }
 }
 
+function showInfo() {
+  const modal = document.getElementById('info-modal');
+  const content = document.getElementById('info-modal-content');
+  content.innerHTML = `
+    <div style="padding:20px 20px 8px">
+      <div style="font-size:20px;font-weight:800;margin-bottom:4px">Как работи SaveCheck</div>
+      <div style="font-size:12px;color:var(--muted)">Логика по духа на EU Omnibus директивата</div>
+    </div>
+    <div style="padding:0 20px 20px;line-height:1.55;font-size:13.5px;color:var(--fg)">
+      <div style="margin-bottom:14px">SaveCheck проверява дали промоцията в супермаркета е <b>реална икономия</b> или <b>маркетингова илюзия</b>. Не се доверяваме на „старата цена" от етикета — тя често просто е сложена изкуствено, за да изглежда отстъпката по-голяма.</div>
+      <div style="font-weight:800;margin:16px 0 8px;font-size:14px">📏 Как измерваме</div>
+      <div style="margin-bottom:12px">За всеки продукт следим цената в 5 супермаркета (Lidl, Kaufland, Billa, Fantastico, T Market) за последните <b>90 дни</b>. Референцията, спрямо която сравняваме „промоционалната" цена днес, е <b>най-ниската цена на този конкретен продукт през последните 30 дни</b>. Ако днешната „промо" цена не е под тази референция — това не е реална отстъпка.</div>
+      <div style="margin-bottom:12px">Това е логиката, която <b>EU Omnibus директивата (чл. 6а)</b> изисква от търговците при обявяване на намаления. SaveCheck ти показва дали са я спазили.</div>
+      <div style="font-weight:800;margin:16px 0 8px;font-size:14px">🎯 Какво значат иконките</div>
+      <div style="display:grid;gap:8px;margin-bottom:12px">
+        <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:18px;flex-shrink:0;width:22px">🟢</span><div><b>Реална промо</b> — цената днес е под 30-дневното дъно. Заслужаваща отстъпка.</div></div>
+        <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:18px;flex-shrink:0;width:22px">🟡</span><div><b>Козметична</b> — има малка отстъпка, но не значителна. По-скоро визуален трик.</div></div>
+        <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:18px;flex-shrink:0;width:22px">🔴</span><div><b>Подвеждаща</b> — обявена е промо, но цената НЕ е под 30-дневното дъно. Стара цена ≠ обичайна.</div></div>
+        <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:18px;flex-shrink:0;width:22px">⚪</span><div><b>Непроверена</b> — има промо, но не сме имали достатъчно данни (под 3 наблюдения за 30 дни).</div></div>
+      </div>
+      <div style="font-weight:800;margin:16px 0 8px;font-size:14px">📡 Откъде идват данните</div>
+      <div style="margin-bottom:12px">От <a href="https://kolkostruva.bg/opendata" target="_blank" style="color:var(--green);font-weight:700">официалния портал на КЗП „Колко струва"</a> — публичен регистър на цените, който търговците са задължени да публикуват ежедневно. SaveCheck ги обновява всеки ден в 08:00 EET.</div>
+      <div style="font-weight:800;margin:16px 0 8px;font-size:14px">⚠️ Кое НЕ правим</div>
+      <div style="margin-bottom:12px;color:var(--muted);font-size:12.5px">Не сме финансов съветник и не гарантираме, че цената, която ще платиш на касата, ще е точно тази, която показваме тук. Веригите обновяват КЗП feed-а един път дневно, а промоциите могат да варират между магазините. Ползвай SaveCheck за <b>ориентация</b>, не като краен източник.</div>
+      <div style="text-align:center;margin-top:20px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:11px">Open source · MIT · <a href="https://github.com/Tems-git/SaveCheck" target="_blank" style="color:var(--muted);text-decoration:underline">github.com/Tems-git/SaveCheck</a></div>
+    </div>
+  `;
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeInfo() {
+  document.getElementById('info-modal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
 function openCart() {
   const modal = document.getElementById('cart-modal');
   const content = document.getElementById('cart-modal-content');
@@ -1546,7 +1582,9 @@ function openCart() {
   const worst = chains[chains.length - 1];
   const savedVsWorst = worst && best[0] !== worst[0] ? worst[1] - best[1] : 0;
   const currentTotal = pcart.reduce((s, it) => s + it.price, 0);
-  const itemsHTML = pcart.map(it => `<div style="display:flex;gap:10px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line)"><div style="flex:1;min-width:0"><div style="font-size:11px;color:var(--muted);font-weight:600">${it.chain}</div><div style="font-size:13px;font-weight:700;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${it.name}</div></div><div style="font-size:14px;font-weight:800">${disp(it.price * fx)} ${sym}</div><button onclick="pcartRemove('${it.id.replace(/'/g,"\\'")}','${it.chain}');updateCartBadge();openCart()" style="background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;padding:4px 6px;line-height:1" aria-label="Махни">×</button></div>`).join('');
+  const PRODS_ALL = window.SAVECHECK_PRODUCTS?.products || [];
+  const stateMap = { real: '🟢', cosmetic: '🟡', fake: '🔴', unverified: '⚪' };
+  const itemsHTML = pcart.map(it => { const live = PRODS_ALL.find(pp => pp.id === it.id && pp.chain === it.chain); const stIcon = live ? (stateMap[live.state] || '') : ''; return `<div style="display:flex;gap:10px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line)"><span style="display:inline-block;width:16px;font-size:15px;line-height:1;text-align:center;flex-shrink:0">${stIcon}</span><div style="flex:1;min-width:0"><div style="font-size:11px;color:var(--muted);font-weight:600">${it.chain}</div><div style="font-size:13px;font-weight:700;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${it.name}</div></div><div style="font-size:14px;font-weight:800">${disp(it.price * fx)} ${sym}</div><button onclick="pcartRemove('${it.id.replace(/'/g,"\\'")}','${it.chain}');updateCartBadge();openCart()" style="background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;padding:4px 6px;line-height:1" aria-label="Махни">×</button></div>`; }).join('');
   const chainRows = chains.map(([c, total]) => `<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 12px;font-size:13px"><span>${c}</span><span style="font-weight:${c===best[0]?'800':'600'};color:${c===best[0]?'var(--green)':'var(--fg)'}">${disp(total * fx)} ${sym}</span></div>`).join('');
   content.innerHTML = `<div style="padding:18px 18px 8px"><div style="font-size:18px;font-weight:800;margin-bottom:2px">Моята кошница</div><div style="font-size:12px;color:var(--muted)">${pcart.length} ${pcart.length===1?'продукт':'продукта'} · общо ${disp(currentTotal * fx)} ${sym}</div></div><div style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--card)">${itemsHTML}</div>${chains.length > 1 ? `<div style="padding:14px 6px 6px"><div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:0 12px 6px">Общо по вериги</div>${chainRows}</div>` : ''}${savedVsWorst > 0.01 ? `<div style="margin:14px 18px 18px;padding:12px 14px;background:linear-gradient(135deg,#dcfce7,#bbf7d0);border-radius:12px"><div style="font-size:12px;color:#166534;font-weight:700;margin-bottom:2px">💡 Съвет за спестяване</div><div style="font-size:13px;color:#14532d;line-height:1.4">Ако купуваш всичко в <b>${best[0]}</b>, ще платиш <b>${disp(best[1] * fx)} ${sym}</b> — с <b>${disp(savedVsWorst * fx)} ${sym}</b> по-евтино от най-скъпата верига.</div></div>` : ''}<div style="padding:0 18px 18px"><button onclick="if(confirm('Изчисти цялата кошница?')){pcart=[];pcartSave();updateCartBadge();closeCart()}" style="width:100%;padding:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer">Изчисти кошницата</button></div>`;
   modal.style.display = 'flex';
@@ -1818,6 +1856,12 @@ function toggleTheme() {
   <div style="background:var(--card);width:100%;max-width:560px;max-height:92vh;overflow-y:auto;border-radius:20px 20px 0 0;box-shadow:0 -8px 32px rgba(0,0,0,0.2);position:relative">
     <button onclick="closeCart()" style="position:absolute;top:10px;right:10px;width:32px;height:32px;border:none;background:rgba(0,0,0,0.05);border-radius:50%;font-size:20px;line-height:1;cursor:pointer;color:var(--muted);z-index:2">×</button>
     <div id="cart-modal-content"></div>
+  </div>
+</div>
+<div id="info-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9999;align-items:flex-end;justify-content:center;padding:0" onclick="if(event.target===this)closeInfo()">
+  <div style="background:var(--card);width:100%;max-width:560px;max-height:92vh;overflow-y:auto;border-radius:20px 20px 0 0;box-shadow:0 -8px 32px rgba(0,0,0,0.2);position:relative">
+    <button onclick="closeInfo()" style="position:absolute;top:10px;right:10px;width:32px;height:32px;border:none;background:rgba(0,0,0,0.05);border-radius:50%;font-size:20px;line-height:1;cursor:pointer;color:var(--muted);z-index:2">×</button>
+    <div id="info-modal-content"></div>
   </div>
 </div>
 </body>
