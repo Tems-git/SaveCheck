@@ -1592,22 +1592,39 @@ function openCart() {
     document.body.style.overflow = 'hidden';
     return;
   }
-  const chainTotals = {};
-  pcart.forEach(it => { chainTotals[it.chain] = (chainTotals[it.chain] || 0) + it.price; });
-  const chains = Object.entries(chainTotals).sort((a, b) => a[1] - b[1]);
-  const best = chains[0];
-  const worst = chains[chains.length - 1];
-  const savedVsWorst = worst && best[0] !== worst[0] ? worst[1] - best[1] : 0;
-  const currentTotal = pcart.reduce((s, it) => s + it.price, 0);
   const PRODS_ALL = window.SAVECHECK_PRODUCTS?.products || [];
   const stateMap = { real: '🟢', cosmetic: '🟡', fake: '🔴', unverified: '⚪' };
-  const itemsHTML = pcart.map(it => { const live = PRODS_ALL.find(pp => pp.id === it.id && pp.chain === it.chain); const stIcon = live ? (stateMap[live.state] || '') : ''; return `<div style="display:flex;gap:10px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line)"><span style="display:inline-block;width:16px;font-size:15px;line-height:1;text-align:center;flex-shrink:0">${stIcon}</span><div style="flex:1;min-width:0"><div style="font-size:11px;color:var(--muted);font-weight:600">${it.chain}</div><div style="font-size:13px;font-weight:700;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${it.name}</div></div><div style="font-size:14px;font-weight:800">${disp(it.price * fx)} ${sym}</div><button onclick="pcartRemove('${it.id.replace(/'/g,"\\'")}','${it.chain}');pcartChanged();openCart()" style="background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;padding:4px 6px;line-height:1" aria-label="Махни">×</button></div>`; }).join('');
-  const chainRows = chains.map(([c, total]) => `<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 12px;font-size:13px"><span>${c}</span><span style="font-weight:${c===best[0]?'800':'600'};color:${c===best[0]?'var(--green)':'var(--fg)'}">${disp(total * fx)} ${sym}</span></div>`).join('');
-  content.innerHTML = `<div style="padding:18px 18px 8px"><div style="font-size:18px;font-weight:800;margin-bottom:2px">Моята кошница</div><div style="font-size:12px;color:var(--muted)">${pcart.length} ${pcart.length===1?'продукт':'продукта'} · общо ${disp(currentTotal * fx)} ${sym}</div></div><div style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--card)">${itemsHTML}</div>${chains.length > 1 ? `<div style="padding:14px 6px 6px"><div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:0 12px 6px">Общо по вериги</div>${chainRows}</div>` : ''}${savedVsWorst > 0.01 ? `<div style="margin:14px 18px 18px;padding:12px 14px;background:linear-gradient(135deg,#dcfce7,#bbf7d0);border-radius:12px"><div style="font-size:12px;color:#166534;font-weight:700;margin-bottom:2px">💡 Съвет за спестяване</div><div style="font-size:13px;color:#14532d;line-height:1.4">Ако купуваш всичко в <b>${best[0]}</b>, ще платиш <b>${disp(best[1] * fx)} ${sym}</b> — с <b>${disp(savedVsWorst * fx)} ${sym}</b> по-евтино от най-скъпата верига.</div></div>` : ''}<div style="padding:0 18px 18px"><button onclick="if(confirm('Изчисти цялата кошница?')){pcart=[];pcartSave();pcartChanged();closeCart()}" style="width:100%;padding:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer">Изчисти кошницата</button></div>`;
+  const enriched = pcart.map(it => {
+    const live = PRODS_ALL.find(pp => pp.id === it.id && pp.chain === it.chain);
+    return { it, price: live ? live.price : it.price, retail: live ? live.retail : it.retail, state: live ? live.state : null };
+  });
+  window.__cartRows = enriched;
+  const total = enriched.reduce((s, e) => s + e.price, 0);
+  let savedVsRetail = 0;
+  enriched.forEach(e => { if (e.retail && e.retail > e.price) savedVsRetail += e.retail - e.price; });
+  const perChain = {};
+  enriched.forEach(e => { const c = e.it.chain; if (!perChain[c]) perChain[c] = { count: 0, sum: 0 }; perChain[c].count++; perChain[c].sum += e.price; });
+  const chainRows = Object.entries(perChain).sort((a,b) => a[0].localeCompare(b[0])).map(([c, info]) => `<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 12px;font-size:13px"><span>${c} <span style="color:var(--muted);font-size:11px">· ${info.count} ${info.count===1?'продукт':'продукта'}</span></span><span style="font-weight:700">${disp(info.sum * fx)} ${sym}</span></div>`).join('');
+  const itemsHTML = enriched.map((e, i) => { const it = e.it; const stIcon = stateMap[e.state] || ''; return `<div style="display:flex;gap:10px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line)"><span style="display:inline-block;width:16px;font-size:15px;line-height:1;text-align:center;flex-shrink:0">${stIcon}</span><div style="flex:1;min-width:0"><div style="font-size:11px;color:var(--muted);font-weight:600">${it.chain}</div><div style="font-size:13px;font-weight:700;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${it.name}</div></div><div style="text-align:right;flex-shrink:0"><div style="font-size:14px;font-weight:800">${disp(e.price * fx)} ${sym}</div>${e.retail && e.retail > e.price ? `<div style="font-size:11px;color:var(--muted);text-decoration:line-through">${disp(e.retail * fx)} ${sym}</div>` : ''}</div><button onclick="pcartRemove(window.__cartRows[${i}].it.id, window.__cartRows[${i}].it.chain); pcartChanged(); openCart()" style="background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;padding:4px 6px;line-height:1" aria-label="Махни">×</button></div>`; }).join('');
+  content.innerHTML = `
+    <div style="padding:18px 18px 8px">
+      <div style="font-size:18px;font-weight:800;margin-bottom:2px">Моята кошница</div>
+      <div style="font-size:12px;color:var(--muted)">${pcart.length} ${pcart.length===1?'продукт':'продукта'}</div>
+    </div>
+    <div style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--card)">${itemsHTML}</div>
+    <div style="padding:14px 18px 6px;display:flex;justify-content:space-between;align-items:baseline">
+      <div style="font-size:14px;font-weight:700;color:var(--muted)">Общо</div>
+      <div style="font-size:20px;font-weight:900">${disp(total * fx)} ${sym}</div>
+    </div>
+    ${savedVsRetail > 0.01 ? `<div style="padding:0 18px 12px;display:flex;justify-content:space-between;align-items:baseline;font-size:12px"><div style="color:var(--muted)">Спестяваш спрямо цените на етикета</div><div style="color:var(--green);font-weight:800">−${disp(savedVsRetail * fx)} ${sym}</div></div>` : ''}
+    ${Object.keys(perChain).length > 1 ? `<div style="padding:14px 6px 6px;border-top:1px solid var(--line);margin-top:6px"><div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:0 12px 6px">По вериги</div>${chainRows}<div style="padding:8px 12px 4px;font-size:11px;color:var(--muted);line-height:1.4;font-style:italic">SaveCheck не сравнява цените на един и същ продукт през различните вериги — всяка верига използва свой код, така че не можем да гарантираме, че продуктът съществува в друга верига на същата цена.</div></div>` : ''}
+    <div style="padding:14px 18px 18px">
+      <button onclick="if(confirm('Изчисти цялата кошница?')){pcart=[];pcartSave();pcartChanged();closeCart()}" style="width:100%;padding:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer">Изчисти кошницата</button>
+    </div>
+  `;
   modal.style.display = 'flex';
   document.body.style.overflow = 'hidden';
 }
-
 function closeCart() {
   const modal = document.getElementById('cart-modal');
   modal.style.display = 'none';
