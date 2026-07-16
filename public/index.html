@@ -1353,7 +1353,8 @@ function renderHome() {
   if (homeQuery) {
     visible = chainFiltered.filter(p => p.name.toLowerCase().includes(homeQuery)).sort((a, b) => (stateRank[a.state] - stateRank[b.state]) || (a.price - b.price)).slice(0, 30);
   } else {
-    visible = chainFiltered.filter(p => p.state === 'real' && (p.omnibus_pct || 0) >= 15).sort((a, b) => (b.omnibus_pct || 0) - (a.omnibus_pct || 0)).slice(0, 6);
+    const refDay = window.SAVECHECK_PRODUCTS?.generated_for || '';
+    visible = chainFiltered.filter(p => p.state === 'real' && (p.omnibus_pct || 0) >= 15 && p.observed_on === refDay).sort((a, b) => (b.omnibus_pct || 0) - (a.omnibus_pct || 0)).slice(0, 6);
   }
   const stateIcon = { real: '🟢', cosmetic: '🟡', fake: '🔴', unverified: '⚪' };
   window.__homeVisible = visible;
