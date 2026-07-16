@@ -39,7 +39,7 @@ from gen_demo_data import (  # noqa: E402
 
 import argparse
 
-MAX_ITEMS_PER_CHAIN = 80          # cap to keep brochures.js small
+MAX_ITEMS_PER_CHAIN = 300         # cap; enough for chains that promo everything (e.g. Kaufland)
 MAX_FALLBACK_DAYS = 3             # how far back to look for a chain that didn't publish today
 
 
@@ -175,14 +175,37 @@ def extract_chain_promos(
                     # else: not enough history for THIS specific product → stays unverified
                     break
 
+            # For non-basket items we still want the Omnibus verdict — evaluate
+            # against the offering's own history via product_key lookup.
+            if "verdict" not in item:
+                key = product_key(d["code"], d["name"])
+                off = offerings.get((key, c))
+                pts_for_variant = off.points if off else []
+                if len(pts_for_variant) >= 3:
+                    pts = sorted(pts_for_variant, key=lambda p: p.day)
+                    today_pts = [p for p in pts if p.day == ref]
+                    is_promo_today = any(p.is_promo for p in today_pts)
+                    res = evaluate_series(pts, ref, is_promo=is_promo_today)
+                    s = res.stats
+                    item["verdict"] = res.verdict.value
+                    item["omnibus_pct"] = (
+                        round(float(res.discount_vs_median) * 100)
+                        if res.discount_vs_median is not None else None
+                    )
+                    item["min_30_prior"] = float(s.min_30_prior) if s.min_30_prior else None
+                    item["median_90"] = float(s.median_90) if s.median_90 else None
+
             items.append(item)
 
-        # Sort: basket RED first, basket GREEN second, then by claimed_pct desc
+        # Sort: real (green) first — the actual deals user wants to see. Then
+        # cosmetic (yellow), unverified (gray/none), and fake (red) last as a
+        # warning tail. Within a verdict bucket, basket items rank ahead of
+        # non-basket (mainstream products first), then higher claimed_pct.
         def _sort(it: dict) -> tuple:
             v = it.get("verdict")
-            verdict_rank = {"red": 0, "green": 1, "gray": 2, "yellow": 3}.get(v, 9) if v else 10
+            verdict_rank = {"green": 0, "yellow": 1, "gray": 2, "red": 3}.get(v, 2) if v else 2
             is_basket = 0 if "basket_id" in it else 1
-            return (is_basket, verdict_rank, -(it.get("claimed_pct") or 0))
+            return (verdict_rank, is_basket, -(it.get("claimed_pct") or 0))
 
         items.sort(key=_sort)
         out[c] = {
