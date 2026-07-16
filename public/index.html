@@ -1439,6 +1439,7 @@ function loadHistory() {
 let __prodChart = null;
 async function openProductDetail(p) {
   if (!p) return;
+  window.__prodModalCurrent = p;
   const modal = document.getElementById('prod-modal');
   const content = document.getElementById('prod-modal-content');
   content.innerHTML = `<div style="text-align:center;padding:40px;color:var(--muted)">Зареждам история…</div>`;
@@ -1479,7 +1480,7 @@ async function openProductDetail(p) {
     </div>
     ${points.length ? `<div style="padding:0 12px 18px"><canvas id="prod-chart" style="max-height:220px"></canvas><div style="font-size:11px;color:var(--muted);text-align:center;margin-top:6px">${points.length} наблюдения за последните ${H.window_days} дни · 🔴 промо · ⚫ обичайна</div></div>` : '<div style="padding:20px;text-align:center;color:var(--muted)">Няма данни за история</div>'}
     <div style="padding:0 18px 18px">
-      ${pcartHas(p.id, p.chain) ? `<button onclick="pcartRemove('${p.id.replace(/'/g,"\\'")}','${p.chain}');updateCartBadge();openProductDetail(${JSON.stringify(p).replace(/</g,'&lt;').replace(/'/g,'&#39;')})" style="width:100%;padding:14px;background:var(--card);border:2px solid var(--green);border-radius:12px;font-size:15px;font-weight:800;color:var(--green);cursor:pointer">✓ В кошницата — махни</button>` : `<button onclick="pcartAdd(${JSON.stringify(p).replace(/</g,'&lt;').replace(/'/g,'&#39;')});updateCartBadge();openProductDetail(${JSON.stringify(p).replace(/</g,'&lt;').replace(/'/g,'&#39;')})" style="width:100%;padding:14px;background:var(--green);border:none;border-radius:12px;font-size:15px;font-weight:800;color:#fff;cursor:pointer;box-shadow:0 4px 12px rgba(22,163,74,0.25)">➕ Добави в кошницата</button>`}
+      ${pcartHas(p.id, p.chain) ? `<button onclick="pcartRemove(window.__prodModalCurrent.id, window.__prodModalCurrent.chain); updateCartBadge(); openProductDetail(window.__prodModalCurrent)" style="width:100%;padding:14px;background:var(--card);border:2px solid var(--green);border-radius:12px;font-size:15px;font-weight:800;color:var(--green);cursor:pointer">✓ В кошницата — махни</button>` : `<button onclick="pcartAdd(window.__prodModalCurrent); updateCartBadge(); openProductDetail(window.__prodModalCurrent)" style="width:100%;padding:14px;background:var(--green);border:none;border-radius:12px;font-size:15px;font-weight:800;color:#fff;cursor:pointer;box-shadow:0 4px 12px rgba(22,163,74,0.25)">➕ Добави в кошницата</button>`}
     </div>
   `;
   if (points.length) {
