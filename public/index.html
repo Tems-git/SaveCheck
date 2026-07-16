@@ -1369,13 +1369,18 @@ function renderHome() {
   const chainChipsHTML = `<div style="display:flex;gap:6px;padding:8px 2px 4px;overflow-x:auto;-webkit-overflow-scrolling:touch">${[null,'Lidl','Kaufland','Billa','Fantastico','T Market'].map(c => `<button onclick="homeChain=${c===null?'null':`'${c}'`};renderHome()" style="flex-shrink:0;padding:6px 12px;border:1px solid ${homeChain===c?'var(--green)':'var(--line)'};background:${homeChain===c?'var(--green)':'var(--card)'};color:${homeChain===c?'#fff':'var(--fg)'};border-radius:999px;font-size:12px;font-weight:700;cursor:pointer">${c||'Всички'}</button>`).join('')}</div>`;
   const sectionLabel = homeQuery ? `🔍 Резултати за "${homeQuery}" (${visible.length})` : `🔥 Топ реални промоции`;
   const cartItems = cartIds();
-  const targetIds = cartItems.length ? cartItems : products.map(p => p.id);
-  let saved = 0, realCount = 0;
-  targetIds.forEach(id => {
-    const p = products.find(p => p.id === id);
-    if (!p || p.median_90 == null || p.current_price == null) return;
-    if (p.verdict === 'green' && p.median_90 - p.current_price > 0) { saved += p.median_90 - p.current_price; realCount++; }
+  // New: hero shows savings from the product-first cart (pcart), not the legacy 22-category basket.
+  // Savings = sum(retail - price) for pcart items where retail > price (i.e. an actual discount vs. shelf price).
+  // Live-lookup via PRODS so the number stays fresh even if prices changed since the item was added.
+  const PRODS_HERO = window.SAVECHECK_PRODUCTS?.products || [];
+  let saved = 0, savedCount = 0;
+  pcart.forEach(it => {
+    const live = PRODS_HERO.find(p => p.id === it.id && p.chain === it.chain);
+    const price = live ? live.price : it.price;
+    const retail = live ? live.retail : it.retail;
+    if (retail && retail > price) { saved += retail - price; savedCount++; }
   });
+  const cartSize = pcart.length;
   const fakesCaught = (DEMO.titans || []).reduce((s, t) => s + (t.fake || 0), 0);
   const titans = (DEMO.titans || []).slice().sort((a, b) => {
     const ra = a.total_promos ? a.real / a.total_promos : -1;
@@ -1395,9 +1400,9 @@ function renderHome() {
   document.getElementById('basket').innerHTML = `
     <div class="home-hero">
       <div class="hh-left">
-        <div class="hh-lbl">${H.saved}</div>
+        <div class="hh-lbl">Спестяваш в кошницата</div>
         <div class="hh-amt">${disp(saved * country.fx)} ${country.sym}</div>
-        <div class="hh-sub">🟢 ${realCount} ${H.promos}</div>
+        <div class="hh-sub">🛒 ${cartSize === 0 ? 'Кошницата е празна' : `${cartSize} ${cartSize === 1 ? 'продукт' : 'продукта'}`}</div>
       </div>
       <div class="hh-banner" style="background-image:url('./img/hero-banner.png')"></div>
     </div>
