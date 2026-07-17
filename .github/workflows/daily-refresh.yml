@@ -2,7 +2,7 @@ name: Daily KZP price refresh
 
 on:
   schedule:
-    - cron: '0 5 * * *'   # 05:00 UTC = 08:00 EET — after KZP publishes
+    - cron: '0 10 * * *'  # 13:00 EET / 10:00 UTC — after KZP publishes   # 05:00 UTC = 08:00 EET — after KZP publishes
   workflow_dispatch:        # allow manual trigger
 
 permissions:
