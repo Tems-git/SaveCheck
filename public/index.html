@@ -561,7 +561,7 @@ const DEMO = (window.SAVECHECK_DEMO || {products:[]});
 const products = DEMO.products;
 let active = -1, country = COUNTRIES[0], view = 'home', query = '', cart = {};
 let shopTab = 'products', promosTab = 'brochures';
-let homeChain = null, homeQuery = '';
+let homeChain = null, homeQuery = '', homeShowAll = false;
 let pcart = [];
 try { pcart = JSON.parse(localStorage.getItem('savecheck_pcart_v1') || '[]'); } catch(e) { pcart = []; }
 document.addEventListener('DOMContentLoaded', () => setTimeout(updateCartBadge, 100));
@@ -668,6 +668,7 @@ function onSearchInput(val) {
     return;
   }
   homeQuery = val.toLowerCase();
+  homeShowAll = false;
   showAiMsg('');
   if (view !== 'home') { view='home'; render(); } else { renderHome(); }
 }
@@ -1355,7 +1356,9 @@ function renderHome() {
   if (homeQuery) {
     visible = chainFiltered.filter(p => p.name.toLowerCase().includes(homeQuery)).sort((a, b) => (stateRank[a.state] - stateRank[b.state]) || (a.price - b.price)).slice(0, 30);
   } else {
-    visible = chainFiltered.filter(p => p.state === 'real' && (p.omnibus_pct || 0) >= 15 && p.observed_on === refDay).sort((a, b) => (b.omnibus_pct || 0) - (a.omnibus_pct || 0)).slice(0, 6);
+    const allReal = chainFiltered.filter(p => p.state === 'real' && (p.omnibus_pct || 0) >= 15 && p.observed_on === refDay).sort((a, b) => (b.omnibus_pct || 0) - (a.omnibus_pct || 0));
+    visible = homeShowAll ? allReal.slice(0, 50) : allReal.slice(0, 6);
+    window.__homeTotalReal = allReal.length;
   }
   const stateIcon = { real: '🟢', cosmetic: '🟡', fake: '🔴', unverified: '⚪' };
   window.__homeVisible = visible;
@@ -1428,6 +1431,7 @@ function renderHome() {
     <div class="section-label" style="margin-top:14px">${sectionLabel}</div>
     ${chainChipsHTML}
     ${visible.length ? `<div class="card-block">${dealsHTML}</div>` : `<div class="panel" style="text-align:center;padding:20px;color:var(--muted)">Няма продукти по този филтър</div>`}
+    ${!homeQuery && window.__homeTotalReal > 6 ? `<div style="text-align:center;margin:8px 0 4px"><button onclick="homeShowAll=${!homeShowAll};renderHome()" style="background:none;border:none;color:var(--green);font-size:13px;font-weight:700;cursor:pointer;padding:8px 12px">${homeShowAll ? '↑ Покажи по-малко' : `Виж всички ${window.__homeTotalReal} реални промоции →`}</button></div>` : ''}
     ${titans.length ? `
     <div class="section-label" style="margin-top:14px">${X.titansTitle}</div>
     <div class="card-block">${titansHTML}
