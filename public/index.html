@@ -74,6 +74,9 @@
   .search-field input::placeholder { color:var(--muted); }
   .search-spinner { width:14px; height:14px; border:2px solid var(--line); border-top-color:var(--green); border-radius:50%; animation:spin .6s linear infinite; display:none; flex:none; }
   .search-spinner.active { display:block; }
+  .search-clear { display:none; width:24px; height:24px; border:none; background:rgba(0,0,0,0.08); color:var(--muted); border-radius:50%; font-size:18px; line-height:1; cursor:pointer; padding:0; flex:none; align-items:center; justify-content:center; font-family:inherit; }
+  .search-clear.active { display:flex; }
+  .search-clear:hover { background:rgba(0,0,0,0.15); color:var(--ink); }
   @keyframes spin { to { transform:rotate(360deg); } }
   .scan-quick { flex:none; width:44px; height:44px; display:flex; align-items:center; justify-content:center; border:1.5px solid var(--line); border-radius:12px; background:var(--cream); color:var(--green); cursor:pointer; padding:0; transition:border-color .15s; }
   .scan-quick:hover { border-color:var(--green); }
@@ -335,6 +338,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg>
         <input type="search" id="search-input" oninput="onSearchInput(this.value)" onkeydown="onSearchKey(event)" />
         <div class="search-spinner" id="search-spinner"></div>
+        <button class="search-clear" id="search-clear" onclick="clearSearch()" aria-label="Изчисти търсенето" type="button">×</button>
       </div>
       <button class="scan-quick" style="display:none" onclick="setView('scan')" aria-label="Сканирай баркод">
         <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
@@ -672,8 +676,15 @@ async function doSmartSearch(q) {
   }
 }
 
+function clearSearch() {
+  const si = document.getElementById('search-input');
+  if (si) { si.value = ''; si.focus(); }
+  onSearchInput('');
+}
 function onSearchInput(val) {
   clearTimeout(searchDebounceTimer);
+  const clearBtn = document.getElementById('search-clear');
+  if (clearBtn) clearBtn.classList.toggle('active', val && val.length > 0);
   const chain = matchChain(val);
   if (chain) {
     homeChain = chain; homeQuery = '';
