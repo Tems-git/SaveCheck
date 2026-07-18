@@ -8,6 +8,7 @@ unit-tested without a database, network access, or any third-party packages.
 from .aggregates import PricePoint, PriceStats, compute_stats
 from .alerts import AlertDecision, WatchRule, evaluate_watch
 from .history import HistoryChart, HistoryPoint, build_chart
+from .snapshot import STATE_FROM_VERDICT, ProductOffering, compute_snapshot
 from .verdict import Verdict, VerdictConfig, VerdictResult, evaluate, evaluate_series
 
 __all__ = [
@@ -25,4 +26,7 @@ __all__ = [
     "AlertDecision",
     "WatchRule",
     "evaluate_watch",
+    "ProductOffering",
+    "compute_snapshot",
+    "STATE_FROM_VERDICT",
 ]
