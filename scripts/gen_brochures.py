@@ -1,226 +1,159 @@
 """Generate per-chain promotional brochure summaries with Omnibus verdicts.
 
-Extracts promo products for each chain from the KZP feed. Chains that didn't
-publish today fall back to the most recent day they DID publish (up to 3 days
-back). Runs the Omnibus verdict on known basket items against their OWN
-90-day variant history (from the product-first index), then writes
-public/brochures.js.
+Uses the shared product-first index (from savecheck.pricing.compute_snapshot),
+so the snapshot for each product is IDENTICAL to what gen_demo_data.py writes
+into public/products.js. This means:
+
+  * Home's "Виж всички N реални промоции" count for a chain
+  * The number of green items in that chain's brochure
+
+come from the same underlying data with the same verdict logic — no more
+"Home says 32 real Kaufland deals but brochure says 56 green".
+
+Runs the Omnibus verdict on every offering, filters to items marked as
+is_promo at REF (with the same 3-day fallback used everywhere), sorts by
+real discount (omnibus_pct desc, with basket items first), caps to 300
+per chain, and writes public/brochures.js.
 
     python scripts/gen_brochures.py [--zip-dir /tmp/kzp_zips]
 """
 
 from __future__ import annotations
 
+import argparse
 import json
 import sys
-import zipfile
 from collections import defaultdict
 from datetime import date, timedelta
-from decimal import Decimal
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from savecheck.ingest.kolkostruva import chain_name_from_filename, parse_chain_csv  # noqa: E402
-from savecheck.pricing import Verdict, evaluate_series  # noqa: E402
+from savecheck.pricing import compute_snapshot  # noqa: E402
 
 # Reuse basket + chain config + product-first loader from gen_demo_data.
 sys.path.insert(0, str(ROOT / "scripts"))
 from gen_demo_data import (  # noqa: E402
     BASKET,
-    CHAIN_DISPLAY,
-    MAIN_CHAINS,
     PRIMARY_ORDER,
-    ProductOffering,
     load_all_products,
-    product_key,
 )
 
-import argparse
 
-MAX_ITEMS_PER_CHAIN = 300         # cap; enough for chains that promo everything (e.g. Kaufland)
-MAX_FALLBACK_DAYS = 3             # how far back to look for a chain that didn't publish today
-
-
-def _claimed_pct(retail: Decimal | None, promo: Decimal) -> int | None:
-    if retail and retail > promo and retail > 0:
-        return round(float((retail - promo) / retail * 100))
-    return None
+MAX_ITEMS_PER_CHAIN = 300
+MAX_FALLBACK_DAYS = 3
 
 
-def _collect_promos_from_zip(
-    zip_path: Path,
-    zip_date: date,
-    only_chains: set[str],
-    into: dict[str, dict[str, dict]],
-) -> set[str]:
-    """Scan one ZIP, populating ``into[chain][key]`` for chains in ``only_chains``.
-    Returns the set of chains for which promos were actually found in this ZIP."""
-    found: set[str] = set()
-
-    with zipfile.ZipFile(zip_path) as zf:
-        for entry in zf.namelist():
-            if not entry.lower().endswith(".csv"):
-                continue
-            chain_raw = chain_name_from_filename(entry)
-            if chain_raw not in MAIN_CHAINS:
-                continue
-            display = CHAIN_DISPLAY[chain_raw]
-            if display not in only_chains:
-                continue
-
-            with zf.open(entry) as raw:
-                csv_bytes = raw.read()
-
-            chain_bucket = into[display]
-            for row in parse_chain_csv(csv_bytes, chain_raw, zip_date):
-                if not row.is_promo or row.price <= 0:
-                    continue
-                key = row.product_code or row.product_name
-                existing = chain_bucket.get(key)
-                if existing is None or row.price < existing["price"]:
-                    chain_bucket[key] = {
-                        "name": row.product_name,
-                        "price": row.price,
-                        "retail": row.retail_price,
-                        "category": row.category or "",
-                        "code": row.product_code or "",
-                    }
-                    found.add(display)
-
-    return found
-
-
-def extract_chain_promos(
-    zips: list[Path],
+def build_brochures(
+    offerings: dict,
     ref: date,
-    offerings: dict[tuple[str, str], ProductOffering],
-    max_fallback_days: int = MAX_FALLBACK_DAYS,
+    fallback_days: int = MAX_FALLBACK_DAYS,
 ) -> dict[str, dict]:
     """Return ``{display_chain: {"from_date": iso, "items": [...]}}``.
 
-    Walks ZIPs newest-to-oldest starting at ``ref``. For each chain not yet
-    populated, picks its promos from the current ZIP. Stops when all chains
-    are populated or when we're more than ``max_fallback_days`` days behind
-    ``ref`` (older than that is stale — promos change weekly).
+    Every offering runs through the shared `compute_snapshot`. We keep only
+    the ones that are (a) currently on promo at REF (within fallback_days)
+    and (b) present the data in the brochure schema — same fields as before,
+    for UI backward compat, but derived from the shared snapshot.
 
-    Each item matching a basket category is verified against its OWN 90-day
-    history (looked up in the product-first offerings index by product_key),
-    not a category-wide blended series — so a pricier brand's discount isn't
-    judged against a cheaper brand's typical price."""
-    raw: dict[str, dict[str, dict]] = defaultdict(dict)
-    from_dates: dict[str, str] = {}
-    oldest_allowed = ref - timedelta(days=max_fallback_days)
+    `from_date` per chain = the OLDEST observed_on among that chain's kept
+    items. When a chain didn't publish on REF the shared snapshot's fallback
+    kicks in and observed_on will be REF - 1 or REF - 2. Picking the oldest
+    gives an honest "as of" date for the brochure header.
+    """
+    per_chain: dict[str, list[dict]] = defaultdict(list)
 
-    # Walk ZIPs newest first
-    for zip_path in sorted(zips, reverse=True):
-        try:
-            zip_date = date.fromisoformat(zip_path.stem)
-        except ValueError:
+    for (_, chain), off in offerings.items():
+        snap = compute_snapshot(off, ref, fallback_days=fallback_days)
+        if snap is None:
             continue
-        if zip_date > ref or zip_date < oldest_allowed:
+        # Only items being marketed as a promo belong in a brochure.
+        if not snap.get("is_promo"):
             continue
 
-        missing = {c for c in PRIMARY_ORDER if c not in from_dates}
-        if not missing:
-            break
+        item = _brochure_item(snap, off)
+        per_chain[chain].append(item)
 
-        found_here = _collect_promos_from_zip(zip_path, zip_date, missing, raw)
-        for c in found_here:
-            # Only record from_date the FIRST time we see a chain
-            from_dates.setdefault(c, zip_date.isoformat())
-
-    # Build the sorted, verdict-annotated output per chain
     out: dict[str, dict] = {}
-    for c in PRIMARY_ORDER:
-        if c not in from_dates:
+    for chain in PRIMARY_ORDER:
+        items = per_chain.get(chain)
+        if not items:
             continue
-        items = []
-        for d in raw[c].values():
-            promo_price: Decimal = d["price"]
-            retail_price: Decimal | None = d["retail"]
-            claimed = _claimed_pct(retail_price, promo_price)
 
-            item: dict = {
-                "name": d["name"],
-                "price": float(promo_price),
-                "retail": float(retail_price) if retail_price else None,
-                "claimed_pct": claimed,
-                "category": d["category"],
-            }
-
-            # Omnibus verdict against this item's OWN variant history.
-            # Uses ref (not from_date[c]) for evaluate_series, since offerings
-            # is a REF-anchored snapshot.
-            for pid, pat in BASKET.items():
-                if pat.search(d["name"]):
-                    item["basket_id"] = pid
-                    key = product_key(d["code"], d["name"])
-                    off = offerings.get((key, c))
-                    pts_for_variant = off.points if off else []
-                    if len(pts_for_variant) >= 3:
-                        pts = sorted(pts_for_variant, key=lambda p: p.day)
-                        today_pts = [p for p in pts if p.day == ref]
-                        is_promo_today = any(p.is_promo for p in today_pts)
-                        res = evaluate_series(pts, ref, is_promo=is_promo_today)
-                        s = res.stats
-                        item["verdict"] = res.verdict.value
-                        item["omnibus_pct"] = (
-                            round(float(res.discount_vs_median) * 100)
-                            if res.discount_vs_median is not None else None
-                        )
-                        item["min_30_prior"] = float(s.min_30_prior) if s.min_30_prior else None
-                        item["median_90"] = float(s.median_90) if s.median_90 else None
-                    # else: not enough history for THIS specific product → stays unverified
-                    break
-
-            # For non-basket items we still want the Omnibus verdict — evaluate
-            # against the offering's own history via product_key lookup.
-            if "verdict" not in item:
-                key = product_key(d["code"], d["name"])
-                off = offerings.get((key, c))
-                pts_for_variant = off.points if off else []
-                if len(pts_for_variant) >= 3:
-                    pts = sorted(pts_for_variant, key=lambda p: p.day)
-                    today_pts = [p for p in pts if p.day == ref]
-                    is_promo_today = any(p.is_promo for p in today_pts)
-                    res = evaluate_series(pts, ref, is_promo=is_promo_today)
-                    s = res.stats
-                    item["verdict"] = res.verdict.value
-                    item["omnibus_pct"] = (
-                        round(float(res.discount_vs_median) * 100)
-                        if res.discount_vs_median is not None else None
-                    )
-                    item["min_30_prior"] = float(s.min_30_prior) if s.min_30_prior else None
-                    item["median_90"] = float(s.median_90) if s.median_90 else None
-
-            items.append(item)
-
-        # Sort: basket items (mainstream products) first, then by REAL discount
-        # (omnibus_pct = savings vs 90-day median), not the label claim. Items
-        # without omnibus_pct (insufficient history) fall to the bottom.
-        # Verdict is NOT part of the sort key — fake items with high omnibus_pct
-        # (rare but possible) still get their spot; low-omnibus fakes fall
-        # naturally below high-omnibus greens/yellows/reds.
-        def _sort(it: dict) -> tuple:
+        # Sort: basket items (mainstream products) first, then by REAL
+        # discount (omnibus_pct = savings vs 90-day median), not the label
+        # claim. Items without omnibus_pct (insufficient history) fall to
+        # the bottom of their basket group. Verdict is NOT part of the
+        # sort key — the ranking is by savings, so fakes with high
+        # omnibus_pct (rare) still surface, and low-quality greens don't
+        # get an unfair boost.
+        def _sort_key(it: dict) -> tuple:
             is_basket = 0 if "basket_id" in it else 1
-            omnibus = it.get("omnibus_pct")
-            has_omnibus = 0 if omnibus is not None else 1
-            return (is_basket, has_omnibus, -(omnibus or 0))
+            omni = it.get("omnibus_pct")
+            has_omni = 0 if omni is not None else 1
+            return (is_basket, has_omni, -(omni or 0))
 
-        items.sort(key=_sort)
-        out[c] = {
-            "from_date": from_dates[c],
+        items.sort(key=_sort_key)
+
+        # `from_date`: oldest observed_on among kept items. If everything is
+        # today it's just REF; if the chain didn't publish, it's the day it
+        # last did.
+        from_date = min(it["observed_on"] for it in items)
+
+        out[chain] = {
+            "from_date": from_date,
             "items": items[:MAX_ITEMS_PER_CHAIN],
+            "total_before_cap": len(items),
         }
 
     return out
 
 
+def _brochure_item(snap: dict, off) -> dict:
+    """Convert a shared snapshot into the brochure item schema (same keys
+    the UI already reads from public/brochures.js)."""
+    item: dict = {
+        "name": snap["name"],
+        "price": snap["price"],
+        "retail": snap["retail"],
+        "claimed_pct": snap["claimed_pct"],
+        "category": off.kzp_category or "",
+        "verdict": _state_to_verdict(snap.get("state")),
+        "observed_on": snap["observed_on"],
+    }
+    if "omnibus_pct" in snap:
+        item["omnibus_pct"] = snap["omnibus_pct"]
+    if "min_30_prior" in snap:
+        item["min_30_prior"] = snap["min_30_prior"]
+    if "median_90" in snap:
+        item["median_90"] = snap["median_90"]
+
+    # BASKET tagging so mainstream basket items rank first in the brochure.
+    for pid, pat in BASKET.items():
+        if pat.search(snap["name"]):
+            item["basket_id"] = pid
+            break
+
+    return item
+
+
+def _state_to_verdict(state: str | None) -> str:
+    """Map the shared snapshot `state` back to the brochure `verdict` field
+    the UI expects. Same colour mapping as before."""
+    return {
+        "real": "green",
+        "cosmetic": "yellow",
+        "fake": "red",
+        "unverified": "gray",
+        "regular": "gray",  # shouldn't happen — regular items are filtered out
+    }.get(state or "", "gray")
+
+
 def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__,
-                                     formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
     parser.add_argument("--zip-dir", default="/tmp/kzp_zips")
     args = parser.parse_args()
 
@@ -233,14 +166,13 @@ def main() -> None:
     ref = date.fromisoformat(latest_zip.stem)
     print(f"Reference date: {ref} (from {latest_zip.name})")
 
-    print(f"Loading product-first index for Omnibus verdicts…")
+    print(f"Loading product-first index (shared with products.js)…")
     offerings = load_all_products(zip_dir)
     print(f"  → {len(offerings)} distinct (product, chain) offerings")
 
-    print(f"Extracting promos (with up to {MAX_FALLBACK_DAYS}-day fallback per chain)…")
-    chains_data = extract_chain_promos(zips, ref, offerings)
+    print(f"Building brochures (via shared compute_snapshot)…")
+    chains_data = build_brochures(offerings, ref)
 
-    # Week label: ref through the Sunday of ref's week
     week_end = ref + timedelta(days=6 - ref.weekday())
     week_label = f"{ref.strftime('%-d.%-m')} – {week_end.strftime('%-d.%-m.%Y')}"
 
@@ -253,6 +185,7 @@ def main() -> None:
                 "from_date": chains_data[c]["from_date"],
                 "is_stale": chains_data[c]["from_date"] != ref.isoformat(),
                 "total_promos": len(chains_data[c]["items"]),
+                "total_before_cap": chains_data[c]["total_before_cap"],
                 "items": chains_data[c]["items"],
             }
             for c in PRIMARY_ORDER if c in chains_data
@@ -266,17 +199,19 @@ def main() -> None:
     )
     print(f"\nWrote {out}")
     for c in PRIMARY_ORDER:
-        if c in chains_data:
-            info = chains_data[c]
-            items = info["items"]
-            n = len(items)
-            basket_n = sum(1 for it in items if "basket_id" in it)
-            fake_n = sum(1 for it in items if it.get("verdict") == "red")
-            real_n = sum(1 for it in items if it.get("verdict") == "green")
-            stale = " (from " + info["from_date"] + ")" if info["from_date"] != ref.isoformat() else ""
-            print(f"  {c:<12} {n:>4} promos  (basket: {basket_n} → 🟢{real_n} 🔴{fake_n}){stale}")
-        else:
+        if c not in chains_data:
             print(f"  {c:<12}    - no promos found in last {MAX_FALLBACK_DAYS} days")
+            continue
+        info = chains_data[c]
+        items = info["items"]
+        n = len(items)
+        total = info["total_before_cap"]
+        basket_n = sum(1 for it in items if "basket_id" in it)
+        red_n = sum(1 for it in items if it.get("verdict") == "red")
+        green_n = sum(1 for it in items if it.get("verdict") == "green")
+        stale = " (from " + info["from_date"] + ")" if info["from_date"] != ref.isoformat() else ""
+        capped = f" (top {n} of {total})" if total > n else ""
+        print(f"  {c:<12} {n:>4} promos{capped}  (basket: {basket_n} → 🟢{green_n} 🔴{red_n}){stale}")
 
 
 if __name__ == "__main__":
