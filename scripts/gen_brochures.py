@@ -49,6 +49,7 @@ def build_brochures(
     offerings: dict,
     ref: date,
     fallback_days: int = MAX_FALLBACK_DAYS,
+    min_obs_30d: int = 3,
 ) -> dict[str, dict]:
     """Return ``{display_chain: {"from_date": iso, "items": [...]}}``.
 
@@ -57,14 +58,27 @@ def build_brochures(
     and (b) present the data in the brochure schema — same fields as before,
     for UI backward compat, but derived from the shared snapshot.
 
+    An offering must appear at least `min_obs_30d` times in the last 30 days
+    to be included. This is the SAME filter products.js uses (see
+    `build_products_dataset` in gen_demo_data.py) — it drops one-off items
+    that appeared in a single brochure but aren't part of the regular
+    assortment. Keeping the same filter here guarantees Home's real-count
+    and the brochure's green-count match for every chain.
+
     `from_date` per chain = the OLDEST observed_on among that chain's kept
     items. When a chain didn't publish on REF the shared snapshot's fallback
     kicks in and observed_on will be REF - 1 or REF - 2. Picking the oldest
     gives an honest "as of" date for the brochure header.
     """
     per_chain: dict[str, list[dict]] = defaultdict(list)
+    min_recent_day = ref - timedelta(days=30)
 
     for (_, chain), off in offerings.items():
+        # Same "regular assortment" filter as products.js.
+        recent = sum(1 for p in off.points if min_recent_day <= p.day <= ref)
+        if recent < min_obs_30d:
+            continue
+
         snap = compute_snapshot(off, ref, fallback_days=fallback_days)
         if snap is None:
             continue
