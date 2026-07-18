@@ -647,7 +647,7 @@ function matchChain(q) {
   const aliasMatch = Object.keys(CHAIN_ALIASES).find(a => a.startsWith(ql) && ql.length >= 3);
   if (aliasMatch) return CHAIN_ALIASES[aliasMatch];
   const chains = CHAINS_BY_COUNTRY[country.code] || [];
-  return chains.find(c => c.toLowerCase().startsWith(ql) || ql.startsWith(c.toLowerCase())) || null;
+  return chains.find(c => (c.toLowerCase().startsWith(ql) || ql.startsWith(c.toLowerCase())) && ql.length >= 3) || null;
 }
 
 function showAiMsg(msg, isErr=false) {
