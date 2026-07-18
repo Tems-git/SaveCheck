@@ -573,6 +573,8 @@ function escapeHTML(s) {
 }
 let pcart = [];
 try { pcart = JSON.parse(localStorage.getItem('savecheck_pcart_v1') || '[]'); } catch(e) { pcart = []; }
+// Backward compat: items added before quantity support default to 1
+pcart.forEach(it => { if (typeof it.quantity !== 'number' || it.quantity < 1) it.quantity = 1; });
 document.addEventListener('DOMContentLoaded', () => setTimeout(updateCartBadge, 100));
 document.addEventListener('keydown', (e) => {
   if (e.key !== 'Escape') return;
@@ -591,7 +593,18 @@ document.addEventListener('keydown', (e) => {
 });
 function pcartSave() { try { localStorage.setItem('savecheck_pcart_v1', JSON.stringify(pcart)); } catch(e) {} }
 function pcartHas(id, chain) { return pcart.some(x => x.id === id && x.chain === chain); }
-function pcartAdd(p) { if (!pcartHas(p.id, p.chain)) { pcart.push({ id: p.id, name: p.name, chain: p.chain, price: p.price, retail: p.retail, category_tags: p.category_tags || [] }); pcartSave(); } }
+function pcartAdd(p) { if (!pcartHas(p.id, p.chain)) { pcart.push({ id: p.id, name: p.name, chain: p.chain, price: p.price, retail: p.retail, category_tags: p.category_tags || [], quantity: 1 }); pcartSave(); } }
+function pcartChangeQty(id, chain, delta) {
+  const it = pcart.find(x => x.id === id && x.chain === chain);
+  if (!it) return;
+  const newQty = (it.quantity || 1) + delta;
+  if (newQty <= 0) {
+    pcart = pcart.filter(x => !(x.id === id && x.chain === chain));
+  } else {
+    it.quantity = newQty;
+  }
+  pcartSave();
+}
 function pcartRemove(id, chain) { pcart = pcart.filter(x => !(x.id === id && x.chain === chain)); pcartSave(); }
 function pcartCount() { return pcart.length; }
 function updateCartBadge() { const btn = document.getElementById('cart-btn'); const badge = document.getElementById('cart-badge'); if (!btn) return; const n = pcartCount(); btn.style.display = 'inline-flex'; if (badge) { badge.style.display = n > 0 ? 'inline' : 'none'; badge.textContent = n; } }
@@ -1416,14 +1429,15 @@ function renderHome() {
   // Savings = sum(retail - price) for pcart items where retail > price (i.e. an actual discount vs. shelf price).
   // Live-lookup via PRODS so the number stays fresh even if prices changed since the item was added.
   const PRODS_HERO = window.SAVECHECK_PRODUCTS?.products || [];
-  let saved = 0, savedCount = 0;
+  let saved = 0, savedCount = 0, cartSize = 0;
   pcart.forEach(it => {
+    const q = it.quantity || 1;
+    cartSize += q;
     const live = PRODS_HERO.find(p => p.id === it.id && p.chain === it.chain);
     const price = live ? live.price : it.price;
     const retail = live ? live.retail : it.retail;
-    if (retail && retail > price) { saved += retail - price; savedCount++; }
+    if (retail && retail > price) { saved += (retail - price) * q; savedCount++; }
   });
-  const cartSize = pcart.length;
   const fakesCaught = (DEMO.titans || []).reduce((s, t) => s + (t.fake || 0), 0);
   const titans = (DEMO.titans || []).slice().sort((a, b) => {
     const ra = a.total_promos ? a.real / a.total_promos : -1;
@@ -1643,17 +1657,41 @@ function openCart() {
     return { it, price: live ? live.price : it.price, retail: live ? live.retail : it.retail, state: live ? live.state : null };
   });
   window.__cartRows = enriched;
-  const total = enriched.reduce((s, e) => s + e.price, 0);
+  const qty = (e) => (e.it.quantity || 1);
+  const total = enriched.reduce((s, e) => s + e.price * qty(e), 0);
   let savedVsRetail = 0;
-  enriched.forEach(e => { if (e.retail && e.retail > e.price) savedVsRetail += e.retail - e.price; });
+  enriched.forEach(e => { if (e.retail && e.retail > e.price) savedVsRetail += (e.retail - e.price) * qty(e); });
   const perChain = {};
-  enriched.forEach(e => { const c = e.it.chain; if (!perChain[c]) perChain[c] = { count: 0, sum: 0 }; perChain[c].count++; perChain[c].sum += e.price; });
+  enriched.forEach(e => { const c = e.it.chain; if (!perChain[c]) perChain[c] = { count: 0, sum: 0 }; perChain[c].count += qty(e); perChain[c].sum += e.price * qty(e); });
   const chainRows = Object.entries(perChain).sort((a,b) => a[0].localeCompare(b[0])).map(([c, info]) => `<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 12px;font-size:13px"><span>${c} <span style="color:var(--muted);font-size:11px">· ${info.count} ${info.count===1?'продукт':'продукта'}</span></span><span style="font-weight:700">${disp(info.sum * fx)} ${sym}</span></div>`).join('');
-  const itemsHTML = enriched.map((e, i) => { const it = e.it; const stIcon = stateMap[e.state] || ''; return `<div style="display:flex;gap:10px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line)"><span style="display:inline-block;width:16px;font-size:15px;line-height:1;text-align:center;flex-shrink:0">${stIcon}</span><div style="flex:1;min-width:0"><div style="font-size:11px;color:var(--muted);font-weight:600">${it.chain}</div><div style="font-size:13px;font-weight:700;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHTML(it.name)}</div></div><div style="text-align:right;flex-shrink:0"><div style="font-size:14px;font-weight:800">${disp(e.price * fx)} ${sym}</div>${e.retail && e.retail > e.price ? `<div style="font-size:11px;color:var(--muted);text-decoration:line-through">${disp(e.retail * fx)} ${sym}</div>` : ''}</div><button onclick="pcartRemove(window.__cartRows[${i}].it.id, window.__cartRows[${i}].it.chain); pcartChanged(); openCart()" style="background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;padding:4px 6px;line-height:1" aria-label="Махни">×</button></div>`; }).join('');
+  const itemsHTML = enriched.map((e, i) => {
+    const it = e.it;
+    const stIcon = stateMap[e.state] || '';
+    const q = qty(e);
+    const lineTotal = e.price * q;
+    return `<div style="display:flex;gap:8px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line)">
+      <span style="display:inline-block;width:16px;font-size:15px;line-height:1;text-align:center;flex-shrink:0">${stIcon}</span>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:11px;color:var(--muted);font-weight:600">${it.chain}</div>
+        <div style="font-size:13px;font-weight:700;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHTML(it.name)}</div>
+        <div style="display:flex;align-items:center;gap:6px;margin-top:4px">
+          <button onclick="pcartChangeQty(window.__cartRows[${i}].it.id, window.__cartRows[${i}].it.chain, -1); pcartChanged(); openCart()" aria-label="Намали" style="width:26px;height:26px;border:1px solid var(--line);background:var(--card);border-radius:6px;font-size:16px;line-height:1;cursor:pointer;color:var(--fg);padding:0;font-family:inherit">−</button>
+          <span style="min-width:20px;text-align:center;font-size:13px;font-weight:700">${q}</span>
+          <button onclick="pcartChangeQty(window.__cartRows[${i}].it.id, window.__cartRows[${i}].it.chain, 1); pcartChanged(); openCart()" aria-label="Увеличи" style="width:26px;height:26px;border:1px solid var(--line);background:var(--card);border-radius:6px;font-size:16px;line-height:1;cursor:pointer;color:var(--fg);padding:0;font-family:inherit">+</button>
+          <span style="font-size:11px;color:var(--muted);margin-left:4px">× ${disp(e.price * fx)} ${sym}</span>
+        </div>
+      </div>
+      <div style="text-align:right;flex-shrink:0">
+        <div style="font-size:14px;font-weight:800">${disp(lineTotal * fx)} ${sym}</div>
+        ${e.retail && e.retail > e.price ? `<div style="font-size:11px;color:var(--muted);text-decoration:line-through">${disp(e.retail * fx * q)} ${sym}</div>` : ''}
+      </div>
+      <button onclick="pcartRemove(window.__cartRows[${i}].it.id, window.__cartRows[${i}].it.chain); pcartChanged(); openCart()" style="background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;padding:4px 6px;line-height:1;flex-shrink:0" aria-label="Махни">×</button>
+    </div>`;
+  }).join('');
   content.innerHTML = `
     <div style="padding:18px 18px 8px">
       <div style="font-size:18px;font-weight:800;margin-bottom:2px">Моята кошница</div>
-      <div style="font-size:12px;color:var(--muted)">${pcart.length} ${pcart.length===1?'продукт':'продукта'}</div>
+      <div style="font-size:12px;color:var(--muted)">${enriched.reduce((s,e)=>s+qty(e),0)} ${enriched.reduce((s,e)=>s+qty(e),0)===1?'продукт':'продукта'}</div>
     </div>
     <div style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--card)">${itemsHTML}</div>
     <div style="padding:14px 18px 6px;display:flex;justify-content:space-between;align-items:baseline">
