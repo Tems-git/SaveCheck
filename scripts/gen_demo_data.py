@@ -40,7 +40,15 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from savecheck.ingest.kolkostruva import chain_name_from_filename, parse_chain_csv  # noqa: E402
-from savecheck.pricing import PricePoint, Verdict, build_chart, evaluate_series  # noqa: E402
+from savecheck.pricing import (  # noqa: E402
+    PricePoint,
+    ProductOffering,
+    STATE_FROM_VERDICT,
+    Verdict,
+    build_chart,
+    compute_snapshot,
+    evaluate_series,
+)
 from savecheck.pricing.aggregates import compute_stats  # noqa: E402
 from savecheck.shopping import (  # noqa: E402
     Staple,
@@ -157,17 +165,7 @@ def product_key(code: str | None, name: str) -> str:
     return f"name:{normalize_name(name)}"
 
 
-@dataclass
-class ProductOffering:
-    """One product as sold at one specific chain, over the observed window."""
-    key: str
-    name: str          # most recently seen display name
-    code: str | None
-    kzp_category: str | None
-    chain: str
-    points: list[PricePoint] = field(default_factory=list)
-    # per-day retail (from "Цена на дребно" column); used for claimed_pct
-    retail_prices: dict[date, Decimal] = field(default_factory=dict)
+# ProductOffering is now imported from savecheck.pricing (shared with brochures).
 
 
 def load_all_products(zip_dir: Path) -> dict[tuple[str, str], ProductOffering]:
@@ -397,86 +395,26 @@ def build_entry(pid: str, chain_series: dict[str, list[PricePoint]]) -> dict | N
 # and the top-deals home feed)
 # ---------------------------------------------------------------------------
 
-# UI state = flat 5-value label the frontend groups by. Keep separate from
-# reason_code (Omnibus internals) so the UI doesn't have to translate.
-STATE_FROM_VERDICT: dict[Verdict, str] = {
-    Verdict.REAL:     "real",        # promo, verified against 90-day history
-    Verdict.COSMETIC: "cosmetic",    # small discount, not statistically real
-    Verdict.FAKE:     "fake",        # promo but NOT below 30-day min
-    Verdict.UNKNOWN:  "unverified",  # promo, insufficient history
-}
+# STATE_FROM_VERDICT is now imported from savecheck.pricing.
 
 
 def _compute_product_snapshot(off: ProductOffering) -> dict | None:
-    """Current-day snapshot for one offering. Returns None if the offering
-    has no observation within a few days of REF (drop stale)."""
-    if not off.points:
+    """Product snapshot with BASKET category tags added.
+
+    Delegates the core computation to the shared `compute_snapshot` in
+    savecheck.pricing (single source of truth used by both this script and
+    gen_brochures.py). Only the BASKET regex tagging remains here — it's
+    presentation metadata, not part of the pricing decision.
+    """
+    snap = compute_snapshot(off, REF, fallback_days=3)
+    if snap is None:
         return None
 
-    pts = sorted(off.points, key=lambda p: p.day)
-
-    current_pts = [p for p in pts if p.day == REF]
-    if not current_pts:
-        recent = [p for p in pts if p.day >= REF - timedelta(days=3)]
-        if not recent:
-            return None
-        current_pts = [max(recent, key=lambda p: p.day)]
-
-    current = min(current_pts, key=lambda p: p.price)
-    is_promo_today = any(p.is_promo for p in current_pts)
-
-    # Retail on the current day if available, else latest known retail.
-    retail_today: float | None = None
-    for cp in sorted(current_pts, key=lambda p: p.day, reverse=True):
-        r = off.retail_prices.get(cp.day)
-        if r is not None:
-            retail_today = float(r)
-            break
-    if retail_today is None and off.retail_prices:
-        latest = max(off.retail_prices.keys())
-        retail_today = float(off.retail_prices[latest])
-
-    claimed_pct: int | None = None
-    if retail_today is not None and retail_today > 0 and retail_today > float(current.price):
-        claimed_pct = round((retail_today - float(current.price)) / retail_today * 100)
-
-    result: dict = {
-        "id": off.key,
-        "name": off.name,
-        "code": off.code,
-        "chain": off.chain,
-        "price": float(current.price),
-        "retail": retail_today,
-        "claimed_pct": claimed_pct,
-        "is_promo": is_promo_today,
-        "kzp_category": off.kzp_category,
-        "observed_on": current.day.isoformat(),
-    }
-
-    # BASKET category tags (which of the 22 curated regexes this product
-    # matches, 0..N). Used by the UI to filter/group the product feed.
     tags = [pid for pid, pat in BASKET.items() if pat.search(off.name)]
     if tags:
-        result["category_tags"] = tags
+        snap["category_tags"] = tags
 
-    # Omnibus verdict — only meaningful when the item is on promo today.
-    if is_promo_today:
-        if len(pts) >= 3:
-            res = evaluate_series(pts, REF, is_promo=True)
-            result["state"] = STATE_FROM_VERDICT[res.verdict]
-            result["reason_code"] = _reason_code(res, res.stats)
-            if res.discount_vs_median is not None:
-                result["omnibus_pct"] = round(float(res.discount_vs_median) * 100)
-            if res.stats.min_30_prior is not None:
-                result["min_30_prior"] = float(res.stats.min_30_prior)
-            if res.stats.median_90 is not None:
-                result["median_90"] = float(res.stats.median_90)
-        else:
-            result["state"] = "unverified"
-    else:
-        result["state"] = "regular"
-
-    return result
+    return snap
 
 
 def build_products_dataset(
