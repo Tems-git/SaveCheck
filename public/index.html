@@ -1402,12 +1402,15 @@ function renderHome() {
     visible = allMatching.slice(0, 30);
     window.__homeTotalMatching = allMatching.length;
   } else {
-    let allReal = chainFiltered.filter(p => p.state === 'real' && p.observed_on === refDay).sort((a, b) => (b.omnibus_pct || 0) - (a.omnibus_pct || 0));
-    // Fallback: chain filtered + no fresh deals → include stale up to 2 days back
-    if (allReal.length === 0 && homeChain && refDay) {
-      const cutoffMs = new Date(refDay + 'T00:00:00').getTime() - 2 * 86400000;
+    // Chain-filtered view: include items with fallback (up to 3 days back) to match brochure logic.
+    // All-chains view: strict, only today's fresh data — otherwise the top-6 feed floods with stale items.
+    let allReal;
+    if (homeChain && refDay) {
+      const cutoffMs = new Date(refDay + 'T00:00:00').getTime() - 3 * 86400000;
       const cutoff = new Date(cutoffMs).toISOString().slice(0, 10);
       allReal = chainFiltered.filter(p => p.state === 'real' && p.observed_on >= cutoff).sort((a, b) => (b.omnibus_pct || 0) - (a.omnibus_pct || 0));
+    } else {
+      allReal = chainFiltered.filter(p => p.state === 'real' && p.observed_on === refDay).sort((a, b) => (b.omnibus_pct || 0) - (a.omnibus_pct || 0));
     }
     visible = homeShowAll ? allReal.slice(0, 50) : allReal.slice(0, 6);
     window.__homeTotalReal = allReal.length;
