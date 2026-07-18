@@ -197,13 +197,17 @@ def extract_chain_promos(
 
             items.append(item)
 
-        # Sort: basket items (mainstream products) first, then by claimed_pct
-        # descending. Verdict is deliberately NOT part of the sort key — that
-        # would push fake (red) items past the 300-item cap and hide them from
-        # users. All verdicts get an equal chance to appear in the brochure.
+        # Sort: basket items (mainstream products) first, then by REAL discount
+        # (omnibus_pct = savings vs 90-day median), not the label claim. Items
+        # without omnibus_pct (insufficient history) fall to the bottom.
+        # Verdict is NOT part of the sort key — fake items with high omnibus_pct
+        # (rare but possible) still get their spot; low-omnibus fakes fall
+        # naturally below high-omnibus greens/yellows/reds.
         def _sort(it: dict) -> tuple:
             is_basket = 0 if "basket_id" in it else 1
-            return (is_basket, -(it.get("claimed_pct") or 0))
+            omnibus = it.get("omnibus_pct")
+            has_omnibus = 0 if omnibus is not None else 1
+            return (is_basket, has_omnibus, -(omnibus or 0))
 
         items.sort(key=_sort)
         out[c] = {
