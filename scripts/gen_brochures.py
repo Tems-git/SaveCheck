@@ -12,7 +12,7 @@ come from the same underlying data with the same verdict logic — no more
 
 Runs the Omnibus verdict on every offering, filters to items marked as
 is_promo at REF (with the same 3-day fallback used everywhere), sorts by
-real discount (omnibus_pct desc, with basket items first), caps to 300
+real discount (omnibus_pct desc, with basket items first), caps to 500
 per chain, and writes public/brochures.js.
 
     python scripts/gen_brochures.py [--zip-dir /tmp/kzp_zips]
@@ -41,7 +41,7 @@ from gen_demo_data import (  # noqa: E402
 )
 
 
-MAX_ITEMS_PER_CHAIN = 300
+MAX_ITEMS_PER_CHAIN = 500         # cap; comfortably covers even Fantastico's ~450 items
 MAX_FALLBACK_DAYS = 3
 
 
