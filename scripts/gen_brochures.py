@@ -197,15 +197,13 @@ def extract_chain_promos(
 
             items.append(item)
 
-        # Sort: real (green) first — the actual deals user wants to see. Then
-        # cosmetic (yellow), unverified (gray/none), and fake (red) last as a
-        # warning tail. Within a verdict bucket, basket items rank ahead of
-        # non-basket (mainstream products first), then higher claimed_pct.
+        # Sort: basket items (mainstream products) first, then by claimed_pct
+        # descending. Verdict is deliberately NOT part of the sort key — that
+        # would push fake (red) items past the 300-item cap and hide them from
+        # users. All verdicts get an equal chance to appear in the brochure.
         def _sort(it: dict) -> tuple:
-            v = it.get("verdict")
-            verdict_rank = {"green": 0, "yellow": 1, "gray": 2, "red": 3}.get(v, 2) if v else 2
             is_basket = 0 if "basket_id" in it else 1
-            return (verdict_rank, is_basket, -(it.get("claimed_pct") or 0))
+            return (is_basket, -(it.get("claimed_pct") or 0))
 
         items.sort(key=_sort)
         out[c] = {
