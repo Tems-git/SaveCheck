@@ -848,29 +848,7 @@ function chainExtrasHTML(chain) {
   return `<div class="section-label" style="margin-top:18px">${X.moreChainPromos} ${chain} · ${X.unverified}</div>
     <div class="panel" style="padding:0">${rows}${more}</div>`;
 }
-function chainExtrasHTML(chain) {
-  const BD = window.SAVECHECK_BROCHURES;
-  if (!BD) return '';
-  const chData = BD.chains.find(c => c.chain === chain);
-  if (!chData) return '';
-  const extras = chData.items.filter(it => !it.basket_id);
-  if (!extras.length) return '';
-  const X = BX[country.lang];
-  const SHOWN = 12;
-  const rows = extras.slice(0, SHOWN).map(it => {
-    const pctTxt = it.claimed_pct ? `<span class="bi-pct">−${it.claimed_pct}%</span>` : '';
-    const oldTxt = it.retail ? `<span class="bi-old">${money(it.retail)}</span>` : '';
-    return `<div class="broch-item">
-      <div class="bi-name">${escapeHTML(it.name)}</div>
-      <div style="text-align:right">${oldTxt} ${pctTxt}<br><span class="bi-price">${money(it.price)}</span></div>
-    </div>`;
-  }).join('');
-  const more = extras.length > SHOWN
-    ? `<div style="text-align:center;padding:8px;border-top:1px solid var(--line);font-size:12px;color:var(--green);cursor:pointer;font-weight:700" onclick="view='promos';promosTab='brochures';brochOpen['${chain}']=true;render()">${X.seeAllBrochures} ${extras.length} →</div>`
-    : '';
-  return `<div class="section-label" style="margin-top:18px">${X.moreChainPromos} ${chain} · ${X.unverified}</div>
-    <div class="panel" style="padding:0">${rows}${more}</div>`;
-}
+
 function rowKey(e, i) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(i); } }
 function toggleCart(id) {
   cart[id] = cart[id] ? 0 : 1;
