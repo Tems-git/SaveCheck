@@ -206,7 +206,7 @@ def main() -> None:
         ],
     }
 
-    out = ROOT / "public" / "brochures.js"
+    out = ROOT / "docs" / "brochures.js"
     out.write_text(
         "window.SAVECHECK_BROCHURES = " + json.dumps(payload, ensure_ascii=False, indent=2) + ";\n",
         encoding="utf-8",

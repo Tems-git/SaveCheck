@@ -662,7 +662,7 @@ def main() -> None:
         "fridge": build_fridge(),
         "titans": titans,
     }
-    data_out = ROOT / "public" / "data.js"
+    data_out = ROOT / "docs" / "data.js"
     data_out.write_text(
         "window.SAVECHECK_DEMO = " + json.dumps(data_payload, ensure_ascii=False, indent=2) + ";\n",
         encoding="utf-8",
@@ -678,7 +678,7 @@ def main() -> None:
         "recency_window_days": 30,
         "products": products_dataset,
     }
-    products_out = ROOT / "public" / "products.js"
+    products_out = ROOT / "docs" / "products.js"
     products_out.write_text(
         "window.SAVECHECK_PRODUCTS = " + json.dumps(products_payload, ensure_ascii=False, separators=(",", ":")) + ";\n",
         encoding="utf-8",
@@ -690,7 +690,7 @@ def main() -> None:
               f"or moving history to an API endpoint before Slice 2.")
 
     # ---- products-history.js (per-product 90-day series, new) ----
-    history_out = ROOT / "public" / "products-history.js"
+    history_out = ROOT / "docs" / "products-history.js"
     history_out.write_text(
         "window.SAVECHECK_HISTORY = " + json.dumps(history_dataset, ensure_ascii=False, separators=(",", ":")) + ";\n",
         encoding="utf-8",
