@@ -2,7 +2,7 @@
 
 Uses the shared product-first index (from savecheck.pricing.compute_snapshot),
 so the snapshot for each product is IDENTICAL to what gen_demo_data.py writes
-into public/products.js. This means:
+into docs/products.js. This means:
 
   * Home's "Виж всички N реални промоции" count for a chain
   * The number of green items in that chain's brochure
@@ -13,7 +13,7 @@ come from the same underlying data with the same verdict logic — no more
 Runs the Omnibus verdict on every offering, filters to items marked as
 is_promo at REF (with the same 3-day fallback used everywhere), sorts by
 real discount (omnibus_pct desc, with basket items first), caps to 500
-per chain, and writes public/brochures.js.
+per chain, and writes docs/brochures.js.
 
     python scripts/gen_brochures.py [--zip-dir /tmp/kzp_zips]
 """
@@ -126,7 +126,7 @@ def build_brochures(
 
 def _brochure_item(snap: dict, off) -> dict:
     """Convert a shared snapshot into the brochure item schema (same keys
-    the UI already reads from public/brochures.js)."""
+    the UI already reads from docs/brochures.js)."""
     item: dict = {
         "name": snap["name"],
         "price": snap["price"],

@@ -1,16 +1,16 @@
 """Generate the demo dataset for the web preview from REAL KZP price data.
 
 Reads the daily ZIP exports from a local cache directory and produces:
-  * ``public/products.js`` — product-first snapshot: every offering (product
+  * ``docs/products.js`` — product-first snapshot: every offering (product
     at a chain) observed at least 3 times in the last 30 days, with current
     price, Omnibus verdict when the item is on promo, KZP category and
     matching BASKET tags. This is the dataset the search / home feed / cart
     reads from.
-  * ``public/products-history.js`` — per-product 90-day price series for
+  * ``docs/products-history.js`` — per-product 90-day price series for
     every offering in products.js, in a compact ``[day_offset, price,
     is_promo]`` triplet form. Loaded lazily by the UI when the user opens
     a product detail view.
-  * ``public/data.js`` — legacy 22-category snapshot, produced for backward
+  * ``docs/data.js`` — legacy 22-category snapshot, produced for backward
     compatibility with the current Products tab (category chips + charts).
     The category series is reconstructed from the product-first index by
     picking the cheapest matching product per day per chain — same behaviour
@@ -275,7 +275,7 @@ def build_legacy_category_series(
 
 
 # ---------------------------------------------------------------------------
-# Legacy 22-category snapshot (drives current Products tab — public/data.js)
+# Legacy 22-category snapshot (drives current Products tab — docs/data.js)
 # ---------------------------------------------------------------------------
 
 def _reason_code(result, stats) -> str:
@@ -391,7 +391,7 @@ def build_entry(pid: str, chain_series: dict[str, list[PricePoint]]) -> dict | N
 
 
 # ---------------------------------------------------------------------------
-# Product-first snapshot (new — drives public/products.js and, later, search
+# Product-first snapshot (new — drives docs/products.js and, later, search
 # and the top-deals home feed)
 # ---------------------------------------------------------------------------
 
@@ -420,7 +420,7 @@ def _compute_product_snapshot(off: ProductOffering) -> dict | None:
 def build_products_dataset(
     offerings: dict[tuple[str, str], ProductOffering],
 ) -> tuple[list[dict], set[tuple[str, str]]]:
-    """Compact product-first dataset (drives public/products.js).
+    """Compact product-first dataset (drives docs/products.js).
 
     Filter: an offering must appear at least 3 times in the last 30 days.
     This drops one-off items that only showed up in a single brochure but
@@ -461,7 +461,7 @@ def build_products_dataset(
 
 
 # ---------------------------------------------------------------------------
-# Product-first history (new — drives public/products-history.js)
+# Product-first history (new — drives docs/products-history.js)
 # ---------------------------------------------------------------------------
 
 def build_products_history_dataset(
