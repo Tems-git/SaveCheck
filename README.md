@@ -1,10 +1,10 @@
 # SaveCheck — Реална ли е промоцията?
 
-![SaveCheck OG image](public/og.svg)
+![SaveCheck OG image](docs/og.svg)
 
 **SaveCheck** проверява дали промоцията в супермаркета е истинска или маркетингова измама. Сравнява текущата цена на всеки конкретен продукт с 90-дневната му история и прилага логиката на **EU Omnibus директива (чл. 6а)** — референцията е не „старата цена" от етикета, а реалното дъно за последните 30 дни преди промоцията.
 
-🔗 **Live demo:** [tems-git.github.io/SaveCheck/public](https://tems-git.github.io/SaveCheck/public/)
+🔗 **Live demo:** [real365.store](https://real365.store)
 
 ---
 
@@ -14,10 +14,10 @@
 КЗП open data (kolkostruva.bg)
         │  ZIP с CSV по вериги, всеки ден
         ▼
-scripts/gen_demo_data.py  ──►  public/products.js           (product-first snapshot)
-                          ──►  public/products-history.js   (90-дневна история per оферта)
-                          ──►  public/data.js               (22-категорийна легенда, legacy)
-scripts/gen_brochures.py  ──►  public/brochures.js          (седмични промоции с fallback)
+scripts/gen_demo_data.py  ──►  docs/products.js             (product-first snapshot)
+                          ──►  docs/products-history.js     (90-дневна история per оферта)
+                          ──►  docs/data.js                 (22-категорийна легенда, legacy)
+scripts/gen_brochures.py  ──►  docs/brochures.js            (седмични промоции с fallback)
         │
         ▼  (GitHub Actions, всеки ден 10:00 UTC / 13:00 EET)
 GitHub Pages auto-deploy ──► Live сайт
@@ -124,7 +124,7 @@ Filter: минимум 3 наблюдения в последните 30 дни 
 | Layer | Технология |
 |-------|------------|
 | Frontend | Single-file HTML/CSS/JS (vanilla, no framework), ~155 KB |
-| Charts | Chart.js 4.4 (lazy loaded) |
+| Charts | Chart.js 4.4 (jsDelivr CDN, sync) |
 | Data | `window.SAVECHECK_PRODUCTS` (snapshot) + `window.SAVECHECK_HISTORY` (lazy) + `window.SAVECHECK_BROCHURES` + `window.SAVECHECK_DEMO` (legacy) |
 | Backend | Python 3.11+ (`src/savecheck/`) |
 | Pricing engine | `savecheck.pricing` — `evaluate_series()`, `compute_stats()`, `compute_snapshot()` |
@@ -158,8 +158,8 @@ python scripts/gen_demo_data.py --zip-dir /tmp/kzp_zips
 python scripts/gen_brochures.py --zip-dir /tmp/kzp_zips
 
 # 5. Отвори в браузър
-open public/index.html
-# или: python -m http.server 8000 -d public
+open docs/index.html
+# или: python -m http.server 8000 -d docs
 ```
 
 ### Тестове
@@ -177,10 +177,10 @@ pytest tests/ -v
 `.github/workflows/daily-refresh.yml` — стартира всеки ден в **10:00 UTC (13:00 EET)**:
 
 1. Изтегля последните ZIP-ове от КЗП (кеширва ги за седмицата)
-2. Пуска `gen_demo_data.py` → `public/data.js`, `public/products.js`, `public/products-history.js`
-3. Пуска `gen_brochures.py` → `public/brochures.js`
+2. Пуска `gen_demo_data.py` → `docs/data.js`, `docs/products.js`, `docs/products-history.js`
+3. Пуска `gen_brochures.py` → `docs/brochures.js`
 4. `git commit && git push` ако има промени
-5. GitHub Pages автоматично деплойва новия commit (URL остава `tems-git.github.io/SaveCheck/public/`)
+5. GitHub Pages автоматично деплойва новия commit на `https://real365.store`
 
 След промяна в `gen_demo_data.py` / `gen_brochures.py` / `snapshot.py` е нужно този workflow да се пусне ръчно (Actions → Run workflow), за да се видят новите полета в живите данни — cron-ът не подхваща веднага код, качен между две планирани обновявания.
 
@@ -192,7 +192,7 @@ Cron времето (10:00 UTC) е избрано защото КЗП поняк
 
 ```
 SaveCheck/
-├── public/
+├── docs/
 │   ├── index.html                # Цялото приложение (single-file)
 │   ├── data.js                   # Legacy 22-cat снимка (SAVECHECK_DEMO)
 │   ├── products.js               # Product-first snapshot (SAVECHECK_PRODUCTS)
