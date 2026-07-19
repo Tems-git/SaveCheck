@@ -1514,10 +1514,27 @@ function loadChartJs() {
 }
 
 let __modalTrigger = null;
+function __modalTrapHandler(e) {
+  if (e.key !== 'Tab') return;
+  const modal = e.currentTarget;
+  const focusables = modal.querySelectorAll('button:not([disabled]),[tabindex="0"],a[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled])');
+  const visible = Array.from(focusables).filter(el => el.offsetParent !== null);
+  if (!visible.length) return;
+  const first = visible[0];
+  const last = visible[visible.length - 1];
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
+  }
+}
 function openModal(modal) {
   __modalTrigger = document.activeElement;
   modal.style.display = 'flex';
   document.body.style.overflow = 'hidden';
+  modal.addEventListener('keydown', __modalTrapHandler);
   requestAnimationFrame(() => {
     const btn = modal.querySelector('button[aria-label="Затвори"]');
     if (btn) btn.focus();
@@ -1526,6 +1543,7 @@ function openModal(modal) {
 function closeModal(modal) {
   modal.style.display = 'none';
   document.body.style.overflow = '';
+  modal.removeEventListener('keydown', __modalTrapHandler);
   if (__modalTrigger && typeof __modalTrigger.focus === 'function') {
     __modalTrigger.focus();
     __modalTrigger = null;
