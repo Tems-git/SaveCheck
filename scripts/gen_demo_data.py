@@ -127,6 +127,22 @@ UNIT_INFO: dict[str, tuple[str, Decimal]] = {
 
 REF: date = date(2026, 6, 13)  # overridden in main() from latest ZIP
 
+# ---------------------------------------------------------------------------
+# Outlier filter for per-store price observations
+# ---------------------------------------------------------------------------
+# КЗП feeds report one CSV row per (product, store, day). A chain like
+# Kaufland has ~300 stores — most sell Tchibo кафе at 15€, but 5 stores
+# might have a one-day clearance at 2€. Previously we took min() across
+# stores for the chain's daily price, so the 2€ outlier "won" and the
+# product surfaced as a 74%-off deal for the whole chain.
+#
+# We now compute the median across stores that day, and if the min is
+# suspiciously lower than the median we pick the observation closest to
+# the median instead — a more honest representation of what the chain
+# actually charges.
+OUTLIER_MIN_OBS = 5              # need this many stores selling the item today
+OUTLIER_MEDIAN_RATIO = Decimal("0.4")  # min < 40% of median = outlier (60%+ off vs peers)
+
 
 # ---------------------------------------------------------------------------
 # Product-first data model
@@ -188,6 +204,7 @@ def load_all_products(zip_dir: Path) -> dict[tuple[str, str], ProductOffering]:
         print(f"  {zip_path.name}…", end="", flush=True)
         rows_seen = 0
         offerings_new = 0
+        outliers_filtered = 0
 
         with zipfile.ZipFile(zip_path) as zf:
             for entry in zf.namelist():
@@ -201,21 +218,45 @@ def load_all_products(zip_dir: Path) -> dict[tuple[str, str], ProductOffering]:
                 with zf.open(entry) as raw:
                     csv_bytes = raw.read()
 
-                # First pass: pick the cheapest observation per (key, day).
-                # A single CSV can list the same product multiple times (per
-                # store); we want ONE price per chain per day.
-                day_best: dict[str, tuple[Decimal, bool, Decimal | None, str, str | None, str | None]] = {}
+                # First pass: collect ALL observations per (key, day).
+                # We then reduce to ONE representative observation per key,
+                # using median-based outlier detection (see OUTLIER_* constants).
+                # A single CSV lists the same product multiple times (per
+                # store); previously we just took min(), which surfaced
+                # one-store clearance deals as chain-wide prices.
+                day_all_obs: dict[str, list[tuple[Decimal, bool, Decimal | None, str, str | None, str | None]]] = defaultdict(list)
                 for row in parse_chain_csv(csv_bytes, chain_raw, d):
                     if row.price <= 0:
                         continue
                     rows_seen += 1
                     k = product_key(row.product_code, row.product_name)
-                    existing = day_best.get(k)
-                    if existing is None or row.price < existing[0]:
-                        day_best[k] = (
-                            row.price, row.is_promo, row.retail_price,
-                            row.product_name, row.product_code, row.category,
-                        )
+                    day_all_obs[k].append((
+                        row.price, row.is_promo, row.retail_price,
+                        row.product_name, row.product_code, row.category,
+                    ))
+
+                # Second pass: pick the representative observation per key.
+                day_best: dict[str, tuple[Decimal, bool, Decimal | None, str, str | None, str | None]] = {}
+                for k, obs_list in day_all_obs.items():
+                    prices = sorted(o[0] for o in obs_list)
+                    min_price = prices[0]
+
+                    # Outlier detection needs enough observations for the
+                    # median to be trustworthy. Below the threshold we fall
+                    # back to the old min() behaviour.
+                    if len(obs_list) >= OUTLIER_MIN_OBS:
+                        median_price = prices[len(prices) // 2]
+                        if median_price > 0 and min_price < median_price * OUTLIER_MEDIAN_RATIO:
+                            # Outlier: pick the observation closest to the
+                            # median (its is_promo, retail_price etc. become
+                            # the chain's daily representation).
+                            best_obs = min(obs_list, key=lambda o: abs(o[0] - median_price))
+                            day_best[k] = best_obs
+                            outliers_filtered += 1
+                            continue
+
+                    # Normal path: cheapest observation wins.
+                    day_best[k] = min(obs_list, key=lambda o: o[0])
 
                 # Second pass: fold today's observations into the index.
                 for k, (price, is_promo, retail, name, code, category) in day_best.items():
@@ -237,7 +278,7 @@ def load_all_products(zip_dir: Path) -> dict[tuple[str, str], ProductOffering]:
                     if category:
                         off.kzp_category = category
 
-        print(f" rows={rows_seen} new_offerings={offerings_new}")
+        print(f" rows={rows_seen} new_offerings={offerings_new} outliers_filtered={outliers_filtered}")
 
     return offerings
 
