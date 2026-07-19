@@ -1314,7 +1314,7 @@ function renderBrochures() {
       const pctTxt = it.claimed_pct ? `<span class="bi-pct">−${it.claimed_pct}%</span>` : '';
       const oldTxt = it.retail ? `<span class="bi-old">${money(it.retail)}</span>` : '';
       const badge = verdictBadge(it.verdict);
-      return `<div class="broch-item">
+      return `<div class="broch-item" role="button" tabindex="0" style="cursor:pointer" data-name="${escapeHTML(it.name)}" data-chain="${escapeHTML(ch.chain)}" onclick="openBrochureItem(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openBrochureItem(this)}">
         <div class="bi-name">${escapeHTML(it.name)}${badge}</div>
         <div style="text-align:right">${oldTxt} ${pctTxt}<br><span class="bi-price">${money(it.price)}</span></div>
       </div>`;
@@ -1551,6 +1551,14 @@ function closeModal(modal) {
 }
 
 let __prodChart = null;
+function openBrochureItem(el) {
+  const name = el.dataset.name;
+  const chain = el.dataset.chain;
+  const products = window.SAVECHECK_PRODUCTS?.products || [];
+  const match = products.find(p => p.name === name && p.chain === chain);
+  if (match) openProductDetail(match);
+  else console.warn('Brochure item not found in products.js:', name, chain);
+}
 async function openProductDetail(p) {
   if (!p) return;
   window.__prodModalCurrent = p;
