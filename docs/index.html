@@ -21,8 +21,6 @@
 <meta name="mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 <meta name="apple-mobile-web-app-title" content="SaveCheck" />
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-
 <script src="./data.js"></script>
 <script src="./brochures.js"></script>
 <script src="./products.js"></script>
@@ -1234,7 +1232,8 @@ const zonePlugin = {
   },
 };
 
-function drawChart(p, col) {
+async function drawChart(p, col) {
+  await loadChartJs();
   const fx = country.fx, L = t();
   const labels = p.series.map(s => ddmm(s.day));
   const base = p.series.map(s => s.price);
@@ -1488,6 +1487,20 @@ function loadHistory() {
   return __histLoadPromise;
 }
 
+let __chartLoadPromise = null;
+function loadChartJs() {
+  if (window.Chart) return Promise.resolve();
+  if (__chartLoadPromise) return __chartLoadPromise;
+  __chartLoadPromise = new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js';
+    s.onload = resolve;
+    s.onerror = () => reject(new Error('failed to load chart.js'));
+    document.head.appendChild(s);
+  });
+  return __chartLoadPromise;
+}
+
 let __prodChart = null;
 async function openProductDetail(p) {
   if (!p) return;
@@ -1501,7 +1514,7 @@ async function openProductDetail(p) {
   modal.style.display = 'flex';
   document.body.style.overflow = 'hidden';
   try {
-    await loadHistory();
+    await Promise.all([loadHistory(), loadChartJs()]);
   } catch (e) {
     content.innerHTML = `<div style="padding:20px;color:var(--red)">Грешка при зареждане: ${e.message}</div>`;
     return;
