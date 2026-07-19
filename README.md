@@ -48,6 +48,7 @@ GitHub Pages auto-deploy ──► Live сайт
 - **Търсене** (глобално, пише се където и да си, скача те в Начало)
 - **Филтър по верига** (chips) + бутон **× за изчистване на search-a**
 - **Топ 6 реални промоции**, подредени по omnibus % desc
+- **Дата на данните** (📅 DD.MM.YYYY под section label) — user винаги знае кога е генериран последният snapshot
 - **Бутон „Виж всички N реални промоции"** — разширява до 50 items
 - **Мини класация „Битката на титаните"** — коя верига лъже най-често
 
@@ -58,8 +59,10 @@ GitHub Pages auto-deploy ──► Live сайт
 - Разграничение на процентите:
   - **„Реално −N%"** (зелен, спрямо 90-дневната медиана)
   - **„Обявено на етикета −N%"** (сив, спрямо retail) — показва се само когато двата се различават
-- 90-дневна графика на цената (промо дни в червено, обичайни в тъмно сиво). Данните се зареждат lazy (~1 сек) от `products-history.js`.
+- 90-дневна графика на цената (промо дни в червено, обичайни в тъмно сиво). Chart.js библиотеката и данните от `products-history.js` се зареждат lazy паралелно (`Promise.all`) при първо отваряне на модала — не блокират initial paint на Home.
 - Stale маркер „от dd.m" ако цената е от преди днешния snapshot
+- **Focus management** — при отваряне фокусът скача на × close бутона; при затваряне се връща на елемента, който отвори модала (продуктова карта)
+- **Focus trap** — Tab циклира вътре в модала, не бяга навън
 
 ### 🛒 Кошница
 
@@ -72,6 +75,8 @@ GitHub Pages auto-deploy ──► Live сайт
 - Всички промо оферти тази седмица, по верига (секциите свити по подразбиране)
 - Верифицирани срещу собствената 90-дневна история на всеки конкретен продукт
 - При липсваща верига за деня — fallback до 3 дни назад с маркер „от dd.m"
+- **Clickable items** — клик или Enter/Space върху item отваря детайл модала (с 90-дневната графика и analytics)
+- **Verdict-first подредба** — 🟢 real → 🟡 cosmetic → ⚪ unverified → 🔴 fake. Scannable — всички реални deals групирани заедно вместо разбъркани със fake-ове по savings
 - **Битката на титаните** — класация коя верига лъже най-често (втори таб)
 
 ### Общи UX
@@ -80,6 +85,17 @@ GitHub Pages auto-deploy ──► Live сайт
 - **„Първите 30 от N"** в search резултатите — ясно е, че виждаш само част
 - **Auto-refresh** на Home hero и кошница когато добавяш/маха продукти
 - **HTML escape** на всички КЗП имена преди render (защита от stored XSS)
+- **2-line clamp** на продуктовите имена в Home и Кошница — производителят/суффиксът остава видим при подобни продукти (напр. `БУТ СВИНСКИ БЕЗ КОСТ ПРОИЗХОД БЪЛГАРИЯ БИЛЯНА-МЕС`), без визуален бъркотия при кратките имена
+- **10 езика** в UI (BG, SR, MK, RO, EL, TR, SQ, BS, HR, SL) — dropdown в горен десен ъгъл; продуктовите имена остават оригиналнu (КЗП feed-a е bilingual само за категории)
+
+### ♿ Достъпност (a11y)
+
+- **ARIA семантика** — модалите имат `role="dialog"`, `aria-modal="true"`, `aria-label` (кошница/детайли/информация)
+- **Screen reader labels** — × close бутоните имат `aria-label="Затвори"`; qty +/- имат `aria-label="Намали/Увеличи"`; search input-ът има `aria-label`, синхронизиран с текущия език при dropdown switch
+- **Клавиатурна навигация** — product cards на Home и brochure items са `tabindex="0"` с `role="button"` + `onkeydown` handler за Enter/Space, така че цялата app-a е доступна без mouse
+- **Focus indicator** — `:focus-visible` показва ясен зелен outline (2px, outline-offset 2px) само при клавиатурна навигация, не при mouse click — не разсейва mouse users
+- **Focus trap** — при отворен модал Tab циклира в него, не бяга навън; при затваряне фокусът се връща на trigger element-a
+- **Touch targets** — modal close бутоните са 40×40 px, cart qty +/- са 32×32 px (W3C препоръчва ≥44×44, компромис за визуална компактност)
 
 ---
 
@@ -103,13 +119,24 @@ kolkostruva.bg/opendata_files/YYYY-MM-DD.zip
 
 Filter: минимум 3 наблюдения в последните 30 дни (drop-ва еднократни flyer items които не са част от асортимента).
 
+**Outlier filter (per-store observations).** КЗП CSV съдържа по един ред на (продукт × магазин × ден). Верига като Kaufland има ~300 магазина — повечето продават Tchibo кафе на 15€, но 5 могат да имат еднодневен clearance на 2€. Ако вземем просто `min()` от всички наблюдения, 2€ „печели" и продуктът се появява като 74% off deal за цялата верига — подвеждащо.
+
+За всяка (product_key, day) двойка:
+
+1. Събираме всички наблюдения от магазините на веригата
+2. Ако имаме ≥ `OUTLIER_MIN_OBS` (5) магазина И `min < OUTLIER_MEDIAN_RATIO × median` (`0.4 × median` = 60%+ off vs peers) → флагваме outlier
+3. За outlier случаи взимаме observation-a **най-близко до median-a** вместо min-a — по-honest представяне на реалната цена за веригата
+4. Иначе fallback до старото поведение (cheapest observation wins)
+
+Threshold-ите са в `gen_demo_data.py` на module top level за лесно tune-ване. Cron log-a printва `outliers_filtered=N` за всеки ZIP, за да се вижда impact-а.
+
 Три output-a се генерират в един pass:
 
 - **`products.js`** — compact current-snapshot: name, chain, price, retail, is_promo, state, omnibus_pct, KZP category, BASKET category tags (0..N). ~1.8 MB.
 - **`products-history.js`** — full 90-day price history per оферта, в компактен `[day_offset, price, is_promo]` формат. Nested `{product_key: {chain: [[o,p,s], ...]}}`. Loaded lazy при първо отваряне на детайл-модал. ~6 MB uncompressed / 0.87 MB gzip.
 - **`data.js`** — legacy 22-категорийна витрина, реконструирана от product-first index-a. Захранва Битката на титаните и остатъчна легенда.
 
-`gen_brochures.py` използва същия `load_all_products` + `compute_snapshot` pipeline, филтрира по `is_promo=True` at REF, сортира по basket-first → omnibus_pct desc → cap 500 per chain.
+`gen_brochures.py` използва същия `load_all_products` + `compute_snapshot` pipeline, филтрира по `is_promo=True` at REF, сортира по: **(1)** verdict — 🟢 green → 🟡 yellow → ⚪ gray → 🔴 red, **(2)** basket items първи в рамките на всеки verdict, **(3)** omnibus_pct desc — най-голяма реална отстъпка първа, cap 500 per chain. Verdict-first подредбата прави брошурата scannable (всички реални deals заедно, после cosmetic, gray, накрая fake) вместо разбъркана.
 
 ---
 
@@ -124,7 +151,7 @@ Filter: минимум 3 наблюдения в последните 30 дни 
 | Layer | Технология |
 |-------|------------|
 | Frontend | Single-file HTML/CSS/JS (vanilla, no framework), ~155 KB |
-| Charts | Chart.js 4.4 (jsDelivr CDN, sync) |
+| Charts | Chart.js 4.4 (jsDelivr CDN, lazy loaded on first modal open) |
 | Data | `window.SAVECHECK_PRODUCTS` (snapshot) + `window.SAVECHECK_HISTORY` (lazy) + `window.SAVECHECK_BROCHURES` + `window.SAVECHECK_DEMO` (legacy) |
 | Backend | Python 3.11+ (`src/savecheck/`) |
 | Pricing engine | `savecheck.pricing` — `evaluate_series()`, `compute_stats()`, `compute_snapshot()` |
