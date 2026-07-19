@@ -310,6 +310,18 @@
   .list-summary .ls-ico { font-size:22px; flex:none; }
   .list-summary .ls-tx { flex:1; font-size:13px; font-weight:700; color:var(--green-d); }
   .list-summary .ls-amt { font-size:16px; font-weight:900; color:var(--green); font-variant-numeric:tabular-nums; }
+  /* a11y: keyboard focus indicator (fires only on keyboard nav, not mouse) */
+  button:focus-visible,
+  [role="button"]:focus-visible,
+  [tabindex="0"]:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
 </style>
 </head>
 <body>
@@ -334,7 +346,7 @@
     <div class="appbar-search">
       <div class="search-field">
         <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg>
-        <input type="search" id="search-input" oninput="onSearchInput(this.value)" onkeydown="onSearchKey(event)" />
+        <input type="search" id="search-input" oninput="onSearchInput(this.value)" onkeydown="onSearchKey(event)" aria-label="Търси продукт" />
         <div class="search-spinner" id="search-spinner"></div>
         <button class="search-clear" id="search-clear" onclick="clearSearch()" aria-label="Изчисти търсенето" type="button">×</button>
       </div>
