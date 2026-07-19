@@ -1929,7 +1929,7 @@ function render() {
 
   // Search placeholder
   const si = document.getElementById('search-input');
-  if (si) si.placeholder = UI[country.lang].searchPlaceholder || BX[country.lang].search;
+  if (si) { si.placeholder = UI[country.lang].searchPlaceholder || BX[country.lang].search; si.setAttribute('aria-label', UI[country.lang].searchPlaceholder || BX[country.lang].search); }
 
   const fw = document.getElementById('filter-wrap');
   fw.style.display = (isProd && aiFilterIds === null) ? '' : 'none';
