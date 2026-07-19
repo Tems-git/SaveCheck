@@ -1501,6 +1501,25 @@ function loadChartJs() {
   return __chartLoadPromise;
 }
 
+let __modalTrigger = null;
+function openModal(modal) {
+  __modalTrigger = document.activeElement;
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  requestAnimationFrame(() => {
+    const btn = modal.querySelector('button[aria-label="Затвори"]');
+    if (btn) btn.focus();
+  });
+}
+function closeModal(modal) {
+  modal.style.display = 'none';
+  document.body.style.overflow = '';
+  if (__modalTrigger && typeof __modalTrigger.focus === 'function') {
+    __modalTrigger.focus();
+    __modalTrigger = null;
+  }
+}
+
 let __prodChart = null;
 async function openProductDetail(p) {
   if (!p) return;
@@ -1511,8 +1530,7 @@ async function openProductDetail(p) {
   const modal = document.getElementById('prod-modal');
   const content = document.getElementById('prod-modal-content');
   content.innerHTML = `<div style="text-align:center;padding:40px;color:var(--muted)">Зареждам история…</div>`;
-  modal.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
+  openModal(modal);
   try {
     await Promise.all([loadHistory(), loadChartJs()]);
   } catch (e) {
@@ -1593,8 +1611,7 @@ async function openProductDetail(p) {
 
 function closeProductDetail() {
   const modal = document.getElementById('prod-modal');
-  modal.style.display = 'none';
-  document.body.style.overflow = '';
+  closeModal(modal);
   if (__prodChart) { __prodChart.destroy(); __prodChart = null; }
 }
 
@@ -1625,13 +1642,11 @@ function showInfo() {
       <div style="text-align:center;margin-top:20px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:11px">Open source · MIT · <a href="https://github.com/Tems-git/SaveCheck" target="_blank" style="color:var(--muted);text-decoration:underline">github.com/Tems-git/SaveCheck</a></div>
     </div>
   `;
-  modal.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
+  openModal(modal);
 }
 
 function closeInfo() {
-  document.getElementById('info-modal').style.display = 'none';
-  document.body.style.overflow = '';
+  closeModal(document.getElementById('info-modal'));
 }
 
 function openCart() {
@@ -1640,8 +1655,7 @@ function openCart() {
   const sym = country.sym, fx = country.fx;
   if (pcart.length === 0) {
     content.innerHTML = `<div style="padding:40px 20px;text-align:center;color:var(--muted)"><div style="font-size:32px;margin-bottom:8px">🛒</div><div style="font-weight:700;margin-bottom:6px">Кошницата е празна</div><div style="font-size:13px">Отвори продукт и натисни „Добави в кошницата".</div></div>`;
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
+    openModal(modal);
     return;
   }
   const PRODS_ALL = window.SAVECHECK_PRODUCTS?.products || [];
@@ -1698,13 +1712,11 @@ function openCart() {
       <button onclick="if(confirm('Изчисти цялата кошница?')){pcart=[];pcartSave();pcartChanged();closeCart()}" style="width:100%;padding:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer">Изчисти кошницата</button>
     </div>
   `;
-  modal.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
+  openModal(modal);
 }
 function closeCart() {
   const modal = document.getElementById('cart-modal');
-  modal.style.display = 'none';
-  document.body.style.overflow = '';
+  closeModal(modal);
 }
 
 function renderScan() {
