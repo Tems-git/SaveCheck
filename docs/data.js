@@ -4660,23 +4660,23 @@ window.SAVECHECK_DEMO = {
           "discount_pct": -5,
           "current_price": 4.19,
           "median_90": 3.99,
-          "min_90": 1.89,
+          "min_90": 2.99,
           "max_90": 5.62,
           "min_30_prior": 2.99,
-          "lowest_day": "2026-04-24",
+          "lowest_day": "2026-07-11",
           "highest_day": "2026-07-08",
           "series": [
             {
               "day": "2026-04-22",
-              "price": 1.89
+              "price": 4.85
             },
             {
               "day": "2026-04-23",
-              "price": 1.89
+              "price": 4.85
             },
             {
               "day": "2026-04-24",
-              "price": 1.89
+              "price": 4.85
             },
             {
               "day": "2026-04-25",
@@ -33204,7 +33204,7 @@ window.SAVECHECK_DEMO = {
           "min_90": 0.29,
           "max_90": 1.02,
           "min_30_prior": 0.49,
-          "lowest_day": "2026-05-04",
+          "lowest_day": "2026-04-26",
           "highest_day": "2026-06-30",
           "series": [
             {
@@ -33241,35 +33241,35 @@ window.SAVECHECK_DEMO = {
             },
             {
               "day": "2026-04-27",
-              "price": 0.29
+              "price": 0.59
             },
             {
               "day": "2026-04-28",
-              "price": 0.29
+              "price": 0.59
             },
             {
               "day": "2026-04-29",
-              "price": 0.29
+              "price": 0.59
             },
             {
               "day": "2026-04-30",
-              "price": 0.29
+              "price": 0.59
             },
             {
               "day": "2026-05-01",
-              "price": 0.29
+              "price": 0.59
             },
             {
               "day": "2026-05-02",
-              "price": 0.29
+              "price": 0.59
             },
             {
               "day": "2026-05-03",
-              "price": 0.29
+              "price": 0.59
             },
             {
               "day": "2026-05-04",
-              "price": 0.29
+              "price": 0.59
             },
             {
               "day": "2026-05-05",
