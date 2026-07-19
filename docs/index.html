@@ -1474,6 +1474,7 @@ function renderHome() {
       </div>`;
     })() : ''}
     <div class="section-label" style="margin-top:14px">${sectionLabel}</div>
+    <div style="font-size:11px;color:var(--muted);text-align:center;margin:-4px 0 8px">📅 ${(window.SAVECHECK_PRODUCTS?.generated_for || '').split('-').reverse().join('.')}</div>
     ${chainChipsHTML}
     ${visible.length ? `<div class="card-block">${dealsHTML}</div>` : `<div class="panel" style="text-align:center;padding:20px;color:var(--muted)">Няма продукти по този филтър</div>`}
     ${!homeQuery && window.__homeTotalReal > 6 ? `<div style="text-align:center;margin:8px 0 4px"><button onclick="homeShowAll=${!homeShowAll};renderHome()" style="background:none;border:none;color:var(--green);font-size:13px;font-weight:700;cursor:pointer;padding:8px 12px">${homeShowAll ? '↑ Покажи по-малко' : `Виж всички ${window.__homeTotalReal} реални промоции →`}</button></div>` : ''}
