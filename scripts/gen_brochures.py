@@ -95,18 +95,24 @@ def build_brochures(
         if not items:
             continue
 
-        # Sort: basket items (mainstream products) first, then by REAL
-        # discount (omnibus_pct = savings vs 90-day median), not the label
-        # claim. Items without omnibus_pct (insufficient history) fall to
-        # the bottom of their basket group. Verdict is NOT part of the
-        # sort key — the ranking is by savings, so fakes with high
-        # omnibus_pct (rare) still surface, and low-quality greens don't
-        # get an unfair boost.
+        # Sort priority:
+        #   1. Basket items (mainstream products) first
+        #   2. Verdict: green → yellow → gray → red (Omnibus signal is core
+        #      to the app; grouping by verdict makes the brochure scannable
+        #      instead of interleaving reals and fakes by savings alone)
+        #   3. Within same verdict, items with omnibus_pct rank above those
+        #      without (insufficient history falls to the bottom of its
+        #      verdict group)
+        #   4. omnibus_pct desc — biggest real savings first inside each
+        #      verdict tier
         def _sort_key(it: dict) -> tuple:
             is_basket = 0 if "basket_id" in it else 1
+            verdict_order = {"green": 0, "yellow": 1, "gray": 2, "red": 3}.get(
+                it.get("verdict", "gray"), 2,
+            )
             omni = it.get("omnibus_pct")
             has_omni = 0 if omni is not None else 1
-            return (is_basket, has_omni, -(omni or 0))
+            return (is_basket, verdict_order, has_omni, -(omni or 0))
 
         items.sort(key=_sort_key)
 
