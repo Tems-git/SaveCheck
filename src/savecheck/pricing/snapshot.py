@@ -3,8 +3,8 @@
 Given a `ProductOffering` (one product as sold at one chain, with 90-day
 observation history), compute the current-day snapshot used by BOTH:
 
-  * public/products.js  — the product-first index that drives Home + search
-  * public/brochures.js — the per-chain promotional summaries
+  * docs/products.js  — the product-first index that drives Home + search
+  * docs/brochures.js — the per-chain promotional summaries
 
 Previously both scripts had their own slightly-different snapshot logic,
 which caused the "state='real' in products.js" count to disagree with the
