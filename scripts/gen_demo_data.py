@@ -563,33 +563,50 @@ SCORECARD_DAYS = 30
 
 
 def build_chain_scorecard(
-    series: dict[str, dict[str, list[PricePoint]]],
+    offerings: dict[tuple[str, str], ProductOffering],
 ) -> list[dict]:
-    """Per-chain count of real vs fake promo events over the last 30 days."""
+    """Per-chain count of real vs fake promo events over the last 30 days.
+
+    Computed across ALL products in the product-first index (5700+ offerings),
+    not just the 22-category basket. Uses the SAME 3-obs-in-30d filter as
+    products.js so the chain scorecard matches the pool of items users
+    actually see in the search/home feed.
+
+    Before: only 20 or so basket-matching products per chain contributed to
+    the score — a tiny, unrepresentative sample dominated by whichever
+    products happened to match a BASKET regex.
+    After: every offering with regular assortment presence counts.
+    """
     window_start = REF - timedelta(days=SCORECARD_DAYS)
+    min_recent = REF - timedelta(days=30)
 
     totals: dict[str, dict] = {
         c: {"chain": c, "real": 0, "fake": 0, "total_promos": 0, "products_tracked": 0}
         for c in PRIMARY_ORDER
     }
 
-    for pid, chain_series in series.items():
-        for c in PRIMARY_ORDER:
-            pts = chain_series.get(c, [])
-            if not pts:
+    for (_, chain), off in offerings.items():
+        if chain not in totals:
+            continue
+        # Same "regular assortment" filter as products.js — need 3+ obs in 30d.
+        # Keeps the scorecard aligned with what appears in search/home.
+        recent = sum(1 for p in off.points if min_recent <= p.day <= REF)
+        if recent < 3:
+            continue
+
+        totals[chain]["products_tracked"] += 1
+
+        for pt in off.points:
+            if pt.day < window_start or pt.day > REF:
                 continue
-            totals[c]["products_tracked"] += 1
-            for pt in pts:
-                if pt.day < window_start or pt.day > REF:
-                    continue
-                if not pt.is_promo:
-                    continue
-                totals[c]["total_promos"] += 1
-                stats = compute_stats(pts, pt.day, current_price=pt.price)
-                if stats.min_30_prior is None or pt.price <= stats.min_30_prior:
-                    totals[c]["real"] += 1
-                else:
-                    totals[c]["fake"] += 1
+            if not pt.is_promo:
+                continue
+            totals[chain]["total_promos"] += 1
+            stats = compute_stats(off.points, pt.day, current_price=pt.price)
+            if stats.min_30_prior is None or pt.price <= stats.min_30_prior:
+                totals[chain]["real"] += 1
+            else:
+                totals[chain]["fake"] += 1
 
     result = []
     for c in PRIMARY_ORDER:
@@ -604,7 +621,7 @@ def build_chain_scorecard(
             "products_tracked": t["products_tracked"],
         })
         pct = f"{t['real']}/{total}" if total else "no promos"
-        print(f"  {c:<12} real={t['real']} fake={t['fake']} ({pct} real promos)")
+        print(f"  {c:<12} real={t['real']} fake={t['fake']} ({pct} real promos, {t['products_tracked']} products)")
 
     return result
 
@@ -693,7 +710,7 @@ def main() -> None:
             print(f"  {pid:<10} {entry['verdict']:<7} {entry['current_price']:.2f} BGN{promo_tag}  [{chains_str}]")
 
     print("\nBattle of the Titans — chain scorecard (last 30 days):")
-    titans = build_chain_scorecard(legacy_series)
+    titans = build_chain_scorecard(offerings)
 
     # ---- data.js (legacy 22-category dataset, unchanged shape) ----
     data_payload = {
