@@ -2,7 +2,12 @@ name: Daily KZP price refresh
 
 on:
   schedule:
-    - cron: '0 10 * * *'  # 13:00 EET / 10:00 UTC — after KZP publishes   # 05:00 UTC = 08:00 EET — after KZP publishes
+    # Two attempts per day — KZP publishing time is inconsistent (usually
+    # early afternoon but sometimes late evening). If run #1 catches
+    # yesterday's ZIP, run #2 becomes a no-op ("No data changes"). If KZP
+    # delays past 10:00 UTC, run #2 provides a safety net.
+    - cron: '0 10 * * *'  # 13:00 EET — early attempt
+    - cron: '0 18 * * *'  # 21:00 EET — safety net
   workflow_dispatch:        # allow manual trigger
 
 permissions:
