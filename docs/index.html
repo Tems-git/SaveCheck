@@ -510,16 +510,16 @@ Object.keys(BX_EX).forEach(lang => BX[lang] && Object.assign(BX[lang], BX_EX[lan
 const FILTER_ALL = { bg:'Всички', sr:'Sve', mk:'Сите', ro:'Toate', el:'Όλα', tr:'Tümü', sq:'Të gjitha', bs:'Sve', hr:'Sve', sl:'Vse' };
 const NO_MATCH = { bg:'Няма продукти в тази категория', sr:'Nema proizvoda u ovoj kategoriji', mk:'Нема производи во оваа категорија', ro:'Niciun produs în această categorie', el:'Δεν υπάρχουν προϊόντα σε αυτή την κατηγορία', tr:'Bu kategoride ürün yok', sq:'Nuk ka produkte në këtë kategori', bs:'Nema proizvoda u ovoj kategoriji', hr:'Nema proizvoda u ovoj kategoriji', sl:'Ni izdelkov v tej kategoriji' };
 const HX = {
-  bg:{ saved:'Спестяваш с реалните промоции', promos:'реални промоции', fakes:'подвеждащи промоции', period:'последните 30 дни' },
-  sr:{ saved:'Štedite uz prave akcije', promos:'pravih akcija', fakes:'obmanjujućih akcija', period:'poslednjih 30 dana' },
-  mk:{ saved:'Заштедуваш со вистинските промоции', promos:'вистински промоции', fakes:'заблудувачки промоции', period:'последните 30 дена' },
-  ro:{ saved:'Economisești cu reducerile reale', promos:'reduceri reale', fakes:'reduceri înșelătoare', period:'ultimele 30 de zile' },
-  el:{ saved:'Εξοικονομείς με τις αληθινές προσφορές', promos:'αληθινές προσφορές', fakes:'παραπλανητικές προσφορές', period:'τελευταίες 30 ημέρες' },
-  tr:{ saved:'Gerçek indirimlerle tasarruf', promos:'gerçek indirim', fakes:'yanıltıcı indirim', period:'son 30 gün' },
-  sq:{ saved:'Kurseni me ofertat e vërteta', promos:'oferta të vërteta', fakes:'oferta mashtruese', period:'30 ditët e fundit' },
-  bs:{ saved:'Štedite uz prave akcije', promos:'pravih akcija', fakes:'obmanjujućih akcija', period:'posljednjih 30 dana' },
-  hr:{ saved:'Štedite uz prave akcije', promos:'pravih akcija', fakes:'obmanjujućih akcija', period:'zadnjih 30 dana' },
-  sl:{ saved:'Prihranite s pravimi akcijami', promos:'pravih akcij', fakes:'zavajajočih akcij', period:'zadnjih 30 dni' },
+  bg:{ saved:'Спестяваш с реалните промоции', promos:'реални промоции', fakes:'подвеждащи промоции', period:'последните 30 дни', staleWarn:'Данните са отпреди {days} дни', staleHint:'Обновяване всеки ден в 13:00 EET' },
+  sr:{ saved:'Štedite uz prave akcije', promos:'pravih akcija', fakes:'obmanjujućih akcija', period:'poslednjih 30 dana', staleWarn:'Podaci su od pre {days} dana', staleHint:'Ažuriranje svaki dan u 13:00 EET' },
+  mk:{ saved:'Заштедуваш со вистинските промоции', promos:'вистински промоции', fakes:'заблудувачки промоции', period:'последните 30 дена', staleWarn:'Податоците се одпред {days} дена', staleHint:'Ажурирање секој ден во 13:00 EET' },
+  ro:{ saved:'Economisești cu reducerile reale', promos:'reduceri reale', fakes:'reduceri înșelătoare', period:'ultimele 30 de zile', staleWarn:'Datele sunt de acum {days} zile', staleHint:'Actualizare zilnic la 13:00 EET' },
+  el:{ saved:'Εξοικονομείς με τις αληθινές προσφορές', promos:'αληθινές προσφορές', fakes:'παραπλανητικές προσφορές', period:'τελευταίες 30 ημέρες', staleWarn:'Τα δεδομένα είναι από {days} ημέρες πριν', staleHint:'Ενημέρωση καθημερινά στις 13:00 EET' },
+  tr:{ saved:'Gerçek indirimlerle tasarruf', promos:'gerçek indirim', fakes:'yanıltıcı indirim', period:'son 30 gün', staleWarn:'Veriler {days} gün öncesine ait', staleHint:'Her gün 13:00 EET güncelleme' },
+  sq:{ saved:'Kurseni me ofertat e vërteta', promos:'oferta të vërteta', fakes:'oferta mashtruese', period:'30 ditët e fundit', staleWarn:'Të dhënat janë nga {days} ditë më parë', staleHint:'Përditësim çdo ditë në 13:00 EET' },
+  bs:{ saved:'Štedite uz prave akcije', promos:'pravih akcija', fakes:'obmanjujućih akcija', period:'posljednjih 30 dana', staleWarn:'Podaci su od prije {days} dana', staleHint:'Ažuriranje svaki dan u 13:00 EET' },
+  hr:{ saved:'Štedite uz prave akcije', promos:'pravih akcija', fakes:'obmanjujućih akcija', period:'zadnjih 30 dana', staleWarn:'Podaci su od prije {days} dana', staleHint:'Ažuriranje svaki dan u 13:00 EET' },
+  sl:{ saved:'Prihranite s pravimi akcijami', promos:'pravih akcij', fakes:'zavajajočih akcij', period:'zadnjih 30 dni', staleWarn:'Podatki so izpred {days} dni', staleHint:'Posodobitev vsak dan ob 13:00 EET' },
 };
 
 const EMOJI = { milk:'🥛', oil:'🌻', cheese:'🧀', coffee:'☕', flour:'🌾', sugar:'🍬', bread:'🍞', rice:'🍚', tomatoes:'🍅', oliveoil:'🫒', pasta:'🍝', feta:'🧆', bananas:'🍌', chicken:'🍗', water:'💧', eggs:'🥚', butter:'🧈', yogurt:'🥛', potato:'🥔', onion:'🧅', apple:'🍎', salt:'🧂', cucumber:'🥒' };
@@ -580,6 +580,19 @@ let homeChain = null, homeQuery = '', homeShowAll = false;
 // Chain names and categories come from our own whitelist and don't need it.
 function escapeHTML(s) {
   return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+// Days between today (user's local calendar date) and the snapshot's
+// generated_for. 0 = fresh; 1 = yesterday (still normal before the 13:00 EET
+// cron); 2+ = stale. Uses local calendar so a Bulgarian user at 00:30 EET
+// sees today's date, not UTC's.
+function staleDaysFromRef(refISO) {
+  if (!refISO) return 0;
+  const t = new Date();
+  const todayISO = `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,'0')}-${String(t.getDate()).padStart(2,'0')}`;
+  if (refISO >= todayISO) return 0;
+  const refMs = new Date(refISO + 'T00:00:00').getTime();
+  const todayMs = new Date(todayISO + 'T00:00:00').getTime();
+  return Math.max(0, Math.round((todayMs - refMs) / 86400000));
 }
 let pcart = [];
 try { pcart = JSON.parse(localStorage.getItem('savecheck_pcart_v1') || '[]'); } catch(e) { pcart = []; }
@@ -1474,7 +1487,21 @@ function renderHome() {
       </div>`;
     })() : ''}
     <div class="section-label" style="margin-top:14px">${sectionLabel}</div>
-    <div style="font-size:11px;color:var(--muted);text-align:center;margin:-4px 0 8px">📅 ${(window.SAVECHECK_PRODUCTS?.generated_for || '').split('-').reverse().join('.')}</div>
+    ${(() => {
+      const days = staleDaysFromRef(refDay);
+      const displayDate = refDay ? refDay.split('-').reverse().join('.') : '';
+      if (days < 2) {
+        return `<div style="font-size:11px;color:var(--muted);text-align:center;margin:-4px 0 8px">📅 ${displayDate}</div>`;
+      }
+      const isHard = days >= 3;
+      const bg = isHard ? '#fee2e2' : '#fef3c7';
+      const bd = isHard ? '#fca5a5' : '#fde68a';
+      const fg = isHard ? '#991b1b' : '#78350f';
+      return `<div role="status" aria-live="polite" style="background:${bg};color:${fg};border:1px solid ${bd};border-radius:8px;padding:8px 12px;margin:4px 0 8px;font-size:12px;text-align:center;line-height:1.4">
+        <div style="font-weight:700">⚠️ ${H.staleWarn.replace('{days}', days)} (${displayDate})</div>
+        <div style="font-weight:400;font-size:11px;opacity:.85;margin-top:2px">${H.staleHint}</div>
+      </div>`;
+    })()}
     ${chainChipsHTML}
     ${visible.length ? `<div class="card-block">${dealsHTML}</div>` : `<div class="panel" style="text-align:center;padding:20px;color:var(--muted)">Няма продукти по този филтър</div>`}
     ${!homeQuery && window.__homeTotalReal > 6 ? `<div style="text-align:center;margin:8px 0 4px"><button onclick="homeShowAll=${!homeShowAll};renderHome()" style="background:none;border:none;color:var(--green);font-size:13px;font-weight:700;cursor:pointer;padding:8px 12px">${homeShowAll ? '↑ Покажи по-малко' : `Виж всички ${window.__homeTotalReal} реални промоции →`}</button></div>` : ''}
