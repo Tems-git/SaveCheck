@@ -80,8 +80,20 @@ jobs:
           if git diff --staged --quiet; then
             echo "No data changes — nothing to commit."
           else
-            DATE=$(date -u +%Y-%m-%d)
-            git commit -m "Daily KZP refresh: ${DATE}"
+            # Stamp the commit with the DATA date (from products.js), not the
+            # runner date. KZP publishes with 1+ day delay, so runner date is
+            # frequently newer than the data itself — using it silently masked
+            # stale-data situations. See stale banner in docs/index.html.
+            DATA_DATE=$(sed -n 's/.*"generated_for":"\([0-9-]*\)".*/\1/p' docs/products.js | head -1)
+            if [ -z "$DATA_DATE" ]; then
+              echo "::error::Could not extract generated_for from docs/products.js"
+              exit 1
+            fi
+            RUNNER_DATE=$(date -u +%Y-%m-%d)
+            if [ "$DATA_DATE" != "$RUNNER_DATE" ]; then
+              echo "Note: data date ${DATA_DATE} differs from runner date ${RUNNER_DATE} (KZP publishing delay)"
+            fi
+            git commit -m "Daily KZP refresh: ${DATA_DATE}"
             git pull --rebase origin main
             git push
           fi
