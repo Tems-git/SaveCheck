@@ -611,6 +611,23 @@ const EMPTY = {
   sl: { searchTitle:'Ni zadetkov za „{q}"', searchHint:'Poskusi drugo besedo ali krajši izraz', chainTitle:'Ni izdelkov iz {c} z dovolj podatki', chainHint:'Morda danes ni preverljivih akcij v KZP viru', chainAction:'Prikaži vse verige', dataTitle:'Ni podatkov za danes', dataHint:'Poskusi pozneje — podatki se posodabljajo ob 13:00 EET' },
 };
 
+// Cart-related i18n. Cross-references between button labels and empty-
+// state hint — renaming CART_I18N[lang].add automatically updates the
+// "press '...'" text in cart empty states. Single-source-of-truth for
+// cart terminology across the app.
+const CART_I18N = {
+  bg: { add:'Добави в кошницата', remove:'В кошницата — махни', emptyTitle:'Кошницата е празна', emptyHint:'Отвори продукт и натисни „{action}"' },
+  sr: { add:'Dodaj u korpu', remove:'U korpi — ukloni', emptyTitle:'Korpa je prazna', emptyHint:'Otvori proizvod i pritisni „{action}"' },
+  mk: { add:'Додај во кошница', remove:'Во кошницата — отстрани', emptyTitle:'Кошницата е празна', emptyHint:'Отвори производ и притисни „{action}"' },
+  ro: { add:'Adaugă în coș', remove:'În coș — elimină', emptyTitle:'Coșul este gol', emptyHint:'Deschide un produs și apasă „{action}"' },
+  el: { add:'Προσθήκη στο καλάθι', remove:'Στο καλάθι — αφαίρεση', emptyTitle:'Το καλάθι είναι άδειο', emptyHint:'Άνοιξε ένα προϊόν και πάτησε „{action}"' },
+  tr: { add:'Sepete ekle', remove:'Sepette — çıkar', emptyTitle:'Sepet boş', emptyHint:'Bir ürün aç ve „{action}" düğmesine bas' },
+  sq: { add:'Shto në shportë', remove:'Në shportë — hiq', emptyTitle:'Shporta është bosh', emptyHint:'Hap një produkt dhe shtyp „{action}"' },
+  bs: { add:'Dodaj u korpu', remove:'U korpi — ukloni', emptyTitle:'Korpa je prazna', emptyHint:'Otvori proizvod i pritisni „{action}"' },
+  hr: { add:'Dodaj u košaricu', remove:'U košarici — ukloni', emptyTitle:'Košarica je prazna', emptyHint:'Otvori proizvod i pritisni „{action}"' },
+  sl: { add:'Dodaj v košarico', remove:'V košarici — odstrani', emptyTitle:'Košarica je prazna', emptyHint:'Odpri izdelek in pritisni „{action}"' },
+};
+
 // Empty-state card. Reusable across Home / (later) Brochures / Search /
 // other list views. Icon + title + hint, plus optional action button.
 function emptyStatePanel({icon, title, hint, actionLabel, actionAttr}) {
@@ -1495,7 +1512,7 @@ function renderHome() {
       <div class="hh-left">
         <div class="hh-lbl">Спестяваш в кошницата</div>
         <div class="hh-amt">${disp(saved * country.fx)} ${country.sym}</div>
-        <div class="hh-sub">🛒 ${cartSize === 0 ? 'Кошницата е празна' : `${cartSize} ${cartSize === 1 ? 'продукт' : 'продукта'}`}</div>
+        <div class="hh-sub">🛒 ${cartSize === 0 ? (CART_I18N[country.lang] || CART_I18N.bg).emptyTitle : `${cartSize} ${cartSize === 1 ? 'продукт' : 'продукта'}`}</div>
       </div>
       <div class="hh-banner" style="background-image:url('./img/hero-banner.png')"></div>
     </div>
@@ -1683,7 +1700,7 @@ async function openProductDetail(p) {
     </div>
     ${points.length ? `<div style="padding:0 12px 18px"><canvas id="prod-chart" style="max-height:220px"></canvas><div style="font-size:11px;color:var(--muted);text-align:center;margin-top:6px">${points.length} наблюдения за последните ${H.window_days} дни · 🔴 промо · ⚫ обичайна</div></div>` : '<div style="padding:20px;text-align:center;color:var(--muted)">Няма данни за история</div>'}
     <div style="padding:0 18px 18px">
-      ${pcartHas(p.id, p.chain) ? `<button onclick="pcartRemove(window.__prodModalCurrent.id, window.__prodModalCurrent.chain); pcartChanged(); openProductDetail(window.__prodModalCurrent)" style="width:100%;padding:14px;background:var(--card);border:2px solid var(--green);border-radius:12px;font-size:15px;font-weight:800;color:var(--green);cursor:pointer">✓ В кошницата — махни</button>` : `<button onclick="pcartAdd(window.__prodModalCurrent); pcartChanged(); openProductDetail(window.__prodModalCurrent)" style="width:100%;padding:14px;background:var(--green);border:none;border-radius:12px;font-size:15px;font-weight:800;color:#fff;cursor:pointer;box-shadow:0 4px 12px rgba(22,163,74,0.25)">➕ Добави в кошницата</button>`}
+      ${(() => { const CI = CART_I18N[country.lang] || CART_I18N.bg; return pcartHas(p.id, p.chain) ? `<button onclick="pcartRemove(window.__prodModalCurrent.id, window.__prodModalCurrent.chain); pcartChanged(); openProductDetail(window.__prodModalCurrent)" style="width:100%;padding:14px;background:var(--card);border:2px solid var(--green);border-radius:12px;font-size:15px;font-weight:800;color:var(--green);cursor:pointer">✓ ${CI.remove}</button>` : `<button onclick="pcartAdd(window.__prodModalCurrent); pcartChanged(); openProductDetail(window.__prodModalCurrent)" style="width:100%;padding:14px;background:var(--green);border:none;border-radius:12px;font-size:15px;font-weight:800;color:#fff;cursor:pointer;box-shadow:0 4px 12px rgba(22,163,74,0.25)">➕ ${CI.add}</button>`; })()}
     </div>
   `;
   if (points.length) {
@@ -1770,7 +1787,8 @@ function openCart() {
   const content = document.getElementById('cart-modal-content');
   const sym = country.sym, fx = country.fx;
   if (pcart.length === 0) {
-    content.innerHTML = `<div style="padding:40px 20px;text-align:center;color:var(--muted)"><div style="font-size:32px;margin-bottom:8px">🛒</div><div style="font-weight:700;margin-bottom:6px">Кошницата е празна</div><div style="font-size:13px">Отвори продукт и натисни „Добави в кошницата".</div></div>`;
+    const CI = CART_I18N[country.lang] || CART_I18N.bg;
+    content.innerHTML = `<div style="padding:40px 20px;text-align:center;color:var(--muted)"><div style="font-size:32px;margin-bottom:8px">🛒</div><div style="font-weight:700;color:var(--fg);margin-bottom:6px">${CI.emptyTitle}</div><div style="font-size:13px">${CI.emptyHint.replace('{action}', CI.add)}</div></div>`;
     openModal(modal);
     return;
   }
