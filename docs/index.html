@@ -617,10 +617,11 @@ function emptyStatePanel({icon, title, hint, actionLabel, actionAttr}) {
   const action = (actionLabel && actionAttr)
     ? `<button ${actionAttr} style="margin-top:14px;background:var(--green);color:#fff;border:none;padding:9px 18px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer">${actionLabel}</button>`
     : '';
+  const hintHtml = hint ? `<div style="font-size:12.5px;line-height:1.45">${hint}</div>` : '';
   return `<div class="panel" style="text-align:center;padding:32px 20px;color:var(--muted)">
     <div style="font-size:36px;margin-bottom:10px;line-height:1">${icon}</div>
-    <div style="font-weight:700;color:var(--fg);margin-bottom:4px;font-size:14px">${title}</div>
-    <div style="font-size:12.5px;line-height:1.45">${hint}</div>
+    <div style="font-weight:700;color:var(--fg);${hint ? 'margin-bottom:4px;' : ''}font-size:14px">${title}</div>
+    ${hintHtml}
     ${action}
   </div>`;
 }
@@ -1335,7 +1336,7 @@ function renderBrochures() {
   const X = BX[country.lang];
   const BD = window.SAVECHECK_BROCHURES;
   if (!BD) {
-    document.getElementById('basket').innerHTML = `<div class="panel" style="text-align:center;padding:28px;color:var(--muted)">${X.brochNoData}</div>`;
+    document.getElementById('basket').innerHTML = emptyStatePanel({icon:'📄', title:X.brochNoData});
     return;
   }
   const verdictBadge = v => {
