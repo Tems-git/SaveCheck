@@ -594,6 +594,36 @@ function staleDaysFromRef(refISO) {
   const todayMs = new Date(todayISO + 'T00:00:00').getTime();
   return Math.max(0, Math.round((todayMs - refMs) / 86400000));
 }
+
+// Empty-state copy for the different "nothing to show" scenarios in the
+// Home view. Split into three distinct messages because a search miss,
+// a chain filter miss, and truly missing data need different guidance.
+const EMPTY = {
+  bg: { searchTitle:'Няма резултати за „{q}"', searchHint:'Опитай друга дума или по-кратък израз', chainTitle:'Няма продукти от {c} с достатъчно данни', chainHint:'Може днес да няма верифицируеми промоции в КЗП feed-а', chainAction:'Виж всички вериги', dataTitle:'Няма данни за днес', dataHint:'Опитай пак по-късно — данните се обновяват в 13:00 EET' },
+  sr: { searchTitle:'Nema rezultata za „{q}"', searchHint:'Pokušaj drugu reč ili kraći izraz', chainTitle:'Nema proizvoda iz {c} sa dovoljno podataka', chainHint:'Možda danas nema proverljivih akcija u KZP fidu', chainAction:'Prikaži sve lance', dataTitle:'Nema podataka za danas', dataHint:'Pokušaj kasnije — podaci se ažuriraju u 13:00 EET' },
+  mk: { searchTitle:'Нема резултати за „{q}"', searchHint:'Обиди се со друг збор или пократок израз', chainTitle:'Нема производи од {c} со доволно податоци', chainHint:'Можеби денес нема проверливи акции во КЗП фидот', chainAction:'Прикажи ги сите синџири', dataTitle:'Нема податоци за денес', dataHint:'Обиди се подоцна — податоците се ажурираат во 13:00 EET' },
+  ro: { searchTitle:'Niciun rezultat pentru „{q}"', searchHint:'Încearcă alt cuvânt sau o expresie mai scurtă', chainTitle:'Niciun produs de la {c} cu date suficiente', chainHint:'Poate azi nu există promoții verificabile în KZP feed', chainAction:'Vezi toate lanțurile', dataTitle:'Nu există date pentru azi', dataHint:'Încearcă mai târziu — datele se actualizează la 13:00 EET' },
+  el: { searchTitle:'Δεν βρέθηκαν αποτελέσματα για „{q}"', searchHint:'Δοκίμασε άλλη λέξη ή πιο σύντομη έκφραση', chainTitle:'Δεν υπάρχουν προϊόντα από {c} με επαρκή δεδομένα', chainHint:'Ίσως σήμερα δεν υπάρχουν επαληθεύσιμες προσφορές στο KZP feed', chainAction:'Δες όλες τις αλυσίδες', dataTitle:'Δεν υπάρχουν δεδομένα για σήμερα', dataHint:'Δοκίμασε αργότερα — τα δεδομένα ενημερώνονται στις 13:00 EET' },
+  tr: { searchTitle:'„{q}" için sonuç yok', searchHint:'Başka bir kelime veya daha kısa bir ifade dene', chainTitle:'{c} için yeterli veri olan ürün yok', chainHint:'Bugün KZP fidinde doğrulanabilir indirim olmayabilir', chainAction:'Tüm zincirleri gör', dataTitle:'Bugün için veri yok', dataHint:'Daha sonra tekrar dene — veriler 13:00 EET güncellenir' },
+  sq: { searchTitle:'Nuk ka rezultate për „{q}"', searchHint:'Provo një fjalë tjetër ose një shprehje më të shkurtër', chainTitle:'Nuk ka produkte nga {c} me të dhëna të mjaftueshme', chainHint:'Ndoshta sot nuk ka oferta të verifikueshme në KZP feed', chainAction:'Shiko të gjitha zinxhirët', dataTitle:'Nuk ka të dhëna për sot', dataHint:'Provo më vonë — të dhënat përditësohen në 13:00 EET' },
+  bs: { searchTitle:'Nema rezultata za „{q}"', searchHint:'Pokušaj drugu riječ ili kraći izraz', chainTitle:'Nema proizvoda iz {c} sa dovoljno podataka', chainHint:'Možda danas nema provjerivih akcija u KZP feedu', chainAction:'Prikaži sve lance', dataTitle:'Nema podataka za danas', dataHint:'Pokušaj kasnije — podaci se ažuriraju u 13:00 EET' },
+  hr: { searchTitle:'Nema rezultata za „{q}"', searchHint:'Pokušaj drugu riječ ili kraći izraz', chainTitle:'Nema proizvoda iz {c} s dovoljno podataka', chainHint:'Možda danas nema provjerljivih akcija u KZP feedu', chainAction:'Prikaži sve lance', dataTitle:'Nema podataka za danas', dataHint:'Pokušaj kasnije — podaci se ažuriraju u 13:00 EET' },
+  sl: { searchTitle:'Ni zadetkov za „{q}"', searchHint:'Poskusi drugo besedo ali krajši izraz', chainTitle:'Ni izdelkov iz {c} z dovolj podatki', chainHint:'Morda danes ni preverljivih akcij v KZP viru', chainAction:'Prikaži vse verige', dataTitle:'Ni podatkov za danes', dataHint:'Poskusi pozneje — podatki se posodabljajo ob 13:00 EET' },
+};
+
+// Empty-state card. Reusable across Home / (later) Brochures / Search /
+// other list views. Icon + title + hint, plus optional action button.
+function emptyStatePanel({icon, title, hint, actionLabel, actionAttr}) {
+  const action = (actionLabel && actionAttr)
+    ? `<button ${actionAttr} style="margin-top:14px;background:var(--green);color:#fff;border:none;padding:9px 18px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer">${actionLabel}</button>`
+    : '';
+  return `<div class="panel" style="text-align:center;padding:32px 20px;color:var(--muted)">
+    <div style="font-size:36px;margin-bottom:10px;line-height:1">${icon}</div>
+    <div style="font-weight:700;color:var(--fg);margin-bottom:4px;font-size:14px">${title}</div>
+    <div style="font-size:12.5px;line-height:1.45">${hint}</div>
+    ${action}
+  </div>`;
+}
 let pcart = [];
 try { pcart = JSON.parse(localStorage.getItem('savecheck_pcart_v1') || '[]'); } catch(e) { pcart = []; }
 // Backward compat: items added before quantity support default to 1
@@ -1503,7 +1533,26 @@ function renderHome() {
       </div>`;
     })()}
     ${chainChipsHTML}
-    ${visible.length ? `<div class="card-block">${dealsHTML}</div>` : `<div class="panel" style="text-align:center;padding:20px;color:var(--muted)">Няма продукти по този филтър</div>`}
+    ${visible.length ? `<div class="card-block">${dealsHTML}</div>` : (() => {
+      const E = EMPTY[country.lang] || EMPTY.bg;
+      const productsExist = (window.SAVECHECK_PRODUCTS?.products || []).length > 0;
+      if (!productsExist) {
+        return emptyStatePanel({icon:'📭', title:E.dataTitle, hint:E.dataHint});
+      }
+      if (homeQuery) {
+        return emptyStatePanel({icon:'🔍', title:E.searchTitle.replace('{q}', escapeHTML(homeQuery)), hint:E.searchHint});
+      }
+      if (homeChain) {
+        return emptyStatePanel({
+          icon:'🏪',
+          title:E.chainTitle.replace('{c}', escapeHTML(homeChain)),
+          hint:E.chainHint,
+          actionLabel:E.chainAction,
+          actionAttr:'onclick="homeChain=null;renderHome()"'
+        });
+      }
+      return emptyStatePanel({icon:'📭', title:E.dataTitle, hint:E.dataHint});
+    })()}
     ${!homeQuery && window.__homeTotalReal > 6 ? `<div style="text-align:center;margin:8px 0 4px"><button onclick="homeShowAll=${!homeShowAll};renderHome()" style="background:none;border:none;color:var(--green);font-size:13px;font-weight:700;cursor:pointer;padding:8px 12px">${homeShowAll ? '↑ Покажи по-малко' : `Виж всички ${window.__homeTotalReal} реални промоции →`}</button></div>` : ''}
     ${titans.length ? `
     <div class="section-label" style="margin-top:14px">${X.titansTitle}</div>
