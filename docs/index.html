@@ -374,8 +374,19 @@ const C = { red:'#dc2626', green:'#16a34a', yellow:'#f59e0b', gray:'#6b7280' };
 const ICON = { red:'✕', green:'✓', yellow:'≈', gray:'?' };
 
 const COUNTRIES = [
+  // MVP: all locales default to EUR. Real per-country currency (RON, RSD,
+  // MKD, TRY, ALL, BAM) will be set when a market is actually onboarded —
+  // swap fx/sym/dec then. For now the goal is UI coverage for testing.
   { code:'BG', flag:'🇧🇬', lang:'bg', fx:1, sym:'€', dec:2 },
+  { code:'RS', flag:'🇷🇸', lang:'sr', fx:1, sym:'€', dec:2 },
+  { code:'MK', flag:'🇲🇰', lang:'mk', fx:1, sym:'€', dec:2 },
+  { code:'RO', flag:'🇷🇴', lang:'ro', fx:1, sym:'€', dec:2 },
   { code:'GR', flag:'🇬🇷', lang:'el', fx:1, sym:'€', dec:2 },
+  { code:'TR', flag:'🇹🇷', lang:'tr', fx:1, sym:'€', dec:2 },
+  { code:'AL', flag:'🇦🇱', lang:'sq', fx:1, sym:'€', dec:2 },
+  { code:'BA', flag:'🇧🇦', lang:'bs', fx:1, sym:'€', dec:2 },
+  { code:'HR', flag:'🇭🇷', lang:'hr', fx:1, sym:'€', dec:2 },
+  { code:'SI', flag:'🇸🇮', lang:'sl', fx:1, sym:'€', dec:2 },
 ];
 
 const UI = {
@@ -628,6 +639,24 @@ const CART_I18N = {
   sl: { add:'Dodaj v košarico', remove:'V košarici — odstrani', emptyTitle:'Košarica je prazna', emptyHint:'Odpri izdelek in pritisni „{action}"' },
 };
 
+// UI chrome i18n — brand tagline and section labels that live outside
+// render() call trees. Cart aria label reuses BX[lang].tabBasket; chain
+// "all" chip reuses FILTER_ALL[lang]; top-deals section reuses
+// BX[lang].homeDeals — keeping this dict focused on strings that don't
+// already have an i18n home.
+const HEADER_I18N = {
+  bg: { tagline:'Цените под лупа', searchResults:'🔍 Резултати за „{q}" ({n})', searchResultsMore:'🔍 Първите {n} от {total} за „{q}"' },
+  sr: { tagline:'Cene pod lupom', searchResults:'🔍 Rezultati za „{q}" ({n})', searchResultsMore:'🔍 Prvih {n} od {total} za „{q}"' },
+  mk: { tagline:'Цените под лупа', searchResults:'🔍 Резултати за „{q}" ({n})', searchResultsMore:'🔍 Првите {n} од {total} за „{q}"' },
+  ro: { tagline:'Prețurile sub lupă', searchResults:'🔍 Rezultate pentru „{q}" ({n})', searchResultsMore:'🔍 Primele {n} din {total} pentru „{q}"' },
+  el: { tagline:'Τιμές υπό μεγέθυνση', searchResults:'🔍 Αποτελέσματα για „{q}" ({n})', searchResultsMore:'🔍 Τα πρώτα {n} από {total} για „{q}"' },
+  tr: { tagline:'Fiyatları mercek altına', searchResults:'🔍 „{q}" için sonuçlar ({n})', searchResultsMore:'🔍 {total} sonuçtan ilk {n}: „{q}"' },
+  sq: { tagline:'Çmimet nën lupë', searchResults:'🔍 Rezultatet për „{q}" ({n})', searchResultsMore:'🔍 {n} të parat nga {total} për „{q}"' },
+  bs: { tagline:'Cijene pod lupom', searchResults:'🔍 Rezultati za „{q}" ({n})', searchResultsMore:'🔍 Prvih {n} od {total} za „{q}"' },
+  hr: { tagline:'Cijene pod povećalom', searchResults:'🔍 Rezultati za „{q}" ({n})', searchResultsMore:'🔍 Prvih {n} od {total} za „{q}"' },
+  sl: { tagline:'Cene pod drobnogledom', searchResults:'🔍 Rezultati za „{q}" ({n})', searchResultsMore:'🔍 Prvih {n} od {total} za „{q}"' },
+};
+
 // Empty-state card. Reusable across Home / (later) Brochures / Search /
 // other list views. Icon + title + hint, plus optional action button.
 function emptyStatePanel({icon, title, hint, actionLabel, actionAttr}) {
@@ -849,6 +878,12 @@ document.addEventListener('click', e => {
 
 function renderChrome() {
   document.getElementById('footer').innerHTML = t().footer + ' <a href="#" onclick="event.preventDefault();showInfo()" style="color:var(--green);font-weight:700;text-decoration:none;white-space:nowrap">Как работи?</a>';
+  const H = HEADER_I18N[country.lang] || HEADER_I18N.bg;
+  const X = BX[country.lang];
+  const tag = document.querySelector('.brand-tagline');
+  if (tag) tag.textContent = H.tagline;
+  const cartBtn = document.getElementById('cart-btn');
+  if (cartBtn && X) cartBtn.setAttribute('aria-label', X.tabBasket);
 }
 
 const VERDICT_FILTERS = ['all', 'green', 'red', 'yellow'];
@@ -1475,8 +1510,14 @@ function renderHome() {
     const omnibusTag = p.omnibus_pct ? `<div style="font-size:11px;font-weight:700;color:var(--red)">−${p.omnibus_pct}%</div>` : '';
     return `<div role="button" tabindex="0" onclick="openProductDetail(window.__homeVisible[${i}])" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProductDetail(window.__homeVisible[${i}])}" style="display:flex;gap:10px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line);cursor:pointer"><span style="display:inline-block;width:16px;font-size:16px;line-height:1;text-align:center">${icon}</span><div style="flex:1;min-width:0"><div style="font-size:11px;color:var(--muted);font-weight:600">${p.chain}${staleTag}</div><div style="font-size:13px;font-weight:700;line-height:1.3;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical">${escapeHTML(p.name)}</div></div><div style="text-align:right;flex-shrink:0"><div style="font-size:15px;font-weight:800;color:${priceColor}">${disp(p.price * country.fx)} ${country.sym}</div>${p.retail ? `<div style="font-size:11px;color:var(--muted);text-decoration:line-through">${disp(p.retail * country.fx)}</div>` : ''}${omnibusTag}</div></div>`;
   }).join('');
-  const chainChipsHTML = `<div style="display:flex;gap:6px;padding:8px 2px 4px;overflow-x:auto;-webkit-overflow-scrolling:touch">${[null,'Lidl','Kaufland','Billa','Fantastico','T Market'].map(c => `<button onclick="homeChain=${c===null?'null':`'${c}'`};renderHome()" style="flex-shrink:0;padding:6px 12px;border:1px solid ${homeChain===c?'var(--green)':'var(--line)'};background:${homeChain===c?'var(--green)':'var(--card)'};color:${homeChain===c?'#fff':'var(--fg)'};border-radius:999px;font-size:12px;font-weight:700;cursor:pointer">${c||'Всички'}</button>`).join('')}</div>`;
-  const sectionLabel = homeQuery ? (window.__homeTotalMatching > visible.length ? `🔍 Първите ${visible.length} от ${window.__homeTotalMatching} за "${escapeHTML(homeQuery)}"` : `🔍 Резултати за "${escapeHTML(homeQuery)}" (${visible.length})`) : `🔥 Топ реални промоции`;
+  const chainChipsHTML = `<div style="display:flex;gap:6px;padding:8px 2px 4px;overflow-x:auto;-webkit-overflow-scrolling:touch">${[null,'Lidl','Kaufland','Billa','Fantastico','T Market'].map(c => `<button onclick="homeChain=${c===null?'null':`'${c}'`};renderHome()" style="flex-shrink:0;padding:6px 12px;border:1px solid ${homeChain===c?'var(--green)':'var(--line)'};background:${homeChain===c?'var(--green)':'var(--card)'};color:${homeChain===c?'#fff':'var(--fg)'};border-radius:999px;font-size:12px;font-weight:700;cursor:pointer">${c || FILTER_ALL[country.lang]}</button>`).join('')}</div>`;
+  const H_hdr = HEADER_I18N[country.lang] || HEADER_I18N.bg;
+  const X_hdr = BX[country.lang];
+  const sectionLabel = homeQuery
+    ? (window.__homeTotalMatching > visible.length
+        ? H_hdr.searchResultsMore.replace('{n}', visible.length).replace('{total}', window.__homeTotalMatching).replace('{q}', escapeHTML(homeQuery))
+        : H_hdr.searchResults.replace('{q}', escapeHTML(homeQuery)).replace('{n}', visible.length))
+    : `🔥 ${X_hdr.homeDeals}`;
   const cartItems = cartIds();
   // New: hero shows savings from the product-first cart (pcart), not the legacy 22-category basket.
   // Savings = sum(retail - price) for pcart items where retail > price (i.e. an actual discount vs. shelf price).
