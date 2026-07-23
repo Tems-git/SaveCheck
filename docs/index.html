@@ -24,6 +24,17 @@
 <script src="./data.js"></script>
 <script src="./brochures.js"></script>
 <script src="./products.js"></script>
+<script>
+  // Register service worker for offline shell + install-to-home-screen.
+  // See docs/sw.js for the caching strategy.
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js').catch(err =>
+        console.warn('SW registration failed:', err)
+      );
+    });
+  }
+</script>
 <style>
   :root {
     --green:#16a34a; --green-d:#15803d; --green-bg:#eaf5ee;
