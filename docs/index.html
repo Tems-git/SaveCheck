@@ -22,7 +22,6 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 <meta name="apple-mobile-web-app-title" content="SaveCheck" />
 <script src="./data.js"></script>
-<script src="./brochures.js"></script>
 <script src="./products.js"></script>
 <script>
   // Register service worker for offline shell + install-to-home-screen.
@@ -1395,10 +1394,38 @@ async function drawChart(p, col) {
 
 let brochOpen = {};
 
+// Lazy load brochures.js — 390 KB file that only matters when the user
+// opens the Brochures view OR expands a "more from this chain" section
+// in Home. Kicked off eagerly on first render() so it's usually ready
+// by the time the user interacts with anything that needs it.
+let brochuresLoadPromise = null;
+function loadBrochures() {
+  if (window.SAVECHECK_BROCHURES) return Promise.resolve();
+  if (brochuresLoadPromise) return brochuresLoadPromise;
+  brochuresLoadPromise = new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = './brochures.js';
+    s.onload = () => resolve();
+    s.onerror = () => reject(new Error('brochures.js load failed'));
+    document.head.appendChild(s);
+  });
+  return brochuresLoadPromise;
+}
+
 function renderBrochures() {
   const X = BX[country.lang];
   const BD = window.SAVECHECK_BROCHURES;
   if (!BD) {
+    // If load hasn't failed yet, show spinner and re-render when it lands.
+    // If it did fail, fall through to the actual "no data" empty state.
+    if (!window.__brochLoadFailed) {
+      document.getElementById('basket').innerHTML = '<div class="panel" style="text-align:center;padding:40px 20px;color:var(--muted)"><div style="font-size:28px;line-height:1">⏳</div></div>';
+      loadBrochures().then(() => renderBrochures()).catch(() => {
+        window.__brochLoadFailed = true;
+        renderBrochures();
+      });
+      return;
+    }
     document.getElementById('basket').innerHTML = emptyStatePanel({icon:'📄', title:X.brochNoData});
     return;
   }
@@ -2074,6 +2101,16 @@ function renderSubTabs() {
 }
 function render() {
   renderFlags(); renderChrome(); renderTabs();
+  // Kick off brochures preload (idempotent). Re-render when it arrives
+  // so Home "виж още" extras + Promos brochures view fill in without
+  // requiring a manual navigation from the user.
+  if (!window.SAVECHECK_BROCHURES) {
+    loadBrochures().then(() => {
+      if (view === 'home' || (view === 'promos' && promosTab === 'brochures')) {
+        render();
+      }
+    }).catch(() => { /* graceful degrade — existing !BD guards handle it */ });
+  }
   const X = BX[country.lang];
   const isShop = view === 'shop';
   const isProd = isShop && shopTab === 'products';
