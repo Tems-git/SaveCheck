@@ -1158,8 +1158,8 @@ function renderBasket() {
 
   const customSection = `
     <div class="list-custom">
-      <input id="custom-item-input" type="text" placeholder="${X.listCustomPh}" onkeydown="if(event.key==='Enter')addCustomItem()" />
-      <button onclick="addCustomItem()">+</button>
+      <input id="custom-item-input" type="text" placeholder="${X.listCustomPh}" />
+      <button>+</button>
     </div>
     ${customList.length ? `<div class="panel" style="margin-bottom:12px">
       <div class="otitle">${X.listCustomTitle}</div>
@@ -1266,6 +1266,16 @@ function renderBasket() {
     <div style="text-align:right;margin-bottom:4px">${clearBtn}</div>
     ${chainSections}
     ${grandTotalHTML}`;
+
+  // Explicit handlers for the custom-list input + button. Inline onclick/
+  // onkeydown attributes in the template string weren't firing here (works
+  // elsewhere in the file — root cause unclear, possibly a stale event or
+  // overlay); attaching them programmatically after innerHTML is set is
+  // fully reliable.
+  const customInput = document.getElementById('custom-item-input');
+  if (customInput) customInput.onkeydown = (e) => { if (e.key === 'Enter') addCustomItem(); };
+  const customBtn = document.querySelector('.list-custom button');
+  if (customBtn) customBtn.onclick = addCustomItem;
 }
 
 function addCustomItem() {
