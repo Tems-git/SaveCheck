@@ -595,7 +595,7 @@ const picon = id => `<span class="picon">${productIcon(id)}</span>`;
 const DEMO = (window.SAVECHECK_DEMO || {products:[]});
 const products = DEMO.products;
 let active = -1, country = COUNTRIES[0], view = 'home', query = '', cart = {};
-let shopTab = 'products', promosTab = 'brochures';
+let shopTab = 'basket', promosTab = 'brochures';
 let homeChain = null, homeQuery = '', homeShowAll = false;
 // Escape KZP-sourced strings when injecting into innerHTML.
 // Chain names and categories come from our own whitelist and don't need it.
@@ -1154,8 +1154,7 @@ function renderFridge() {
 
 function renderBasket() {
   const X = BX[country.lang];
-  const lang = country.lang;
-  const ids = cartIds();
+  const CI = CART_I18N[country.lang] || CART_I18N.bg;
 
   const customSection = `
     <div class="list-custom">
@@ -1170,76 +1169,103 @@ function renderBasket() {
       </div>`).join('')}
     </div>` : ''}`;
 
-  if (!ids.length && !customList.length) {
+  if (!pcart.length && !customList.length) {
     document.getElementById('basket').innerHTML = `
       ${customSection}
-      <div class="panel" style="text-align:center;padding:28px 16px;color:var(--muted)">
-        <div style="font-size:36px;margin-bottom:10px">🛒</div>
-        <div style="font-size:14px">${X.cartEmpty}</div>
-      </div>`;
+      ${emptyStatePanel({
+        icon: '🛒',
+        title: CI.emptyTitle,
+        hint: CI.emptyHint.replace('{action}', CI.add)
+      })}`;
     return;
   }
 
-  if (!ids.length) {
+  if (!pcart.length) {
     document.getElementById('basket').innerHTML = customSection;
     return;
   }
 
-  let listSaved = 0, realInList = 0;
-  ids.forEach(id => {
-    const p = products.find(p => p.id === id);
-    if (!p || p.median_90 == null || p.current_price == null) return;
-    if (p.verdict === 'green' && p.median_90 - p.current_price > 0) {
-      listSaved += p.median_90 - p.current_price;
-      realInList++;
+  // Group pcart items by chain. Each pcart item has a specific chain
+  // pre-selected by the user (unlike legacy cart where a single 'milk' id
+  // could be sold at multiple chains). So we present a chain-by-chain
+  // breakdown with per-chain totals + a grand total. Cross-chain "where
+  // is it cheaper" analysis is a separate feature (cross-chain matching
+  // backlog) — not attempted here.
+  const byChain = {};
+  let grandTotal = 0;
+  let realCount = 0;
+  let realSaved = 0;
+
+  pcart.forEach(item => {
+    if (!byChain[item.chain]) byChain[item.chain] = { items: [], total: 0 };
+    const qty = item.quantity || 1;
+    const lineTotal = (item.price || 0) * qty;
+    byChain[item.chain].items.push(item);
+    byChain[item.chain].total += lineTotal;
+    grandTotal += lineTotal;
+
+    if (item.retail && item.retail > item.price) {
+      realCount++;
+      realSaved += (item.retail - item.price) * qty;
     }
   });
-  const summaryHTML = realInList > 0 ? `
+
+  const summaryHTML = realCount > 0 ? `
     <div class="list-summary">
       <span class="ls-ico">🟢</span>
-      <span class="ls-tx">${realInList} ${X.listRealPromos}</span>
-      <span class="ls-amt">${X.listSave} ${disp(listSaved * country.fx)} ${country.sym}</span>
+      <span class="ls-tx">${realCount} ${X.listRealPromos}</span>
+      <span class="ls-amt">${X.listSave} ${disp(realSaved * country.fx)} ${country.sym}</span>
     </div>` : '';
 
-  const itemRows = ids.map(id => {
-    const p = products.find(p => p.id === id), meta = PRODUCTS[id];
-    const name = meta ? (meta.name[lang] || meta.name.bg) : id;
-    const price = p ? money(p.current_price) : '';
-    const tag = p ? `<span class="vtag" style="background:${C[p.verdict]}">${TAG[p.verdict][lang]}</span>` : '';
-    return `<div class="irow">
-      <span style="flex:1">${picon(id)} ${name} ${tag}</span>
-      <span style="white-space:nowrap">${price} <button class="cadd in" style="width:22px;height:22px;font-size:12px;margin-left:6px" onclick="toggleCart('${id}')">✕</button></span>
+  const clearBtn = `<button onclick="if(confirm('${X.clearCart}?')){pcart=[];customList=[];pcartSave();pcartChanged();render()}" style="border:0;background:none;color:var(--muted);font-size:11px;cursor:pointer">${X.clearCart}</button>`;
+
+  const chainSections = Object.keys(byChain).sort().map(chain => {
+    const c = byChain[chain];
+    const rows = c.items.map(item => {
+      const qty = item.quantity || 1;
+      const lineTotal = (item.price || 0) * qty;
+      const priceLine = item.retail && item.retail > item.price
+        ? `<span style="text-decoration:line-through;color:var(--muted);font-size:11px;margin-right:4px">${money(item.retail)}</span>${money(item.price)}`
+        : money(item.price);
+      const qtyControls = `<span style="display:inline-flex;align-items:center;gap:4px;margin-right:8px">
+        <button class="cadd in" style="width:22px;height:22px;font-size:12px" onclick="pcartChangeQty('${item.id}','${item.chain}',-1);renderBasket();pcartChanged()">−</button>
+        <span style="font-variant-numeric:tabular-nums;min-width:14px;text-align:center;font-weight:700">${qty}</span>
+        <button class="cadd in" style="width:22px;height:22px;font-size:12px" onclick="pcartChangeQty('${item.id}','${item.chain}',1);renderBasket();pcartChanged()">+</button>
+      </span>`;
+      return `<div class="irow">
+        <span style="flex:1;min-width:0"><div style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHTML(item.name)}</div><div style="font-size:11px;color:var(--muted)">${priceLine}</div></span>
+        <span style="white-space:nowrap;display:flex;align-items:center">
+          ${qtyControls}
+          <span style="font-variant-numeric:tabular-nums;font-weight:700;min-width:56px;text-align:right">${money(lineTotal)}</span>
+          <button class="cadd in" style="width:22px;height:22px;font-size:12px;margin-left:6px" onclick="pcartRemove('${item.id}','${item.chain}');renderBasket();pcartChanged()">✕</button>
+        </span>
+      </div>`;
+    }).join('');
+    return `<div class="panel" style="margin-top:12px">
+      <div class="otitle" style="display:flex;justify-content:space-between;align-items:center">
+        <span>${escapeHTML(chain)}</span>
+        <span style="font-variant-numeric:tabular-nums">${money(c.total)}</span>
+      </div>
+      ${rows}
     </div>`;
   }).join('');
 
-  const analysis = analyzeStores();
-  const n = ids.length;
-  const storeRows = analysis.map((s, i) => {
-    const pct = s.covered.length + '/' + n;
-    const missTxt = s.missing.length ? ` · ${X.noData}: ${s.missing.map(id => { const m = PRODUCTS[id]; return m ? (m.name[lang] || m.name.bg) : id; }).join(', ')}` : '';
-    return `<div class="srow ${i===0?'sbest':''}">
-      <span>${i===0?'✓ ':''}${s.chain}<span class="scov">${X.covers} ${pct} ${X.artItems}${missTxt}</span></span>
-      <span style="font-variant-numeric:tabular-nums;font-weight:700">${money(s.total)}</span>
-    </div>`;
-  }).join('');
+  // Grand total shown only when items span 2+ chains — otherwise the
+  // per-chain total already IS the grand total.
+  const grandTotalHTML = Object.keys(byChain).length > 1 ? `
+    <div class="panel" style="margin-top:12px;background:linear-gradient(135deg,#16a34a,#15803d);color:#fff">
+      <div style="display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:15px">
+        <span>Общо</span>
+        <span style="font-variant-numeric:tabular-nums">${money(grandTotal)}</span>
+      </div>
+    </div>` : '';
 
-  const best = analysis[0];
   document.getElementById('basket').innerHTML = `
     ${customSection}
     ${summaryHTML}
-    <div class="advice-box">
-      <div class="advice-lbl">${X.storeAdvice}</div>
-      <div class="advice-chain">${best.chain} — ${money(best.total)}</div>
-      <div class="advice-sub">${best.covered.length} ${X.of} ${n} ${X.artItems}</div>
-    </div>
-    <div class="panel">
-      <div class="otitle">${X.cartTitle} <button onclick="cart={};customList=[];render()" style="border:0;background:none;color:var(--muted);font-size:11px;cursor:pointer;float:right">${X.clearCart}</button></div>
-      ${itemRows}
-    </div>
-    <div class="panel" style="margin-top:12px">
-      <div class="otitle">${X.storeAdvice}</div>
-      ${storeRows}
-    </div>`;
+    <div style="text-align:right;margin-bottom:4px">${clearBtn}</div>
+    ${chainSections}
+    ${grandTotalHTML}`;
 }
 
 function addCustomItem() {
@@ -1601,15 +1627,14 @@ function renderHome() {
       <span class="fh-tx"><div class="fh-big">${fakesCaught} ${H.fakes}</div><div class="fh-sub">${H.period}</div></span>
       <span class="fh-arr">›</span>
     </div>` : ''}
-    ${(cartIds().length + customList.length) > 0 ? (() => {
-      const n = cartIds().length + customList.length;
-      const analysis = analyzeStores();
-      const best = analysis[0];
-      const bestTxt = best ? ` · ${best.chain} ${money(best.total)}` : '';
+    ${(pcart.length + customList.length) > 0 ? (() => {
+      const n = pcart.length + customList.length;
+      const total = pcart.reduce((s, item) => s + (item.price || 0) * (item.quantity || 1), 0);
+      const totalTxt = pcart.length ? ` · ${money(total)}` : '';
       return `<div class="fake-hook" style="background:linear-gradient(135deg,#16a34a,#15803d);box-shadow:0 8px 20px rgba(22,163,74,.28);margin-top:10px"
            onclick="setView('shop');shopTab='basket';render()">
         <span class="fh-ic">🛒</span>
-        <span class="fh-tx"><div class="fh-big">${n} ${X.cartTitle}</div><div class="fh-sub">${bestTxt}</div></span>
+        <span class="fh-tx"><div class="fh-big">${n} ${X.cartTitle}</div><div class="fh-sub">${totalTxt}</div></span>
         <span class="fh-arr">›</span>
       </div>`;
     })() : ''}
@@ -2084,12 +2109,10 @@ function renderSubTabs() {
   const isShop = view === 'shop';
   const stw = document.getElementById('sub-tabs-wrap');
   if (isShop) {
-    const n = cartSize() + customList.length;
-    const cb = n ? `<span style="background:var(--green);color:#fff;font-size:9px;border-radius:999px;padding:0 5px;font-weight:800;margin-left:3px;line-height:1.6">${n}</span>` : '';
-    stw.innerHTML = `<div class="sub-tabs">
-      <button class="${shopTab==='products'?'active':''}" onclick="setShopTab('products')">${X.tabProducts}</button>
-      <button class="${shopTab==='basket'?'active':''}" onclick="setShopTab('basket')">${X.tabBasket}${cb}</button>
-    </div>`;
+    // Sub-tabs hidden: Products tab was legacy demo data (dropped),
+    // Recipes/Fridge are paused features. User lands on Basket directly
+    // via the Home cart hook.
+    stw.innerHTML = '';
   } else if (view === 'promos') {
     stw.innerHTML = `<div class="sub-tabs">
       <button class="${promosTab==='brochures'?'active':''}" onclick="setPromosTab('brochures')">${X.tabBrochures}</button>
