@@ -387,6 +387,7 @@ const COUNTRIES = [
   // MVP: all locales default to EUR. Real per-country currency (RON, RSD,
   // MKD, TRY, ALL, BAM) will be set when a market is actually onboarded —
   // swap fx/sym/dec then. For now the goal is UI coverage for testing.
+  { code:'GB', flag:'🇬🇧', lang:'en', fx:1, sym:'€', dec:2 },
   { code:'BG', flag:'🇧🇬', lang:'bg', fx:1, sym:'€', dec:2 },
   { code:'RS', flag:'🇷🇸', lang:'sr', fx:1, sym:'€', dec:2 },
   { code:'MK', flag:'🇲🇰', lang:'mk', fx:1, sym:'€', dec:2 },
@@ -400,6 +401,11 @@ const COUNTRIES = [
 ];
 
 const UI = {
+  en:{ tagline:'Compares the price against 90-day history and tells you if the promo is real.',
+       now:'Now', avg:'Average price (90 days)', low:'Lowest (90 days)', high:'Highest (90 days)',
+       floor30:'Floor for last 30 days', price:'price', avgLeg:'average (90d)',
+       footer:'Computed by the real core (logic in the spirit of EU Omnibus). Discount reference is the lowest price in the previous 30 days, not the „old price" on the label.',
+       searchPlaceholder:'Search or ask…' },
   bg:{ tagline:'Сравнява цената с историята за 90 дни и казва дали промоцията е реална.',
        now:'Сега', avg:'Средна цена (90 дни)', low:'Най-ниска (90 дни)', high:'Най-висока (90 дни)',
        floor30:'Дъно за последните 30 дни', price:'цена', avgLeg:'средна (90д)',
@@ -451,16 +457,16 @@ const UI = {
 };
 
 const TAG = {
-  green:{bg:'Реална',sr:'Prava',mk:'Вистинска',ro:'Reală',el:'Αληθινή',tr:'Gerçek',sq:'E vërtetë',bs:'Prava',hr:'Prava',sl:'Resnična'},
-  yellow:{bg:'Обичайна',sr:'Uobičajena',mk:'Вообичаена',ro:'Obișnuită',el:'Συνηθισμένη',tr:'Olağan',sq:'E zakonshme',bs:'Uobičajena',hr:'Uobičajena',sl:'Običajna'},
-  red:{bg:'Фалшива',sr:'Lažna',mk:'Лажна',ro:'Falsă',el:'Ψεύτικη',tr:'Sahte',sq:'E rreme',bs:'Lažna',hr:'Lažna',sl:'Lažna'},
-  gray:{bg:'Няма данни',sr:'Nema podataka',mk:'Нема податоци',ro:'Fără date',el:'Χωρίς δεδ.',tr:'Veri yok',sq:'Pa të dhëna',bs:'Nema podataka',hr:'Nema podataka',sl:'Ni podatkov'},
+  green:{bg:'Реална',en:'Real',sr:'Prava',mk:'Вистинска',ro:'Reală',el:'Αληθινή',tr:'Gerçek',sq:'E vërtetë',bs:'Prava',hr:'Prava',sl:'Resnična'},
+  yellow:{bg:'Обичайна',en:'Regular',sr:'Uobičajena',mk:'Вообичаена',ro:'Obișnuită',el:'Συνηθισμένη',tr:'Olağan',sq:'E zakonshme',bs:'Uobičajena',hr:'Uobičajena',sl:'Običajna'},
+  red:{bg:'Фалшива',en:'Fake',sr:'Lažna',mk:'Лажна',ro:'Falsă',el:'Ψεύτικη',tr:'Sahte',sq:'E rreme',bs:'Lažna',hr:'Lažna',sl:'Lažna'},
+  gray:{bg:'Няма данни',en:'No data',sr:'Nema podataka',mk:'Нема податоци',ro:'Fără date',el:'Χωρίς δεδ.',tr:'Veri yok',sq:'Pa të dhëna',bs:'Nema podataka',hr:'Nema podataka',sl:'Ni podatkov'},
 };
 const BADGE = {
-  green:{bg:'РЕАЛНА ПРОМОЦИЯ',sr:'PRAVA AKCIJA',mk:'ВИСТИНСКА ПРОМОЦИЈА',ro:'REDUCERE REALĂ',el:'ΑΛΗΘΙΝΗ ΠΡΟΣΦΟΡΑ',tr:'GERÇEK İNDİRİM',sq:'OFERTË E VËRTETË',bs:'PRAVA AKCIJA',hr:'PRAVA AKCIJA',sl:'RESNIČNA AKCIJA'},
-  yellow:{bg:'ОБИЧАЙНА ЦЕНА',sr:'UOBIČAJENA CENA',mk:'ВООБИЧАЕНА ЦЕНА',ro:'PREȚ OBIȘNUIT',el:'ΣΥΝΗΘΙΣΜΕΝΗ ΤΙΜΗ',tr:'OLAĞAN FİYAT',sq:'ÇMIM I ZAKONSHËM',bs:'UOBIČAJENA CIJENA',hr:'UOBIČAJENA CIJENA',sl:'OBIČAJNA CENA'},
-  red:{bg:'ФАЛШИВА ПРОМОЦИЯ',sr:'LAŽNA AKCIJA',mk:'ЛАЖНА ПРОМОЦИЈА',ro:'REDUCERE FALSĂ',el:'ΨΕΥΤΙΚΗ ΠΡΟΣΦΟΡΑ',tr:'SAHTE İNDİRİM',sq:'OFERTË E RREME',bs:'LAŽNA AKCIJA',hr:'LAŽNA AKCIJA',sl:'LAŽNA AKCIJA'},
-  gray:{bg:'НЯМА ДОСТАТЪЧНО ДАННИ',sr:'NEMA DOVOLJNO PODATAKA',mk:'НЕДОВОЛНО ПОДАТОЦИ',ro:'DATE INSUFICIENTE',el:'ΑΝΕΠΑΡΚΗ ΔΕΔΟΜΕΝΑ',tr:'YETERSİZ VERİ',sq:'TË DHËNA TË PAMJAFTUESHME',bs:'NEMA DOVOLJNO PODATAKA',hr:'NEDOVOLJNO PODATAKA',sl:'PREMALO PODATKOV'},
+  green:{bg:'РЕАЛНА ПРОМОЦИЯ',en:'REAL PROMO',sr:'PRAVA AKCIJA',mk:'ВИСТИНСКА ПРОМОЦИЈА',ro:'REDUCERE REALĂ',el:'ΑΛΗΘΙΝΗ ΠΡΟΣΦΟΡΑ',tr:'GERÇEK İNDİRİM',sq:'OFERTË E VËRTETË',bs:'PRAVA AKCIJA',hr:'PRAVA AKCIJA',sl:'RESNIČNA AKCIJA'},
+  yellow:{bg:'ОБИЧАЙНА ЦЕНА',en:'REGULAR PRICE',sr:'UOBIČAJENA CENA',mk:'ВООБИЧАЕНА ЦЕНА',ro:'PREȚ OBIȘNUIT',el:'ΣΥΝΗΘΙΣΜΕΝΗ ΤΙΜΗ',tr:'OLAĞAN FİYAT',sq:'ÇMIM I ZAKONSHËM',bs:'UOBIČAJENA CIJENA',hr:'UOBIČAJENA CIJENA',sl:'OBIČAJNA CENA'},
+  red:{bg:'ФАЛШИВА ПРОМОЦИЯ',en:'FAKE PROMO',sr:'LAŽNA AKCIJA',mk:'ЛАЖНА ПРОМОЦИЈА',ro:'REDUCERE FALSĂ',el:'ΨΕΥΤΙΚΗ ΠΡΟΣΦΟΡΑ',tr:'SAHTE İNDİRİM',sq:'OFERTË E RREME',bs:'LAŽNA AKCIJA',hr:'LAŽNA AKCIJA',sl:'LAŽNA AKCIJA'},
+  gray:{bg:'НЯМА ДОСТАТЪЧНО ДАННИ',en:'INSUFFICIENT DATA',sr:'NEMA DOVOLJNO PODATAKA',mk:'НЕДОВОЛНО ПОДАТОЦИ',ro:'DATE INSUFICIENTE',el:'ΑΝΕΠΑΡΚΗ ΔΕΔΟΜΕΝΑ',tr:'YETERSİZ VERİ',sq:'TË DHËNA TË PAMJAFTUESHME',bs:'NEMA DOVOLJNO PODATAKA',hr:'NEDOVOLJNO PODATAKA',sl:'PREMALO PODATKOV'},
 };
 const REASONS = {
   real:{ bg:p=>`Реално намаление: ${p}% под обичайната цена, близо до 90-дневното дъно.`,sr:p=>`Pravo sniženje: ${p}% ispod uobičajene cene, blizu dna za 90 dana.`,mk:p=>`Вистинско намалување: ${p}% под вообичаената цена, близу до дното за 90 дена.`,ro:p=>`Reducere reală: ${p}% sub prețul obișnuit, aproape de minimul pe 90 de zile.`,el:p=>`Αληθινή έκπτωση: ${p}% κάτω από τη συνήθη τιμή, κοντά στο ελάχιστο 90 ημερών.`,tr:p=>`Gerçek indirim: olağan fiyatın %${p} altında, 90 günlük dibe yakın.`,sq:p=>`Zbritje reale: ${p}% nën çmimin e zakonshëm, afër minimumit 90-ditor.`,bs:p=>`Pravo sniženje: ${p}% ispod uobičajene cijene, blizu dna za 90 dana.`,hr:p=>`Pravo sniženje: ${p}% ispod uobičajene cijene, blizu dna za 90 dana.`,sl:p=>`Resnično znižanje: ${p}% pod običajno ceno, blizu dna za 90 dni.` },
@@ -502,6 +508,7 @@ const PRODUCTS = {
 };
 
 const BX = {
+  en:{ tabProducts:'Products', tabBasket:'Cart', tabFridge:'Fridge', tabTable:'Table', tabTitans:'Titans', chains:'Prices by chain', cheapest:'cheapest', basketTitle:'Cart cost by chain', cheapestBasket:'Cheapest cart', save:'you save', perItem:'Cheapest per item', recognized:'Recognized in fridge', shopping:'Shopping list', missing:'missing', low:'running low', search:'Search product…', cartTitle:'My list', cartEmpty:'Add products with ✚', storeAdvice:'Where should I shop?', covers:'covers', of:'of', artItems:'items', clearCart:'Clear', noData:'Not offered', titansTitle:'Battle of the Titans', titansSub:'Real vs. fake promo events — 30 days (an item counts each day it was on promo)', titansReal:'real', titansFake:'fake', titansNoPromos:'no promos', titansTracked:'tracked products', tabBrochures:'Brochures', brochTitle:'This week', brochSub:'Verified promo offers by chain', brochFake:'Fake!', brochReal:'Real', brochClaimed:'claimed', brochNoData:'No brochure', brochPromos:'promos', brochExpand:'See all', brochCollapse:'Hide', tabScan:'Scanner', scanBtn:'Scan barcode', scanHint:'Point the camera at the barcode', scanLookup:'Looking up product…', scanNotTracked:'Product not in our tracked list', scanUnknown:'Product not recognized', scanAgain:'Scan again', scanNoBD:'Scanner works in Chrome. Try with a file:', scanFile:'Choose image', scanMatched:'Recognized as', whereShopping:'Where do you shop?', allChains:'All', moreChainPromos:'More promos at', unverified:'unverified', seeAllBrochures:'See all' },
   bg:{ tabProducts:'Продукти', tabBasket:'Кошница', tabFridge:'Хладилник', tabTable:'Таблица', tabTitans:'Титани', chains:'Цени по вериги', cheapest:'най-евтина', basketTitle:'Цена на кошницата по верига', cheapestBasket:'Най-евтина кошница', save:'спестяваш', perItem:'Най-евтино по продукт', recognized:'Разпознато в хладилника', shopping:'Списък за пазаруване', missing:'липсва', low:'свършва', search:'Търси продукт…', cartTitle:'Моят списък', cartEmpty:'Добави продукти с ✚', storeAdvice:'Откъде да пазарувам?', covers:'покрива', of:'от', artItems:'арт.', clearCart:'Изчисти', noData:'Не предлага', titansTitle:'Битката на Титаните', titansSub:'Реални vs фалшиви промо събития — 30 дни (продукт се брои всеки ден на промо)', titansReal:'реални', titansFake:'фалшиви', titansNoPromos:'без промоции', titansTracked:'проследени продукта', tabBrochures:'Брошури', brochTitle:'Тази седмица', brochSub:'Верифицирани промо оферти по верига', brochFake:'Фалшива!', brochReal:'Реална', brochClaimed:'обявена', brochNoData:'Без брошура', brochPromos:'промоции', brochExpand:'Виж всички', brochCollapse:'Скрий', tabScan:'Скенер', scanBtn:'Сканирай баркод', scanHint:'Насочи камерата към баркода', scanLookup:'Търся продукт…', scanNotTracked:'Продуктът не е в следения ни списък', scanUnknown:'Продуктът не е разпознат', scanAgain:'Сканирай пак', scanNoBD:'Скенерът работи в Chrome. Пробвай с файл:', scanFile:'Избери снимка', scanMatched:'Разпознат като', whereShopping:'Къде пазаруваш?', allChains:'Всички', moreChainPromos:'Още промоции в', unverified:'непроверени', seeAllBrochures:'Виж всички' },
   sr:{ tabProducts:'Proizvodi', tabBasket:'Korpa', tabFridge:'Frižider', tabTable:'Tabela', tabTitans:'Titani', chains:'Cene po lancima', cheapest:'najjeftinije', basketTitle:'Cena korpe po lancu', cheapestBasket:'Najjeftinija korpa', save:'uštedite', perItem:'Najjeftinije po proizvodu', recognized:'Prepoznato u frižideru', shopping:'Lista za kupovinu', missing:'nedostaje', low:'pri kraju', search:'Pretraži…', cartTitle:'Moja lista', cartEmpty:'Dodaj proizvode sa ✚', storeAdvice:'Gde da kupujem?', covers:'pokriva', of:'od', artItems:'art.', clearCart:'Obriši', noData:'Nema', titansTitle:'Bitka Titana', titansSub:'Prave vs. lažne akcije — poslednjih 30 dana', titansReal:'prave', titansFake:'lažne', titansNoPromos:'bez akcija', titansTracked:'praćena proizvoda', tabBrochures:'Brošure', brochTitle:'Ova nedelja', brochSub:'Verifikovane promo ponude po lancu', brochFake:'Lažna!', brochReal:'Prava', brochClaimed:'objavljena', brochNoData:'Nema brošure', brochPromos:'akcija', brochExpand:'Vidi sve', brochCollapse:'Sakrij', tabScan:'Skener', scanBtn:'Skeniraj barkod', scanHint:'Usmeri kameru ka barkodu', scanLookup:'Tražim proizvod…', scanNotTracked:'Proizvod nije u našoj listi', scanUnknown:'Proizvod nije prepoznat', scanAgain:'Skeniraj ponovo', scanNoBD:'Skener radi u Chrome-u. Pokušaj sa fajlom:', scanFile:'Izaberi sliku', scanMatched:'Prepoznat kao' },
   mk:{ tabProducts:'Производи', tabBasket:'Кошница', tabFridge:'Фрижидер', tabTable:'Табела', tabTitans:'Титани', chains:'Цени по синџири', cheapest:'најевтино', basketTitle:'Цена на кошницата по синџир', cheapestBasket:'Најевтина кошница', save:'заштедуваш', perItem:'Најевтино по производ', recognized:'Препознато во фрижидерот', shopping:'Список за пазарување', missing:'недостасува', low:'снемнува', search:'Пребарај…', cartTitle:'Мојата листа', cartEmpty:'Додај производи со ✚', storeAdvice:'Каде да пазарувам?', covers:'покрива', of:'од', artItems:'арт.', clearCart:'Исчисти', noData:'Нема', titansTitle:'Битката на Титаните', titansSub:'Вистински наспроти лажни промоции — последните 30 дена', titansReal:'вистински', titansFake:'лажни', titansNoPromos:'без промоции', titansTracked:'следени производи', tabBrochures:'Брошури', brochTitle:'Оваа седмица', brochSub:'Верифицирани промо понуди по синџир', brochFake:'Лажна!', brochReal:'Вистинска', brochClaimed:'објавена', brochNoData:'Нема брошура', brochPromos:'промоции', brochExpand:'Види ги сите', brochCollapse:'Сокриј', tabScan:'Скенер', scanBtn:'Скенирај баркод', scanHint:'Насочи ја камерата кон баркодот', scanLookup:'Барам производ…', scanNotTracked:'Производот не е во нашата листа', scanUnknown:'Производот не е препознаен', scanAgain:'Скенирај пак', scanNoBD:'Скенерот работи во Chrome. Обиди се со датотека:', scanFile:'Избери слика', scanMatched:'Препознаен како' },
@@ -515,6 +522,7 @@ const BX = {
 };
 
 const BX_EX = {
+  en: { tabHome:'Home', tabShop:'Shop', tabPromos:'Promos', homeDeals:'Real promos', homeNoDeals:'No real promos today', tabRecipes:'Recipes', recipeAdd:'Add', recipeAddAll:'+ Add all to list', recipeAddedAll:'✓ All added', recipeHint:'Pick a recipe → add ingredients to list', recipeMin:'min', recipeServ:'servings', recipeIng:'ingredients', listCustomPh:'Add manually…', listRealPromos:'real promos in list', listSave:'You save', listCustomTitle:'My products' },
   bg: { tabHome:'Начало', tabShop:'Пазарувай', tabPromos:'Промоции', homeDeals:'Реални промоции', homeNoDeals:'Няма реални промоции', tabRecipes:'Рецепти', recipeAdd:'Добави', recipeAddAll:'+ Добави всичко в списъка', recipeAddedAll:'✓ Всички са в списъка', recipeHint:'Избери рецепта → добави съставките в списъка', recipeMin:'мин', recipeServ:'порции', recipeIng:'съставки', listCustomPh:'Добави продукт ръчно…', listRealPromos:'реални промоции в списъка', listSave:'Спестяваш', listCustomTitle:'Мои продукти' },
   sr: { tabHome:'Početna', tabShop:'Kupovina', tabPromos:'Akcije', homeDeals:'Prave akcije', homeNoDeals:'Nema pravih akcija danas', tabRecipes:'Recepti', recipeAdd:'Dodaj', recipeAddAll:'+ Dodaj sve na listu', recipeAddedAll:'✓ Sve je na listi', recipeHint:'Odaberi recept → dodaj sastojke na listu', recipeMin:'min', recipeServ:'porcije', recipeIng:'sastojci', listCustomPh:'Dodaj ručno…', listRealPromos:'pravih akcija na listi', listSave:'Štedite', listCustomTitle:'Moji proizvodi' },
   mk: { tabHome:'Дома', tabShop:'Купувај', tabPromos:'Промоции', homeDeals:'Вистински промоции', homeNoDeals:'Нема вистински промоции', tabRecipes:'Рецепти', recipeAdd:'Додај', recipeAddAll:'+ Додај сè во листата', recipeAddedAll:'✓ Сè е во листата', recipeHint:'Избери рецепт → додај состојки во листата', recipeMin:'мин', recipeServ:'порции', recipeIng:'состојки', listCustomPh:'Додај рачно…', listRealPromos:'вистински промоции во листата', listSave:'Заштедуваш', listCustomTitle:'Мои производи' },
@@ -528,9 +536,10 @@ const BX_EX = {
 };
 Object.keys(BX_EX).forEach(lang => BX[lang] && Object.assign(BX[lang], BX_EX[lang]));
 
-const FILTER_ALL = { bg:'Всички', sr:'Sve', mk:'Сите', ro:'Toate', el:'Όλα', tr:'Tümü', sq:'Të gjitha', bs:'Sve', hr:'Sve', sl:'Vse' };
-const NO_MATCH = { bg:'Няма продукти в тази категория', sr:'Nema proizvoda u ovoj kategoriji', mk:'Нема производи во оваа категорија', ro:'Niciun produs în această categorie', el:'Δεν υπάρχουν προϊόντα σε αυτή την κατηγορία', tr:'Bu kategoride ürün yok', sq:'Nuk ka produkte në këtë kategori', bs:'Nema proizvoda u ovoj kategoriji', hr:'Nema proizvoda u ovoj kategoriji', sl:'Ni izdelkov v tej kategoriji' };
+const FILTER_ALL = { en:'All', bg:'Всички', sr:'Sve', mk:'Сите', ro:'Toate', el:'Όλα', tr:'Tümü', sq:'Të gjitha', bs:'Sve', hr:'Sve', sl:'Vse' };
+const NO_MATCH = { en:'No products in this category', bg:'Няма продукти в тази категория', sr:'Nema proizvoda u ovoj kategoriji', mk:'Нема производи во оваа категорија', ro:'Niciun produs în această categorie', el:'Δεν υπάρχουν προϊόντα σε αυτή την κατηγορία', tr:'Bu kategoride ürün yok', sq:'Nuk ka produkte në këtë kategori', bs:'Nema proizvoda u ovoj kategoriji', hr:'Nema proizvoda u ovoj kategoriji', sl:'Ni izdelkov v tej kategoriji' };
 const HX = {
+  en:{ saved:'You save with real promos', promos:'real promos', fakes:'misleading promos', period:'last 30 days', staleWarn:'Data is {days} days old', staleHint:'Refreshed daily at 13:00 EET' },
   bg:{ saved:'Спестяваш с реалните промоции', promos:'реални промоции', fakes:'подвеждащи промоции', period:'последните 30 дни', staleWarn:'Данните са отпреди {days} дни', staleHint:'Обновяване всеки ден в 13:00 EET' },
   sr:{ saved:'Štedite uz prave akcije', promos:'pravih akcija', fakes:'obmanjujućih akcija', period:'poslednjih 30 dana', staleWarn:'Podaci su od pre {days} dana', staleHint:'Ažuriranje svaki dan u 13:00 EET' },
   mk:{ saved:'Заштедуваш со вистинските промоции', promos:'вистински промоции', fakes:'заблудувачки промоции', period:'последните 30 дена', staleWarn:'Податоците се одпред {days} дена', staleHint:'Ажурирање секој ден во 13:00 EET' },
@@ -620,6 +629,7 @@ function staleDaysFromRef(refISO) {
 // Home view. Split into three distinct messages because a search miss,
 // a chain filter miss, and truly missing data need different guidance.
 const EMPTY = {
+  en: { searchTitle:'No results for „{q}"', searchHint:'Try another word or a shorter phrase', chainTitle:'No products from {c} with enough data', chainHint:'There may be no verifiable promos in the KZP feed today', chainAction:'See all chains', dataTitle:'No data for today', dataHint:'Try again later — data refreshes at 13:00 EET' },
   bg: { searchTitle:'Няма резултати за „{q}"', searchHint:'Опитай друга дума или по-кратък израз', chainTitle:'Няма продукти от {c} с достатъчно данни', chainHint:'Може днес да няма верифицируеми промоции в КЗП feed-а', chainAction:'Виж всички вериги', dataTitle:'Няма данни за днес', dataHint:'Опитай пак по-късно — данните се обновяват в 13:00 EET' },
   sr: { searchTitle:'Nema rezultata za „{q}"', searchHint:'Pokušaj drugu reč ili kraći izraz', chainTitle:'Nema proizvoda iz {c} sa dovoljno podataka', chainHint:'Možda danas nema proverljivih akcija u KZP fidu', chainAction:'Prikaži sve lance', dataTitle:'Nema podataka za danas', dataHint:'Pokušaj kasnije — podaci se ažuriraju u 13:00 EET' },
   mk: { searchTitle:'Нема резултати за „{q}"', searchHint:'Обиди се со друг збор или пократок израз', chainTitle:'Нема производи од {c} со доволно податоци', chainHint:'Можеби денес нема проверливи акции во КЗП фидот', chainAction:'Прикажи ги сите синџири', dataTitle:'Нема податоци за денес', dataHint:'Обиди се подоцна — податоците се ажурираат во 13:00 EET' },
@@ -637,6 +647,7 @@ const EMPTY = {
 // "press '...'" text in cart empty states. Single-source-of-truth for
 // cart terminology across the app.
 const CART_I18N = {
+  en: { add:'Add to cart', remove:'In cart — remove', emptyTitle:'Cart is empty', emptyHint:'Open a product and press „{action}"' },
   bg: { add:'Добави в кошницата', remove:'В кошницата — махни', emptyTitle:'Кошницата е празна', emptyHint:'Отвори продукт и натисни „{action}"' },
   sr: { add:'Dodaj u korpu', remove:'U korpi — ukloni', emptyTitle:'Korpa je prazna', emptyHint:'Otvori proizvod i pritisni „{action}"' },
   mk: { add:'Додај во кошница', remove:'Во кошницата — отстрани', emptyTitle:'Кошницата е празна', emptyHint:'Отвори производ и притисни „{action}"' },
@@ -655,6 +666,7 @@ const CART_I18N = {
 // BX[lang].homeDeals — keeping this dict focused on strings that don't
 // already have an i18n home.
 const HEADER_I18N = {
+  en: { tagline:'Prices under the loupe', searchResults:'🔍 Results for „{q}" ({n})', searchResultsMore:'🔍 First {n} of {total} for „{q}"', howItWorks:'How it works?' },
   bg: { tagline:'Цените под лупа', searchResults:'🔍 Резултати за „{q}" ({n})', searchResultsMore:'🔍 Първите {n} от {total} за „{q}"', howItWorks:'Как работи?' },
   sr: { tagline:'Cene pod lupom', searchResults:'🔍 Rezultati za „{q}" ({n})', searchResultsMore:'🔍 Prvih {n} od {total} za „{q}"', howItWorks:'Kako funkcioniše?' },
   mk: { tagline:'Цените под лупа', searchResults:'🔍 Резултати за „{q}" ({n})', searchResultsMore:'🔍 Првите {n} од {total} за „{q}"', howItWorks:'Како функционира?' },
@@ -672,6 +684,7 @@ const HEADER_I18N = {
 // whatever). Separate from pcart because they have no price/verdict/
 // history — they're just reminders, not line items.
 const CUSTOM_I18N = {
+  en: { title:'Don\'t forget', placeholder:'Add a note…', hint:'Manual notes don\'t count toward the total' },
   bg: { title:'Не забравяй', placeholder:'Добави бележка…', hint:'Ръчните бележки не се броят в общата сума' },
   sr: { title:'Ne zaboravi', placeholder:'Dodaj napomenu…', hint:'Ručne napomene se ne uračunavaju u ukupan iznos' },
   mk: { title:'Не заборавај', placeholder:'Додај забелешка…', hint:'Рачните забелешки не се сметаат во вкупната сума' },
@@ -690,6 +703,24 @@ const CUSTOM_I18N = {
 // Bold spans in prose stay inline — they wrap short semantic phrases
 // consistently across languages.
 const INFO_I18N = {
+  en: {
+    title: 'How SaveCheck works',
+    subtitle: 'Logic in the spirit of the EU Omnibus directive',
+    intro: 'SaveCheck checks whether the supermarket promo is a <b>real saving</b> or a <b>marketing illusion</b>. We don\'t trust the „old price" on the label — it\'s often set artificially so the discount looks bigger.',
+    howMeasureTitle: '📏 How we measure',
+    howMeasureP1: 'For each product we track its price at 5 supermarkets (Lidl, Kaufland, Billa, Fantastico, T Market) over the last <b>90 days</b>. The reference we compare today\'s „promo" price against is <b>the lowest price of this specific product in the last 30 days</b>. If today\'s „promo" price isn\'t below that reference — it\'s not a real discount.',
+    howMeasureP2: 'This is the logic that the <b>EU Omnibus directive (art. 6a)</b> requires from retailers when announcing discounts. SaveCheck shows you whether they followed it.',
+    iconsTitle: '🎯 What the icons mean',
+    iconRealTitle: 'Real promo', iconRealText: 'today\'s price is below the 30-day floor. A deserved discount.',
+    iconCosmeticTitle: 'Cosmetic', iconCosmeticText: 'there\'s a small discount, but not a significant one. More of a visual trick.',
+    iconFakeTitle: 'Misleading', iconFakeText: 'a promo is announced, but the price is NOT below the 30-day floor. Old price ≠ usual price.',
+    iconUnverifiedTitle: 'Unverified', iconUnverifiedText: 'there\'s a promo, but we didn\'t have enough data (fewer than 3 observations in 30 days).',
+    dataTitle: '📡 Where the data comes from',
+    dataText: 'From {link} — a public price registry that retailers are required to publish daily. SaveCheck updates them every day at 13:00 EET.',
+    dataLinkText: 'the official KZP „Kolko struva" portal',
+    limitsTitle: '⚠️ What we DON\'T do',
+    limitsText: 'We\'re not a financial advisor and don\'t guarantee that the price you pay at the register will be exactly the one we show here. Chains update the KZP feed once a day, and promos can vary between stores. Use SaveCheck for <b>orientation</b>, not as a final source.',
+  },
   bg: {
     title: 'Как работи SaveCheck',
     subtitle: 'Логика по духа на EU Omnibus директивата',
