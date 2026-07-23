@@ -684,6 +684,194 @@ const CUSTOM_I18N = {
   sl: { title:'Ne pozabi', placeholder:'Dodaj opombo…', hint:'Ročne opombe se ne štejejo v skupni znesek' },
 };
 
+// Info modal ("Как работи SaveCheck?") — the biggest single i18n block.
+// Translated across all 10 UI languages. Uses {link} placeholder in
+// dataText so the actual anchor tag stays in code (not repeated per lang).
+// Bold spans in prose stay inline — they wrap short semantic phrases
+// consistently across languages.
+const INFO_I18N = {
+  bg: {
+    title: 'Как работи SaveCheck',
+    subtitle: 'Логика по духа на EU Omnibus директивата',
+    intro: 'SaveCheck проверява дали промоцията в супермаркета е <b>реална икономия</b> или <b>маркетингова илюзия</b>. Не се доверяваме на „старата цена" от етикета — тя често просто е сложена изкуствено, за да изглежда отстъпката по-голяма.',
+    howMeasureTitle: '📏 Как измерваме',
+    howMeasureP1: 'За всеки продукт следим цената в 5 супермаркета (Lidl, Kaufland, Billa, Fantastico, T Market) за последните <b>90 дни</b>. Референцията, спрямо която сравняваме „промоционалната" цена днес, е <b>най-ниската цена на този конкретен продукт през последните 30 дни</b>. Ако днешната „промо" цена не е под тази референция — това не е реална отстъпка.',
+    howMeasureP2: 'Това е логиката, която <b>EU Omnibus директивата (чл. 6а)</b> изисква от търговците при обявяване на намаления. SaveCheck ти показва дали са я спазили.',
+    iconsTitle: '🎯 Какво значат иконките',
+    iconRealTitle: 'Реална промо', iconRealText: 'цената днес е под 30-дневното дъно. Заслужаваща отстъпка.',
+    iconCosmeticTitle: 'Козметична', iconCosmeticText: 'има малка отстъпка, но не значителна. По-скоро визуален трик.',
+    iconFakeTitle: 'Подвеждаща', iconFakeText: 'обявена е промо, но цената НЕ е под 30-дневното дъно. Стара цена ≠ обичайна.',
+    iconUnverifiedTitle: 'Непроверена', iconUnverifiedText: 'има промо, но не сме имали достатъчно данни (под 3 наблюдения за 30 дни).',
+    dataTitle: '📡 Откъде идват данните',
+    dataText: 'От {link} — публичен регистър на цените, който търговците са задължени да публикуват ежедневно. SaveCheck ги обновява всеки ден в 13:00 EET.',
+    dataLinkText: 'официалния портал на КЗП „Колко струва"',
+    limitsTitle: '⚠️ Кое НЕ правим',
+    limitsText: 'Не сме финансов съветник и не гарантираме, че цената, която ще платиш на касата, ще е точно тази, която показваме тук. Веригите обновяват КЗП feed-а един път дневно, а промоциите могат да варират между магазините. Ползвай SaveCheck за <b>ориентация</b>, не като краен източник.',
+  },
+  sr: {
+    title: 'Kako funkcioniše SaveCheck',
+    subtitle: 'Logika u duhu EU Omnibus direktive',
+    intro: 'SaveCheck proverava da li je akcija u supermarketu <b>prava ušteda</b> ili <b>marketinška iluzija</b>. Ne verujemo „staroj ceni" sa etikete — često je veštački postavljena da bi popust izgledao veći.',
+    howMeasureTitle: '📏 Kako merimo',
+    howMeasureP1: 'Za svaki proizvod pratimo cenu u 5 supermarketa (Lidl, Kaufland, Billa, Fantastico, T Market) tokom poslednjih <b>90 dana</b>. Referenca sa kojom upoređujemo današnju „akcijsku" cenu je <b>najniža cena tog konkretnog proizvoda u poslednjih 30 dana</b>. Ako današnja „akcijska" cena nije ispod te reference — to nije prava ušteda.',
+    howMeasureP2: 'To je logika koju <b>EU Omnibus direktiva (čl. 6a)</b> zahteva od trgovaca kada objavljuju popuste. SaveCheck ti pokazuje da li su je poštovali.',
+    iconsTitle: '🎯 Šta znače ikonice',
+    iconRealTitle: 'Prava akcija', iconRealText: 'današnja cena je ispod 30-dnevnog minimuma. Zaslužuje popust.',
+    iconCosmeticTitle: 'Kozmetička', iconCosmeticText: 'ima mali popust, ali nije značajan. Više vizuelni trik.',
+    iconFakeTitle: 'Obmanjujuća', iconFakeText: 'objavljena je akcija, ali cena NIJE ispod 30-dnevnog minimuma. Stara cena ≠ uobičajena.',
+    iconUnverifiedTitle: 'Neproverena', iconUnverifiedText: 'ima akcija, ali nemamo dovoljno podataka (manje od 3 osmatranja za 30 dana).',
+    dataTitle: '📡 Odakle dolaze podaci',
+    dataText: 'Sa {link} — javnog registra cena koji trgovci moraju da objavljuju svakodnevno. SaveCheck ih ažurira svaki dan u 13:00 EET.',
+    dataLinkText: 'zvaničnog portala KZP „Kolko struva"',
+    limitsTitle: '⚠️ Šta NE radimo',
+    limitsText: 'Nismo finansijski savetnik i ne garantujemo da će cena na kasi biti tačno ona koju ovde prikazujemo. Lanci ažuriraju KZP feed jednom dnevno, a akcije mogu da variraju između prodavnica. Koristi SaveCheck za <b>orijentaciju</b>, ne kao krajnji izvor.',
+  },
+  mk: {
+    title: 'Како функционира SaveCheck',
+    subtitle: 'Логика во духот на EU Omnibus директивата',
+    intro: 'SaveCheck проверува дали промоцијата во супермаркетот е <b>вистинска заштеда</b> или <b>маркетиншка илузија</b>. Не веруваме на „старата цена" од етикетата — таа често е вештачки поставена за да изгледа попустот поголем.',
+    howMeasureTitle: '📏 Како мериме',
+    howMeasureP1: 'За секој производ ја следиме цената во 5 супермаркети (Lidl, Kaufland, Billa, Fantastico, T Market) во последните <b>90 дена</b>. Референцата со која ја споредуваме денешната „промотивна" цена е <b>најниската цена на тој конкретен производ во последните 30 дена</b>. Ако денешната „промо" цена не е под таа референца — тоа не е вистински попуст.',
+    howMeasureP2: 'Тоа е логиката што <b>EU Omnibus директивата (чл. 6а)</b> ја бара од трговците при објавување попусти. SaveCheck ти покажува дали ја почитувале.',
+    iconsTitle: '🎯 Што значат иконите',
+    iconRealTitle: 'Вистинска промо', iconRealText: 'денешната цена е под 30-дневното дно. Заслужен попуст.',
+    iconCosmeticTitle: 'Козметичка', iconCosmeticText: 'има мал попуст, но не значаен. Повеќе визуелен трик.',
+    iconFakeTitle: 'Заблудувачка', iconFakeText: 'објавена е промо, но цената НЕ е под 30-дневното дно. Стара цена ≠ вообичаена.',
+    iconUnverifiedTitle: 'Непроверена', iconUnverifiedText: 'има промо, но немавме доволно податоци (под 3 набљудувања за 30 дена).',
+    dataTitle: '📡 Од каде доаѓаат податоците',
+    dataText: 'Од {link} — јавен регистар на цени што трговците мора да го објавуваат секојдневно. SaveCheck ги ажурира секој ден во 13:00 EET.',
+    dataLinkText: 'официјалниот портал на КЗП „Колку чини"',
+    limitsTitle: '⚠️ Што НЕ правиме',
+    limitsText: 'Не сме финансиски советник и не гарантираме дека цената што ќе ја платиш на каса ќе биде токму онаа што ја покажуваме овде. Синџирите го ажурираат КЗП feed-от еднаш дневно, а промоциите можат да варираат меѓу продавниците. Користи SaveCheck за <b>ориентација</b>, не како краен извор.',
+  },
+  ro: {
+    title: 'Cum funcționează SaveCheck',
+    subtitle: 'Logică în spiritul directivei EU Omnibus',
+    intro: 'SaveCheck verifică dacă promoția din supermarket este <b>o economie reală</b> sau <b>o iluzie de marketing</b>. Nu ne bazăm pe „prețul vechi" de pe etichetă — deseori este stabilit artificial pentru ca reducerea să pară mai mare.',
+    howMeasureTitle: '📏 Cum măsurăm',
+    howMeasureP1: 'Pentru fiecare produs urmărim prețul în 5 supermarketuri (Lidl, Kaufland, Billa, Fantastico, T Market) pe ultimele <b>90 de zile</b>. Referința cu care comparăm prețul „promoțional" de astăzi este <b>cel mai mic preț al acestui produs specific în ultimele 30 de zile</b>. Dacă prețul „promo" de azi nu este sub această referință — nu este o reducere reală.',
+    howMeasureP2: 'Aceasta este logica pe care <b>directiva EU Omnibus (art. 6a)</b> o cere comercianților la anunțarea reducerilor. SaveCheck îți arată dacă au respectat-o.',
+    iconsTitle: '🎯 Ce înseamnă pictogramele',
+    iconRealTitle: 'Promo reală', iconRealText: 'prețul de azi este sub minimul de 30 de zile. Reducere meritată.',
+    iconCosmeticTitle: 'Cosmetică', iconCosmeticText: 'există o mică reducere, dar nu semnificativă. Mai degrabă un truc vizual.',
+    iconFakeTitle: 'Înșelătoare', iconFakeText: 'este anunțată promo, dar prețul NU este sub minimul de 30 de zile. Preț vechi ≠ obișnuit.',
+    iconUnverifiedTitle: 'Neverificată', iconUnverifiedText: 'există promo, dar nu am avut suficiente date (sub 3 observații în 30 de zile).',
+    dataTitle: '📡 De unde vin datele',
+    dataText: 'De la {link} — registru public de prețuri pe care comercianții sunt obligați să îl publice zilnic. SaveCheck le actualizează zilnic la 13:00 EET.',
+    dataLinkText: 'portalul oficial KZP „Kolko struva"',
+    limitsTitle: '⚠️ Ce NU facem',
+    limitsText: 'Nu suntem consilier financiar și nu garantăm că prețul pe care îl vei plăti la casă va fi exact cel afișat aici. Lanțurile actualizează feedul KZP o dată pe zi, iar promoțiile pot varia între magazine. Folosește SaveCheck pentru <b>orientare</b>, nu ca sursă finală.',
+  },
+  el: {
+    title: 'Πώς λειτουργεί το SaveCheck',
+    subtitle: 'Λογική στο πνεύμα της οδηγίας EU Omnibus',
+    intro: 'Το SaveCheck ελέγχει αν η προσφορά στο σούπερ μάρκετ είναι <b>πραγματική εξοικονόμηση</b> ή <b>ψευδαίσθηση μάρκετινγκ</b>. Δεν εμπιστευόμαστε την „παλιά τιμή" της ετικέτας — συχνά έχει τοποθετηθεί τεχνητά για να φαίνεται μεγαλύτερη η έκπτωση.',
+    howMeasureTitle: '📏 Πώς μετράμε',
+    howMeasureP1: 'Για κάθε προϊόν παρακολουθούμε την τιμή σε 5 σούπερ μάρκετ (Lidl, Kaufland, Billa, Fantastico, T Market) τις τελευταίες <b>90 ημέρες</b>. Η αναφορά με την οποία συγκρίνουμε τη σημερινή „προσφορά" είναι <b>η χαμηλότερη τιμή αυτού του συγκεκριμένου προϊόντος τις τελευταίες 30 ημέρες</b>. Αν η σημερινή „προσφορά" δεν είναι κάτω από αυτή την αναφορά — δεν είναι πραγματική έκπτωση.',
+    howMeasureP2: 'Αυτή είναι η λογική που <b>η οδηγία EU Omnibus (άρθρο 6α)</b> απαιτεί από τους εμπόρους κατά την ανακοίνωση εκπτώσεων. Το SaveCheck σου δείχνει αν τη σέβονται.',
+    iconsTitle: '🎯 Τι σημαίνουν τα εικονίδια',
+    iconRealTitle: 'Πραγματική προσφορά', iconRealText: 'η σημερινή τιμή είναι κάτω από το ελάχιστο 30 ημερών. Άξια έκπτωση.',
+    iconCosmeticTitle: 'Καλλωπιστική', iconCosmeticText: 'υπάρχει μικρή έκπτωση, αλλά όχι σημαντική. Μάλλον οπτικό τέχνασμα.',
+    iconFakeTitle: 'Παραπλανητική', iconFakeText: 'έχει ανακοινωθεί προσφορά, αλλά η τιμή ΔΕΝ είναι κάτω από το ελάχιστο 30 ημερών. Παλιά τιμή ≠ συνηθισμένη.',
+    iconUnverifiedTitle: 'Μη επαληθευμένη', iconUnverifiedText: 'υπάρχει προσφορά, αλλά δεν είχαμε αρκετά δεδομένα (κάτω από 3 παρατηρήσεις σε 30 ημέρες).',
+    dataTitle: '📡 Από πού έρχονται τα δεδομένα',
+    dataText: 'Από {link} — δημόσιο μητρώο τιμών που οι έμποροι υποχρεούνται να δημοσιεύουν καθημερινά. Το SaveCheck τα ενημερώνει κάθε μέρα στις 13:00 EET.',
+    dataLinkText: 'την επίσημη πύλη ΚΖΠ „Kolko struva"',
+    limitsTitle: '⚠️ Τι ΔΕΝ κάνουμε',
+    limitsText: 'Δεν είμαστε οικονομικός σύμβουλος και δεν εγγυόμαστε ότι η τιμή που θα πληρώσεις στο ταμείο θα είναι ακριβώς αυτή που εμφανίζουμε εδώ. Οι αλυσίδες ενημερώνουν το feed ΚΖΠ μία φορά την ημέρα και οι προσφορές μπορεί να διαφέρουν μεταξύ καταστημάτων. Χρησιμοποίησε το SaveCheck για <b>προσανατολισμό</b>, όχι ως τελική πηγή.',
+  },
+  tr: {
+    title: 'SaveCheck nasıl çalışır',
+    subtitle: 'EU Omnibus direktifinin ruhuna uygun mantık',
+    intro: 'SaveCheck, süpermarketteki indirimin <b>gerçek tasarruf</b> mu yoksa <b>pazarlama yanılsaması</b> mı olduğunu kontrol eder. Etiketteki „eski fiyata" güvenmiyoruz — çoğu zaman indirim daha büyük görünsün diye yapay olarak konulmuştur.',
+    howMeasureTitle: '📏 Nasıl ölçüyoruz',
+    howMeasureP1: 'Her ürün için 5 süpermarkette (Lidl, Kaufland, Billa, Fantastico, T Market) son <b>90 gün</b> boyunca fiyatı takip ediyoruz. Bugünün „promosyon" fiyatını karşılaştırdığımız referans, <b>bu ürünün son 30 gündeki en düşük fiyatıdır</b>. Bugünün „promo" fiyatı bu referansın altında değilse — bu gerçek bir indirim değil.',
+    howMeasureP2: 'Bu, <b>EU Omnibus direktifinin (madde 6a)</b> tacirlerden indirim ilan ederken uymalarını istediği mantıktır. SaveCheck sana uyup uymadıklarını gösterir.',
+    iconsTitle: '🎯 Simgelerin anlamı',
+    iconRealTitle: 'Gerçek indirim', iconRealText: 'bugünün fiyatı 30 günlük tabanın altında. Hak edilmiş indirim.',
+    iconCosmeticTitle: 'Kozmetik', iconCosmeticText: 'küçük bir indirim var ama önemli değil. Daha çok görsel bir hile.',
+    iconFakeTitle: 'Yanıltıcı', iconFakeText: 'indirim ilan edilmiş ama fiyat 30 günlük tabanın altında DEĞİL. Eski fiyat ≠ normal.',
+    iconUnverifiedTitle: 'Doğrulanmamış', iconUnverifiedText: 'indirim var ama yeterli veri yok (30 günde 3 gözlemden az).',
+    dataTitle: '📡 Veriler nereden geliyor',
+    dataText: '{link} kaynağından — tacirlerin her gün yayınlamak zorunda olduğu kamu fiyat kaydı. SaveCheck her gün 13:00 EET güncelliyor.',
+    dataLinkText: 'resmi KZP „Kolko struva" portalı',
+    limitsTitle: '⚠️ Ne yapmıyoruz',
+    limitsText: 'Finansal danışman değiliz ve kasada ödeyeceğin fiyatın burada gösterdiğimizle tam olarak aynı olacağını garanti etmiyoruz. Zincirler KZP feedini günde bir kez günceller ve indirimler mağazalar arasında değişebilir. SaveCheck\'i <b>yönlendirme</b> için kullan, nihai kaynak olarak değil.',
+  },
+  sq: {
+    title: 'Si funksionon SaveCheck',
+    subtitle: 'Logjika në frymën e direktivës EU Omnibus',
+    intro: 'SaveCheck kontrollon nëse oferta në supermarket është <b>kursim i vërtetë</b> apo <b>iluzion marketingu</b>. Nuk i besojmë „çmimit të vjetër" në etiketë — shpesh është vendosur artificialisht që zbritja të duket më e madhe.',
+    howMeasureTitle: '📏 Si matim',
+    howMeasureP1: 'Për çdo produkt ndjekim çmimin në 5 supermarkete (Lidl, Kaufland, Billa, Fantastico, T Market) gjatë <b>90 ditëve</b> të fundit. Referenca me të cilën krahasojmë çmimin „promocional" të sotëm është <b>çmimi më i ulët i këtij produkti specifik gjatë 30 ditëve të fundit</b>. Nëse çmimi „promo" i sotëm nuk është nën këtë referencë — nuk është zbritje reale.',
+    howMeasureP2: 'Kjo është logjika që <b>direktiva EU Omnibus (neni 6a)</b> kërkon nga tregtarët kur shpallin zbritje. SaveCheck të tregon nëse e kanë respektuar.',
+    iconsTitle: '🎯 Çfarë kuptimi kanë ikonat',
+    iconRealTitle: 'Ofertë e vërtetë', iconRealText: 'çmimi sotëm është nën minimumin 30-ditor. Zbritje e merituar.',
+    iconCosmeticTitle: 'Kozmetike', iconCosmeticText: 'ka një zbritje të vogël, por jo domethënëse. Më shumë truk vizual.',
+    iconFakeTitle: 'Mashtruese', iconFakeText: 'është shpallur ofertë, por çmimi NUK është nën minimumin 30-ditor. Çmim i vjetër ≠ i zakonshëm.',
+    iconUnverifiedTitle: 'E paverifikuar', iconUnverifiedText: 'ka ofertë, por nuk kishim të dhëna të mjaftueshme (nën 3 vëzhgime në 30 ditë).',
+    dataTitle: '📡 Nga vijnë të dhënat',
+    dataText: 'Nga {link} — regjistër publik i çmimeve që tregtarët detyrohen ta publikojnë çdo ditë. SaveCheck i përditëson çdo ditë në 13:00 EET.',
+    dataLinkText: 'portalin zyrtar KZP „Kolko struva"',
+    limitsTitle: '⚠️ Çfarë NUK bëjmë',
+    limitsText: 'Nuk jemi këshilltar financiar dhe nuk garantojmë se çmimi që do të paguash në arkë do të jetë saktësisht ai që shfaqet këtu. Zinxhirët e përditësojnë feed-in KZP një herë në ditë dhe ofertat mund të ndryshojnë midis dyqaneve. Përdore SaveCheck për <b>orientim</b>, jo si burim përfundimtar.',
+  },
+  bs: {
+    title: 'Kako funkcioniše SaveCheck',
+    subtitle: 'Logika u duhu EU Omnibus direktive',
+    intro: 'SaveCheck provjerava da li je akcija u supermarketu <b>prava ušteda</b> ili <b>marketinška iluzija</b>. Ne vjerujemo „staroj cijeni" sa etikete — često je vještački postavljena da bi popust izgledao veći.',
+    howMeasureTitle: '📏 Kako mjerimo',
+    howMeasureP1: 'Za svaki proizvod pratimo cijenu u 5 supermarketa (Lidl, Kaufland, Billa, Fantastico, T Market) tokom posljednjih <b>90 dana</b>. Referenca sa kojom upoređujemo današnju „akcijsku" cijenu je <b>najniža cijena tog konkretnog proizvoda u posljednjih 30 dana</b>. Ako današnja „akcijska" cijena nije ispod te reference — to nije prava ušteda.',
+    howMeasureP2: 'To je logika koju <b>EU Omnibus direktiva (čl. 6a)</b> zahtijeva od trgovaca kada objavljuju popuste. SaveCheck ti pokazuje da li su je poštovali.',
+    iconsTitle: '🎯 Šta znače ikonice',
+    iconRealTitle: 'Prava akcija', iconRealText: 'današnja cijena je ispod 30-dnevnog minimuma. Zaslužuje popust.',
+    iconCosmeticTitle: 'Kozmetička', iconCosmeticText: 'ima mali popust, ali nije značajan. Više vizualni trik.',
+    iconFakeTitle: 'Obmanjujuća', iconFakeText: 'objavljena je akcija, ali cijena NIJE ispod 30-dnevnog minimuma. Stara cijena ≠ uobičajena.',
+    iconUnverifiedTitle: 'Neprovjerena', iconUnverifiedText: 'ima akcija, ali nemamo dovoljno podataka (manje od 3 osmatranja za 30 dana).',
+    dataTitle: '📡 Odakle dolaze podaci',
+    dataText: 'Sa {link} — javnog registra cijena koji trgovci moraju da objavljuju svakodnevno. SaveCheck ih ažurira svaki dan u 13:00 EET.',
+    dataLinkText: 'zvaničnog portala KZP „Kolko struva"',
+    limitsTitle: '⚠️ Šta NE radimo',
+    limitsText: 'Nismo finansijski savjetnik i ne garantujemo da će cijena na kasi biti tačno ona koju ovdje prikazujemo. Lanci ažuriraju KZP feed jednom dnevno, a akcije mogu varirati između prodavnica. Koristi SaveCheck za <b>orijentaciju</b>, ne kao krajnji izvor.',
+  },
+  hr: {
+    title: 'Kako funkcionira SaveCheck',
+    subtitle: 'Logika u duhu EU Omnibus direktive',
+    intro: 'SaveCheck provjerava je li akcija u supermarketu <b>prava ušteda</b> ili <b>marketinška iluzija</b>. Ne vjerujemo „staroj cijeni" s etikete — često je umjetno postavljena kako bi popust izgledao veći.',
+    howMeasureTitle: '📏 Kako mjerimo',
+    howMeasureP1: 'Za svaki proizvod pratimo cijenu u 5 supermarketa (Lidl, Kaufland, Billa, Fantastico, T Market) tijekom posljednjih <b>90 dana</b>. Referenca s kojom uspoređujemo današnju „akcijsku" cijenu je <b>najniža cijena tog konkretnog proizvoda u posljednjih 30 dana</b>. Ako današnja „akcijska" cijena nije ispod te reference — to nije prava ušteda.',
+    howMeasureP2: 'To je logika koju <b>EU Omnibus direktiva (čl. 6a)</b> zahtijeva od trgovaca pri objavi popusta. SaveCheck ti pokazuje jesu li je poštivali.',
+    iconsTitle: '🎯 Što znače ikone',
+    iconRealTitle: 'Prava akcija', iconRealText: 'današnja cijena je ispod 30-dnevnog minimuma. Zaslužuje popust.',
+    iconCosmeticTitle: 'Kozmetička', iconCosmeticText: 'ima mali popust, ali nije značajan. Više vizualni trik.',
+    iconFakeTitle: 'Obmanjujuća', iconFakeText: 'objavljena je akcija, ali cijena NIJE ispod 30-dnevnog minimuma. Stara cijena ≠ uobičajena.',
+    iconUnverifiedTitle: 'Neprovjerena', iconUnverifiedText: 'ima akcija, ali nismo imali dovoljno podataka (manje od 3 opažanja u 30 dana).',
+    dataTitle: '📡 Odakle dolaze podaci',
+    dataText: 'S {link} — javnog registra cijena koji trgovci moraju objavljivati svakodnevno. SaveCheck ih ažurira svaki dan u 13:00 EET.',
+    dataLinkText: 'službenog portala KZP „Kolko struva"',
+    limitsTitle: '⚠️ Što NE radimo',
+    limitsText: 'Nismo financijski savjetnik i ne jamčimo da će cijena na blagajni biti točno ona koju ovdje prikazujemo. Lanci ažuriraju KZP feed jednom dnevno, a akcije mogu varirati između trgovina. Koristi SaveCheck za <b>orijentaciju</b>, ne kao konačni izvor.',
+  },
+  sl: {
+    title: 'Kako deluje SaveCheck',
+    subtitle: 'Logika v duhu direktive EU Omnibus',
+    intro: 'SaveCheck preverja, ali je akcija v supermarketu <b>pravi prihranek</b> ali <b>marketinška iluzija</b>. Ne verjamemo „stari ceni" na etiketi — pogosto je umetno nastavljena, da bi popust izgledal večji.',
+    howMeasureTitle: '📏 Kako merimo',
+    howMeasureP1: 'Za vsak izdelek spremljamo ceno v 5 supermarketih (Lidl, Kaufland, Billa, Fantastico, T Market) v zadnjih <b>90 dneh</b>. Referenca, s katero primerjamo današnjo „akcijsko" ceno, je <b>najnižja cena tega konkretnega izdelka v zadnjih 30 dneh</b>. Če današnja „akcijska" cena ni pod to referenco — to ni pravi popust.',
+    howMeasureP2: 'To je logika, ki jo <b>direktiva EU Omnibus (čl. 6a)</b> zahteva od trgovcev pri objavi znižanj. SaveCheck ti pokaže, ali so jo upoštevali.',
+    iconsTitle: '🎯 Kaj pomenijo ikone',
+    iconRealTitle: 'Prava akcija', iconRealText: 'današnja cena je pod 30-dnevnim minimumom. Zaslužen popust.',
+    iconCosmeticTitle: 'Kozmetična', iconCosmeticText: 'ima majhen popust, a ni pomemben. Bolj vizualni trik.',
+    iconFakeTitle: 'Zavajajoča', iconFakeText: 'objavljena je akcija, a cena NI pod 30-dnevnim minimumom. Stara cena ≠ običajna.',
+    iconUnverifiedTitle: 'Nepreverjena', iconUnverifiedText: 'obstaja akcija, a nismo imeli dovolj podatkov (manj kot 3 opažanja v 30 dneh).',
+    dataTitle: '📡 Od kod prihajajo podatki',
+    dataText: 'Iz {link} — javnega registra cen, ki ga morajo trgovci objavljati vsakodnevno. SaveCheck jih posodablja vsak dan ob 13:00 EET.',
+    dataLinkText: 'uradnega portala KZP „Kolko struva"',
+    limitsTitle: '⚠️ Kaj NE počnemo',
+    limitsText: 'Nismo finančni svetovalec in ne jamčimo, da bo cena na blagajni točno tista, ki jo prikazujemo tukaj. Verige posodabljajo KZP feed enkrat dnevno, akcije pa lahko variirajo med trgovinami. Uporabi SaveCheck za <b>orientacijo</b>, ne kot končni vir.',
+  },
+};
+
 // Empty-state card. Reusable across Home / (later) Brochures / Search /
 // other list views. Icon + title + hint, plus optional action button.
 function emptyStatePanel({icon, title, hint, actionLabel, actionAttr}) {
@@ -1899,27 +2087,29 @@ function closeProductDetail() {
 function showInfo() {
   const modal = document.getElementById('info-modal');
   const content = document.getElementById('info-modal-content');
+  const I = INFO_I18N[country.lang] || INFO_I18N.bg;
+  const link = `<a href="https://kolkostruva.bg/opendata" target="_blank" style="color:var(--green);font-weight:700">${I.dataLinkText}</a>`;
   content.innerHTML = `
     <div style="padding:20px 20px 8px">
-      <div style="font-size:20px;font-weight:800;margin-bottom:4px">Как работи SaveCheck</div>
-      <div style="font-size:12px;color:var(--muted)">Логика по духа на EU Omnibus директивата</div>
+      <div style="font-size:20px;font-weight:800;margin-bottom:4px">${I.title}</div>
+      <div style="font-size:12px;color:var(--muted)">${I.subtitle}</div>
     </div>
     <div style="padding:0 20px 20px;line-height:1.55;font-size:13.5px;color:var(--fg)">
-      <div style="margin-bottom:14px">SaveCheck проверява дали промоцията в супермаркета е <b>реална икономия</b> или <b>маркетингова илюзия</b>. Не се доверяваме на „старата цена" от етикета — тя често просто е сложена изкуствено, за да изглежда отстъпката по-голяма.</div>
-      <div style="font-weight:800;margin:16px 0 8px;font-size:14px">📏 Как измерваме</div>
-      <div style="margin-bottom:12px">За всеки продукт следим цената в 5 супермаркета (Lidl, Kaufland, Billa, Fantastico, T Market) за последните <b>90 дни</b>. Референцията, спрямо която сравняваме „промоционалната" цена днес, е <b>най-ниската цена на този конкретен продукт през последните 30 дни</b>. Ако днешната „промо" цена не е под тази референция — това не е реална отстъпка.</div>
-      <div style="margin-bottom:12px">Това е логиката, която <b>EU Omnibus директивата (чл. 6а)</b> изисква от търговците при обявяване на намаления. SaveCheck ти показва дали са я спазили.</div>
-      <div style="font-weight:800;margin:16px 0 8px;font-size:14px">🎯 Какво значат иконките</div>
+      <div style="margin-bottom:14px">${I.intro}</div>
+      <div style="font-weight:800;margin:16px 0 8px;font-size:14px">${I.howMeasureTitle}</div>
+      <div style="margin-bottom:12px">${I.howMeasureP1}</div>
+      <div style="margin-bottom:12px">${I.howMeasureP2}</div>
+      <div style="font-weight:800;margin:16px 0 8px;font-size:14px">${I.iconsTitle}</div>
       <div style="display:grid;gap:8px;margin-bottom:12px">
-        <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:18px;flex-shrink:0;width:22px">🟢</span><div><b>Реална промо</b> — цената днес е под 30-дневното дъно. Заслужаваща отстъпка.</div></div>
-        <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:18px;flex-shrink:0;width:22px">🟡</span><div><b>Козметична</b> — има малка отстъпка, но не значителна. По-скоро визуален трик.</div></div>
-        <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:18px;flex-shrink:0;width:22px">🔴</span><div><b>Подвеждаща</b> — обявена е промо, но цената НЕ е под 30-дневното дъно. Стара цена ≠ обичайна.</div></div>
-        <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:18px;flex-shrink:0;width:22px">⚪</span><div><b>Непроверена</b> — има промо, но не сме имали достатъчно данни (под 3 наблюдения за 30 дни).</div></div>
+        <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:18px;flex-shrink:0;width:22px">🟢</span><div><b>${I.iconRealTitle}</b> — ${I.iconRealText}</div></div>
+        <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:18px;flex-shrink:0;width:22px">🟡</span><div><b>${I.iconCosmeticTitle}</b> — ${I.iconCosmeticText}</div></div>
+        <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:18px;flex-shrink:0;width:22px">🔴</span><div><b>${I.iconFakeTitle}</b> — ${I.iconFakeText}</div></div>
+        <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:18px;flex-shrink:0;width:22px">⚪</span><div><b>${I.iconUnverifiedTitle}</b> — ${I.iconUnverifiedText}</div></div>
       </div>
-      <div style="font-weight:800;margin:16px 0 8px;font-size:14px">📡 Откъде идват данните</div>
-      <div style="margin-bottom:12px">От <a href="https://kolkostruva.bg/opendata" target="_blank" style="color:var(--green);font-weight:700">официалния портал на КЗП „Колко струва"</a> — публичен регистър на цените, който търговците са задължени да публикуват ежедневно. SaveCheck ги обновява всеки ден в 13:00 EET.</div>
-      <div style="font-weight:800;margin:16px 0 8px;font-size:14px">⚠️ Кое НЕ правим</div>
-      <div style="margin-bottom:12px;color:var(--muted);font-size:12.5px">Не сме финансов съветник и не гарантираме, че цената, която ще платиш на касата, ще е точно тази, която показваме тук. Веригите обновяват КЗП feed-а един път дневно, а промоциите могат да варират между магазините. Ползвай SaveCheck за <b>ориентация</b>, не като краен източник.</div>
+      <div style="font-weight:800;margin:16px 0 8px;font-size:14px">${I.dataTitle}</div>
+      <div style="margin-bottom:12px">${I.dataText.replace('{link}', link)}</div>
+      <div style="font-weight:800;margin:16px 0 8px;font-size:14px">${I.limitsTitle}</div>
+      <div style="margin-bottom:12px;color:var(--muted);font-size:12.5px">${I.limitsText}</div>
       <div style="text-align:center;margin-top:20px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:11px">Open source · MIT · <a href="https://github.com/Tems-git/SaveCheck" target="_blank" style="color:var(--muted);text-decoration:underline">github.com/Tems-git/SaveCheck</a></div>
     </div>
   `;
