@@ -667,6 +667,23 @@ const HEADER_I18N = {
   sl: { tagline:'Cene pod drobnogledom', searchResults:'🔍 Rezultati za „{q}" ({n})', searchResultsMore:'🔍 Prvih {n} od {total} za „{q}"' },
 };
 
+// Custom notes (шопинг reminders). These are free-text items the user
+// jots down for things SaveCheck doesn't track (salt, some specialty,
+// whatever). Separate from pcart because they have no price/verdict/
+// history — they're just reminders, not line items.
+const CUSTOM_I18N = {
+  bg: { title:'Не забравяй', placeholder:'Добави бележка…', hint:'Ръчните бележки не се броят в общата сума' },
+  sr: { title:'Ne zaboravi', placeholder:'Dodaj napomenu…', hint:'Ručne napomene se ne uračunavaju u ukupan iznos' },
+  mk: { title:'Не заборавај', placeholder:'Додај забелешка…', hint:'Рачните забелешки не се сметаат во вкупната сума' },
+  ro: { title:'Nu uita', placeholder:'Adaugă o notă…', hint:'Notele manuale nu se includ în total' },
+  el: { title:'Μην ξεχάσεις', placeholder:'Πρόσθεσε σημείωση…', hint:'Οι χειροκίνητες σημειώσεις δεν προσμετρώνται στο σύνολο' },
+  tr: { title:'Unutma', placeholder:'Not ekle…', hint:'Manuel notlar toplama dahil edilmez' },
+  sq: { title:'Mos harro', placeholder:'Shto një shënim…', hint:'Shënimet manuale nuk përfshihen në total' },
+  bs: { title:'Ne zaboravi', placeholder:'Dodaj napomenu…', hint:'Ručne napomene se ne uračunavaju u ukupan iznos' },
+  hr: { title:'Ne zaboravi', placeholder:'Dodaj bilješku…', hint:'Ručne bilješke se ne uračunavaju u ukupan iznos' },
+  sl: { title:'Ne pozabi', placeholder:'Dodaj opombo…', hint:'Ročne opombe se ne štejejo v skupni znesek' },
+};
+
 // Empty-state card. Reusable across Home / (later) Brochures / Search /
 // other list views. Icon + title + hint, plus optional action button.
 function emptyStatePanel({icon, title, hint, actionLabel, actionAttr}) {
@@ -1156,17 +1173,19 @@ function renderBasket() {
   const X = BX[country.lang];
   const CI = CART_I18N[country.lang] || CART_I18N.bg;
 
+  const CST = CUSTOM_I18N[country.lang] || CUSTOM_I18N.bg;
   const customSection = `
     <div class="list-custom">
-      <input id="custom-item-input" type="text" placeholder="${X.listCustomPh}" />
+      <input id="custom-item-input" type="text" placeholder="${CST.placeholder}" />
       <button>+</button>
     </div>
     ${customList.length ? `<div class="panel" style="margin-bottom:12px">
-      <div class="otitle">${X.listCustomTitle}</div>
+      <div class="otitle">${CST.title}</div>
       ${customList.map((it, i) => `<div class="irow">
         <span style="flex:1">📝 ${it}</span>
         <button class="cadd in" style="width:22px;height:22px;font-size:12px" onclick="removeCustomItem(${i})">✕</button>
       </div>`).join('')}
+      <div style="padding:8px 12px 4px;font-size:11px;color:var(--muted);font-style:italic;line-height:1.4">${CST.hint}</div>
     </div>` : ''}`;
 
   if (!pcart.length && !customList.length) {
@@ -1272,10 +1291,23 @@ function renderBasket() {
   // elsewhere in the file — root cause unclear, possibly a stale event or
   // overlay); attaching them programmatically after innerHTML is set is
   // fully reliable.
-  const customInput = document.getElementById('custom-item-input');
-  if (customInput) customInput.onkeydown = (e) => { if (e.key === 'Enter') addCustomItem(); };
-  const customBtn = document.querySelector('.list-custom button');
-  if (customBtn) customBtn.onclick = addCustomItem;
+  // Use capture-phase listeners on the input's parent, so no ancestor
+  // event handler can preventDefault/stopPropagation them upstream.
+  const customWrap = document.querySelector('.list-custom');
+  if (customWrap) {
+    customWrap.addEventListener('keydown', (e) => {
+      if (e.target.id === 'custom-item-input' && e.key === 'Enter') {
+        e.preventDefault();
+        addCustomItem();
+      }
+    }, true);
+    customWrap.addEventListener('click', (e) => {
+      if (e.target.tagName === 'BUTTON') {
+        e.preventDefault();
+        addCustomItem();
+      }
+    }, true);
+  }
 }
 
 function addCustomItem() {
