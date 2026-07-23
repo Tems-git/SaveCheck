@@ -1196,11 +1196,13 @@ function renderBasket() {
         title: CI.emptyTitle,
         hint: CI.emptyHint.replace('{action}', CI.add)
       })}`;
+    attachCustomListHandlers();
     return;
   }
 
   if (!pcart.length) {
     document.getElementById('basket').innerHTML = customSection;
+    attachCustomListHandlers();
     return;
   }
 
@@ -1286,28 +1288,28 @@ function renderBasket() {
     ${chainSections}
     ${grandTotalHTML}`;
 
-  // Explicit handlers for the custom-list input + button. Inline onclick/
-  // onkeydown attributes in the template string weren't firing here (works
-  // elsewhere in the file — root cause unclear, possibly a stale event or
-  // overlay); attaching them programmatically after innerHTML is set is
-  // fully reliable.
-  // Use capture-phase listeners on the input's parent, so no ancestor
-  // event handler can preventDefault/stopPropagation them upstream.
+  attachCustomListHandlers();
+}
+
+// Capture-phase handlers on the input wrapper so no ancestor listener
+// can preventDefault/stopPropagation them upstream. Must run after every
+// innerHTML assignment inside renderBasket — including the early-return
+// paths where pcart is empty but the input still needs to work.
+function attachCustomListHandlers() {
   const customWrap = document.querySelector('.list-custom');
-  if (customWrap) {
-    customWrap.addEventListener('keydown', (e) => {
-      if (e.target.id === 'custom-item-input' && e.key === 'Enter') {
-        e.preventDefault();
-        addCustomItem();
-      }
-    }, true);
-    customWrap.addEventListener('click', (e) => {
-      if (e.target.tagName === 'BUTTON') {
-        e.preventDefault();
-        addCustomItem();
-      }
-    }, true);
-  }
+  if (!customWrap) return;
+  customWrap.addEventListener('keydown', (e) => {
+    if (e.target.id === 'custom-item-input' && e.key === 'Enter') {
+      e.preventDefault();
+      addCustomItem();
+    }
+  }, true);
+  customWrap.addEventListener('click', (e) => {
+    if (e.target.tagName === 'BUTTON') {
+      e.preventDefault();
+      addCustomItem();
+    }
+  }, true);
 }
 
 function addCustomItem() {
