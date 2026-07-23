@@ -655,16 +655,16 @@ const CART_I18N = {
 // BX[lang].homeDeals — keeping this dict focused on strings that don't
 // already have an i18n home.
 const HEADER_I18N = {
-  bg: { tagline:'Цените под лупа', searchResults:'🔍 Резултати за „{q}" ({n})', searchResultsMore:'🔍 Първите {n} от {total} за „{q}"' },
-  sr: { tagline:'Cene pod lupom', searchResults:'🔍 Rezultati za „{q}" ({n})', searchResultsMore:'🔍 Prvih {n} od {total} za „{q}"' },
-  mk: { tagline:'Цените под лупа', searchResults:'🔍 Резултати за „{q}" ({n})', searchResultsMore:'🔍 Првите {n} од {total} за „{q}"' },
-  ro: { tagline:'Prețurile sub lupă', searchResults:'🔍 Rezultate pentru „{q}" ({n})', searchResultsMore:'🔍 Primele {n} din {total} pentru „{q}"' },
-  el: { tagline:'Τιμές υπό μεγέθυνση', searchResults:'🔍 Αποτελέσματα για „{q}" ({n})', searchResultsMore:'🔍 Τα πρώτα {n} από {total} για „{q}"' },
-  tr: { tagline:'Fiyatları mercek altına', searchResults:'🔍 „{q}" için sonuçlar ({n})', searchResultsMore:'🔍 {total} sonuçtan ilk {n}: „{q}"' },
-  sq: { tagline:'Çmimet nën lupë', searchResults:'🔍 Rezultatet për „{q}" ({n})', searchResultsMore:'🔍 {n} të parat nga {total} për „{q}"' },
-  bs: { tagline:'Cijene pod lupom', searchResults:'🔍 Rezultati za „{q}" ({n})', searchResultsMore:'🔍 Prvih {n} od {total} za „{q}"' },
-  hr: { tagline:'Cijene pod povećalom', searchResults:'🔍 Rezultati za „{q}" ({n})', searchResultsMore:'🔍 Prvih {n} od {total} za „{q}"' },
-  sl: { tagline:'Cene pod drobnogledom', searchResults:'🔍 Rezultati za „{q}" ({n})', searchResultsMore:'🔍 Prvih {n} od {total} za „{q}"' },
+  bg: { tagline:'Цените под лупа', searchResults:'🔍 Резултати за „{q}" ({n})', searchResultsMore:'🔍 Първите {n} от {total} за „{q}"', howItWorks:'Как работи?' },
+  sr: { tagline:'Cene pod lupom', searchResults:'🔍 Rezultati za „{q}" ({n})', searchResultsMore:'🔍 Prvih {n} od {total} za „{q}"', howItWorks:'Kako funkcioniše?' },
+  mk: { tagline:'Цените под лупа', searchResults:'🔍 Резултати за „{q}" ({n})', searchResultsMore:'🔍 Првите {n} од {total} за „{q}"', howItWorks:'Како функционира?' },
+  ro: { tagline:'Prețurile sub lupă', searchResults:'🔍 Rezultate pentru „{q}" ({n})', searchResultsMore:'🔍 Primele {n} din {total} pentru „{q}"', howItWorks:'Cum funcționează?' },
+  el: { tagline:'Τιμές υπό μεγέθυνση', searchResults:'🔍 Αποτελέσματα για „{q}" ({n})', searchResultsMore:'🔍 Τα πρώτα {n} από {total} για „{q}"', howItWorks:'Πώς λειτουργεί;' },
+  tr: { tagline:'Fiyatları mercek altına', searchResults:'🔍 „{q}" için sonuçlar ({n})', searchResultsMore:'🔍 {total} sonuçtan ilk {n}: „{q}"', howItWorks:'Nasıl çalışır?' },
+  sq: { tagline:'Çmimet nën lupë', searchResults:'🔍 Rezultatet për „{q}" ({n})', searchResultsMore:'🔍 {n} të parat nga {total} për „{q}"', howItWorks:'Si funksionon?' },
+  bs: { tagline:'Cijene pod lupom', searchResults:'🔍 Rezultati za „{q}" ({n})', searchResultsMore:'🔍 Prvih {n} od {total} za „{q}"', howItWorks:'Kako funkcioniše?' },
+  hr: { tagline:'Cijene pod povećalom', searchResults:'🔍 Rezultati za „{q}" ({n})', searchResultsMore:'🔍 Prvih {n} od {total} za „{q}"', howItWorks:'Kako funkcionira?' },
+  sl: { tagline:'Cene pod drobnogledom', searchResults:'🔍 Rezultati za „{q}" ({n})', searchResultsMore:'🔍 Prvih {n} od {total} za „{q}"', howItWorks:'Kako deluje?' },
 };
 
 // Custom notes (шопинг reminders). These are free-text items the user
@@ -904,9 +904,9 @@ document.addEventListener('click', e => {
 });
 
 function renderChrome() {
-  document.getElementById('footer').innerHTML = t().footer + ' <a href="#" onclick="event.preventDefault();showInfo()" style="color:var(--green);font-weight:700;text-decoration:none;white-space:nowrap">Как работи?</a>';
   const H = HEADER_I18N[country.lang] || HEADER_I18N.bg;
   const X = BX[country.lang];
+  document.getElementById('footer').innerHTML = t().footer + ' <a href="#" onclick="event.preventDefault();showInfo()" style="color:var(--green);font-weight:700;text-decoration:none;white-space:nowrap">' + H.howItWorks + '</a>';
   const tag = document.querySelector('.brand-tagline');
   if (tag) tag.textContent = H.tagline;
   const cartBtn = document.getElementById('cart-btn');
