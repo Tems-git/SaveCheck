@@ -603,7 +603,15 @@ const picon = id => `<span class="picon">${productIcon(id)}</span>`;
 
 const DEMO = (window.SAVECHECK_DEMO || {products:[]});
 const products = DEMO.products;
-let active = -1, country = COUNTRIES[0], view = 'home', query = '', cart = {};
+// Read persisted language choice from localStorage. Falls back to BG
+// default if none stored or if localStorage is blocked (private mode,
+// SSR contexts). Language is applied at initial render — no flash of
+// wrong-language content because this runs synchronously before any DOM.
+const _savedLang = (() => {
+  try { return localStorage.getItem('savecheck_lang'); } catch { return null; }
+})();
+const _initialCountryIdx = Math.max(0, COUNTRIES.findIndex(c => c.lang === _savedLang));
+let active = -1, country = COUNTRIES[_initialCountryIdx], view = 'home', query = '', cart = {};
 let shopTab = 'basket', promosTab = 'brochures';
 let homeChain = null, homeQuery = '', homeShowAll = false;
 // Escape KZP-sourced strings when injecting into innerHTML.
@@ -2446,7 +2454,12 @@ function animIn(id) {
 function setShopTab(t) { shopTab = t; render(); animIn(t === 'products' ? 'cards' : 'basket'); }
 function setPromosTab(t) { promosTab = t; render(); animIn('basket'); }
 function select(i){ active = (active === i ? -1 : i); renderProducts(); }
-function setCountry(i){ country = COUNTRIES[i]; document.documentElement.lang = country.lang; render(); }
+function setCountry(i){
+  country = COUNTRIES[i];
+  document.documentElement.lang = country.lang;
+  try { localStorage.setItem('savecheck_lang', country.lang); } catch {}
+  render();
+}
 function setView(v){
   if (v !== 'scan') stopScanner();
   view = v;
