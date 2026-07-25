@@ -2216,8 +2216,8 @@ function openCart() {
   }).join('');
   content.innerHTML = `
     <div style="padding:18px 18px 8px">
-      <div style="font-size:18px;font-weight:800;margin-bottom:2px">Моята кошница</div>
-      <div style="font-size:12px;color:var(--muted)">${enriched.reduce((s,e)=>s+qty(e),0)} ${enriched.reduce((s,e)=>s+qty(e),0)===1?'продукт':'продукта'}</div>
+      <div style="font-size:18px;font-weight:800;margin-bottom:2px">${({en:'My cart',bg:'Моята кошница',sr:'Moja korpa',mk:'Мојата кошница',ro:'Coșul meu',el:'Το καλάθι μου',tr:'Sepetim',sq:'Shporta ime',bs:'Moja korpa',hr:'Moja košarica',sl:'Moja košarica'})[country.lang] || 'Моята кошница'}</div>
+      <div style="font-size:12px;color:var(--muted)">${(() => { const n = enriched.reduce((s,e)=>s+qty(e),0); const H = HX[country.lang]||HX.bg; return `${n} ${n===1?H.itemSingular:H.itemPlural}`; })()}</div>
     </div>
     <div style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--card)">${itemsHTML}</div>
     <div style="padding:14px 18px 6px;display:flex;justify-content:space-between;align-items:baseline">
