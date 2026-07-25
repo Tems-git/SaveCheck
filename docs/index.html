@@ -662,17 +662,17 @@ const EMPTY = {
 // "press '...'" text in cart empty states. Single-source-of-truth for
 // cart terminology across the app.
 const CART_I18N = {
-  en: { add:'Add to cart', remove:'In cart — remove', emptyTitle:'Cart is empty', emptyHint:'Open a product and press „{action}"' },
-  bg: { add:'Добави в кошницата', remove:'В кошницата — махни', emptyTitle:'Кошницата е празна', emptyHint:'Отвори продукт и натисни „{action}"' },
-  sr: { add:'Dodaj u korpu', remove:'U korpi — ukloni', emptyTitle:'Korpa je prazna', emptyHint:'Otvori proizvod i pritisni „{action}"' },
-  mk: { add:'Додај во кошница', remove:'Во кошницата — отстрани', emptyTitle:'Кошницата е празна', emptyHint:'Отвори производ и притисни „{action}"' },
-  ro: { add:'Adaugă în coș', remove:'În coș — elimină', emptyTitle:'Coșul este gol', emptyHint:'Deschide un produs și apasă „{action}"' },
-  el: { add:'Προσθήκη στο καλάθι', remove:'Στο καλάθι — αφαίρεση', emptyTitle:'Το καλάθι είναι άδειο', emptyHint:'Άνοιξε ένα προϊόν και πάτησε „{action}"' },
-  tr: { add:'Sepete ekle', remove:'Sepette — çıkar', emptyTitle:'Sepet boş', emptyHint:'Bir ürün aç ve „{action}" düğmesine bas' },
-  sq: { add:'Shto në shportë', remove:'Në shportë — hiq', emptyTitle:'Shporta është bosh', emptyHint:'Hap një produkt dhe shtyp „{action}"' },
-  bs: { add:'Dodaj u korpu', remove:'U korpi — ukloni', emptyTitle:'Korpa je prazna', emptyHint:'Otvori proizvod i pritisni „{action}"' },
-  hr: { add:'Dodaj u košaricu', remove:'U košarici — ukloni', emptyTitle:'Košarica je prazna', emptyHint:'Otvori proizvod i pritisni „{action}"' },
-  sl: { add:'Dodaj v košarico', remove:'V košarici — odstrani', emptyTitle:'Košarica je prazna', emptyHint:'Odpri izdelek in pritisni „{action}"' },
+  en: { add:'Add to cart', remove:'In cart — remove', emptyTitle:'Cart is empty', emptyHint:'Open a product and press „{action}"', total:'Total', savingsVsLabel:'You save vs. label prices', byChains:'By chain', disclaimer:'SaveCheck doesn\'t compare prices of the same product across different chains — each chain uses its own product code, so we can\'t guarantee the product exists in another chain at the same price.', clearConfirm:'Clear entire cart?' },
+  bg: { add:'Добави в кошницата', remove:'В кошницата — махни', emptyTitle:'Кошницата е празна', emptyHint:'Отвори продукт и натисни „{action}"', total:'Общо', savingsVsLabel:'Спестяваш спрямо цените на етикета', byChains:'По вериги', disclaimer:'SaveCheck не сравнява цените на един и същ продукт през различните вериги — всяка верига използва свой код, така че не можем да гарантираме, че продуктът съществува в друга верига на същата цена.', clearConfirm:'Изчисти цялата кошница?' },
+  sr: { add:'Dodaj u korpu', remove:'U korpi — ukloni', emptyTitle:'Korpa je prazna', emptyHint:'Otvori proizvod i pritisni „{action}"', total:'Ukupno', savingsVsLabel:'Štedite u odnosu na cene sa etikete', byChains:'Po lancima', disclaimer:'SaveCheck ne upoređuje cene istog proizvoda između različitih lanaca — svaki lanac koristi svoj kod, pa ne možemo garantovati da proizvod postoji u drugom lancu po istoj ceni.', clearConfirm:'Obrisati celu korpu?' },
+  mk: { add:'Додај во кошница', remove:'Во кошницата — отстрани', emptyTitle:'Кошницата е празна', emptyHint:'Отвори производ и притисни „{action}"', total:'Вкупно', savingsVsLabel:'Заштедуваш во однос на цените од етикетата', byChains:'По синџири', disclaimer:'SaveCheck не ги споредува цените на истиот производ помеѓу различни синџири — секој синџир користи свој код, па не можеме да гарантираме дека производот постои во друг синџир по иста цена.', clearConfirm:'Да се исчисти целата кошница?' },
+  ro: { add:'Adaugă în coș', remove:'În coș — elimină', emptyTitle:'Coșul este gol', emptyHint:'Deschide un produs și apasă „{action}"', total:'Total', savingsVsLabel:'Economisești față de prețurile de pe etichetă', byChains:'Pe lanțuri', disclaimer:'SaveCheck nu compară prețurile aceluiași produs între lanțuri diferite — fiecare lanț folosește propriul cod, așa că nu putem garanta că produsul există în alt lanț la același preț.', clearConfirm:'Golește tot coșul?' },
+  el: { add:'Προσθήκη στο καλάθι', remove:'Στο καλάθι — αφαίρεση', emptyTitle:'Το καλάθι είναι άδειο', emptyHint:'Άνοιξε ένα προϊόν και πάτησε „{action}"', total:'Σύνολο', savingsVsLabel:'Εξοικονομείς σε σχέση με τις τιμές της ετικέτας', byChains:'Ανά αλυσίδα', disclaimer:'Το SaveCheck δεν συγκρίνει τις τιμές του ίδιου προϊόντος μεταξύ διαφορετικών αλυσίδων — κάθε αλυσίδα χρησιμοποιεί τον δικό της κωδικό, οπότε δεν μπορούμε να εγγυηθούμε ότι το προϊόν υπάρχει σε άλλη αλυσίδα στην ίδια τιμή.', clearConfirm:'Άδειασμα όλου του καλαθιού;' },
+  tr: { add:'Sepete ekle', remove:'Sepette — çıkar', emptyTitle:'Sepet boş', emptyHint:'Bir ürün aç ve „{action}" düğmesine bas', total:'Toplam', savingsVsLabel:'Etiket fiyatlarına göre tasarruf', byChains:'Zincirlere göre', disclaimer:'SaveCheck aynı ürünün fiyatlarını farklı zincirler arasında karşılaştırmaz — her zincir kendi kodunu kullanır, bu nedenle ürünün başka bir zincirde aynı fiyatta bulunduğunu garanti edemeyiz.', clearConfirm:'Tüm sepet temizlensin mi?' },
+  sq: { add:'Shto në shportë', remove:'Në shportë — hiq', emptyTitle:'Shporta është bosh', emptyHint:'Hap një produkt dhe shtyp „{action}"', total:'Totali', savingsVsLabel:'Kurseni krahasuar me çmimet e etiketës', byChains:'Sipas zinxhirëve', disclaimer:'SaveCheck nuk krahason çmimet e të njëjtit produkt mes zinxhirëve të ndryshëm — çdo zinxhir përdor kodin e vet, kështu që nuk mund të garantojmë që produkti ekziston në një zinxhir tjetër me të njëjtin çmim.', clearConfirm:'Të pastrohet e gjithë shporta?' },
+  bs: { add:'Dodaj u korpu', remove:'U korpi — ukloni', emptyTitle:'Korpa je prazna', emptyHint:'Otvori proizvod i pritisni „{action}"', total:'Ukupno', savingsVsLabel:'Štedite u odnosu na cijene sa etikete', byChains:'Po lancima', disclaimer:'SaveCheck ne upoređuje cijene istog proizvoda između različitih lanaca — svaki lanac koristi svoj kod, pa ne možemo garantirati da proizvod postoji u drugom lancu po istoj cijeni.', clearConfirm:'Obrisati cijelu korpu?' },
+  hr: { add:'Dodaj u košaricu', remove:'U košarici — ukloni', emptyTitle:'Košarica je prazna', emptyHint:'Otvori proizvod i pritisni „{action}"', total:'Ukupno', savingsVsLabel:'Štedite u odnosu na cijene s etikete', byChains:'Po lancima', disclaimer:'SaveCheck ne uspoređuje cijene istog proizvoda između različitih lanaca — svaki lanac koristi svoj kod, pa ne možemo jamčiti da proizvod postoji u drugom lancu po istoj cijeni.', clearConfirm:'Isprazniti cijelu košaricu?' },
+  sl: { add:'Dodaj v košarico', remove:'V košarici — odstrani', emptyTitle:'Košarica je prazna', emptyHint:'Odpri izdelek in pritisni „{action}"', total:'Skupaj', savingsVsLabel:'Prihranite v primerjavi s cenami na etiketi', byChains:'Po verigah', disclaimer:'SaveCheck ne primerja cen istega izdelka med različnimi verigami — vsaka veriga uporablja svojo kodo, zato ne moremo zagotoviti, da izdelek obstaja v drugi verigi po enaki ceni.', clearConfirm:'Izprazni celotno košarico?' },
 };
 
 // UI chrome i18n — brand tagline and section labels that live outside
@@ -1510,7 +1510,7 @@ function renderBasket() {
   const grandTotalHTML = Object.keys(byChain).length > 1 ? `
     <div class="panel" style="margin-top:12px;background:linear-gradient(135deg,#16a34a,#15803d);color:#fff">
       <div style="display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:15px">
-        <span>Общо</span>
+        <span>${(CART_I18N[country.lang] || CART_I18N.bg).total}</span>
         <span style="font-variant-numeric:tabular-nums">${money(grandTotal)}</span>
       </div>
     </div>` : '';
@@ -2221,13 +2221,13 @@ function openCart() {
     </div>
     <div style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--card)">${itemsHTML}</div>
     <div style="padding:14px 18px 6px;display:flex;justify-content:space-between;align-items:baseline">
-      <div style="font-size:14px;font-weight:700;color:var(--muted)">Общо</div>
+      <div style="font-size:14px;font-weight:700;color:var(--muted)">${(CART_I18N[country.lang] || CART_I18N.bg).total}</div>
       <div style="font-size:20px;font-weight:900">${disp(total * fx)} ${sym}</div>
     </div>
-    ${savedVsRetail > 0.01 ? `<div style="padding:0 18px 12px;display:flex;justify-content:space-between;align-items:baseline;font-size:12px"><div style="color:var(--muted)">Спестяваш спрямо цените на етикета</div><div style="color:var(--green);font-weight:800">−${disp(savedVsRetail * fx)} ${sym}</div></div>` : ''}
-    ${Object.keys(perChain).length > 1 ? `<div style="padding:14px 6px 6px;border-top:1px solid var(--line);margin-top:6px"><div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:0 12px 6px">По вериги</div>${chainRows}<div style="padding:8px 12px 4px;font-size:11px;color:var(--muted);line-height:1.4;font-style:italic">SaveCheck не сравнява цените на един и същ продукт през различните вериги — всяка верига използва свой код, така че не можем да гарантираме, че продуктът съществува в друга верига на същата цена.</div></div>` : ''}
+    ${savedVsRetail > 0.01 ? `<div style="padding:0 18px 12px;display:flex;justify-content:space-between;align-items:baseline;font-size:12px"><div style="color:var(--muted)">${(CART_I18N[country.lang] || CART_I18N.bg).savingsVsLabel}</div><div style="color:var(--green);font-weight:800">−${disp(savedVsRetail * fx)} ${sym}</div></div>` : ''}
+    ${Object.keys(perChain).length > 1 ? (() => { const CI = CART_I18N[country.lang] || CART_I18N.bg; return `<div style="padding:14px 6px 6px;border-top:1px solid var(--line);margin-top:6px"><div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:0 12px 6px">${CI.byChains}</div>${chainRows}<div style="padding:8px 12px 4px;font-size:11px;color:var(--muted);line-height:1.4;font-style:italic">${CI.disclaimer}</div></div>`; })() : ''}
     <div style="padding:14px 18px 18px">
-      <button onclick="if(confirm('Изчисти цялата кошница?')){pcart=[];pcartSave();pcartChanged();closeCart()}" style="width:100%;padding:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer">Изчисти кошницата</button>
+      <button onclick="if(confirm((CART_I18N[country.lang]||CART_I18N.bg).clearConfirm)){pcart=[];pcartSave();pcartChanged();closeCart()}" style="width:100%;padding:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer">${X.clearCart}</button>
     </div>
   `;
   openModal(modal);
