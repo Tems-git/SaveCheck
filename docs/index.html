@@ -2227,7 +2227,7 @@ function openCart() {
     ${savedVsRetail > 0.01 ? `<div style="padding:0 18px 12px;display:flex;justify-content:space-between;align-items:baseline;font-size:12px"><div style="color:var(--muted)">${(CART_I18N[country.lang] || CART_I18N.bg).savingsVsLabel}</div><div style="color:var(--green);font-weight:800">−${disp(savedVsRetail * fx)} ${sym}</div></div>` : ''}
     ${Object.keys(perChain).length > 1 ? (() => { const CI = CART_I18N[country.lang] || CART_I18N.bg; return `<div style="padding:14px 6px 6px;border-top:1px solid var(--line);margin-top:6px"><div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:0 12px 6px">${CI.byChains}</div>${chainRows}<div style="padding:8px 12px 4px;font-size:11px;color:var(--muted);line-height:1.4;font-style:italic">${CI.disclaimer}</div></div>`; })() : ''}
     <div style="padding:14px 18px 18px">
-      <button onclick="if(confirm((CART_I18N[country.lang]||CART_I18N.bg).clearConfirm)){pcart=[];pcartSave();pcartChanged();closeCart()}" style="width:100%;padding:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer">${X.clearCart}</button>
+      <button onclick="if(confirm((CART_I18N[country.lang]||CART_I18N.bg).clearConfirm)){pcart=[];pcartSave();pcartChanged();closeCart()}" style="width:100%;padding:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer">${(BX[country.lang]||BX.bg).clearCart}</button>
     </div>
   `;
   openModal(modal);
