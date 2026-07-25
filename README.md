@@ -108,9 +108,24 @@ GitHub Pages auto-deploy ──► Live сайт
 - **Install to Home Screen** — Chrome Android + Safari iOS показват install prompt след първо посещение; app-ът отваря fullscreen без URL bar
 - **Offline shell** — при загубена връзка (супермаркет с лош signal, метро) app-ът все още отваря с последния cached snapshot
 
-### 🌍 10-language coverage
+### 🌍 11-language coverage
 
-UI-ят е локализиран за **BG, SR, MK, RO, EL, TR, SQ, BS, HR, SL** — регионална покривка за Balkan expansion. Language selector в top-right показва флаг+код на всичките 10. Всеки нов user-facing string минава през centralized dictionary (BX / HEADER_I18N / CART_I18N / CUSTOM_I18N / EMPTY) с cross-reference pattern — напр. cart empty state hint interpolира actual button label от dictionary, така че rename на бутона обновява и hint-a automatically.
+UI-ят е локализиран за **BG, EN, SR, MK, RO, EL, TR, SQ, BS, HR, SL** — Balkan region + English като lingua franca за международна expansion. Language selector в top-right показва флаг+код на всичките 11.
+
+**Централизирани i18n dictionaries** — всеки нов user-facing string минава през centralized dictionary с cross-reference pattern:
+- `BX` / `BX_EX` — main labels (~60 keys)
+- `UI` — product modal + product chrome
+- `HX` — home labels + item plurals + cart savings label
+- `HEADER_I18N` — brand tagline, section labels, "See all N" toggle
+- `CART_I18N` — cart button labels + modal chrome (total, savings, disclaimer, clear confirm) + cross-referenced button labels (cart empty hint interpolира actual button label — rename на бутона обновява и hint-a automatically)
+- `CUSTOM_I18N` — "Не забравяй" custom notes cluster
+- `EMPTY` — differentiated empty states
+- `INFO_I18N` — "Как работи SaveCheck" info modal (~1000 chars × 11 langs)
+- `TAG` / `BADGE` — verdict labels
+
+**Language persistence** — избраният език се запазва в `localStorage` (`savecheck_lang`) и се възстановява при следващо посещение. Fallback до BG default при blocked localStorage (private mode).
+
+**Flag rendering** — bundled Twemoji Country Flags WOFF2 (78 KB, cached forever от SW) осигурява emoji flag rendering на Windows 10 (Windows fallback fonts не render-ват regional indicator symbols нативно). macOS / iOS / Android / Linux / Windows 11 continue to use native emoji fonts.
 
 Валута default е EUR за MVP; per-country (RON, RSD, MKD, TRY, ALL, BAM) се set-ва при реален launch в дадена страна.
 
@@ -121,15 +136,15 @@ UI-ят е локализиран за **BG, SR, MK, RO, EL, TR, SQ, BS, HR, SL*
 - **Auto-refresh** на Home hero и кошница когато добавяш/маха продукти
 - **HTML escape** на всички КЗП имена преди render (защита от stored XSS)
 - **2-line clamp** на продуктовите имена в Home и Кошница — производителят/суффиксът остава видим при подобни продукти (напр. `БУТ СВИНСКИ БЕЗ КОСТ ПРОИЗХОД БЪЛГАРИЯ БИЛЯНА-МЕС`), без визуален бъркотия при кратките имена
-- Продуктовите имена остават оригиналнu (КЗП feed-a е bilingual само за категории)
+- Продуктовите имена остават оригинални (КЗП feed-a е bilingual само за категории)
 
 ### ♿ Достъпност (a11y)
 
-- **ARIA семантика** — модалите имат `role="dialog"`, `aria-modal="true"`, `aria-label` (кошница/детайли/информация)
-- **Screen reader labels** — × close бутоните имат `aria-label="Затвори"`; qty +/- имат `aria-label="Намали/Увеличи"`; search input-ът има `aria-label`, синхронизиран с текущия език при dropdown switch
+- **ARIA семантика** — модалите имат `role="dialog"`, `aria-modal="true"`, `aria-label` синхронизиран с текущия език
+- **Screen reader labels** — × close бутоните имат class-based `aria-label` (`closeLabel` key в BX за всичките 11 lang); search input, cart button, scan quick button — всички aria-labels се обновяват в `renderChrome()` при смяна на език
 - **Клавиатурна навигация** — product cards на Home и brochure items са `tabindex="0"` с `role="button"` + `onkeydown` handler за Enter/Space, така че цялата app-a е доступна без mouse
 - **Focus indicator** — `:focus-visible` показва ясен зелен outline (2px, outline-offset 2px) само при клавиатурна навигация, не при mouse click — не разсейва mouse users
-- **Focus trap** — при отворен модал Tab циклира в него, не бяга навън; при затваряне фокусът се връща на trigger element-a
+- **Focus trap** — при отворен модал Tab циклира в него, не бяга навън; при затваряне фокусът се връща на trigger element-a. Selector-ът е class-based (`.modal-close`), не aria-label-based — decoupled от i18n switching.
 - **Touch targets** — modal close бутоните са 40×40 px, cart qty +/- са 32×32 px (W3C препоръчва ≥44×44, компромис за визуална компактност)
 - **Stale data banner** — `role="status"` + `aria-live="polite"`, screen reader обявява warning при появяване
 
@@ -182,11 +197,12 @@ Initial page load (post-optimization):
 
 | Layer | Size | Note |
 |-------|------|------|
-| `index.html` | ~172 KB | Single-file, all UI + logic |
+| `index.html` | ~198 KB | Single-file, all UI + logic (11 lang i18n dicts inline) |
 | `products.js` | ~1.8 MB | Product-first snapshot, eager |
 | `data.js` | ~880 KB | Legacy, still eager (to be dropped) |
 | `hero-banner.webp` | ~400 KB | Was 2.9 MB PNG, converted (-86%) |
 | `logo-d.webp` | ~64 KB | Was 1.4 MB PNG, converted (-95%) |
+| `TwemojiCountryFlags.woff2` | 78 KB | Flag rendering, cached forever by SW, unicode-range scoped |
 | `brochures.js` | 0 KB | **Lazy** — loads on first Home chain expand или Promos view |
 | `products-history.js` | 0 KB | **Lazy** — loads with Chart.js on first product modal open |
 
@@ -198,7 +214,7 @@ Combined win from WebP conversion + brochures lazy load: **~4 MB less** on first
 
 Приложението работи **native в EUR**. КЗП feed-а вече публикува цените в EUR (след адопцията на еврото от 01.01.2026), затова UI-ят не прави никаква конверсия.
 
-За language dropdown-а — за MVP всичките 10 country записа default-ват на EUR. Real per-country валути (RON, RSD, MKD, TRY, ALL, BAM) се set-ват в COUNTRIES config-a при реален launch в дадена страна.
+За language dropdown-а — за MVP всичките 11 country записа default-ват на EUR. Real per-country валути (RON, RSD, MKD, TRY, ALL, BAM) се set-ват в COUNTRIES config-a при реален launch в дадена страна.
 
 ---
 
@@ -206,11 +222,13 @@ Combined win from WebP conversion + brochures lazy load: **~4 MB less** on first
 
 | Layer | Технология |
 |-------|------------|
-| Frontend | Single-file HTML/CSS/JS (vanilla, no framework), ~172 KB |
+| Frontend | Single-file HTML/CSS/JS (vanilla, no framework), ~198 KB |
 | Charts | Chart.js 4.4 (jsDelivr CDN, lazy loaded on first modal open) |
 | Data | `window.SAVECHECK_PRODUCTS` (snapshot) + `window.SAVECHECK_HISTORY` (lazy) + `window.SAVECHECK_BROCHURES` (lazy) + `window.SAVECHECK_DEMO` (legacy, to be removed) |
 | PWA | Web App Manifest + Service Worker (two-tier caching: cache-first shell, network-first data) |
 | Images | WebP (hero-banner, logo) — modern browser fallback, ~90% smaller than PNG source |
+| Fonts | Twemoji Country Flags WOFF2 (78 KB, unicode-range scoped, `font-display: swap`) for flag rendering on Windows 10 |
+| i18n | 11 languages, centralized dicts, localStorage persistence |
 | Backend | Python 3.11+ (`src/savecheck/`) |
 | Pricing engine | `savecheck.pricing` — `evaluate_series()`, `compute_stats()`, `compute_snapshot()` |
 | Ingest | `savecheck.ingest.kolkostruva` — парсва КЗП CSV |
@@ -285,7 +303,7 @@ pytest tests/ -v
 ```
 SaveCheck/
 ├── docs/
-│   ├── index.html                # Цялото приложение (single-file, ~172 KB)
+│   ├── index.html                # Цялото приложение (single-file, ~198 KB)
 │   ├── sw.js                     # Service Worker (two-tier caching)
 │   ├── manifest.webmanifest      # PWA manifest (install-to-home-screen)
 │   ├── data.js                   # Legacy 22-cat снимка (SAVECHECK_DEMO) — to be dropped
@@ -296,6 +314,7 @@ SaveCheck/
 │   └── img/
 │       ├── hero-banner.webp      # Home hero image (WebP, 400 KB)
 │       ├── icon-*.png            # PWA icons (192/512/180)
+│       ├── TwemojiCountryFlags.woff2  # Flag rendering font (78 KB, Windows 10 compat)
 │       └── logos/logo-d.webp     # Brand logo (WebP, 64 KB)
 ├── src/savecheck/
 │   ├── pricing/
@@ -329,12 +348,12 @@ SaveCheck/
 Проактивно flagged, не bugs:
 
 - **`data.js` все още се качва еагерно** (~880 KB). Titans view все още го консумира. Планиран Python change ще мигрира Titans aggregate в `products.js` meta и ще позволи drop-ване на data.js entirely.
-- **Product detail modal chrome** — stale price explanation, stats labels (Медиана / Най-ниска), "Няма данни за история" все още са BG-hardcoded. Готов cluster (`PRODUCT_MODAL_I18N`) за миграция при следваща i18n pass.
-- **Info modal** ("Как работи SaveCheck") — ~1000 chars BG текст, hardcoded. Отделен candidate за пълна i18n.
-- **Home hero pluralization** ("продукт / продукта") — BG-only грамматично правило. Real per-language plurals изискват plural rules per език.
-- **Cross-chain matching** — при cart с items от 2+ вериги не сравняваме един и същ продукт между вериги. КЗП product код-ове са различни в различните вериги (същият кашкавал има различен `Код` в Kaufland и в BILLA). Отделен feature за bъдеще — вероятно fuzzy name matching + code lookup.
+- **Product detail modal chrome** — `stateExplain` verdict descriptions, stats labels (Медиана / Най-ниска), stale price explanation, "Няма данни за история" все още са BG-hardcoded. Тези string-ове живеят function-scoped в `openProductDetail()`, не в global i18n dicts. Готов cluster (`PRODUCT_MODAL_I18N`) за миграция при следваща i18n pass.
+- **Cart qty +/- и remove aria-labels** ("Намали" / "Увеличи" / "Махни") остават BG-hardcoded. Screen reader users на други езици чуват BG при interact с cart items. Modal-level aria (title, close, search) вече са i18n.
+- **Cross-chain matching** — при cart с items от 2+ вериги не сравняваме един и същ продукт между вериги. КЗП product код-ове са различни в различните вериги (същият кашкавал има различен `Код` в Kaufland и в BILLA). Отделен feature за бъдеще — вероятно fuzzy name matching + code lookup.
 - **Products / Recipes / Fridge sub-tabs** — hidden в UI (sub-tab bar не се render-ва в Shop view). Кодът е intact за future revive, но не се достига от навигация.
 - **Legacy dead code** — `renderProducts`, `renderRecipes`, `renderFridge`, `analyzeStores`, `cart`/`cartIds`/`cartSize`, `PRODUCTS` глобал са dormant. Ще се почистват в отделен pass.
+- **Security headers** — CSP, X-Content-Type-Options, Referrer-Policy, Permissions-Policy, X-Frame-Options — липсват. GitHub Pages не позволява custom HTTP headers. Planned: Cloudflare proxy пред GitHub Pages за Transform Rules с всички security headers (defense-in-depth над existing HTML escape XSS protection).
 
 ---
 
