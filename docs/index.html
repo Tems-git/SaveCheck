@@ -90,8 +90,14 @@
   .scan-quick:hover { border-color:var(--green); }
   .scan-quick svg { width:21px; height:21px; stroke:var(--green); fill:none; stroke-width:2; }
   .country-picker { position:relative; margin-left:auto; }
+  @font-face {
+    font-family: 'Twemoji Country Flags';
+    unicode-range: U+1F1E6-1F1FF, U+1F3F4, U+E0062-E0063, U+E0065, U+E0067, U+E006C, U+E006E, U+E0073-E0074, U+E0077, U+E007F;
+    src: url('./img/TwemojiCountryFlags.woff2') format('woff2');
+    font-display: swap;
+  }
   .cp-trigger { display:flex; align-items:center; gap:5px; border:1px solid var(--line); background:var(--cream); border-radius:11px; cursor:pointer; padding:8px 11px; font-size:18px; line-height:1; }
-  #cp-flag, .cp-menu button > span:first-child { font-family: 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', 'Twemoji Mozilla', 'EmojiOne Color', system-ui, sans-serif; }
+  #cp-flag, .cp-menu button > span:first-child { font-family: 'Twemoji Country Flags', 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', system-ui, sans-serif; }
   .cp-trigger .cc { font-size:10px; font-weight:700; color:var(--muted); }
   .cp-chev { width:10px; height:10px; stroke:var(--muted); transition:transform .2s; flex:none; }
   .cp-trigger.open .cp-chev { transform:rotate(180deg); }
