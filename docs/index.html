@@ -968,6 +968,23 @@ const PRODUCT_MODAL_I18N = {
   },
 };
 
+// Session 2: inline strings from openProductDetail — stats labels, chart
+// legend, stale text, and misc UI copy. Uses {date} / {days} placeholders
+// where interpolation is needed.
+const PRODUCT_MODAL_INLINE = {
+  bg: { loadError:'Грешка при зареждане:', medianTooltip:'Спрямо 90-дневната медиана', realDiscount:'Реално', claimedOn:'Обявено на етикета:', claimedVs:'спрямо', staleBadge:'⏱ Промо от', staleExplain:'Тази промоционална цена е от {date}. Веригата все още не е публикувала актуални данни за днес, така че не сме сигурни дали още важи.', lowest30:'Най-ниска цена за 30 дни:', median90:'Медиана за 90 дни:', chartObs:'наблюдения за последните {days} дни', chartLegend:'🔴 промо · ⚫ обичайна', chartEmpty:'Няма данни за история' },
+  en: { loadError:'Loading error:', medianTooltip:'Against the 90-day median', realDiscount:'Real', claimedOn:'Claimed on the label:', claimedVs:'vs.', staleBadge:'⏱ Promo from', staleExplain:'This promo price is from {date}. The chain has not yet published today\'s data, so we can\'t be sure it still applies.', lowest30:'Lowest price in 30 days:', median90:'90-day median:', chartObs:'observations over the last {days} days', chartLegend:'🔴 promo · ⚫ regular', chartEmpty:'No history data' },
+  sr: { loadError:'Greška pri učitavanju:', medianTooltip:'U odnosu na medijanu 90 dana', realDiscount:'Pravo', claimedOn:'Objavljeno na etiketi:', claimedVs:'u odnosu na', staleBadge:'⏱ Akcija od', staleExplain:'Ova akcijska cena je od {date}. Lanac još nije objavio današnje podatke, tako da nismo sigurni da li još važi.', lowest30:'Najniža cena za 30 dana:', median90:'Medijana za 90 dana:', chartObs:'osmatranja poslednjih {days} dana', chartLegend:'🔴 akcija · ⚫ uobičajena', chartEmpty:'Nema podataka o istoriji' },
+  mk: { loadError:'Грешка при вчитување:', medianTooltip:'Во однос на 90-дневната медијана', realDiscount:'Вистински', claimedOn:'Објавено на етикетата:', claimedVs:'во однос на', staleBadge:'⏱ Промо од', staleExplain:'Оваа промотивна цена е од {date}. Синџирот сè уште не објавил денешни податоци, така што не сме сигурни дали сè уште важи.', lowest30:'Најниска цена за 30 дена:', median90:'Медијана за 90 дена:', chartObs:'набљудувања за последните {days} дена', chartLegend:'🔴 промо · ⚫ вообичаена', chartEmpty:'Нема податоци за историја' },
+  ro: { loadError:'Eroare la încărcare:', medianTooltip:'Față de mediana pe 90 de zile', realDiscount:'Real', claimedOn:'Declarat pe etichetă:', claimedVs:'față de', staleBadge:'⏱ Promo din', staleExplain:'Acest preț promoțional este de la {date}. Lanțul nu a publicat încă datele pentru astăzi, deci nu suntem siguri dacă mai este valabil.', lowest30:'Cel mai mic preț în 30 de zile:', median90:'Mediana pe 90 de zile:', chartObs:'observații în ultimele {days} zile', chartLegend:'🔴 promo · ⚫ obișnuit', chartEmpty:'Nu există date de istoric' },
+  el: { loadError:'Σφάλμα φόρτωσης:', medianTooltip:'Σε σχέση με τη διάμεσο 90 ημερών', realDiscount:'Πραγματικό', claimedOn:'Δηλωμένο στην ετικέτα:', claimedVs:'σε σχέση με', staleBadge:'⏱ Προσφορά από', staleExplain:'Αυτή η τιμή προσφοράς είναι από {date}. Η αλυσίδα δεν έχει δημοσιεύσει ακόμα τα σημερινά δεδομένα, οπότε δεν είμαστε σίγουροι αν ισχύει ακόμα.', lowest30:'Χαμηλότερη τιμή σε 30 ημέρες:', median90:'Διάμεσος 90 ημερών:', chartObs:'παρατηρήσεις τις τελευταίες {days} ημέρες', chartLegend:'🔴 προσφορά · ⚫ συνήθης', chartEmpty:'Δεν υπάρχουν δεδομένα ιστορικού' },
+  tr: { loadError:'Yükleme hatası:', medianTooltip:'90 günlük medyana göre', realDiscount:'Gerçek', claimedOn:'Etikette belirtilen:', claimedVs:'karşısında', staleBadge:'⏱ İndirim tarihi', staleExplain:'Bu indirim fiyatı {date} tarihine ait. Zincir henüz bugünün verilerini yayınlamadı, bu yüzden hâlâ geçerli olup olmadığından emin değiliz.', lowest30:'30 günün en düşük fiyatı:', median90:'90 günlük medyan:', chartObs:'son {days} gündeki gözlem', chartLegend:'🔴 indirim · ⚫ normal', chartEmpty:'Geçmiş verisi yok' },
+  sq: { loadError:'Gabim gjatë ngarkimit:', medianTooltip:'Në krahasim me medianën 90-ditore', realDiscount:'Reale', claimedOn:'E deklaruar në etiketë:', claimedVs:'krahasuar me', staleBadge:'⏱ Ofertë nga', staleExplain:'Ky çmim promocional është nga {date}. Zinxhiri ende nuk ka publikuar të dhënat e sotme, kështu që nuk jemi të sigurt nëse ende vlen.', lowest30:'Çmimi më i ulët në 30 ditë:', median90:'Mediana 90-ditore:', chartObs:'vëzhgime në {days} ditët e fundit', chartLegend:'🔴 ofertë · ⚫ e zakonshme', chartEmpty:'Nuk ka të dhëna historiku' },
+  bs: { loadError:'Greška pri učitavanju:', medianTooltip:'U odnosu na medijanu 90 dana', realDiscount:'Pravo', claimedOn:'Objavljeno na etiketi:', claimedVs:'u odnosu na', staleBadge:'⏱ Akcija od', staleExplain:'Ova akcijska cijena je od {date}. Lanac još nije objavio današnje podatke, tako da nismo sigurni da li još važi.', lowest30:'Najniža cijena za 30 dana:', median90:'Medijana za 90 dana:', chartObs:'opažanja posljednjih {days} dana', chartLegend:'🔴 akcija · ⚫ uobičajena', chartEmpty:'Nema podataka o historiji' },
+  hr: { loadError:'Greška pri učitavanju:', medianTooltip:'U odnosu na medijan 90 dana', realDiscount:'Pravo', claimedOn:'Objavljeno na etiketi:', claimedVs:'u odnosu na', staleBadge:'⏱ Akcija od', staleExplain:'Ova akcijska cijena je od {date}. Lanac još nije objavio današnje podatke, pa nismo sigurni vrijedi li još.', lowest30:'Najniža cijena u 30 dana:', median90:'Medijan 90 dana:', chartObs:'opažanja u zadnjih {days} dana', chartLegend:'🔴 akcija · ⚫ uobičajena', chartEmpty:'Nema podataka o povijesti' },
+  sl: { loadError:'Napaka pri nalaganju:', medianTooltip:'V primerjavi z medijano 90 dni', realDiscount:'Pravi', claimedOn:'Označeno na etiketi:', claimedVs:'v primerjavi z', staleBadge:'⏱ Akcija od', staleExplain:'Ta akcijska cena je iz {date}. Veriga še ni objavila današnjih podatkov, zato ne vemo, ali še velja.', lowest30:'Najnižja cena v 30 dneh:', median90:'Medijana 90 dni:', chartObs:'opažanja v zadnjih {days} dneh', chartLegend:'🔴 akcija · ⚫ običajna', chartEmpty:'Ni podatkov o zgodovini' },
+};
+
 // Empty-state card. Reusable across Home / (later) Brochures / Search /
 // other list views. Icon + title + hint, plus optional action button.
 function emptyStatePanel({icon, title, hint, actionLabel, actionAttr}) {
@@ -2114,7 +2131,7 @@ async function openProductDetail(p) {
   try {
     await Promise.all([loadHistory(), loadChartJs()]);
   } catch (e) {
-    content.innerHTML = `<div style="padding:20px;color:var(--red)">Грешка при зареждане: ${e.message}</div>`;
+    content.innerHTML = `<div style="padding:20px;color:var(--red)">${PMII.loadError} ${e.message}</div>`;
     return;
   }
   const H = window.SAVECHECK_HISTORY;
@@ -2122,6 +2139,7 @@ async function openProductDetail(p) {
   const chainsHist = H.products[p.id] || {};
   const points = (chainsHist[p.chain] || []).slice().sort((a, b) => b[0] - a[0]);
   const PMI = PRODUCT_MODAL_I18N[country.lang] || PRODUCT_MODAL_I18N.bg;
+  const PMII = PRODUCT_MODAL_INLINE[country.lang] || PRODUCT_MODAL_INLINE.bg;
   const stateLabel = PMI.stateLabel;
   const stateExplain = PMI.stateExplain;
   const badgeColor = { real: 'var(--green)', cosmetic: '#eab308', fake: 'var(--red)', unverified: '#94a3b8', regular: '#6366f1' };
@@ -2133,14 +2151,14 @@ async function openProductDetail(p) {
       <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:4px">
         <span style="font-size:26px;font-weight:900;color:${(p.state==='regular' || isStale)?'var(--fg)':'var(--green)'}">${disp(p.price * fx)} ${sym}</span>
         ${p.retail ? `<span style="font-size:14px;color:var(--muted);text-decoration:line-through">${disp(p.retail * fx)} ${sym}</span>` : ''}
-        ${(p.omnibus_pct && !isStale) ? `<span style="font-size:14px;font-weight:800;color:var(--green)" title="Спрямо 90-дневната медиана">Реално −${p.omnibus_pct}%</span>` : ''}
+        ${(p.omnibus_pct && !isStale) ? `<span style="font-size:14px;font-weight:800;color:var(--green)" title="${PMII.medianTooltip}">${PMII.realDiscount} −${p.omnibus_pct}%</span>` : ''}
       </div>
-      ${(p.claimed_pct && !isStale && p.claimed_pct !== p.omnibus_pct) ? `<div style="font-size:11px;color:var(--muted);margin-bottom:8px">Обявено на етикета: <b style="color:var(--muted);text-decoration:line-through">−${p.claimed_pct}%</b> спрямо ${disp(p.retail * fx)} ${sym}</div>` : ''}
-      <div style="display:inline-block;padding:5px 10px;background:${isStale ? '#94a3b8' : (badgeColor[p.state]||'#94a3b8')};color:#fff;font-size:12px;font-weight:750;border-radius:999px;margin-bottom:8px">${isStale ? `⏱ Промо от ${staleDD}` : (stateLabel[p.state] || p.state)}</div>
-      <div style="font-size:12px;color:var(--muted);line-height:1.4;margin-bottom:6px">${isStale ? `Тази промоционална цена е от ${staleDD}. Веригата все още не е публикувала актуални данни за днес, така че не сме сигурни дали още важи.` : (stateExplain[p.state] || '')}</div>
-      ${(p.min_30_prior != null && !isStale) ? `<div style="font-size:11px;color:var(--muted)">Най-ниска цена за 30 дни: <b>${disp(p.min_30_prior * fx)} ${sym}</b>${p.median_90 != null ? ` · Медиана за 90 дни: <b>${disp(p.median_90 * fx)} ${sym}</b>` : ''}</div>` : ''}
+      ${(p.claimed_pct && !isStale && p.claimed_pct !== p.omnibus_pct) ? `<div style="font-size:11px;color:var(--muted);margin-bottom:8px">${PMII.claimedOn} <b style="color:var(--muted);text-decoration:line-through">−${p.claimed_pct}%</b> ${PMII.claimedVs} ${disp(p.retail * fx)} ${sym}</div>` : ''}
+      <div style="display:inline-block;padding:5px 10px;background:${isStale ? '#94a3b8' : (badgeColor[p.state]||'#94a3b8')};color:#fff;font-size:12px;font-weight:750;border-radius:999px;margin-bottom:8px">${isStale ? `${PMII.staleBadge} ${staleDD}` : (stateLabel[p.state] || p.state)}</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.4;margin-bottom:6px">${isStale ? `PMII.staleExplain.replace('{date}', staleDD)` : (stateExplain[p.state] || '')}</div>
+      ${(p.min_30_prior != null && !isStale) ? `<div style="font-size:11px;color:var(--muted)">${PMII.lowest30} <b>${disp(p.min_30_prior * fx)} ${sym}</b>${p.median_90 != null ? ` · ${PMII.median90} <b>${disp(p.median_90 * fx)} ${sym}</b>` : ''}</div>` : ''}
     </div>
-    ${points.length ? `<div style="padding:0 12px 18px"><canvas id="prod-chart" style="max-height:220px"></canvas><div style="font-size:11px;color:var(--muted);text-align:center;margin-top:6px">${points.length} наблюдения за последните ${H.window_days} дни · 🔴 промо · ⚫ обичайна</div></div>` : '<div style="padding:20px;text-align:center;color:var(--muted)">Няма данни за история</div>'}
+    ${points.length ? `<div style="padding:0 12px 18px"><canvas id="prod-chart" style="max-height:220px"></canvas><div style="font-size:11px;color:var(--muted);text-align:center;margin-top:6px">${points.length} ${PMII.chartObs.replace('{days}', H.window_days)} · ${PMII.chartLegend}</div></div>` : '<div style="padding:20px;text-align:center;color:var(--muted)">Няма данни за история</div>'}
     <div style="padding:0 18px 18px">
       ${(() => { const CI = CART_I18N[country.lang] || CART_I18N.bg; return pcartHas(p.id, p.chain) ? `<button onclick="pcartRemove(window.__prodModalCurrent.id, window.__prodModalCurrent.chain); pcartChanged(); openProductDetail(window.__prodModalCurrent)" style="width:100%;padding:14px;background:var(--card);border:2px solid var(--green);border-radius:12px;font-size:15px;font-weight:800;color:var(--green);cursor:pointer">✓ ${CI.remove}</button>` : `<button onclick="pcartAdd(window.__prodModalCurrent); pcartChanged(); openProductDetail(window.__prodModalCurrent)" style="width:100%;padding:14px;background:var(--green);border:none;border-radius:12px;font-size:15px;font-weight:800;color:#fff;cursor:pointer;box-shadow:0 4px 12px rgba(22,163,74,0.25)">➕ ${CI.add}</button>`; })()}
     </div>
