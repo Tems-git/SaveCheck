@@ -918,6 +918,56 @@ const INFO_I18N = {
   },
 };
 
+// Product detail modal i18n. Session 1: verdict system (stateLabel +
+// stateExplain). Session 2 will add inline strings (stats labels, chart
+// legend, stale text, error message).
+const PRODUCT_MODAL_I18N = {
+  bg: {
+    stateLabel: { real:'🟢 Реална промо', cosmetic:'🟡 Козметична отстъпка', fake:'🔴 Подвеждаща промо', unverified:'⚪ Непроверена', regular:'💠 Обичайна цена' },
+    stateExplain: { real:'Цената е под най-ниската от последните 30 дни. Реална икономия спрямо обичайното.', cosmetic:'Отстъпката е малка. По-скоро визуален трик, отколкото реална икономия.', fake:'"Промоционалната" цена НЕ е под най-ниската за 30 дни. Стара цена ≠ обичайна цена.', unverified:'Недостатъчна история за проверка (по-малко от 3 наблюдения за 30 дни).', regular:'Продуктът не е обявен като промоционален в момента.' },
+  },
+  en: {
+    stateLabel: { real:'🟢 Real promo', cosmetic:'🟡 Cosmetic discount', fake:'🔴 Misleading promo', unverified:'⚪ Unverified', regular:'💠 Regular price' },
+    stateExplain: { real:'The price is below the lowest of the last 30 days. Real savings vs. the usual.', cosmetic:'The discount is small. More of a visual trick than a real saving.', fake:'The "promo" price is NOT below the 30-day low. Old price ≠ usual price.', unverified:'Not enough history to verify (fewer than 3 observations in 30 days).', regular:'The product is not currently marketed as a promo.' },
+  },
+  sr: {
+    stateLabel: { real:'🟢 Prava akcija', cosmetic:'🟡 Kozmetički popust', fake:'🔴 Obmanjujuća akcija', unverified:'⚪ Neproverena', regular:'💠 Uobičajena cena' },
+    stateExplain: { real:'Cena je ispod najniže cene poslednjih 30 dana. Prava ušteda u odnosu na uobičajeno.', cosmetic:'Popust je mali. Više vizuelni trik nego prava ušteda.', fake:'"Akcijska" cena NIJE ispod najniže cene za 30 dana. Stara cena ≠ uobičajena cena.', unverified:'Nedovoljno istorije za proveru (manje od 3 osmatranja za 30 dana).', regular:'Proizvod trenutno nije označen kao akcija.' },
+  },
+  mk: {
+    stateLabel: { real:'🟢 Вистинска промо', cosmetic:'🟡 Козметички попуст', fake:'🔴 Заблудувачка промо', unverified:'⚪ Непроверена', regular:'💠 Вообичаена цена' },
+    stateExplain: { real:'Цената е под најниската од последните 30 дена. Вистинска заштеда во однос на вообичаеното.', cosmetic:'Попустот е мал. Повеќе визуелен трик отколку вистинска заштеда.', fake:'"Промотивната" цена НЕ е под најниската за 30 дена. Старата цена ≠ вообичаена цена.', unverified:'Недоволна историја за проверка (помалку од 3 набљудувања за 30 дена).', regular:'Производот моментално не е означен како промо.' },
+  },
+  ro: {
+    stateLabel: { real:'🟢 Promo reală', cosmetic:'🟡 Reducere cosmetică', fake:'🔴 Promo înșelătoare', unverified:'⚪ Neverificată', regular:'💠 Preț obișnuit' },
+    stateExplain: { real:'Prețul este sub cel mai mic din ultimele 30 de zile. Economie reală față de obișnuit.', cosmetic:'Reducerea este mică. Mai degrabă un truc vizual decât o economie reală.', fake:'Prețul "promoțional" NU este sub minimul de 30 de zile. Preț vechi ≠ preț obișnuit.', unverified:'Istoric insuficient pentru verificare (sub 3 observații în 30 de zile).', regular:'Produsul nu este marcat ca promoție în acest moment.' },
+  },
+  el: {
+    stateLabel: { real:'🟢 Πραγματική προσφορά', cosmetic:'🟡 Καλλωπιστική έκπτωση', fake:'🔴 Παραπλανητική προσφορά', unverified:'⚪ Μη επαληθευμένη', regular:'💠 Συνήθης τιμή' },
+    stateExplain: { real:'Η τιμή είναι κάτω από τη χαμηλότερη των τελευταίων 30 ημερών. Πραγματική εξοικονόμηση σε σχέση με τη συνήθη.', cosmetic:'Η έκπτωση είναι μικρή. Μάλλον οπτικό τέχνασμα παρά πραγματική εξοικονόμηση.', fake:'Η "προσφορά" ΔΕΝ είναι κάτω από το ελάχιστο 30 ημερών. Παλιά τιμή ≠ συνήθης τιμή.', unverified:'Ανεπαρκές ιστορικό για επαλήθευση (κάτω από 3 παρατηρήσεις σε 30 ημέρες).', regular:'Το προϊόν δεν σημειώνεται ως προσφορά αυτή τη στιγμή.' },
+  },
+  tr: {
+    stateLabel: { real:'🟢 Gerçek indirim', cosmetic:'🟡 Kozmetik indirim', fake:'🔴 Yanıltıcı indirim', unverified:'⚪ Doğrulanmamış', regular:'💠 Normal fiyat' },
+    stateExplain: { real:'Fiyat, son 30 günün en düşüğünün altında. Olağan fiyata göre gerçek tasarruf.', cosmetic:'İndirim küçük. Gerçek tasarruftan çok görsel bir hile.', fake:'"İndirimli" fiyat 30 günlük en düşüğün ALTINDA DEĞİL. Eski fiyat ≠ olağan fiyat.', unverified:'Doğrulamak için yetersiz geçmiş (30 günde 3 gözlemden az).', regular:'Ürün şu anda promosyon olarak işaretlenmemiş.' },
+  },
+  sq: {
+    stateLabel: { real:'🟢 Ofertë e vërtetë', cosmetic:'🟡 Zbritje kozmetike', fake:'🔴 Ofertë mashtruese', unverified:'⚪ E paverifikuar', regular:'💠 Çmim i zakonshëm' },
+    stateExplain: { real:'Çmimi është nën më të ulëtin e 30 ditëve të fundit. Kursim real krahasuar me të zakonshmen.', cosmetic:'Zbritja është e vogël. Më shumë truk vizual sesa kursim real.', fake:'Çmimi "promocional" NUK është nën minimumin 30-ditor. Çmim i vjetër ≠ çmim i zakonshëm.', unverified:'Histori e pamjaftueshme për verifikim (nën 3 vëzhgime në 30 ditë).', regular:'Produkti nuk është shënuar aktualisht si promocion.' },
+  },
+  bs: {
+    stateLabel: { real:'🟢 Prava akcija', cosmetic:'🟡 Kozmetički popust', fake:'🔴 Obmanjujuća akcija', unverified:'⚪ Neprovjerena', regular:'💠 Uobičajena cijena' },
+    stateExplain: { real:'Cijena je ispod najniže cijene posljednjih 30 dana. Prava ušteda u odnosu na uobičajeno.', cosmetic:'Popust je mali. Više vizualni trik nego prava ušteda.', fake:'"Akcijska" cijena NIJE ispod najniže za 30 dana. Stara cijena ≠ uobičajena cijena.', unverified:'Nedovoljno historije za provjeru (manje od 3 opažanja za 30 dana).', regular:'Proizvod trenutno nije označen kao akcija.' },
+  },
+  hr: {
+    stateLabel: { real:'🟢 Prava akcija', cosmetic:'🟡 Kozmetički popust', fake:'🔴 Obmanjujuća akcija', unverified:'⚪ Neprovjerena', regular:'💠 Uobičajena cijena' },
+    stateExplain: { real:'Cijena je ispod najniže cijene posljednjih 30 dana. Prava ušteda u odnosu na uobičajeno.', cosmetic:'Popust je mali. Više vizualni trik nego prava ušteda.', fake:'"Akcijska" cijena NIJE ispod najniže za 30 dana. Stara cijena ≠ uobičajena cijena.', unverified:'Nedovoljno povijesti za provjeru (manje od 3 opažanja u 30 dana).', regular:'Proizvod trenutno nije označen kao akcija.' },
+  },
+  sl: {
+    stateLabel: { real:'🟢 Prava akcija', cosmetic:'🟡 Kozmetični popust', fake:'🔴 Zavajajoča akcija', unverified:'⚪ Nepreverjena', regular:'💠 Običajna cena' },
+    stateExplain: { real:'Cena je pod najnižjo v zadnjih 30 dneh. Pravi prihranek v primerjavi z običajnim.', cosmetic:'Popust je majhen. Bolj vizualni trik kot pravi prihranek.', fake:'"Akcijska" cena NI pod najnižjo v 30 dneh. Stara cena ≠ običajna cena.', unverified:'Premalo zgodovine za preverjanje (manj kot 3 opažanja v 30 dneh).', regular:'Izdelek trenutno ni označen kot akcija.' },
+  },
+};
+
 // Empty-state card. Reusable across Home / (later) Brochures / Search /
 // other list views. Icon + title + hint, plus optional action button.
 function emptyStatePanel({icon, title, hint, actionLabel, actionAttr}) {
@@ -2071,14 +2121,9 @@ async function openProductDetail(p) {
   const refDay = new Date(H.ref_day + 'T00:00:00');
   const chainsHist = H.products[p.id] || {};
   const points = (chainsHist[p.chain] || []).slice().sort((a, b) => b[0] - a[0]);
-  const stateLabel = { real: '🟢 Реална промо', cosmetic: '🟡 Козметична отстъпка', fake: '🔴 Подвеждаща промо', unverified: '⚪ Непроверена', regular: '💠 Обичайна цена' };
-  const stateExplain = {
-    real: `Цената е под най-ниската от последните 30 дни. Реална икономия спрямо обичайното.`,
-    cosmetic: `Отстъпката е малка. По-скоро визуален трик, отколкото реална икономия.`,
-    fake: `"Промоционалната" цена НЕ е под най-ниската за 30 дни. Стара цена ≠ обичайна цена.`,
-    unverified: `Недостатъчна история за проверка (по-малко от 3 наблюдения за 30 дни).`,
-    regular: `Продуктът не е обявен като промоционален в момента.`,
-  };
+  const PMI = PRODUCT_MODAL_I18N[country.lang] || PRODUCT_MODAL_I18N.bg;
+  const stateLabel = PMI.stateLabel;
+  const stateExplain = PMI.stateExplain;
   const badgeColor = { real: 'var(--green)', cosmetic: '#eab308', fake: 'var(--red)', unverified: '#94a3b8', regular: '#6366f1' };
   const sym = country.sym, fx = country.fx;
   content.innerHTML = `
