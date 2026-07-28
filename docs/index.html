@@ -2267,7 +2267,7 @@ function openCart() {
   enriched.forEach(e => { if (e.retail && e.retail > e.price) savedVsRetail += (e.retail - e.price) * qty(e); });
   const perChain = {};
   enriched.forEach(e => { const c = e.it.chain; if (!perChain[c]) perChain[c] = { count: 0, sum: 0 }; perChain[c].count += qty(e); perChain[c].sum += e.price * qty(e); });
-  const chainRows = Object.entries(perChain).sort((a,b) => a[0].localeCompare(b[0])).map(([c, info]) => `<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 12px;font-size:13px"><span>${c} <span style="color:var(--muted);font-size:11px">· ${info.count} ${info.count===1?'продукт':'продукта'}</span></span><span style="font-weight:700">${disp(info.sum * fx)} ${sym}</span></div>`).join('');
+  const chainRows = Object.entries(perChain).sort((a,b) => a[0].localeCompare(b[0])).map(([c, info]) => `<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 12px;font-size:13px"><span>${c} <span style="color:var(--muted);font-size:11px">· ${info.count} ${info.count===1?(HX[country.lang]||HX.bg).itemSingular:(HX[country.lang]||HX.bg).itemPlural}</span></span><span style="font-weight:700">${disp(info.sum * fx)} ${sym}</span></div>`).join('');
   const itemsHTML = enriched.map((e, i) => {
     const it = e.it;
     const stIcon = stateMap[e.state] || '';
