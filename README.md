@@ -4,7 +4,7 @@
 
 **SaveCheck** проверява дали промоцията в супермаркета е истинска или маркетингова измама. Сравнява текущата цена на всеки конкретен продукт с 90-дневната му история и прилага логиката на **EU Omnibus директива (чл. 6а)** — референцията е не „старата цена" от етикета, а реалното дъно за последните 30 дни преди промоцията.
 
-🔗 **Live demo:** [real365.store](https://real365.store) (installable като PWA)
+🔗 **Live demo:** [real365.store](https://real365.store) (installable като PWA, зад Cloudflare с A-grade security headers)
 
 ---
 
@@ -20,7 +20,7 @@ scripts/gen_demo_data.py  ──►  docs/products.js             (product-first
 scripts/gen_brochures.py  ──►  docs/brochures.js            (седмични промоции с fallback)
         │
         ▼  (GitHub Actions, два пъти на ден — 10:00 и 18:00 UTC)
-GitHub Pages auto-deploy ──► Live сайт
+GitHub Pages ──► Cloudflare edge (proxy) ──► Live сайт с security headers
 ```
 
 **Core module:** [`src/savecheck/pricing/snapshot.py`](src/savecheck/pricing/snapshot.py) — `compute_snapshot(offering, ref)` е single source of truth. И `gen_demo_data.py` (products.js), и `gen_brochures.py` (brochures.js) използват точно същата функция за да изчислят verdict-a на всеки продукт. Това гарантира, че броят real deals в Home и броят green items в брошурата за същата верига **винаги съвпадат**.
@@ -65,12 +65,13 @@ GitHub Pages auto-deploy ──► Live сайт
 ### Детайл модал на продукт
 
 - Име, верига, KZP категория
-- Badge за state с обяснение
+- Badge за state с обяснение (i18n across 11 languages чрез `PRODUCT_MODAL_I18N.stateLabel` / `stateExplain`)
 - Разграничение на процентите:
   - **„Реално −N%"** (зелен, спрямо 90-дневната медиана)
   - **„Обявено на етикета −N%"** (сив, спрямо retail) — показва се само когато двата се различават
 - 90-дневна графика на цената (промо дни в червено, обичайни в тъмно сиво). Chart.js библиотеката и данните от `products-history.js` се зареждат lazy паралелно (`Promise.all`) при първо отваряне на модала — не блокират initial paint на Home.
 - Stale маркер „от dd.m" ако цената е от преди днешния snapshot
+- Stats labels (Най-ниска цена за 30 дни / Медиана за 90 дни), chart legend (наблюдения, промо, обичайна), chart empty state — всички i18n across 11 languages
 - **Focus management** — при отваряне фокусът скача на × close бутона; при затваряне се връща на елемента, който отвори модала (продуктова карта)
 - **Focus trap** — Tab циклира вътре в модала, не бяга навън
 
@@ -81,9 +82,9 @@ GitHub Pages auto-deploy ──► Live сайт
 **Cart icon** (top-right) → cart-modal:
 - Per-item state icons (🟢🟡🔴⚪) — real-time от products.js
 - Live price refresh при отваряне на модала
-- **+/− количество** на всеки item
+- **+/− количество** на всеки item с i18n aria-label + hover title (11 langs)
 - **Общо** + **Спестяваш спрямо цените на етикета**
-- **Разбивка ПО ВЕРИГИ** (само информативно) с честен disclaimer защо не сравняваме един и същ продукт между вериги (различни product кодове; cross-chain matching е separate roadmap item)
+- **Разбивка ПО ВЕРИГИ** (само информативно) с per-chain totals + item counts (i18n plural) и честен disclaimer защо не сравняваме един и същ продукт между вериги (различни product кодове; cross-chain matching е separate roadmap item)
 
 **Home cart hook** → Shop view Basket:
 - Chain grouping (per-chain панели с per-chain total)
@@ -108,20 +109,23 @@ GitHub Pages auto-deploy ──► Live сайт
 - **Install to Home Screen** — Chrome Android + Safari iOS показват install prompt след първо посещение; app-ът отваря fullscreen без URL bar
 - **Offline shell** — при загубена връзка (супермаркет с лош signal, метро) app-ът все още отваря с последния cached snapshot
 
-### 🌍 11-language coverage
+### 🌍 11-language coverage (100% на visible UI)
 
 UI-ят е локализиран за **BG, EN, SR, MK, RO, EL, TR, SQ, BS, HR, SL** — Balkan region + English като lingua franca за международна expansion. Language selector в top-right показва флаг+код на всичките 11.
 
 **Централизирани i18n dictionaries** — всеки нов user-facing string минава през centralized dictionary с cross-reference pattern:
-- `BX` / `BX_EX` — main labels (~60 keys)
+- `BX` / `BX_EX` — main labels (~60 keys) + a11y aria-labels (close, product details, info dialog, qty +/-, remove)
 - `UI` — product modal + product chrome
 - `HX` — home labels + item plurals + cart savings label
-- `HEADER_I18N` — brand tagline, section labels, "See all N" toggle
-- `CART_I18N` — cart button labels + modal chrome (total, savings, disclaimer, clear confirm) + cross-referenced button labels (cart empty hint interpolира actual button label — rename на бутона обновява и hint-a automatically)
-- `CUSTOM_I18N` — "Не забравяй" custom notes cluster
+- `HEADER_I18N` — brand tagline, section labels, "See all N" toggle, footer link
+- `CART_I18N` — cart button labels + modal chrome (total, savings, disclaimer, clear confirm)
+- `CUSTOM_I18N` — „Не забравяй" custom notes cluster
 - `EMPTY` — differentiated empty states
-- `INFO_I18N` — "Как работи SaveCheck" info modal (~1000 chars × 11 langs)
+- `INFO_I18N` — „Как работи SaveCheck" info modal (~1000 chars × 11 langs)
+- `PRODUCT_MODAL_I18N` — verdict system (stateLabel + stateExplain nested)
+- `PRODUCT_MODAL_INLINE` — stats labels, chart legend, stale text, error message
 - `TAG` / `BADGE` — verdict labels
+- `FILTER_ALL` / `NO_MATCH` — utility dicts
 
 **Language persistence** — избраният език се запазва в `localStorage` (`savecheck_lang`) и се възстановява при следващо посещение. Fallback до BG default при blocked localStorage (private mode).
 
@@ -129,19 +133,34 @@ UI-ят е локализиран за **BG, EN, SR, MK, RO, EL, TR, SQ, BS, HR,
 
 Валута default е EUR за MVP; per-country (RON, RSD, MKD, TRY, ALL, BAM) се set-ва при реален launch в дадена страна.
 
+### 🔒 Security headers (Cloudflare proxy)
+
+Домейнът минава през Cloudflare edge (free plan) с Transform Rules за 7 HTTP response headers:
+
+| Header | Value | Защита |
+|--------|-------|--------|
+| `Strict-Transport-Security` | `max-age=15552000` (6 months) | Forced HTTPS, protection от MITM downgrade |
+| `Content-Security-Policy` | `default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self' https://kolkostruva.bg https://cdn.jsdelivr.net; frame-ancestors 'none'; ...` | XSS defense-in-depth, resource origin restriction |
+| `X-Content-Type-Options` | `nosniff` | Prevent MIME sniffing |
+| `X-Frame-Options` | `DENY` | Prevent clickjacking (iframe embedding) |
+| `Referrer-Policy` | `strict-origin-when-cross-origin` | User privacy на outbound links |
+| `Permissions-Policy` | `camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()` | Deny unused browser APIs + opt-out от Google FLoC |
+
+**Grade A** на securityheaders.com (capped при A because CSP includes `'unsafe-inline'` — SaveCheck ползва много inline event handlers; refactor до strict CSP + nonce би било 5-10 часа работа за theoretical XSS benefit).
+
 ### Общи UX
 
 - **Escape** затваря модала
 - **„Първите 30 от N"** в search резултатите — ясно е, че виждаш само част
 - **Auto-refresh** на Home hero и кошница когато добавяш/маха продукти
 - **HTML escape** на всички КЗП имена преди render (защита от stored XSS)
-- **2-line clamp** на продуктовите имена в Home и Кошница — производителят/суффиксът остава видим при подобни продукти (напр. `БУТ СВИНСКИ БЕЗ КОСТ ПРОИЗХОД БЪЛГАРИЯ БИЛЯНА-МЕС`), без визуален бъркотия при кратките имена
+- **2-line clamp** на продуктовите имена в Home и Кошница — производителят/суффиксът остава видим при подобни продукти
 - Продуктовите имена остават оригинални (КЗП feed-a е bilingual само за категории)
 
 ### ♿ Достъпност (a11y)
 
 - **ARIA семантика** — модалите имат `role="dialog"`, `aria-modal="true"`, `aria-label` синхронизиран с текущия език
-- **Screen reader labels** — × close бутоните имат class-based `aria-label` (`closeLabel` key в BX за всичките 11 lang); search input, cart button, scan quick button — всички aria-labels се обновяват в `renderChrome()` при смяна на език
+- **Screen reader labels** — × close бутоните имат class-based `aria-label` (`closeLabel` key в BX за всичките 11 lang); search input, cart button, cart qty +/-, cart item remove — всички aria-labels + hover title attributes се обновяват в `renderChrome()` при смяна на език
 - **Клавиатурна навигация** — product cards на Home и brochure items са `tabindex="0"` с `role="button"` + `onkeydown` handler за Enter/Space, така че цялата app-a е доступна без mouse
 - **Focus indicator** — `:focus-visible` показва ясен зелен outline (2px, outline-offset 2px) само при клавиатурна навигация, не при mouse click — не разсейва mouse users
 - **Focus trap** — при отворен модал Tab циклира в него, не бяга навън; при затваряне фокусът се връща на trigger element-a. Selector-ът е class-based (`.modal-close`), не aria-label-based — decoupled от i18n switching.
@@ -184,7 +203,7 @@ Threshold-ите са в `gen_demo_data.py` на module top level за лесн�
 Три output-a се генерират в един pass:
 
 - **`products.js`** — compact current-snapshot: name, chain, price, retail, is_promo, state, omnibus_pct, KZP category, BASKET category tags (0..N). ~1.8 MB.
-- **`products-history.js`** — full 90-day price history per оферта, в компактен `[day_offset, price, is_promo]` формат. Nested `{product_key: {chain: [[o,p,s], ...]}}`. Loaded lazy при първо отваряне на детайл-модал. ~6 MB uncompressed / 0.87 MB gzip.
+- **`products-history.js`** — full 90-day price history per оферта, в компактен `[day_offset, price, is_promo]` формат. Loaded lazy при първо отваряне на детайл-модал. ~6 MB uncompressed / 0.87 MB gzip.
 - **`data.js`** — legacy 22-категорийна витрина, реконструирана от product-first index-a. Захранва Битката на титаните и остатъчна легенда. **Планирано за removal** — Titans ще мигрира към products.js meta, което ще позволи drop-ване на 880 KB payload + един по-малко файл в cron pipeline-a.
 
 `gen_brochures.py` използва същия `load_all_products` + `compute_snapshot` pipeline, филтрира по `is_promo=True` at REF, сортира по: **(1)** verdict — 🟢 green → 🟡 yellow → ⚪ gray → 🔴 red, **(2)** basket items първи в рамките на всеки verdict, **(3)** omnibus_pct desc — най-голяма реална отстъпка първа, cap 500 per chain. Verdict-first подредбата прави брошурата scannable (всички реални deals заедно, после cosmetic, gray, накрая fake) вместо разбъркана.
@@ -197,7 +216,7 @@ Initial page load (post-optimization):
 
 | Layer | Size | Note |
 |-------|------|------|
-| `index.html` | ~198 KB | Single-file, all UI + logic (11 lang i18n dicts inline) |
+| `index.html` | ~208 KB | Single-file, all UI + logic (11 lang × 12 i18n dicts inline) |
 | `products.js` | ~1.8 MB | Product-first snapshot, eager |
 | `data.js` | ~880 KB | Legacy, still eager (to be dropped) |
 | `hero-banner.webp` | ~400 KB | Was 2.9 MB PNG, converted (-86%) |
@@ -222,17 +241,18 @@ Combined win from WebP conversion + brochures lazy load: **~4 MB less** on first
 
 | Layer | Технология |
 |-------|------------|
-| Frontend | Single-file HTML/CSS/JS (vanilla, no framework), ~198 KB |
+| Frontend | Single-file HTML/CSS/JS (vanilla, no framework), ~208 KB |
 | Charts | Chart.js 4.4 (jsDelivr CDN, lazy loaded on first modal open) |
 | Data | `window.SAVECHECK_PRODUCTS` (snapshot) + `window.SAVECHECK_HISTORY` (lazy) + `window.SAVECHECK_BROCHURES` (lazy) + `window.SAVECHECK_DEMO` (legacy, to be removed) |
 | PWA | Web App Manifest + Service Worker (two-tier caching: cache-first shell, network-first data) |
 | Images | WebP (hero-banner, logo) — modern browser fallback, ~90% smaller than PNG source |
 | Fonts | Twemoji Country Flags WOFF2 (78 KB, unicode-range scoped, `font-display: swap`) for flag rendering on Windows 10 |
-| i18n | 11 languages, centralized dicts, localStorage persistence |
+| i18n | 11 languages, 12 centralized dicts, localStorage persistence, 100% visible UI coverage |
+| Security | Cloudflare proxy пред GitHub Pages, 7 Transform Rules за HSTS + CSP + 5 други headers, A grade на securityheaders.com |
 | Backend | Python 3.11+ (`src/savecheck/`) |
 | Pricing engine | `savecheck.pricing` — `evaluate_series()`, `compute_stats()`, `compute_snapshot()` |
 | Ingest | `savecheck.ingest.kolkostruva` — парсва КЗП CSV |
-| CI/CD | GitHub Actions (daily cron × 2, 10:00 + 18:00 UTC) + GitHub Pages (auto-deploy on push към main) |
+| CI/CD | GitHub Actions (daily cron × 2, 10:00 + 18:00 UTC) + GitHub Pages (auto-deploy on push към main) → Cloudflare edge |
 
 ---
 
@@ -290,7 +310,7 @@ pytest tests/ -v
 2. Пуска `gen_demo_data.py` → `docs/data.js`, `docs/products.js`, `docs/products-history.js`
 3. Пуска `gen_brochures.py` → `docs/brochures.js`
 4. `git commit && git push` **само ако** има реални промени (иначе no-op — вторият run е тих ако първият вече е взел днешния feed)
-5. GitHub Pages автоматично деплойва новия commit на `https://real365.store`
+5. GitHub Pages автоматично деплойва новия commit → Cloudflare edge → `https://real365.store`
 
 **Commit message stamps data date, not runner date.** КЗП понякога публикува feed-а с 1+ ден закъснение, така че commit-a от 21 юли може да съдържа data-та за 19 юли. Ако commit message-a казваше runner date-a, това би маскирало реалното забавяне. Сега sed-извлича `generated_for` от `products.js` и го използва — commit history и Home stale banner винаги казват едно и също.
 
@@ -303,7 +323,7 @@ pytest tests/ -v
 ```
 SaveCheck/
 ├── docs/
-│   ├── index.html                # Цялото приложение (single-file, ~198 KB)
+│   ├── index.html                # Цялото приложение (single-file, ~208 KB)
 │   ├── sw.js                     # Service Worker (two-tier caching)
 │   ├── manifest.webmanifest      # PWA manifest (install-to-home-screen)
 │   ├── data.js                   # Legacy 22-cat снимка (SAVECHECK_DEMO) — to be dropped
@@ -341,6 +361,8 @@ SaveCheck/
     └── daily-refresh.yml         # Two cron runs (10:00 + 18:00 UTC)
 ```
 
+**External infrastructure:** Cloudflare account (free plan) proxying real365.store — 5 Transform Rules за security headers + native HSTS in SSL/TLS settings. Configuration lives в Cloudflare dashboard, not git.
+
 ---
 
 ## Известни ограничения
@@ -348,12 +370,10 @@ SaveCheck/
 Проактивно flagged, не bugs:
 
 - **`data.js` все още се качва еагерно** (~880 KB). Titans view все още го консумира. Планиран Python change ще мигрира Titans aggregate в `products.js` meta и ще позволи drop-ване на data.js entirely.
-- **Product detail modal chrome** — `stateExplain` verdict descriptions, stats labels (Медиана / Най-ниска), stale price explanation, "Няма данни за история" все още са BG-hardcoded. Тези string-ове живеят function-scoped в `openProductDetail()`, не в global i18n dicts. Готов cluster (`PRODUCT_MODAL_I18N`) за миграция при следваща i18n pass.
-- **Cart qty +/- и remove aria-labels** ("Намали" / "Увеличи" / "Махни") остават BG-hardcoded. Screen reader users на други езици чуват BG при interact с cart items. Modal-level aria (title, close, search) вече са i18n.
 - **Cross-chain matching** — при cart с items от 2+ вериги не сравняваме един и същ продукт между вериги. КЗП product код-ове са различни в различните вериги (същият кашкавал има различен `Код` в Kaufland и в BILLA). Отделен feature за бъдеще — вероятно fuzzy name matching + code lookup.
 - **Products / Recipes / Fridge sub-tabs** — hidden в UI (sub-tab bar не се render-ва в Shop view). Кодът е intact за future revive, но не се достига от навигация.
 - **Legacy dead code** — `renderProducts`, `renderRecipes`, `renderFridge`, `analyzeStores`, `cart`/`cartIds`/`cartSize`, `PRODUCTS` глобал са dormant. Ще се почистват в отделен pass.
-- **Security headers** — CSP, X-Content-Type-Options, Referrer-Policy, Permissions-Policy, X-Frame-Options — липсват. GitHub Pages не позволява custom HTTP headers. Planned: Cloudflare proxy пред GitHub Pages за Transform Rules с всички security headers (defense-in-depth над existing HTML escape XSS protection).
+- **CSP `unsafe-inline`** — SaveCheck има ~200+ inline event handlers (`onclick=`, `onkeydown=`) и inline styles. Strict CSP без `'unsafe-inline'` би изисквало refactor на всичко към `addEventListener` + CSS classes или nonce-based CSP. Effort: 5-10 часа. Каппва security grade на A вместо A+. HTML escape на всички КЗП имена вече минимизира real XSS surface.
 
 ---
 
