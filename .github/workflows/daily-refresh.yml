@@ -58,29 +58,25 @@ jobs:
             D=$(date -u -d "${OFFSET} days ago" +%Y-%m-%d)
             FILE="/tmp/kzp_zips/${D}.zip"
             if [ ! -f "$FILE" ]; then
-              # Download to .tmp, validate archive integrity, then atomically
-              # promote to final with mv. curl -f rejects HTTP 4xx/5xx but
-              # NOT truncated bodies — a connection that drops mid-transfer
-              # still produces a partial .tmp with exit 0. zipfile.testzip()
-              # reads every member and checks CRC; returns None for clean
-              # archives, the name of the first bad member otherwise, and
-              # raises for truncated central directory. A bad archive would
-              # poison the weekly cache for all subsequent runs, so we
-              # refuse to promote it — delete .tmp and let the next
-              # scheduled run re-attempt.
-              if curl -fsSL --retry 3 --retry-delay 5 --max-time 60 --connect-timeout 15 \
+              printf "  %s ... " "${D}"
+              # --max-time 30: hard cap per file (was 60, still hanging silently).
+              # --retry 1: one retry only (was 3 — with 30s cap × 3 = 90s worst per file).
+              # --connect-timeout 10: bail fast if DNS/SYN is slow.
+              # curl -f fails fast on 4xx; -s silences progress; -S surfaces errors.
+              if curl -fsSL --retry 1 --retry-delay 3 --max-time 30 --connect-timeout 10 \
                 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" \
                 "https://kolkostruva.bg/opendata_files/${D}.zip" \
                 -o "${FILE}.tmp"; then
                 if python3 -m zipfile -t "${FILE}.tmp" >/dev/null 2>&1; then
                   mv "${FILE}.tmp" "$FILE"
+                  echo "cached"
                 else
-                  echo "::warning::Corrupt/truncated ZIP for ${D} — not caching"
                   rm -f "${FILE}.tmp"
+                  echo "corrupt (not cached)"
                 fi
               else
                 rm -f "${FILE}.tmp"
-                echo "  Not available: ${D}"
+                echo "not available"
               fi
             fi
           done
