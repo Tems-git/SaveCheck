@@ -72,12 +72,7 @@ jobs:
                 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" \
                 "https://kolkostruva.bg/opendata_files/${D}.zip" \
                 -o "${FILE}.tmp"; then
-                if python3 -c "import sys, zipfile
-try:
-    res = zipfile.ZipFile('${FILE}.tmp').testzip()
-    sys.exit(0 if res is None else 1)
-except Exception:
-    sys.exit(1)" 2>/dev/null; then
+                if python3 -m zipfile -t "${FILE}.tmp" >/dev/null 2>&1; then
                   mv "${FILE}.tmp" "$FILE"
                 else
                   echo "::warning::Corrupt/truncated ZIP for ${D} — not caching"
