@@ -38,8 +38,11 @@ jobs:
         uses: actions/cache@v4
         with:
           path: /tmp/kzp_zips
-          key: kzp-zips-${{ steps.date.outputs.week }}
-          restore-keys: kzp-zips-
+          # v2 prefix invalidates the pre-validation caches that could
+          # contain truncated ZIPs (see incident 2026-07-31). First run
+          # after the bump starts cold and downloads fresh, validated ZIPs.
+          key: kzp-zips-v2-${{ steps.date.outputs.week }}
+          restore-keys: kzp-zips-v2-
 
       - name: Download KZP ZIPs
         run: |
@@ -55,12 +58,35 @@ jobs:
             D=$(date -u -d "${OFFSET} days ago" +%Y-%m-%d)
             FILE="/tmp/kzp_zips/${D}.zip"
             if [ ! -f "$FILE" ]; then
-              curl -fsSL --retry 3 --retry-delay 5 \
+              # Download to .tmp, validate archive integrity, then atomically
+              # promote to final with mv. curl -f rejects HTTP 4xx/5xx but
+              # NOT truncated bodies — a connection that drops mid-transfer
+              # still produces a partial .tmp with exit 0. zipfile.testzip()
+              # reads every member and checks CRC; returns None for clean
+              # archives, the name of the first bad member otherwise, and
+              # raises for truncated central directory. A bad archive would
+              # poison the weekly cache for all subsequent runs, so we
+              # refuse to promote it — delete .tmp and let the next
+              # scheduled run re-attempt.
+              if curl -fsSL --retry 3 --retry-delay 5 \
                 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" \
                 "https://kolkostruva.bg/opendata_files/${D}.zip" \
-                -o "${FILE}.tmp" \
-                && mv "${FILE}.tmp" "$FILE" \
-                || { rm -f "${FILE}.tmp"; echo "  Not available: ${D}"; }
+                -o "${FILE}.tmp"; then
+                if python3 -c "import sys, zipfile
+try:
+    res = zipfile.ZipFile('${FILE}.tmp').testzip()
+    sys.exit(0 if res is None else 1)
+except Exception:
+    sys.exit(1)" 2>/dev/null; then
+                  mv "${FILE}.tmp" "$FILE"
+                else
+                  echo "::warning::Corrupt/truncated ZIP for ${D} — not caching"
+                  rm -f "${FILE}.tmp"
+                fi
+              else
+                rm -f "${FILE}.tmp"
+                echo "  Not available: ${D}"
+              fi
             fi
           done
 
