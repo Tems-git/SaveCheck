@@ -63,7 +63,7 @@ jobs:
               # --retry 1: one retry only (was 3 — with 30s cap × 3 = 90s worst per file).
               # --connect-timeout 10: bail fast if DNS/SYN is slow.
               # curl -f fails fast on 4xx; -s silences progress; -S surfaces errors.
-              if curl -fsSL --retry 1 --retry-delay 3 --max-time 30 --connect-timeout 10 \
+              if curl -fsSL --max-time 90 --connect-timeout 15 \
                 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" \
                 "https://kolkostruva.bg/opendata_files/${D}.zip" \
                 -o "${FILE}.tmp"; then
