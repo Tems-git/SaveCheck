@@ -1,6 +1,6 @@
 {
-  "name": "SaveCheck — Реална ли е промоцията?",
-  "short_name": "SaveCheck",
+  "name": "Real365 — Реална ли е промоцията?",
+  "short_name": "Real365",
   "description": "Проверява дали промоцията е истинска чрез 90-дневна история на цените (EU Omnibus).",
   "lang": "bg",
   "start_url": "./index.html",

@@ -1,5 +1,5 @@
 /*
- * SaveCheck service worker.
+ * Real365 service worker.
  *
  * Two-tier caching strategy:
  *
@@ -22,7 +22,7 @@
  * updates within a couple of visits as fetches happen naturally.
  * ─────────────────────────────────────────────────────────────────
  */
-const CACHE_VERSION = 'v1';
+const CACHE_VERSION = 'v2';
 const CACHE_NAME = `savecheck-${CACHE_VERSION}`;
 
 const SHELL_URLS = [

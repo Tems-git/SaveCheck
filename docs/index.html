@@ -4,9 +4,9 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>SaveCheck — реална ли е промоцията?</title>
+<title>Real365 — реална ли е промоцията?</title>
 <meta name="description" content="Проверява дали промоцията в супермаркета е истинска. 90 дни история на цените, EU Omnibus директива, 5 вериги в България." />
-<meta property="og:title" content="SaveCheck — Реална ли е промоцията?" />
+<meta property="og:title" content="Real365 — Реална ли е промоцията?" />
 <meta property="og:description" content="Сравнява текущата цена с 90-дневната история и казва дали промоцията е реална или фалшива. EU Omnibus директива." />
 <meta property="og:image" content="./og.svg" />
 <meta property="og:type" content="website" />
@@ -20,7 +20,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-<meta name="apple-mobile-web-app-title" content="SaveCheck" />
+<meta name="apple-mobile-web-app-title" content="Real365" />
 <script src="./data.js"></script>
 <script src="./products.js"></script>
 <script>
@@ -345,9 +345,9 @@
 <div class="phone">
   <div class="appbar">
     <div class="brand">
-      <img class="logo" src="./img/logos/logo-d.webp" alt="SaveCheck" onclick="setView('home')" style="cursor:pointer"/>
+      <img class="logo" src="./img/logos/logo-d.webp" alt="Real365" onclick="setView('home')" style="cursor:pointer"/>
       <div class="brand-text" onclick="setView('home')" style="cursor:pointer">
-        <h1>Save<b>Check</b></h1>
+        <h1>Real<b>365</b></h1>
         <div class="brand-tagline">Цените под лупа</div>
       </div>
       <button id="cart-btn" style="display:none;align-items:center;gap:4px;background:none;border:none;padding:6px 8px;cursor:pointer;position:relative;color:var(--fg);font-size:20px;line-height:1" onclick="openCart()" aria-label="Кошница">🛒<span id="cart-badge" style="background:var(--green);color:#fff;font-size:10px;font-weight:800;padding:1px 6px;border-radius:999px;line-height:1.3;min-width:14px;text-align:center">0</span></button>
@@ -662,17 +662,17 @@ const EMPTY = {
 // "press '...'" text in cart empty states. Single-source-of-truth for
 // cart terminology across the app.
 const CART_I18N = {
-  en: { add:'Add to cart', remove:'In cart — remove', emptyTitle:'Cart is empty', emptyHint:'Open a product and press „{action}"', total:'Total', savingsVsLabel:'You save vs. label prices', byChains:'By chain', disclaimer:'SaveCheck doesn\'t compare prices of the same product across different chains — each chain uses its own product code, so we can\'t guarantee the product exists in another chain at the same price.', clearConfirm:'Clear entire cart?' },
-  bg: { add:'Добави в кошницата', remove:'В кошницата — махни', emptyTitle:'Кошницата е празна', emptyHint:'Отвори продукт и натисни „{action}"', total:'Общо', savingsVsLabel:'Спестяваш спрямо цените на етикета', byChains:'По вериги', disclaimer:'SaveCheck не сравнява цените на един и същ продукт през различните вериги — всяка верига използва свой код, така че не можем да гарантираме, че продуктът съществува в друга верига на същата цена.', clearConfirm:'Изчисти цялата кошница?' },
-  sr: { add:'Dodaj u korpu', remove:'U korpi — ukloni', emptyTitle:'Korpa je prazna', emptyHint:'Otvori proizvod i pritisni „{action}"', total:'Ukupno', savingsVsLabel:'Štedite u odnosu na cene sa etikete', byChains:'Po lancima', disclaimer:'SaveCheck ne upoređuje cene istog proizvoda između različitih lanaca — svaki lanac koristi svoj kod, pa ne možemo garantovati da proizvod postoji u drugom lancu po istoj ceni.', clearConfirm:'Obrisati celu korpu?' },
-  mk: { add:'Додај во кошница', remove:'Во кошницата — отстрани', emptyTitle:'Кошницата е празна', emptyHint:'Отвори производ и притисни „{action}"', total:'Вкупно', savingsVsLabel:'Заштедуваш во однос на цените од етикетата', byChains:'По синџири', disclaimer:'SaveCheck не ги споредува цените на истиот производ помеѓу различни синџири — секој синџир користи свој код, па не можеме да гарантираме дека производот постои во друг синџир по иста цена.', clearConfirm:'Да се исчисти целата кошница?' },
-  ro: { add:'Adaugă în coș', remove:'În coș — elimină', emptyTitle:'Coșul este gol', emptyHint:'Deschide un produs și apasă „{action}"', total:'Total', savingsVsLabel:'Economisești față de prețurile de pe etichetă', byChains:'Pe lanțuri', disclaimer:'SaveCheck nu compară prețurile aceluiași produs între lanțuri diferite — fiecare lanț folosește propriul cod, așa că nu putem garanta că produsul există în alt lanț la același preț.', clearConfirm:'Golește tot coșul?' },
-  el: { add:'Προσθήκη στο καλάθι', remove:'Στο καλάθι — αφαίρεση', emptyTitle:'Το καλάθι είναι άδειο', emptyHint:'Άνοιξε ένα προϊόν και πάτησε „{action}"', total:'Σύνολο', savingsVsLabel:'Εξοικονομείς σε σχέση με τις τιμές της ετικέτας', byChains:'Ανά αλυσίδα', disclaimer:'Το SaveCheck δεν συγκρίνει τις τιμές του ίδιου προϊόντος μεταξύ διαφορετικών αλυσίδων — κάθε αλυσίδα χρησιμοποιεί τον δικό της κωδικό, οπότε δεν μπορούμε να εγγυηθούμε ότι το προϊόν υπάρχει σε άλλη αλυσίδα στην ίδια τιμή.', clearConfirm:'Άδειασμα όλου του καλαθιού;' },
-  tr: { add:'Sepete ekle', remove:'Sepette — çıkar', emptyTitle:'Sepet boş', emptyHint:'Bir ürün aç ve „{action}" düğmesine bas', total:'Toplam', savingsVsLabel:'Etiket fiyatlarına göre tasarruf', byChains:'Zincirlere göre', disclaimer:'SaveCheck aynı ürünün fiyatlarını farklı zincirler arasında karşılaştırmaz — her zincir kendi kodunu kullanır, bu nedenle ürünün başka bir zincirde aynı fiyatta bulunduğunu garanti edemeyiz.', clearConfirm:'Tüm sepet temizlensin mi?' },
-  sq: { add:'Shto në shportë', remove:'Në shportë — hiq', emptyTitle:'Shporta është bosh', emptyHint:'Hap një produkt dhe shtyp „{action}"', total:'Totali', savingsVsLabel:'Kurseni krahasuar me çmimet e etiketës', byChains:'Sipas zinxhirëve', disclaimer:'SaveCheck nuk krahason çmimet e të njëjtit produkt mes zinxhirëve të ndryshëm — çdo zinxhir përdor kodin e vet, kështu që nuk mund të garantojmë që produkti ekziston në një zinxhir tjetër me të njëjtin çmim.', clearConfirm:'Të pastrohet e gjithë shporta?' },
-  bs: { add:'Dodaj u korpu', remove:'U korpi — ukloni', emptyTitle:'Korpa je prazna', emptyHint:'Otvori proizvod i pritisni „{action}"', total:'Ukupno', savingsVsLabel:'Štedite u odnosu na cijene sa etikete', byChains:'Po lancima', disclaimer:'SaveCheck ne upoređuje cijene istog proizvoda između različitih lanaca — svaki lanac koristi svoj kod, pa ne možemo garantirati da proizvod postoji u drugom lancu po istoj cijeni.', clearConfirm:'Obrisati cijelu korpu?' },
-  hr: { add:'Dodaj u košaricu', remove:'U košarici — ukloni', emptyTitle:'Košarica je prazna', emptyHint:'Otvori proizvod i pritisni „{action}"', total:'Ukupno', savingsVsLabel:'Štedite u odnosu na cijene s etikete', byChains:'Po lancima', disclaimer:'SaveCheck ne uspoređuje cijene istog proizvoda između različitih lanaca — svaki lanac koristi svoj kod, pa ne možemo jamčiti da proizvod postoji u drugom lancu po istoj cijeni.', clearConfirm:'Isprazniti cijelu košaricu?' },
-  sl: { add:'Dodaj v košarico', remove:'V košarici — odstrani', emptyTitle:'Košarica je prazna', emptyHint:'Odpri izdelek in pritisni „{action}"', total:'Skupaj', savingsVsLabel:'Prihranite v primerjavi s cenami na etiketi', byChains:'Po verigah', disclaimer:'SaveCheck ne primerja cen istega izdelka med različnimi verigami — vsaka veriga uporablja svojo kodo, zato ne moremo zagotoviti, da izdelek obstaja v drugi verigi po enaki ceni.', clearConfirm:'Izprazni celotno košarico?' },
+  en: { add:'Add to cart', remove:'In cart — remove', emptyTitle:'Cart is empty', emptyHint:'Open a product and press „{action}"', total:'Total', savingsVsLabel:'You save vs. label prices', byChains:'By chain', disclaimer:'Real365 doesn\'t compare prices of the same product across different chains — each chain uses its own product code, so we can\'t guarantee the product exists in another chain at the same price.', clearConfirm:'Clear entire cart?' },
+  bg: { add:'Добави в кошницата', remove:'В кошницата — махни', emptyTitle:'Кошницата е празна', emptyHint:'Отвори продукт и натисни „{action}"', total:'Общо', savingsVsLabel:'Спестяваш спрямо цените на етикета', byChains:'По вериги', disclaimer:'Real365 не сравнява цените на един и същ продукт през различните вериги — всяка верига използва свой код, така че не можем да гарантираме, че продуктът съществува в друга верига на същата цена.', clearConfirm:'Изчисти цялата кошница?' },
+  sr: { add:'Dodaj u korpu', remove:'U korpi — ukloni', emptyTitle:'Korpa je prazna', emptyHint:'Otvori proizvod i pritisni „{action}"', total:'Ukupno', savingsVsLabel:'Štedite u odnosu na cene sa etikete', byChains:'Po lancima', disclaimer:'Real365 ne upoređuje cene istog proizvoda između različitih lanaca — svaki lanac koristi svoj kod, pa ne možemo garantovati da proizvod postoji u drugom lancu po istoj ceni.', clearConfirm:'Obrisati celu korpu?' },
+  mk: { add:'Додај во кошница', remove:'Во кошницата — отстрани', emptyTitle:'Кошницата е празна', emptyHint:'Отвори производ и притисни „{action}"', total:'Вкупно', savingsVsLabel:'Заштедуваш во однос на цените од етикетата', byChains:'По синџири', disclaimer:'Real365 не ги споредува цените на истиот производ помеѓу различни синџири — секој синџир користи свој код, па не можеме да гарантираме дека производот постои во друг синџир по иста цена.', clearConfirm:'Да се исчисти целата кошница?' },
+  ro: { add:'Adaugă în coș', remove:'În coș — elimină', emptyTitle:'Coșul este gol', emptyHint:'Deschide un produs și apasă „{action}"', total:'Total', savingsVsLabel:'Economisești față de prețurile de pe etichetă', byChains:'Pe lanțuri', disclaimer:'Real365 nu compară prețurile aceluiași produs între lanțuri diferite — fiecare lanț folosește propriul cod, așa că nu putem garanta că produsul există în alt lanț la același preț.', clearConfirm:'Golește tot coșul?' },
+  el: { add:'Προσθήκη στο καλάθι', remove:'Στο καλάθι — αφαίρεση', emptyTitle:'Το καλάθι είναι άδειο', emptyHint:'Άνοιξε ένα προϊόν και πάτησε „{action}"', total:'Σύνολο', savingsVsLabel:'Εξοικονομείς σε σχέση με τις τιμές της ετικέτας', byChains:'Ανά αλυσίδα', disclaimer:'Το Real365 δεν συγκρίνει τις τιμές του ίδιου προϊόντος μεταξύ διαφορετικών αλυσίδων — κάθε αλυσίδα χρησιμοποιεί τον δικό της κωδικό, οπότε δεν μπορούμε να εγγυηθούμε ότι το προϊόν υπάρχει σε άλλη αλυσίδα στην ίδια τιμή.', clearConfirm:'Άδειασμα όλου του καλαθιού;' },
+  tr: { add:'Sepete ekle', remove:'Sepette — çıkar', emptyTitle:'Sepet boş', emptyHint:'Bir ürün aç ve „{action}" düğmesine bas', total:'Toplam', savingsVsLabel:'Etiket fiyatlarına göre tasarruf', byChains:'Zincirlere göre', disclaimer:'Real365 aynı ürünün fiyatlarını farklı zincirler arasında karşılaştırmaz — her zincir kendi kodunu kullanır, bu nedenle ürünün başka bir zincirde aynı fiyatta bulunduğunu garanti edemeyiz.', clearConfirm:'Tüm sepet temizlensin mi?' },
+  sq: { add:'Shto në shportë', remove:'Në shportë — hiq', emptyTitle:'Shporta është bosh', emptyHint:'Hap një produkt dhe shtyp „{action}"', total:'Totali', savingsVsLabel:'Kurseni krahasuar me çmimet e etiketës', byChains:'Sipas zinxhirëve', disclaimer:'Real365 nuk krahason çmimet e të njëjtit produkt mes zinxhirëve të ndryshëm — çdo zinxhir përdor kodin e vet, kështu që nuk mund të garantojmë që produkti ekziston në një zinxhir tjetër me të njëjtin çmim.', clearConfirm:'Të pastrohet e gjithë shporta?' },
+  bs: { add:'Dodaj u korpu', remove:'U korpi — ukloni', emptyTitle:'Korpa je prazna', emptyHint:'Otvori proizvod i pritisni „{action}"', total:'Ukupno', savingsVsLabel:'Štedite u odnosu na cijene sa etikete', byChains:'Po lancima', disclaimer:'Real365 ne upoređuje cijene istog proizvoda između različitih lanaca — svaki lanac koristi svoj kod, pa ne možemo garantirati da proizvod postoji u drugom lancu po istoj cijeni.', clearConfirm:'Obrisati cijelu korpu?' },
+  hr: { add:'Dodaj u košaricu', remove:'U košarici — ukloni', emptyTitle:'Košarica je prazna', emptyHint:'Otvori proizvod i pritisni „{action}"', total:'Ukupno', savingsVsLabel:'Štedite u odnosu na cijene s etikete', byChains:'Po lancima', disclaimer:'Real365 ne uspoređuje cijene istog proizvoda između različitih lanaca — svaki lanac koristi svoj kod, pa ne možemo jamčiti da proizvod postoji u drugom lancu po istoj cijeni.', clearConfirm:'Isprazniti cijelu košaricu?' },
+  sl: { add:'Dodaj v košarico', remove:'V košarici — odstrani', emptyTitle:'Košarica je prazna', emptyHint:'Odpri izdelek in pritisni „{action}"', total:'Skupaj', savingsVsLabel:'Prihranite v primerjavi s cenami na etiketi', byChains:'Po verigah', disclaimer:'Real365 ne primerja cen istega izdelka med različnimi verigami — vsaka veriga uporablja svojo kodo, zato ne moremo zagotoviti, da izdelek obstaja v drugi verigi po enaki ceni.', clearConfirm:'Izprazni celotno košarico?' },
 };
 
 // UI chrome i18n — brand tagline and section labels that live outside
@@ -695,7 +695,7 @@ const HEADER_I18N = {
 };
 
 // Custom notes (шопинг reminders). These are free-text items the user
-// jots down for things SaveCheck doesn't track (salt, some specialty,
+// jots down for things Real365 doesn't track (salt, some specialty,
 // whatever). Separate from pcart because they have no price/verdict/
 // history — they're just reminders, not line items.
 const CUSTOM_I18N = {
@@ -712,231 +712,231 @@ const CUSTOM_I18N = {
   sl: { title:'Ne pozabi', placeholder:'Dodaj opombo…', hint:'Ročne opombe se ne štejejo v skupni znesek' },
 };
 
-// Info modal ("Как работи SaveCheck?") — the biggest single i18n block.
+// Info modal ("Как работи Real365?") — the biggest single i18n block.
 // Translated across all 10 UI languages. Uses {link} placeholder in
 // dataText so the actual anchor tag stays in code (not repeated per lang).
 // Bold spans in prose stay inline — they wrap short semantic phrases
 // consistently across languages.
 const INFO_I18N = {
   en: {
-    title: 'How SaveCheck works',
+    title: 'How Real365 works',
     subtitle: 'Logic in the spirit of the EU Omnibus directive',
-    intro: 'SaveCheck checks whether the supermarket promo is a <b>real saving</b> or a <b>marketing illusion</b>. We don\'t trust the „old price" on the label — it\'s often set artificially so the discount looks bigger.',
+    intro: 'Real365 checks whether the supermarket promo is a <b>real saving</b> or a <b>marketing illusion</b>. We don\'t trust the „old price" on the label — it\'s often set artificially so the discount looks bigger.',
     howMeasureTitle: '📏 How we measure',
     howMeasureP1: 'For each product we track its price at 5 supermarkets (Lidl, Kaufland, Billa, Fantastico, T Market) over the last <b>90 days</b>. The reference we compare today\'s „promo" price against is <b>the lowest price of this specific product in the last 30 days</b>. If today\'s „promo" price isn\'t below that reference — it\'s not a real discount.',
-    howMeasureP2: 'This is the logic that the <b>EU Omnibus directive (art. 6a)</b> requires from retailers when announcing discounts. SaveCheck shows you whether they followed it.',
+    howMeasureP2: 'This is the logic that the <b>EU Omnibus directive (art. 6a)</b> requires from retailers when announcing discounts. Real365 shows you whether they followed it.',
     iconsTitle: '🎯 What the icons mean',
     iconRealTitle: 'Real promo', iconRealText: 'today\'s price is below the 30-day floor. A deserved discount.',
     iconCosmeticTitle: 'Cosmetic', iconCosmeticText: 'there\'s a small discount, but not a significant one. More of a visual trick.',
     iconFakeTitle: 'Misleading', iconFakeText: 'a promo is announced, but the price is NOT below the 30-day floor. Old price ≠ usual price.',
     iconUnverifiedTitle: 'Unverified', iconUnverifiedText: 'there\'s a promo, but we didn\'t have enough data (fewer than 3 observations in 30 days).',
     dataTitle: '📡 Where the data comes from',
-    dataText: 'From {link} — a public price registry that retailers are required to publish daily. SaveCheck updates them every day at 13:00 EET.',
+    dataText: 'From {link} — a public price registry that retailers are required to publish daily. Real365 updates them every day at 13:00 EET.',
     dataLinkText: 'the official KZP „Kolko struva" portal',
     coverageTitle: '📋 What we cover',
     coverageText: 'We work with the <b>regulated Bulgarian consumer basket</b> — roughly 100 staple products (bread, milk, eggs, meat, apples, bananas, tomatoes, potatoes, oil, and the like). Seasonal items like <b>watermelon, melon, apricots, cherries, blueberries</b> and specialty products <b>are not</b> in the open-data feed and won\'t show here, even if they\'re promoted in a chain\'s brochure.',
     limitsTitle: '⚠️ What we DON\'T do',
-    limitsText: 'We\'re not a financial advisor and don\'t guarantee that the price you pay at the register will be exactly the one we show here. Chains update the KZP feed once a day, and promos can vary between stores. Use SaveCheck for <b>orientation</b>, not as a final source.',
+    limitsText: 'We\'re not a financial advisor and don\'t guarantee that the price you pay at the register will be exactly the one we show here. Chains update the KZP feed once a day, and promos can vary between stores. Use Real365 for <b>orientation</b>, not as a final source.',
   },
   bg: {
-    title: 'Как работи SaveCheck',
+    title: 'Как работи Real365',
     subtitle: 'Логика по духа на EU Omnibus директивата',
-    intro: 'SaveCheck проверява дали промоцията в супермаркета е <b>реална икономия</b> или <b>маркетингова илюзия</b>. Не се доверяваме на „старата цена" от етикета — тя често просто е сложена изкуствено, за да изглежда отстъпката по-голяма.',
+    intro: 'Real365 проверява дали промоцията в супермаркета е <b>реална икономия</b> или <b>маркетингова илюзия</b>. Не се доверяваме на „старата цена" от етикета — тя често просто е сложена изкуствено, за да изглежда отстъпката по-голяма.',
     howMeasureTitle: '📏 Как измерваме',
     howMeasureP1: 'За всеки продукт следим цената в 5 супермаркета (Lidl, Kaufland, Billa, Fantastico, T Market) за последните <b>90 дни</b>. Референцията, спрямо която сравняваме „промоционалната" цена днес, е <b>най-ниската цена на този конкретен продукт през последните 30 дни</b>. Ако днешната „промо" цена не е под тази референция — това не е реална отстъпка.',
-    howMeasureP2: 'Това е логиката, която <b>EU Omnibus директивата (чл. 6а)</b> изисква от търговците при обявяване на намаления. SaveCheck ти показва дали са я спазили.',
+    howMeasureP2: 'Това е логиката, която <b>EU Omnibus директивата (чл. 6а)</b> изисква от търговците при обявяване на намаления. Real365 ти показва дали са я спазили.',
     iconsTitle: '🎯 Какво значат иконките',
     iconRealTitle: 'Реална промо', iconRealText: 'цената днес е под 30-дневното дъно. Заслужаваща отстъпка.',
     iconCosmeticTitle: 'Козметична', iconCosmeticText: 'има малка отстъпка, но не значителна. По-скоро визуален трик.',
     iconFakeTitle: 'Подвеждаща', iconFakeText: 'обявена е промо, но цената НЕ е под 30-дневното дъно. Стара цена ≠ обичайна.',
     iconUnverifiedTitle: 'Непроверена', iconUnverifiedText: 'има промо, но не сме имали достатъчно данни (под 3 наблюдения за 30 дни).',
     dataTitle: '📡 Откъде идват данните',
-    dataText: 'От {link} — публичен регистър на цените, който търговците са задължени да публикуват ежедневно. SaveCheck ги обновява всеки ден в 13:00 EET.',
+    dataText: 'От {link} — публичен регистър на цените, който търговците са задължени да публикуват ежедневно. Real365 ги обновява всеки ден в 13:00 EET.',
     dataLinkText: 'официалния портал на КЗП „Колко струва"',
     coverageTitle: '📋 Кое виждаме',
     coverageText: 'Работим с <b>регулираната потребителска кошница на КЗП</b> — около 100 базови продукта (хляб, мляко, яйца, месо, ябълки, банани, домати, картофи, олио и подобни). Сезонни артикули като <b>диня, пъпеш, кайсии, череши, боровинки</b> и специализирани продукти <b>не са</b> в open-data feed-a и не се виждат тук, дори и да са на промо в брошурата на веригата.',
     limitsTitle: '⚠️ Кое НЕ правим',
-    limitsText: 'Не сме финансов съветник и не гарантираме, че цената, която ще платиш на касата, ще е точно тази, която показваме тук. Веригите обновяват КЗП feed-а един път дневно, а промоциите могат да варират между магазините. Ползвай SaveCheck за <b>ориентация</b>, не като краен източник.',
+    limitsText: 'Не сме финансов съветник и не гарантираме, че цената, която ще платиш на касата, ще е точно тази, която показваме тук. Веригите обновяват КЗП feed-а един път дневно, а промоциите могат да варират между магазините. Ползвай Real365 за <b>ориентация</b>, не като краен източник.',
   },
   sr: {
-    title: 'Kako funkcioniše SaveCheck',
+    title: 'Kako funkcioniše Real365',
     subtitle: 'Logika u duhu EU Omnibus direktive',
-    intro: 'SaveCheck proverava da li je akcija u supermarketu <b>prava ušteda</b> ili <b>marketinška iluzija</b>. Ne verujemo „staroj ceni" sa etikete — često je veštački postavljena da bi popust izgledao veći.',
+    intro: 'Real365 proverava da li je akcija u supermarketu <b>prava ušteda</b> ili <b>marketinška iluzija</b>. Ne verujemo „staroj ceni" sa etikete — često je veštački postavljena da bi popust izgledao veći.',
     howMeasureTitle: '📏 Kako merimo',
     howMeasureP1: 'Za svaki proizvod pratimo cenu u 5 supermarketa (Lidl, Kaufland, Billa, Fantastico, T Market) tokom poslednjih <b>90 dana</b>. Referenca sa kojom upoređujemo današnju „akcijsku" cenu je <b>najniža cena tog konkretnog proizvoda u poslednjih 30 dana</b>. Ako današnja „akcijska" cena nije ispod te reference — to nije prava ušteda.',
-    howMeasureP2: 'To je logika koju <b>EU Omnibus direktiva (čl. 6a)</b> zahteva od trgovaca kada objavljuju popuste. SaveCheck ti pokazuje da li su je poštovali.',
+    howMeasureP2: 'To je logika koju <b>EU Omnibus direktiva (čl. 6a)</b> zahteva od trgovaca kada objavljuju popuste. Real365 ti pokazuje da li su je poštovali.',
     iconsTitle: '🎯 Šta znače ikonice',
     iconRealTitle: 'Prava akcija', iconRealText: 'današnja cena je ispod 30-dnevnog minimuma. Zaslužuje popust.',
     iconCosmeticTitle: 'Kozmetička', iconCosmeticText: 'ima mali popust, ali nije značajan. Više vizuelni trik.',
     iconFakeTitle: 'Obmanjujuća', iconFakeText: 'objavljena je akcija, ali cena NIJE ispod 30-dnevnog minimuma. Stara cena ≠ uobičajena.',
     iconUnverifiedTitle: 'Neproverena', iconUnverifiedText: 'ima akcija, ali nemamo dovoljno podataka (manje od 3 osmatranja za 30 dana).',
     dataTitle: '📡 Odakle dolaze podaci',
-    dataText: 'Sa {link} — javnog registra cena koji trgovci moraju da objavljuju svakodnevno. SaveCheck ih ažurira svaki dan u 13:00 EET.',
+    dataText: 'Sa {link} — javnog registra cena koji trgovci moraju da objavljuju svakodnevno. Real365 ih ažurira svaki dan u 13:00 EET.',
     dataLinkText: 'zvaničnog portala KZP „Kolko struva"',
     coverageTitle: '📋 Šta pokrivamo',
     coverageText: 'Radimo sa <b>regulisanom bugarskom potrošačkom korpom</b> — oko 100 osnovnih proizvoda (hleb, mleko, jaja, meso, jabuke, banane, paradajz, krompir, ulje i sl.). Sezonske stavke kao <b>lubenica, dinja, kajsije, trešnje, borovnice</b> i specijalni proizvodi <b>nisu</b> u open-data izvoru i neće se ovde prikazati, čak i kad su na akciji u letku lanca.',
     limitsTitle: '⚠️ Šta NE radimo',
-    limitsText: 'Nismo finansijski savetnik i ne garantujemo da će cena na kasi biti tačno ona koju ovde prikazujemo. Lanci ažuriraju KZP feed jednom dnevno, a akcije mogu da variraju između prodavnica. Koristi SaveCheck za <b>orijentaciju</b>, ne kao krajnji izvor.',
+    limitsText: 'Nismo finansijski savetnik i ne garantujemo da će cena na kasi biti tačno ona koju ovde prikazujemo. Lanci ažuriraju KZP feed jednom dnevno, a akcije mogu da variraju između prodavnica. Koristi Real365 za <b>orijentaciju</b>, ne kao krajnji izvor.',
   },
   mk: {
-    title: 'Како функционира SaveCheck',
+    title: 'Како функционира Real365',
     subtitle: 'Логика во духот на EU Omnibus директивата',
-    intro: 'SaveCheck проверува дали промоцијата во супермаркетот е <b>вистинска заштеда</b> или <b>маркетиншка илузија</b>. Не веруваме на „старата цена" од етикетата — таа често е вештачки поставена за да изгледа попустот поголем.',
+    intro: 'Real365 проверува дали промоцијата во супермаркетот е <b>вистинска заштеда</b> или <b>маркетиншка илузија</b>. Не веруваме на „старата цена" од етикетата — таа често е вештачки поставена за да изгледа попустот поголем.',
     howMeasureTitle: '📏 Како мериме',
     howMeasureP1: 'За секој производ ја следиме цената во 5 супермаркети (Lidl, Kaufland, Billa, Fantastico, T Market) во последните <b>90 дена</b>. Референцата со која ја споредуваме денешната „промотивна" цена е <b>најниската цена на тој конкретен производ во последните 30 дена</b>. Ако денешната „промо" цена не е под таа референца — тоа не е вистински попуст.',
-    howMeasureP2: 'Тоа е логиката што <b>EU Omnibus директивата (чл. 6а)</b> ја бара од трговците при објавување попусти. SaveCheck ти покажува дали ја почитувале.',
+    howMeasureP2: 'Тоа е логиката што <b>EU Omnibus директивата (чл. 6а)</b> ја бара од трговците при објавување попусти. Real365 ти покажува дали ја почитувале.',
     iconsTitle: '🎯 Што значат иконите',
     iconRealTitle: 'Вистинска промо', iconRealText: 'денешната цена е под 30-дневното дно. Заслужен попуст.',
     iconCosmeticTitle: 'Козметичка', iconCosmeticText: 'има мал попуст, но не значаен. Повеќе визуелен трик.',
     iconFakeTitle: 'Заблудувачка', iconFakeText: 'објавена е промо, но цената НЕ е под 30-дневното дно. Стара цена ≠ вообичаена.',
     iconUnverifiedTitle: 'Непроверена', iconUnverifiedText: 'има промо, но немавме доволно податоци (под 3 набљудувања за 30 дена).',
     dataTitle: '📡 Од каде доаѓаат податоците',
-    dataText: 'Од {link} — јавен регистар на цени што трговците мора да го објавуваат секојдневно. SaveCheck ги ажурира секој ден во 13:00 EET.',
+    dataText: 'Од {link} — јавен регистар на цени што трговците мора да го објавуваат секојдневно. Real365 ги ажурира секој ден во 13:00 EET.',
     dataLinkText: 'официјалниот портал на КЗП „Колку чини"',
     coverageTitle: '📋 Што покриваме',
     coverageText: 'Работиме со <b>регулираната бугарска потрошувачка кошница</b> — околу 100 основни производи (леб, млеко, јајца, месо, јаболка, банани, домати, компири, масло и слично). Сезонски производи како <b>лубеница, диња, кајсии, цреши, боровинки</b> и специјални производи <b>не се</b> во open-data feed-от и нема да се појават тука, дури и да се на промоција во летокот на синџирот.',
     limitsTitle: '⚠️ Што НЕ правиме',
-    limitsText: 'Не сме финансиски советник и не гарантираме дека цената што ќе ја платиш на каса ќе биде токму онаа што ја покажуваме овде. Синџирите го ажурираат КЗП feed-от еднаш дневно, а промоциите можат да варираат меѓу продавниците. Користи SaveCheck за <b>ориентација</b>, не како краен извор.',
+    limitsText: 'Не сме финансиски советник и не гарантираме дека цената што ќе ја платиш на каса ќе биде токму онаа што ја покажуваме овде. Синџирите го ажурираат КЗП feed-от еднаш дневно, а промоциите можат да варираат меѓу продавниците. Користи Real365 за <b>ориентација</b>, не како краен извор.',
   },
   ro: {
-    title: 'Cum funcționează SaveCheck',
+    title: 'Cum funcționează Real365',
     subtitle: 'Logică în spiritul directivei EU Omnibus',
-    intro: 'SaveCheck verifică dacă promoția din supermarket este <b>o economie reală</b> sau <b>o iluzie de marketing</b>. Nu ne bazăm pe „prețul vechi" de pe etichetă — deseori este stabilit artificial pentru ca reducerea să pară mai mare.',
+    intro: 'Real365 verifică dacă promoția din supermarket este <b>o economie reală</b> sau <b>o iluzie de marketing</b>. Nu ne bazăm pe „prețul vechi" de pe etichetă — deseori este stabilit artificial pentru ca reducerea să pară mai mare.',
     howMeasureTitle: '📏 Cum măsurăm',
     howMeasureP1: 'Pentru fiecare produs urmărim prețul în 5 supermarketuri (Lidl, Kaufland, Billa, Fantastico, T Market) pe ultimele <b>90 de zile</b>. Referința cu care comparăm prețul „promoțional" de astăzi este <b>cel mai mic preț al acestui produs specific în ultimele 30 de zile</b>. Dacă prețul „promo" de azi nu este sub această referință — nu este o reducere reală.',
-    howMeasureP2: 'Aceasta este logica pe care <b>directiva EU Omnibus (art. 6a)</b> o cere comercianților la anunțarea reducerilor. SaveCheck îți arată dacă au respectat-o.',
+    howMeasureP2: 'Aceasta este logica pe care <b>directiva EU Omnibus (art. 6a)</b> o cere comercianților la anunțarea reducerilor. Real365 îți arată dacă au respectat-o.',
     iconsTitle: '🎯 Ce înseamnă pictogramele',
     iconRealTitle: 'Promo reală', iconRealText: 'prețul de azi este sub minimul de 30 de zile. Reducere meritată.',
     iconCosmeticTitle: 'Cosmetică', iconCosmeticText: 'există o mică reducere, dar nu semnificativă. Mai degrabă un truc vizual.',
     iconFakeTitle: 'Înșelătoare', iconFakeText: 'este anunțată promo, dar prețul NU este sub minimul de 30 de zile. Preț vechi ≠ obișnuit.',
     iconUnverifiedTitle: 'Neverificată', iconUnverifiedText: 'există promo, dar nu am avut suficiente date (sub 3 observații în 30 de zile).',
     dataTitle: '📡 De unde vin datele',
-    dataText: 'De la {link} — registru public de prețuri pe care comercianții sunt obligați să îl publice zilnic. SaveCheck le actualizează zilnic la 13:00 EET.',
+    dataText: 'De la {link} — registru public de prețuri pe care comercianții sunt obligați să îl publice zilnic. Real365 le actualizează zilnic la 13:00 EET.',
     dataLinkText: 'portalul oficial KZP „Kolko struva"',
     coverageTitle: '📋 Ce acoperim',
     coverageText: 'Lucrăm cu <b>coșul reglementat de consum bulgar</b> — aproximativ 100 de produse de bază (pâine, lapte, ouă, carne, mere, banane, roșii, cartofi, ulei și altele). Articole sezoniere ca <b>pepene verde, pepene galben, caise, cireșe, afine</b> și produse speciale <b>nu se află</b> în fluxul open-data și nu vor apărea aici, chiar dacă sunt la promoție în broșura lanțului.',
     limitsTitle: '⚠️ Ce NU facem',
-    limitsText: 'Nu suntem consilier financiar și nu garantăm că prețul pe care îl vei plăti la casă va fi exact cel afișat aici. Lanțurile actualizează feedul KZP o dată pe zi, iar promoțiile pot varia între magazine. Folosește SaveCheck pentru <b>orientare</b>, nu ca sursă finală.',
+    limitsText: 'Nu suntem consilier financiar și nu garantăm că prețul pe care îl vei plăti la casă va fi exact cel afișat aici. Lanțurile actualizează feedul KZP o dată pe zi, iar promoțiile pot varia între magazine. Folosește Real365 pentru <b>orientare</b>, nu ca sursă finală.',
   },
   el: {
-    title: 'Πώς λειτουργεί το SaveCheck',
+    title: 'Πώς λειτουργεί το Real365',
     subtitle: 'Λογική στο πνεύμα της οδηγίας EU Omnibus',
-    intro: 'Το SaveCheck ελέγχει αν η προσφορά στο σούπερ μάρκετ είναι <b>πραγματική εξοικονόμηση</b> ή <b>ψευδαίσθηση μάρκετινγκ</b>. Δεν εμπιστευόμαστε την „παλιά τιμή" της ετικέτας — συχνά έχει τοποθετηθεί τεχνητά για να φαίνεται μεγαλύτερη η έκπτωση.',
+    intro: 'Το Real365 ελέγχει αν η προσφορά στο σούπερ μάρκετ είναι <b>πραγματική εξοικονόμηση</b> ή <b>ψευδαίσθηση μάρκετινγκ</b>. Δεν εμπιστευόμαστε την „παλιά τιμή" της ετικέτας — συχνά έχει τοποθετηθεί τεχνητά για να φαίνεται μεγαλύτερη η έκπτωση.',
     howMeasureTitle: '📏 Πώς μετράμε',
     howMeasureP1: 'Για κάθε προϊόν παρακολουθούμε την τιμή σε 5 σούπερ μάρκετ (Lidl, Kaufland, Billa, Fantastico, T Market) τις τελευταίες <b>90 ημέρες</b>. Η αναφορά με την οποία συγκρίνουμε τη σημερινή „προσφορά" είναι <b>η χαμηλότερη τιμή αυτού του συγκεκριμένου προϊόντος τις τελευταίες 30 ημέρες</b>. Αν η σημερινή „προσφορά" δεν είναι κάτω από αυτή την αναφορά — δεν είναι πραγματική έκπτωση.',
-    howMeasureP2: 'Αυτή είναι η λογική που <b>η οδηγία EU Omnibus (άρθρο 6α)</b> απαιτεί από τους εμπόρους κατά την ανακοίνωση εκπτώσεων. Το SaveCheck σου δείχνει αν τη σέβονται.',
+    howMeasureP2: 'Αυτή είναι η λογική που <b>η οδηγία EU Omnibus (άρθρο 6α)</b> απαιτεί από τους εμπόρους κατά την ανακοίνωση εκπτώσεων. Το Real365 σου δείχνει αν τη σέβονται.',
     iconsTitle: '🎯 Τι σημαίνουν τα εικονίδια',
     iconRealTitle: 'Πραγματική προσφορά', iconRealText: 'η σημερινή τιμή είναι κάτω από το ελάχιστο 30 ημερών. Άξια έκπτωση.',
     iconCosmeticTitle: 'Καλλωπιστική', iconCosmeticText: 'υπάρχει μικρή έκπτωση, αλλά όχι σημαντική. Μάλλον οπτικό τέχνασμα.',
     iconFakeTitle: 'Παραπλανητική', iconFakeText: 'έχει ανακοινωθεί προσφορά, αλλά η τιμή ΔΕΝ είναι κάτω από το ελάχιστο 30 ημερών. Παλιά τιμή ≠ συνηθισμένη.',
     iconUnverifiedTitle: 'Μη επαληθευμένη', iconUnverifiedText: 'υπάρχει προσφορά, αλλά δεν είχαμε αρκετά δεδομένα (κάτω από 3 παρατηρήσεις σε 30 ημέρες).',
     dataTitle: '📡 Από πού έρχονται τα δεδομένα',
-    dataText: 'Από {link} — δημόσιο μητρώο τιμών που οι έμποροι υποχρεούνται να δημοσιεύουν καθημερινά. Το SaveCheck τα ενημερώνει κάθε μέρα στις 13:00 EET.',
+    dataText: 'Από {link} — δημόσιο μητρώο τιμών που οι έμποροι υποχρεούνται να δημοσιεύουν καθημερινά. Το Real365 τα ενημερώνει κάθε μέρα στις 13:00 EET.',
     dataLinkText: 'την επίσημη πύλη ΚΖΠ „Kolko struva"',
     coverageTitle: '📋 Τι καλύπτουμε',
     coverageText: 'Δουλεύουμε με το <b>ρυθμιζόμενο βουλγαρικό καλάθι καταναλωτή</b> — περίπου 100 βασικά προϊόντα (ψωμί, γάλα, αυγά, κρέας, μήλα, μπανάνες, ντομάτες, πατάτες, λάδι κ.λπ.). Εποχιακά είδη όπως <b>καρπούζι, πεπόνι, βερίκοκα, κεράσια, μύρτιλα</b> και ειδικά προϊόντα <b>δεν υπάρχουν</b> στη ροή open-data και δεν θα εμφανιστούν εδώ, ακόμη κι αν είναι σε προσφορά στο φυλλάδιο της αλυσίδας.',
     limitsTitle: '⚠️ Τι ΔΕΝ κάνουμε',
-    limitsText: 'Δεν είμαστε οικονομικός σύμβουλος και δεν εγγυόμαστε ότι η τιμή που θα πληρώσεις στο ταμείο θα είναι ακριβώς αυτή που εμφανίζουμε εδώ. Οι αλυσίδες ενημερώνουν το feed ΚΖΠ μία φορά την ημέρα και οι προσφορές μπορεί να διαφέρουν μεταξύ καταστημάτων. Χρησιμοποίησε το SaveCheck για <b>προσανατολισμό</b>, όχι ως τελική πηγή.',
+    limitsText: 'Δεν είμαστε οικονομικός σύμβουλος και δεν εγγυόμαστε ότι η τιμή που θα πληρώσεις στο ταμείο θα είναι ακριβώς αυτή που εμφανίζουμε εδώ. Οι αλυσίδες ενημερώνουν το feed ΚΖΠ μία φορά την ημέρα και οι προσφορές μπορεί να διαφέρουν μεταξύ καταστημάτων. Χρησιμοποίησε το Real365 για <b>προσανατολισμό</b>, όχι ως τελική πηγή.',
   },
   tr: {
-    title: 'SaveCheck nasıl çalışır',
+    title: 'Real365 nasıl çalışır',
     subtitle: 'EU Omnibus direktifinin ruhuna uygun mantık',
-    intro: 'SaveCheck, süpermarketteki indirimin <b>gerçek tasarruf</b> mu yoksa <b>pazarlama yanılsaması</b> mı olduğunu kontrol eder. Etiketteki „eski fiyata" güvenmiyoruz — çoğu zaman indirim daha büyük görünsün diye yapay olarak konulmuştur.',
+    intro: 'Real365, süpermarketteki indirimin <b>gerçek tasarruf</b> mu yoksa <b>pazarlama yanılsaması</b> mı olduğunu kontrol eder. Etiketteki „eski fiyata" güvenmiyoruz — çoğu zaman indirim daha büyük görünsün diye yapay olarak konulmuştur.',
     howMeasureTitle: '📏 Nasıl ölçüyoruz',
     howMeasureP1: 'Her ürün için 5 süpermarkette (Lidl, Kaufland, Billa, Fantastico, T Market) son <b>90 gün</b> boyunca fiyatı takip ediyoruz. Bugünün „promosyon" fiyatını karşılaştırdığımız referans, <b>bu ürünün son 30 gündeki en düşük fiyatıdır</b>. Bugünün „promo" fiyatı bu referansın altında değilse — bu gerçek bir indirim değil.',
-    howMeasureP2: 'Bu, <b>EU Omnibus direktifinin (madde 6a)</b> tacirlerden indirim ilan ederken uymalarını istediği mantıktır. SaveCheck sana uyup uymadıklarını gösterir.',
+    howMeasureP2: 'Bu, <b>EU Omnibus direktifinin (madde 6a)</b> tacirlerden indirim ilan ederken uymalarını istediği mantıktır. Real365 sana uyup uymadıklarını gösterir.',
     iconsTitle: '🎯 Simgelerin anlamı',
     iconRealTitle: 'Gerçek indirim', iconRealText: 'bugünün fiyatı 30 günlük tabanın altında. Hak edilmiş indirim.',
     iconCosmeticTitle: 'Kozmetik', iconCosmeticText: 'küçük bir indirim var ama önemli değil. Daha çok görsel bir hile.',
     iconFakeTitle: 'Yanıltıcı', iconFakeText: 'indirim ilan edilmiş ama fiyat 30 günlük tabanın altında DEĞİL. Eski fiyat ≠ normal.',
     iconUnverifiedTitle: 'Doğrulanmamış', iconUnverifiedText: 'indirim var ama yeterli veri yok (30 günde 3 gözlemden az).',
     dataTitle: '📡 Veriler nereden geliyor',
-    dataText: '{link} kaynağından — tacirlerin her gün yayınlamak zorunda olduğu kamu fiyat kaydı. SaveCheck her gün 13:00 EET güncelliyor.',
+    dataText: '{link} kaynağından — tacirlerin her gün yayınlamak zorunda olduğu kamu fiyat kaydı. Real365 her gün 13:00 EET güncelliyor.',
     dataLinkText: 'resmi KZP „Kolko struva" portalı',
     coverageTitle: '📋 Neyi kapsıyoruz',
     coverageText: 'Biz <b>düzenlenmiş Bulgar tüketici sepeti</b> ile çalışıyoruz — yaklaşık 100 temel ürün (ekmek, süt, yumurta, et, elma, muz, domates, patates, yağ vb.). <b>Karpuz, kavun, kayısı, kiraz, yaban mersini</b> gibi mevsimlik ürünler ve özel ürünler open-data akışında <b>yer almaz</b> ve zincirin broşüründe indirimde olsalar bile burada görünmezler.',
     limitsTitle: '⚠️ Ne yapmıyoruz',
-    limitsText: 'Finansal danışman değiliz ve kasada ödeyeceğin fiyatın burada gösterdiğimizle tam olarak aynı olacağını garanti etmiyoruz. Zincirler KZP feedini günde bir kez günceller ve indirimler mağazalar arasında değişebilir. SaveCheck\'i <b>yönlendirme</b> için kullan, nihai kaynak olarak değil.',
+    limitsText: 'Finansal danışman değiliz ve kasada ödeyeceğin fiyatın burada gösterdiğimizle tam olarak aynı olacağını garanti etmiyoruz. Zincirler KZP feedini günde bir kez günceller ve indirimler mağazalar arasında değişebilir. Real365\'i <b>yönlendirme</b> için kullan, nihai kaynak olarak değil.',
   },
   sq: {
-    title: 'Si funksionon SaveCheck',
+    title: 'Si funksionon Real365',
     subtitle: 'Logjika në frymën e direktivës EU Omnibus',
-    intro: 'SaveCheck kontrollon nëse oferta në supermarket është <b>kursim i vërtetë</b> apo <b>iluzion marketingu</b>. Nuk i besojmë „çmimit të vjetër" në etiketë — shpesh është vendosur artificialisht që zbritja të duket më e madhe.',
+    intro: 'Real365 kontrollon nëse oferta në supermarket është <b>kursim i vërtetë</b> apo <b>iluzion marketingu</b>. Nuk i besojmë „çmimit të vjetër" në etiketë — shpesh është vendosur artificialisht që zbritja të duket më e madhe.',
     howMeasureTitle: '📏 Si matim',
     howMeasureP1: 'Për çdo produkt ndjekim çmimin në 5 supermarkete (Lidl, Kaufland, Billa, Fantastico, T Market) gjatë <b>90 ditëve</b> të fundit. Referenca me të cilën krahasojmë çmimin „promocional" të sotëm është <b>çmimi më i ulët i këtij produkti specifik gjatë 30 ditëve të fundit</b>. Nëse çmimi „promo" i sotëm nuk është nën këtë referencë — nuk është zbritje reale.',
-    howMeasureP2: 'Kjo është logjika që <b>direktiva EU Omnibus (neni 6a)</b> kërkon nga tregtarët kur shpallin zbritje. SaveCheck të tregon nëse e kanë respektuar.',
+    howMeasureP2: 'Kjo është logjika që <b>direktiva EU Omnibus (neni 6a)</b> kërkon nga tregtarët kur shpallin zbritje. Real365 të tregon nëse e kanë respektuar.',
     iconsTitle: '🎯 Çfarë kuptimi kanë ikonat',
     iconRealTitle: 'Ofertë e vërtetë', iconRealText: 'çmimi sotëm është nën minimumin 30-ditor. Zbritje e merituar.',
     iconCosmeticTitle: 'Kozmetike', iconCosmeticText: 'ka një zbritje të vogël, por jo domethënëse. Më shumë truk vizual.',
     iconFakeTitle: 'Mashtruese', iconFakeText: 'është shpallur ofertë, por çmimi NUK është nën minimumin 30-ditor. Çmim i vjetër ≠ i zakonshëm.',
     iconUnverifiedTitle: 'E paverifikuar', iconUnverifiedText: 'ka ofertë, por nuk kishim të dhëna të mjaftueshme (nën 3 vëzhgime në 30 ditë).',
     dataTitle: '📡 Nga vijnë të dhënat',
-    dataText: 'Nga {link} — regjistër publik i çmimeve që tregtarët detyrohen ta publikojnë çdo ditë. SaveCheck i përditëson çdo ditë në 13:00 EET.',
+    dataText: 'Nga {link} — regjistër publik i çmimeve që tregtarët detyrohen ta publikojnë çdo ditë. Real365 i përditëson çdo ditë në 13:00 EET.',
     dataLinkText: 'portalin zyrtar KZP „Kolko struva"',
     coverageTitle: '📋 Çfarë mbulojmë',
     coverageText: 'Punojmë me <b>shportën e rregulluar bullgare të konsumatorit</b> — rreth 100 produkte bazë (bukë, qumësht, vezë, mish, mollë, banane, domate, patate, vaj e të tjera). Artikuj sezonalë si <b>shalqiri, pjepri, kajsitë, qershitë, boronicat</b> dhe produktet e veçanta <b>nuk janë</b> në rrjedhën open-data dhe nuk do të shfaqen këtu, edhe nëse janë në promocion në broshurën e zinxhirit.',
     limitsTitle: '⚠️ Çfarë NUK bëjmë',
-    limitsText: 'Nuk jemi këshilltar financiar dhe nuk garantojmë se çmimi që do të paguash në arkë do të jetë saktësisht ai që shfaqet këtu. Zinxhirët e përditësojnë feed-in KZP një herë në ditë dhe ofertat mund të ndryshojnë midis dyqaneve. Përdore SaveCheck për <b>orientim</b>, jo si burim përfundimtar.',
+    limitsText: 'Nuk jemi këshilltar financiar dhe nuk garantojmë se çmimi që do të paguash në arkë do të jetë saktësisht ai që shfaqet këtu. Zinxhirët e përditësojnë feed-in KZP një herë në ditë dhe ofertat mund të ndryshojnë midis dyqaneve. Përdore Real365 për <b>orientim</b>, jo si burim përfundimtar.',
   },
   bs: {
-    title: 'Kako funkcioniše SaveCheck',
+    title: 'Kako funkcioniše Real365',
     subtitle: 'Logika u duhu EU Omnibus direktive',
-    intro: 'SaveCheck provjerava da li je akcija u supermarketu <b>prava ušteda</b> ili <b>marketinška iluzija</b>. Ne vjerujemo „staroj cijeni" sa etikete — često je vještački postavljena da bi popust izgledao veći.',
+    intro: 'Real365 provjerava da li je akcija u supermarketu <b>prava ušteda</b> ili <b>marketinška iluzija</b>. Ne vjerujemo „staroj cijeni" sa etikete — često je vještački postavljena da bi popust izgledao veći.',
     howMeasureTitle: '📏 Kako mjerimo',
     howMeasureP1: 'Za svaki proizvod pratimo cijenu u 5 supermarketa (Lidl, Kaufland, Billa, Fantastico, T Market) tokom posljednjih <b>90 dana</b>. Referenca sa kojom upoređujemo današnju „akcijsku" cijenu je <b>najniža cijena tog konkretnog proizvoda u posljednjih 30 dana</b>. Ako današnja „akcijska" cijena nije ispod te reference — to nije prava ušteda.',
-    howMeasureP2: 'To je logika koju <b>EU Omnibus direktiva (čl. 6a)</b> zahtijeva od trgovaca kada objavljuju popuste. SaveCheck ti pokazuje da li su je poštovali.',
+    howMeasureP2: 'To je logika koju <b>EU Omnibus direktiva (čl. 6a)</b> zahtijeva od trgovaca kada objavljuju popuste. Real365 ti pokazuje da li su je poštovali.',
     iconsTitle: '🎯 Šta znače ikonice',
     iconRealTitle: 'Prava akcija', iconRealText: 'današnja cijena je ispod 30-dnevnog minimuma. Zaslužuje popust.',
     iconCosmeticTitle: 'Kozmetička', iconCosmeticText: 'ima mali popust, ali nije značajan. Više vizualni trik.',
     iconFakeTitle: 'Obmanjujuća', iconFakeText: 'objavljena je akcija, ali cijena NIJE ispod 30-dnevnog minimuma. Stara cijena ≠ uobičajena.',
     iconUnverifiedTitle: 'Neprovjerena', iconUnverifiedText: 'ima akcija, ali nemamo dovoljno podataka (manje od 3 osmatranja za 30 dana).',
     dataTitle: '📡 Odakle dolaze podaci',
-    dataText: 'Sa {link} — javnog registra cijena koji trgovci moraju da objavljuju svakodnevno. SaveCheck ih ažurira svaki dan u 13:00 EET.',
+    dataText: 'Sa {link} — javnog registra cijena koji trgovci moraju da objavljuju svakodnevno. Real365 ih ažurira svaki dan u 13:00 EET.',
     dataLinkText: 'zvaničnog portala KZP „Kolko struva"',
     coverageTitle: '📋 Šta pokrivamo',
     coverageText: 'Radimo sa <b>regulisanom bugarskom potrošačkom korpom</b> — oko 100 osnovnih proizvoda (hljeb, mlijeko, jaja, meso, jabuke, banane, paradajz, krompir, ulje i sl.). Sezonske stavke kao <b>lubenica, dinja, kajsije, trešnje, borovnice</b> i specijalni proizvodi <b>nisu</b> u open-data izvoru i neće se ovdje prikazati, čak i kad su na akciji u letku lanca.',
     limitsTitle: '⚠️ Šta NE radimo',
-    limitsText: 'Nismo finansijski savjetnik i ne garantujemo da će cijena na kasi biti tačno ona koju ovdje prikazujemo. Lanci ažuriraju KZP feed jednom dnevno, a akcije mogu varirati između prodavnica. Koristi SaveCheck za <b>orijentaciju</b>, ne kao krajnji izvor.',
+    limitsText: 'Nismo finansijski savjetnik i ne garantujemo da će cijena na kasi biti tačno ona koju ovdje prikazujemo. Lanci ažuriraju KZP feed jednom dnevno, a akcije mogu varirati između prodavnica. Koristi Real365 za <b>orijentaciju</b>, ne kao krajnji izvor.',
   },
   hr: {
-    title: 'Kako funkcionira SaveCheck',
+    title: 'Kako funkcionira Real365',
     subtitle: 'Logika u duhu EU Omnibus direktive',
-    intro: 'SaveCheck provjerava je li akcija u supermarketu <b>prava ušteda</b> ili <b>marketinška iluzija</b>. Ne vjerujemo „staroj cijeni" s etikete — često je umjetno postavljena kako bi popust izgledao veći.',
+    intro: 'Real365 provjerava je li akcija u supermarketu <b>prava ušteda</b> ili <b>marketinška iluzija</b>. Ne vjerujemo „staroj cijeni" s etikete — često je umjetno postavljena kako bi popust izgledao veći.',
     howMeasureTitle: '📏 Kako mjerimo',
     howMeasureP1: 'Za svaki proizvod pratimo cijenu u 5 supermarketa (Lidl, Kaufland, Billa, Fantastico, T Market) tijekom posljednjih <b>90 dana</b>. Referenca s kojom uspoređujemo današnju „akcijsku" cijenu je <b>najniža cijena tog konkretnog proizvoda u posljednjih 30 dana</b>. Ako današnja „akcijska" cijena nije ispod te reference — to nije prava ušteda.',
-    howMeasureP2: 'To je logika koju <b>EU Omnibus direktiva (čl. 6a)</b> zahtijeva od trgovaca pri objavi popusta. SaveCheck ti pokazuje jesu li je poštivali.',
+    howMeasureP2: 'To je logika koju <b>EU Omnibus direktiva (čl. 6a)</b> zahtijeva od trgovaca pri objavi popusta. Real365 ti pokazuje jesu li je poštivali.',
     iconsTitle: '🎯 Što znače ikone',
     iconRealTitle: 'Prava akcija', iconRealText: 'današnja cijena je ispod 30-dnevnog minimuma. Zaslužuje popust.',
     iconCosmeticTitle: 'Kozmetička', iconCosmeticText: 'ima mali popust, ali nije značajan. Više vizualni trik.',
     iconFakeTitle: 'Obmanjujuća', iconFakeText: 'objavljena je akcija, ali cijena NIJE ispod 30-dnevnog minimuma. Stara cijena ≠ uobičajena.',
     iconUnverifiedTitle: 'Neprovjerena', iconUnverifiedText: 'ima akcija, ali nismo imali dovoljno podataka (manje od 3 opažanja u 30 dana).',
     dataTitle: '📡 Odakle dolaze podaci',
-    dataText: 'S {link} — javnog registra cijena koji trgovci moraju objavljivati svakodnevno. SaveCheck ih ažurira svaki dan u 13:00 EET.',
+    dataText: 'S {link} — javnog registra cijena koji trgovci moraju objavljivati svakodnevno. Real365 ih ažurira svaki dan u 13:00 EET.',
     dataLinkText: 'službenog portala KZP „Kolko struva"',
     coverageTitle: '📋 Što pokrivamo',
     coverageText: 'Radimo s <b>reguliranom bugarskom potrošačkom košaricom</b> — oko 100 osnovnih proizvoda (kruh, mlijeko, jaja, meso, jabuke, banane, rajčice, krumpir, ulje i sl.). Sezonske stavke poput <b>lubenice, dinje, marelica, trešanja, borovnica</b> i specijalnih proizvoda <b>nisu</b> u open-data izvoru i neće se ovdje prikazati, čak i ako su na akciji u letku lanca.',
     limitsTitle: '⚠️ Što NE radimo',
-    limitsText: 'Nismo financijski savjetnik i ne jamčimo da će cijena na blagajni biti točno ona koju ovdje prikazujemo. Lanci ažuriraju KZP feed jednom dnevno, a akcije mogu varirati između trgovina. Koristi SaveCheck za <b>orijentaciju</b>, ne kao konačni izvor.',
+    limitsText: 'Nismo financijski savjetnik i ne jamčimo da će cijena na blagajni biti točno ona koju ovdje prikazujemo. Lanci ažuriraju KZP feed jednom dnevno, a akcije mogu varirati između trgovina. Koristi Real365 za <b>orijentaciju</b>, ne kao konačni izvor.',
   },
   sl: {
-    title: 'Kako deluje SaveCheck',
+    title: 'Kako deluje Real365',
     subtitle: 'Logika v duhu direktive EU Omnibus',
-    intro: 'SaveCheck preverja, ali je akcija v supermarketu <b>pravi prihranek</b> ali <b>marketinška iluzija</b>. Ne verjamemo „stari ceni" na etiketi — pogosto je umetno nastavljena, da bi popust izgledal večji.',
+    intro: 'Real365 preverja, ali je akcija v supermarketu <b>pravi prihranek</b> ali <b>marketinška iluzija</b>. Ne verjamemo „stari ceni" na etiketi — pogosto je umetno nastavljena, da bi popust izgledal večji.',
     howMeasureTitle: '📏 Kako merimo',
     howMeasureP1: 'Za vsak izdelek spremljamo ceno v 5 supermarketih (Lidl, Kaufland, Billa, Fantastico, T Market) v zadnjih <b>90 dneh</b>. Referenca, s katero primerjamo današnjo „akcijsko" ceno, je <b>najnižja cena tega konkretnega izdelka v zadnjih 30 dneh</b>. Če današnja „akcijska" cena ni pod to referenco — to ni pravi popust.',
-    howMeasureP2: 'To je logika, ki jo <b>direktiva EU Omnibus (čl. 6a)</b> zahteva od trgovcev pri objavi znižanj. SaveCheck ti pokaže, ali so jo upoštevali.',
+    howMeasureP2: 'To je logika, ki jo <b>direktiva EU Omnibus (čl. 6a)</b> zahteva od trgovcev pri objavi znižanj. Real365 ti pokaže, ali so jo upoštevali.',
     iconsTitle: '🎯 Kaj pomenijo ikone',
     iconRealTitle: 'Prava akcija', iconRealText: 'današnja cena je pod 30-dnevnim minimumom. Zaslužen popust.',
     iconCosmeticTitle: 'Kozmetična', iconCosmeticText: 'ima majhen popust, a ni pomemben. Bolj vizualni trik.',
     iconFakeTitle: 'Zavajajoča', iconFakeText: 'objavljena je akcija, a cena NI pod 30-dnevnim minimumom. Stara cena ≠ običajna.',
     iconUnverifiedTitle: 'Nepreverjena', iconUnverifiedText: 'obstaja akcija, a nismo imeli dovolj podatkov (manj kot 3 opažanja v 30 dneh).',
     dataTitle: '📡 Od kod prihajajo podatki',
-    dataText: 'Iz {link} — javnega registra cen, ki ga morajo trgovci objavljati vsakodnevno. SaveCheck jih posodablja vsak dan ob 13:00 EET.',
+    dataText: 'Iz {link} — javnega registra cen, ki ga morajo trgovci objavljati vsakodnevno. Real365 jih posodablja vsak dan ob 13:00 EET.',
     dataLinkText: 'uradnega portala KZP „Kolko struva"',
     coverageTitle: '📋 Kaj pokrivamo',
     coverageText: 'Delamo z <b>reguliranim bolgarskim potrošniškim košem</b> — okoli 100 osnovnih izdelkov (kruh, mleko, jajca, meso, jabolka, banane, paradižniki, krompir, olje in podobno). Sezonski izdelki, kot so <b>lubenice, melone, marelice, češnje, borovnice</b> in specialni izdelki, <b>niso</b> v open-data viru in tukaj ne bodo prikazani, tudi če so v akciji v letaku verige.',
     limitsTitle: '⚠️ Kaj NE počnemo',
-    limitsText: 'Nismo finančni svetovalec in ne jamčimo, da bo cena na blagajni točno tista, ki jo prikazujemo tukaj. Verige posodabljajo KZP feed enkrat dnevno, akcije pa lahko variirajo med trgovinami. Uporabi SaveCheck za <b>orientacijo</b>, ne kot končni vir.',
+    limitsText: 'Nismo finančni svetovalec in ne jamčimo, da bo cena na blagajni točno tista, ki jo prikazujemo tukaj. Verige posodabljajo KZP feed enkrat dnevno, akcije pa lahko variirajo med trgovinami. Uporabi Real365 za <b>orientacijo</b>, ne kot končni vir.',
   },
 };
 
@@ -2258,7 +2258,7 @@ function showInfo() {
       <div style="margin-bottom:12px">${I.coverageText}</div>
       <div style="font-weight:800;margin:16px 0 8px;font-size:14px">${I.limitsTitle}</div>
       <div style="margin-bottom:12px;color:var(--muted);font-size:12.5px">${I.limitsText}</div>
-      <div style="text-align:center;margin-top:20px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:11px">Open source · MIT · <a href="https://github.com/Tems-git/SaveCheck" target="_blank" style="color:var(--muted);text-decoration:underline">github.com/Tems-git/SaveCheck</a></div>
+      <div style="text-align:center;margin-top:20px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:11px">Open source · MIT · <a href="https://github.com/Tems-git/Real365" target="_blank" style="color:var(--muted);text-decoration:underline">github.com/Tems-git/Real365</a></div>
     </div>
   `;
   openModal(modal);

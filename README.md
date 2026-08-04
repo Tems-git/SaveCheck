@@ -1,8 +1,8 @@
-# SaveCheck — Реална ли е промоцията?
+# Real365 — Реална ли е промоцията?
 
-![SaveCheck OG image](docs/og.svg)
+![Real365 OG image](docs/og.svg)
 
-**SaveCheck** проверява дали промоцията в супермаркета е истинска или маркетингова измама. Сравнява текущата цена на всеки конкретен продукт с 90-дневната му история и прилага логиката на **EU Omnibus директива (чл. 6а)** — референцията е не „старата цена" от етикета, а реалното дъно за последните 30 дни преди промоцията.
+**Real365** проверява дали промоцията в супермаркета е истинска или маркетингова измама. Сравнява текущата цена на всеки конкретен продукт с 90-дневната му история и прилага логиката на **EU Omnibus директива (чл. 6а)** — референцията е не „старата цена" от етикета, а реалното дъно за последните 30 дни преди промоцията.
 
 🔗 **Live demo:** [real365.store](https://real365.store) (installable като PWA, зад Cloudflare с A-grade security headers)
 
@@ -121,7 +121,7 @@ UI-ят е локализиран за **BG, EN, SR, MK, RO, EL, TR, SQ, BS, HR,
 - `CART_I18N` — cart button labels + modal chrome (total, savings, disclaimer, clear confirm)
 - `CUSTOM_I18N` — „Не забравяй" custom notes cluster
 - `EMPTY` — differentiated empty states
-- `INFO_I18N` — „Как работи SaveCheck" info modal (~1000 chars × 11 langs)
+- `INFO_I18N` — „Как работи Real365" info modal (~1000 chars × 11 langs)
 - `PRODUCT_MODAL_I18N` — verdict system (stateLabel + stateExplain nested)
 - `PRODUCT_MODAL_INLINE` — stats labels, chart legend, stale text, error message
 - `TAG` / `BADGE` — verdict labels
@@ -146,7 +146,7 @@ UI-ят е локализиран за **BG, EN, SR, MK, RO, EL, TR, SQ, BS, HR,
 | `Referrer-Policy` | `strict-origin-when-cross-origin` | User privacy на outbound links |
 | `Permissions-Policy` | `camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()` | Deny unused browser APIs + opt-out от Google FLoC |
 
-**Grade A** на securityheaders.com (capped при A because CSP includes `'unsafe-inline'` — SaveCheck ползва много inline event handlers; refactor до strict CSP + nonce би било 5-10 часа работа за theoretical XSS benefit).
+**Grade A** на securityheaders.com (capped при A because CSP includes `'unsafe-inline'` — Real365 ползва много inline event handlers; refactor до strict CSP + nonce би било 5-10 часа работа за theoretical XSS benefit).
 
 ### Общи UX
 
@@ -373,7 +373,7 @@ SaveCheck/
 - **Cross-chain matching** — при cart с items от 2+ вериги не сравняваме един и същ продукт между вериги. КЗП product код-ове са различни в различните вериги (същият кашкавал има различен `Код` в Kaufland и в BILLA). Отделен feature за бъдеще — вероятно fuzzy name matching + code lookup.
 - **Products / Recipes / Fridge sub-tabs** — hidden в UI (sub-tab bar не се render-ва в Shop view). Кодът е intact за future revive, но не се достига от навигация.
 - **Legacy dead code** — `renderProducts`, `renderRecipes`, `renderFridge`, `analyzeStores`, `cart`/`cartIds`/`cartSize`, `PRODUCTS` глобал са dormant. Ще се почистват в отделен pass.
-- **CSP `unsafe-inline`** — SaveCheck има ~200+ inline event handlers (`onclick=`, `onkeydown=`) и inline styles. Strict CSP без `'unsafe-inline'` би изисквало refactor на всичко към `addEventListener` + CSS classes или nonce-based CSP. Effort: 5-10 часа. Каппва security grade на A вместо A+. HTML escape на всички КЗП имена вече минимизира real XSS surface.
+- **CSP `unsafe-inline`** — Real365 има ~200+ inline event handlers (`onclick=`, `onkeydown=`) и inline styles. Strict CSP без `'unsafe-inline'` би изисквало refactor на всичко към `addEventListener` + CSS classes или nonce-based CSP. Effort: 5-10 часа. Каппва security grade на A вместо A+. HTML escape на всички КЗП имена вече минимизира real XSS surface.
 
 ---
 
