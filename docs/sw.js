@@ -29,7 +29,7 @@ const SHELL_URLS = [
   './',
   './index.html',
   './manifest.webmanifest',
-  './img/logos/logo-d.png',
+  './img/logos/logo.svg',
   './img/icon-192.png',
   './img/icon-512.png',
   './img/icon-180.png',
