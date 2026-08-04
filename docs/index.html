@@ -337,6 +337,13 @@
   .filter-wrap::-webkit-scrollbar { display:none; }
   .fchip { flex:none; border:1.5px solid var(--line); background:var(--card); border-radius:999px; padding:6px 12px; font-size:12px; font-weight:700; color:var(--muted); cursor:pointer; font-family:inherit; display:flex; align-items:center; gap:5px; white-space:nowrap; line-height:1; transition:background .12s,color .12s,border-color .12s; }
   .fchip .fc-n { font-weight:800; opacity:.65; }
+  /* Chain identity square. Only ever rendered in the filter row, where
+     no colour carries verdict meaning — see chainMark() below. */
+  .chain-mark {
+    width:16px; height:16px; border-radius:5px; flex:none;
+    display:inline-flex; align-items:center; justify-content:center;
+    font-size:9.5px; font-weight:800; color:#fff; line-height:1;
+  }
   .fchip.active { color:#fff; border-color:transparent; background:var(--green); }
   .fchip.active .fc-n { opacity:.85; }
   .empty-filter { text-align:center; padding:28px 16px; color:var(--muted); font-size:14px; }
@@ -443,6 +450,28 @@
 // Verdict colours. Kept in sync with the --red/--green/--yellow/--gray
 // tokens above; these are baked into inline styles the CSS can't reach.
 const C = { red:'#D4342B', green:'#0E7A43', yellow:'#C98A08', gray:'#6B7F72' };
+
+// Chain brand colours. Deliberately NOT reused anywhere a verdict colour
+// is on screen: Kaufland and Billa are red brands and Fantastico is
+// amber, which would read as "fake" and "weak" respectively. Confined to
+// the filter row, which carries no semantic colour of its own.
+const CHAIN_MARK = {
+  'Lidl':       '#0050AA',
+  'Kaufland':   '#E10915',
+  'Billa':      '#D6122A',
+  'Fantastico': '#E8A400',
+  'T Market':   '#00843D',
+};
+
+// Unknown chains render nothing rather than a grey box — the locale
+// chain lists are not guaranteed to match this map as markets are added.
+function chainMark(c) {
+  const bg = CHAIN_MARK[c];
+  if (!bg) return '';
+  // aria-hidden: the chain name follows as text, so announcing the
+  // initial as well just doubles it up for screen reader users.
+  return `<span class="chain-mark" style="background:${bg}" aria-hidden="true">${c[0]}</span>`;
+}
 const ICON = { red:'✕', green:'✓', yellow:'≈', gray:'?' };
 
 const COUNTRIES = [
@@ -1332,7 +1361,7 @@ function renderChainChips() {
   const chips = [`<button class="fchip ${allOn ? 'active' : ''}" style="${allOn ? 'background:var(--ink);border-color:transparent;color:#fff' : ''}" onclick="setChainFilter(null)">${X.allChains}</button>`]
     .concat(chains.map(c => {
       const on = chainFilter === c;
-      return `<button class="fchip ${on ? 'active' : ''}" style="${on ? 'background:var(--green);border-color:transparent;color:#fff' : ''}" onclick="setChainFilter('${c}')">${c}</button>`;
+      return `<button class="fchip ${on ? 'active' : ''}" style="${on ? 'background:var(--green);border-color:transparent;color:#fff' : ''}" onclick="setChainFilter('${c}')">${chainMark(c)}${c}</button>`;
     }));
   document.getElementById('chain-wrap').innerHTML = chips.join('');
 }
@@ -2011,7 +2040,7 @@ function renderHome() {
     const omnibusTag = p.omnibus_pct ? `<div style="font-size:11px;font-weight:700;color:var(--red)">−${p.omnibus_pct}%</div>` : '';
     return `<div role="button" tabindex="0" onclick="openProductDetail(window.__homeVisible[${i}])" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProductDetail(window.__homeVisible[${i}])}" style="display:flex;gap:10px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line);cursor:pointer"><span style="display:inline-block;width:16px;font-size:16px;line-height:1;text-align:center">${icon}</span><div style="flex:1;min-width:0"><div style="font-size:11px;color:var(--muted);font-weight:600">${p.chain}${staleTag}</div><div style="font-size:13px;font-weight:700;line-height:1.3;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical">${escapeHTML(p.name)}</div></div><div style="text-align:right;flex-shrink:0"><div style="font-size:15px;font-weight:800;color:${priceColor}">${disp(p.price * country.fx)} ${country.sym}</div>${p.retail ? `<div style="font-size:11px;color:var(--muted);text-decoration:line-through">${disp(p.retail * country.fx)}</div>` : ''}${omnibusTag}</div></div>`;
   }).join('');
-  const chainChipsHTML = `<div style="display:flex;gap:6px;padding:8px 2px 4px;overflow-x:auto;-webkit-overflow-scrolling:touch">${[null,'Lidl','Kaufland','Billa','Fantastico','T Market'].map(c => `<button onclick="homeChain=${c===null?'null':`'${c}'`};homeShowAll=false;renderHome()" style="flex-shrink:0;padding:6px 12px;border:1px solid ${homeChain===c?'var(--green)':'var(--line)'};background:${homeChain===c?'var(--green)':'var(--card)'};color:${homeChain===c?'#fff':'var(--fg)'};border-radius:999px;font-size:12px;font-weight:700;cursor:pointer">${c || FILTER_ALL[country.lang]}</button>`).join('')}</div>`;
+  const chainChipsHTML = `<div style="display:flex;gap:6px;padding:8px 2px 4px;overflow-x:auto;-webkit-overflow-scrolling:touch">${[null,'Lidl','Kaufland','Billa','Fantastico','T Market'].map(c => `<button onclick="homeChain=${c===null?'null':`'${c}'`};homeShowAll=false;renderHome()" style="flex-shrink:0;display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border:1px solid ${homeChain===c?'var(--green)':'var(--line)'};background:${homeChain===c?'var(--green)':'var(--card)'};color:${homeChain===c?'#fff':'var(--ink)'};border-radius:999px;font-size:12px;font-weight:700;cursor:pointer">${chainMark(c)}${c || FILTER_ALL[country.lang]}</button>`).join('')}</div>`;
   const H_hdr = HEADER_I18N[country.lang] || HEADER_I18N.bg;
   const X_hdr = BX[country.lang];
   const sectionLabel = homeQuery
