@@ -161,6 +161,18 @@
   .cp-menu button .cc { font-size:11px; font-weight:700; color:var(--muted); }
   .cp-menu button.active .cc { color:var(--green-d); }
   .theme-btn { border:0; background:none; cursor:pointer; color:rgba(255,255,255,.78); padding:4px; line-height:1; border-radius:8px; transition:color .15s; flex:none; }
+  /* Sits on the deep-green appbar beside the language chip. Same
+     translucent-white treatment as .cp-trigger so the two read as one
+     group, but a full 40px target rather than the chip's ~34. */
+  .info-btn {
+    flex:none; width:40px; height:40px; margin-left:8px; padding:0;
+    display:flex; align-items:center; justify-content:center;
+    border:0; border-radius:999px; cursor:pointer;
+    background:rgba(255,255,255,.14); color:#fff;
+    font-family:inherit; font-size:16px; font-weight:800; line-height:1;
+    transition:background .15s;
+  }
+  .info-btn:hover { background:rgba(255,255,255,.24); }
   .theme-btn:hover { color:#fff; }
   /* AI message box */
   .ai-msg { margin:8px 14px 0; background:var(--green-bg); border:1px solid color-mix(in srgb,var(--green) 30%,transparent); border-radius:10px; padding:9px 13px; font-size:13px; color:var(--green-d); line-height:1.4; animation:fadeUp .2s ease-out; }
@@ -448,6 +460,7 @@
         </button>
         <div class="cp-menu" id="flags"></div>
       </div>
+      <button class="info-btn" id="info-btn" onclick="showInfo()" aria-label="Как работи?">?</button>
     </div>
     <div class="appbar-search">
       <div class="search-field">
@@ -1360,6 +1373,11 @@ function renderChrome() {
     if (cartModal) cartModal.setAttribute('aria-label', X.tabBasket);
     const infoModal = document.getElementById('info-modal');
     if (infoModal) infoModal.setAttribute('aria-label', X.infoDialog);
+    // Reuses the footer link's existing translation rather than adding a
+    // twelfth key to maintain across eleven locales.
+    const infoBtn = document.getElementById('info-btn');
+    if (infoBtn) infoBtn.setAttribute('aria-label',
+      (HEADER_I18N[country.lang] || HEADER_I18N.bg).howItWorks);
     document.querySelectorAll('.modal-close').forEach(btn => btn.setAttribute('aria-label', X.closeLabel));
   }
 }
