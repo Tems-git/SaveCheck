@@ -2082,7 +2082,7 @@ function renderHome() {
     } else {
       allReal = chainFiltered.filter(p => p.state === 'real' && p.observed_on === refDay).sort((a, b) => (b.omnibus_pct || 0) - (a.omnibus_pct || 0));
     }
-    visible = homeShowAll ? allReal.slice(0, 50) : allReal.slice(0, 6);
+    visible = homeShowAll ? allReal : allReal.slice(0, 6);
     window.__homeTotalReal = allReal.length;
   }
   const stateIcon = { real: '🟢', cosmetic: '🟡', fake: '🔴', unverified: '⚪' };
