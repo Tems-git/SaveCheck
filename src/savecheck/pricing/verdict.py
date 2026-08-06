@@ -75,10 +75,38 @@ def evaluate(
     current = stats.current_price
     discount = (stats.median_90 - current) / stats.median_90
     near_floor = current <= stats.min_90 * (Decimal(1) + cfg.near_floor_pct)
-    # Omnibus: a genuine discount must beat the lowest price of the prior 30 days.
-    cheaper_than_prior = stats.min_30_prior is None or current <= stats.min_30_prior
-
     pct = (discount * 100).quantize(Decimal("1"))
+
+    # ── the Omnibus reference ────────────────────────────────────────────
+    # min_30_prior is the lowest price seen in [ref-30, ref-1].
+    #
+    # When it is None nothing was observed in that window at all — a product
+    # that dropped out of the feed and reappeared. There is then no reference
+    # to test against, and treating that as a pass would let a promotion we
+    # cannot verify through as REAL on the 90-day median alone. Absence of a
+    # reference is not evidence the discount is honest. Neither is it evidence
+    # of fakery, so an advertised promo lands on UNKNOWN.
+    if stats.min_30_prior is None:
+        if is_promo:
+            return VerdictResult(
+                verdict=Verdict.UNKNOWN,
+                reason="Няма цени от предходните 30 дни, за да проверим отстъпката.",
+                discount_vs_median=discount,
+                stats=stats,
+            )
+        # Not advertised as a promo: no verdict to overturn, but we also cannot
+        # claim the price sits at a 30-day floor we have never observed.
+        cheaper_than_prior = False
+    else:
+        # Deliberately <=, not <.
+        #
+        # The prior window includes promo days, so from the second day of any
+        # multi-day promotion it already contains today's price and equality is
+        # the normal case, not an edge case. A strict < looks like the stricter
+        # and more honest test; it would in fact flip every week-long promotion
+        # to FAKE on its second day. See test_ongoing_promo_stays_real_after_
+        # first_day.
+        cheaper_than_prior = current <= stats.min_30_prior
 
     # Headline anti-fake-promo case: marketed as a deal, but you pay the same as
     # (or more than) the recent 30-day low.
