@@ -23,10 +23,10 @@ CLAIM 2 — "fewer than 3 observations in 30 days"
     correct and untouched.
 
 PER-EDIT, NOT ALL-OR-NOTHING
-    These are independent sentences in eleven locales. A mistyped anchor
-    in one language is no reason to withhold the other twenty-one, so
-    each edit is applied on its own and misses are reported at the end
-    with the locale's real text printed for inspection.
+    These are independent sentences in eleven locales, so each edit is
+    applied on its own and misses are reported with the locale's real
+    text printed. Already-applied edits are recognised, so re-running
+    after correcting an anchor is safe.
 """
 
 from __future__ import annotations
@@ -39,7 +39,7 @@ INDEX = ROOT / "docs" / "index.html"
 README = ROOT / "README.md"
 DRY = "--dry" in sys.argv
 
-# (label, locale, old, new, expected occurrences)
+# (kind, locale, old, new, expected occurrences)
 INDEX_EDITS = [
     # ── claim 1: the "real" explanation ──────────────────────────────
     ("real", "bg", "Цената е под най-ниската от последните 30 дни.",
@@ -56,9 +56,9 @@ INDEX_EDITS = [
      "Αυτή είναι η χαμηλότερη τιμή των τελευταίων 30 ημερών.", 1),
     ("real", "tr", "Fiyat, son 30 günün en düşüğünün altında.",
      "Bu, son 30 günün en düşük fiyatı.", 1),
-    ("real", "sq", "Çmimi është më i ulët në 30 ditëve të fundit.",
+    ("real", "sq", "Çmimi është nën më të ulëtin e 30 ditëve të fundit.",
      "Ky është çmimi më i ulët i 30 ditëve të fundit.", 1),
-    # bs and hr ship the same sentence.
+    # bs and hr ship the same sentence here.
     ("real", "bs+hr", "Cijena je ispod najniže cijene posljednjih 30 dana.",
      "Ovo je najniža cijena posljednjih 30 dana.", 2),
     ("real", "sl", "Cena je pod najnižjo v zadnjih 30 dneh.",
@@ -66,13 +66,14 @@ INDEX_EDITS = [
 
     # ── claim 2: the observation threshold ───────────────────────────
     # Each phrase appears in PRODUCT_MODAL_I18N.stateExplain and again in
-    # the info modal's iconUnverifiedText, except where locales share
-    # wording — noted per line.
+    # the info modal's iconUnverifiedText. Counts differ where locales
+    # share wording — Serbian's phrasing is reused by Bosnian's icon
+    # string, while Croatian says "u 30 dana" in both of its own.
     ("threshold", "bg", "3 наблюдения за 30 дни", "10 наблюдения за 90 дни", 2),
     ("threshold", "en", "3 observations in 30 days", "10 observations in 90 days", 2),
     ("threshold", "sr+bs", "3 osmatranja za 30 dana", "10 osmatranja za 90 dana", 3),
-    ("threshold", "bs+hr", "3 opažanja za 30 dana", "10 opažanja za 90 dana", 2),
-    ("threshold", "hr", "3 opažanja u 30 dana", "10 opažanja u 90 dana", 1),
+    ("threshold", "bs", "3 opažanja za 30 dana", "10 opažanja za 90 dana", 1),
+    ("threshold", "hr", "3 opažanja u 30 dana", "10 opažanja u 90 dana", 2),
     ("threshold", "mk", "3 набљудувања за 30 дена", "10 набљудувања за 90 дена", 2),
     ("threshold", "ro", "3 observații în 30 de zile", "10 observații în 90 de zile", 2),
     ("threshold", "el", "3 παρατηρήσεις σε 30 ημέρες", "10 παρατηρήσεις σε 90 ημέρες", 2),
@@ -113,10 +114,10 @@ def apply(edits, text):
 
 def show_locale(text, loc):
     """Print a locale's real stateExplain line, so a bad anchor can be read off."""
-    for i, line in enumerate(text.splitlines(), 1):
-        s = line.strip()
-        if s.startswith(f"{loc}: {{") or s == f"{loc}: {{":
-            for j, follow in enumerate(text.splitlines()[i - 1: i + 3], i):
+    lines = text.splitlines()
+    for i, line in enumerate(lines, 1):
+        if line.strip().startswith(f"{loc}: {{"):
+            for j, follow in enumerate(lines[i - 1: i + 3], i):
                 if "stateExplain" in follow:
                     print(f"\n    line {j}:\n    {follow.strip()[:400]}")
                     return
@@ -145,9 +146,8 @@ def main() -> None:
         print("\n" + "-" * 66)
         print("UNRESOLVED — actual text for the locales that did not match:")
         print("-" * 66)
-        for _, loc in {(k, l) for k, l in idx_miss}:
-            for one in loc.split("+"):
-                show_locale(idx_before, one)
+        for one in sorted({p for _, loc in idx_miss for p in loc.split("+")}):
+            show_locale(idx_before, one)
 
     total = len(INDEX_EDITS) + len(README_EDITS)
     done = total - len(idx_miss) - len(rdm_miss)
