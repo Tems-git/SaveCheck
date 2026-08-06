@@ -10,7 +10,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from savecheck.pricing.aggregates import PricePoint  # noqa: E402
-from savecheck.pricing.verdict import Verdict, evaluate_series  # noqa: E402
+from savecheck.pricing.verdict import Verdict, VerdictConfig, evaluate_series  # noqa: E402
 
 REF = date(2026, 6, 13)
 
@@ -72,6 +72,85 @@ def test_genuine_promo_below_prior_low_is_real():
     )
     res = evaluate_series(points, REF, is_promo=True, current_price=Decimal("2.40"))
     assert res.verdict is Verdict.REAL
+
+
+# ── sample-size threshold ────────────────────────────────────────────────
+# The effective cutoff is VerdictConfig.min_sample_90 observations inside the
+# 90-day window — not the "3 observations in 30 days" the README and info
+# modal claimed. snapshot.py has its own >= 3 pre-gate, but it never binds:
+# anything between 3 and 9 reaches evaluate() and comes back UNKNOWN anyway.
+
+
+def test_two_observations_unknown():
+    res = evaluate_series(steady("3.00", days=2), REF, is_promo=True,
+                          current_price=Decimal("2.00"))
+    assert res.verdict is Verdict.UNKNOWN
+
+
+def test_three_observations_still_unknown():
+    # Three is the number the docs advertised. It is not the threshold.
+    res = evaluate_series(steady("3.00", days=3), REF, is_promo=True,
+                          current_price=Decimal("2.00"))
+    assert res.verdict is Verdict.UNKNOWN
+
+
+def test_nine_observations_unknown():
+    res = evaluate_series(steady("3.00", days=9), REF, is_promo=True,
+                          current_price=Decimal("2.00"))
+    assert res.verdict is Verdict.UNKNOWN
+
+
+def test_ten_observations_is_judged():
+    # One more observation and the same input becomes judgeable.
+    assert VerdictConfig().min_sample_90 == 10
+    res = evaluate_series(steady("3.00", days=10), REF, is_promo=True,
+                          current_price=Decimal("2.00"))
+    assert res.verdict is not Verdict.UNKNOWN
+
+
+# ── the <= comparison against min_30_prior ───────────────────────────────
+
+
+def test_ongoing_promo_stays_real_after_first_day():
+    """A multi-day promotion must not turn fake on day two.
+
+    min_30_prior is computed over [ref-30, ref-1] and includes promo days, so
+    once a promotion has run for a day the prior window already contains the
+    promo price and min_30_prior == current. Equality is therefore the normal
+    state of a genuine week-long promotion, not an edge case.
+
+    This test fails if the comparison is tightened from <= to <, which is the
+    change that reading "below the 30-day low" in the UI naturally suggests.
+    """
+    points = (
+        [PricePoint.of(REF - timedelta(days=d), "3.00") for d in range(4, 64)]
+        + [PricePoint.of(REF - timedelta(days=d), "2.40") for d in (1, 2, 3)]
+    )
+    res = evaluate_series(points, REF, is_promo=True, current_price=Decimal("2.40"))
+    assert res.verdict is Verdict.REAL
+
+
+# ── missing Omnibus reference ────────────────────────────────────────────
+
+
+def test_promo_without_prior_window_is_unknown():
+    """No observations in the prior 30 days means no reference to test against.
+
+    Plenty of 90-day history, but the product dropped out of the feed a month
+    ago and reappeared today. Before this was fixed the missing reference
+    counted as passing the Omnibus test and the item came back REAL purely on
+    the 90-day median.
+    """
+    points = [PricePoint.of(REF - timedelta(days=d), "3.00") for d in range(31, 71)]
+    res = evaluate_series(points, REF, is_promo=True, current_price=Decimal("2.00"))
+    assert res.verdict is Verdict.UNKNOWN
+
+
+def test_no_prior_window_without_promo_is_not_real():
+    """Same gap, no promo flag: REAL asserts a 30-day floor we never saw."""
+    points = [PricePoint.of(REF - timedelta(days=d), "3.00") for d in range(31, 71)]
+    res = evaluate_series(points, REF, is_promo=False, current_price=Decimal("2.00"))
+    assert res.verdict is not Verdict.REAL
 
 
 if __name__ == "__main__":
