@@ -75,16 +75,24 @@
     height:calc(100vh - 60px); height:calc(100dvh - 60px); max-height:860px;
   }
   .appbar {
-    position:relative; overflow:hidden; flex:none;
+    position:relative; flex:none;
     padding:16px 16px 18px; border-bottom:0; border-radius:0 0 28px 28px;
-    background:linear-gradient(168deg,var(--deep) 0%,var(--deep-2) 58%,var(--deep-3) 100%);
+    /* The accent glow is a background layer, not an ::after element.
+       As a child it needed overflow:hidden to stay inside the rounded
+       corners — which clipped the language dropdown — and a z-index on
+       its siblings to sit behind them, which sealed .brand into its own
+       stacking context and pushed the same dropdown under the search
+       field. Backgrounds are clipped by border-radius for free, so both
+       props are gone.
+
+       Geometry matches the old circle: 260px wide at right:-90px and
+       top:-120px put its centre 40px inside the right edge and 10px
+       below the top, radius 130, fading out at 68%. */
+    background:
+      radial-gradient(circle 130px at calc(100% - 40px) 10px,
+                      rgba(88,224,146,.30), transparent 68%),
+      linear-gradient(168deg,var(--deep) 0%,var(--deep-2) 58%,var(--deep-3) 100%);
   }
-  .appbar::after {
-    content:''; position:absolute; width:260px; height:260px; right:-90px; top:-120px;
-    border-radius:50%; pointer-events:none;
-    background:radial-gradient(circle, rgba(88,224,146,.30), transparent 68%);
-  }
-  .appbar > * { position:relative; z-index:1; }
   .brand { display:flex; align-items:center; gap:8px; }
   .brand .logo { width:54px; height:54px; flex:none; object-fit:contain; }
   .brand-text { display:flex; flex-direction:column; gap:2px; }
