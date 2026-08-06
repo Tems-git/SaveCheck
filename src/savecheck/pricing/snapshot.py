@@ -64,6 +64,11 @@ class ProductOffering:
     chain: str
     points: list[PricePoint] = field(default_factory=list)
     retail_prices: dict[date, Decimal] = field(default_factory=dict)
+    # How many distinct outlets reported this product on a given day. KZP
+    # publishes one row per (product, store, day), and the pipeline reduces
+    # that to one representative price — this keeps the sample size so a
+    # single outlet's clearance is distinguishable from a chain-wide cut.
+    store_counts: dict[date, int] = field(default_factory=dict)
 
 
 def compute_snapshot(
