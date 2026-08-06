@@ -399,6 +399,35 @@
     outline-offset: 2px;
     border-radius: 4px;
   }
+
+  /* ── Phones ──────────────────────────────────────────────────────
+     Everything above is shared. This block only stops the app from
+     drawing a phone inside a phone, and with it removes the document
+     scroll that used to sit underneath .scroll: body padding plus a
+     frame shorter than the viewport plus a footer below it always
+     summed to more than one screen.
+
+     Additive on purpose — no component is restyled here, the base
+     rules simply apply to a full-bleed surface instead of a 430px
+     mockup. */
+  @media (max-width: 480px) {
+    body { padding: 0; }
+    .phone {
+      max-width: none;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      height: 100vh;   /* fallback for browsers without dvh */
+      height: 100dvh;  /* excludes the mobile URL bar */
+      max-height: none;
+    }
+    /* The dark theme sets these with a higher specificity, so they need
+       restating rather than relying on the rule above. */
+    [data-theme="dark"] .phone { border: 0; box-shadow: none; }
+    /* Now inside .scroll, so it wants breathing room rather than the
+       margin it used when it floated below the frame. */
+    footer { max-width: none; margin: 18px 0 4px; }
+  }
 </style>
 </head>
 <body>
@@ -441,10 +470,10 @@
     <div class="cards" id="cards"></div>
     <div class="panel" id="panel"></div>
     <div id="basket"></div>
+    <footer id="footer"></footer>
   </div>
   <nav class="bottomnav" id="tabs"></nav>
 </div>
-<footer id="footer"></footer>
 
 <script>
 // Verdict colours. Kept in sync with the --red/--green/--yellow/--gray
