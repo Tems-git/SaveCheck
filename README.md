@@ -104,8 +104,15 @@ GitHub Pages ──► Cloudflare edge (proxy) ──► Live сайт с securi
 
 - **Manifest** (`docs/manifest.webmanifest`) — standalone display, portrait, брендирани икони (192/512/180 px), theme color
 - **Service worker** (`docs/sw.js`) — two-tier caching strategy:
-  - **Shell (index.html, icons, manifest)** — cache-first, instant load
-  - **Data (products.js, brochures.js, history)** — network-first с cache fallback за offline usage
+  - **Shell (index.html, icons, manifest, logo)** — **stale-while-revalidate**: кешираното
+    копие се сервира веднага, а фонова заявка го обновява за следващото отваряне. Най-лошият
+    случай е една визита назад. Преди беше cache-first, но реализацията беше `cached || fetch(...)`,
+    тоест веднъж кеширан файл **никога** не се проверяваше отново до ръчен bump на `CACHE_VERSION` —
+    въпреки коментар в самия файл, който твърдеше обратното.
+  - **Data (products.js, brochures.js, history)** — network-first с **4-секунден таймаут** и cache
+    fallback. Приложението се ползва в магазин със слаб сигнал; без граница заявката виси до
+    вътрешния лимит на браузъра, докато годно кеширано копие стои неизползвано. Ако таймерът
+    спечели, заявката се оставя да върви — така кешът пак се освежава за следващия път.
 - **Install to Home Screen** — Chrome Android + Safari iOS показват install prompt след първо посещение; app-ът отваря fullscreen без URL bar
 - **Offline shell** — при загубена връзка (супермаркет с лош signal, метро) app-ът все още отваря с последния cached snapshot
 
@@ -145,6 +152,12 @@ UI-ят е локализиран за **BG, EN, SR, MK, RO, EL, TR, SQ, BS, HR,
 | `X-Frame-Options` | `DENY` | Prevent clickjacking (iframe embedding) |
 | `Referrer-Policy` | `strict-origin-when-cross-origin` | User privacy на outbound links |
 | `Permissions-Policy` | `camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()` | Deny unused browser APIs + opt-out от Google FLoC |
+
+> **Предстои:** Chart.js вече е локален, така че `https://cdn.jsdelivr.net` може да отпадне
+> от `script-src` и `connect-src`. Промяната е в Cloudflare и се прави **след** като
+> vendor-натата версия се разпространи — клиент със стар кеширан HTML още сочи към CDN-а
+> и графиката му би се блокирала. Таблицата по-горе описва политиката такава, каквато е
+> в момента, не каквато ще стане.
 
 **Grade A** на securityheaders.com (capped при A because CSP includes `'unsafe-inline'` — Real365 ползва много inline event handlers; refactor до strict CSP + nonce би било 5-10 часа работа за theoretical XSS benefit).
 
@@ -220,10 +233,11 @@ Initial page load (post-optimization):
 | `products.js` | ~1.8 MB | Product-first snapshot, eager |
 | `data.js` | ~880 KB | Legacy, still eager (to be dropped) |
 | `hero-banner.webp` | ~400 KB | Was 2.9 MB PNG, converted (-86%) |
-| `logo-d.webp` | ~64 KB | Was 1.4 MB PNG, converted (-95%) |
+| `logos/logo.svg` | ~1 KB | Векторно. Замени 64 KB WebP растер, който още изписваше старото име |
 | `TwemojiCountryFlags.woff2` | 78 KB | Flag rendering, cached forever by SW, unicode-range scoped |
 | `brochures.js` | 0 KB | **Lazy** — loads on first Home chain expand или Promos view |
 | `products-history.js` | 0 KB | **Lazy** — loads with Chart.js on first product modal open |
+| `js/chart.umd.min.js` | 0 KB | **Lazy** — vendor-нат, ~206 KB при първо отваряне на графика; оттам нататък се сервира от SW кеша, включително офлайн |
 
 Combined win from WebP conversion + brochures lazy load: **~4 MB less** on first-visit initial paint. На 4G mobile около 3-5 сек по-бърз app-open — важно за usage-a в супермаркети с лош signal.
 
@@ -242,7 +256,7 @@ Combined win from WebP conversion + brochures lazy load: **~4 MB less** on first
 | Layer | Технология |
 |-------|------------|
 | Frontend | Single-file HTML/CSS/JS (vanilla, no framework), ~208 KB |
-| Charts | Chart.js 4.4 (jsDelivr CDN, lazy loaded on first modal open) |
+| Charts | Chart.js 4.4.1 — vendor-нат в `docs/js/`, lazy loaded при първо отваряне на модал. Беше на jsDelivr CDN, което правеше графиката единствената част от детайлния изглед, недостъпна офлайн. |
 | Data | `window.SAVECHECK_PRODUCTS` (snapshot) + `window.SAVECHECK_HISTORY` (lazy) + `window.SAVECHECK_BROCHURES` (lazy) + `window.SAVECHECK_DEMO` (legacy, to be removed) |
 | PWA | Web App Manifest + Service Worker (two-tier caching: cache-first shell, network-first data) |
 | Images | WebP (hero-banner, logo) — modern browser fallback, ~90% smaller than PNG source |
@@ -347,13 +361,15 @@ pytest tests/ -v
 SaveCheck/
 ├── docs/
 │   ├── index.html                # Цялото приложение (single-file, ~208 KB)
-│   ├── sw.js                     # Service Worker (two-tier caching)
+│   ├── sw.js                     # Service Worker (SWR shell + network-first data)
 │   ├── manifest.webmanifest      # PWA manifest (install-to-home-screen)
 │   ├── data.js                   # Legacy 22-cat снимка (SAVECHECK_DEMO) — to be dropped
 │   ├── products.js               # Product-first snapshot (SAVECHECK_PRODUCTS)
 │   ├── products-history.js       # 90-day history, lazy loaded (SAVECHECK_HISTORY)
 │   ├── brochures.js              # Седмични промоции, lazy loaded (SAVECHECK_BROCHURES)
 │   ├── og.svg                    # Open Graph image
+│   ├── js/
+│   │   └── chart.umd.min.js      # Vendor-нат Chart.js 4.4.1 (офлайн графики)
 │   └── img/
 │       ├── hero-banner.webp      # Home hero image (WebP, 400 KB)
 │       ├── icon-*.png            # PWA icons (192/512/180)
