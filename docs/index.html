@@ -2225,7 +2225,7 @@ function loadChartJs() {
   if (__chartLoadPromise) return __chartLoadPromise;
   __chartLoadPromise = new Promise((resolve, reject) => {
     const s = document.createElement('script');
-    s.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js';
+    s.src = './js/chart.umd.min.js';
     s.onload = resolve;
     s.onerror = () => reject(new Error('failed to load chart.js'));
     document.head.appendChild(s);
