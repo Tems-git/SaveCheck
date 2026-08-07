@@ -25,7 +25,7 @@
  * did not do despite a comment here claiming it did.
  * ─────────────────────────────────────────────────────────────────
  */
-const CACHE_VERSION = 'v4';
+const CACHE_VERSION = 'v5';
 const CACHE_NAME = `savecheck-${CACHE_VERSION}`;
 
 // How long to wait for fresh data before falling back to the cached copy.
