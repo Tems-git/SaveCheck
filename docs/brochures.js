@@ -1,110 +1,197 @@
 window.SAVECHECK_BROCHURES = {
-  "for_date": "2026-08-30",
-  "week_label": "30.8 – 30.8.2026",
+  "for_date": "2026-08-31",
+  "week_label": "31.8 – 6.9.2026",
   "chains": [
     {
       "chain": "Lidl",
-      "from_date": "2026-08-30",
+      "from_date": "2026-08-31",
       "is_stale": false,
-      "total_promos": 27,
-      "total_before_cap": 27,
+      "total_promos": 32,
+      "total_before_cap": 32,
       "items": [
         {
-          "name": "Майсторски хляб с квас",
-          "price": 1.49,
-          "retail": 2.99,
-          "claimed_pct": 50,
+          "name": "Лук на кг",
+          "price": 0.29,
+          "retail": 0.66,
+          "claimed_pct": 56,
+          "category": "55",
+          "verdict": "green",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 56,
+          "min_30_prior": 0.39,
+          "median_90": 0.66,
+          "basket_id": "onion"
+        },
+        {
+          "name": "Кисело мляко 3,6%",
+          "price": 0.49,
+          "retail": 0.66,
+          "claimed_pct": 26,
+          "category": "7",
+          "verdict": "green",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 26,
+          "min_30_prior": 0.66,
+          "median_90": 0.66,
+          "basket_id": "yogurt"
+        },
+        {
+          "name": "Ръчен бял хляб",
+          "price": 0.79,
+          "retail": 0.97,
+          "claimed_pct": 19,
           "category": "1",
           "verdict": "green",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 50,
-          "min_30_prior": 1.49,
-          "median_90": 2.99,
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 19,
+          "min_30_prior": 0.97,
+          "median_90": 0.97,
           "basket_id": "bread"
         },
         {
-          "name": "Кашкавал",
-          "price": 1.49,
-          "retail": 2.14,
-          "claimed_pct": 30,
-          "category": "11",
+          "name": "Мляно кафе еспресо Италиано 250 g",
+          "price": 3.29,
+          "retail": 4.08,
+          "claimed_pct": 19,
+          "category": "70",
           "verdict": "green",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 30,
-          "min_30_prior": 1.49,
-          "median_90": 2.14
-        },
-        {
-          "name": "Кроасан с кренвирш",
-          "price": 0.65,
-          "retail": 0.92,
-          "claimed_pct": 29,
-          "category": "67",
-          "verdict": "green",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 29,
-          "min_30_prior": 0.65,
-          "median_90": 0.92
-        },
-        {
-          "name": "Кафе на зърна крема класико",
-          "price": 9.99,
-          "retail": 13.8,
-          "claimed_pct": 28,
-          "category": "71",
-          "verdict": "green",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 28,
-          "min_30_prior": 9.99,
-          "median_90": 13.8
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 19,
+          "min_30_prior": 4.08,
+          "median_90": 4.08,
+          "basket_id": "coffee"
         },
         {
           "name": "Ябълки червени Кримсон Сноу на кг",
-          "price": 1.59,
+          "price": 1.39,
           "retail": 2.19,
-          "claimed_pct": 27,
+          "claimed_pct": 37,
           "category": "53",
           "verdict": "green",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 27,
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 37,
           "min_30_prior": 1.59,
           "median_90": 2.19
         },
         {
-          "name": "Кафе Еспресо Магнифичио на зърна",
-          "price": 10.99,
-          "retail": 14.82,
-          "claimed_pct": 26,
+          "name": "Бяло пшеничено брашно тип 500",
+          "price": 0.49,
+          "retail": 0.64,
+          "claimed_pct": 23,
+          "category": "40",
+          "verdict": "green",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 36,
+          "min_30_prior": 0.64,
+          "median_90": 0.76
+        },
+        {
+          "name": "Бариста еспресо кафе на зърна",
+          "price": 9.69,
+          "retail": 14.31,
+          "claimed_pct": 32,
           "category": "71",
           "verdict": "green",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 26,
-          "min_30_prior": 10.99,
-          "median_90": 14.82
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 32,
+          "min_30_prior": 14.31,
+          "median_90": 14.31
         },
         {
-          "name": "Спагети от мека пшеница",
-          "price": 0.45,
-          "retail": 0.61,
+          "name": "Кроасан с череша макс",
+          "price": 0.35,
+          "retail": 0.5,
+          "claimed_pct": 30,
+          "category": "67",
+          "verdict": "green",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 31,
+          "min_30_prior": 0.5,
+          "median_90": 0.51
+        },
+        {
+          "name": "Шпек Стара планина",
+          "price": 2.29,
+          "retail": 3.32,
+          "claimed_pct": 31,
+          "category": "28",
+          "verdict": "green",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 31,
+          "min_30_prior": 2.79,
+          "median_90": 3.32
+        },
+        {
+          "name": "Ябълков оцет 5%",
+          "price": 0.89,
+          "retail": 1.22,
+          "claimed_pct": 27,
+          "category": "45",
+          "verdict": "green",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 27,
+          "min_30_prior": 1.22,
+          "median_90": 1.22
+        },
+        {
+          "name": "Seltse Лютеница фино смляна",
+          "price": 1.09,
+          "retail": 1.48,
           "claimed_pct": 26,
-          "category": "37",
+          "category": "49",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 26,
-          "min_30_prior": 0.45,
-          "median_90": 0.61
+          "min_30_prior": 1.48,
+          "median_90": 1.48
         },
         {
-          "name": "Ябълки, зелени, български на кг",
-          "price": 1.19,
-          "retail": 1.53,
-          "claimed_pct": 22,
-          "category": "53",
+          "name": "Krina; Бял боб (ОНТ 400)\"",
+          "price": 1.39,
+          "retail": 1.84,
+          "claimed_pct": 24,
+          "category": "46",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 24,
+          "min_30_prior": 1.84,
+          "median_90": 1.84
+        },
+        {
+          "name": "Винен оцет 6%",
+          "price": 0.85,
+          "retail": 1.12,
+          "claimed_pct": 24,
+          "category": "44",
+          "verdict": "green",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 24,
+          "min_30_prior": 1.12,
+          "median_90": 1.12
+        },
+        {
+          "name": "Баница със сирене",
+          "price": 0.69,
+          "retail": 0.89,
+          "claimed_pct": 22,
+          "category": "68",
+          "verdict": "green",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 22,
-          "min_30_prior": 1.19,
-          "median_90": 1.53
+          "min_30_prior": 0.89,
+          "median_90": 0.89
+        },
+        {
+          "name": "Бяло сухо вино Мискет&Димят, BG",
+          "price": 2.39,
+          "retail": 3.06,
+          "claimed_pct": 22,
+          "category": "75",
+          "verdict": "green",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 22,
+          "min_30_prior": 3.06,
+          "median_90": 3.06
         },
         {
           "name": "7 Days С.макс кроас. с как.п.",
@@ -113,10 +200,22 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "67",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 21,
           "min_30_prior": 0.81,
           "median_90": 1.02
+        },
+        {
+          "name": "Обикновени бисквити",
+          "price": 0.89,
+          "retail": 1.12,
+          "claimed_pct": 21,
+          "category": "66",
+          "verdict": "green",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 21,
+          "min_30_prior": 1.12,
+          "median_90": 1.12
         },
         {
           "name": "Nova Brasilia мл.кафе класик",
@@ -125,7 +224,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "70",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 3.27,
           "median_90": 4.09
@@ -137,7 +236,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "11",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 3.27,
           "median_90": 4.09
@@ -149,7 +248,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 2.44,
           "median_90": 3.06
@@ -161,7 +260,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "77",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 5.91,
           "median_90": 7.39
@@ -173,118 +272,94 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "68",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 1.1,
           "median_90": 1.38
         },
         {
-          "name": "Жълт фасул ОНТ 350 г",
-          "price": 1.1,
-          "retail": 1.38,
-          "claimed_pct": 20,
-          "category": "46",
+          "name": "Шпек БУРГАС XXL",
+          "price": 2.49,
+          "retail": 3.06,
+          "claimed_pct": 19,
+          "category": "28",
           "verdict": "green",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 20,
-          "min_30_prior": 1.1,
-          "median_90": 1.38
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 19,
+          "min_30_prior": 3.06,
+          "median_90": 3.06
         },
         {
-          "name": "Камчия и хамбурски колбас в ес.чер",
-          "price": 7.19,
-          "retail": 8.69,
-          "claimed_pct": 17,
-          "category": "27",
-          "verdict": "green",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 17,
-          "min_30_prior": 7.19,
-          "median_90": 8.69
-        },
-        {
-          "name": "Shumensko Бира 4,8% алк. 10,4°Р",
-          "price": 1.35,
-          "retail": 1.63,
-          "claimed_pct": 17,
-          "category": "74",
-          "verdict": "green",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 17,
-          "min_30_prior": 1.35,
-          "median_90": 1.63
-        },
-        {
-          "name": "Говежди колбас в естествено черво",
-          "price": 7.19,
-          "retail": 8.69,
-          "claimed_pct": 17,
-          "category": "27",
-          "verdict": "green",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 17,
-          "min_30_prior": 7.19,
-          "median_90": 8.69
-        },
-        {
-          "name": "Точени кори одрински",
-          "price": 1.59,
-          "retail": 1.89,
-          "claimed_pct": 16,
-          "category": "5",
-          "verdict": "green",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 16,
-          "min_30_prior": 1.59,
-          "median_90": 1.89
-        },
-        {
-          "name": "Слънчогледово олио 1 л",
-          "price": 1.42,
-          "retail": 1.68,
-          "claimed_pct": 15,
-          "category": "42",
-          "verdict": "yellow",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 15,
-          "min_30_prior": 1.42,
-          "median_90": 1.68,
-          "basket_id": "oil"
-        },
-        {
-          "name": "Кафе голд",
-          "price": 3.39,
-          "retail": 4.29,
-          "claimed_pct": 21,
-          "category": "70",
-          "verdict": "yellow",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 21,
-          "min_30_prior": 3.39,
-          "median_90": 4.29
-        },
-        {
-          "name": "Devin Air Mинерална газирана вода",
-          "price": 0.67,
-          "retail": 0.79,
-          "claimed_pct": 15,
-          "category": "73",
-          "verdict": "yellow",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 15,
-          "min_30_prior": 0.67,
-          "median_90": 0.79
-        },
-        {
-          "name": "Markeli Кисело мляко 2%",
+          "name": "Super Max Кроасан с какаов крем",
           "price": 0.49,
-          "retail": 0.59,
-          "claimed_pct": 17,
-          "category": "7",
+          "retail": 0.6,
+          "claimed_pct": 18,
+          "category": "67",
+          "verdict": "green",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 18,
+          "min_30_prior": 0.6,
+          "median_90": 0.6
+        },
+        {
+          "name": "Кашкавал от краве мляко",
+          "price": 4.29,
+          "retail": 5.11,
+          "claimed_pct": 16,
+          "category": "11",
+          "verdict": "green",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 16,
+          "min_30_prior": 5.11,
+          "median_90": 5.11
+        },
+        {
+          "name": "Трапезна йодирирана сол",
+          "price": 0.28,
+          "retail": 0.33,
+          "claimed_pct": 15,
+          "category": "39",
+          "verdict": "green",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 15,
+          "min_30_prior": 0.33,
+          "median_90": 0.33
+        },
+        {
+          "name": "Kinder Шоколад 8 бр.",
+          "price": 1.75,
+          "retail": 2.02,
+          "claimed_pct": 13,
+          "category": "69",
+          "verdict": "green",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 13,
+          "min_30_prior": 2.02,
+          "median_90": 2.02
+        },
+        {
+          "name": "Ориз среднозърнест 5% начупеност",
+          "price": 1.29,
+          "retail": 1.66,
+          "claimed_pct": 22,
+          "category": "35",
+          "verdict": "yellow",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 22,
+          "min_30_prior": 1.39,
+          "median_90": 1.66,
+          "basket_id": "rice"
+        },
+        {
+          "name": "Ябълки, червени, български на кг",
+          "price": 1.19,
+          "retail": 1.59,
+          "claimed_pct": 25,
+          "category": "53",
           "verdict": "gray",
-          "observed_on": "2026-08-30",
-          "min_30_prior": 0.49,
-          "median_90": 0.49
+          "observed_on": "2026-08-31",
+          "min_30_prior": 1.27,
+          "median_90": 1.59
         },
         {
           "name": "Банани на кг",
@@ -293,23 +368,23 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "52",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 1.29,
           "median_90": 1.39,
           "basket_id": "bananas"
         },
         {
-          "name": "Корнишони на кг",
-          "price": 1.69,
-          "retail": 1.99,
-          "claimed_pct": 15,
-          "category": "58",
+          "name": "Бял среднозърнест ориз 100% начупен",
+          "price": 0.79,
+          "retail": 0.97,
+          "claimed_pct": 19,
+          "category": "35",
           "verdict": "red",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 15,
-          "min_30_prior": 1.59,
-          "median_90": 1.99
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 19,
+          "min_30_prior": 0.65,
+          "median_90": 0.97
         },
         {
           "name": "Охлад. ципура изчистена ок. 0,7 кг",
@@ -318,22 +393,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 1,
           "category": "30",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 1,
           "min_30_prior": 11.45,
           "median_90": 11.59
-        },
-        {
-          "name": "Familia Фини точени кори",
-          "price": 1.79,
-          "retail": 2.19,
-          "claimed_pct": 18,
-          "category": "5",
-          "verdict": "red",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 0,
-          "min_30_prior": 1.79,
-          "median_90": 1.79
         }
       ]
     },
@@ -341,8 +404,8 @@ window.SAVECHECK_BROCHURES = {
       "chain": "Kaufland",
       "from_date": "2026-08-29",
       "is_stale": true,
-      "total_promos": 219,
-      "total_before_cap": 219,
+      "total_promos": 272,
+      "total_before_cap": 272,
       "items": [
         {
           "name": "Домати Консервни кг",
@@ -351,24 +414,11 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 54,
           "category": "54",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 65,
           "min_30_prior": 0.69,
           "median_90": 1.99,
           "basket_id": "tomatoes"
-        },
-        {
-          "name": "Dallmayr Monaco мляно кафе мет.кутия200г",
-          "price": 4.9,
-          "retail": 9.71,
-          "claimed_pct": 50,
-          "category": "70",
-          "verdict": "green",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 44,
-          "min_30_prior": 4.9,
-          "median_90": 8.69,
-          "basket_id": "coffee"
         },
         {
           "name": "Dallmayr Класик мляно кафе 250г",
@@ -377,7 +427,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 49,
           "category": "70",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 44,
           "min_30_prior": 3.7,
           "median_90": 6.59,
@@ -397,13 +447,26 @@ window.SAVECHECK_BROCHURES = {
           "basket_id": "potato"
         },
         {
+          "name": "Dallmayr Monaco мляно кафе мет.кутия200г",
+          "price": 4.9,
+          "retail": 9.71,
+          "claimed_pct": 50,
+          "category": "70",
+          "verdict": "green",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 33,
+          "min_30_prior": 4.9,
+          "median_90": 7.34,
+          "basket_id": "coffee"
+        },
+        {
           "name": "NN KLC Прясно мляко 3% 1л бутилка",
           "price": 1.09,
           "retail": 1.25,
           "claimed_pct": 13,
           "category": "6",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 13,
           "min_30_prior": 1.09,
           "median_90": 1.25,
@@ -428,7 +491,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 60,
           "category": "71",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 50,
           "min_30_prior": 13.3,
           "median_90": 26.59
@@ -482,16 +545,40 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 29.69
         },
         {
+          "name": "Lavazza CremaAroma кафе на зърна 1кг",
+          "price": 23.49,
+          "retail": 40.9,
+          "claimed_pct": 43,
+          "category": "71",
+          "verdict": "green",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 36,
+          "min_30_prior": 36.79,
+          "median_90": 36.79
+        },
+        {
           "name": "Lindt Classic мл.шок. с мл.пълнеж 100г",
           "price": 1.9,
           "retail": 3.68,
           "claimed_pct": 48,
           "category": "69",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 32,
           "min_30_prior": 1.9,
           "median_90": 2.79
+        },
+        {
+          "name": "Моркови кг",
+          "price": 0.55,
+          "retail": 1.29,
+          "claimed_pct": 57,
+          "category": "56",
+          "verdict": "green",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 30,
+          "min_30_prior": 0.69,
+          "median_90": 0.79
         },
         {
           "name": "Lindt Lindor Milk шоколад млечен 100 гр",
@@ -500,22 +587,22 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 38,
           "category": "69",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 26,
           "min_30_prior": 2.29,
           "median_90": 3.09
         },
         {
-          "name": "KLC.Кисело мляко. 2% масл. 400 гр.",
-          "price": 0.39,
-          "retail": 0.51,
-          "claimed_pct": 24,
-          "category": "7",
+          "name": "Лимони кг",
+          "price": 1.49,
+          "retail": 2.99,
+          "claimed_pct": 50,
+          "category": "50",
           "verdict": "green",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 24,
-          "min_30_prior": 0.39,
-          "median_90": 0.51
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 25,
+          "min_30_prior": 1.58,
+          "median_90": 1.99
         },
         {
           "name": "Soli Совиньон Блан 0,75 л",
@@ -524,7 +611,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "75",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 22,
           "min_30_prior": 5.35,
           "median_90": 6.85
@@ -542,13 +629,49 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 2.29
         },
         {
+          "name": "Melitta Grand Aroma кафе зърна 1 кг",
+          "price": 12.99,
+          "retail": 25.99,
+          "claimed_pct": 50,
+          "category": "71",
+          "verdict": "green",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 19,
+          "min_30_prior": 15.99,
+          "median_90": 15.99
+        },
+        {
           "name": "Lindt Lindor мл.шок. солен карамел 100 г",
           "price": 2.29,
           "retail": 3.68,
           "claimed_pct": 38,
           "category": "69",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 18,
+          "min_30_prior": 2.29,
+          "median_90": 2.79
+        },
+        {
+          "name": "Lindt Extra Creamy шоко.солен карам. 80г",
+          "price": 2.29,
+          "retail": 3.68,
+          "claimed_pct": 38,
+          "category": "69",
+          "verdict": "green",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 18,
+          "min_30_prior": 2.29,
+          "median_90": 2.79
+        },
+        {
+          "name": "Lindt Extra Creamy шоколад млечен 80 г",
+          "price": 2.29,
+          "retail": 3.68,
+          "claimed_pct": 38,
+          "category": "69",
+          "verdict": "green",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 18,
           "min_30_prior": 2.29,
           "median_90": 2.79
@@ -560,22 +683,46 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "84",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 17,
           "min_30_prior": 0.49,
           "median_90": 0.59
         },
         {
-          "name": "Моркови кг",
-          "price": 0.69,
-          "retail": 1.29,
-          "claimed_pct": 47,
-          "category": "56",
+          "name": "MILKI DREAM Краве масло 200 г",
+          "price": 2.29,
+          "retail": 3.29,
+          "claimed_pct": 30,
+          "category": "12",
           "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 13,
-          "min_30_prior": 0.69,
-          "median_90": 0.79
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 15,
+          "min_30_prior": 2.29,
+          "median_90": 2.69
+        },
+        {
+          "name": "Colgate паста зъби Total Whitening 100мл",
+          "price": 2.15,
+          "retail": 3.22,
+          "claimed_pct": 33,
+          "category": "81",
+          "verdict": "green",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 14,
+          "min_30_prior": 2.99,
+          "median_90": 2.49
+        },
+        {
+          "name": "Маслини Супер Колосал без кост. 111/120",
+          "price": 4.69,
+          "retail": 7.66,
+          "claimed_pct": 39,
+          "category": "62",
+          "verdict": "green",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 9,
+          "min_30_prior": 4.99,
+          "median_90": 5.15
         },
         {
           "name": "Вълчев краве масло 125 гр фолио",
@@ -597,7 +744,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "12",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 3,
           "min_30_prior": 2.95,
           "median_90": 3.05,
@@ -610,11 +757,24 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "12",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 3,
           "min_30_prior": 2.6,
           "median_90": 2.69,
           "basket_id": "butter"
+        },
+        {
+          "name": "Пилешко филе от гърди",
+          "price": 5.49,
+          "retail": 7.66,
+          "claimed_pct": 28,
+          "category": "16",
+          "verdict": "yellow",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 2,
+          "min_30_prior": 5.69,
+          "median_90": 5.62,
+          "basket_id": "chicken"
         },
         {
           "name": "NN Avonmore краве масло 83% 200g",
@@ -623,7 +783,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "12",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 5,
           "min_30_prior": 1.99,
           "median_90": 2.09
@@ -701,16 +861,16 @@ window.SAVECHECK_BROCHURES = {
           "basket_id": "yogurt"
         },
         {
-          "name": "My Day Кашкавал краве мляко 400г",
-          "price": 6.15,
-          "retail": 7.66,
-          "claimed_pct": 20,
-          "category": "11",
+          "name": "Велинград Минерална вода 1,5л",
+          "price": 0.39,
+          "retail": 0.59,
+          "claimed_pct": 34,
+          "category": "73",
           "verdict": "gray",
-          "observed_on": "2026-08-30",
-          "min_30_prior": 6.15,
-          "median_90": 6.09,
-          "basket_id": "cheese"
+          "observed_on": "2026-08-31",
+          "min_30_prior": 0.37,
+          "median_90": 0.33,
+          "basket_id": "water"
         },
         {
           "name": "Лесидрен Кашкавал от краве мляко 400 г",
@@ -725,15 +885,127 @@ window.SAVECHECK_BROCHURES = {
           "basket_id": "cheese"
         },
         {
-          "name": "Breamore Кроасан с крем ванилия,55г",
-          "price": 0.15,
-          "retail": 0.23,
-          "claimed_pct": 35,
-          "category": "67",
+          "name": "Стражица Хляб, бял 700гр.",
+          "price": 0.89,
+          "retail": 1.17,
+          "claimed_pct": 24,
+          "category": "1",
           "verdict": "gray",
-          "observed_on": "2026-08-30",
-          "min_30_prior": 0.15,
-          "median_90": 0.15
+          "observed_on": "2026-08-31",
+          "min_30_prior": 0.89,
+          "median_90": 0.89,
+          "basket_id": "bread"
+        },
+        {
+          "name": "Саяна кашкавал от краве мляко БДС 400гр",
+          "price": 6.65,
+          "retail": 7.15,
+          "claimed_pct": 7,
+          "category": "11",
+          "verdict": "gray",
+          "observed_on": "2026-08-31",
+          "min_30_prior": 6.65,
+          "median_90": 6.65,
+          "basket_id": "cheese"
+        },
+        {
+          "name": "Fairy Extra+преп. за съдове Citrus 654мл",
+          "price": 2.79,
+          "retail": 3.57,
+          "claimed_pct": 22,
+          "category": "79",
+          "verdict": "gray",
+          "observed_on": "2026-08-31",
+          "min_30_prior": 2.79,
+          "median_90": 2.79
+        },
+        {
+          "name": "Fairy Extra+преп. за съдове люляк 650мл",
+          "price": 2.79,
+          "retail": 3.57,
+          "claimed_pct": 22,
+          "category": "79",
+          "verdict": "gray",
+          "observed_on": "2026-08-31",
+          "min_30_prior": 2.79,
+          "median_90": 2.79
+        },
+        {
+          "name": "Fairy Extra+преп.съдове гор.плодове650мл",
+          "price": 2.79,
+          "retail": 3.57,
+          "claimed_pct": 22,
+          "category": "79",
+          "verdict": "gray",
+          "observed_on": "2026-08-31",
+          "min_30_prior": 2.79,
+          "median_90": 2.79
+        },
+        {
+          "name": "Fairy препарат за съдове Lemon 900 ml",
+          "price": 2.79,
+          "retail": 3.06,
+          "claimed_pct": 9,
+          "category": "79",
+          "verdict": "gray",
+          "observed_on": "2026-08-31",
+          "min_30_prior": 2.79,
+          "median_90": 2.79
+        },
+        {
+          "name": "Fairy п-т за съдове Pomegranate 900ml",
+          "price": 2.79,
+          "retail": 3.06,
+          "claimed_pct": 9,
+          "category": "79",
+          "verdict": "gray",
+          "observed_on": "2026-08-31",
+          "min_30_prior": 2.79,
+          "median_90": 2.79
+        },
+        {
+          "name": "Fairy препарат за съдове Apple 900 ml",
+          "price": 2.79,
+          "retail": 3.06,
+          "claimed_pct": 9,
+          "category": "79",
+          "verdict": "gray",
+          "observed_on": "2026-08-31",
+          "min_30_prior": 2.79,
+          "median_90": 2.79
+        },
+        {
+          "name": "Fairy препарат за съдове Camomile 900 ml",
+          "price": 2.79,
+          "retail": 3.06,
+          "claimed_pct": 9,
+          "category": "79",
+          "verdict": "gray",
+          "observed_on": "2026-08-31",
+          "min_30_prior": 2.79,
+          "median_90": 2.79
+        },
+        {
+          "name": "Fairy Max Power п-т съд. Нар 545 мл",
+          "price": 2.79,
+          "retail": 3.57,
+          "claimed_pct": 22,
+          "category": "79",
+          "verdict": "gray",
+          "observed_on": "2026-08-31",
+          "min_30_prior": 2.79,
+          "median_90": 2.79
+        },
+        {
+          "name": "Fairy Max Power п-т съд. Лимон 545 мл",
+          "price": 2.79,
+          "retail": 3.57,
+          "claimed_pct": 22,
+          "category": "79",
+          "verdict": "gray",
+          "observed_on": "2026-08-31",
+          "min_30_prior": 2.79,
+          "median_90": 2.79
         },
         {
           "name": "NN DeutscheMarkenbutter Кр масло 82%250г",
@@ -753,7 +1025,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "81",
           "verdict": "gray",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "min_30_prior": 1.02,
           "median_90": 1.02
         },
@@ -764,7 +1036,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "83",
           "verdict": "gray",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "min_30_prior": 0.49,
           "median_90": 0.49
         },
@@ -791,15 +1063,59 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 5.79
         },
         {
+          "name": "Melitta Espresso Classic кафе мляно 250г",
+          "price": 3.29,
+          "retail": 7.59,
+          "claimed_pct": 57,
+          "category": "70",
+          "verdict": "gray",
+          "observed_on": "2026-08-31",
+          "min_30_prior": 3.29,
+          "median_90": 3.29
+        },
+        {
+          "name": "NAN 3 преходно мляко 12+ 400гр",
+          "price": 8.19,
+          "retail": 11.75,
+          "claimed_pct": 30,
+          "category": "65",
+          "verdict": "gray",
+          "observed_on": "2026-08-31",
+          "min_30_prior": 8.19,
+          "median_90": 8.19
+        },
+        {
           "name": "Млечен шоколад лешник 80 гр",
           "price": 0.95,
           "retail": 1.22,
           "claimed_pct": 22,
           "category": "69",
           "verdict": "gray",
-          "observed_on": "2026-08-30",
-          "min_30_prior": 0.69,
-          "median_90": 0.69
+          "observed_on": "2026-08-31",
+          "min_30_prior": 0.95,
+          "median_90": 0.82
+        },
+        {
+          "name": "Ritter Sport шоколад млеч. цял лешн.100г",
+          "price": 2.15,
+          "retail": 2.55,
+          "claimed_pct": 16,
+          "category": "69",
+          "verdict": "gray",
+          "observed_on": "2026-08-31",
+          "min_30_prior": 2.15,
+          "median_90": 1.89
+        },
+        {
+          "name": "Белииса Краве сирене 400 г",
+          "price": 4.69,
+          "retail": 5.87,
+          "claimed_pct": 20,
+          "category": "9",
+          "verdict": "gray",
+          "observed_on": "2026-08-31",
+          "min_30_prior": 4.69,
+          "median_90": 3.81
         },
         {
           "name": "Nevos.П-т за съдове.1л.Лимон",
@@ -808,8 +1124,8 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 6,
           "category": "79",
           "verdict": "gray",
-          "observed_on": "2026-08-30",
-          "min_30_prior": 0.76,
+          "observed_on": "2026-08-31",
+          "min_30_prior": 0.79,
           "median_90": 0.76
         },
         {
@@ -819,8 +1135,8 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 6,
           "category": "79",
           "verdict": "gray",
-          "observed_on": "2026-08-30",
-          "min_30_prior": 0.76,
+          "observed_on": "2026-08-31",
+          "min_30_prior": 0.79,
           "median_90": 0.76
         },
         {
@@ -830,8 +1146,8 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 6,
           "category": "79",
           "verdict": "gray",
-          "observed_on": "2026-08-30",
-          "min_30_prior": 0.76,
+          "observed_on": "2026-08-31",
+          "min_30_prior": 0.79,
           "median_90": 0.76
         },
         {
@@ -841,7 +1157,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "67",
           "verdict": "gray",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "min_30_prior": 0.59,
           "median_90": 0.59
         },
@@ -852,7 +1168,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 46,
           "category": "43",
           "verdict": "gray",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "min_30_prior": 7.19,
           "median_90": 7.19
         },
@@ -868,26 +1184,26 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 7.79
         },
         {
+          "name": "Домлян Бяло саламурено краве сирене 800г",
+          "price": 9.09,
+          "retail": 10.12,
+          "claimed_pct": 10,
+          "category": "9",
+          "verdict": "gray",
+          "observed_on": "2026-08-31",
+          "min_30_prior": 9.09,
+          "median_90": 9.09
+        },
+        {
           "name": "Yummy мл.шоколад с кокосови люспи 85 г",
           "price": 0.43,
           "retail": 0.86,
           "claimed_pct": 50,
           "category": "69",
           "verdict": "gray",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "min_30_prior": 0.43,
           "median_90": 0.75
-        },
-        {
-          "name": "Lindt Classic мл.шок. цели лешници 100г",
-          "price": 2.49,
-          "retail": 3.57,
-          "claimed_pct": 30,
-          "category": "69",
-          "verdict": "gray",
-          "observed_on": "2026-08-30",
-          "min_30_prior": 2.49,
-          "median_90": 2.49
         },
         {
           "name": "Чесън сух кг",
@@ -918,7 +1234,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "71",
           "verdict": "gray",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "min_30_prior": 10.99,
           "median_90": 10.99
         },
@@ -929,7 +1245,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "71",
           "verdict": "gray",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "min_30_prior": 10.99,
           "median_90": 10.99
         },
@@ -940,7 +1256,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "82",
           "verdict": "gray",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "min_30_prior": 1.89,
           "median_90": 1.89
         },
@@ -951,7 +1267,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 7,
           "category": "6",
           "verdict": "gray",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "min_30_prior": 1.0,
           "median_90": 1.75
         },
@@ -962,7 +1278,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 50,
           "category": "69",
           "verdict": "gray",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "min_30_prior": 0.43,
           "median_90": 0.43
         },
@@ -973,7 +1289,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "9",
           "verdict": "gray",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "min_30_prior": 3.59,
           "median_90": 3.59
         },
@@ -984,9 +1300,108 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 5,
           "category": "11",
           "verdict": "gray",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "min_30_prior": 6.75,
           "median_90": 6.75
+        },
+        {
+          "name": "NN DeutscheMarkenbutter Кр масло 82%125г",
+          "price": 1.55,
+          "retail": 1.95,
+          "claimed_pct": 21,
+          "category": "12",
+          "verdict": "gray",
+          "observed_on": "2026-08-31",
+          "min_30_prior": 1.55,
+          "median_90": 1.55
+        },
+        {
+          "name": "Бор Чвор Кис.млякo без лактоза 3,6% 400г",
+          "price": 0.79,
+          "retail": 1.05,
+          "claimed_pct": 25,
+          "category": "7",
+          "verdict": "gray",
+          "observed_on": "2026-08-31",
+          "min_30_prior": 0.79,
+          "median_90": 0.79
+        },
+        {
+          "name": "Agiva антибактериални мокри кърпи 72бр",
+          "price": 0.99,
+          "retail": 1.66,
+          "claimed_pct": 40,
+          "category": "84",
+          "verdict": "gray",
+          "observed_on": "2026-08-31",
+          "min_30_prior": 0.99,
+          "median_90": 0.99
+        },
+        {
+          "name": "Exo п-т съдове Balsam Chamomile 2х400мл",
+          "price": 2.14,
+          "retail": 2.14,
+          "claimed_pct": null,
+          "category": "79",
+          "verdict": "gray",
+          "observed_on": "2026-08-31",
+          "min_30_prior": 2.14,
+          "median_90": 2.14
+        },
+        {
+          "name": "Exo п-т за съдове Balsam Lemon 2х400мл",
+          "price": 2.14,
+          "retail": 2.14,
+          "claimed_pct": null,
+          "category": "79",
+          "verdict": "gray",
+          "observed_on": "2026-08-31",
+          "min_30_prior": 2.14,
+          "median_90": 2.14
+        },
+        {
+          "name": "Astera паста Microgranules Carbon 75 мл",
+          "price": 1.49,
+          "retail": 1.78,
+          "claimed_pct": 16,
+          "category": "81",
+          "verdict": "gray",
+          "observed_on": "2026-08-31",
+          "min_30_prior": 1.49,
+          "median_90": 1.49
+        },
+        {
+          "name": "Yummy мл.шоколад криспи 85 г",
+          "price": 0.43,
+          "retail": 0.86,
+          "claimed_pct": 50,
+          "category": "69",
+          "verdict": "gray",
+          "observed_on": "2026-08-31",
+          "min_30_prior": 0.43,
+          "median_90": 0.43
+        },
+        {
+          "name": "Astera четка за зъби Flex Active 1+1 m",
+          "price": 0.99,
+          "retail": 1.15,
+          "claimed_pct": 14,
+          "category": "80",
+          "verdict": "gray",
+          "observed_on": "2026-08-31",
+          "min_30_prior": 0.99,
+          "median_90": 0.99
+        },
+        {
+          "name": "R/Браво Шунка Сандвич~2кг калъп,1кг вак.",
+          "price": 5.31,
+          "retail": 7.19,
+          "claimed_pct": 26,
+          "category": "27",
+          "verdict": "gray",
+          "observed_on": "2026-08-31",
+          "min_30_prior": 5.31,
+          "median_90": 5.31
         },
         {
           "name": "Домати кг",
@@ -996,10 +1411,36 @@ window.SAVECHECK_BROCHURES = {
           "category": "54",
           "verdict": "red",
           "observed_on": "2026-08-29",
-          "omnibus_pct": 38,
-          "min_30_prior": 1.19,
-          "median_90": 2.69,
+          "omnibus_pct": 36,
+          "min_30_prior": 1.29,
+          "median_90": 2.59,
           "basket_id": "tomatoes"
+        },
+        {
+          "name": "Краставици кг",
+          "price": 0.99,
+          "retail": 1.29,
+          "claimed_pct": 23,
+          "category": "58",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 34,
+          "min_30_prior": 0.79,
+          "median_90": 1.49,
+          "basket_id": "cucumber"
+        },
+        {
+          "name": "Банани кг",
+          "price": 1.15,
+          "retail": 1.89,
+          "claimed_pct": 39,
+          "category": "52",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 11,
+          "min_30_prior": 0.99,
+          "median_90": 1.29,
+          "basket_id": "bananas"
         },
         {
           "name": "NN Хляб бял 650 гр",
@@ -1067,32 +1508,6 @@ window.SAVECHECK_BROCHURES = {
           "basket_id": "bread"
         },
         {
-          "name": "NN Хляб бял нарязан 650 г",
-          "price": 0.65,
-          "retail": 0.76,
-          "claimed_pct": 14,
-          "category": "1",
-          "verdict": "red",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 2,
-          "min_30_prior": 0.61,
-          "median_90": 0.66,
-          "basket_id": "bread"
-        },
-        {
-          "name": "NN Хляб бял 650 гр.",
-          "price": 0.65,
-          "retail": 0.76,
-          "claimed_pct": 14,
-          "category": "1",
-          "verdict": "red",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 2,
-          "min_30_prior": 0.61,
-          "median_90": 0.66,
-          "basket_id": "bread"
-        },
-        {
           "name": "NN Бял хляб нарязан 650 г",
           "price": 0.65,
           "retail": 0.76,
@@ -1106,13 +1521,26 @@ window.SAVECHECK_BROCHURES = {
           "basket_id": "bread"
         },
         {
+          "name": "NN Хляб Добруджа нарязан 500 г",
+          "price": 0.61,
+          "retail": 0.79,
+          "claimed_pct": 23,
+          "category": "2",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 0,
+          "min_30_prior": 0.59,
+          "median_90": 0.61,
+          "basket_id": "bread"
+        },
+        {
           "name": "K-Fav. Мляно кафе Бразилия 250г",
           "price": 4.19,
           "retail": 6.38,
           "claimed_pct": 34,
           "category": "70",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 4.19,
           "median_90": 4.19,
@@ -1130,6 +1558,97 @@ window.SAVECHECK_BROCHURES = {
           "min_30_prior": 1.02,
           "median_90": 1.02,
           "basket_id": "bread"
+        },
+        {
+          "name": "NN Хляб Добруджа нарязан 500 гр.",
+          "price": 0.61,
+          "retail": 0.79,
+          "claimed_pct": 23,
+          "category": "2",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 0,
+          "min_30_prior": 0.59,
+          "median_90": 0.61,
+          "basket_id": "bread"
+        },
+        {
+          "name": "NN Хляб Добруджа нарязан 500 г",
+          "price": 0.61,
+          "retail": 0.79,
+          "claimed_pct": 23,
+          "category": "2",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 0,
+          "min_30_prior": 0.59,
+          "median_90": 0.61,
+          "basket_id": "bread"
+        },
+        {
+          "name": "NN Хляб Добруджа 500 гр",
+          "price": 0.61,
+          "retail": 0.79,
+          "claimed_pct": 23,
+          "category": "2",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 0,
+          "min_30_prior": 0.59,
+          "median_90": 0.61,
+          "basket_id": "bread"
+        },
+        {
+          "name": "NN Хляб Добруджа 500г",
+          "price": 0.61,
+          "retail": 0.79,
+          "claimed_pct": 23,
+          "category": "2",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 0,
+          "min_30_prior": 0.59,
+          "median_90": 0.61,
+          "basket_id": "bread"
+        },
+        {
+          "name": "NN Хляб Добруджа нарязан 500 г",
+          "price": 0.61,
+          "retail": 0.79,
+          "claimed_pct": 23,
+          "category": "2",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 0,
+          "min_30_prior": 0.59,
+          "median_90": 0.61,
+          "basket_id": "bread"
+        },
+        {
+          "name": "NN Хляб Добруджа нарязан 500 г",
+          "price": 0.61,
+          "retail": 0.79,
+          "claimed_pct": 23,
+          "category": "2",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 0,
+          "min_30_prior": 0.59,
+          "median_90": 0.61,
+          "basket_id": "bread"
+        },
+        {
+          "name": "Harmonica Био Кисело мляко 3,6% 400г",
+          "price": 1.09,
+          "retail": 1.41,
+          "claimed_pct": 23,
+          "category": "7",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 0,
+          "min_30_prior": 1.09,
+          "median_90": 1.09,
+          "basket_id": "yogurt"
         },
         {
           "name": "Бор Чвор Сирене от краве мляко 800г вак",
@@ -1164,7 +1683,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 34,
           "category": "70",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 4.19,
           "median_90": 4.19,
@@ -1177,36 +1696,36 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 34,
           "category": "70",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 4.19,
           "median_90": 4.19,
           "basket_id": "coffee"
         },
         {
-          "name": "Краставици кг",
-          "price": 1.51,
-          "retail": 1.99,
-          "claimed_pct": 24,
-          "category": "58",
+          "name": "My Day Кашкавал краве мляко 400г",
+          "price": 6.15,
+          "retail": 7.66,
+          "claimed_pct": 20,
+          "category": "11",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": -1,
-          "min_30_prior": 0.79,
-          "median_90": 1.49,
-          "basket_id": "cucumber"
+          "min_30_prior": 6.15,
+          "median_90": 6.09,
+          "basket_id": "cheese"
         },
         {
-          "name": "Пилешко филе от гърди",
-          "price": 5.99,
-          "retail": 7.66,
-          "claimed_pct": 22,
-          "category": "16",
+          "name": "Пилешко бутче с част от гърба",
+          "price": 2.19,
+          "retail": 3.06,
+          "claimed_pct": 28,
+          "category": "17",
           "verdict": "red",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": -7,
-          "min_30_prior": 5.49,
-          "median_90": 5.62,
+          "observed_on": "2026-08-31",
+          "omnibus_pct": -10,
+          "min_30_prior": 1.99,
+          "median_90": 1.99,
           "basket_id": "chicken"
         },
         {
@@ -1223,43 +1742,42 @@ window.SAVECHECK_BROCHURES = {
           "basket_id": "feta"
         },
         {
-          "name": "Домати на клонка кг",
-          "price": 1.69,
-          "retail": 0.0,
-          "claimed_pct": null,
-          "category": "54",
-          "verdict": "red",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": -22,
-          "min_30_prior": 1.69,
-          "median_90": 1.39,
-          "basket_id": "tomatoes"
-        },
-        {
           "name": "K-Fav. Мляно кафе Crema Колумбия 250 г",
           "price": 4.19,
           "retail": 6.38,
           "claimed_pct": 34,
           "category": "70",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": -31,
           "min_30_prior": 3.2,
           "median_90": 3.2,
           "basket_id": "coffee"
         },
         {
-          "name": "Банани кг",
-          "price": 1.7,
-          "retail": 1.89,
-          "claimed_pct": 10,
-          "category": "52",
+          "name": "Домати на клонка кг",
+          "price": 1.99,
+          "retail": 0.0,
+          "claimed_pct": null,
+          "category": "54",
           "verdict": "red",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": -32,
-          "min_30_prior": 0.99,
-          "median_90": 1.29,
-          "basket_id": "bananas"
+          "observed_on": "2026-08-31",
+          "omnibus_pct": -43,
+          "min_30_prior": 1.69,
+          "median_90": 1.39,
+          "basket_id": "tomatoes"
+        },
+        {
+          "name": "Деликатес2 Кренвирши 1кг,нас",
+          "price": 5.29,
+          "retail": 7.38,
+          "claimed_pct": 28,
+          "category": "26",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 28,
+          "min_30_prior": 4.99,
+          "median_90": 7.38
         },
         {
           "name": "Здравец Кашкавал краве мляко 2,5 кг",
@@ -1280,10 +1798,46 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 46,
           "category": "43",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 23,
           "min_30_prior": 6.59,
           "median_90": 9.29
+        },
+        {
+          "name": "Свински бут без кост",
+          "price": 3.69,
+          "retail": 5.43,
+          "claimed_pct": 32,
+          "category": "19",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 22,
+          "min_30_prior": 3.25,
+          "median_90": 4.71
+        },
+        {
+          "name": "Свински бут без кост",
+          "price": 3.69,
+          "retail": 5.43,
+          "claimed_pct": 32,
+          "category": "19",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 22,
+          "min_30_prior": 3.25,
+          "median_90": 4.71
+        },
+        {
+          "name": "KLC.Кисело мляко. 2% масл. 400 гр.",
+          "price": 0.45,
+          "retail": 0.51,
+          "claimed_pct": 12,
+          "category": "7",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 12,
+          "min_30_prior": 0.39,
+          "median_90": 0.51
         },
         {
           "name": "Леки Свинско филе, вак. ~700г",
@@ -1292,22 +1846,22 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 10,
           "min_30_prior": 5.11,
           "median_90": 5.89
         },
         {
-          "name": "Млечен шоколад лешник и стафида 80 гр",
-          "price": 0.95,
-          "retail": 1.22,
-          "claimed_pct": 22,
-          "category": "69",
+          "name": "Черни маслини Супер,Супер Мамут81/90 2,5",
+          "price": 3.99,
+          "retail": 7.15,
+          "claimed_pct": 44,
+          "category": "62",
           "verdict": "red",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 2,
-          "min_30_prior": 0.69,
-          "median_90": 0.97
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 1,
+          "min_30_prior": 4.09,
+          "median_90": 4.04
         },
         {
           "name": "KLC.Луканков.салам.деликатесен.650г",
@@ -1316,10 +1870,22 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 1,
           "min_30_prior": 5.59,
           "median_90": 5.62
+        },
+        {
+          "name": "FR4 Ципура чистена прясна кг Турция",
+          "price": 9.59,
+          "retail": 12.39,
+          "claimed_pct": 23,
+          "category": "30",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 1,
+          "min_30_prior": 9.59,
+          "median_90": 9.69
         },
         {
           "name": "Саяна Краве сирене ЗНП 700г",
@@ -1328,22 +1894,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 7,
           "category": "9",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 1,
           "min_30_prior": 7.59,
           "median_90": 7.65
-        },
-        {
-          "name": "Бургаско светло пиво 4,2% 2л РЕТ",
-          "price": 0.93,
-          "retail": 1.68,
-          "claimed_pct": 45,
-          "category": "74",
-          "verdict": "red",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 1,
-          "min_30_prior": 0.93,
-          "median_90": 0.94
         },
         {
           "name": "Загорка Special пиво 5% 2л PET",
@@ -1364,7 +1918,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 1,
           "min_30_prior": 2.99,
           "median_90": 3.01
@@ -1376,7 +1930,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 1,
           "min_30_prior": 2.95,
           "median_90": 2.99
@@ -1388,7 +1942,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 1,
           "min_30_prior": 2.95,
           "median_90": 2.99
@@ -1400,7 +1954,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 1,
           "min_30_prior": 2.95,
           "median_90": 2.99
@@ -1412,7 +1966,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 1,
           "min_30_prior": 2.95,
           "median_90": 2.99
@@ -1424,22 +1978,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 62,
           "category": "84",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 0.19,
           "median_90": 0.19
-        },
-        {
-          "name": "Мое Твое Наше Извара кг",
-          "price": 2.55,
-          "retail": 3.69,
-          "claimed_pct": 31,
-          "category": "13",
-          "verdict": "red",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 0,
-          "min_30_prior": 2.55,
-          "median_90": 2.55
         },
         {
           "name": "КЕН Кренвирши ~ 3 кг",
@@ -1448,10 +1990,22 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "26",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 5.09,
           "median_90": 5.09
+        },
+        {
+          "name": "Parоdontax паста ActiveGumWhitening 75мл",
+          "price": 3.89,
+          "retail": 4.29,
+          "claimed_pct": 9,
+          "category": "81",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 0,
+          "min_30_prior": 3.89,
+          "median_90": 3.89
         },
         {
           "name": "Маслини Каламата Джъмбо 181/260,13кг",
@@ -1478,13 +2032,37 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 0.65
         },
         {
+          "name": "Лаврак чистен пресен Турция кг",
+          "price": 10.29,
+          "retail": 14.29,
+          "claimed_pct": 28,
+          "category": "30",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 0,
+          "min_30_prior": 9.29,
+          "median_90": 10.255
+        },
+        {
+          "name": "Червени маслини УслуТурски 280/360 5кг",
+          "price": 3.99,
+          "retail": 6.64,
+          "claimed_pct": 40,
+          "category": "62",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 0,
+          "min_30_prior": 3.69,
+          "median_90": 3.99
+        },
+        {
           "name": "Стария ловец Луканка Трапезица 320г",
           "price": 2.49,
           "retail": 6.39,
           "claimed_pct": 61,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 2.49,
           "median_90": 2.49
@@ -1496,22 +2074,34 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 46,
           "category": "29",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 2.49,
           "median_90": 2.49
         },
         {
-          "name": "АЛЕАΣ Маслиново масло кен EV 1 л",
-          "price": 8.99,
-          "retail": 0.0,
-          "claimed_pct": null,
-          "category": "43",
+          "name": "Breamore Кроасан с крем ванилия,55г",
+          "price": 0.15,
+          "retail": 0.23,
+          "claimed_pct": 35,
+          "category": "67",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
-          "min_30_prior": 8.99,
-          "median_90": 8.99
+          "min_30_prior": 0.15,
+          "median_90": 0.15
+        },
+        {
+          "name": "Бургаско светло пиво 4,2% 2л РЕТ",
+          "price": 1.09,
+          "retail": 1.68,
+          "claimed_pct": 35,
+          "category": "74",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 0,
+          "min_30_prior": 0.93,
+          "median_90": 1.09
         },
         {
           "name": "Натурални маслиниМамут Голд 101/110 13кг",
@@ -1520,7 +2110,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 39,
           "category": "62",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 4.99,
           "median_90": 4.99
@@ -1532,34 +2122,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 29,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 2.55,
           "median_90": 2.55
-        },
-        {
-          "name": "Мегдана Колбас Камчия 1 кг",
-          "price": 2.79,
-          "retail": 3.79,
-          "claimed_pct": 26,
-          "category": "27",
-          "verdict": "red",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 0,
-          "min_30_prior": 2.79,
-          "median_90": 2.79
-        },
-        {
-          "name": "Мегдана Колбас Телешки 1 кг",
-          "price": 2.79,
-          "retail": 3.79,
-          "claimed_pct": 26,
-          "category": "27",
-          "verdict": "red",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 0,
-          "min_30_prior": 2.79,
-          "median_90": 2.79
         },
         {
           "name": "Градус Кренвирши от птиче месо, кг, нас.",
@@ -1576,11 +2142,11 @@ window.SAVECHECK_BROCHURES = {
         {
           "name": "Браво Дебърцини, нас, кг",
           "price": 5.09,
-          "retail": 7.51,
-          "claimed_pct": 32,
+          "retail": 7.69,
+          "claimed_pct": 34,
           "category": "26",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 5.09,
           "median_90": 5.09
@@ -1594,7 +2160,7 @@ window.SAVECHECK_BROCHURES = {
           "verdict": "red",
           "observed_on": "2026-08-30",
           "omnibus_pct": 0,
-          "min_30_prior": 0.95,
+          "min_30_prior": 0.99,
           "median_90": 0.99
         },
         {
@@ -1604,7 +2170,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 37,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 3.29,
           "median_90": 3.29
@@ -1680,6 +2246,18 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 0,
           "min_30_prior": 1.99,
           "median_90": 1.99
+        },
+        {
+          "name": "Маслини Каламата,Екстра 13 кг",
+          "price": 6.15,
+          "retail": 10.22,
+          "claimed_pct": 40,
+          "category": "62",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 0,
+          "min_30_prior": 6.15,
+          "median_90": 6.15
         },
         {
           "name": "Schauma Kids шампоан Girls 400 мл",
@@ -1880,7 +2458,19 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "28",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 0,
+          "min_30_prior": 7.49,
+          "median_90": 7.99
+        },
+        {
+          "name": "Орехите Шпек Сервилат 600 г",
+          "price": 7.99,
+          "retail": 11.99,
+          "claimed_pct": 33,
+          "category": "28",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 7.49,
           "median_90": 7.99
@@ -1896,6 +2486,18 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 0,
           "min_30_prior": 1.85,
           "median_90": 1.85
+        },
+        {
+          "name": "KLC Масло 82% 250гр.",
+          "price": 1.49,
+          "retail": 1.49,
+          "claimed_pct": null,
+          "category": "12",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 0,
+          "min_30_prior": 1.49,
+          "median_90": 1.49
         },
         {
           "name": "Colgate Max Fresh паста Green Tea 75 мл",
@@ -1916,7 +2518,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "79",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 4.99,
           "median_90": 4.99
@@ -1928,7 +2530,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "79",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 4.99,
           "median_90": 4.99
@@ -1982,16 +2584,16 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 1.85
         },
         {
-          "name": "Milka Noisette млеч.шокол.млян лешн.90г",
-          "price": 1.15,
-          "retail": 2.55,
-          "claimed_pct": 55,
-          "category": "69",
+          "name": "3/Фермата Луканка, вакуум 350 г",
+          "price": 3.39,
+          "retail": 6.79,
+          "claimed_pct": 50,
+          "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
-          "min_30_prior": 1.15,
-          "median_90": 1.15
+          "min_30_prior": 3.32,
+          "median_90": 3.39
         },
         {
           "name": "R/Жарава Кюфте печено, 5брх60г., 300 г",
@@ -2024,22 +2626,22 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "69",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
-          "min_30_prior": 0.69,
+          "min_30_prior": 0.95,
           "median_90": 0.95
         },
         {
-          "name": "Майстор Цветко Салам Закуска 600г",
-          "price": 4.99,
-          "retail": 8.17,
-          "claimed_pct": 39,
+          "name": "Мити Флейка газова среда, кг.",
+          "price": 5.29,
+          "retail": 8.39,
+          "claimed_pct": 37,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
-          "min_30_prior": 4.99,
-          "median_90": 4.99
+          "min_30_prior": 4.85,
+          "median_90": 5.29
         },
         {
           "name": "3/Ям-и Шпек Сервилат 300 г",
@@ -2048,7 +2650,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 7,
           "category": "28",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 1.89,
           "median_90": 1.89
@@ -2060,7 +2662,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "69",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 1.39,
           "median_90": 1.39
@@ -2072,7 +2674,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "69",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 1.39,
           "median_90": 1.39
@@ -2084,9 +2686,9 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "69",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
-          "min_30_prior": 0.79,
+          "min_30_prior": 1.39,
           "median_90": 1.39
         },
         {
@@ -2096,7 +2698,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "69",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 1.35,
           "median_90": 1.39
@@ -2108,7 +2710,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "69",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 1.39,
           "median_90": 1.39
@@ -2120,7 +2722,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "69",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 1.39,
           "median_90": 1.39
@@ -2134,7 +2736,7 @@ window.SAVECHECK_BROCHURES = {
           "verdict": "red",
           "observed_on": "2026-08-30",
           "omnibus_pct": 0,
-          "min_30_prior": 3.57,
+          "min_30_prior": 3.99,
           "median_90": 3.99
         },
         {
@@ -2162,25 +2764,13 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 8.99
         },
         {
-          "name": "Кроасан с масло 24% 55г",
-          "price": 0.27,
-          "retail": 0.45,
-          "claimed_pct": 40,
-          "category": "67",
-          "verdict": "red",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 0,
-          "min_30_prior": 0.27,
-          "median_90": 0.27
-        },
-        {
           "name": "Lacmi шоколад ягодова панакота 90 г",
           "price": 1.39,
           "retail": 1.69,
           "claimed_pct": 18,
           "category": "69",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 1.39,
           "median_90": 1.39
@@ -2192,10 +2782,22 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "69",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 1.39,
           "median_90": 1.39
+        },
+        {
+          "name": "R/Арбанаси Македонска наденица, вак., кг",
+          "price": 3.05,
+          "retail": 3.88,
+          "claimed_pct": 21,
+          "category": "27",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 0,
+          "min_30_prior": 3.05,
+          "median_90": 3.06
         },
         {
           "name": "Деком Луканков салам 300 г",
@@ -2204,7 +2806,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 8,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 2.59,
           "median_90": 2.59
@@ -2216,7 +2818,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 20.45,
           "median_90": 20.45
@@ -2318,18 +2920,6 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 1.53
         },
         {
-          "name": "Мегдана Колбас Хамбургски 1 кг",
-          "price": 2.79,
-          "retail": 3.79,
-          "claimed_pct": 26,
-          "category": "27",
-          "verdict": "red",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 0,
-          "min_30_prior": 2.79,
-          "median_90": 2.79
-        },
-        {
           "name": "Gerber меню зеленч,телешко,макарон9+190г",
           "price": 1.53,
           "retail": 2.24,
@@ -2354,6 +2944,30 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 1.53
         },
         {
+          "name": "Kit Kat Шоколад Двоен шоколад 99г",
+          "price": 1.79,
+          "retail": 2.3,
+          "claimed_pct": 22,
+          "category": "69",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 0,
+          "min_30_prior": 1.29,
+          "median_90": 1.79
+        },
+        {
+          "name": "Млечен шоколад лешник и стафида 80 гр",
+          "price": 0.95,
+          "retail": 1.22,
+          "claimed_pct": 22,
+          "category": "69",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 0,
+          "min_30_prior": 0.95,
+          "median_90": 0.95
+        },
+        {
           "name": "My Day Пастьоризирано мляко 3,5 % 1 л",
           "price": 1.35,
           "retail": 2.19,
@@ -2372,7 +2986,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "7",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 0.69,
           "median_90": 0.69
@@ -2408,7 +3022,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": null,
           "category": "79",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 1.99,
           "median_90": 1.99
@@ -2420,7 +3034,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": null,
           "category": "79",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 1.99,
           "median_90": 1.99
@@ -2432,7 +3046,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": null,
           "category": "79",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 1.99,
           "median_90": 1.99
@@ -2444,7 +3058,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": null,
           "category": "79",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 1.99,
           "median_90": 1.99
@@ -2456,7 +3070,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": null,
           "category": "79",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 1.99,
           "median_90": 1.99
@@ -2468,10 +3082,22 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "70",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
-          "min_30_prior": 3.29,
+          "min_30_prior": 6.45,
           "median_90": 6.45
+        },
+        {
+          "name": "Break шоколад млечен с цели лешници 85 г",
+          "price": 1.89,
+          "retail": 2.24,
+          "claimed_pct": 16,
+          "category": "69",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 0,
+          "min_30_prior": 1.89,
+          "median_90": 1.89
         },
         {
           "name": "K-Bio Кафе на зърна Crema 100% Араб. 1кг",
@@ -2480,7 +3106,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "71",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 15.59,
           "median_90": 15.64
@@ -2494,7 +3120,7 @@ window.SAVECHECK_BROCHURES = {
           "verdict": "red",
           "observed_on": "2026-08-30",
           "omnibus_pct": 0,
-          "min_30_prior": 5.35,
+          "min_30_prior": 6.85,
           "median_90": 6.85
         },
         {
@@ -2506,7 +3132,7 @@ window.SAVECHECK_BROCHURES = {
           "verdict": "red",
           "observed_on": "2026-08-30",
           "omnibus_pct": 0,
-          "min_30_prior": 5.35,
+          "min_30_prior": 6.85,
           "median_90": 6.85
         },
         {
@@ -2518,7 +3144,7 @@ window.SAVECHECK_BROCHURES = {
           "verdict": "red",
           "observed_on": "2026-08-30",
           "omnibus_pct": 0,
-          "min_30_prior": 5.35,
+          "min_30_prior": 6.85,
           "median_90": 6.85
         },
         {
@@ -2528,34 +3154,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 50,
           "category": "69",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 0.11,
           "median_90": 0.43
-        },
-        {
-          "name": "fr3 Къпани кори 400 г",
-          "price": 2.19,
-          "retail": 3.09,
-          "claimed_pct": 29,
-          "category": "5",
-          "verdict": "red",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 0,
-          "min_30_prior": 2.0,
-          "median_90": 2.19
-        },
-        {
-          "name": "NN DeutscheMarkenbutter Кр масло 82%250г",
-          "price": 1.55,
-          "retail": 3.79,
-          "claimed_pct": 59,
-          "category": "12",
-          "verdict": "red",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 0,
-          "min_30_prior": 1.55,
-          "median_90": 1.55
         },
         {
           "name": "Скумрия цяла замразена, XXL",
@@ -2564,22 +3166,58 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 38,
           "category": "29",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 2.55,
           "median_90": 2.55
         },
         {
-          "name": "Parоdontax паста ActiveGumWhitening 75мл",
-          "price": 3.89,
-          "retail": 4.29,
-          "claimed_pct": 9,
-          "category": "81",
+          "name": "Lindt Classic мл.шок. цели лешници 100г",
+          "price": 2.49,
+          "retail": 3.57,
+          "claimed_pct": 30,
+          "category": "69",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 0,
+          "min_30_prior": 2.49,
+          "median_90": 2.49
+        },
+        {
+          "name": "Витa баница със сирене и извара 460г",
+          "price": 1.89,
+          "retail": 2.59,
+          "claimed_pct": 27,
+          "category": "68",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
           "omnibus_pct": -1,
-          "min_30_prior": 3.89,
-          "median_90": 3.84
+          "min_30_prior": 1.79,
+          "median_90": 1.87
+        },
+        {
+          "name": "#Витa баница с  тиква 460г",
+          "price": 1.89,
+          "retail": 2.59,
+          "claimed_pct": 27,
+          "category": "68",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": -1,
+          "min_30_prior": 1.79,
+          "median_90": 1.87
+        },
+        {
+          "name": "АЛЕАΣ Маслиново масло кен EV 1 л",
+          "price": 9.19,
+          "retail": 0.0,
+          "claimed_pct": null,
+          "category": "43",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": -2,
+          "min_30_prior": 8.99,
+          "median_90": 8.99
         },
         {
           "name": "Народен Кренвирш /~5 кг плик/ 1 кг",
@@ -2588,7 +3226,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "26",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": -2,
           "min_30_prior": 3.93,
           "median_90": 3.93
@@ -2600,7 +3238,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "11",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": -3,
           "min_30_prior": 8.19,
           "median_90": 7.99
@@ -2630,16 +3268,16 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 3.06
         },
         {
-          "name": "Мити Флейка газова среда, кг.",
-          "price": 5.29,
-          "retail": 8.39,
-          "claimed_pct": 37,
-          "category": "27",
+          "name": "Happy мокри кърпички 120 бр",
+          "price": 1.05,
+          "retail": 2.1,
+          "claimed_pct": 50,
+          "category": "84",
           "verdict": "red",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": -4,
-          "min_30_prior": 4.85,
-          "median_90": 5.07
+          "observed_on": "2026-08-31",
+          "omnibus_pct": -5,
+          "min_30_prior": 1.05,
+          "median_90": 1.0
         },
         {
           "name": "JotisCremilac Оризова каша мляко200г, 4+",
@@ -2650,7 +3288,7 @@ window.SAVECHECK_BROCHURES = {
           "verdict": "red",
           "observed_on": "2026-08-30",
           "omnibus_pct": -5,
-          "min_30_prior": 2.19,
+          "min_30_prior": 2.29,
           "median_90": 2.19
         },
         {
@@ -2662,7 +3300,7 @@ window.SAVECHECK_BROCHURES = {
           "verdict": "red",
           "observed_on": "2026-08-30",
           "omnibus_pct": -5,
-          "min_30_prior": 2.19,
+          "min_30_prior": 2.29,
           "median_90": 2.19
         },
         {
@@ -2674,7 +3312,7 @@ window.SAVECHECK_BROCHURES = {
           "verdict": "red",
           "observed_on": "2026-08-30",
           "omnibus_pct": -5,
-          "min_30_prior": 2.19,
+          "min_30_prior": 2.29,
           "median_90": 2.19
         },
         {
@@ -2686,7 +3324,7 @@ window.SAVECHECK_BROCHURES = {
           "verdict": "red",
           "observed_on": "2026-08-30",
           "omnibus_pct": -5,
-          "min_30_prior": 2.19,
+          "min_30_prior": 2.29,
           "median_90": 2.19
         },
         {
@@ -2698,7 +3336,7 @@ window.SAVECHECK_BROCHURES = {
           "verdict": "red",
           "observed_on": "2026-08-30",
           "omnibus_pct": -5,
-          "min_30_prior": 2.19,
+          "min_30_prior": 2.29,
           "median_90": 2.19
         },
         {
@@ -2710,8 +3348,20 @@ window.SAVECHECK_BROCHURES = {
           "verdict": "red",
           "observed_on": "2026-08-30",
           "omnibus_pct": -5,
-          "min_30_prior": 2.19,
+          "min_30_prior": 2.29,
           "median_90": 2.19
+        },
+        {
+          "name": "Маслини Каламата,фини, цели 321/380 13кг",
+          "price": 3.72,
+          "retail": 7.45,
+          "claimed_pct": 50,
+          "category": "62",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": -5,
+          "min_30_prior": 3.79,
+          "median_90": 3.55
         },
         {
           "name": "NN кроасан с какаов крем 32% 55г",
@@ -2756,7 +3406,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 34,
           "category": "43",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": -6,
           "min_30_prior": 6.49,
           "median_90": 7.99
@@ -2768,10 +3418,22 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 42,
           "category": "74",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": -7,
           "min_30_prior": 0.87,
           "median_90": 0.87
+        },
+        {
+          "name": "Astera паста Homeopathica Kids4+50мл",
+          "price": 2.29,
+          "retail": 2.81,
+          "claimed_pct": 19,
+          "category": "81",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": -7,
+          "min_30_prior": 1.89,
+          "median_90": 2.14
         },
         {
           "name": "Шуменско Светло пиво 4,8% 2л PET",
@@ -2783,7 +3445,7 @@ window.SAVECHECK_BROCHURES = {
           "observed_on": "2026-08-30",
           "omnibus_pct": -8,
           "min_30_prior": 0.9,
-          "median_90": 1.105
+          "median_90": 1.1
         },
         {
           "name": "Портокали кг",
@@ -2794,32 +3456,56 @@ window.SAVECHECK_BROCHURES = {
           "verdict": "red",
           "observed_on": "2026-08-29",
           "omnibus_pct": -9,
-          "min_30_prior": 1.19,
+          "min_30_prior": 1.3,
           "median_90": 1.19
         },
         {
-          "name": "Kit Kat Шоколад Двоен шоколад 99г",
-          "price": 1.79,
-          "retail": 2.3,
-          "claimed_pct": 22,
-          "category": "69",
+          "name": "Wet Hankies мокри кърпи Clean 4x15бр",
+          "price": 1.39,
+          "retail": 1.39,
+          "claimed_pct": null,
+          "category": "84",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": -9,
-          "min_30_prior": 1.29,
-          "median_90": 1.64
+          "min_30_prior": 1.39,
+          "median_90": 1.27
         },
         {
-          "name": "Break шоколад млечен с цели лешници 85 г",
-          "price": 1.89,
-          "retail": 2.24,
-          "claimed_pct": 16,
-          "category": "69",
+          "name": "Wet Hankies мокри кърпи Lemon 4x15бр",
+          "price": 1.39,
+          "retail": 1.39,
+          "claimed_pct": null,
+          "category": "84",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": -9,
-          "min_30_prior": 1.89,
-          "median_90": 1.74
+          "min_30_prior": 1.39,
+          "median_90": 1.27
+        },
+        {
+          "name": "Wet Hankies мокри кърпи Apple 4x15бр",
+          "price": 1.39,
+          "retail": 1.39,
+          "claimed_pct": null,
+          "category": "84",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": -9,
+          "min_30_prior": 1.39,
+          "median_90": 1.27
+        },
+        {
+          "name": "Wet Hankies мокри кърпи Ex.Safe 4x12бр",
+          "price": 1.39,
+          "retail": 1.39,
+          "claimed_pct": null,
+          "category": "84",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": -9,
+          "min_30_prior": 1.39,
+          "median_90": 1.27
         },
         {
           "name": "Tchibo Gold selection кафе мляно 250 г",
@@ -2828,7 +3514,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "70",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": -11,
           "min_30_prior": 3.69,
           "median_90": 6.55
@@ -2840,7 +3526,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "64",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": -11,
           "min_30_prior": 0.89,
           "median_90": 0.8
@@ -2852,7 +3538,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "79",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": -12,
           "min_30_prior": 3.57,
           "median_90": 3.57
@@ -2870,16 +3556,16 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 3.99
         },
         {
-          "name": "Astera паста Homeopathica Kids4+50мл",
-          "price": 2.29,
-          "retail": 2.81,
-          "claimed_pct": 19,
-          "category": "81",
+          "name": "Болярка светло 4,3% 2л PET",
+          "price": 0.85,
+          "retail": 1.52,
+          "claimed_pct": 44,
+          "category": "74",
           "verdict": "red",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": -15,
-          "min_30_prior": 1.89,
-          "median_90": 1.99
+          "observed_on": "2026-08-31",
+          "omnibus_pct": -16,
+          "min_30_prior": 0.85,
+          "median_90": 0.73
         },
         {
           "name": "Мilka Choco Кроасан ванилия 50г",
@@ -2888,10 +3574,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "67",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": -16,
-          "min_30_prior": 0.76,
-          "median_90": 0.765
+          "min_30_prior": 0.89,
+          "median_90": 0.77
         },
         {
           "name": "Саяна Краве сирене 400г",
@@ -2900,7 +3586,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 7,
           "category": "9",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": -17,
           "min_30_prior": 3.59,
           "median_90": 3.59
@@ -2912,22 +3598,22 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "67",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": -17,
-          "min_30_prior": 0.76,
+          "min_30_prior": 0.89,
           "median_90": 0.76
         },
         {
-          "name": "Лимони кг",
-          "price": 2.39,
-          "retail": 2.99,
-          "claimed_pct": 20,
-          "category": "50",
+          "name": "Зеле бяло кг",
+          "price": 0.69,
+          "retail": 0.99,
+          "claimed_pct": 30,
+          "category": "57",
           "verdict": "red",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": -20,
-          "min_30_prior": 1.58,
-          "median_90": 1.99
+          "observed_on": "2026-08-31",
+          "omnibus_pct": -17,
+          "min_30_prior": 0.69,
+          "median_90": 0.59
         },
         {
           "name": "Coppini маслиново масло помас 1 л",
@@ -2936,22 +3622,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 40,
           "category": "43",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": -23,
           "min_30_prior": 3.99,
           "median_90": 3.99
-        },
-        {
-          "name": "Траки Лютеница едросмл.екстра класик 550",
-          "price": 3.39,
-          "retail": 5.3,
-          "claimed_pct": 36,
-          "category": "49",
-          "verdict": "red",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": -26,
-          "min_30_prior": 2.7,
-          "median_90": 2.7
         },
         {
           "name": "KLC Кренвирши 83% месо 750 г",
@@ -2960,7 +3634,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": -26,
           "min_30_prior": 3.57,
           "median_90": 3.57
@@ -2972,19 +3646,31 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 25,
           "category": "62",
           "verdict": "red",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": -49,
+          "observed_on": "2026-08-31",
+          "omnibus_pct": -47,
           "min_30_prior": 4.29,
-          "median_90": 3.355
+          "median_90": 3.39
+        },
+        {
+          "name": "Milki Dream Кашкавал от краве мл. пита",
+          "price": 10.55,
+          "retail": 11.75,
+          "claimed_pct": 10,
+          "category": "10",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": -51,
+          "min_30_prior": 10.55,
+          "median_90": 6.99
         }
       ]
     },
     {
       "chain": "Billa",
-      "from_date": "2026-08-29",
-      "is_stale": true,
-      "total_promos": 225,
-      "total_before_cap": 225,
+      "from_date": "2026-08-31",
+      "is_stale": false,
+      "total_promos": 185,
+      "total_before_cap": 185,
       "items": [
         {
           "name": "250ГР МЛЯНО КАФЕ GOLD SELECTION TCHIBO",
@@ -2993,7 +3679,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 52,
           "category": "70",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 52,
           "min_30_prior": 3.79,
           "median_90": 7.87,
@@ -3006,7 +3692,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 50,
           "category": "70",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 50,
           "min_30_prior": 4.29,
           "median_90": 8.64,
@@ -3019,7 +3705,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 50,
           "category": "70",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 50,
           "min_30_prior": 4.29,
           "median_90": 8.64,
@@ -3032,7 +3718,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 45,
           "category": "12",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 45,
           "min_30_prior": 2.19,
           "median_90": 3.99,
@@ -3045,24 +3731,11 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 40,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 40,
           "min_30_prior": 0.55,
           "median_90": 0.92,
           "basket_id": "yogurt"
-        },
-        {
-          "name": "КРАВЕ МАСЛО PRESIDENT LIGHT 250Г",
-          "price": 3.99,
-          "retail": 6.64,
-          "claimed_pct": 40,
-          "category": "12",
-          "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 40,
-          "min_30_prior": 3.99,
-          "median_90": 6.64,
-          "basket_id": "butter"
         },
         {
           "name": "МИЛ СИРЕНЕ КРАВЕ МЛЯКО САЯНА / 8 КГ",
@@ -3071,7 +3744,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 38,
           "category": "8",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 38,
           "min_30_prior": 5.69,
           "median_90": 9.2,
@@ -3084,7 +3757,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 33,
           "min_30_prior": 0.65,
           "median_90": 0.97,
@@ -3097,23 +3770,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 32,
           "min_30_prior": 0.45,
           "median_90": 0.66,
-          "basket_id": "yogurt"
-        },
-        {
-          "name": "КИСЕЛО МЛЯКО ЗНП МАДЖАРОВ 3,6% 400ГР",
-          "price": 0.59,
-          "retail": 1.02,
-          "claimed_pct": 42,
-          "category": "7",
-          "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 31,
-          "min_30_prior": 0.59,
-          "median_90": 0.85,
           "basket_id": "yogurt"
         },
         {
@@ -3123,37 +3783,11 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 29,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 29,
           "min_30_prior": 1.19,
           "median_90": 1.68,
           "basket_id": "chicken"
-        },
-        {
-          "name": "КИСЕЛО МЛЯКО 3,6% ЕЛЕНА 400Г",
-          "price": 0.69,
-          "retail": 1.02,
-          "claimed_pct": 32,
-          "category": "7",
-          "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 28,
-          "min_30_prior": 0.69,
-          "median_90": 0.955,
-          "basket_id": "yogurt"
-        },
-        {
-          "name": "КИСЕЛО МЛЯКО 3.6% 400Г BILLA",
-          "price": 0.49,
-          "retail": 0.62,
-          "claimed_pct": 21,
-          "category": "7",
-          "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 21,
-          "min_30_prior": 0.49,
-          "median_90": 0.62,
-          "basket_id": "yogurt"
         },
         {
           "name": "КИСЕЛО МЛЯКО БОЛЯРЧЕ 3,6% 400ГР",
@@ -3162,24 +3796,11 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 36,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 14,
           "min_30_prior": 0.59,
           "median_90": 0.69,
           "basket_id": "yogurt"
-        },
-        {
-          "name": "053 ПИЛЕШКО ФИЛЕ СЛАЙС КФМ 160 ГР",
-          "price": 2.79,
-          "retail": 4.24,
-          "claimed_pct": 34,
-          "category": "27",
-          "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 10,
-          "min_30_prior": 2.79,
-          "median_90": 3.115,
-          "basket_id": "chicken"
         },
         {
           "name": "SCHAUMA MEN ШАМПОАН 400МЛ",
@@ -3188,7 +3809,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 51,
           "min_30_prior": 1.99,
           "median_90": 4.09
@@ -3200,7 +3821,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 51,
           "min_30_prior": 1.99,
           "median_90": 4.09
@@ -3212,7 +3833,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "62",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 51,
           "min_30_prior": 4.09,
           "median_90": 8.34
@@ -3224,34 +3845,34 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 50,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 50,
           "min_30_prior": 0.99,
           "median_90": 1.99
         },
         {
-          "name": "90ГР ДУБАЙСКИ ШОКОЛАД ELIT",
-          "price": 2.3,
-          "retail": 4.6,
+          "name": "400ГР ДОМАТИ БЕЛЕНИ BILLA",
+          "price": 0.59,
+          "retail": 1.17,
           "claimed_pct": 50,
-          "category": "69",
+          "category": "48",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 50,
-          "min_30_prior": 2.3,
-          "median_90": 4.6
+          "min_30_prior": 1.17,
+          "median_90": 1.17
         },
         {
-          "name": "ШПЕК БУРГАС СЛАЙС 100Г МАЙСТОР ЦВЕТКО",
-          "price": 0.99,
-          "retail": 1.99,
+          "name": "400ГР ДОМАТИ НА КУБЧЕТА BILLA",
+          "price": 0.59,
+          "retail": 1.17,
           "claimed_pct": 50,
-          "category": "28",
+          "category": "48",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 50,
-          "min_30_prior": 0.99,
-          "median_90": 1.99
+          "min_30_prior": 1.17,
+          "median_90": 1.17
         },
         {
           "name": "400Г ЗЕЛЕН ГРАХ CHEF CARLO",
@@ -3260,22 +3881,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 49,
           "category": "47",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 49,
           "min_30_prior": 0.55,
           "median_90": 1.07
-        },
-        {
-          "name": "249 ПАСТЕТ С МАСЛИНИ КЕН 190Г",
-          "price": 0.99,
-          "retail": 1.89,
-          "claimed_pct": 48,
-          "category": "27",
-          "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 48,
-          "min_30_prior": 0.99,
-          "median_90": 1.89
         },
         {
           "name": "100ГР ШОКОЛАД С ФЪСТЪЦИ И СТАФИДИ CLEVER",
@@ -3284,7 +3893,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 47,
           "category": "69",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 47,
           "min_30_prior": 0.69,
           "median_90": 1.3
@@ -3296,34 +3905,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "61",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 45,
           "min_30_prior": 0.49,
           "median_90": 0.89
-        },
-        {
-          "name": "КАШКАВАЛ ОТ КРАВЕ МЛЯКО ТРАКИЙКА ЗА КГ",
-          "price": 5.99,
-          "retail": 10.69,
-          "claimed_pct": 44,
-          "category": "11",
-          "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 44,
-          "min_30_prior": 5.99,
-          "median_90": 10.69
-        },
-        {
-          "name": "ТОЧЕНИ КОРИ BILLA 500 ГР",
-          "price": 1.05,
-          "retail": 1.89,
-          "claimed_pct": 44,
-          "category": "5",
-          "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 44,
-          "min_30_prior": 1.05,
-          "median_90": 1.89
         },
         {
           "name": "INTER ЧЕРНИ МАСЛИНИ НА ШАЙБИ 3Х2КГ",
@@ -3332,22 +3917,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 43,
           "category": "62",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 43,
           "min_30_prior": 4.99,
           "median_90": 8.69
-        },
-        {
-          "name": "КРОМИД ЛУК",
-          "price": 0.39,
-          "retail": 0.85,
-          "claimed_pct": 54,
-          "category": "55",
-          "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 43,
-          "min_30_prior": 0.39,
-          "median_90": 0.69
         },
         {
           "name": "КРЕНВИРШИ ВИНЕР 400 БОНИ",
@@ -3356,22 +3929,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 42,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 42,
           "min_30_prior": 2.29,
           "median_90": 3.98
-        },
-        {
-          "name": "ПРЯСНО МЛЯКО БУЛГАРЧЕ 3,2%, 1Л",
-          "price": 0.99,
-          "retail": 1.71,
-          "claimed_pct": 42,
-          "category": "6",
-          "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 42,
-          "min_30_prior": 0.99,
-          "median_90": 1.71
         },
         {
           "name": "570Г СВАРЕН БОБ ЕКСТРА  LUENGO",
@@ -3380,10 +3941,22 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 41,
           "category": "46",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 41,
           "min_30_prior": 1.17,
           "median_90": 1.99
+        },
+        {
+          "name": "ЛА 54ГР КРОАСАН С МАСЛО 80БР",
+          "price": 0.27,
+          "retail": 0.46,
+          "claimed_pct": 41,
+          "category": "67",
+          "verdict": "green",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 41,
+          "min_30_prior": 0.46,
+          "median_90": 0.46
         },
         {
           "name": "COLGATE TOTAL CHARCOAL&CLEAN ПАСТА 100МЛ",
@@ -3392,7 +3965,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 42,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 40,
           "min_30_prior": 2.14,
           "median_90": 3.57
@@ -3404,7 +3977,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 42,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 40,
           "min_30_prior": 2.14,
           "median_90": 3.57
@@ -3416,7 +3989,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 40,
           "category": "28",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 40,
           "min_30_prior": 7.97,
           "median_90": 13.29
@@ -3428,7 +4001,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 40,
           "category": "62",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 40,
           "min_30_prior": 3.99,
           "median_90": 6.64
@@ -3440,7 +4013,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 39,
           "category": "28",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 39,
           "min_30_prior": 9.6,
           "median_90": 15.69
@@ -3452,7 +4025,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 38,
           "category": "69",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 38,
           "min_30_prior": 1.99,
           "median_90": 3.22
@@ -3464,7 +4037,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 38,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 38,
           "min_30_prior": 5.87,
           "median_90": 9.45
@@ -3476,7 +4049,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 37,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 37,
           "min_30_prior": 4.24,
           "median_90": 6.74
@@ -3488,7 +4061,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 38,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 37,
           "min_30_prior": 4.24,
           "median_90": 6.74
@@ -3500,7 +4073,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 37,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 37,
           "min_30_prior": 4.24,
           "median_90": 6.74
@@ -3512,7 +4085,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 38,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 37,
           "min_30_prior": 4.24,
           "median_90": 6.74
@@ -3524,7 +4097,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 38,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 37,
           "min_30_prior": 4.24,
           "median_90": 6.74
@@ -3536,7 +4109,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 38,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 37,
           "min_30_prior": 4.24,
           "median_90": 6.74
@@ -3548,22 +4121,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 35,
           "min_30_prior": 1.99,
           "median_90": 3.06
-        },
-        {
-          "name": "КАШКАВАЛ ОТ КР.МЛЯКО БДС МАДЖАРОВ 800ГР",
-          "price": 9.99,
-          "retail": 15.33,
-          "claimed_pct": 35,
-          "category": "11",
-          "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 35,
-          "min_30_prior": 9.99,
-          "median_90": 15.33
         },
         {
           "name": "МУРГАШ ИЗВАРА КГ/ 5КГ ПЛИК",
@@ -3572,7 +4133,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "13",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 35,
           "min_30_prior": 2.55,
           "median_90": 3.9
@@ -3584,7 +4145,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 35,
           "min_30_prior": 9.99,
           "median_90": 15.33
@@ -3596,7 +4157,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "9",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 35,
           "min_30_prior": 3.99,
           "median_90": 6.13
@@ -3608,7 +4169,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "70",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 34,
           "min_30_prior": 7.29,
           "median_90": 10.99
@@ -3620,22 +4181,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "70",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 34,
           "min_30_prior": 7.29,
           "median_90": 10.99
-        },
-        {
-          "name": "КАРТОФИ ЧЕРВЕНИ МИТИ",
-          "price": 0.69,
-          "retail": 1.38,
-          "claimed_pct": 50,
-          "category": "61",
-          "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 34,
-          "min_30_prior": 0.69,
-          "median_90": 1.05
         },
         {
           "name": "МИЛ КАШКАВАЛ КРАВЕ МЛЯКО ДИЛБЕР / 7КГ",
@@ -3644,22 +4193,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 34,
           "category": "10",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 34,
           "min_30_prior": 8.79,
           "median_90": 13.29
-        },
-        {
-          "name": "225 СКУМРИЯ ЧИСТЕНА РАЗМРАЗЕНА МАР",
-          "price": 4.6,
-          "retail": 8.49,
-          "claimed_pct": 46,
-          "category": "30",
-          "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 34,
-          "min_30_prior": 4.6,
-          "median_90": 6.92
         },
         {
           "name": "176 ПУШЕНО СВ. ФИЛЕ СЛАЙС 200Г CLEVER",
@@ -3668,7 +4205,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 33,
           "min_30_prior": 2.06,
           "median_90": 3.06
@@ -3680,7 +4217,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 33,
           "min_30_prior": 5.62,
           "median_90": 8.33
@@ -3692,7 +4229,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 43,
           "category": "50",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 33,
           "min_30_prior": 1.59,
           "median_90": 2.39
@@ -3704,7 +4241,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "77",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 33,
           "min_30_prior": 6.59,
           "median_90": 9.88
@@ -3716,7 +4253,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 32,
           "min_30_prior": 2.55,
           "median_90": 3.73
@@ -3728,22 +4265,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 32,
           "min_30_prior": 2.79,
           "median_90": 4.09
-        },
-        {
-          "name": "249 КЕН КОЛБАС КАМЧИЯ 350ГР",
-          "price": 1.69,
-          "retail": 2.47,
-          "claimed_pct": 32,
-          "category": "27",
-          "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 32,
-          "min_30_prior": 1.69,
-          "median_90": 2.47
         },
         {
           "name": "53 ШУНКА БУТ ВИЕНСКА СЛАЙС 160 КФМ",
@@ -3752,22 +4277,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 32,
           "min_30_prior": 2.79,
           "median_90": 4.09
-        },
-        {
-          "name": "ДОМАТИ ЧЕРВЕНИ",
-          "price": 1.35,
-          "retail": 2.29,
-          "claimed_pct": 41,
-          "category": "54",
-          "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 32,
-          "min_30_prior": 1.35,
-          "median_90": 1.99
         },
         {
           "name": "ЖИТ МАКЕДОНСКА НАДЕНИЦА",
@@ -3776,7 +4289,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 32,
           "min_30_prior": 6.29,
           "median_90": 9.2
@@ -3788,7 +4301,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 32,
           "min_30_prior": 8.99,
           "median_90": 13.29
@@ -3800,7 +4313,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 32,
           "min_30_prior": 1.99,
           "median_90": 2.91
@@ -3812,7 +4325,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 31,
           "min_30_prior": 2.39,
           "median_90": 3.47
@@ -3824,7 +4337,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 31,
           "min_30_prior": 13.48,
           "median_90": 19.48
@@ -3836,7 +4349,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "28",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 31,
           "min_30_prior": 2.81,
           "median_90": 4.09
@@ -3848,7 +4361,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 30,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 30,
           "min_30_prior": 3.09,
           "median_90": 4.39
@@ -3860,7 +4373,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 30,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 30,
           "min_30_prior": 2.32,
           "median_90": 3.32
@@ -3872,7 +4385,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 30,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 30,
           "min_30_prior": 2.32,
           "median_90": 3.32
@@ -3884,7 +4397,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 30,
           "category": "8",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 30,
           "min_30_prior": 5.69,
           "median_90": 8.18
@@ -3896,7 +4409,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 30,
           "category": "66",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 29,
           "min_30_prior": 0.89,
           "median_90": 1.25
@@ -3908,7 +4421,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 30,
           "category": "66",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 29,
           "min_30_prior": 0.89,
           "median_90": 1.25
@@ -3920,7 +4433,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "14",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 29,
           "min_30_prior": 1.59,
           "median_90": 2.24
@@ -3932,22 +4445,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "26",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 29,
           "min_30_prior": 5.19,
           "median_90": 7.36
-        },
-        {
-          "name": "КИСЕЛО МЛЯКО БОЖЕНЦИ 2% ЗНП 400 ГР",
-          "price": 0.65,
-          "retail": 0.92,
-          "claimed_pct": 29,
-          "category": "7",
-          "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 29,
-          "min_30_prior": 0.65,
-          "median_90": 0.92
         },
         {
           "name": "ТОЧЕНИ КОРИ ФАМИЛИЯ 500ГР",
@@ -3956,7 +4457,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "5",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 29,
           "min_30_prior": 1.65,
           "median_90": 2.34
@@ -3968,7 +4469,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 29,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 29,
           "min_30_prior": 4.99,
           "median_90": 6.99
@@ -3980,7 +4481,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "28",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 28,
           "min_30_prior": 3.59,
           "median_90": 4.99
@@ -3992,7 +4493,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 30,
           "category": "76",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 28,
           "min_30_prior": 5.11,
           "median_90": 7.05
@@ -4004,7 +4505,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 30,
           "category": "76",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 28,
           "min_30_prior": 5.11,
           "median_90": 7.05
@@ -4016,7 +4517,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 30,
           "category": "76",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 28,
           "min_30_prior": 5.11,
           "median_90": 7.05
@@ -4028,7 +4529,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 30,
           "category": "76",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 28,
           "min_30_prior": 5.11,
           "median_90": 7.05
@@ -4040,7 +4541,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 30,
           "category": "76",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 28,
           "min_30_prior": 5.11,
           "median_90": 7.05
@@ -4052,7 +4553,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 30,
           "category": "75",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 28,
           "min_30_prior": 5.11,
           "median_90": 7.05
@@ -4064,7 +4565,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 30,
           "category": "75",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 28,
           "min_30_prior": 5.11,
           "median_90": 7.05
@@ -4076,7 +4577,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 27,
           "min_30_prior": 2.68,
           "median_90": 3.68
@@ -4088,7 +4589,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 30,
           "category": "28",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 27,
           "min_30_prior": 3.59,
           "median_90": 4.95
@@ -4100,7 +4601,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 27,
           "min_30_prior": 2.99,
           "median_90": 4.09
@@ -4112,22 +4613,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 27,
           "min_30_prior": 4.85,
           "median_90": 6.64
-        },
-        {
-          "name": "ПРЯСНО МЛЯКО CLEVER 3% 1Л",
-          "price": 0.89,
-          "retail": 1.43,
-          "claimed_pct": 38,
-          "category": "6",
-          "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 27,
-          "min_30_prior": 0.89,
-          "median_90": 1.22
         },
         {
           "name": "КАШКАВАЛ ОТ КРАВЕ МЛЯКО САЯНА 600 ГР",
@@ -4136,7 +4625,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "11",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 26,
           "min_30_prior": 5.99,
           "median_90": 8.07
@@ -4148,7 +4637,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 26,
           "min_30_prior": 2.83,
           "median_90": 3.83
@@ -4160,7 +4649,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "84",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 25,
           "min_30_prior": 1.64,
           "median_90": 2.19
@@ -4172,7 +4661,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 25,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 25,
           "min_30_prior": 1.19,
           "median_90": 1.58
@@ -4184,7 +4673,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 24,
           "min_30_prior": 1.27,
           "median_90": 1.68
@@ -4196,7 +4685,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 24,
           "min_30_prior": 3.09,
           "median_90": 4.09
@@ -4208,7 +4697,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 23,
           "min_30_prior": 2.55,
           "median_90": 3.32
@@ -4220,22 +4709,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "5",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 23,
           "min_30_prior": 2.59,
           "median_90": 3.35
-        },
-        {
-          "name": "БИРА PET 2Л ЗАГОРКА",
-          "price": 1.12,
-          "retail": 1.73,
-          "claimed_pct": 35,
-          "category": "74",
-          "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 22,
-          "min_30_prior": 1.12,
-          "median_90": 1.435
         },
         {
           "name": "МАВРУД 0.75Л MENADA",
@@ -4244,7 +4721,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "76",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 22,
           "min_30_prior": 3.99,
           "median_90": 5.11
@@ -4256,7 +4733,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "76",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 22,
           "min_30_prior": 3.99,
           "median_90": 5.11
@@ -4268,7 +4745,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "75",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 22,
           "min_30_prior": 3.99,
           "median_90": 5.11
@@ -4280,22 +4757,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "75",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 22,
           "min_30_prior": 3.99,
           "median_90": 5.11
-        },
-        {
-          "name": "КИСЕЛО МЛЯКО БУЛГАРЧЕ 2% 400ГР",
-          "price": 0.59,
-          "retail": 0.86,
-          "claimed_pct": 31,
-          "category": "7",
-          "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 21,
-          "min_30_prior": 0.59,
-          "median_90": 0.75
         },
         {
           "name": "ORAL B PRO REPAIR GENTLE П. ЗА ЗЪБИ 75МЛ",
@@ -4304,22 +4769,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 45,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 2.99,
           "median_90": 3.75
-        },
-        {
-          "name": "UHT МЛЯКО 3.5% CLEVER 1Л",
-          "price": 1.15,
-          "retail": 1.43,
-          "claimed_pct": 20,
-          "category": "6",
-          "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 20,
-          "min_30_prior": 1.15,
-          "median_90": 1.43
         },
         {
           "name": "БЕЛ ШПЕК САНДВИЧ ПЕРЕЛИК",
@@ -4328,7 +4781,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 37,
           "category": "28",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 9.6,
           "median_90": 11.99
@@ -4340,7 +4793,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 45,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 2.99,
           "median_90": 3.75
@@ -4352,7 +4805,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "69",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 19,
           "min_30_prior": 2.99,
           "median_90": 3.68
@@ -4364,22 +4817,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 19,
           "min_30_prior": 1.09,
           "median_90": 1.35
-        },
-        {
-          "name": "БИРА РЕТ 2Л АРИАНА",
-          "price": 1.07,
-          "retail": 1.53,
-          "claimed_pct": 30,
-          "category": "74",
-          "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 19,
-          "min_30_prior": 1.07,
-          "median_90": 1.325
         },
         {
           "name": "031 САЛАМ СТАРА ПЛАНИНА 300 БОНИ",
@@ -4388,22 +4829,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "28",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 18,
           "min_30_prior": 4.62,
           "median_90": 5.62
-        },
-        {
-          "name": "107 ШУНКА ЛЕКИ КЛАСИК 300ГР",
-          "price": 2.99,
-          "retail": 3.99,
-          "claimed_pct": 25,
-          "category": "27",
-          "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 18,
-          "min_30_prior": 2.99,
-          "median_90": 3.64
         },
         {
           "name": "КАШКАВАЛ ОТ КР.МЛЯКО НА ХОРОТО/3X2.2КГ",
@@ -4412,7 +4841,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "10",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 18,
           "min_30_prior": 6.29,
           "median_90": 7.66
@@ -4424,22 +4853,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 18,
           "min_30_prior": 0.49,
           "median_90": 0.6
-        },
-        {
-          "name": "КИСЕЛО МЛЯКО БОЖЕНЦИ 2,2% 400Г",
-          "price": 0.65,
-          "retail": 0.92,
-          "claimed_pct": 29,
-          "category": "7",
-          "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 18,
-          "min_30_prior": 0.65,
-          "median_90": 0.79
         },
         {
           "name": "КИСЕЛО МЛЯКО ВЕРЕЯ ЧУДНО 2,5% 400 ГР",
@@ -4448,22 +4865,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 18,
           "min_30_prior": 0.65,
           "median_90": 0.79
-        },
-        {
-          "name": "249 КЕН ТЕЛЕШКИ КОЛБАС 350ГР",
-          "price": 2.04,
-          "retail": 2.47,
-          "claimed_pct": 17,
-          "category": "27",
-          "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 17,
-          "min_30_prior": 2.04,
-          "median_90": 2.47
         },
         {
           "name": "МЛ. КИСЕЛ ПРОД ПРОБИО ЕФЕКТ ДОМЛЯН 400ГР",
@@ -4472,34 +4877,34 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 17,
           "min_30_prior": 0.85,
           "median_90": 1.02
         },
         {
-          "name": "070 КОЛБАС ТИП ТЕЛЕШКИ 300 ТАНДЕМ",
-          "price": 1.99,
-          "retail": 3.06,
-          "claimed_pct": 35,
-          "category": "27",
+          "name": "ФИН  165ГР БАНИЦА ТОПЕНО СИРЕНЕ 40БР",
+          "price": 1.19,
+          "retail": 1.43,
+          "claimed_pct": 17,
+          "category": "68",
           "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 16,
-          "min_30_prior": 1.99,
-          "median_90": 2.375
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 17,
+          "min_30_prior": 1.43,
+          "median_90": 1.43
         },
         {
-          "name": "176 ПУШЕНО СВИНСКО ФИЛЕ 220Г BILLA",
-          "price": 2.78,
-          "retail": 3.78,
-          "claimed_pct": 26,
-          "category": "27",
+          "name": "СОФ 190ГР БАНИЦА СЪС СИРЕНЕ НА ХАПКИ",
+          "price": 1.29,
+          "retail": 1.53,
+          "claimed_pct": 16,
+          "category": "68",
           "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 15,
-          "min_30_prior": 2.78,
-          "median_90": 3.28
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 16,
+          "min_30_prior": 1.53,
+          "median_90": 1.53
         },
         {
           "name": "COLGATE MAX WHITE ULT MULTIP П.ЗЪБИ 50МЛ",
@@ -4508,7 +4913,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 4.76,
           "median_90": 5.6
@@ -4520,7 +4925,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "76",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 3.45,
           "median_90": 4.06
@@ -4532,7 +4937,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "76",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 3.45,
           "median_90": 4.06
@@ -4544,7 +4949,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "75",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 3.45,
           "median_90": 4.06
@@ -4556,34 +4961,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "75",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 3.45,
           "median_90": 4.06
-        },
-        {
-          "name": "ЯЙЦА L10 ПОДОВО ОТГЛЕЖДАНЕ ДОНЧЕВО",
-          "price": 2.29,
-          "retail": 3.16,
-          "claimed_pct": 28,
-          "category": "32",
-          "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 15,
-          "min_30_prior": 2.29,
-          "median_90": 2.69
-        },
-        {
-          "name": "212 КОЛБАС ТЕЛЕШКИ 300 BILLA",
-          "price": 1.78,
-          "retail": 2.29,
-          "claimed_pct": 22,
-          "category": "27",
-          "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 13,
-          "min_30_prior": 1.78,
-          "median_90": 2.035
         },
         {
           "name": "ДЕЛИКАТЕС С ПУЕШКО ФИЛЕ МАЙСТОР ЦВЕТКО",
@@ -4592,61 +4973,34 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 37,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 12,
           "min_30_prior": 8.99,
           "median_90": 10.21
         },
         {
-          "name": "TRENDY МОКРИ КЪРПИЧКИ 72БР.",
-          "price": 0.71,
-          "retail": 0.79,
-          "claimed_pct": 10,
-          "category": "84",
+          "name": "ЯЙЦА L10 ПОДОВО ОТГЛЕЖДАНЕ ДОНЧЕВО",
+          "price": 2.29,
+          "retail": 3.16,
+          "claimed_pct": 28,
+          "category": "32",
           "verdict": "green",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 10,
-          "min_30_prior": 0.71,
-          "median_90": 0.79
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 12,
+          "min_30_prior": 2.29,
+          "median_90": 2.59
         },
         {
-          "name": "285 SOC ПРЯСНО ПИЛЕШКО ФИЛЕ БЕЗ КОЖА",
-          "price": 4.99,
-          "retail": 6.64,
+          "name": "107 ШУНКА ЛЕКИ КЛАСИК 300ГР",
+          "price": 2.99,
+          "retail": 3.99,
           "claimed_pct": 25,
-          "category": "16",
-          "verdict": "yellow",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 25,
-          "min_30_prior": 4.99,
-          "median_90": 6.64,
-          "basket_id": "chicken"
-        },
-        {
-          "name": "КИСЕЛО МЛЯКО БАЛКАН 3.6% 400Г",
-          "price": 0.65,
-          "retail": 1.02,
-          "claimed_pct": 36,
-          "category": "7",
-          "verdict": "yellow",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 25,
-          "min_30_prior": 0.65,
-          "median_90": 0.87,
-          "basket_id": "yogurt"
-        },
-        {
-          "name": "КРАВЕ МАСЛО D.MARKENBUTTER 125ГР",
-          "price": 1.29,
-          "retail": 1.69,
-          "claimed_pct": 24,
-          "category": "12",
-          "verdict": "yellow",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 24,
-          "min_30_prior": 1.29,
-          "median_90": 1.69,
-          "basket_id": "butter"
+          "category": "27",
+          "verdict": "green",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 9,
+          "min_30_prior": 2.99,
+          "median_90": 3.29
         },
         {
           "name": "500ГР МЛЯНО КАФЕ GOLD TIRA",
@@ -4655,24 +5009,24 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "70",
           "verdict": "yellow",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 22,
           "min_30_prior": 7.99,
           "median_90": 10.22,
           "basket_id": "coffee"
         },
         {
-          "name": "ПРЯСНО МЛЯКО 3% ВЕРЕЯ 1Л",
-          "price": 1.29,
-          "retail": 1.73,
-          "claimed_pct": 25,
-          "category": "6",
+          "name": "053 ПИЛЕШКО ФИЛЕ СЛАЙС КФМ 160 ГР",
+          "price": 2.79,
+          "retail": 4.24,
+          "claimed_pct": 34,
+          "category": "27",
           "verdict": "yellow",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 11,
-          "min_30_prior": 1.29,
-          "median_90": 1.45,
-          "basket_id": "milk"
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 7,
+          "min_30_prior": 2.79,
+          "median_90": 2.99,
+          "basket_id": "chicken"
         },
         {
           "name": "КАШКАВАЛ ОТ КРАВЕ МЛЯКО ЛЕСИДРЕН 350 ГР",
@@ -4681,22 +5035,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 40,
           "category": "11",
           "verdict": "yellow",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 40,
           "min_30_prior": 3.99,
           "median_90": 6.64
-        },
-        {
-          "name": "БИРА PET 2Л  БУРГАСКО",
-          "price": 1.17,
-          "retail": 1.82,
-          "claimed_pct": 36,
-          "category": "74",
-          "verdict": "yellow",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 36,
-          "min_30_prior": 1.17,
-          "median_90": 1.82
         },
         {
           "name": "87 ПРЯСНО ПИЛЕ КЛАС А 1,2-1,5 КГ. ГРАДУС",
@@ -4705,22 +5047,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "15",
           "verdict": "yellow",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 35,
           "min_30_prior": 2.99,
           "median_90": 4.6
-        },
-        {
-          "name": "249 КЕН САЛАМ БУРГАС 200Г",
-          "price": 2.39,
-          "retail": 3.32,
-          "claimed_pct": 28,
-          "category": "28",
-          "verdict": "yellow",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 28,
-          "min_30_prior": 2.39,
-          "median_90": 3.32
         },
         {
           "name": "80ГР МЛЕЧЕН ШОКОЛАД ЛЕШНИК И СТАФИДА",
@@ -4729,7 +5059,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "69",
           "verdict": "yellow",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 27,
           "min_30_prior": 0.89,
           "median_90": 1.22
@@ -4741,7 +5071,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "69",
           "verdict": "yellow",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 27,
           "min_30_prior": 0.89,
           "median_90": 1.22
@@ -4753,7 +5083,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "69",
           "verdict": "yellow",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 27,
           "min_30_prior": 0.89,
           "median_90": 1.22
@@ -4765,7 +5095,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "7",
           "verdict": "yellow",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 26,
           "min_30_prior": 0.45,
           "median_90": 0.61
@@ -4777,7 +5107,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "27",
           "verdict": "yellow",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 26,
           "min_30_prior": 5.66,
           "median_90": 7.66
@@ -4789,7 +5119,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "49",
           "verdict": "yellow",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 21,
           "min_30_prior": 2.79,
           "median_90": 3.53
@@ -4801,7 +5131,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "49",
           "verdict": "yellow",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 21,
           "min_30_prior": 2.79,
           "median_90": 3.53
@@ -4813,7 +5143,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "27",
           "verdict": "yellow",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 21,
           "min_30_prior": 1.45,
           "median_90": 1.84
@@ -4825,7 +5155,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "31",
           "verdict": "yellow",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 1.99,
           "median_90": 2.49
@@ -4837,34 +5167,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "28",
           "verdict": "yellow",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 17,
           "min_30_prior": 1.3,
           "median_90": 1.56
-        },
-        {
-          "name": "ИЗВАРА ОБЕЗМАСЛЕНА CLEVER 250 ГР",
-          "price": 0.99,
-          "retail": 1.19,
-          "claimed_pct": 17,
-          "category": "14",
-          "verdict": "yellow",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 17,
-          "min_30_prior": 0.99,
-          "median_90": 1.19
-        },
-        {
-          "name": "КИСЕЛО МЛЯКО ЕЛ БИ БДС 2% 400ГР",
-          "price": 0.65,
-          "retail": 0.92,
-          "claimed_pct": 29,
-          "category": "7",
-          "verdict": "yellow",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 16,
-          "min_30_prior": 0.65,
-          "median_90": 0.77
         },
         {
           "name": "156 ПУЕШКА ШУНКА СЛАЙС БАЛАНС МЕСКО 180Г",
@@ -4873,7 +5179,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "27",
           "verdict": "yellow",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 3.49,
           "median_90": 4.09
@@ -4885,7 +5191,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "49",
           "verdict": "yellow",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 2.79,
           "median_90": 3.29
@@ -4897,7 +5203,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "80",
           "verdict": "yellow",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 1.28,
           "median_90": 1.51
@@ -4909,7 +5215,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "81",
           "verdict": "yellow",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 1.28,
           "median_90": 1.51
@@ -4921,7 +5227,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "81",
           "verdict": "yellow",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 1.28,
           "median_90": 1.51
@@ -4933,22 +5239,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "81",
           "verdict": "yellow",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 1.28,
           "median_90": 1.51
-        },
-        {
-          "name": "070 БЕКОН 200 ТАНДЕМ",
-          "price": 3.09,
-          "retail": 4.19,
-          "claimed_pct": 26,
-          "category": "27",
-          "verdict": "yellow",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 14,
-          "min_30_prior": 3.09,
-          "median_90": 3.59
         },
         {
           "name": "МАКРО КРЕНВИРШИ БРАВО",
@@ -4957,58 +5251,34 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "26",
           "verdict": "yellow",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 14,
           "min_30_prior": 4.24,
           "median_90": 4.95
         },
         {
-          "name": "ЯЙЦА М10 ПОДОВО ОТГЛЕЖДАНЕ ХОРИЗОНТ",
-          "price": 2.29,
-          "retail": 3.05,
-          "claimed_pct": 25,
-          "category": "31",
-          "verdict": "yellow",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 10,
-          "min_30_prior": 2.29,
-          "median_90": 2.55
-        },
-        {
-          "name": "ЯЙЦА M10 ПОДОВО ОТГЛЕЖДАНЕ ДОНЧЕВО",
-          "price": 2.29,
-          "retail": 3.04,
-          "claimed_pct": 25,
-          "category": "31",
-          "verdict": "yellow",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 8,
-          "min_30_prior": 2.29,
-          "median_90": 2.49
-        },
-        {
-          "name": "249 КЕН САЛАМ ВЕСЛЕЦ 200Г",
-          "price": 2.89,
-          "retail": 3.32,
-          "claimed_pct": 13,
-          "category": "28",
-          "verdict": "yellow",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 7,
-          "min_30_prior": 2.89,
-          "median_90": 3.105
-        },
-        {
-          "name": "КИСЕЛО МЛЯКО 2% ЗНП BILLA 400 ГР",
-          "price": 0.55,
-          "retail": 0.74,
-          "claimed_pct": 26,
+          "name": "КИСЕЛО МЛЯКО ЕЛ БИ БДС 2% 400ГР",
+          "price": 0.65,
+          "retail": 0.92,
+          "claimed_pct": 29,
           "category": "7",
           "verdict": "yellow",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 7,
-          "min_30_prior": 0.55,
-          "median_90": 0.59
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 13,
+          "min_30_prior": 0.65,
+          "median_90": 0.75
+        },
+        {
+          "name": "БИРА PET 2Л ЗАГОРКА",
+          "price": 1.12,
+          "retail": 1.73,
+          "claimed_pct": 35,
+          "category": "74",
+          "verdict": "yellow",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 6,
+          "min_30_prior": 1.12,
+          "median_90": 1.19
         },
         {
           "name": "ТА БЕКОН КАЛЪП/1КГ ПАРЧЕ",
@@ -5017,10 +5287,34 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 38,
           "category": "27",
           "verdict": "yellow",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 5,
           "min_30_prior": 11.25,
           "median_90": 11.89
+        },
+        {
+          "name": "БИРА РЕТ 2Л АРИАНА",
+          "price": 1.07,
+          "retail": 1.53,
+          "claimed_pct": 30,
+          "category": "74",
+          "verdict": "yellow",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 4,
+          "min_30_prior": 1.07,
+          "median_90": 1.12
+        },
+        {
+          "name": "070 КОЛБАС ТИП ТЕЛЕШКИ 300 ТАНДЕМ",
+          "price": 1.99,
+          "retail": 3.06,
+          "claimed_pct": 35,
+          "category": "27",
+          "verdict": "yellow",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 3,
+          "min_30_prior": 1.99,
+          "median_90": 2.06
         },
         {
           "name": "070 КРЕНВИРШИ 250 ТАНДЕМ",
@@ -5029,7 +5323,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "27",
           "verdict": "yellow",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 3,
           "min_30_prior": 1.99,
           "median_90": 2.06
@@ -5041,7 +5335,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "27",
           "verdict": "yellow",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 3,
           "min_30_prior": 2.22,
           "median_90": 2.29
@@ -5053,21 +5347,23 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "27",
           "verdict": "yellow",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 3,
           "min_30_prior": 10.99,
           "median_90": 11.29
         },
         {
-          "name": "ЯБЪЛКИ ГАЛА",
-          "price": 1.69,
-          "retail": 1.99,
-          "claimed_pct": 15,
-          "category": "53",
-          "verdict": "gray",
-          "observed_on": "2026-08-29",
-          "min_30_prior": 1.39,
-          "median_90": 1.49
+          "name": "285 SOC ПРЯСНО ПИЛЕШКО ФИЛЕ БЕЗ КОЖА",
+          "price": 5.59,
+          "retail": 6.64,
+          "claimed_pct": 16,
+          "category": "16",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 16,
+          "min_30_prior": 4.99,
+          "median_90": 6.64,
+          "basket_id": "chicken"
         },
         {
           "name": "ПРЯСНО МЛЯКО 3% 1Л САЯНА",
@@ -5076,37 +5372,11 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "6",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 9,
           "min_30_prior": 1.19,
           "median_90": 1.49,
           "basket_id": "milk"
-        },
-        {
-          "name": "КИСЕЛО МЛЯКО ВЕРЕЯ 2.9% 400ГР",
-          "price": 0.65,
-          "retail": 0.92,
-          "claimed_pct": 29,
-          "category": "7",
-          "verdict": "red",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 2,
-          "min_30_prior": 0.65,
-          "median_90": 0.66,
-          "basket_id": "yogurt"
-        },
-        {
-          "name": "КИСЕЛО МЛЯКО 3,6% БАДЖАНАШКО 400Г",
-          "price": 0.39,
-          "retail": 0.51,
-          "claimed_pct": 24,
-          "category": "7",
-          "verdict": "red",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 0,
-          "min_30_prior": 0.39,
-          "median_90": 0.39,
-          "basket_id": "yogurt"
         },
         {
           "name": "КИСЕЛО МЛЯКО ВЕРЕЯ 3,6% 400ГР",
@@ -5115,7 +5385,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "7",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 0.65,
           "median_90": 0.69,
@@ -5128,23 +5398,36 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "73",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 2.55,
           "median_90": 2.55,
           "basket_id": "water"
         },
         {
-          "name": "БЕЛ САЛАМ БУРГАС ГАСТРО ОРЕХИТЕ",
-          "price": 12.19,
-          "retail": 18.19,
-          "claimed_pct": 33,
-          "category": "28",
+          "name": "КИСЕЛО МЛЯКО 3,6% БАДЖАНАШКО 400Г",
+          "price": 0.45,
+          "retail": 0.51,
+          "claimed_pct": 12,
+          "category": "7",
           "verdict": "red",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 33,
-          "min_30_prior": 11.75,
-          "median_90": 18.19
+          "observed_on": "2026-08-31",
+          "omnibus_pct": -15,
+          "min_30_prior": 0.39,
+          "median_90": 0.39,
+          "basket_id": "yogurt"
+        },
+        {
+          "name": "БИРА PET 2Л  БУРГАСКО",
+          "price": 1.19,
+          "retail": 1.82,
+          "claimed_pct": 35,
+          "category": "74",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 35,
+          "min_30_prior": 1.17,
+          "median_90": 1.82
         },
         {
           "name": "КРАВЕ СИРЕНЕ ВЕРЕЯ 700ГР",
@@ -5153,7 +5436,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 30,
           "category": "9",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 30,
           "min_30_prior": 5.49,
           "median_90": 8.53
@@ -5165,7 +5448,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 30,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 30,
           "min_30_prior": 2.29,
           "median_90": 3.32
@@ -5177,7 +5460,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 29,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 29,
           "min_30_prior": 2.19,
           "median_90": 3.49
@@ -5189,7 +5472,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 29,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 29,
           "min_30_prior": 2.19,
           "median_90": 3.49
@@ -5201,22 +5484,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 28,
           "category": "28",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 28,
           "min_30_prior": 9.69,
           "median_90": 13.8
-        },
-        {
-          "name": "MAP СВИНСКИ ВРАТ С КОСТ НАРЯЗАН БГ",
-          "price": 3.99,
-          "retail": 6.64,
-          "claimed_pct": 40,
-          "category": "21",
-          "verdict": "red",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 25,
-          "min_30_prior": 3.49,
-          "median_90": 5.315
         },
         {
           "name": "КРАСТАВИЦИ",
@@ -5225,10 +5496,22 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "58",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 24,
           "min_30_prior": 1.25,
           "median_90": 1.69
+        },
+        {
+          "name": "МОРКОВИ",
+          "price": 0.69,
+          "retail": 1.19,
+          "claimed_pct": 42,
+          "category": "56",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 22,
+          "min_30_prior": 0.59,
+          "median_90": 0.89
         },
         {
           "name": "КИСЕЛО МЛЯКО ВЕРЕЯ 2% 400ГР",
@@ -5237,7 +5520,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "7",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 0.59,
           "median_90": 0.81
@@ -5249,7 +5532,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "7",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 17,
           "min_30_prior": 0.55,
           "median_90": 0.78
@@ -5261,22 +5544,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "7",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 16,
           "min_30_prior": 0.49,
           "median_90": 0.7
-        },
-        {
-          "name": "КИСЕЛО МЛЯКО ДОМЛЯН 2% 500ГР",
-          "price": 0.69,
-          "retail": 0.92,
-          "claimed_pct": 25,
-          "category": "7",
-          "verdict": "red",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 13,
-          "min_30_prior": 0.65,
-          "median_90": 0.79
         },
         {
           "name": "100ГР Ш-Д КАР.И МОР.СОЛ LINDT EXCELLENCE",
@@ -5285,46 +5556,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "69",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 12,
           "min_30_prior": 3.09,
           "median_90": 4.19
-        },
-        {
-          "name": "237 БЕКОН СЛАЙС BILLA 200ГР",
-          "price": 2.39,
-          "retail": 2.9,
-          "claimed_pct": 18,
-          "category": "27",
-          "verdict": "red",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 12,
-          "min_30_prior": 2.29,
-          "median_90": 2.725
-        },
-        {
-          "name": "ПРЯСНО МЛЯКО 3.6% МАДЖАРОВ 1Л",
-          "price": 1.49,
-          "retail": 2.04,
-          "claimed_pct": 27,
-          "category": "6",
-          "verdict": "red",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 12,
-          "min_30_prior": 1.39,
-          "median_90": 1.69
-        },
-        {
-          "name": "237 СЕЛСКА ШУНКА СЛАЙС BILLA 150 ГР",
-          "price": 2.59,
-          "retail": 3.16,
-          "claimed_pct": 18,
-          "category": "27",
-          "verdict": "red",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 10,
-          "min_30_prior": 2.39,
-          "median_90": 2.875
         },
         {
           "name": "ЯЙЦА L10 ПОДОВО ОТГЛЕЖДАНЕ ХОРИЗОНТ",
@@ -5333,34 +5568,34 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "32",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 7,
           "min_30_prior": 2.29,
           "median_90": 2.69
         },
         {
-          "name": "ЯЙЦА L10 ПОДОВО ОТГЛЕЖДАНЕ АКВИЛОН",
-          "price": 2.49,
-          "retail": 3.16,
-          "claimed_pct": 21,
-          "category": "9",
-          "verdict": "red",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 6,
-          "min_30_prior": 2.39,
-          "median_90": 2.64
-        },
-        {
-          "name": "107 КРЕНВИРШИ 300Г ЛЕКИ",
-          "price": 2.49,
-          "retail": 3.49,
-          "claimed_pct": 29,
+          "name": "237 БЕКОН СЛАЙС BILLA 200ГР",
+          "price": 2.39,
+          "retail": 2.9,
+          "claimed_pct": 18,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 4,
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 6,
           "min_30_prior": 2.29,
-          "median_90": 2.59
+          "median_90": 2.55
+        },
+        {
+          "name": "070 БЕКОН 200 ТАНДЕМ",
+          "price": 3.09,
+          "retail": 4.19,
+          "claimed_pct": 26,
+          "category": "27",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 0,
+          "min_30_prior": 3.09,
+          "median_90": 3.09
         },
         {
           "name": "070 КОЛБАС КАМЧИЯ 300 ТАНДЕМ",
@@ -5369,22 +5604,22 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 1.99,
           "median_90": 1.99
         },
         {
-          "name": "070 ЧЕШКА ШУНКА ТАНДЕМ 160Г СЛАЙС",
-          "price": 3.09,
-          "retail": 4.09,
-          "claimed_pct": 24,
+          "name": "107 КРЕНВИРШИ 300Г ЛЕКИ",
+          "price": 2.49,
+          "retail": 3.49,
+          "claimed_pct": 29,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
-          "min_30_prior": 2.79,
-          "median_90": 3.09
+          "min_30_prior": 2.29,
+          "median_90": 2.49
         },
         {
           "name": "120 ПРЯСНО ПИЛЕ КЛ.А 1,1-1,8 ЛУДОГОРСКО",
@@ -5393,22 +5628,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "15",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 2.55,
           "median_90": 2.99
-        },
-        {
-          "name": "120 ПРЯСНО ПИЛЕ КЛАС А 1,1-1,8 БГ",
-          "price": 2.55,
-          "retail": 3.57,
-          "claimed_pct": 29,
-          "category": "15",
-          "verdict": "red",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 0,
-          "min_30_prior": 2.55,
-          "median_90": 2.55
         },
         {
           "name": "156 ПИЛЕШКО РОЛЕ 270ГР МЕС КО",
@@ -5417,10 +5640,22 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 3.09,
           "median_90": 3.09
+        },
+        {
+          "name": "176 ПУШЕНО СВИНСКО ФИЛЕ 220Г BILLA",
+          "price": 2.78,
+          "retail": 3.78,
+          "claimed_pct": 26,
+          "category": "27",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 0,
+          "min_30_prior": 2.78,
+          "median_90": 2.78
         },
         {
           "name": "179 ВАРЕНА НАДЕНИЦА CLEVER",
@@ -5429,7 +5664,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 2.99,
           "median_90": 2.99
@@ -5441,22 +5676,34 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 2.99,
           "median_90": 2.99
         },
         {
-          "name": "212 КОЛБАС КАМЧИЯ 300 BILLA",
-          "price": 1.99,
-          "retail": 2.7,
-          "claimed_pct": 26,
+          "name": "212 КОЛБАС ТЕЛЕШКИ 300 BILLA",
+          "price": 1.78,
+          "retail": 2.29,
+          "claimed_pct": 22,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
-          "min_30_prior": 1.99,
-          "median_90": 1.99
+          "min_30_prior": 1.78,
+          "median_90": 1.78
+        },
+        {
+          "name": "237 СВИНСКА ШУНКА СЛАЙС CLEVER 100ГР",
+          "price": 1.1,
+          "retail": 1.38,
+          "claimed_pct": 20,
+          "category": "27",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 0,
+          "min_30_prior": 1.1,
+          "median_90": 1.1
         },
         {
           "name": "57 ШПЕКОВ КОЛБАС BILLA  500Г",
@@ -5465,7 +5712,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "28",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 3.99,
           "median_90": 3.99
@@ -5477,7 +5724,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "52",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 1.45,
           "median_90": 1.45
@@ -5489,7 +5736,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "26",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 5.39,
           "median_90": 5.49
@@ -5501,22 +5748,22 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 6.19,
           "median_90": 6.99
         },
         {
-          "name": "БЕЛЛА ОРЕХИТЕ СВИНСКО ФИЛЕ ГАСТРО 2X1.6K",
-          "price": 9.2,
-          "retail": 14.08,
-          "claimed_pct": 35,
-          "category": "27",
+          "name": "БЕЛЛА ПИЛЕШКИ КРЕНВИРШИ НАРОДЕН",
+          "price": 3.59,
+          "retail": 4.59,
+          "claimed_pct": 22,
+          "category": "26",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
-          "min_30_prior": 9.2,
-          "median_90": 9.2
+          "min_30_prior": 2.99,
+          "median_90": 3.59
         },
         {
           "name": "БИРА PET 2Л ШУМЕНСКО",
@@ -5525,7 +5772,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 36,
           "category": "74",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 1.15,
           "median_90": 1.15
@@ -5537,34 +5784,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 9.71,
           "median_90": 9.71
-        },
-        {
-          "name": "КИСЕЛО МЛЯКО 2% БАДЖАНАШКО 400Г",
-          "price": 0.39,
-          "retail": 0.49,
-          "claimed_pct": 20,
-          "category": "7",
-          "verdict": "red",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 0,
-          "min_30_prior": 0.39,
-          "median_90": 0.39
-        },
-        {
-          "name": "МАП ПРЯСНО ПИЛ. ФИЛЕ БЕЗ КОЖА ROSO 1КГ.",
-          "price": 9.99,
-          "retail": 11.57,
-          "claimed_pct": 14,
-          "category": "16",
-          "verdict": "red",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": 0,
-          "min_30_prior": 9.99,
-          "median_90": 9.99
         },
         {
           "name": "МЕС-КО  ПУЕШКО ФИЛЕ",
@@ -5573,7 +5796,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 10.22,
           "median_90": 10.22
@@ -5585,7 +5808,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 38,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 11.24,
           "median_90": 11.24
@@ -5597,7 +5820,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 39,
           "category": "8",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 6.29,
           "median_90": 6.29
@@ -5609,10 +5832,22 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 29,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 13.29,
           "median_90": 13.29
+        },
+        {
+          "name": "MAP СВИНСКИ ВРАТ С КОСТ НАРЯЗАН БГ",
+          "price": 3.99,
+          "retail": 6.64,
+          "claimed_pct": 40,
+          "category": "21",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 0,
+          "min_30_prior": 3.49,
+          "median_90": 3.99
         },
         {
           "name": "SOC СВ.ВРАТ С КОСТ НАРЯЗАН ГАСТРО БГ",
@@ -5621,70 +5856,34 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 40,
           "category": "21",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 3.49,
           "median_90": 3.99
         },
         {
-          "name": "237 СВИНСКА ШУНКА СЛАЙС CLEVER 100ГР",
-          "price": 1.1,
-          "retail": 1.38,
-          "claimed_pct": 20,
-          "category": "27",
+          "name": "ЯЙЦА М10 ПОДОВО ОТГЛЕЖДАНЕ ХОРИЗОНТ",
+          "price": 2.59,
+          "retail": 3.05,
+          "claimed_pct": 15,
+          "category": "31",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": -2,
-          "min_30_prior": 1.1,
-          "median_90": 1.075
+          "min_30_prior": 2.29,
+          "median_90": 2.55
         },
         {
-          "name": "РОСТАР EL POZO БЕКОН 2Х3.4 КГ",
-          "price": 10.63,
-          "retail": 13.29,
-          "claimed_pct": 20,
-          "category": "27",
+          "name": "КИСЕЛО МЛЯКО 2% БАДЖАНАШКО 400Г",
+          "price": 0.42,
+          "retail": 0.49,
+          "claimed_pct": 14,
+          "category": "7",
           "verdict": "red",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": -3,
-          "min_30_prior": 10.63,
-          "median_90": 10.29
-        },
-        {
-          "name": "164 НАДЕНИЦА МАКЕДОНСКА 1КГ BILLA",
-          "price": 4.29,
-          "retail": 6.29,
-          "claimed_pct": 32,
-          "category": "27",
-          "verdict": "red",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": -5,
-          "min_30_prior": 3.98,
-          "median_90": 4.09
-        },
-        {
-          "name": "ТА ПЕЧЕН СВИНСКИ БУТ БЕЗ КОСТ",
-          "price": 11.99,
-          "retail": 18.4,
-          "claimed_pct": 35,
-          "category": "27",
-          "verdict": "red",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": -7,
-          "min_30_prior": 11.24,
-          "median_90": 11.24
-        },
-        {
-          "name": "БЕЛЛА ПИЛЕШКИ КРЕНВИРШИ НАРОДЕН",
-          "price": 3.59,
-          "retail": 4.59,
-          "claimed_pct": 22,
-          "category": "26",
-          "verdict": "red",
-          "observed_on": "2026-08-29",
-          "omnibus_pct": -9,
-          "min_30_prior": 2.99,
-          "median_90": 3.29
+          "observed_on": "2026-08-31",
+          "omnibus_pct": -8,
+          "min_30_prior": 0.39,
+          "median_90": 0.39
         },
         {
           "name": "ЧЕХ ПУШЕН СВИНСКИ БУТ СОКОЛОВО",
@@ -5693,7 +5892,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": -9,
           "min_30_prior": 5.11,
           "median_90": 5.11
@@ -5705,7 +5904,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "57",
           "verdict": "red",
-          "observed_on": "2026-08-29",
+          "observed_on": "2026-08-31",
           "omnibus_pct": -13,
           "min_30_prior": 0.59,
           "median_90": 0.79
@@ -5714,10 +5913,10 @@ window.SAVECHECK_BROCHURES = {
     },
     {
       "chain": "Fantastico",
-      "from_date": "2026-08-30",
+      "from_date": "2026-08-31",
       "is_stale": false,
-      "total_promos": 202,
-      "total_before_cap": 202,
+      "total_promos": 195,
+      "total_before_cap": 195,
       "items": [
         {
           "name": "СИРЕНЕ КРАВЕ ЕЛЕНА ВАКУУМ КГ",
@@ -5726,7 +5925,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 40,
           "category": "9",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 40,
           "min_30_prior": 5.99,
           "median_90": 9.99,
@@ -5739,7 +5938,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 28,
           "category": "36",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 28,
           "min_30_prior": 0.99,
           "median_90": 1.38,
@@ -5752,7 +5951,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 28,
           "category": "36",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 28,
           "min_30_prior": 0.99,
           "median_90": 1.38,
@@ -5765,7 +5964,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "55",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 26,
           "min_30_prior": 0.49,
           "median_90": 0.66,
@@ -5778,7 +5977,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "8",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 22,
           "min_30_prior": 6.99,
           "median_90": 8.99,
@@ -5791,7 +5990,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "11",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 5.11,
           "median_90": 6.39,
@@ -5804,7 +6003,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "9",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 3.88,
           "median_90": 4.85,
@@ -5817,7 +6016,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "9",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 18,
           "min_30_prior": 3.76,
           "median_90": 4.6,
@@ -5830,7 +6029,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "11",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 18,
           "min_30_prior": 5.39,
           "median_90": 6.55,
@@ -5843,7 +6042,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "9",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 11,
           "min_30_prior": 5.31,
           "median_90": 5.99,
@@ -5856,7 +6055,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "71",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 51,
           "min_30_prior": 19.39,
           "median_90": 39.31
@@ -5868,7 +6067,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 50,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 50,
           "min_30_prior": 1.49,
           "median_90": 2.99
@@ -5880,7 +6079,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 50,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 50,
           "min_30_prior": 1.49,
           "median_90": 2.99
@@ -5892,7 +6091,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 25,
           "category": "50",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 47,
           "min_30_prior": 1.19,
           "median_90": 2.26
@@ -5904,7 +6103,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 47,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 47,
           "min_30_prior": 0.65,
           "median_90": 1.22
@@ -5916,7 +6115,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 47,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 47,
           "min_30_prior": 0.65,
           "median_90": 1.22
@@ -5928,7 +6127,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 47,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 47,
           "min_30_prior": 0.65,
           "median_90": 1.22
@@ -5940,7 +6139,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 47,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 47,
           "min_30_prior": 0.65,
           "median_90": 1.22
@@ -5952,7 +6151,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 47,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 47,
           "min_30_prior": 0.65,
           "median_90": 1.22
@@ -5964,7 +6163,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 47,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 47,
           "min_30_prior": 0.65,
           "median_90": 1.22
@@ -5976,7 +6175,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 47,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 47,
           "min_30_prior": 0.65,
           "median_90": 1.22
@@ -5988,7 +6187,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 47,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 47,
           "min_30_prior": 0.65,
           "median_90": 1.22
@@ -6000,7 +6199,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 47,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 47,
           "min_30_prior": 0.65,
           "median_90": 1.22
@@ -6012,34 +6211,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 47,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 47,
           "min_30_prior": 0.65,
           "median_90": 1.22
-        },
-        {
-          "name": "ЛАВРАК ЧИСТЕН ПР-Д ТУРЦИЯ КГ МОРСКИ ДАР",
-          "price": 7.49,
-          "retail": 13.8,
-          "claimed_pct": 46,
-          "category": "30",
-          "verdict": "green",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 46,
-          "min_30_prior": 7.49,
-          "median_90": 13.8
-        },
-        {
-          "name": "ЛАВРАК ЧИСТЕН ПРОИЗХОД ТУРЦИЯ КГ F РИБА",
-          "price": 7.49,
-          "retail": 13.8,
-          "claimed_pct": 46,
-          "category": "30",
-          "verdict": "green",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 46,
-          "min_30_prior": 7.49,
-          "median_90": 13.8
         },
         {
           "name": "БУТ СВИНСКИ БЕЗ КОСТ ПР-Д БЪЛГАРИЯ АЛДАГОТ",
@@ -6048,7 +6223,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 44,
           "category": "19",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 44,
           "min_30_prior": 3.59,
           "median_90": 6.39
@@ -6060,7 +6235,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 40,
           "category": "69",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 40,
           "min_30_prior": 0.61,
           "median_90": 1.02
@@ -6072,7 +6247,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 37,
           "category": "76",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 37,
           "min_30_prior": 5.49,
           "median_90": 8.69
@@ -6084,7 +6259,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 37,
           "category": "76",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 37,
           "min_30_prior": 5.49,
           "median_90": 8.69
@@ -6096,7 +6271,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 36,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 36,
           "min_30_prior": 4.59,
           "median_90": 7.15
@@ -6108,7 +6283,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 36,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 36,
           "min_30_prior": 4.59,
           "median_90": 7.15
@@ -6120,7 +6295,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 36,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 36,
           "min_30_prior": 4.59,
           "median_90": 7.15
@@ -6132,7 +6307,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 36,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 36,
           "min_30_prior": 4.59,
           "median_90": 7.15
@@ -6144,7 +6319,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 36,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 36,
           "min_30_prior": 3.25,
           "median_90": 5.11
@@ -6156,7 +6331,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 36,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 36,
           "min_30_prior": 3.25,
           "median_90": 5.11
@@ -6168,7 +6343,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 36,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 36,
           "min_30_prior": 4.59,
           "median_90": 7.15
@@ -6180,7 +6355,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 36,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 36,
           "min_30_prior": 4.59,
           "median_90": 7.15
@@ -6192,7 +6367,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 36,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 36,
           "min_30_prior": 4.59,
           "median_90": 7.15
@@ -6204,7 +6379,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 36,
           "category": "76",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 36,
           "min_30_prior": 6.49,
           "median_90": 10.22
@@ -6216,7 +6391,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "70",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 35,
           "min_30_prior": 4.29,
           "median_90": 6.64
@@ -6228,7 +6403,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 34,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 34,
           "min_30_prior": 3.39,
           "median_90": 5.11
@@ -6240,7 +6415,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 34,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 34,
           "min_30_prior": 3.39,
           "median_90": 5.11
@@ -6252,7 +6427,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 34,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 34,
           "min_30_prior": 3.39,
           "median_90": 5.11
@@ -6264,7 +6439,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 34,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 34,
           "min_30_prior": 3.39,
           "median_90": 5.11
@@ -6276,7 +6451,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 34,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 34,
           "min_30_prior": 3.39,
           "median_90": 5.11
@@ -6288,7 +6463,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 34,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 34,
           "min_30_prior": 3.39,
           "median_90": 5.11
@@ -6300,7 +6475,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 34,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 34,
           "min_30_prior": 3.39,
           "median_90": 5.11
@@ -6312,7 +6487,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 34,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 34,
           "min_30_prior": 3.39,
           "median_90": 5.11
@@ -6324,7 +6499,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "70",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 33,
           "min_30_prior": 4.79,
           "median_90": 7.19
@@ -6336,7 +6511,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "70",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 33,
           "min_30_prior": 4.79,
           "median_90": 7.19
@@ -6348,7 +6523,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 33,
           "min_30_prior": 2.59,
           "median_90": 3.88
@@ -6360,7 +6535,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 33,
           "min_30_prior": 2.59,
           "median_90": 3.88
@@ -6372,7 +6547,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 33,
           "min_30_prior": 2.59,
           "median_90": 3.88
@@ -6384,7 +6559,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "80",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 33,
           "min_30_prior": 2.55,
           "median_90": 3.83
@@ -6396,7 +6571,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "80",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 33,
           "min_30_prior": 2.55,
           "median_90": 3.83
@@ -6408,7 +6583,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "80",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 33,
           "min_30_prior": 2.55,
           "median_90": 3.83
@@ -6420,7 +6595,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 32,
           "min_30_prior": 2.89,
           "median_90": 4.24
@@ -6432,7 +6607,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 32,
           "min_30_prior": 2.89,
           "median_90": 4.24
@@ -6444,7 +6619,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 32,
           "min_30_prior": 2.89,
           "median_90": 4.24
@@ -6456,7 +6631,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 32,
           "min_30_prior": 2.89,
           "median_90": 4.24
@@ -6468,7 +6643,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 32,
           "min_30_prior": 2.89,
           "median_90": 4.24
@@ -6480,7 +6655,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 32,
           "min_30_prior": 2.89,
           "median_90": 4.24
@@ -6492,7 +6667,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "77",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 31,
           "min_30_prior": 4.99,
           "median_90": 7.19
@@ -6504,34 +6679,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 31,
           "min_30_prior": 0.55,
           "median_90": 0.8
-        },
-        {
-          "name": "НАБОРЪ БЯЛО САЛ СИРЕНЕ СЪС СРЕДНА МАСЛЕНОСТ Б-Я КГ",
-          "price": 4.29,
-          "retail": 6.13,
-          "claimed_pct": 30,
-          "category": "8",
-          "verdict": "green",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 30,
-          "min_30_prior": 4.29,
-          "median_90": 6.13
-        },
-        {
-          "name": "КАФЕ ВЕДРА COLUMBIA 100% АРАБИКА 200 Г МЛЯНО *",
-          "price": 8.54,
-          "retail": 12.21,
-          "claimed_pct": 30,
-          "category": "70",
-          "verdict": "green",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 30,
-          "min_30_prior": 8.54,
-          "median_90": 12.21
         },
         {
           "name": "ДОМАТИ ARRIVA НА КУБЧЕТА 400 ГР КОНСЕРВА",
@@ -6540,7 +6691,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 29,
           "category": "48",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 29,
           "min_30_prior": 0.69,
           "median_90": 0.97
@@ -6552,7 +6703,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 29,
           "category": "48",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 29,
           "min_30_prior": 0.69,
           "median_90": 0.97
@@ -6564,7 +6715,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 28,
           "category": "36",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 28,
           "min_30_prior": 0.99,
           "median_90": 1.38
@@ -6576,7 +6727,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 28,
           "min_30_prior": 0.65,
           "median_90": 0.9
@@ -6588,7 +6739,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "43",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 26,
           "min_30_prior": 6.99,
           "median_90": 9.49
@@ -6600,7 +6751,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 25,
           "category": "36",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 25,
           "min_30_prior": 1.53,
           "median_90": 2.03
@@ -6612,7 +6763,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 25,
           "category": "20",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 25,
           "min_30_prior": 4.99,
           "median_90": 6.64
@@ -6624,7 +6775,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "62",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 25,
           "min_30_prior": 5.49,
           "median_90": 7.29
@@ -6636,7 +6787,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 23,
           "min_30_prior": 0.65,
           "median_90": 0.84
@@ -6648,7 +6799,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 21,
           "min_30_prior": 0.73,
           "median_90": 0.92
@@ -6660,7 +6811,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 21,
           "min_30_prior": 0.69,
           "median_90": 0.87
@@ -6672,7 +6823,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "43",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 21,
           "min_30_prior": 8.69,
           "median_90": 10.99
@@ -6684,7 +6835,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "6",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 1.14,
           "median_90": 1.43
@@ -6696,22 +6847,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "14",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 1.36,
           "median_90": 1.7
-        },
-        {
-          "name": "МЕСО ТЕЛЕШКО ЗА ГОТВЕНЕ ПР-Д БЪЛГАРИЯ ОЛИВИЯ",
-          "price": 10.19,
-          "retail": 12.79,
-          "claimed_pct": 20,
-          "category": "24",
-          "verdict": "green",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 20,
-          "min_30_prior": 10.19,
-          "median_90": 12.79
         },
         {
           "name": "ШПЕК СУХ 260 Г ВАКУУМ ЕЛКО",
@@ -6720,7 +6859,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "28",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 19,
           "min_30_prior": 2.89,
           "median_90": 3.59
@@ -6732,7 +6871,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "70",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 18,
           "min_30_prior": 7.59,
           "median_90": 9.29
@@ -6744,7 +6883,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "66",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 18,
           "min_30_prior": 1.29,
           "median_90": 1.58
@@ -6756,7 +6895,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "70",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 18,
           "min_30_prior": 6.69,
           "median_90": 8.19
@@ -6768,7 +6907,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 18,
           "min_30_prior": 1.59,
           "median_90": 1.94
@@ -6780,7 +6919,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 18,
           "min_30_prior": 1.59,
           "median_90": 1.94
@@ -6792,7 +6931,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 18,
           "min_30_prior": 1.59,
           "median_90": 1.94
@@ -6804,7 +6943,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 18,
           "min_30_prior": 1.59,
           "median_90": 1.94
@@ -6816,7 +6955,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 18,
           "min_30_prior": 1.59,
           "median_90": 1.94
@@ -6828,7 +6967,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 18,
           "min_30_prior": 1.59,
           "median_90": 1.94
@@ -6840,7 +6979,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "43",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 17,
           "min_30_prior": 4.79,
           "median_90": 5.79
@@ -6852,7 +6991,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "85",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 16,
           "min_30_prior": 3.09,
           "median_90": 3.68
@@ -6864,7 +7003,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "85",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 16,
           "min_30_prior": 3.09,
           "median_90": 3.68
@@ -6876,7 +7015,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "85",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 16,
           "min_30_prior": 3.09,
           "median_90": 3.68
@@ -6888,7 +7027,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "84",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 14,
           "min_30_prior": 0.59,
           "median_90": 0.69
@@ -6900,7 +7039,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "77",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 14,
           "min_30_prior": 5.99,
           "median_90": 6.95
@@ -6912,7 +7051,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "84",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 14,
           "min_30_prior": 0.59,
           "median_90": 0.69
@@ -6924,7 +7063,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "84",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 14,
           "min_30_prior": 0.59,
           "median_90": 0.69
@@ -6936,7 +7075,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "84",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 14,
           "min_30_prior": 0.59,
           "median_90": 0.69
@@ -6948,7 +7087,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "77",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 14,
           "min_30_prior": 7.49,
           "median_90": 8.69
@@ -6960,7 +7099,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "75",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 13,
           "min_30_prior": 9.59,
           "median_90": 10.99
@@ -6972,22 +7111,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 7,
           "category": "68",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 12,
           "min_30_prior": 2.79,
           "median_90": 3.16
-        },
-        {
-          "name": "МЕСО ТЕЛЕШКО ЗА ГОТВЕНЕ ПР-Д БЪЛГАРИЯ БМВ",
-          "price": 12.28,
-          "retail": 15.35,
-          "claimed_pct": 20,
-          "category": "24",
-          "verdict": "green",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 12,
-          "min_30_prior": 12.28,
-          "median_90": 13.99
         },
         {
           "name": "САПУН АРОМА НАТУРАЛ ЕЛЕМЕНТС ПЪПЕШ 100 Г",
@@ -6996,7 +7123,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 12,
           "min_30_prior": 0.85,
           "median_90": 0.97
@@ -7008,7 +7135,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 12,
           "min_30_prior": 0.85,
           "median_90": 0.97
@@ -7020,7 +7147,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 12,
           "min_30_prior": 0.85,
           "median_90": 0.97
@@ -7032,7 +7159,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "70",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 12,
           "min_30_prior": 6.59,
           "median_90": 7.49
@@ -7044,7 +7171,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "70",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 12,
           "min_30_prior": 5.99,
           "median_90": 6.79
@@ -7056,7 +7183,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "70",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 12,
           "min_30_prior": 6.59,
           "median_90": 7.49
@@ -7068,7 +7195,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "70",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 12,
           "min_30_prior": 5.99,
           "median_90": 6.79
@@ -7080,7 +7207,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "70",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 12,
           "min_30_prior": 6.59,
           "median_90": 7.49
@@ -7092,7 +7219,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "75",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 12,
           "min_30_prior": 7.49,
           "median_90": 8.49
@@ -7104,7 +7231,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "75",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 12,
           "min_30_prior": 7.49,
           "median_90": 8.49
@@ -7116,7 +7243,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "75",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 12,
           "min_30_prior": 7.49,
           "median_90": 8.49
@@ -7128,7 +7255,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "84",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 11,
           "min_30_prior": 0.79,
           "median_90": 0.89
@@ -7140,7 +7267,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "84",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 11,
           "min_30_prior": 0.79,
           "median_90": 0.89
@@ -7152,7 +7279,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 29,
           "category": "71",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 11,
           "min_30_prior": 15.99,
           "median_90": 17.99
@@ -7164,7 +7291,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "70",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 10,
           "min_30_prior": 6.39,
           "median_90": 7.1
@@ -7176,10 +7303,22 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "84",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 10,
           "min_30_prior": 0.27,
           "median_90": 0.3
+        },
+        {
+          "name": "КАФЕ ВЕДРА COLUMBIA 100% АРАБИКА 200 Г МЛЯНО *",
+          "price": 8.54,
+          "retail": 12.21,
+          "claimed_pct": 30,
+          "category": "70",
+          "verdict": "green",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 10,
+          "min_30_prior": 8.54,
+          "median_90": 9.49
         },
         {
           "name": "ПРЕПАРАТ БЕБО ЕКО ЗА СЪДОВЕ И АКСЕСОАРИ 400 МЛ",
@@ -7188,7 +7327,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "79",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 10,
           "min_30_prior": 2.7,
           "median_90": 2.99
@@ -7200,7 +7339,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "69",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 10,
           "min_30_prior": 2.69,
           "median_90": 2.99
@@ -7212,7 +7351,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "69",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 10,
           "min_30_prior": 2.69,
           "median_90": 2.99
@@ -7224,35 +7363,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "69",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 10,
           "min_30_prior": 2.69,
           "median_90": 2.99
-        },
-        {
-          "name": "МЕСО ТЕЛЕШКО ЗА ГОТВЕНЕ ФЕРМАТЪ ПРОИЗХОД БЪЛГАРИЯ",
-          "price": 12.39,
-          "retail": 15.59,
-          "claimed_pct": 21,
-          "category": "24",
-          "verdict": "green",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 7,
-          "min_30_prior": 12.39,
-          "median_90": 13.39
-        },
-        {
-          "name": "ЗАХАР 1 КГ ЗАХИРА  КРИСТАЛ  ПАКЕТ",
-          "price": 0.69,
-          "retail": 0.99,
-          "claimed_pct": 30,
-          "category": "38",
-          "verdict": "yellow",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 30,
-          "min_30_prior": 0.69,
-          "median_90": 0.99,
-          "basket_id": "sugar"
         },
         {
           "name": "СИРЕНЕ ОТ КРАВЕ МЛЯКО САЯНА ЗНП 700 ГР ВАКУУМ",
@@ -7261,7 +7375,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "9",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 27,
           "min_30_prior": 5.39,
           "median_90": 7.38,
@@ -7274,7 +7388,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "9",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 27,
           "min_30_prior": 3.09,
           "median_90": 4.24,
@@ -7287,7 +7401,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "11",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 4.94,
           "median_90": 6.18,
@@ -7300,7 +7414,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "3",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 1.18,
           "median_90": 1.48,
@@ -7313,7 +7427,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 44,
           "category": "19",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 44,
           "min_30_prior": 3.59,
           "median_90": 6.39
@@ -7325,7 +7439,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 44,
           "category": "19",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 44,
           "min_30_prior": 3.59,
           "median_90": 6.39
@@ -7337,7 +7451,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 44,
           "category": "19",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 44,
           "min_30_prior": 3.59,
           "median_90": 6.39
@@ -7349,7 +7463,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 44,
           "category": "19",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 44,
           "min_30_prior": 3.59,
           "median_90": 6.39
@@ -7361,7 +7475,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 44,
           "category": "19",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 44,
           "min_30_prior": 3.59,
           "median_90": 6.39
@@ -7373,7 +7487,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 44,
           "category": "19",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 44,
           "min_30_prior": 3.59,
           "median_90": 6.39
@@ -7385,7 +7499,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 44,
           "category": "19",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 44,
           "min_30_prior": 3.59,
           "median_90": 6.39
@@ -7397,7 +7511,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 44,
           "category": "19",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 44,
           "min_30_prior": 3.59,
           "median_90": 6.39
@@ -7409,7 +7523,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 36,
           "category": "27",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 32,
           "min_30_prior": 6.29,
           "median_90": 9.2
@@ -7421,7 +7535,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "46",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 31,
           "min_30_prior": 0.59,
           "median_90": 0.86
@@ -7433,7 +7547,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "46",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 31,
           "min_30_prior": 0.59,
           "median_90": 0.86
@@ -7445,7 +7559,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "70",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 31,
           "min_30_prior": 3.89,
           "median_90": 5.62
@@ -7457,7 +7571,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 29,
           "category": "68",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 29,
           "min_30_prior": 1.09,
           "median_90": 1.53
@@ -7469,7 +7583,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "36",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 22,
           "min_30_prior": 1.19,
           "median_90": 1.53
@@ -7481,7 +7595,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "62",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 19,
           "min_30_prior": 6.99,
           "median_90": 8.58
@@ -7493,7 +7607,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "30",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 19,
           "min_30_prior": 6.49,
           "median_90": 7.99
@@ -7505,7 +7619,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "58",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 18,
           "min_30_prior": 1.25,
           "median_90": 1.52
@@ -7517,7 +7631,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "70",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 10,
           "min_30_prior": 6.19,
           "median_90": 6.9
@@ -7529,7 +7643,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "82",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 3,
           "min_30_prior": 3.49,
           "median_90": 3.59
@@ -7541,7 +7655,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "82",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 3,
           "min_30_prior": 3.49,
           "median_90": 3.59
@@ -7553,7 +7667,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "82",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 3,
           "min_30_prior": 3.49,
           "median_90": 3.59
@@ -7565,7 +7679,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "82",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 3,
           "min_30_prior": 3.49,
           "median_90": 3.59
@@ -7577,7 +7691,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "84",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 2,
           "min_30_prior": 1.98,
           "median_90": 2.03
@@ -7589,7 +7703,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "84",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 2,
           "min_30_prior": 1.98,
           "median_90": 2.03
@@ -7601,7 +7715,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "9",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 22,
           "min_30_prior": 3.75,
           "median_90": 4.99,
@@ -7614,7 +7728,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "11",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 4.59,
           "median_90": 6.89,
@@ -7627,7 +7741,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "8",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 5.99,
           "median_90": 9.2,
@@ -7640,7 +7754,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "9",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 2.99,
           "median_90": 4.99,
@@ -7653,7 +7767,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "11",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 17,
           "min_30_prior": 2.99,
           "median_90": 5.11,
@@ -7666,7 +7780,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 46,
           "category": "12",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 47,
           "min_30_prior": 2.25,
           "median_90": 4.55
@@ -7678,7 +7792,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 35,
           "min_30_prior": 6.64,
           "median_90": 10.22
@@ -7690,7 +7804,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "66",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 32,
           "min_30_prior": 1.12,
           "median_90": 1.89
@@ -7702,7 +7816,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 25,
           "category": "10",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 25,
           "min_30_prior": 5.99,
           "median_90": 8.68
@@ -7714,7 +7828,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "85",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 24,
           "min_30_prior": 2.55,
           "median_90": 4.17
@@ -7726,7 +7840,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "85",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 24,
           "min_30_prior": 2.55,
           "median_90": 4.17
@@ -7738,7 +7852,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "85",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 24,
           "min_30_prior": 2.55,
           "median_90": 4.17
@@ -7750,7 +7864,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "85",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 24,
           "min_30_prior": 2.55,
           "median_90": 4.17
@@ -7762,7 +7876,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "71",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 24,
           "min_30_prior": 22.99,
           "median_90": 36.71
@@ -7774,7 +7888,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "12",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 1.45,
           "median_90": 1.84
@@ -7786,7 +7900,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "11",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 5.79,
           "median_90": 9.4
@@ -7798,7 +7912,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "65",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 16.29,
           "median_90": 20.4
@@ -7810,7 +7924,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "10",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 7.99,
           "median_90": 12.99
@@ -7822,7 +7936,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "62",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 2.99,
           "median_90": 4.6
@@ -7834,7 +7948,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 41,
           "category": "71",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 13,
           "min_30_prior": 18.99,
           "median_90": 22.99
@@ -7846,7 +7960,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "70",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 6.89,
           "median_90": 10.49
@@ -7858,7 +7972,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "70",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 6.29,
           "median_90": 6.29
@@ -7870,7 +7984,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "84",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 0.59,
           "median_90": 0.59
@@ -7882,7 +7996,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 34,
           "category": "75",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 1.69,
           "median_90": 1.69
@@ -7894,7 +8008,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "70",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 6.89,
           "median_90": 10.49
@@ -7906,7 +8020,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "70",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 6.89,
           "median_90": 10.49
@@ -7918,7 +8032,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "16",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 5.69,
           "median_90": 5.69
@@ -7930,7 +8044,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "76",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 3.99,
           "median_90": 3.99
@@ -7942,7 +8056,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "75",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 9.49,
           "median_90": 9.49
@@ -7954,7 +8068,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "76",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 14.59,
           "median_90": 14.59
@@ -7966,7 +8080,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "85",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 4.15,
           "median_90": 4.15
@@ -7978,7 +8092,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "85",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 4.15,
           "median_90": 4.15
@@ -7990,7 +8104,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "71",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 25.49,
           "median_90": 25.59
@@ -8002,7 +8116,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "84",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 0.82,
           "median_90": 0.82
@@ -8014,7 +8128,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "84",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 0.82,
           "median_90": 0.82
@@ -8026,7 +8140,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "84",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 0.82,
           "median_90": 0.82
@@ -8038,7 +8152,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "11",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 4.34,
           "median_90": 4.35
@@ -8050,7 +8164,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "7",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 0.85,
           "median_90": 0.85
@@ -8062,7 +8176,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "79",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 0.92,
           "median_90": 0.92
@@ -8074,7 +8188,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "79",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 0.92,
           "median_90": 0.92
@@ -8086,7 +8200,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "79",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 0.92,
           "median_90": 0.92
@@ -8098,7 +8212,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "79",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 0.92,
           "median_90": 0.92
@@ -8110,7 +8224,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "76",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 8.99,
           "median_90": 8.99
@@ -8122,7 +8236,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "77",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 8.99,
           "median_90": 8.99
@@ -8134,7 +8248,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "71",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 25.49,
           "median_90": 25.59
@@ -8146,7 +8260,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "71",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 25.49,
           "median_90": 25.59
@@ -8158,7 +8272,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "66",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": -2,
           "min_30_prior": 1.25,
           "median_90": 1.25
@@ -8179,7 +8293,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "37",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 51,
           "min_30_prior": 0.89,
           "median_90": 1.82,
@@ -8192,7 +8306,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "36",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 51,
           "min_30_prior": 0.89,
           "median_90": 1.82,
@@ -8205,7 +8319,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "36",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 51,
           "min_30_prior": 0.89,
           "median_90": 1.82,
@@ -8218,7 +8332,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "36",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 51,
           "min_30_prior": 0.89,
           "median_90": 1.82,
@@ -8231,7 +8345,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 50,
           "category": "11",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 50,
           "min_30_prior": 3.44,
           "median_90": 6.89,
@@ -8244,7 +8358,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "38",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 32,
           "min_30_prior": 0.69,
           "median_90": 1.02,
@@ -8257,7 +8371,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 17,
           "min_30_prior": 0.75,
           "median_90": 0.9,
@@ -8270,23 +8384,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "11",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 5.47,
           "median_90": 6.44,
-          "basket_id": "cheese"
-        },
-        {
-          "name": "Кашкавал Витоша ЕЛБИ 400г",
-          "price": 5.08,
-          "retail": 5.98,
-          "claimed_pct": 15,
-          "category": "11",
-          "verdict": "green",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 15,
-          "min_30_prior": 5.08,
-          "median_90": 5.98,
           "basket_id": "cheese"
         },
         {
@@ -8296,7 +8397,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "12",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 1.6,
           "median_90": 1.88,
@@ -8309,7 +8410,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 14,
           "min_30_prior": 0.79,
           "median_90": 0.92,
@@ -8322,7 +8423,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 14,
           "min_30_prior": 0.71,
           "median_90": 0.83,
@@ -8335,7 +8436,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 14,
           "min_30_prior": 0.65,
           "median_90": 0.76,
@@ -8348,11 +8449,24 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 14,
           "min_30_prior": 0.69,
           "median_90": 0.8,
           "basket_id": "yogurt"
+        },
+        {
+          "name": "Кашкавал Витоша ЕЛБИ 400г",
+          "price": 5.08,
+          "retail": 5.98,
+          "claimed_pct": 15,
+          "category": "11",
+          "verdict": "green",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 11,
+          "min_30_prior": 5.08,
+          "median_90": 5.685,
+          "basket_id": "cheese"
         },
         {
           "name": "Мокри кърпи TEO Bebe Aloe Vera 72бр",
@@ -8361,7 +8475,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 50,
           "category": "84",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 50,
           "min_30_prior": 1.02,
           "median_90": 2.04
@@ -8373,7 +8487,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 46,
           "category": "69",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 46,
           "min_30_prior": 0.75,
           "median_90": 1.39
@@ -8385,7 +8499,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 44,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 44,
           "min_30_prior": 3.19,
           "median_90": 5.71
@@ -8397,7 +8511,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 41,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 41,
           "min_30_prior": 0.49,
           "median_90": 0.83
@@ -8409,7 +8523,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 42,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 40,
           "min_30_prior": 1.69,
           "median_90": 2.84
@@ -8421,7 +8535,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 42,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 40,
           "min_30_prior": 1.69,
           "median_90": 2.84
@@ -8433,7 +8547,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 40,
           "category": "11",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 40,
           "min_30_prior": 5.49,
           "median_90": 9.2
@@ -8445,7 +8559,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 42,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 40,
           "min_30_prior": 1.69,
           "median_90": 2.84
@@ -8457,7 +8571,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 40,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 40,
           "min_30_prior": 2.29,
           "median_90": 3.79
@@ -8469,7 +8583,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 39,
           "category": "56",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 39,
           "min_30_prior": 0.79,
           "median_90": 1.29
@@ -8493,7 +8607,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 37,
           "category": "48",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 37,
           "min_30_prior": 0.79,
           "median_90": 1.25
@@ -8505,7 +8619,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 37,
           "category": "48",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 37,
           "min_30_prior": 0.79,
           "median_90": 1.25
@@ -8517,7 +8631,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "17",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 35,
           "min_30_prior": 1.99,
           "median_90": 3.06
@@ -8529,10 +8643,22 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "28",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 35,
           "min_30_prior": 6.99,
           "median_90": 10.76
+        },
+        {
+          "name": "Пил.бутче МЕСНИ ИЗКУШЕНИЯ тар.охл.кг МАП",
+          "price": 1.99,
+          "retail": 3.06,
+          "claimed_pct": 35,
+          "category": "17",
+          "verdict": "green",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 35,
+          "min_30_prior": 1.99,
+          "median_90": 3.06
         },
         {
           "name": "Кренвирши НАРОДЕН нас.кг",
@@ -8541,7 +8667,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "26",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 32,
           "min_30_prior": 3.99,
           "median_90": 5.91
@@ -8553,7 +8679,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 30,
           "category": "69",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 30,
           "min_30_prior": 1.39,
           "median_90": 1.99
@@ -8565,7 +8691,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 30,
           "category": "69",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 30,
           "min_30_prior": 1.39,
           "median_90": 1.99
@@ -8589,7 +8715,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 29,
           "category": "5",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 29,
           "min_30_prior": 1.15,
           "median_90": 1.62
@@ -8601,7 +8727,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 29,
           "category": "41",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 29,
           "min_30_prior": 0.69,
           "median_90": 0.97
@@ -8625,7 +8751,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 42,
           "category": "62",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 27,
           "min_30_prior": 4.49,
           "median_90": 6.15
@@ -8637,7 +8763,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "67",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 26,
           "min_30_prior": 0.45,
           "median_90": 0.61
@@ -8649,7 +8775,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "8",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 26,
           "min_30_prior": 5.99,
           "median_90": 8.09
@@ -8661,7 +8787,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "67",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 26,
           "min_30_prior": 0.45,
           "median_90": 0.61
@@ -8673,7 +8799,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "9",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 26,
           "min_30_prior": 5.99,
           "median_90": 8.09
@@ -8769,7 +8895,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 25,
           "category": "67",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 25,
           "min_30_prior": 0.77,
           "median_90": 1.02
@@ -8889,7 +9015,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 25,
           "category": "28",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 25,
           "min_30_prior": 2.3,
           "median_90": 3.06
@@ -8961,7 +9087,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 25,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 25,
           "min_30_prior": 2.68,
           "median_90": 3.57
@@ -9165,7 +9291,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "6",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 23,
           "min_30_prior": 1.35,
           "median_90": 1.76
@@ -9189,7 +9315,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "15",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 22,
           "min_30_prior": 3.59,
           "median_90": 4.6
@@ -9201,7 +9327,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "15",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 22,
           "min_30_prior": 3.59,
           "median_90": 4.6
@@ -9213,7 +9339,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 34,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 0.39,
           "median_90": 0.49
@@ -9225,7 +9351,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 34,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 0.39,
           "median_90": 0.49
@@ -9237,7 +9363,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "76",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 3.69,
           "median_90": 4.6
@@ -9249,7 +9375,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "76",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 3.69,
           "median_90": 4.6
@@ -9261,7 +9387,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "67",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 19,
           "min_30_prior": 0.21,
           "median_90": 0.26
@@ -9273,7 +9399,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "67",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 19,
           "min_30_prior": 0.21,
           "median_90": 0.26
@@ -9285,7 +9411,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "11",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 19,
           "min_30_prior": 2.89,
           "median_90": 3.56
@@ -9297,7 +9423,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "9",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 19,
           "min_30_prior": 4.49,
           "median_90": 5.52
@@ -9309,7 +9435,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "11",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 18,
           "min_30_prior": 3.99,
           "median_90": 4.87
@@ -9321,7 +9447,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "9",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 18,
           "min_30_prior": 4.69,
           "median_90": 5.7
@@ -9333,7 +9459,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "41",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 17,
           "min_30_prior": 0.85,
           "median_90": 1.02
@@ -9345,7 +9471,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "42",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 17,
           "min_30_prior": 1.69,
           "median_90": 2.04
@@ -9357,7 +9483,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "71",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 16,
           "min_30_prior": 23.99,
           "median_90": 28.68
@@ -9369,7 +9495,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "75",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 3.39,
           "median_90": 3.99
@@ -9381,7 +9507,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 0.73,
           "median_90": 0.86
@@ -9393,7 +9519,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "11",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 2.65,
           "median_90": 3.12
@@ -9405,7 +9531,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "11",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 2.85,
           "median_90": 3.36
@@ -9417,7 +9543,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "8",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 8.53,
           "median_90": 10.03
@@ -9429,7 +9555,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "9",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 2.5,
           "median_90": 2.94
@@ -9441,7 +9567,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "9",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 7.43,
           "median_90": 8.74
@@ -9453,7 +9579,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "9",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 6.26,
           "median_90": 7.36
@@ -9465,7 +9591,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "71",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 12.45,
           "median_90": 14.65
@@ -9477,7 +9603,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "71",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 17.99,
           "median_90": 21.25
@@ -9489,7 +9615,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "71",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 13.99,
           "median_90": 16.46
@@ -9501,7 +9627,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "70",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 3.9,
           "median_90": 4.6
@@ -9513,7 +9639,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "70",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 3.75,
           "median_90": 4.43
@@ -9525,7 +9651,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "9",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 14,
           "min_30_prior": 5.39,
           "median_90": 6.24
@@ -9537,7 +9663,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 14,
           "min_30_prior": 0.99,
           "median_90": 1.15
@@ -9549,7 +9675,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "11",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 13,
           "min_30_prior": 5.59,
           "median_90": 6.44
@@ -9561,7 +9687,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "69",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 13,
           "min_30_prior": 2.75,
           "median_90": 3.17
@@ -9573,7 +9699,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 11,
           "min_30_prior": 0.49,
           "median_90": 0.55
@@ -9585,10 +9711,22 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "14",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 11,
           "min_30_prior": 1.69,
           "median_90": 1.89
+        },
+        {
+          "name": "Св.врат с кост Биляна мес наряз.МАП",
+          "price": 5.59,
+          "retail": 6.28,
+          "claimed_pct": 11,
+          "category": "21",
+          "verdict": "green",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 11,
+          "min_30_prior": 5.59,
+          "median_90": 6.28
         },
         {
           "name": "Маслини зелени гриловани с билки нас.кг",
@@ -9597,7 +9735,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "62",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 9,
           "min_30_prior": 5.59,
           "median_90": 6.13
@@ -9609,7 +9747,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "76",
           "verdict": "green",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 8,
           "min_30_prior": 3.39,
           "median_90": 3.69
@@ -9621,23 +9759,11 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "36",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 35,
           "min_30_prior": 1.19,
           "median_90": 1.82,
           "basket_id": "pasta"
-        },
-        {
-          "name": "Пил.бутче МЕСНИ ИЗКУШЕНИЯ тар.охл.кг МАП",
-          "price": 1.99,
-          "retail": 3.06,
-          "claimed_pct": 35,
-          "category": "17",
-          "verdict": "yellow",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 35,
-          "min_30_prior": 1.99,
-          "median_90": 3.06
         },
         {
           "name": "Колбас ДЕЛИКАТЕС ЖИТНИЦА Хамбур. нас.кг",
@@ -9790,7 +9916,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "35",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 24,
           "min_30_prior": 1.99,
           "median_90": 2.63
@@ -9802,7 +9928,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "53",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 22,
           "min_30_prior": 1.19,
           "median_90": 1.53
@@ -9814,7 +9940,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "75",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 3.69,
           "median_90": 4.6
@@ -9826,7 +9952,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "75",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 3.69,
           "median_90": 4.6
@@ -9838,7 +9964,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "75",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 3.69,
           "median_90": 4.6
@@ -9850,10 +9976,34 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "76",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 3.69,
           "median_90": 4.6
+        },
+        {
+          "name": "Препарат за съдове FEYA Magn/Cham 400мл",
+          "price": 0.85,
+          "retail": 1.02,
+          "claimed_pct": 17,
+          "category": "79",
+          "verdict": "yellow",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 17,
+          "min_30_prior": 0.85,
+          "median_90": 1.02
+        },
+        {
+          "name": "Препарат за съдове FEYA Apple 400мл",
+          "price": 0.85,
+          "retail": 1.02,
+          "claimed_pct": 17,
+          "category": "79",
+          "verdict": "yellow",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 17,
+          "min_30_prior": 0.85,
+          "median_90": 1.02
         },
         {
           "name": "Лютеница ДЕРОНИКО 520гр",
@@ -9862,7 +10012,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "49",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 16,
           "min_30_prior": 2.99,
           "median_90": 3.57
@@ -9874,7 +10024,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "7",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 0.62,
           "median_90": 0.73
@@ -9886,7 +10036,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "21",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 13,
           "min_30_prior": 5.59,
           "median_90": 6.44
@@ -9898,7 +10048,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "58",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 12,
           "min_30_prior": 1.49,
           "median_90": 1.69
@@ -9910,21 +10060,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "9",
           "verdict": "yellow",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 10,
           "min_30_prior": 2.89,
           "median_90": 3.21
-        },
-        {
-          "name": "Св.врат с кост Биляна мес наряз.МАП",
-          "price": 5.59,
-          "retail": 6.28,
-          "claimed_pct": 11,
-          "category": "21",
-          "verdict": "gray",
-          "observed_on": "2026-08-30",
-          "min_30_prior": 5.59,
-          "median_90": 6.28
         },
         {
           "name": "Кисело мляко КАЙМАКАНИ 3.6% 400г",
@@ -9933,7 +10072,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "7",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 18,
           "min_30_prior": 0.69,
           "median_90": 0.92,
@@ -9946,7 +10085,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "11",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 4.85,
           "median_90": 5.75,
@@ -9959,7 +10098,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "6",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 3,
           "min_30_prior": 1.35,
           "median_90": 1.45,
@@ -9985,7 +10124,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 49,
           "category": "68",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 49,
           "min_30_prior": 0.31,
           "median_90": 0.63
@@ -10009,7 +10148,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 25,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 25,
           "min_30_prior": 2.99,
           "median_90": 4.25
@@ -10177,7 +10316,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "11",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 24,
           "min_30_prior": 6.69,
           "median_90": 9.2
@@ -10213,7 +10352,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "28",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 23,
           "min_30_prior": 5.99,
           "median_90": 8.18
@@ -10225,7 +10364,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 23,
           "min_30_prior": 2.9,
           "median_90": 3.86
@@ -10237,7 +10376,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 23,
           "min_30_prior": 2.9,
           "median_90": 3.86
@@ -10249,7 +10388,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "49",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 22,
           "min_30_prior": 1.82,
           "median_90": 2.43
@@ -10261,7 +10400,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "80",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 22,
           "min_30_prior": 3.35,
           "median_90": 4.46
@@ -10273,7 +10412,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 21,
           "min_30_prior": 6.14,
           "median_90": 8.18
@@ -10285,7 +10424,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 21,
           "min_30_prior": 6.14,
           "median_90": 8.18
@@ -10297,7 +10436,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 21,
           "min_30_prior": 6.14,
           "median_90": 8.18
@@ -10309,7 +10448,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 21,
           "min_30_prior": 6.14,
           "median_90": 8.18
@@ -10357,7 +10496,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "81",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 2.18,
           "median_90": 2.91
@@ -10369,7 +10508,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "81",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 20,
           "min_30_prior": 2.18,
           "median_90": 2.91
@@ -10417,34 +10556,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "48",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 18,
           "min_30_prior": 0.9,
           "median_90": 1.2
-        },
-        {
-          "name": "Препарат за съдове FEYA Magn/Cham 400мл",
-          "price": 0.85,
-          "retail": 1.02,
-          "claimed_pct": 17,
-          "category": "79",
-          "verdict": "red",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 17,
-          "min_30_prior": 0.77,
-          "median_90": 1.02
-        },
-        {
-          "name": "Препарат за съдове FEYA Apple 400мл",
-          "price": 0.85,
-          "retail": 1.02,
-          "claimed_pct": 17,
-          "category": "79",
-          "verdict": "red",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": 17,
-          "min_30_prior": 0.77,
-          "median_90": 1.02
         },
         {
           "name": "Кроасан ELMAS ван&череша 60г",
@@ -10477,7 +10592,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "47",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 16,
           "min_30_prior": 0.99,
           "median_90": 1.53
@@ -10489,7 +10604,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "49",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 16,
           "min_30_prior": 2.39,
           "median_90": 3.27
@@ -10501,7 +10616,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "9",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 15,
           "min_30_prior": 2.39,
           "median_90": 4.04
@@ -10513,7 +10628,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 29,
           "category": "81",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 1.15,
           "median_90": 1.15
@@ -10525,7 +10640,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "12",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 2.99,
           "median_90": 2.99
@@ -10537,7 +10652,19 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 49,
           "category": "18",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
+          "omnibus_pct": 0,
+          "min_30_prior": 2.79,
+          "median_90": 3.29
+        },
+        {
+          "name": "Св. плешка без кост пр. Испания вак.кг",
+          "price": 3.29,
+          "retail": 6.42,
+          "claimed_pct": 49,
+          "category": "18",
+          "verdict": "red",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 2.79,
           "median_90": 3.29
@@ -10549,7 +10676,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 29,
           "category": "81",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 1.15,
           "median_90": 1.15
@@ -10561,7 +10688,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 29,
           "category": "81",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 1.15,
           "median_90": 1.15
@@ -10573,22 +10700,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 37,
           "category": "80",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": 0,
           "min_30_prior": 1.15,
           "median_90": 1.15
-        },
-        {
-          "name": "Св. плешка без кост пр. Испания вак.кг",
-          "price": 3.29,
-          "retail": 6.42,
-          "claimed_pct": 49,
-          "category": "18",
-          "verdict": "red",
-          "observed_on": "2026-08-30",
-          "omnibus_pct": -4,
-          "min_30_prior": 2.79,
-          "median_90": 3.17
         },
         {
           "name": "Вино ТЪРГОВИЩЕ мускат 750мл",
@@ -10597,7 +10712,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "75",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": -5,
           "min_30_prior": 3.19,
           "median_90": 3.24
@@ -10609,7 +10724,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "75",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": -5,
           "min_30_prior": 3.19,
           "median_90": 3.24
@@ -10621,7 +10736,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "75",
           "verdict": "red",
-          "observed_on": "2026-08-30",
+          "observed_on": "2026-08-31",
           "omnibus_pct": -5,
           "min_30_prior": 3.19,
           "median_90": 3.24
