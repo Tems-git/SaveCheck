@@ -1,13 +1,13 @@
 window.SAVECHECK_BROCHURES = {
-  "for_date": "2026-09-19",
-  "week_label": "19.9 – 20.9.2026",
+  "for_date": "2026-09-20",
+  "week_label": "20.9 – 20.9.2026",
   "chains": [
     {
       "chain": "Lidl",
       "from_date": "2026-09-18",
       "is_stale": true,
-      "total_promos": 38,
-      "total_before_cap": 38,
+      "total_promos": 39,
+      "total_before_cap": 39,
       "items": [
         {
           "name": "Ръжен хляб с малц и течна ръж. закв",
@@ -16,7 +16,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "3",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 51,
           "min_30_prior": 0.49,
           "median_90": 0.99,
@@ -29,7 +29,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 53,
           "category": "52",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 36,
           "min_30_prior": 0.89,
           "median_90": 1.39,
@@ -42,7 +42,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "70",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 33,
           "min_30_prior": 6.29,
           "median_90": 9.4,
@@ -55,7 +55,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 26,
           "min_30_prior": 0.49,
           "median_90": 0.66,
@@ -68,7 +68,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "1",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 19,
           "min_30_prior": 0.79,
           "median_90": 0.97,
@@ -81,7 +81,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "70",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 19,
           "min_30_prior": 3.29,
           "median_90": 4.08,
@@ -94,7 +94,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "42",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 1.42,
           "median_90": 1.68,
@@ -107,7 +107,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "53",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 1.73,
           "median_90": 2.04,
@@ -120,7 +120,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 42,
           "category": "12",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 42,
           "min_30_prior": 1.45,
           "median_90": 2.49
@@ -132,7 +132,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "53",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 35,
           "min_30_prior": 0.99,
           "median_90": 1.53
@@ -144,7 +144,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 34,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 34,
           "min_30_prior": 0.59,
           "median_90": 0.89
@@ -156,7 +156,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "30",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 34,
           "min_30_prior": 5.29,
           "median_90": 7.99
@@ -168,7 +168,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "40",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 29,
           "min_30_prior": 0.49,
           "median_90": 0.69
@@ -180,7 +180,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 28,
           "category": "70",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 28,
           "min_30_prior": 2.89,
           "median_90": 3.99
@@ -192,7 +192,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "49",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 26,
           "min_30_prior": 1.09,
           "median_90": 1.48
@@ -204,7 +204,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "46",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 24,
           "min_30_prior": 1.39,
           "median_90": 1.84
@@ -216,7 +216,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "68",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 0.69,
           "median_90": 0.89
@@ -228,7 +228,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "5",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 21,
           "min_30_prior": 1.49,
           "median_90": 1.89
@@ -240,7 +240,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "43",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 21,
           "min_30_prior": 7.29,
           "median_90": 9.2
@@ -252,7 +252,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "28",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 19,
           "min_30_prior": 2.49,
           "median_90": 3.06
@@ -264,7 +264,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "67",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 18,
           "min_30_prior": 0.49,
           "median_90": 0.6
@@ -276,7 +276,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "11",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 4.29,
           "median_90": 5.11
@@ -288,7 +288,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 9,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 9,
           "min_30_prior": 6.99,
           "median_90": 7.69
@@ -300,7 +300,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "9",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 27,
           "min_30_prior": 7.49,
           "median_90": 10.22,
@@ -313,7 +313,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "70",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 20,
           "min_30_prior": 2.79,
           "median_90": 3.49
@@ -325,7 +325,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "12",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 2.35,
           "median_90": 2.79
@@ -337,7 +337,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "58",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 1.69,
           "median_90": 1.99
@@ -349,7 +349,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 7,
           "category": "38",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 7,
           "min_30_prior": 0.54,
           "median_90": 0.58
@@ -361,7 +361,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "66",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 3,
           "min_30_prior": 0.89,
           "median_90": 0.92
@@ -375,7 +375,20 @@ window.SAVECHECK_BROCHURES = {
           "verdict": "gray",
           "observed_on": "2026-09-18",
           "min_30_prior": 0.59,
-          "median_90": 0.99
+          "median_90": 1.14
+        },
+        {
+          "name": "Домати на клонка на кг",
+          "price": 1.19,
+          "retail": 2.69,
+          "claimed_pct": 56,
+          "category": "54",
+          "verdict": "red",
+          "observed_on": "2026-09-20",
+          "omnibus_pct": 33,
+          "min_30_prior": 0.99,
+          "median_90": 1.78,
+          "basket_id": "tomatoes"
         },
         {
           "name": "Лук на кг",
@@ -384,7 +397,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 47,
           "category": "55",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 0.29,
           "median_90": 0.45,
@@ -397,7 +410,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 2,
           "category": "61",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 2,
           "min_30_prior": 0.39,
           "median_90": 0.81,
@@ -410,7 +423,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "35",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 19,
           "min_30_prior": 0.65,
           "median_90": 0.97
@@ -422,7 +435,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "69",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 13,
           "min_30_prior": 1.45,
           "median_90": 2.02
@@ -434,7 +447,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "50",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 13,
           "min_30_prior": 1.79,
           "median_90": 3.19
@@ -446,7 +459,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "44",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 13,
           "min_30_prior": 0.85,
           "median_90": 1.12
@@ -458,7 +471,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 5,
           "category": "12",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 5,
           "min_30_prior": 1.39,
           "median_90": 2.09
@@ -470,7 +483,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 1,
           "category": "30",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 9.2,
           "median_90": 9.2
@@ -479,10 +492,10 @@ window.SAVECHECK_BROCHURES = {
     },
     {
       "chain": "Kaufland",
-      "from_date": "2026-09-17",
+      "from_date": "2026-09-19",
       "is_stale": true,
-      "total_promos": 227,
-      "total_before_cap": 227,
+      "total_promos": 224,
+      "total_before_cap": 224,
       "items": [
         {
           "name": "Dallmayr Класик мляно кафе 250г",
@@ -491,7 +504,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 49,
           "category": "70",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 44,
           "min_30_prior": 3.7,
           "median_90": 6.59,
@@ -504,7 +517,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 59,
           "category": "55",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 0.35,
           "median_90": 0.45,
@@ -517,24 +530,11 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 36,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 0.75,
           "median_90": 0.89,
           "basket_id": "yogurt"
-        },
-        {
-          "name": "NN KLC Прясно мляко 3% 1л бутилка",
-          "price": 1.09,
-          "retail": 1.25,
-          "claimed_pct": 13,
-          "category": "6",
-          "verdict": "green",
-          "observed_on": "2026-09-17",
-          "omnibus_pct": 13,
-          "min_30_prior": 1.09,
-          "median_90": 1.25,
-          "basket_id": "milk"
         },
         {
           "name": "Dallmayr Crema Doro кафе зърна 1кг",
@@ -543,22 +543,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 87,
           "category": "71",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 81,
           "min_30_prior": 4.2,
           "median_90": 21.645
-        },
-        {
-          "name": "Melitta Grand Aroma кафе зърна 1 кг",
-          "price": 10.89,
-          "retail": 25.99,
-          "claimed_pct": 58,
-          "category": "71",
-          "verdict": "green",
-          "observed_on": "2026-09-19",
-          "omnibus_pct": 32,
-          "min_30_prior": 12.99,
-          "median_90": 15.99
         },
         {
           "name": "DentalDr.Special паста WhiteningCare75мл",
@@ -567,7 +555,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 30,
           "min_30_prior": 1.39,
           "median_90": 1.99
@@ -579,7 +567,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 30,
           "min_30_prior": 1.39,
           "median_90": 1.99
@@ -591,7 +579,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 30,
           "min_30_prior": 1.39,
           "median_90": 1.99
@@ -603,7 +591,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 30,
           "min_30_prior": 1.39,
           "median_90": 1.99
@@ -615,7 +603,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 43,
           "category": "75",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 29,
           "min_30_prior": 4.99,
           "median_90": 6.99
@@ -627,10 +615,22 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 27,
           "min_30_prior": 0.55,
           "median_90": 0.75
+        },
+        {
+          "name": "Melitta Grand Aroma кафе зърна 1 кг",
+          "price": 10.89,
+          "retail": 25.99,
+          "claimed_pct": 58,
+          "category": "71",
+          "verdict": "green",
+          "observed_on": "2026-09-20",
+          "omnibus_pct": 27,
+          "min_30_prior": 10.89,
+          "median_90": 14.99
         },
         {
           "name": "Болярче Кашкавал от краве мл. ~2,8кг",
@@ -639,10 +639,22 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 57,
           "category": "10",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 25,
           "min_30_prior": 5.99,
           "median_90": 7.99
+        },
+        {
+          "name": "КФМ ЛуканкаПастирска Чановете Макси500 г",
+          "price": 8.69,
+          "retail": 13.29,
+          "claimed_pct": 35,
+          "category": "27",
+          "verdict": "green",
+          "observed_on": "2026-09-20",
+          "omnibus_pct": 21,
+          "min_30_prior": 8.69,
+          "median_90": 10.99
         },
         {
           "name": "Картофи сладки кг",
@@ -663,7 +675,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 50,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 18,
           "min_30_prior": 3.29,
           "median_90": 3.99
@@ -675,7 +687,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 50,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 18,
           "min_30_prior": 3.29,
           "median_90": 3.99
@@ -687,22 +699,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 50,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 18,
           "min_30_prior": 3.29,
           "median_90": 3.99
-        },
-        {
-          "name": "Деком Салам луканков Амбарица, 300г,вак.",
-          "price": 1.79,
-          "retail": 4.09,
-          "claimed_pct": 56,
-          "category": "27",
-          "verdict": "green",
-          "observed_on": "2026-09-17",
-          "omnibus_pct": 12,
-          "min_30_prior": 1.79,
-          "median_90": 2.04
         },
         {
           "name": "K-Bio Baby Грис зърнена каша 250гр",
@@ -711,7 +711,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "63",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 2.04,
           "median_90": 2.29
@@ -735,7 +735,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 38,
           "category": "17",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 5,
           "min_30_prior": 1.89,
           "median_90": 1.99,
@@ -750,7 +750,7 @@ window.SAVECHECK_BROCHURES = {
           "verdict": "yellow",
           "observed_on": "2026-09-19",
           "omnibus_pct": 4,
-          "min_30_prior": 5.99,
+          "min_30_prior": 5.49,
           "median_90": 5.69,
           "basket_id": "chicken"
         },
@@ -761,23 +761,11 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "12",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 3,
           "min_30_prior": 2.95,
           "median_90": 3.05,
           "basket_id": "butter"
-        },
-        {
-          "name": "Melitta CafeExcellent каф.мл.100%ар 250г",
-          "price": 3.79,
-          "retail": 7.59,
-          "claimed_pct": 50,
-          "category": "70",
-          "verdict": "yellow",
-          "observed_on": "2026-09-19",
-          "omnibus_pct": 14,
-          "min_30_prior": 4.99,
-          "median_90": 4.39
         },
         {
           "name": "Деликатес2 Кренвирши 1кг,нас",
@@ -798,10 +786,22 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "12",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 5,
           "min_30_prior": 1.99,
           "median_90": 2.09
+        },
+        {
+          "name": "FR4 Ципура чистена прясна кг Турция",
+          "price": 9.19,
+          "retail": 12.39,
+          "claimed_pct": 26,
+          "category": "30",
+          "verdict": "yellow",
+          "observed_on": "2026-09-20",
+          "omnibus_pct": 5,
+          "min_30_prior": 9.19,
+          "median_90": 9.64
         },
         {
           "name": "Витa баница със сирене и извара 460г",
@@ -828,25 +828,13 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 1.89
         },
         {
-          "name": "FR4 Ципура чистена прясна кг Турция",
-          "price": 9.19,
-          "retail": 12.39,
-          "claimed_pct": 26,
-          "category": "30",
-          "verdict": "yellow",
-          "observed_on": "2026-09-19",
-          "omnibus_pct": 4,
-          "min_30_prior": 9.19,
-          "median_90": 9.59
-        },
-        {
           "name": "Schauma шампоан 7 Herbs 250 мл",
           "price": 2.29,
           "retail": 2.91,
           "claimed_pct": 21,
           "category": "82",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 4,
           "min_30_prior": 2.29,
           "median_90": 2.39
@@ -858,7 +846,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "82",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 4,
           "min_30_prior": 2.29,
           "median_90": 2.39
@@ -870,46 +858,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "82",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 4,
           "min_30_prior": 2.29,
           "median_90": 2.39
-        },
-        {
-          "name": "7DAYS Super Max Кроасан какао 110г",
-          "price": 0.79,
-          "retail": 1.02,
-          "claimed_pct": 23,
-          "category": "67",
-          "verdict": "yellow",
-          "observed_on": "2026-09-19",
-          "omnibus_pct": 2,
-          "min_30_prior": 0.79,
-          "median_90": 0.81
-        },
-        {
-          "name": "7DAYS Super Max Кроасан ван.какао 110г",
-          "price": 0.79,
-          "retail": 1.02,
-          "claimed_pct": 23,
-          "category": "67",
-          "verdict": "yellow",
-          "observed_on": "2026-09-19",
-          "omnibus_pct": 2,
-          "min_30_prior": 0.79,
-          "median_90": 0.81
-        },
-        {
-          "name": "7DAYS Super Max Кроас.ванил.вишна110г",
-          "price": 0.79,
-          "retail": 1.02,
-          "claimed_pct": 23,
-          "category": "67",
-          "verdict": "yellow",
-          "observed_on": "2026-09-19",
-          "omnibus_pct": 2,
-          "min_30_prior": 0.79,
-          "median_90": 0.81
         },
         {
           "name": "Саяна Краве масло 82% масл 125г",
@@ -918,7 +870,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "12",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 1.59,
           "median_90": 1.59,
           "basket_id": "butter"
@@ -930,22 +882,22 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "8",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 9.2,
           "median_90": 9.39,
           "basket_id": "feta"
         },
         {
-          "name": "Вита Баланс хляб Ръжен с цели зърна450 г",
-          "price": 1.29,
-          "retail": 1.71,
-          "claimed_pct": 25,
-          "category": "3",
+          "name": "KLC.Кисело мляко. 3.6% масл. 400 гр.",
+          "price": 0.55,
+          "retail": 0.66,
+          "claimed_pct": 17,
+          "category": "7",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
-          "min_30_prior": 1.29,
-          "median_90": 1.29,
-          "basket_id": "bread"
+          "observed_on": "2026-09-20",
+          "min_30_prior": 0.55,
+          "median_90": 0.49,
+          "basket_id": "yogurt"
         },
         {
           "name": "Беленско Сирене от краве мляко кофа ~8кг",
@@ -966,7 +918,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "11",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 5.29,
           "median_90": 5.29,
           "basket_id": "cheese"
@@ -978,7 +930,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 34,
           "category": "6",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 1.35,
           "median_90": 1.5,
           "basket_id": "milk"
@@ -990,7 +942,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 36,
           "category": "40",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 0.65,
           "median_90": 0.72,
           "basket_id": "flour"
@@ -1002,7 +954,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 7,
           "category": "11",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 6.65,
           "median_90": 6.65,
           "basket_id": "cheese"
@@ -1014,7 +966,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 50,
           "category": "53",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 0.89,
           "median_90": 0.89,
           "basket_id": "apple"
@@ -1026,7 +978,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "70",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 3.99,
           "median_90": 3.99
         },
@@ -1037,7 +989,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "15",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 2.79,
           "median_90": 2.85
         },
@@ -1048,7 +1000,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "71",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 14.69,
           "median_90": 14.79
         },
@@ -1059,7 +1011,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "65",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 6.49,
           "median_90": 7.74
         },
@@ -1070,7 +1022,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "82",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 1.02,
           "median_90": 1.02
         },
@@ -1081,7 +1033,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "83",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 0.39,
           "median_90": 0.39
         },
@@ -1092,7 +1044,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "82",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 1.02,
           "median_90": 1.02
         },
@@ -1103,7 +1055,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "82",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 1.02,
           "median_90": 1.02
         },
@@ -1114,7 +1066,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "82",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 1.02,
           "median_90": 1.02
         },
@@ -1125,7 +1077,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 30,
           "category": "8",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 5.55,
           "median_90": 5.79
         },
@@ -1136,9 +1088,20 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 34,
           "category": "70",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 3.29,
           "median_90": 4.14
+        },
+        {
+          "name": "Народен ТВП Шпек Класик,450гр.вак",
+          "price": 4.6,
+          "retail": 6.49,
+          "claimed_pct": 29,
+          "category": "28",
+          "verdict": "gray",
+          "observed_on": "2026-09-20",
+          "min_30_prior": 4.6,
+          "median_90": 4.6
         },
         {
           "name": "Hipp BIO Мляко с ориз и ябълки 10+М 200г",
@@ -1147,20 +1110,9 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 50,
           "category": "64",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 1.3,
           "median_90": 1.3
-        },
-        {
-          "name": "NAN 3 преходно мляко 12+ 400гр",
-          "price": 8.19,
-          "retail": 11.75,
-          "claimed_pct": 30,
-          "category": "65",
-          "verdict": "gray",
-          "observed_on": "2026-09-17",
-          "min_30_prior": 8.19,
-          "median_90": 8.19
         },
         {
           "name": "Elea Pro шампоан Artisto Blond 300 мл",
@@ -1169,7 +1121,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 29,
           "category": "82",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 2.89,
           "median_90": 2.89
         },
@@ -1180,7 +1132,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": null,
           "category": "82",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 4.08,
           "median_90": 4.08
         },
@@ -1191,7 +1143,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "9",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 4.69,
           "median_90": 4.69
         },
@@ -1202,7 +1154,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 30,
           "category": "12",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 2.29,
           "median_90": 2.29
         },
@@ -1213,7 +1165,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 49,
           "category": "49",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 3.0,
           "median_90": 3.0
         },
@@ -1224,7 +1176,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 36,
           "category": "10",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 8.49,
           "median_90": 8.49
         },
@@ -1235,7 +1187,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 50,
           "category": "75",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 3.19,
           "median_90": 3.18
         },
@@ -1246,7 +1198,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "71",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 12.99,
           "median_90": 14.99
         },
@@ -1301,7 +1253,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": null,
           "category": "43",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 6.99,
           "median_90": 7.19
         },
@@ -1312,9 +1264,9 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "8",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 7.79,
-          "median_90": 7.79
+          "median_90": 8.79
         },
         {
           "name": "Зафирови сирене от кр.мляко 400гр",
@@ -1323,7 +1275,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "9",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 2.55,
           "median_90": 4.09
         },
@@ -1334,7 +1286,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "6",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 1.09,
           "median_90": 1.75
         },
@@ -1345,7 +1297,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "70",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 2.69,
           "median_90": 3.69
         },
@@ -1356,20 +1308,9 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "27",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
-          "min_30_prior": 2.96,
+          "observed_on": "2026-09-20",
+          "min_30_prior": 2.95,
           "median_90": 2.96
-        },
-        {
-          "name": "Елена Кисело мляко 2% масл. 400 гр",
-          "price": 0.5,
-          "retail": 0.95,
-          "claimed_pct": 47,
-          "category": "7",
-          "verdict": "gray",
-          "observed_on": "2026-09-19",
-          "min_30_prior": 0.5,
-          "median_90": 0.66
         },
         {
           "name": "Дева Natural шампоан Coconut&Argan 500мл",
@@ -1378,7 +1319,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "82",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 1.79,
           "median_90": 1.89
         },
@@ -1389,7 +1330,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 7,
           "category": "6",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 1.75,
           "median_90": 1.75
         },
@@ -1400,7 +1341,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "47",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 1.19,
           "median_90": 1.19
         },
@@ -1411,7 +1352,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "12",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 1.55,
           "median_90": 1.55
         },
@@ -1422,9 +1363,9 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 44,
           "category": "81",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
-          "min_30_prior": 1.49,
-          "median_90": 1.49
+          "observed_on": "2026-09-20",
+          "min_30_prior": 0.99,
+          "median_90": 1.24
         },
         {
           "name": "Гъби печурка кг",
@@ -1433,7 +1374,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "60",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 2.99,
           "median_90": 2.99
         },
@@ -1444,7 +1385,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 50,
           "category": "69",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 0.43,
           "median_90": 0.43
         },
@@ -1455,7 +1396,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 6,
           "category": "79",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 1.99,
           "median_90": 1.99
         },
@@ -1466,7 +1407,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 6,
           "category": "79",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 1.99,
           "median_90": 1.99
         },
@@ -1477,7 +1418,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 6,
           "category": "79",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 1.99,
           "median_90": 1.99
         },
@@ -1488,7 +1429,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 50,
           "category": "69",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 0.43,
           "median_90": 0.43
         },
@@ -1499,7 +1440,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 66,
           "category": "72",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 0.79,
           "median_90": 0.79
         },
@@ -1510,7 +1451,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "72",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 1.85,
           "median_90": 1.85
         },
@@ -1521,7 +1462,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 40,
           "category": "58",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 20,
           "min_30_prior": 0.99,
           "median_90": 1.49,
@@ -1534,7 +1475,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "12",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 2.6,
           "median_90": 2.69,
@@ -1547,24 +1488,11 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "11",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 2.55,
           "median_90": 3.99,
           "basket_id": "cheese"
-        },
-        {
-          "name": "Домлян Кисело мляко 3,6% 500г",
-          "price": 0.79,
-          "retail": 0.97,
-          "claimed_pct": 19,
-          "category": "7",
-          "verdict": "red",
-          "observed_on": "2026-09-17",
-          "omnibus_pct": 0,
-          "min_30_prior": 0.79,
-          "median_90": 0.79,
-          "basket_id": "yogurt"
         },
         {
           "name": "My Day Кашкавал краве мляко 400г",
@@ -1573,7 +1501,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "11",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -1,
           "min_30_prior": 5.99,
           "median_90": 6.09,
@@ -1593,43 +1521,17 @@ window.SAVECHECK_BROCHURES = {
           "basket_id": "feta"
         },
         {
-          "name": "Вълчев краве масло 250 гр фолио",
-          "price": 4.75,
-          "retail": 5.93,
-          "claimed_pct": 20,
-          "category": "12",
-          "verdict": "red",
-          "observed_on": "2026-09-17",
-          "omnibus_pct": -9,
-          "min_30_prior": 4.35,
-          "median_90": 4.35,
-          "basket_id": "butter"
-        },
-        {
           "name": "R/Градус ВП Пилешко филе, кг, вак.",
           "price": 7.15,
           "retail": 8.69,
           "claimed_pct": 18,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -10,
           "min_30_prior": 6.49,
           "median_90": 6.49,
           "basket_id": "chicken"
-        },
-        {
-          "name": "KLC.Кисело мляко. 3.6% масл. 400 гр.",
-          "price": 0.55,
-          "retail": 0.66,
-          "claimed_pct": 17,
-          "category": "7",
-          "verdict": "red",
-          "observed_on": "2026-09-19",
-          "omnibus_pct": -12,
-          "min_30_prior": 0.55,
-          "median_90": 0.49,
-          "basket_id": "yogurt"
         },
         {
           "name": "NN Хляб Добруджа нарязан 500 г",
@@ -1638,7 +1540,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "2",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -13,
           "min_30_prior": 0.61,
           "median_90": 0.61,
@@ -1664,7 +1566,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "2",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -13,
           "min_30_prior": 0.61,
           "median_90": 0.61,
@@ -1677,7 +1579,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "2",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -13,
           "min_30_prior": 0.61,
           "median_90": 0.61,
@@ -1690,7 +1592,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "2",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -13,
           "min_30_prior": 0.61,
           "median_90": 0.61,
@@ -1703,7 +1605,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "2",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -13,
           "min_30_prior": 0.61,
           "median_90": 0.61,
@@ -1716,7 +1618,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "2",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -13,
           "min_30_prior": 0.61,
           "median_90": 0.61,
@@ -1729,7 +1631,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "2",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -13,
           "min_30_prior": 0.61,
           "median_90": 0.61,
@@ -1742,7 +1644,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 52,
           "category": "3",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -13,
           "min_30_prior": 0.89,
           "median_90": 0.79,
@@ -1755,7 +1657,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 36,
           "category": "35",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -27,
           "min_30_prior": 1.59,
           "median_90": 1.25,
@@ -1768,10 +1670,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "54",
           "verdict": "red",
-          "observed_on": "2026-09-19",
-          "omnibus_pct": -79,
+          "observed_on": "2026-09-20",
+          "omnibus_pct": -93,
           "min_30_prior": 1.59,
-          "median_90": 1.39,
+          "median_90": 1.29,
           "basket_id": "tomatoes"
         },
         {
@@ -1781,7 +1683,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "50",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 20,
           "min_30_prior": 1.44,
           "median_90": 1.99
@@ -1805,7 +1707,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 50,
           "category": "56",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 13,
           "min_30_prior": 0.55,
           "median_90": 0.75
@@ -1817,7 +1719,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 45,
           "category": "43",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 13,
           "min_30_prior": 6.49,
           "median_90": 7.99
@@ -1829,22 +1731,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 48,
           "category": "43",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 10,
           "min_30_prior": 7.49,
           "median_90": 8.84
-        },
-        {
-          "name": "Lindt Lindor Milk шоколад млечен 100 гр",
-          "price": 2.99,
-          "retail": 3.68,
-          "claimed_pct": 19,
-          "category": "69",
-          "verdict": "red",
-          "observed_on": "2026-09-17",
-          "omnibus_pct": 6,
-          "min_30_prior": 2.29,
-          "median_90": 3.19
         },
         {
           "name": "Сити Салам Телешки 850 г",
@@ -1853,7 +1743,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 41,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 2,
           "min_30_prior": 2.34,
           "median_90": 2.39
@@ -1865,7 +1755,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 41,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 2,
           "min_30_prior": 2.35,
           "median_90": 2.39
@@ -1877,7 +1767,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 41,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 2,
           "min_30_prior": 2.34,
           "median_90": 2.39
@@ -1889,7 +1779,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 7,
           "category": "9",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 1,
           "min_30_prior": 7.59,
           "median_90": 7.65
@@ -1901,7 +1791,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 45,
           "category": "74",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 1,
           "min_30_prior": 0.93,
           "median_90": 0.935
@@ -1913,10 +1803,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 43,
           "category": "74",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 1,
           "min_30_prior": 0.93,
-          "median_90": 0.935
+          "median_90": 0.94
         },
         {
           "name": "Лотос Чешка шунка варена 500г",
@@ -1925,9 +1815,9 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 1,
-          "min_30_prior": 3.57,
+          "min_30_prior": 3.55,
           "median_90": 3.57
         },
         {
@@ -1949,7 +1839,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 62,
           "category": "84",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 0.19,
           "median_90": 0.19
@@ -1961,7 +1851,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 43,
           "category": "62",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 3.99,
           "median_90": 4.09
@@ -1973,7 +1863,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 34,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 2.35,
           "median_90": 2.35
@@ -1985,7 +1875,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 34,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 2.35,
           "median_90": 2.35
@@ -1997,7 +1887,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 34,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 2.35,
           "median_90": 2.35
@@ -2009,22 +1899,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 55,
           "category": "18",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 2.99,
           "median_90": 2.99
-        },
-        {
-          "name": "КЕН Кренвирши ~ 3 кг",
-          "price": 5.09,
-          "retail": 7.36,
-          "claimed_pct": 31,
-          "category": "26",
-          "verdict": "red",
-          "observed_on": "2026-09-17",
-          "omnibus_pct": 0,
-          "min_30_prior": 5.09,
-          "median_90": 5.09
         },
         {
           "name": "Мегдана кренвирш вакуум",
@@ -2033,7 +1911,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 2.29,
           "median_90": 2.29
@@ -2045,7 +1923,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "69",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 0.65,
           "median_90": 0.65
@@ -2057,7 +1935,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 40,
           "category": "62",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 3.99,
           "median_90": 3.99
@@ -2069,7 +1947,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 55,
           "category": "18",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 2.99,
           "median_90": 2.99
@@ -2081,7 +1959,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 10.49,
           "median_90": 10.49
@@ -2093,7 +1971,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 10.22,
           "median_90": 10.22
@@ -2105,7 +1983,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "26",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 5.29,
           "median_90": 5.29
@@ -2117,7 +1995,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "28",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.99,
           "median_90": 1.99
@@ -2141,7 +2019,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 39,
           "category": "62",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 4.99,
           "median_90": 4.99
@@ -2153,7 +2031,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "26",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 4.49,
           "median_90": 4.59
@@ -2165,7 +2043,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 29,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 2.55,
           "median_90": 2.55
@@ -2189,10 +2067,106 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.99,
           "median_90": 1.99
+        },
+        {
+          "name": "Sensodyne паста Repair&Protect 75мл",
+          "price": 4.25,
+          "retail": 4.44,
+          "claimed_pct": 4,
+          "category": "81",
+          "verdict": "red",
+          "observed_on": "2026-09-20",
+          "omnibus_pct": 0,
+          "min_30_prior": 4.25,
+          "median_90": 4.25
+        },
+        {
+          "name": "Sensodyne паста Repair&Protect избелв.75",
+          "price": 4.25,
+          "retail": 4.44,
+          "claimed_pct": 4,
+          "category": "81",
+          "verdict": "red",
+          "observed_on": "2026-09-20",
+          "omnibus_pct": 0,
+          "min_30_prior": 4.25,
+          "median_90": 4.25
+        },
+        {
+          "name": "Sensodyne паста Complete protection 75мл",
+          "price": 4.25,
+          "retail": 4.44,
+          "claimed_pct": 4,
+          "category": "81",
+          "verdict": "red",
+          "observed_on": "2026-09-20",
+          "omnibus_pct": 0,
+          "min_30_prior": 4.25,
+          "median_90": 4.25
+        },
+        {
+          "name": "Sensodyne паста зъби ClinicalRepair 75мл",
+          "price": 4.25,
+          "retail": 4.44,
+          "claimed_pct": 4,
+          "category": "81",
+          "verdict": "red",
+          "observed_on": "2026-09-20",
+          "omnibus_pct": 0,
+          "min_30_prior": 4.25,
+          "median_90": 4.25
+        },
+        {
+          "name": "Sensodyne Clinical Repair пастаWhite75мл",
+          "price": 4.25,
+          "retail": 4.44,
+          "claimed_pct": 4,
+          "category": "81",
+          "verdict": "red",
+          "observed_on": "2026-09-20",
+          "omnibus_pct": 0,
+          "min_30_prior": 4.25,
+          "median_90": 4.25
+        },
+        {
+          "name": "Sensodyne паста зъби Sensitivity&Gum 75",
+          "price": 4.25,
+          "retail": 4.44,
+          "claimed_pct": 4,
+          "category": "81",
+          "verdict": "red",
+          "observed_on": "2026-09-20",
+          "omnibus_pct": 0,
+          "min_30_prior": 4.25,
+          "median_90": 4.25
+        },
+        {
+          "name": "Sensodyne паста за зъби Rapid Relief 75",
+          "price": 4.25,
+          "retail": 4.44,
+          "claimed_pct": 4,
+          "category": "81",
+          "verdict": "red",
+          "observed_on": "2026-09-20",
+          "omnibus_pct": 0,
+          "min_30_prior": 4.25,
+          "median_90": 4.25
+        },
+        {
+          "name": "Sensodyne паста Complete Whitening 75 мл",
+          "price": 4.25,
+          "retail": 4.44,
+          "claimed_pct": 4,
+          "category": "81",
+          "verdict": "red",
+          "observed_on": "2026-09-20",
+          "omnibus_pct": 0,
+          "min_30_prior": 4.25,
+          "median_90": 4.25
         },
         {
           "name": "Schauma Men шампоан Sports Power 400 мл",
@@ -2201,7 +2175,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.99,
           "median_90": 1.99
@@ -2213,7 +2187,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.99,
           "median_90": 1.99
@@ -2225,7 +2199,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "8",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 7.65,
           "median_90": 7.65
@@ -2237,7 +2211,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "81",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.85,
           "median_90": 1.85
@@ -2249,7 +2223,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "81",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.85,
           "median_90": 1.85
@@ -2261,7 +2235,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.99,
           "median_90": 1.99
@@ -2273,7 +2247,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.99,
           "median_90": 1.99
@@ -2285,7 +2259,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 40,
           "category": "62",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 6.15,
           "median_90": 6.15
@@ -2297,7 +2271,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.99,
           "median_90": 1.99
@@ -2309,7 +2283,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.99,
           "median_90": 1.99
@@ -2321,7 +2295,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.99,
           "median_90": 1.99
@@ -2333,7 +2307,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.99,
           "median_90": 1.99
@@ -2345,7 +2319,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 41,
           "category": "10",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 8.99,
           "median_90": 8.99
@@ -2357,7 +2331,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 25,
           "category": "5",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 0.89,
           "median_90": 0.89
@@ -2369,7 +2343,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 45,
           "category": "74",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 0.93,
           "median_90": 0.93
@@ -2381,7 +2355,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.99,
           "median_90": 1.99
@@ -2393,7 +2367,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.99,
           "median_90": 1.99
@@ -2405,7 +2379,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.99,
           "median_90": 1.99
@@ -2417,7 +2391,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.99,
           "median_90": 1.99
@@ -2429,7 +2403,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "80",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.85,
           "median_90": 1.85
@@ -2441,7 +2415,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "81",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.85,
           "median_90": 1.85
@@ -2453,7 +2427,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "81",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.85,
           "median_90": 1.85
@@ -2465,7 +2439,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "81",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.85,
           "median_90": 1.85
@@ -2477,7 +2451,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.99,
           "median_90": 1.99
@@ -2489,7 +2463,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "81",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.85,
           "median_90": 1.85
@@ -2501,7 +2475,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "81",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.85,
           "median_90": 1.85
@@ -2513,7 +2487,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.99,
           "median_90": 1.99
@@ -2525,7 +2499,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": null,
           "category": "81",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.85,
           "median_90": 1.85
@@ -2537,7 +2511,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "81",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.85,
           "median_90": 1.85
@@ -2549,22 +2523,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "81",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.85,
           "median_90": 1.85
-        },
-        {
-          "name": "R/Жарава Кюфте печено, 5брх60г., 300 г",
-          "price": 2.3,
-          "retail": 2.91,
-          "claimed_pct": 21,
-          "category": "27",
-          "verdict": "red",
-          "observed_on": "2026-09-17",
-          "omnibus_pct": 0,
-          "min_30_prior": 2.3,
-          "median_90": 2.3
         },
         {
           "name": "Coppini маслиново масло помас 1 л",
@@ -2573,7 +2535,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "43",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 3.99,
           "median_90": 3.99
@@ -2585,7 +2547,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "69",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 0.95,
           "median_90": 0.99
@@ -2597,7 +2559,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 28,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 6.99,
           "median_90": 6.99
@@ -2609,7 +2571,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "28",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 5.99,
           "median_90": 5.99
@@ -2621,7 +2583,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 7,
           "category": "28",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.89,
           "median_90": 1.89
@@ -2633,7 +2595,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "77",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 6.49,
           "median_90": 6.49
@@ -2645,7 +2607,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 56,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 3.57,
           "median_90": 3.59
@@ -2663,15 +2625,27 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 8.69
         },
         {
+          "name": "Деком Филе Елена 1 кг вак.",
+          "price": 20.45,
+          "retail": 25.56,
+          "claimed_pct": 20,
+          "category": "27",
+          "verdict": "red",
+          "observed_on": "2026-09-20",
+          "omnibus_pct": 0,
+          "min_30_prior": 20.45,
+          "median_90": 20.45
+        },
+        {
           "name": "Eduscho Family кафе на зърна 1 кг",
           "price": 11.99,
           "retail": 23.99,
           "claimed_pct": 50,
           "category": "71",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
-          "min_30_prior": 12.99,
+          "min_30_prior": 11.99,
           "median_90": 11.99
         },
         {
@@ -2681,7 +2655,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "67",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 0.21,
           "median_90": 0.21
@@ -2693,7 +2667,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "67",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 0.21,
           "median_90": 0.21
@@ -2705,7 +2679,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 25,
           "category": "26",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 6.9,
           "median_90": 6.9
@@ -2717,7 +2691,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": null,
           "category": "43",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 6.59,
           "median_90": 9.29
@@ -2729,22 +2703,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "67",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 0.21,
           "median_90": 0.21
-        },
-        {
-          "name": "Здравец кисело мляко 2% 500 гр",
-          "price": 0.89,
-          "retail": 1.12,
-          "claimed_pct": 21,
-          "category": "7",
-          "verdict": "red",
-          "observed_on": "2026-09-19",
-          "omnibus_pct": 0,
-          "min_30_prior": 0.75,
-          "median_90": 0.89
         },
         {
           "name": "Орехите Луканка Добруджанска 550г",
@@ -2753,7 +2715,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 10.49,
           "median_90": 10.49
@@ -2765,10 +2727,22 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "70",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 2.69,
           "median_90": 3.69
+        },
+        {
+          "name": "Melitta CafeExcellent каф.мл.100%ар 250г",
+          "price": 3.79,
+          "retail": 7.59,
+          "claimed_pct": 50,
+          "category": "70",
+          "verdict": "red",
+          "observed_on": "2026-09-20",
+          "omnibus_pct": 0,
+          "min_30_prior": 3.79,
+          "median_90": 3.79
         },
         {
           "name": "Rabisha Мерло 0,75 л",
@@ -2777,7 +2751,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 43,
           "category": "76",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 4.99,
           "median_90": 4.99
@@ -2813,7 +2787,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 50,
           "category": "69",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 0.43,
           "median_90": 0.43
@@ -2825,7 +2799,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "64",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -1,
           "min_30_prior": 1.53,
           "median_90": 1.53
@@ -2837,7 +2811,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "64",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -1,
           "min_30_prior": 1.53,
           "median_90": 1.53
@@ -2849,7 +2823,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "64",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -1,
           "min_30_prior": 1.53,
           "median_90": 1.53
@@ -2861,7 +2835,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "64",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -1,
           "min_30_prior": 1.53,
           "median_90": 1.53
@@ -2873,7 +2847,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "64",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -1,
           "min_30_prior": 1.53,
           "median_90": 1.53
@@ -2885,7 +2859,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "64",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -1,
           "min_30_prior": 1.53,
           "median_90": 1.53
@@ -2897,7 +2871,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "64",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -1,
           "min_30_prior": 1.53,
           "median_90": 1.53
@@ -2909,7 +2883,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "64",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -1,
           "min_30_prior": 1.53,
           "median_90": 1.53
@@ -2921,7 +2895,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "64",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -1,
           "min_30_prior": 1.53,
           "median_90": 1.53
@@ -2933,7 +2907,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "64",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -1,
           "min_30_prior": 1.53,
           "median_90": 1.53
@@ -2945,7 +2919,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -2,
           "min_30_prior": 5.29,
           "median_90": 5.89
@@ -2957,9 +2931,9 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 44,
           "category": "62",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -3,
-          "min_30_prior": 3.79,
+          "min_30_prior": 3.69,
           "median_90": 3.59
         },
         {
@@ -2969,7 +2943,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 8,
           "category": "63",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -5,
           "min_30_prior": 2.29,
           "median_90": 2.19
@@ -2981,7 +2955,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 8,
           "category": "63",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -5,
           "min_30_prior": 2.29,
           "median_90": 2.19
@@ -3017,7 +2991,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 49,
           "category": "68",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -7,
           "min_30_prior": 0.42,
           "median_90": 0.42
@@ -3029,7 +3003,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 49,
           "category": "68",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -7,
           "min_30_prior": 0.42,
           "median_90": 0.42
@@ -3041,10 +3015,22 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "6",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -10,
           "min_30_prior": 0.99,
           "median_90": 0.99
+        },
+        {
+          "name": "Саяна Краве сирене кофа 8 кг.",
+          "price": 7.29,
+          "retail": 9.08,
+          "claimed_pct": 20,
+          "category": "8",
+          "verdict": "red",
+          "observed_on": "2026-09-19",
+          "omnibus_pct": -12,
+          "min_30_prior": 5.89,
+          "median_90": 6.49
         },
         {
           "name": "Натурални маслини Супер Колосал 111/120",
@@ -3053,7 +3039,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "62",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -13,
           "min_30_prior": 3.99,
           "median_90": 3.99
@@ -3089,7 +3075,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 7,
           "category": "9",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -17,
           "min_30_prior": 4.19,
           "median_90": 3.59
@@ -3101,22 +3087,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 30,
           "category": "57",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -17,
           "min_30_prior": 0.69,
           "median_90": 0.59
-        },
-        {
-          "name": "Саяна Краве сирене кофа 8 кг.",
-          "price": 7.29,
-          "retail": 9.08,
-          "claimed_pct": 20,
-          "category": "8",
-          "verdict": "red",
-          "observed_on": "2026-09-19",
-          "omnibus_pct": -22,
-          "min_30_prior": 5.89,
-          "median_90": 5.99
         },
         {
           "name": "Lacrima Кашкавал краве мляко 750г БДС",
@@ -3125,7 +3099,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "11",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -22,
           "min_30_prior": 10.99,
           "median_90": 8.99
@@ -3137,7 +3111,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "74",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -26,
           "min_30_prior": 1.12,
           "median_90": 0.91
@@ -3149,7 +3123,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -26,
           "min_30_prior": 4.49,
           "median_90": 3.57
@@ -3161,7 +3135,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "29",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -37,
           "min_30_prior": 2.55,
           "median_90": 2.55
@@ -3173,7 +3147,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "10",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -51,
           "min_30_prior": 10.55,
           "median_90": 6.99
@@ -3196,8 +3170,8 @@ window.SAVECHECK_BROCHURES = {
       "chain": "Billa",
       "from_date": "2026-09-18",
       "is_stale": true,
-      "total_promos": 220,
-      "total_before_cap": 220,
+      "total_promos": 218,
+      "total_before_cap": 218,
       "items": [
         {
           "name": "ФРЕНСКО КРАВЕ МАСЛО MONARCH 250Г",
@@ -3298,9 +3272,9 @@ window.SAVECHECK_BROCHURES = {
           "category": "7",
           "verdict": "green",
           "observed_on": "2026-09-18",
-          "omnibus_pct": 16,
+          "omnibus_pct": 18,
           "min_30_prior": 0.65,
-          "median_90": 0.77,
+          "median_90": 0.79,
           "basket_id": "yogurt"
         },
         {
@@ -3352,6 +3326,18 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 50,
           "min_30_prior": 0.99,
           "median_90": 1.99
+        },
+        {
+          "name": "107 ПАКЕТ КРЕНВИРШИ ВИНЕР ЛЕКИ 2*400Г",
+          "price": 3.69,
+          "retail": 6.49,
+          "claimed_pct": 43,
+          "category": "27",
+          "verdict": "green",
+          "observed_on": "2026-09-18",
+          "omnibus_pct": 43,
+          "min_30_prior": 3.69,
+          "median_90": 6.49
         },
         {
           "name": "237 ПИЛЕШКА ШУНКА СЛАЙС BILLA 100ГР",
@@ -3510,6 +3496,18 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 15.19
         },
         {
+          "name": "ЧЕХ КАШКАВАЛ КРАВЕ МЛЯКО ТРАПЕЗИЦА/2,8КГ",
+          "price": 5.99,
+          "retail": 9.2,
+          "claimed_pct": 35,
+          "category": "10",
+          "verdict": "green",
+          "observed_on": "2026-09-18",
+          "omnibus_pct": 35,
+          "min_30_prior": 5.99,
+          "median_90": 9.2
+        },
+        {
           "name": "КАРТОФИ ЧЕРВЕНИ МИТИ",
           "price": 0.69,
           "retail": 1.19,
@@ -3532,6 +3530,42 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 33,
           "min_30_prior": 1.03,
           "median_90": 1.53
+        },
+        {
+          "name": "40GR БИЛКОВ ЧАЙ РОЙБОС И КАНЕЛА AHMAD",
+          "price": 2.19,
+          "retail": 3.32,
+          "claimed_pct": 34,
+          "category": "72",
+          "verdict": "green",
+          "observed_on": "2026-09-18",
+          "omnibus_pct": 33,
+          "min_30_prior": 2.19,
+          "median_90": 3.25
+        },
+        {
+          "name": "40ГР БИЛКОВ ЧАЙ ДЕТОКС AHMAD",
+          "price": 2.19,
+          "retail": 3.32,
+          "claimed_pct": 34,
+          "category": "72",
+          "verdict": "green",
+          "observed_on": "2026-09-18",
+          "omnibus_pct": 33,
+          "min_30_prior": 2.19,
+          "median_90": 3.25
+        },
+        {
+          "name": "БИРА PET 2Л ЗАГОРКА",
+          "price": 1.12,
+          "retail": 1.68,
+          "claimed_pct": 33,
+          "category": "74",
+          "verdict": "green",
+          "observed_on": "2026-09-18",
+          "omnibus_pct": 33,
+          "min_30_prior": 1.12,
+          "median_90": 1.68
         },
         {
           "name": "БОНИ МАКЕДОНСКА НАДЕНИЦА",
@@ -3606,6 +3640,18 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 9.45
         },
         {
+          "name": "БИРА РЕТ 2Л АРИАНА",
+          "price": 1.07,
+          "retail": 1.53,
+          "claimed_pct": 30,
+          "category": "74",
+          "verdict": "green",
+          "observed_on": "2026-09-18",
+          "omnibus_pct": 30,
+          "min_30_prior": 1.07,
+          "median_90": 1.53
+        },
+        {
           "name": "ИЗВАРА OLYMPUS 400ГР",
           "price": 1.59,
           "retail": 2.24,
@@ -3630,16 +3676,16 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 7.15
         },
         {
-          "name": "107 ПАКЕТ КРЕНВИРШИ ВИНЕР ЛЕКИ 2*400Г",
-          "price": 3.69,
-          "retail": 6.49,
-          "claimed_pct": 43,
-          "category": "27",
+          "name": "ЕЛКО РОДОПСКИ САЛАМ",
+          "price": 9.99,
+          "retail": 13.8,
+          "claimed_pct": 28,
+          "category": "28",
           "verdict": "green",
           "observed_on": "2026-09-18",
           "omnibus_pct": 28,
-          "min_30_prior": 3.69,
-          "median_90": 5.09
+          "min_30_prior": 9.99,
+          "median_90": 13.8
         },
         {
           "name": "657 МИНИ БЕРНЕР GRILL PARTY 250ГР",
@@ -3755,6 +3801,30 @@ window.SAVECHECK_BROCHURES = {
           "retail": 0.81,
           "claimed_pct": 27,
           "category": "67",
+          "verdict": "green",
+          "observed_on": "2026-09-18",
+          "omnibus_pct": 27,
+          "min_30_prior": 0.59,
+          "median_90": 0.81
+        },
+        {
+          "name": "GRILL PARTY МИКС 450 Г",
+          "price": 4.85,
+          "retail": 6.64,
+          "claimed_pct": 27,
+          "category": "27",
+          "verdict": "green",
+          "observed_on": "2026-09-18",
+          "omnibus_pct": 27,
+          "min_30_prior": 4.85,
+          "median_90": 6.64
+        },
+        {
+          "name": "КИСЕЛО МЛЯКО ВЕРЕЯ 2% 400ГР",
+          "price": 0.59,
+          "retail": 0.81,
+          "claimed_pct": 27,
+          "category": "7",
           "verdict": "green",
           "observed_on": "2026-09-18",
           "omnibus_pct": 27,
@@ -3882,6 +3952,54 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 4.19
         },
         {
+          "name": "215ГР БИСКВИТИ ЕВЕРЕСТ С КАКАО",
+          "price": 0.99,
+          "retail": 1.35,
+          "claimed_pct": 27,
+          "category": "66",
+          "verdict": "green",
+          "observed_on": "2026-09-18",
+          "omnibus_pct": 25,
+          "min_30_prior": 0.99,
+          "median_90": 1.32
+        },
+        {
+          "name": "215ГР БИСКВИТИ ЕВЕРЕСТ С МЛЯКО",
+          "price": 0.99,
+          "retail": 1.35,
+          "claimed_pct": 27,
+          "category": "66",
+          "verdict": "green",
+          "observed_on": "2026-09-18",
+          "omnibus_pct": 25,
+          "min_30_prior": 0.99,
+          "median_90": 1.32
+        },
+        {
+          "name": "215ГР БИСКВИТИ ЕВЕРЕСТ С ОРЕХ",
+          "price": 0.99,
+          "retail": 1.35,
+          "claimed_pct": 27,
+          "category": "66",
+          "verdict": "green",
+          "observed_on": "2026-09-18",
+          "omnibus_pct": 25,
+          "min_30_prior": 0.99,
+          "median_90": 1.32
+        },
+        {
+          "name": "220ГР БИСКВИТИ ЕВЕРЕСТ С МАСЛО",
+          "price": 0.99,
+          "retail": 1.35,
+          "claimed_pct": 27,
+          "category": "66",
+          "verdict": "green",
+          "observed_on": "2026-09-18",
+          "omnibus_pct": 25,
+          "min_30_prior": 0.99,
+          "median_90": 1.32
+        },
+        {
           "name": "БЕЛ ВП НАДЕНИЦА НАШЕНЦИ",
           "price": 3.06,
           "retail": 4.1,
@@ -3954,6 +4072,18 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 1.68
         },
         {
+          "name": "208 ВП СВИНСКИ БУТ CLEVER ВАКУУМ",
+          "price": 7.2,
+          "retail": 9.2,
+          "claimed_pct": 22,
+          "category": "27",
+          "verdict": "green",
+          "observed_on": "2026-09-18",
+          "omnibus_pct": 22,
+          "min_30_prior": 7.2,
+          "median_90": 9.2
+        },
+        {
           "name": "KA ГРИЛОВАНИ ЗЕЛЕНИ МАСЛИНИ С БИЛКИ 2X3K",
           "price": 5.62,
           "retail": 7.2,
@@ -3964,18 +4094,6 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 22,
           "min_30_prior": 5.62,
           "median_90": 7.2
-        },
-        {
-          "name": "БИРА PET 2Л ЗАГОРКА",
-          "price": 1.12,
-          "retail": 1.68,
-          "claimed_pct": 33,
-          "category": "74",
-          "verdict": "green",
-          "observed_on": "2026-09-18",
-          "omnibus_pct": 22,
-          "min_30_prior": 1.12,
-          "median_90": 1.435
         },
         {
           "name": "СИРА& КАБЕРНЕ СОВИНЬОН 0.75Л 42/25",
@@ -4002,18 +4120,6 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 7.44
         },
         {
-          "name": "ЧЕХ КАШКАВАЛ КРАВЕ МЛЯКО ТРАПЕЗИЦА/2,8КГ",
-          "price": 5.99,
-          "retail": 9.2,
-          "claimed_pct": 35,
-          "category": "10",
-          "verdict": "green",
-          "observed_on": "2026-09-18",
-          "omnibus_pct": 22,
-          "min_30_prior": 5.99,
-          "median_90": 7.695
-        },
-        {
           "name": "ШАРДОНЕ&ВИОНИЕ&САВИНЬОН БЛАН 0.75Л 42/25",
           "price": 5.79,
           "retail": 7.44,
@@ -4038,18 +4144,6 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 3.83
         },
         {
-          "name": "КИСЕЛО МЛЯКО ВЕРЕЯ 2% 400ГР",
-          "price": 0.59,
-          "retail": 0.81,
-          "claimed_pct": 27,
-          "category": "7",
-          "verdict": "green",
-          "observed_on": "2026-09-18",
-          "omnibus_pct": 21,
-          "min_30_prior": 0.59,
-          "median_90": 0.75
-        },
-        {
           "name": "100ГР МЛЕЧЕН ШОКОЛАД LINDT LINDOR",
           "price": 2.99,
           "retail": 3.68,
@@ -4060,6 +4154,18 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 19,
           "min_30_prior": 2.99,
           "median_90": 3.68
+        },
+        {
+          "name": "1КГ КАФЕ НА ЗЪРНА LAVAZZA SUERTE",
+          "price": 14.79,
+          "retail": 18.24,
+          "claimed_pct": 19,
+          "category": "71",
+          "verdict": "green",
+          "observed_on": "2026-09-18",
+          "omnibus_pct": 19,
+          "min_30_prior": 14.79,
+          "median_90": 18.24
         },
         {
           "name": "700МЛ ВИНЕН ОЦЕТ КУЛИНАР",
@@ -4084,18 +4190,6 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 19,
           "min_30_prior": 1.05,
           "median_90": 1.3
-        },
-        {
-          "name": "БИРА РЕТ 2Л АРИАНА",
-          "price": 1.07,
-          "retail": 1.53,
-          "claimed_pct": 30,
-          "category": "74",
-          "verdict": "green",
-          "observed_on": "2026-09-18",
-          "omnibus_pct": 19,
-          "min_30_prior": 1.07,
-          "median_90": 1.325
         },
         {
           "name": "КАБЕРНЕ СОВИНЬОН 0.75Л ENIRA",
@@ -4422,18 +4516,6 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 0.59
         },
         {
-          "name": "GRILL PARTY МИКС 450 Г",
-          "price": 4.85,
-          "retail": 6.64,
-          "claimed_pct": 27,
-          "category": "27",
-          "verdict": "green",
-          "observed_on": "2026-09-18",
-          "omnibus_pct": 16,
-          "min_30_prior": 4.85,
-          "median_90": 5.745
-        },
-        {
           "name": "ДЕЛИКАТЕС С ПУЕШКО ФИЛЕ МАЙСТОР ЦВЕТКО",
           "price": 2.99,
           "retail": 3.57,
@@ -4444,18 +4526,6 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 16,
           "min_30_prior": 2.99,
           "median_90": 3.57
-        },
-        {
-          "name": "ЕЛКО РОДОПСКИ САЛАМ",
-          "price": 9.99,
-          "retail": 13.8,
-          "claimed_pct": 28,
-          "category": "28",
-          "verdict": "green",
-          "observed_on": "2026-09-18",
-          "omnibus_pct": 16,
-          "min_30_prior": 9.99,
-          "median_90": 11.895
         },
         {
           "name": "КАБ.СОВ& КАБ.ФРАН& МЕРЛО 0.75Л CYCLE",
@@ -4542,6 +4612,18 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 6.39
         },
         {
+          "name": "120 ПРЯСНО ПИЛЕ КЛАС А 1,1-1,8 БГ",
+          "price": 2.55,
+          "retail": 3.57,
+          "claimed_pct": 29,
+          "category": "15",
+          "verdict": "green",
+          "observed_on": "2026-09-18",
+          "omnibus_pct": 15,
+          "min_30_prior": 2.55,
+          "median_90": 2.99
+        },
+        {
           "name": "ТА ЧЕШКА ШУНКА ТАНДЕМ",
           "price": 17.45,
           "retail": 20.96,
@@ -4590,16 +4672,16 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 9.2
         },
         {
-          "name": "208 ВП СВИНСКИ БУТ CLEVER ВАКУУМ",
-          "price": 7.2,
-          "retail": 9.2,
-          "claimed_pct": 22,
+          "name": "МОРТАДЕЛА С ЧУШКИ И МАСЛИНИ БРАВО 2,2КГ",
+          "price": 6.66,
+          "retail": 8.09,
+          "claimed_pct": 18,
           "category": "27",
           "verdict": "green",
           "observed_on": "2026-09-18",
-          "omnibus_pct": 12,
-          "min_30_prior": 7.2,
-          "median_90": 8.2
+          "omnibus_pct": 13,
+          "min_30_prior": 6.66,
+          "median_90": 7.66
         },
         {
           "name": "BILKA KIDS  6+ NATURAL П-ТА ЗА ЗЪБИ 50МЛ",
@@ -4612,18 +4694,6 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 9,
           "min_30_prior": 2.0,
           "median_90": 2.19
-        },
-        {
-          "name": "120 ПРЯСНО ПИЛЕ КЛАС А 1,1-1,8 БГ",
-          "price": 2.55,
-          "retail": 3.57,
-          "claimed_pct": 29,
-          "category": "15",
-          "verdict": "green",
-          "observed_on": "2026-09-18",
-          "omnibus_pct": 8,
-          "min_30_prior": 2.55,
-          "median_90": 2.77
         },
         {
           "name": "КИСЕЛО МЛЯКО 2% ЗНП BILLA 400 ГР",
@@ -4784,6 +4854,18 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 4.6
         },
         {
+          "name": "120 ПРЯСНО ПИЛЕ КЛАС А 1,2-2,0 КГ. ROSO",
+          "price": 5.79,
+          "retail": 7.45,
+          "claimed_pct": 22,
+          "category": "15",
+          "verdict": "yellow",
+          "observed_on": "2026-09-18",
+          "omnibus_pct": 22,
+          "min_30_prior": 5.79,
+          "median_90": 7.45
+        },
+        {
           "name": "208 ПУШЕНО СВИНСКО ФИЛЕ СЛАЙС 150Г BILLA",
           "price": 2.19,
           "retail": 2.82,
@@ -4844,18 +4926,6 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 3.39
         },
         {
-          "name": "120 ПРЯСНО ПИЛЕ КЛАС А 1,2-2,0 КГ. ROSO",
-          "price": 5.79,
-          "retail": 7.45,
-          "claimed_pct": 22,
-          "category": "15",
-          "verdict": "yellow",
-          "observed_on": "2026-09-18",
-          "omnibus_pct": 13,
-          "min_30_prior": 5.79,
-          "median_90": 6.62
-        },
-        {
           "name": "БЯЛО ЗЕЛЕ",
           "price": 0.69,
           "retail": 0.99,
@@ -4866,6 +4936,18 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 13,
           "min_30_prior": 0.69,
           "median_90": 0.79
+        },
+        {
+          "name": "ЯЙЦА М10 ПОДОВО ОТГЛЕЖДАНЕ ХОРИЗОНТ",
+          "price": 2.29,
+          "retail": 3.05,
+          "claimed_pct": 25,
+          "category": "31",
+          "verdict": "yellow",
+          "observed_on": "2026-09-18",
+          "omnibus_pct": 10,
+          "min_30_prior": 2.29,
+          "median_90": 2.55
         },
         {
           "name": "ИЗВАРА BILLA 500ГР",
@@ -4880,30 +4962,6 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 2.04
         },
         {
-          "name": "МОРТАДЕЛА С ЧУШКИ И МАСЛИНИ БРАВО 2,2КГ",
-          "price": 6.66,
-          "retail": 8.09,
-          "claimed_pct": 18,
-          "category": "27",
-          "verdict": "yellow",
-          "observed_on": "2026-09-18",
-          "omnibus_pct": 7,
-          "min_30_prior": 6.66,
-          "median_90": 7.16
-        },
-        {
-          "name": "ЯЙЦА М10 ПОДОВО ОТГЛЕЖДАНЕ ХОРИЗОНТ",
-          "price": 2.29,
-          "retail": 3.05,
-          "claimed_pct": 25,
-          "category": "31",
-          "verdict": "yellow",
-          "observed_on": "2026-09-18",
-          "omnibus_pct": 7,
-          "min_30_prior": 2.29,
-          "median_90": 2.47
-        },
-        {
           "name": "ТА БЕКОН КАЛЪП/1КГ ПАРЧЕ",
           "price": 11.25,
           "retail": 17.89,
@@ -4916,6 +4974,18 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 11.89
         },
         {
+          "name": "237 ПРАЖКА ШУНКА СЛАЙС BILLA 150ГР",
+          "price": 2.29,
+          "retail": 2.96,
+          "claimed_pct": 23,
+          "category": "27",
+          "verdict": "yellow",
+          "observed_on": "2026-09-18",
+          "omnibus_pct": 4,
+          "min_30_prior": 2.29,
+          "median_90": 2.39
+        },
+        {
           "name": "176 СВИНСКИ БЕКОН 220Г CLEVER",
           "price": 2.22,
           "retail": 3.22,
@@ -4926,18 +4996,6 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 3,
           "min_30_prior": 2.22,
           "median_90": 2.29
-        },
-        {
-          "name": "237 ПРАЖКА ШУНКА СЛАЙС BILLA 150ГР",
-          "price": 2.29,
-          "retail": 2.96,
-          "claimed_pct": 23,
-          "category": "27",
-          "verdict": "yellow",
-          "observed_on": "2026-09-18",
-          "omnibus_pct": 3,
-          "min_30_prior": 2.29,
-          "median_90": 2.37
         },
         {
           "name": "ЖАРЕНО СВИНСКО ФИЛЕ МАЙСТОР ЦВЕТКО",
@@ -4972,7 +5030,7 @@ window.SAVECHECK_BROCHURES = {
           "verdict": "gray",
           "observed_on": "2026-09-18",
           "min_30_prior": 1.35,
-          "median_90": 1.79
+          "median_90": 1.89
         },
         {
           "name": "SOC СВ.ВР.СТEK БК,С ЧЕРВ.МАРИНАТA БГ",
@@ -5008,28 +5066,6 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 1.49
         },
         {
-          "name": "107 ПИЛЕШКИ КРЕНВИРШИ НАРОДЕН XXL 560 ГР",
-          "price": 2.49,
-          "retail": 4.63,
-          "claimed_pct": 46,
-          "category": "27",
-          "verdict": "gray",
-          "observed_on": "2026-09-18",
-          "min_30_prior": 2.49,
-          "median_90": 2.49
-        },
-        {
-          "name": "177 MAP СВИНСКО МЕСО ЗА ГОТВЕНЕ",
-          "price": 4.6,
-          "retail": 5.25,
-          "claimed_pct": 12,
-          "category": "22",
-          "verdict": "gray",
-          "observed_on": "2026-09-18",
-          "min_30_prior": 4.6,
-          "median_90": 4.6
-        },
-        {
           "name": "КИСЕЛО МЛЯКО 3.6% 400Г CLEVER",
           "price": 0.46,
           "retail": 0.66,
@@ -5041,6 +5077,19 @@ window.SAVECHECK_BROCHURES = {
           "min_30_prior": 0.45,
           "median_90": 0.66,
           "basket_id": "yogurt"
+        },
+        {
+          "name": "053 ПИЛЕШКО ФИЛЕ СЛАЙС КФМ 160 ГР",
+          "price": 2.99,
+          "retail": 4.24,
+          "claimed_pct": 29,
+          "category": "27",
+          "verdict": "red",
+          "observed_on": "2026-09-18",
+          "omnibus_pct": 29,
+          "min_30_prior": 2.79,
+          "median_90": 4.24,
+          "basket_id": "chicken"
         },
         {
           "name": "КИСЕЛО МЛЯКО ДОМЛЯН 3,6% 500ГР",
@@ -5067,19 +5116,6 @@ window.SAVECHECK_BROCHURES = {
           "min_30_prior": 0.55,
           "median_90": 0.92,
           "basket_id": "yogurt"
-        },
-        {
-          "name": "053 ПИЛЕШКО ФИЛЕ СЛАЙС КФМ 160 ГР",
-          "price": 2.99,
-          "retail": 4.24,
-          "claimed_pct": 29,
-          "category": "27",
-          "verdict": "red",
-          "observed_on": "2026-09-18",
-          "omnibus_pct": 20,
-          "min_30_prior": 2.79,
-          "median_90": 3.74,
-          "basket_id": "chicken"
         },
         {
           "name": "053 ПИЛЕШКО ФИЛЕ СЛАЙС КФМ 120ГР",
@@ -5129,7 +5165,7 @@ window.SAVECHECK_BROCHURES = {
           "verdict": "red",
           "observed_on": "2026-09-18",
           "omnibus_pct": 0,
-          "min_30_prior": 0.69,
+          "min_30_prior": 0.79,
           "median_90": 0.79,
           "basket_id": "yogurt"
         },
@@ -5167,9 +5203,9 @@ window.SAVECHECK_BROCHURES = {
           "category": "11",
           "verdict": "red",
           "observed_on": "2026-09-18",
-          "omnibus_pct": -12,
+          "omnibus_pct": -28,
           "min_30_prior": 5.5,
-          "median_90": 4.895,
+          "median_90": 4.29,
           "basket_id": "cheese"
         },
         {
@@ -5183,30 +5219,6 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 56,
           "min_30_prior": 0.43,
           "median_90": 1.03
-        },
-        {
-          "name": "40GR БИЛКОВ ЧАЙ РОЙБОС И КАНЕЛА AHMAD",
-          "price": 2.19,
-          "retail": 3.32,
-          "claimed_pct": 34,
-          "category": "72",
-          "verdict": "red",
-          "observed_on": "2026-09-18",
-          "omnibus_pct": 33,
-          "min_30_prior": 2.05,
-          "median_90": 3.25
-        },
-        {
-          "name": "40ГР БИЛКОВ ЧАЙ ДЕТОКС AHMAD",
-          "price": 2.19,
-          "retail": 3.32,
-          "claimed_pct": 34,
-          "category": "72",
-          "verdict": "red",
-          "observed_on": "2026-09-18",
-          "omnibus_pct": 33,
-          "min_30_prior": 2.05,
-          "median_90": 3.25
         },
         {
           "name": "МИЛ КАШКАВАЛ КРАВЕ МЛЯКО ДИЛБЕР / 7КГ",
@@ -5281,54 +5293,6 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 3.78
         },
         {
-          "name": "215ГР БИСКВИТИ ЕВЕРЕСТ С КАКАО",
-          "price": 0.99,
-          "retail": 1.35,
-          "claimed_pct": 27,
-          "category": "66",
-          "verdict": "red",
-          "observed_on": "2026-09-18",
-          "omnibus_pct": 25,
-          "min_30_prior": 0.92,
-          "median_90": 1.32
-        },
-        {
-          "name": "215ГР БИСКВИТИ ЕВЕРЕСТ С МЛЯКО",
-          "price": 0.99,
-          "retail": 1.35,
-          "claimed_pct": 27,
-          "category": "66",
-          "verdict": "red",
-          "observed_on": "2026-09-18",
-          "omnibus_pct": 25,
-          "min_30_prior": 0.92,
-          "median_90": 1.32
-        },
-        {
-          "name": "215ГР БИСКВИТИ ЕВЕРЕСТ С ОРЕХ",
-          "price": 0.99,
-          "retail": 1.35,
-          "claimed_pct": 27,
-          "category": "66",
-          "verdict": "red",
-          "observed_on": "2026-09-18",
-          "omnibus_pct": 25,
-          "min_30_prior": 0.92,
-          "median_90": 1.32
-        },
-        {
-          "name": "220ГР БИСКВИТИ ЕВЕРЕСТ С МАСЛО",
-          "price": 0.99,
-          "retail": 1.35,
-          "claimed_pct": 27,
-          "category": "66",
-          "verdict": "red",
-          "observed_on": "2026-09-18",
-          "omnibus_pct": 25,
-          "min_30_prior": 0.92,
-          "median_90": 1.32
-        },
-        {
           "name": "КИСЕЛО МЛЯКО САЯНА 2% 400ГР",
           "price": 0.61,
           "retail": 0.81,
@@ -5365,6 +5329,18 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 1.1
         },
         {
+          "name": "156 ПУЕШКО РОЛЕ МЕС КО 270ГР",
+          "price": 3.39,
+          "retail": 4.39,
+          "claimed_pct": 23,
+          "category": "27",
+          "verdict": "red",
+          "observed_on": "2026-09-18",
+          "omnibus_pct": 23,
+          "min_30_prior": 3.09,
+          "median_90": 4.39
+        },
+        {
           "name": "НАРОДЕН ПИЛЕШКИ КРЕНВИРШ 280Г БЕЛЛА",
           "price": 1.89,
           "retail": 2.45,
@@ -5389,6 +5365,18 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 8.69
         },
         {
+          "name": "КРОМИД ЛУК",
+          "price": 0.45,
+          "retail": 0.85,
+          "claimed_pct": 47,
+          "category": "55",
+          "verdict": "red",
+          "observed_on": "2026-09-18",
+          "omnibus_pct": 21,
+          "min_30_prior": 0.39,
+          "median_90": 0.57
+        },
+        {
           "name": "110ГР 7DAYS КРОАСАН СУПЕР МАКС КАКАО",
           "price": 0.89,
           "retail": 1.1,
@@ -5399,18 +5387,6 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 19,
           "min_30_prior": 0.81,
           "median_90": 1.1
-        },
-        {
-          "name": "1КГ КАФЕ НА ЗЪРНА LAVAZZA SUERTE",
-          "price": 14.79,
-          "retail": 18.24,
-          "claimed_pct": 19,
-          "category": "71",
-          "verdict": "red",
-          "observed_on": "2026-09-18",
-          "omnibus_pct": 19,
-          "min_30_prior": 14.69,
-          "median_90": 18.24
         },
         {
           "name": "UHT МЛЯКО 3.5% CLEVER 1Л",
@@ -5435,30 +5411,6 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 16,
           "min_30_prior": 2.29,
           "median_90": 3.06
-        },
-        {
-          "name": "156 ПУЕШКО РОЛЕ МЕС КО 270ГР",
-          "price": 3.39,
-          "retail": 4.39,
-          "claimed_pct": 23,
-          "category": "27",
-          "verdict": "red",
-          "observed_on": "2026-09-18",
-          "omnibus_pct": 13,
-          "min_30_prior": 3.09,
-          "median_90": 3.89
-        },
-        {
-          "name": "БЕЛЛА ПИЛЕШКИ КРЕНВИРШИ НАРОДЕН",
-          "price": 3.59,
-          "retail": 4.59,
-          "claimed_pct": 22,
-          "category": "26",
-          "verdict": "red",
-          "observed_on": "2026-09-18",
-          "omnibus_pct": 12,
-          "min_30_prior": 2.99,
-          "median_90": 4.09
         },
         {
           "name": "ПРЯСНО МЛЯКО 3,5% BILLA 1Л БУТИЛКА",
@@ -5579,6 +5531,18 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 0,
           "min_30_prior": 1.38,
           "median_90": 1.38
+        },
+        {
+          "name": "БЕЛЛА ПИЛЕШКИ КРЕНВИРШИ НАРОДЕН",
+          "price": 3.59,
+          "retail": 4.59,
+          "claimed_pct": 22,
+          "category": "26",
+          "verdict": "red",
+          "observed_on": "2026-09-18",
+          "omnibus_pct": 0,
+          "min_30_prior": 2.99,
+          "median_90": 3.59
         },
         {
           "name": "БОНИ ЖАРЕНА ВИТА ШУНКА",
@@ -5785,18 +5749,6 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 3.59
         },
         {
-          "name": "КРОМИД ЛУК",
-          "price": 0.45,
-          "retail": 0.85,
-          "claimed_pct": 47,
-          "category": "55",
-          "verdict": "red",
-          "observed_on": "2026-09-18",
-          "omnibus_pct": 0,
-          "min_30_prior": 0.39,
-          "median_90": 0.45
-        },
-        {
           "name": "СИРА 0.75Л ZAARA",
           "price": 7.99,
           "retail": 9.2,
@@ -5804,9 +5756,9 @@ window.SAVECHECK_BROCHURES = {
           "category": "76",
           "verdict": "red",
           "observed_on": "2026-09-18",
-          "omnibus_pct": -1,
+          "omnibus_pct": -3,
           "min_30_prior": 7.99,
-          "median_90": 7.89
+          "median_90": 7.79
         },
         {
           "name": "237 СВИНСКА ШУНКА СЛАЙС CLEVER 100ГР",
@@ -5816,9 +5768,9 @@ window.SAVECHECK_BROCHURES = {
           "category": "27",
           "verdict": "red",
           "observed_on": "2026-09-18",
-          "omnibus_pct": -2,
+          "omnibus_pct": -4,
           "min_30_prior": 0.99,
-          "median_90": 1.07
+          "median_90": 1.05
         },
         {
           "name": "ТА ПЕЧЕН СВИНСКИ БУТ БЕЗ КОСТ",
@@ -5852,15 +5804,15 @@ window.SAVECHECK_BROCHURES = {
           "category": "9",
           "verdict": "red",
           "observed_on": "2026-09-18",
-          "omnibus_pct": -14,
+          "omnibus_pct": -16,
           "min_30_prior": 2.49,
-          "median_90": 2.54
+          "median_90": 2.49
         }
       ]
     },
     {
       "chain": "Fantastico",
-      "from_date": "2026-09-19",
+      "from_date": "2026-09-20",
       "is_stale": false,
       "total_promos": 469,
       "total_before_cap": 469,
@@ -5872,7 +5824,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "37",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 38,
           "min_30_prior": 1.15,
           "median_90": 1.84,
@@ -5885,7 +5837,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "37",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 38,
           "min_30_prior": 1.15,
           "median_90": 1.84,
@@ -5898,7 +5850,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "8",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 35,
           "min_30_prior": 5.99,
           "median_90": 9.2,
@@ -5911,7 +5863,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "40",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 24,
           "min_30_prior": 0.85,
           "median_90": 1.12,
@@ -5924,7 +5876,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "9",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 21,
           "min_30_prior": 4.0,
           "median_90": 5.09,
@@ -5937,7 +5889,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "9",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 20,
           "min_30_prior": 6.99,
           "median_90": 8.79,
@@ -5950,7 +5902,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "9",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 20,
           "min_30_prior": 4.39,
           "median_90": 5.49,
@@ -5963,7 +5915,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "9",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 20,
           "min_30_prior": 6.99,
           "median_90": 8.75,
@@ -5976,7 +5928,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "9",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 4.29,
           "median_90": 5.19,
@@ -5989,7 +5941,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "11",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 2.99,
           "median_90": 3.57,
@@ -6002,7 +5954,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "35",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 2.09,
           "median_90": 2.5,
@@ -6015,7 +5967,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "9",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 7.49,
           "median_90": 8.83,
@@ -6028,7 +5980,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "9",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 8.42,
           "median_90": 9.45,
@@ -6041,7 +5993,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "8",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 8.9,
           "median_90": 9.99,
@@ -6054,7 +6006,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "9",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 10,
           "min_30_prior": 8.97,
           "median_90": 9.97,
@@ -6067,7 +6019,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 52,
           "category": "47",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 56,
           "min_30_prior": 0.79,
           "median_90": 1.78
@@ -6079,7 +6031,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 50,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 51,
           "min_30_prior": 0.46,
           "median_90": 0.94
@@ -6091,7 +6043,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 28,
           "category": "71",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 50,
           "min_30_prior": 19.99,
           "median_90": 39.99
@@ -6103,7 +6055,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "50",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 45,
           "min_30_prior": 1.09,
           "median_90": 1.99
@@ -6115,7 +6067,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 42,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 42,
           "min_30_prior": 2.39,
           "median_90": 4.09
@@ -6127,7 +6079,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 42,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 42,
           "min_30_prior": 2.39,
           "median_90": 4.09
@@ -6139,7 +6091,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 42,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 42,
           "min_30_prior": 2.39,
           "median_90": 4.09
@@ -6151,7 +6103,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 42,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 42,
           "min_30_prior": 2.39,
           "median_90": 4.09
@@ -6163,7 +6115,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 41,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 41,
           "min_30_prior": 1.59,
           "median_90": 2.69
@@ -6175,7 +6127,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 41,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 41,
           "min_30_prior": 1.59,
           "median_90": 2.69
@@ -6187,7 +6139,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 41,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 41,
           "min_30_prior": 1.59,
           "median_90": 2.69
@@ -6199,7 +6151,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 38,
           "category": "85",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 38,
           "min_30_prior": 2.59,
           "median_90": 4.17
@@ -6211,7 +6163,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 38,
           "category": "85",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 38,
           "min_30_prior": 2.59,
           "median_90": 4.17
@@ -6223,7 +6175,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "36",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 38,
           "min_30_prior": 1.15,
           "median_90": 1.84
@@ -6235,7 +6187,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "36",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 38,
           "min_30_prior": 1.15,
           "median_90": 1.84
@@ -6247,7 +6199,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 38,
           "category": "11",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 38,
           "min_30_prior": 4.99,
           "median_90": 7.99
@@ -6259,7 +6211,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 38,
           "category": "69",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 38,
           "min_30_prior": 0.89,
           "median_90": 1.43
@@ -6271,7 +6223,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 38,
           "category": "85",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 38,
           "min_30_prior": 2.59,
           "median_90": 4.17
@@ -6283,7 +6235,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 38,
           "category": "85",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 38,
           "min_30_prior": 2.59,
           "median_90": 4.17
@@ -6295,7 +6247,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "36",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 38,
           "min_30_prior": 1.15,
           "median_90": 1.84
@@ -6307,7 +6259,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 37,
           "category": "71",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 37,
           "min_30_prior": 17.49,
           "median_90": 27.6
@@ -6319,7 +6271,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 37,
           "category": "71",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 37,
           "min_30_prior": 17.49,
           "median_90": 27.6
@@ -6331,7 +6283,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 36,
           "category": "47",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 36,
           "min_30_prior": 1.49,
           "median_90": 2.34
@@ -6343,7 +6295,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 36,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 36,
           "min_30_prior": 0.65,
           "median_90": 1.02
@@ -6355,7 +6307,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 36,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 36,
           "min_30_prior": 0.65,
           "median_90": 1.02
@@ -6367,7 +6319,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 36,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 36,
           "min_30_prior": 6.29,
           "median_90": 9.79
@@ -6379,7 +6331,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 36,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 36,
           "min_30_prior": 0.65,
           "median_90": 1.02
@@ -6391,7 +6343,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 36,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 36,
           "min_30_prior": 0.65,
           "median_90": 1.02
@@ -6403,7 +6355,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "52",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 35,
           "min_30_prior": 1.11,
           "median_90": 1.7
@@ -6415,7 +6367,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 34,
           "category": "26",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 34,
           "min_30_prior": 5.29,
           "median_90": 7.99
@@ -6427,7 +6379,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 34,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 34,
           "min_30_prior": 0.65,
           "median_90": 0.99
@@ -6439,7 +6391,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "49",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 33,
           "min_30_prior": 1.99,
           "median_90": 2.99
@@ -6451,7 +6403,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "43",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 32,
           "min_30_prior": 7.99,
           "median_90": 11.69
@@ -6463,7 +6415,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "47",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 32,
           "min_30_prior": 1.25,
           "median_90": 1.84
@@ -6475,7 +6427,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "12",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 32,
           "min_30_prior": 6.15,
           "median_90": 8.99
@@ -6487,7 +6439,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "75",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 28,
           "min_30_prior": 4.29,
           "median_90": 5.99
@@ -6499,7 +6451,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "75",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 28,
           "min_30_prior": 4.29,
           "median_90": 5.99
@@ -6511,7 +6463,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "76",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 28,
           "min_30_prior": 4.29,
           "median_90": 5.99
@@ -6523,7 +6475,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 28,
           "category": "76",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 28,
           "min_30_prior": 4.39,
           "median_90": 6.13
@@ -6535,7 +6487,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 28,
           "category": "75",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 28,
           "min_30_prior": 4.39,
           "median_90": 6.13
@@ -6547,7 +6499,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "76",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 28,
           "min_30_prior": 4.29,
           "median_90": 5.99
@@ -6559,7 +6511,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 28,
           "category": "76",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 28,
           "min_30_prior": 4.39,
           "median_90": 6.13
@@ -6571,7 +6523,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 28,
           "category": "75",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 28,
           "min_30_prior": 4.39,
           "median_90": 6.13
@@ -6583,7 +6535,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "75",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 28,
           "min_30_prior": 4.29,
           "median_90": 5.99
@@ -6595,7 +6547,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 25,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 27,
           "min_30_prior": 0.69,
           "median_90": 0.95
@@ -6607,7 +6559,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "12",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 27,
           "min_30_prior": 1.75,
           "median_90": 2.39
@@ -6619,7 +6571,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "11",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 27,
           "min_30_prior": 7.49,
           "median_90": 10.22
@@ -6631,7 +6583,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "79",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 27,
           "min_30_prior": 1.09,
           "median_90": 1.49
@@ -6643,7 +6595,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "79",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 27,
           "min_30_prior": 1.09,
           "median_90": 1.49
@@ -6655,7 +6607,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "76",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 27,
           "min_30_prior": 3.29,
           "median_90": 4.49
@@ -6667,7 +6619,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "75",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 27,
           "min_30_prior": 3.29,
           "median_90": 4.49
@@ -6679,7 +6631,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "75",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 27,
           "min_30_prior": 3.29,
           "median_90": 4.49
@@ -6691,7 +6643,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "79",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 27,
           "min_30_prior": 1.09,
           "median_90": 1.49
@@ -6703,7 +6655,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "79",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 27,
           "min_30_prior": 1.09,
           "median_90": 1.49
@@ -6715,7 +6667,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "79",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 27,
           "min_30_prior": 1.09,
           "median_90": 1.49
@@ -6727,7 +6679,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "79",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 27,
           "min_30_prior": 1.09,
           "median_90": 1.49
@@ -6739,7 +6691,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "79",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 27,
           "min_30_prior": 1.09,
           "median_90": 1.49
@@ -6751,7 +6703,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 26,
           "min_30_prior": 3.99,
           "median_90": 5.36
@@ -6763,7 +6715,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 26,
           "min_30_prior": 3.99,
           "median_90": 5.36
@@ -6775,7 +6727,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 26,
           "min_30_prior": 3.99,
           "median_90": 5.36
@@ -6787,7 +6739,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 26,
           "min_30_prior": 3.99,
           "median_90": 5.36
@@ -6799,7 +6751,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 25,
           "category": "28",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 25,
           "min_30_prior": 3.19,
           "median_90": 4.24
@@ -6811,7 +6763,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 25,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 25,
           "min_30_prior": 0.69,
           "median_90": 0.92
@@ -6823,7 +6775,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 25,
           "category": "39",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 25,
           "min_30_prior": 0.49,
           "median_90": 0.65
@@ -6835,7 +6787,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 25,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 25,
           "min_30_prior": 0.95,
           "median_90": 1.27
@@ -6847,7 +6799,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 25,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 25,
           "min_30_prior": 0.95,
           "median_90": 1.27
@@ -6859,7 +6811,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "14",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 24,
           "min_30_prior": 1.49,
           "median_90": 1.95
@@ -6871,7 +6823,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "72",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 24,
           "min_30_prior": 1.15,
           "median_90": 1.51
@@ -6883,7 +6835,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 24,
           "min_30_prior": 2.59,
           "median_90": 3.42
@@ -6895,7 +6847,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 24,
           "min_30_prior": 2.59,
           "median_90": 3.42
@@ -6907,7 +6859,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "65",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 24,
           "min_30_prior": 15.29,
           "median_90": 19.99
@@ -6919,7 +6871,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "48",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 23,
           "min_30_prior": 1.29,
           "median_90": 1.68
@@ -6931,7 +6883,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "30",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 23,
           "min_30_prior": 9.19,
           "median_90": 12.01
@@ -6943,7 +6895,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "30",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 23,
           "min_30_prior": 9.19,
           "median_90": 12.01
@@ -6955,7 +6907,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "30",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 23,
           "min_30_prior": 9.19,
           "median_90": 12.01
@@ -6967,7 +6919,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "36",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 23,
           "min_30_prior": 2.29,
           "median_90": 2.99
@@ -6979,7 +6931,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 23,
           "min_30_prior": 7.39,
           "median_90": 9.66
@@ -6991,7 +6943,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "30",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 23,
           "min_30_prior": 9.19,
           "median_90": 12.01
@@ -7003,7 +6955,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "65",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 23,
           "min_30_prior": 19.89,
           "median_90": 25.99
@@ -7015,7 +6967,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 2.15,
           "median_90": 2.76
@@ -7027,7 +6979,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 2.15,
           "median_90": 2.76
@@ -7039,7 +6991,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 2.15,
           "median_90": 2.76
@@ -7051,7 +7003,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 3.99,
           "median_90": 5.11
@@ -7063,7 +7015,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "62",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 5.59,
           "median_90": 7.15
@@ -7075,7 +7027,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 2.15,
           "median_90": 2.76
@@ -7087,7 +7039,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "11",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 6.19,
           "median_90": 7.92
@@ -7099,7 +7051,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "75",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 6.99,
           "median_90": 8.94
@@ -7111,7 +7063,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 2.39,
           "median_90": 3.06
@@ -7123,7 +7075,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 2.39,
           "median_90": 3.06
@@ -7135,7 +7087,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 3.99,
           "median_90": 5.11
@@ -7147,7 +7099,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 3.99,
           "median_90": 5.11
@@ -7159,7 +7111,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 3.99,
           "median_90": 5.11
@@ -7171,7 +7123,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 3.99,
           "median_90": 5.11
@@ -7183,7 +7135,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 3.99,
           "median_90": 5.11
@@ -7195,7 +7147,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 3.99,
           "median_90": 5.11
@@ -7207,7 +7159,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 3.99,
           "median_90": 5.11
@@ -7219,7 +7171,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 3.99,
           "median_90": 5.11
@@ -7231,7 +7183,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 3.99,
           "median_90": 5.11
@@ -7243,7 +7195,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 3.99,
           "median_90": 5.11
@@ -7255,7 +7207,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 2.15,
           "median_90": 2.76
@@ -7267,7 +7219,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 3.99,
           "median_90": 5.11
@@ -7279,7 +7231,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "76",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 6.99,
           "median_90": 8.94
@@ -7291,7 +7243,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "62",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 5.59,
           "median_90": 7.15
@@ -7303,7 +7255,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "77",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 21,
           "min_30_prior": 5.89,
           "median_90": 7.46
@@ -7315,7 +7267,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "16",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 21,
           "min_30_prior": 7.69,
           "median_90": 9.71
@@ -7327,7 +7279,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "80",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 21,
           "min_30_prior": 1.9,
           "median_90": 2.4
@@ -7339,7 +7291,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 21,
           "min_30_prior": 3.39,
           "median_90": 4.29
@@ -7351,7 +7303,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 21,
           "min_30_prior": 2.59,
           "median_90": 3.27
@@ -7363,7 +7315,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 20,
           "min_30_prior": 3.27,
           "median_90": 4.09
@@ -7375,7 +7327,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "27",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 20,
           "min_30_prior": 3.27,
           "median_90": 4.09
@@ -7387,7 +7339,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 20,
           "min_30_prior": 1.59,
           "median_90": 1.99
@@ -7399,7 +7351,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 20,
           "min_30_prior": 1.89,
           "median_90": 2.35
@@ -7411,7 +7363,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "43",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 20,
           "min_30_prior": 5.69,
           "median_90": 7.15
@@ -7423,7 +7375,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "34",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 20,
           "min_30_prior": 2.59,
           "median_90": 3.22
@@ -7435,7 +7387,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "66",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 20,
           "min_30_prior": 0.91,
           "median_90": 1.14
@@ -7447,7 +7399,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "66",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 20,
           "min_30_prior": 0.91,
           "median_90": 1.14
@@ -7459,7 +7411,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "33",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 19,
           "min_30_prior": 3.19,
           "median_90": 3.93
@@ -7471,7 +7423,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "64",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 19,
           "min_30_prior": 1.09,
           "median_90": 1.35
@@ -7483,7 +7435,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "80",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 19,
           "min_30_prior": 3.59,
           "median_90": 4.44
@@ -7495,7 +7447,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "80",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 19,
           "min_30_prior": 1.95,
           "median_90": 2.4
@@ -7507,7 +7459,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "80",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 19,
           "min_30_prior": 3.59,
           "median_90": 4.44
@@ -7519,7 +7471,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "80",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 19,
           "min_30_prior": 3.59,
           "median_90": 4.44
@@ -7531,7 +7483,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "64",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 19,
           "min_30_prior": 1.49,
           "median_90": 1.84
@@ -7543,7 +7495,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "48",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 19,
           "min_30_prior": 0.99,
           "median_90": 1.22
@@ -7555,7 +7507,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "22",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 19,
           "min_30_prior": 4.99,
           "median_90": 6.13
@@ -7567,7 +7519,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "77",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 18,
           "min_30_prior": 5.59,
           "median_90": 6.8
@@ -7579,7 +7531,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "45",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 18,
           "min_30_prior": 1.25,
           "median_90": 1.53
@@ -7591,7 +7543,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "66",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 18,
           "min_30_prior": 1.29,
           "median_90": 1.58
@@ -7603,7 +7555,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 18,
           "min_30_prior": 4.59,
           "median_90": 5.62
@@ -7615,7 +7567,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "64",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 18,
           "min_30_prior": 0.99,
           "median_90": 1.2
@@ -7627,7 +7579,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 18,
           "min_30_prior": 4.59,
           "median_90": 5.62
@@ -7639,7 +7591,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 18,
           "min_30_prior": 4.59,
           "median_90": 5.62
@@ -7651,7 +7603,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "80",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 0.85,
           "median_90": 1.02
@@ -7663,7 +7615,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 1.09,
           "median_90": 1.32
@@ -7675,7 +7627,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "64",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 1.59,
           "median_90": 1.92
@@ -7687,7 +7639,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 1.09,
           "median_90": 1.32
@@ -7699,7 +7651,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 1.09,
           "median_90": 1.32
@@ -7711,7 +7663,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 0.85,
           "median_90": 1.02
@@ -7723,7 +7675,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 0.85,
           "median_90": 1.02
@@ -7735,7 +7687,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 0.85,
           "median_90": 1.02
@@ -7747,7 +7699,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 0.85,
           "median_90": 1.02
@@ -7759,7 +7711,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "64",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 1.59,
           "median_90": 1.92
@@ -7771,7 +7723,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "64",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 1.59,
           "median_90": 1.92
@@ -7783,7 +7735,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 1.09,
           "median_90": 1.32
@@ -7795,7 +7747,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 1.09,
           "median_90": 1.32
@@ -7807,7 +7759,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 1.09,
           "median_90": 1.32
@@ -7819,7 +7771,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 1.69,
           "median_90": 2.04
@@ -7831,7 +7783,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 1.69,
           "median_90": 2.04
@@ -7843,7 +7795,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "83",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 1.69,
           "median_90": 2.04
@@ -7855,7 +7807,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "75",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 13.99,
           "median_90": 16.87
@@ -7867,7 +7819,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "45",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 0.99,
           "median_90": 1.19
@@ -7879,7 +7831,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "44",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 1.29,
           "median_90": 1.53
@@ -7891,7 +7843,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "72",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 2.79,
           "median_90": 3.32
@@ -7903,7 +7855,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "36",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 1.29,
           "median_90": 1.53
@@ -7915,7 +7867,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "62",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 7.69,
           "median_90": 9.15
@@ -7927,7 +7879,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "77",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 7.99,
           "median_90": 9.49
@@ -7939,7 +7891,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 1.59,
           "median_90": 1.89
@@ -7951,7 +7903,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 1.59,
           "median_90": 1.89
@@ -7963,7 +7915,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 1.59,
           "median_90": 1.89
@@ -7975,7 +7927,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 1.59,
           "median_90": 1.89
@@ -7987,7 +7939,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "85",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 3.09,
           "median_90": 3.68
@@ -7999,7 +7951,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "85",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 3.09,
           "median_90": 3.68
@@ -8011,7 +7963,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "85",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 3.09,
           "median_90": 3.68
@@ -8023,7 +7975,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "71",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 27.69,
           "median_90": 32.99
@@ -8035,7 +7987,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "71",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 27.69,
           "median_90": 32.99
@@ -8047,7 +7999,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "36",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 1.29,
           "median_90": 1.53
@@ -8059,7 +8011,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "32",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 1.69,
           "median_90": 2.02
@@ -8071,7 +8023,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "77",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 8.99,
           "median_90": 10.73
@@ -8083,7 +8035,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "71",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 27.69,
           "median_90": 32.99
@@ -8095,7 +8047,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 1.59,
           "median_90": 1.89
@@ -8107,7 +8059,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "67",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 0.46,
           "median_90": 0.55
@@ -8119,7 +8071,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "67",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 0.46,
           "median_90": 0.55
@@ -8131,7 +8083,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 1.59,
           "median_90": 1.89
@@ -8143,7 +8095,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "62",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 6.59,
           "median_90": 7.82
@@ -8155,7 +8107,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 4.25,
           "median_90": 4.99
@@ -8167,7 +8119,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 4.25,
           "median_90": 4.99
@@ -8179,7 +8131,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 4.25,
           "median_90": 4.99
@@ -8191,7 +8143,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 4.25,
           "median_90": 4.99
@@ -8203,7 +8155,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "77",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 9.99,
           "median_90": 11.69
@@ -8215,7 +8167,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 4.25,
           "median_90": 4.99
@@ -8227,7 +8179,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "75",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 5.49,
           "median_90": 6.49
@@ -8239,7 +8191,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 4.25,
           "median_90": 4.99
@@ -8251,7 +8203,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "62",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 6.79,
           "median_90": 7.99
@@ -8263,7 +8215,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "75",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 5.49,
           "median_90": 6.49
@@ -8275,7 +8227,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 4.25,
           "median_90": 4.99
@@ -8287,7 +8239,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "80",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 0.95,
           "median_90": 1.12
@@ -8299,7 +8251,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "72",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 2.6,
           "median_90": 3.06
@@ -8311,7 +8263,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "76",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 5.49,
           "median_90": 6.49
@@ -8323,7 +8275,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 4.25,
           "median_90": 4.99
@@ -8335,7 +8287,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 3.69,
           "median_90": 4.34
@@ -8347,7 +8299,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 3.69,
           "median_90": 4.34
@@ -8359,7 +8311,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 4.25,
           "median_90": 4.99
@@ -8371,7 +8323,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 4.25,
           "median_90": 4.99
@@ -8383,7 +8335,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "44",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 0.98,
           "median_90": 1.15
@@ -8395,7 +8347,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "77",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 14,
           "min_30_prior": 9.99,
           "median_90": 11.55
@@ -8407,7 +8359,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "84",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 14,
           "min_30_prior": 0.59,
           "median_90": 0.69
@@ -8419,7 +8371,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "49",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 14,
           "min_30_prior": 2.49,
           "median_90": 2.91
@@ -8431,7 +8383,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "84",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 14,
           "min_30_prior": 0.59,
           "median_90": 0.69
@@ -8443,7 +8395,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "36",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 14,
           "min_30_prior": 2.45,
           "median_90": 2.86
@@ -8455,7 +8407,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "36",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 14,
           "min_30_prior": 2.19,
           "median_90": 2.55
@@ -8467,7 +8419,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "46",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 14,
           "min_30_prior": 1.45,
           "median_90": 1.69
@@ -8479,7 +8431,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "84",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 14,
           "min_30_prior": 0.59,
           "median_90": 0.69
@@ -8491,7 +8443,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "84",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 14,
           "min_30_prior": 0.59,
           "median_90": 0.69
@@ -8503,7 +8455,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "45",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 14,
           "min_30_prior": 2.39,
           "median_90": 2.79
@@ -8515,7 +8467,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 14,
           "min_30_prior": 2.19,
           "median_90": 2.55
@@ -8527,7 +8479,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 14,
           "min_30_prior": 2.19,
           "median_90": 2.55
@@ -8539,7 +8491,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "72",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 13,
           "min_30_prior": 2.89,
           "median_90": 3.32
@@ -8551,7 +8503,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "72",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 13,
           "min_30_prior": 2.89,
           "median_90": 3.32
@@ -8563,7 +8515,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "63",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 13,
           "min_30_prior": 2.45,
           "median_90": 2.81
@@ -8575,7 +8527,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "62",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 13,
           "min_30_prior": 11.99,
           "median_90": 13.79
@@ -8587,7 +8539,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "77",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 13,
           "min_30_prior": 8.99,
           "median_90": 10.29
@@ -8599,7 +8551,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 13,
           "min_30_prior": 0.89,
           "median_90": 1.02
@@ -8611,7 +8563,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 13,
           "min_30_prior": 0.89,
           "median_90": 1.02
@@ -8623,7 +8575,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 13,
           "min_30_prior": 0.89,
           "median_90": 1.02
@@ -8635,7 +8587,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 13,
           "min_30_prior": 0.89,
           "median_90": 1.02
@@ -8647,7 +8599,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "76",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 13,
           "min_30_prior": 6.99,
           "median_90": 7.99
@@ -8659,7 +8611,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "75",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 13,
           "min_30_prior": 6.99,
           "median_90": 7.99
@@ -8671,7 +8623,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "76",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 13,
           "min_30_prior": 6.99,
           "median_90": 7.99
@@ -8683,7 +8635,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "75",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 13,
           "min_30_prior": 6.99,
           "median_90": 7.99
@@ -8695,7 +8647,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "64",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 1.19,
           "median_90": 1.35
@@ -8707,7 +8659,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "80",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 1.35,
           "median_90": 1.53
@@ -8719,7 +8671,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "80",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 1.35,
           "median_90": 1.53
@@ -8731,7 +8683,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "46",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 1.49,
           "median_90": 1.69
@@ -8743,7 +8695,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "64",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 1.19,
           "median_90": 1.35
@@ -8755,7 +8707,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "64",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 1.19,
           "median_90": 1.35
@@ -8767,7 +8719,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "63",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 2.19,
           "median_90": 2.48
@@ -8779,7 +8731,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 3.83,
           "median_90": 4.34
@@ -8791,7 +8743,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 3.83,
           "median_90": 4.34
@@ -8803,7 +8755,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 3.83,
           "median_90": 4.34
@@ -8815,7 +8767,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 3.83,
           "median_90": 4.34
@@ -8827,7 +8779,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 3.83,
           "median_90": 4.34
@@ -8839,7 +8791,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 3.83,
           "median_90": 4.34
@@ -8851,7 +8803,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 3.83,
           "median_90": 4.34
@@ -8863,7 +8815,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 3.83,
           "median_90": 4.34
@@ -8875,7 +8827,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 3.83,
           "median_90": 4.34
@@ -8887,7 +8839,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 3.83,
           "median_90": 4.34
@@ -8899,7 +8851,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "82",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 3.83,
           "median_90": 4.34
@@ -8911,7 +8863,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "75",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 8.99,
           "median_90": 10.22
@@ -8923,7 +8875,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "77",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 7.99,
           "median_90": 8.99
@@ -8935,7 +8887,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "63",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 2.45,
           "median_90": 2.76
@@ -8947,7 +8899,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "63",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 2.45,
           "median_90": 2.76
@@ -8959,7 +8911,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "63",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 2.45,
           "median_90": 2.76
@@ -8971,7 +8923,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "63",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 2.45,
           "median_90": 2.76
@@ -8983,7 +8935,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "63",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 2.45,
           "median_90": 2.76
@@ -8995,7 +8947,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "63",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 2.45,
           "median_90": 2.76
@@ -9007,7 +8959,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "69",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 1.59,
           "median_90": 1.79
@@ -9019,7 +8971,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "84",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 0.79,
           "median_90": 0.89
@@ -9031,7 +8983,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "84",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 0.79,
           "median_90": 0.89
@@ -9043,7 +8995,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "63",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 2.45,
           "median_90": 2.76
@@ -9055,7 +9007,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "63",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 2.45,
           "median_90": 2.76
@@ -9067,7 +9019,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "64",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 1.35,
           "median_90": 1.51
@@ -9079,7 +9031,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "64",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 1.35,
           "median_90": 1.51
@@ -9091,7 +9043,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "64",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 1.35,
           "median_90": 1.51
@@ -9103,7 +9055,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "64",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 1.35,
           "median_90": 1.51
@@ -9115,7 +9067,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "64",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 1.35,
           "median_90": 1.51
@@ -9127,7 +9079,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "64",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 1.35,
           "median_90": 1.51
@@ -9139,7 +9091,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "64",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 1.35,
           "median_90": 1.51
@@ -9151,7 +9103,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "63",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 2.45,
           "median_90": 2.76
@@ -9163,7 +9115,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "67",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 0.57,
           "median_90": 0.64
@@ -9175,7 +9127,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "67",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 0.57,
           "median_90": 0.64
@@ -9187,7 +9139,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "84",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 10,
           "min_30_prior": 0.27,
           "median_90": 0.3
@@ -9199,7 +9151,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "65",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 10,
           "min_30_prior": 15.59,
           "median_90": 17.38
@@ -9211,7 +9163,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "62",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 10,
           "min_30_prior": 4.29,
           "median_90": 4.79
@@ -9223,7 +9175,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "43",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 10,
           "min_30_prior": 10.79,
           "median_90": 11.99
@@ -9235,7 +9187,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "72",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 10,
           "min_30_prior": 2.89,
           "median_90": 3.22
@@ -9247,7 +9199,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "72",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 10,
           "min_30_prior": 2.69,
           "median_90": 2.99
@@ -9259,7 +9211,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "72",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 10,
           "min_30_prior": 2.69,
           "median_90": 2.99
@@ -9271,7 +9223,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "84",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 10,
           "min_30_prior": 0.44,
           "median_90": 0.49
@@ -9283,7 +9235,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "6",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 10,
           "min_30_prior": 1.65,
           "median_90": 1.84
@@ -9295,7 +9247,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "11",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 10,
           "min_30_prior": 7.19,
           "median_90": 7.99
@@ -9307,7 +9259,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "79",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 10,
           "min_30_prior": 2.7,
           "median_90": 2.99
@@ -9319,7 +9271,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "65",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 9,
           "min_30_prior": 16.29,
           "median_90": 17.99
@@ -9331,7 +9283,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 37,
           "category": "76",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 8,
           "min_30_prior": 5.49,
           "median_90": 5.99
@@ -9343,7 +9295,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 37,
           "category": "76",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 8,
           "min_30_prior": 5.49,
           "median_90": 5.99
@@ -9355,7 +9307,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 36,
           "category": "76",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 7,
           "min_30_prior": 6.49,
           "median_90": 6.99
@@ -9367,7 +9319,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "31",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 23,
           "min_30_prior": 2.49,
           "median_90": 3.24,
@@ -9380,7 +9332,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "8",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 20,
           "min_30_prior": 8.79,
           "median_90": 10.99,
@@ -9393,7 +9345,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "9",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 20,
           "min_30_prior": 3.99,
           "median_90": 4.99,
@@ -9406,7 +9358,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "35",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 18,
           "min_30_prior": 2.09,
           "median_90": 2.55,
@@ -9419,7 +9371,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "11",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 3.9,
           "median_90": 4.59,
@@ -9432,7 +9384,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "1",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 14,
           "min_30_prior": 0.79,
           "median_90": 0.92,
@@ -9445,7 +9397,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "8",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 10,
           "min_30_prior": 7.17,
           "median_90": 7.97,
@@ -9458,7 +9410,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "9",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 10,
           "min_30_prior": 9.44,
           "median_90": 10.49,
@@ -9471,7 +9423,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "8",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 6,
           "min_30_prior": 5.61,
           "median_90": 5.95,
@@ -9484,7 +9436,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 46,
           "category": "12",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 47,
           "min_30_prior": 1.79,
           "median_90": 3.39
@@ -9496,7 +9448,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "66",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 32,
           "min_30_prior": 1.29,
           "median_90": 1.89
@@ -9508,22 +9460,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 29,
           "category": "68",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 29,
           "min_30_prior": 1.09,
           "median_90": 1.53
-        },
-        {
-          "name": "БУТЧЕ ПИЛЕ ОХЛАДЕНО /ПРЯСНО/ НАСИПНО ПИЛКО ПР-Д Б-Я",
-          "price": 1.99,
-          "retail": 2.59,
-          "claimed_pct": 23,
-          "category": "17",
-          "verdict": "yellow",
-          "observed_on": "2026-09-19",
-          "omnibus_pct": 27,
-          "min_30_prior": 1.99,
-          "median_90": 2.74
         },
         {
           "name": "САПУН ТЕО MILK DELICATE CARE 90 Г",
@@ -9532,7 +9472,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "83",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 26,
           "min_30_prior": 0.75,
           "median_90": 1.02
@@ -9544,7 +9484,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "83",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 26,
           "min_30_prior": 0.75,
           "median_90": 1.02
@@ -9556,7 +9496,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "83",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 26,
           "min_30_prior": 0.75,
           "median_90": 1.02
@@ -9568,7 +9508,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "83",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 26,
           "min_30_prior": 0.75,
           "median_90": 1.02
@@ -9580,7 +9520,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "83",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 26,
           "min_30_prior": 0.75,
           "median_90": 1.02
@@ -9592,7 +9532,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "83",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 26,
           "min_30_prior": 0.75,
           "median_90": 1.02
@@ -9604,7 +9544,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "82",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 24,
           "min_30_prior": 4.29,
           "median_90": 5.62
@@ -9616,7 +9556,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "83",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 24,
           "min_30_prior": 1.09,
           "median_90": 1.43
@@ -9628,7 +9568,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "82",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 24,
           "min_30_prior": 4.29,
           "median_90": 5.62
@@ -9640,7 +9580,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "82",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 24,
           "min_30_prior": 4.29,
           "median_90": 5.62
@@ -9652,7 +9592,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "82",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 24,
           "min_30_prior": 4.29,
           "median_90": 5.62
@@ -9664,7 +9604,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "82",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 24,
           "min_30_prior": 4.29,
           "median_90": 5.62
@@ -9676,10 +9616,22 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "83",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 23,
           "min_30_prior": 0.85,
           "median_90": 1.1
+        },
+        {
+          "name": "БУТЧЕ ПИЛЕ ОХЛАДЕНО /ПРЯСНО/ НАСИПНО ПИЛКО ПР-Д Б-Я",
+          "price": 1.99,
+          "retail": 2.59,
+          "claimed_pct": 23,
+          "category": "17",
+          "verdict": "yellow",
+          "observed_on": "2026-09-20",
+          "omnibus_pct": 23,
+          "min_30_prior": 1.99,
+          "median_90": 2.59
         },
         {
           "name": "ШАМПОАН OGX БИОТИН И КОЛАГЕН ЗА ОБЕМ 385 МЛ",
@@ -9688,7 +9640,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "82",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 21,
           "min_30_prior": 7.99,
           "median_90": 10.07
@@ -9700,7 +9652,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "82",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 21,
           "min_30_prior": 7.99,
           "median_90": 10.07
@@ -9712,7 +9664,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "82",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 21,
           "min_30_prior": 7.99,
           "median_90": 10.07
@@ -9724,7 +9676,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "83",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 20,
           "min_30_prior": 1.39,
           "median_90": 1.73
@@ -9736,7 +9688,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "70",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 20,
           "min_30_prior": 7.55,
           "median_90": 9.45
@@ -9748,7 +9700,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "6",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 20,
           "min_30_prior": 2.05,
           "median_90": 2.55
@@ -9760,7 +9712,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "83",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 19,
           "min_30_prior": 0.95,
           "median_90": 1.17
@@ -9772,7 +9724,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "62",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 19,
           "min_30_prior": 14.99,
           "median_90": 18.4
@@ -9784,7 +9736,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "67",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 18,
           "min_30_prior": 0.5,
           "median_90": 0.61
@@ -9796,7 +9748,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "67",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 18,
           "min_30_prior": 0.5,
           "median_90": 0.61
@@ -9808,7 +9760,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "67",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 18,
           "min_30_prior": 0.5,
           "median_90": 0.61
@@ -9820,7 +9772,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "67",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 18,
           "min_30_prior": 0.5,
           "median_90": 0.61
@@ -9832,7 +9784,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "67",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 18,
           "min_30_prior": 0.5,
           "median_90": 0.61
@@ -9844,7 +9796,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "75",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 3.99,
           "median_90": 4.79
@@ -9856,7 +9808,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "75",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 3.99,
           "median_90": 4.79
@@ -9868,7 +9820,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "76",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 3.99,
           "median_90": 4.79
@@ -9880,7 +9832,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "76",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 3.99,
           "median_90": 4.79
@@ -9892,7 +9844,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "36",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 1.4,
           "median_90": 1.68
@@ -9904,7 +9856,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "36",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 1.4,
           "median_90": 1.68
@@ -9916,7 +9868,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "36",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 1.4,
           "median_90": 1.68
@@ -9928,7 +9880,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "64",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 1.53,
           "median_90": 1.84
@@ -9940,7 +9892,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "43",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 9.99,
           "median_90": 11.89
@@ -9952,7 +9904,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "68",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 2.49,
           "median_90": 2.96
@@ -9964,7 +9916,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "70",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 7.79,
           "median_90": 9.2
@@ -9976,7 +9928,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "71",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 18.68,
           "median_90": 21.98
@@ -9988,7 +9940,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "71",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 17.79,
           "median_90": 20.99
@@ -10000,7 +9952,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "81",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 14,
           "min_30_prior": 2.59,
           "median_90": 3.01
@@ -10012,7 +9964,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "81",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 14,
           "min_30_prior": 2.59,
           "median_90": 3.01
@@ -10024,7 +9976,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "81",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 14,
           "min_30_prior": 2.59,
           "median_90": 3.01
@@ -10036,7 +9988,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "81",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 14,
           "min_30_prior": 2.59,
           "median_90": 3.01
@@ -10048,7 +10000,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "81",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 14,
           "min_30_prior": 2.59,
           "median_90": 3.01
@@ -10060,7 +10012,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "81",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 14,
           "min_30_prior": 2.59,
           "median_90": 3.01
@@ -10072,7 +10024,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "81",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 14,
           "min_30_prior": 2.59,
           "median_90": 3.01
@@ -10084,7 +10036,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "81",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 14,
           "min_30_prior": 2.59,
           "median_90": 3.01
@@ -10096,7 +10048,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "77",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 13,
           "min_30_prior": 7.59,
           "median_90": 8.69
@@ -10108,7 +10060,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "7",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 13,
           "min_30_prior": 1.15,
           "median_90": 1.32
@@ -10120,7 +10072,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "30",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 13,
           "min_30_prior": 6.99,
           "median_90": 7.99
@@ -10132,7 +10084,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "64",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 1.05,
           "median_90": 1.2
@@ -10144,7 +10096,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "64",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 1.05,
           "median_90": 1.2
@@ -10156,7 +10108,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "64",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 1.05,
           "median_90": 1.2
@@ -10168,7 +10120,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "64",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 1.05,
           "median_90": 1.2
@@ -10180,7 +10132,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "64",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 1.05,
           "median_90": 1.2
@@ -10192,7 +10144,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "64",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 1.05,
           "median_90": 1.2
@@ -10204,7 +10156,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "64",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 1.25,
           "median_90": 1.41
@@ -10216,7 +10168,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "64",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 1.25,
           "median_90": 1.41
@@ -10228,7 +10180,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "64",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 1.25,
           "median_90": 1.41
@@ -10240,7 +10192,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "64",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 1.25,
           "median_90": 1.41
@@ -10252,7 +10204,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "64",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 1.35,
           "median_90": 1.51
@@ -10264,7 +10216,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "64",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 1.25,
           "median_90": 1.41
@@ -10276,7 +10228,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "64",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 1.25,
           "median_90": 1.41
@@ -10288,7 +10240,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "12",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 10,
           "min_30_prior": 7.09,
           "median_90": 7.89
@@ -10300,7 +10252,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "43",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 10,
           "min_30_prior": 7.45,
           "median_90": 8.29
@@ -10312,7 +10264,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "6",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 10,
           "min_30_prior": 1.79,
           "median_90": 1.99
@@ -10324,7 +10276,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "64",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 10,
           "min_30_prior": 1.19,
           "median_90": 1.32
@@ -10336,7 +10288,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "12",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 10,
           "min_30_prior": 7.09,
           "median_90": 7.89
@@ -10348,7 +10300,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "65",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 6,
           "min_30_prior": 9.33,
           "median_90": 9.89
@@ -10360,7 +10312,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "72",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 4,
           "min_30_prior": 1.97,
           "median_90": 2.06
@@ -10372,7 +10324,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "65",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 3,
           "min_30_prior": 7.69,
           "median_90": 7.89
@@ -10384,7 +10336,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "9",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 20,
           "min_30_prior": 5.89,
           "median_90": 8.48,
@@ -10397,7 +10349,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "9",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 18,
           "min_30_prior": 3.88,
           "median_90": 4.85,
@@ -10410,24 +10362,11 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "37",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 3.65,
           "median_90": 4.6,
           "basket_id": "pasta"
-        },
-        {
-          "name": "СИРЕНЕ КРАВЕ КИСЕЛОВО 800 ГР КУТИЯ ДАР",
-          "price": 7.0,
-          "retail": 7.78,
-          "claimed_pct": 10,
-          "category": "9",
-          "verdict": "red",
-          "observed_on": "2026-09-19",
-          "omnibus_pct": 11,
-          "min_30_prior": 5.99,
-          "median_90": 7.885,
-          "basket_id": "feta"
         },
         {
           "name": "КАШКАВАЛ ОТ КРАВЕ МЛЯКО САЯНА БДС 400 ГР ВАКУУМ",
@@ -10436,7 +10375,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "11",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 10,
           "min_30_prior": 5.51,
           "median_90": 6.89,
@@ -10449,7 +10388,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "11",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 10,
           "min_30_prior": 6.79,
           "median_90": 7.59,
@@ -10462,10 +10401,23 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "9",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 10,
           "min_30_prior": 6.09,
           "median_90": 6.79,
+          "basket_id": "feta"
+        },
+        {
+          "name": "СИРЕНЕ КРАВЕ КИСЕЛОВО 800 ГР КУТИЯ ДАР",
+          "price": 7.0,
+          "retail": 7.78,
+          "claimed_pct": 10,
+          "category": "9",
+          "verdict": "red",
+          "observed_on": "2026-09-20",
+          "omnibus_pct": 10,
+          "min_30_prior": 5.99,
+          "median_90": 7.78,
           "basket_id": "feta"
         },
         {
@@ -10475,7 +10427,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 6,
           "category": "11",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 6,
           "min_30_prior": 5.11,
           "median_90": 6.39,
@@ -10488,7 +10440,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "8",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 5.49,
           "median_90": 5.79,
@@ -10501,7 +10453,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "1",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.29,
           "median_90": 1.29,
@@ -10514,7 +10466,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 33,
           "min_30_prior": 2.75,
           "median_90": 4.44
@@ -10526,7 +10478,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 33,
           "min_30_prior": 2.75,
           "median_90": 4.44
@@ -10538,7 +10490,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 33,
           "min_30_prior": 2.75,
           "median_90": 4.44
@@ -10550,7 +10502,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 33,
           "min_30_prior": 2.75,
           "median_90": 4.44
@@ -10562,7 +10514,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 33,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 33,
           "min_30_prior": 2.75,
           "median_90": 4.44
@@ -10574,7 +10526,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 30,
           "category": "71",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 30,
           "min_30_prior": 16.99,
           "median_90": 33.99
@@ -10586,7 +10538,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "7",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 25,
           "min_30_prior": 0.55,
           "median_90": 0.8
@@ -10598,7 +10550,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "81",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 23,
           "min_30_prior": 2.59,
           "median_90": 3.88
@@ -10610,7 +10562,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "81",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 23,
           "min_30_prior": 2.59,
           "median_90": 3.88
@@ -10622,7 +10574,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "81",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 23,
           "min_30_prior": 2.59,
           "median_90": 3.88
@@ -10634,7 +10586,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "10",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 21,
           "min_30_prior": 6.49,
           "median_90": 8.68
@@ -10646,7 +10598,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "45",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 1.55,
           "median_90": 1.89
@@ -10658,7 +10610,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "70",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 2.99,
           "median_90": 5.79
@@ -10670,7 +10622,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "71",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 27.99,
           "median_90": 36.71
@@ -10682,7 +10634,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "76",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 9.99,
           "median_90": 14.31
@@ -10694,7 +10646,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "46",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 1.39,
           "median_90": 1.83
@@ -10706,7 +10658,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "11",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 7.52,
           "median_90": 9.4
@@ -10718,7 +10670,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "7",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 0.65,
           "median_90": 0.81
@@ -10730,7 +10682,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "30",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 13,
           "min_30_prior": 6.49,
           "median_90": 7.99
@@ -10742,7 +10694,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "75",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 6.99,
           "median_90": 10.22
@@ -10754,7 +10706,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "14",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 1.36,
           "median_90": 1.7
@@ -10766,7 +10718,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "48",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 0.69,
           "median_90": 0.97
@@ -10778,7 +10730,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "48",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 12,
           "min_30_prior": 0.69,
           "median_90": 0.97
@@ -10790,7 +10742,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "42",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 1.39,
           "median_90": 1.68
@@ -10802,7 +10754,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "65",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 10,
           "min_30_prior": 16.39,
           "median_90": 20.4
@@ -10814,7 +10766,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "5",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 6,
           "min_30_prior": 1.09,
           "median_90": 1.17
@@ -10826,7 +10778,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 6,
           "category": "81",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 4.49,
           "median_90": 4.49
@@ -10838,10 +10790,22 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "84",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 0.59,
           "median_90": 0.59
+        },
+        {
+          "name": "КАШКАВАЛ ОТ КРАВЕ МЛЯКО ДЕСТАН РЕТРО 310 ГР ВАКУУМ",
+          "price": 5.77,
+          "retail": 6.79,
+          "claimed_pct": 15,
+          "category": "11",
+          "verdict": "red",
+          "observed_on": "2026-09-20",
+          "omnibus_pct": 0,
+          "min_30_prior": 5.77,
+          "median_90": 5.77
         },
         {
           "name": "ПАСТА ЗА ЗЪБИ PARODONTAX STRENGTHEN & PROTECT FM 75 МЛ",
@@ -10850,7 +10814,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 6,
           "category": "81",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 4.49,
           "median_90": 4.49
@@ -10862,7 +10826,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 6,
           "category": "81",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 4.49,
           "median_90": 4.49
@@ -10874,7 +10838,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "76",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 3.99,
           "median_90": 3.99
@@ -10886,7 +10850,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "75",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 9.49,
           "median_90": 9.49
@@ -10898,7 +10862,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "76",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 14.59,
           "median_90": 14.59
@@ -10910,7 +10874,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "64",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.59,
           "median_90": 1.59
@@ -10922,7 +10886,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "64",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.59,
           "median_90": 1.59
@@ -10934,7 +10898,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "64",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.35,
           "median_90": 1.35
@@ -10946,7 +10910,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "42",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 4.29,
           "median_90": 4.29
@@ -10958,7 +10922,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "85",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 4.15,
           "median_90": 4.15
@@ -10970,7 +10934,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "85",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 4.15,
           "median_90": 4.15
@@ -10982,7 +10946,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "70",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 8.19,
           "median_90": 8.28
@@ -10994,7 +10958,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "84",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 0.82,
           "median_90": 0.82
@@ -11006,7 +10970,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "84",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 0.82,
           "median_90": 0.82
@@ -11018,7 +10982,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "84",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 0.82,
           "median_90": 0.82
@@ -11030,7 +10994,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "64",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.35,
           "median_90": 1.35
@@ -11042,7 +11006,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "79",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 0.92,
           "median_90": 0.92
@@ -11054,7 +11018,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "79",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 0.92,
           "median_90": 0.92
@@ -11066,7 +11030,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "79",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 0.92,
           "median_90": 0.92
@@ -11078,7 +11042,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "79",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 0.92,
           "median_90": 0.92
@@ -11090,7 +11054,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "76",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 8.99,
           "median_90": 8.99
@@ -11102,7 +11066,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "77",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 8.99,
           "median_90": 8.99
@@ -11114,7 +11078,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 6,
           "category": "81",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 4.49,
           "median_90": 4.49
@@ -11126,7 +11090,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "64",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.59,
           "median_90": 1.59
@@ -11138,7 +11102,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 4.99,
           "median_90": 4.99
@@ -11150,7 +11114,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 4.99,
           "median_90": 4.99
@@ -11162,7 +11126,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 4.99,
           "median_90": 4.99
@@ -11174,7 +11138,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 4.99,
           "median_90": 4.99
@@ -11186,7 +11150,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 4.99,
           "median_90": 4.99
@@ -11198,7 +11162,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "82",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 4.99,
           "median_90": 4.99
@@ -11210,7 +11174,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 6,
           "category": "81",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 4.49,
           "median_90": 4.49
@@ -11222,7 +11186,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 6,
           "category": "81",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 4.49,
           "median_90": 4.49
@@ -11234,7 +11198,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "84",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 0.44,
           "median_90": 0.44
@@ -11246,7 +11210,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 6,
           "category": "81",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 4.49,
           "median_90": 4.49
@@ -11258,7 +11222,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "85",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 3.49,
           "median_90": 3.49
@@ -11270,7 +11234,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 12,
           "category": "85",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 3.49,
           "median_90": 3.49
@@ -11282,7 +11246,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.85,
           "median_90": 1.99
@@ -11294,7 +11258,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "26",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 4.79,
           "median_90": 4.99
@@ -11306,7 +11270,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 18,
           "category": "10",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 8.49,
           "median_90": 9.2
@@ -11318,22 +11282,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "10",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 7.19,
           "median_90": 9.4
-        },
-        {
-          "name": "КАШКАВАЛ ОТ КРАВЕ МЛЯКО ДЕСТАН РЕТРО 310 ГР ВАКУУМ",
-          "price": 5.77,
-          "retail": 6.79,
-          "claimed_pct": 15,
-          "category": "11",
-          "verdict": "red",
-          "observed_on": "2026-09-19",
-          "omnibus_pct": -3,
-          "min_30_prior": 5.77,
-          "median_90": 5.58
         },
         {
           "name": "КЪРПИ ВЛАЖНИ SEPTONA ЗЕЛЕНА ЯБЪЛКА 60 БР АНТИБАКТ.",
@@ -11342,7 +11294,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "84",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -4,
           "min_30_prior": 1.35,
           "median_90": 1.59
@@ -11354,7 +11306,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "71",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -4,
           "min_30_prior": 25.59,
           "median_90": 25.59
@@ -11366,7 +11318,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "84",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -4,
           "min_30_prior": 1.35,
           "median_90": 1.59
@@ -11378,7 +11330,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "71",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -4,
           "min_30_prior": 25.59,
           "median_90": 25.59
@@ -11390,7 +11342,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "71",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -4,
           "min_30_prior": 25.59,
           "median_90": 25.59
@@ -11402,7 +11354,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "84",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -5,
           "min_30_prior": 0.99,
           "median_90": 1.19
@@ -11414,7 +11366,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "84",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -5,
           "min_30_prior": 0.99,
           "median_90": 1.19
@@ -11426,7 +11378,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "71",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -7,
           "min_30_prior": 15.99,
           "median_90": 16.79
@@ -11438,7 +11390,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "70",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -7,
           "min_30_prior": 5.99,
           "median_90": 6.79
@@ -11450,7 +11402,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "70",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -7,
           "min_30_prior": 5.99,
           "median_90": 6.79
@@ -11462,7 +11414,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "75",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -8,
           "min_30_prior": 6.99,
           "median_90": 6.49
@@ -11474,7 +11426,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "76",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -8,
           "min_30_prior": 6.99,
           "median_90": 6.49
@@ -11486,7 +11438,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "70",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -9,
           "min_30_prior": 6.59,
           "median_90": 7.49
@@ -11498,7 +11450,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "70",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -9,
           "min_30_prior": 6.59,
           "median_90": 7.49
@@ -11510,7 +11462,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "70",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -9,
           "min_30_prior": 6.59,
           "median_90": 7.49
@@ -11522,7 +11474,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "6",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -22,
           "min_30_prior": 1.69,
           "median_90": 1.39
@@ -11531,7 +11483,7 @@ window.SAVECHECK_BROCHURES = {
     },
     {
       "chain": "T Market",
-      "from_date": "2026-09-19",
+      "from_date": "2026-09-20",
       "is_stale": false,
       "total_promos": 103,
       "total_before_cap": 103,
@@ -11543,9 +11495,9 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 25,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 25,
-          "min_30_prior": 1.27,
+          "min_30_prior": 0.95,
           "median_90": 1.27,
           "basket_id": "yogurt"
         },
@@ -11556,7 +11508,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "36",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 23,
           "min_30_prior": 0.49,
           "median_90": 0.64,
@@ -11569,7 +11521,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "36",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 23,
           "min_30_prior": 0.49,
           "median_90": 0.64,
@@ -11582,7 +11534,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 19,
           "min_30_prior": 0.65,
           "median_90": 0.8,
@@ -11595,7 +11547,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "9",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 13,
           "min_30_prior": 3.99,
           "median_90": 4.6,
@@ -11608,7 +11560,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "85",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 51,
           "min_30_prior": 1.99,
           "median_90": 4.09
@@ -11620,7 +11572,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 51,
           "category": "85",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 51,
           "min_30_prior": 1.99,
           "median_90": 4.09
@@ -11632,7 +11584,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 47,
           "category": "56",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 47,
           "min_30_prior": 0.69,
           "median_90": 1.29
@@ -11644,7 +11596,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 46,
           "category": "43",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 46,
           "min_30_prior": 4.59,
           "median_90": 8.43
@@ -11656,7 +11608,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 43,
           "category": "59",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 43,
           "min_30_prior": 3.49,
           "median_90": 6.13
@@ -11668,7 +11620,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 42,
           "category": "62",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 42,
           "min_30_prior": 4.49,
           "median_90": 7.69
@@ -11680,7 +11632,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 40,
           "category": "62",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 40,
           "min_30_prior": 3.99,
           "median_90": 6.64
@@ -11692,7 +11644,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 37,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 38,
           "min_30_prior": 0.45,
           "median_90": 0.72
@@ -11704,7 +11656,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 37,
           "category": "48",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 37,
           "min_30_prior": 0.79,
           "median_90": 1.25
@@ -11716,7 +11668,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 36,
           "category": "8",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 36,
           "min_30_prior": 4.99,
           "median_90": 7.82
@@ -11728,7 +11680,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 36,
           "category": "9",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 36,
           "min_30_prior": 4.99,
           "median_90": 7.82
@@ -11740,7 +11692,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "69",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 35,
           "min_30_prior": 1.29,
           "median_90": 1.99
@@ -11752,7 +11704,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "69",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 35,
           "min_30_prior": 1.29,
           "median_90": 1.99
@@ -11764,7 +11716,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 35,
           "category": "35",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 35,
           "min_30_prior": 1.71,
           "median_90": 2.63
@@ -11776,7 +11728,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 34,
           "category": "26",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 33,
           "min_30_prior": 2.99,
           "median_90": 4.49
@@ -11788,7 +11740,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "8",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 32,
           "min_30_prior": 5.59,
           "median_90": 8.28
@@ -11800,7 +11752,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "12",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 32,
           "min_30_prior": 2.49,
           "median_90": 3.68
@@ -11812,7 +11764,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "49",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 27,
           "min_30_prior": 4.29,
           "median_90": 5.91
@@ -11824,7 +11776,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 25,
           "category": "7",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 25,
           "min_30_prior": 0.55,
           "median_90": 0.73
@@ -11836,7 +11788,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "11",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 24,
           "min_30_prior": 8.69,
           "median_90": 11.39
@@ -11848,7 +11800,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "67",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 24,
           "min_30_prior": 0.35,
           "median_90": 0.46
@@ -11860,7 +11812,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "67",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 24,
           "min_30_prior": 0.35,
           "median_90": 0.46
@@ -11872,7 +11824,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 23,
           "category": "9",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 23,
           "min_30_prior": 3.75,
           "median_90": 4.87
@@ -11884,7 +11836,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 27,
           "category": "84",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 0.65,
           "median_90": 0.83
@@ -11896,7 +11848,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 25,
           "category": "45",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 21,
           "min_30_prior": 0.99,
           "median_90": 1.25
@@ -11908,7 +11860,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "70",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 21,
           "min_30_prior": 4.85,
           "median_90": 6.12
@@ -11920,7 +11872,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 21,
           "category": "70",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 21,
           "min_30_prior": 4.85,
           "median_90": 6.12
@@ -11932,7 +11884,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "85",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 20,
           "min_30_prior": 3.05,
           "median_90": 3.81
@@ -11944,7 +11896,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "85",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 20,
           "min_30_prior": 3.05,
           "median_90": 3.81
@@ -11956,7 +11908,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "68",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 20,
           "min_30_prior": 0.63,
           "median_90": 0.79
@@ -11968,7 +11920,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "9",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 19,
           "min_30_prior": 2.39,
           "median_90": 2.94
@@ -11980,7 +11932,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "40",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 19,
           "min_30_prior": 0.89,
           "median_90": 1.1
@@ -11992,7 +11944,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "11",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 2.73,
           "median_90": 3.21
@@ -12004,7 +11956,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "70",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 3.89,
           "median_90": 4.6
@@ -12016,7 +11968,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "44",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 14,
           "min_30_prior": 0.99,
           "median_90": 1.15
@@ -12028,7 +11980,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "69",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 14,
           "min_30_prior": 2.35,
           "median_90": 2.74
@@ -12040,7 +11992,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "9",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 13,
           "min_30_prior": 3.59,
           "median_90": 4.14
@@ -12052,7 +12004,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "42",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 1.49,
           "median_90": 1.68
@@ -12064,7 +12016,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "22",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 4.99,
           "median_90": 5.62
@@ -12076,7 +12028,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "9",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 10,
           "min_30_prior": 4.15,
           "median_90": 4.6
@@ -12088,7 +12040,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "75",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 10,
           "min_30_prior": 5.59,
           "median_90": 6.21
@@ -12100,7 +12052,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 44,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 7,
           "min_30_prior": 1.65,
           "median_90": 1.78
@@ -12112,7 +12064,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 44,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 7,
           "min_30_prior": 1.65,
           "median_90": 1.78
@@ -12124,7 +12076,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 44,
           "category": "81",
           "verdict": "green",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 7,
           "min_30_prior": 1.65,
           "median_90": 1.78
@@ -12136,7 +12088,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "73",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 20,
           "min_30_prior": 0.47,
           "median_90": 0.59,
@@ -12149,7 +12101,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 6,
           "category": "11",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 6,
           "min_30_prior": 3.89,
           "median_90": 4.14,
@@ -12162,7 +12114,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 44,
           "category": "19",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 44,
           "min_30_prior": 3.59,
           "median_90": 6.44
@@ -12174,7 +12126,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "10",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 31,
           "min_30_prior": 5.99,
           "median_90": 8.64
@@ -12186,7 +12138,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "11",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 31,
           "min_30_prior": 5.99,
           "median_90": 8.64
@@ -12198,7 +12150,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "11",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 4.99,
           "median_90": 5.98
@@ -12210,7 +12162,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "79",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 0.85,
           "median_90": 1.02
@@ -12222,7 +12174,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 17,
           "category": "79",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 17,
           "min_30_prior": 0.85,
           "median_90": 1.02
@@ -12234,7 +12186,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "49",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 16,
           "min_30_prior": 2.99,
           "median_90": 3.57
@@ -12246,7 +12198,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "74",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 14,
           "min_30_prior": 1.42,
           "median_90": 1.66
@@ -12258,7 +12210,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 11,
           "category": "17",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 4.99,
           "median_90": 5.62
@@ -12270,7 +12222,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "85",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 5,
           "min_30_prior": 3.59,
           "median_90": 3.79
@@ -12282,7 +12234,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 26,
           "category": "85",
           "verdict": "yellow",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 5,
           "min_30_prior": 3.59,
           "median_90": 3.79
@@ -12294,7 +12246,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 37,
           "category": "9",
           "verdict": "gray",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "min_30_prior": 5.49,
           "median_90": 5.49
         },
@@ -12305,7 +12257,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 43,
           "category": "11",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 43,
           "min_30_prior": 3.35,
           "median_90": 5.98,
@@ -12318,7 +12270,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 8,
           "category": "11",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 8,
           "min_30_prior": 4.09,
           "median_90": 5.01,
@@ -12331,7 +12283,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "16",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 2,
           "min_30_prior": 4.99,
           "median_90": 5.69,
@@ -12344,7 +12296,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "7",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 1,
           "min_30_prior": 0.65,
           "median_90": 0.79,
@@ -12357,7 +12309,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "36",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 0.99,
           "median_90": 1.29,
@@ -12370,7 +12322,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "36",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 0.99,
           "median_90": 1.29,
@@ -12383,7 +12335,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "37",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 0.99,
           "median_90": 1.29,
@@ -12396,7 +12348,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "37",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 0.99,
           "median_90": 1.29,
@@ -12409,7 +12361,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "36",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 0.99,
           "median_90": 1.29,
@@ -12422,7 +12374,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 7,
           "category": "11",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": -4,
           "min_30_prior": 5.08,
           "median_90": 5.39,
@@ -12435,7 +12387,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "55",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 32,
           "min_30_prior": 0.39,
           "median_90": 0.66
@@ -12447,7 +12399,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 31,
           "category": "58",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 31,
           "min_30_prior": 1.19,
           "median_90": 2.29
@@ -12459,7 +12411,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 30,
           "min_30_prior": 1.69,
           "median_90": 2.84
@@ -12471,7 +12423,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 30,
           "min_30_prior": 1.69,
           "median_90": 2.84
@@ -12483,7 +12435,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 32,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 30,
           "min_30_prior": 1.69,
           "median_90": 2.84
@@ -12495,7 +12447,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 24,
           "min_30_prior": 3.03,
           "median_90": 4.04
@@ -12507,7 +12459,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 24,
           "category": "26",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 24,
           "min_30_prior": 6.52,
           "median_90": 8.69
@@ -12519,7 +12471,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "28",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 2.3,
           "median_90": 3.06
@@ -12531,7 +12483,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "27",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 22,
           "min_30_prior": 5.75,
           "median_90": 7.66
@@ -12543,7 +12495,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "67",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 20,
           "min_30_prior": 0.59,
           "median_90": 0.89
@@ -12555,7 +12507,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 19,
           "category": "41",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 19,
           "min_30_prior": 0.69,
           "median_90": 0.97
@@ -12567,7 +12519,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 15,
           "category": "71",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 15,
           "min_30_prior": 12.45,
           "median_90": 14.65
@@ -12579,7 +12531,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 14,
           "category": "70",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 14,
           "min_30_prior": 3.75,
           "median_90": 4.43
@@ -12591,7 +12543,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "9",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 13,
           "min_30_prior": 2.59,
           "median_90": 4.6
@@ -12603,7 +12555,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "71",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 13,
           "min_30_prior": 13.99,
           "median_90": 16.46
@@ -12615,7 +12567,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 38,
           "category": "52",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 11,
           "min_30_prior": 0.99,
           "median_90": 1.29
@@ -12627,7 +12579,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 10,
           "category": "9",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 10,
           "min_30_prior": 4.69,
           "median_90": 5.7
@@ -12639,34 +12591,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 8,
           "category": "7",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 8,
           "min_30_prior": 0.73,
           "median_90": 0.86
-        },
-        {
-          "name": "Кроасан ELMAS ван&череша 60г",
-          "price": 0.45,
-          "retail": 0.51,
-          "claimed_pct": 12,
-          "category": "67",
-          "verdict": "red",
-          "observed_on": "2026-09-19",
-          "omnibus_pct": 6,
-          "min_30_prior": 0.38,
-          "median_90": 0.48
-        },
-        {
-          "name": "Кроасан ELMAS шок&ван 60гр",
-          "price": 0.45,
-          "retail": 0.51,
-          "claimed_pct": 12,
-          "category": "67",
-          "verdict": "red",
-          "observed_on": "2026-09-19",
-          "omnibus_pct": 6,
-          "min_30_prior": 0.38,
-          "median_90": 0.48
         },
         {
           "name": "Кашкавал от краве мляко MILKI DREAM 250г",
@@ -12675,10 +12603,22 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 9,
           "category": "11",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 3.05,
           "median_90": 3.05
+        },
+        {
+          "name": "Св.врат без кост нас.кг пр.Испания",
+          "price": 4.99,
+          "retail": 8.18,
+          "claimed_pct": 39,
+          "category": "21",
+          "verdict": "red",
+          "observed_on": "2026-09-20",
+          "omnibus_pct": 0,
+          "min_30_prior": 4.59,
+          "median_90": 4.99
         },
         {
           "name": "Ябълки Шарени, Полша кг.",
@@ -12687,7 +12627,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 22,
           "category": "53",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 0.99,
           "median_90": 1.19
@@ -12699,7 +12639,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 7,
           "category": "77",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 6.69,
           "median_90": 6.69
@@ -12711,10 +12651,34 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 13,
           "category": "11",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 3.99,
           "median_90": 3.99
+        },
+        {
+          "name": "Кроасан ELMAS ван&череша 60г",
+          "price": 0.45,
+          "retail": 0.51,
+          "claimed_pct": 12,
+          "category": "67",
+          "verdict": "red",
+          "observed_on": "2026-09-20",
+          "omnibus_pct": 0,
+          "min_30_prior": 0.38,
+          "median_90": 0.45
+        },
+        {
+          "name": "Кроасан ELMAS шок&ван 60гр",
+          "price": 0.45,
+          "retail": 0.51,
+          "claimed_pct": 12,
+          "category": "67",
+          "verdict": "red",
+          "observed_on": "2026-09-20",
+          "omnibus_pct": 0,
+          "min_30_prior": 0.38,
+          "median_90": 0.45
         },
         {
           "name": "Макарони STELLA пълнозърн.фусили 500г",
@@ -12723,7 +12687,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 16,
           "category": "36",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 0.99,
           "median_90": 1.29
@@ -12735,7 +12699,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "81",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 2.33,
           "median_90": 2.33
@@ -12747,7 +12711,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "81",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 2.33,
           "median_90": 2.33
@@ -12759,7 +12723,7 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "79",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.95,
           "median_90": 1.95
@@ -12771,22 +12735,10 @@ window.SAVECHECK_BROCHURES = {
           "claimed_pct": 20,
           "category": "79",
           "verdict": "red",
-          "observed_on": "2026-09-19",
+          "observed_on": "2026-09-20",
           "omnibus_pct": 0,
           "min_30_prior": 1.95,
           "median_90": 1.95
-        },
-        {
-          "name": "Св.врат без кост нас.кг пр.Испания",
-          "price": 4.99,
-          "retail": 8.18,
-          "claimed_pct": 39,
-          "category": "21",
-          "verdict": "red",
-          "observed_on": "2026-09-19",
-          "omnibus_pct": -3,
-          "min_30_prior": 4.59,
-          "median_90": 4.84
         }
       ]
     }
