@@ -413,6 +413,18 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 1.15
         },
         {
+          "name": "Markeli Кисело мляко 2%",
+          "price": 0.49,
+          "retail": 0.59,
+          "claimed_pct": 17,
+          "category": "7",
+          "verdict": "green",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 17,
+          "min_30_prior": 0.49,
+          "median_90": 0.59
+        },
+        {
           "name": "Варено-пушен бут 58% месо",
           "price": 5.39,
           "retail": 6.43,
@@ -459,18 +471,6 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 12,
           "min_30_prior": 1.99,
           "median_90": 2.25
-        },
-        {
-          "name": "Markeli Кисело мляко 2%",
-          "price": 0.49,
-          "retail": 0.59,
-          "claimed_pct": 17,
-          "category": "7",
-          "verdict": "green",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 9,
-          "min_30_prior": 0.49,
-          "median_90": 0.54
         },
         {
           "name": "Кисело краве мляко 2% XXL",
@@ -620,6 +620,18 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 7.89
         },
         {
+          "name": "Ябълки, червени, български на кг",
+          "price": 0.77,
+          "retail": 1.59,
+          "claimed_pct": 52,
+          "category": "53",
+          "verdict": "red",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 18,
+          "min_30_prior": 0.69,
+          "median_90": 0.94
+        },
+        {
           "name": "Nova Brasilia мл.кафе класик",
           "price": 3.49,
           "retail": 4.09,
@@ -632,30 +644,6 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 4.09
         },
         {
-          "name": "Ябълки, червени, български на кг",
-          "price": 0.77,
-          "retail": 1.59,
-          "claimed_pct": 52,
-          "category": "53",
-          "verdict": "red",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 13,
-          "min_30_prior": 0.69,
-          "median_90": 0.89
-        },
-        {
-          "name": "Ябълки, розови Пинк Лейди на кг",
-          "price": 2.49,
-          "retail": 2.79,
-          "claimed_pct": 11,
-          "category": "53",
-          "verdict": "red",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 6,
-          "min_30_prior": 2.04,
-          "median_90": 2.64
-        },
-        {
           "name": "Извара",
           "price": 1.59,
           "retail": 1.94,
@@ -666,6 +654,18 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 0,
           "min_30_prior": 1.59,
           "median_90": 1.59
+        },
+        {
+          "name": "Ябълки, розови Пинк Лейди на кг",
+          "price": 2.49,
+          "retail": 2.79,
+          "claimed_pct": 11,
+          "category": "53",
+          "verdict": "red",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 0,
+          "min_30_prior": 2.04,
+          "median_90": 2.49
         }
       ]
     },
@@ -5314,6 +5314,32 @@ window.SAVECHECK_BROCHURES = {
           "basket_id": "feta"
         },
         {
+          "name": "СИРЕНЕ КРАВЕ MEDA ПИКАНТНО С МАЩЕРКА ВАКУУМ КГ FARM",
+          "price": 13.75,
+          "retail": 15.45,
+          "claimed_pct": 11,
+          "category": "9",
+          "verdict": "green",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 11,
+          "min_30_prior": 13.75,
+          "median_90": 15.45,
+          "basket_id": "feta"
+        },
+        {
+          "name": "СИРЕНЕ КРАВЕ MEDA ПИКАНТНО С ЛЮТИ ЧУШКИ ВАКУУМ КГ FARM",
+          "price": 14.81,
+          "retail": 16.64,
+          "claimed_pct": 11,
+          "category": "9",
+          "verdict": "green",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 11,
+          "min_30_prior": 14.81,
+          "median_90": 16.64,
+          "basket_id": "feta"
+        },
+        {
           "name": "СИРЕНЕ ОТ КРАВЕ МЛЯКО ЗДРАВJЕ 800 ГР КУТИЯ",
           "price": 8.42,
           "retail": 9.36,
@@ -5340,30 +5366,29 @@ window.SAVECHECK_BROCHURES = {
           "basket_id": "feta"
         },
         {
-          "name": "СИРЕНЕ КРАВЕ MEDA ПИКАНТНО С МАЩЕРКА ВАКУУМ КГ FARM",
-          "price": 13.75,
-          "retail": 15.45,
-          "claimed_pct": 11,
+          "name": "СИРЕНЕ КРАВЕ MEDA ВАКУУМ КГ FARM",
+          "price": 12.05,
+          "retail": 13.39,
+          "claimed_pct": 10,
           "category": "9",
           "verdict": "green",
           "observed_on": "2026-10-09",
-          "omnibus_pct": 9,
-          "min_30_prior": 13.75,
-          "median_90": 15.07,
+          "omnibus_pct": 10,
+          "min_30_prior": 12.05,
+          "median_90": 13.39,
           "basket_id": "feta"
         },
         {
-          "name": "СИРЕНЕ КРАВЕ MEDA ПИКАНТНО С ЛЮТИ ЧУШКИ ВАКУУМ КГ FARM",
-          "price": 14.81,
-          "retail": 16.64,
-          "claimed_pct": 11,
-          "category": "9",
+          "name": "КАФЕ VERGNANO GRAN AROMA 1 КГ ЗЪРНА",
+          "price": 19.39,
+          "retail": 26.79,
+          "claimed_pct": 28,
+          "category": "71",
           "verdict": "green",
           "observed_on": "2026-10-09",
-          "omnibus_pct": 8,
-          "min_30_prior": 14.81,
-          "median_90": 16.165,
-          "basket_id": "feta"
+          "omnibus_pct": 51,
+          "min_30_prior": 19.39,
+          "median_90": 39.31
         },
         {
           "name": "ГРАХ ЗЕЛЕН PIPERKA СТЕРИЛИЗИРАН 400 ГР КОНСЕРВА",
@@ -5412,6 +5437,30 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 46,
           "min_30_prior": 17.89,
           "median_90": 32.99
+        },
+        {
+          "name": "ВИНО ШАРДОНЕ РЕЗЕРВА EMINE 750 МЛ",
+          "price": 4.49,
+          "retail": 7.99,
+          "claimed_pct": 44,
+          "category": "75",
+          "verdict": "green",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 44,
+          "min_30_prior": 4.49,
+          "median_90": 7.99
+        },
+        {
+          "name": "ВИНО СОВИНЬОН БЛАН EMINE 750 МЛ",
+          "price": 4.49,
+          "retail": 7.99,
+          "claimed_pct": 44,
+          "category": "75",
+          "verdict": "green",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 44,
+          "min_30_prior": 4.49,
+          "median_90": 7.99
         },
         {
           "name": "ПАСТА ЗА ЗЪБИ ORAL-B 3DW PRO ARCTIC FRESH 75 МЛ",
@@ -5556,18 +5605,6 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 42,
           "min_30_prior": 0.59,
           "median_90": 1.02
-        },
-        {
-          "name": "КАФЕ VERGNANO GRAN AROMA 1 КГ ЗЪРНА",
-          "price": 19.39,
-          "retail": 26.79,
-          "claimed_pct": 28,
-          "category": "71",
-          "verdict": "green",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 41,
-          "min_30_prior": 19.39,
-          "median_90": 33.05
         },
         {
           "name": "МАСЛО КРАВЕ BELIISA 83% 200 ГР",
@@ -5810,6 +5847,18 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 7.89
         },
         {
+          "name": "КАФЕ SEGAFREDO ESPRESSO CASA 1 КГ ЗЪРНА",
+          "price": 15.99,
+          "retail": 23.99,
+          "claimed_pct": 33,
+          "category": "71",
+          "verdict": "green",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 37,
+          "min_30_prior": 15.99,
+          "median_90": 25.56
+        },
+        {
           "name": "ФИДЕ Ф ВКУС 400 ГР",
           "price": 0.39,
           "retail": 0.61,
@@ -5832,30 +5881,6 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 36,
           "min_30_prior": 0.39,
           "median_90": 0.61
-        },
-        {
-          "name": "ВИНО ШАРДОНЕ РЕЗЕРВА EMINE 750 МЛ",
-          "price": 4.49,
-          "retail": 7.99,
-          "claimed_pct": 44,
-          "category": "75",
-          "verdict": "green",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 36,
-          "min_30_prior": 4.49,
-          "median_90": 6.99
-        },
-        {
-          "name": "ВИНО СОВИНЬОН БЛАН EMINE 750 МЛ",
-          "price": 4.49,
-          "retail": 7.99,
-          "claimed_pct": 44,
-          "category": "75",
-          "verdict": "green",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 36,
-          "min_30_prior": 4.49,
-          "median_90": 6.99
         },
         {
           "name": "БИРА ЗАГОРКА СПЕЦИАЛНО 2 Л PET",
@@ -5904,18 +5929,6 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 35,
           "min_30_prior": 2.79,
           "median_90": 4.32
-        },
-        {
-          "name": "КАФЕ SEGAFREDO ESPRESSO CASA 1 КГ ЗЪРНА",
-          "price": 15.99,
-          "retail": 23.99,
-          "claimed_pct": 33,
-          "category": "71",
-          "verdict": "green",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 35,
-          "min_30_prior": 15.99,
-          "median_90": 24.775
         },
         {
           "name": "ЧАЙ БИО БИОПРОГРАМА ЛАЙКА 20 БР Х 1.5 ГР",
@@ -6060,6 +6073,18 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 34,
           "min_30_prior": 0.57,
           "median_90": 0.86
+        },
+        {
+          "name": "БАНИЦА СЪС СИРЕНЕ И ИЗВАРА 460 ГР БЕЛЛА",
+          "price": 2.29,
+          "retail": 3.19,
+          "claimed_pct": 28,
+          "category": "68",
+          "verdict": "green",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 34,
+          "min_30_prior": 2.29,
+          "median_90": 3.47
         },
         {
           "name": "КРОАСАН 7 DAYS МАКС КРЕМ ВАНИЛИЯ И БИСКВИТИ 92 ГР",
@@ -6674,18 +6699,6 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 3.73
         },
         {
-          "name": "БАНИЦА СЪС СИРЕНЕ И ИЗВАРА 460 ГР БЕЛЛА",
-          "price": 2.29,
-          "retail": 3.19,
-          "claimed_pct": 28,
-          "category": "68",
-          "verdict": "green",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 31,
-          "min_30_prior": 2.29,
-          "median_90": 3.33
-        },
-        {
           "name": "ПЮРЕ GERBER СУПА ОТ ТЕЛЕШКО И ЗЕЛЕНЧУЦИ 190 ГР ОТ 9 МЕС",
           "price": 1.55,
           "retail": 2.24,
@@ -7164,6 +7177,18 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 28,
           "min_30_prior": 2.29,
           "median_90": 3.19
+        },
+        {
+          "name": "МЛЯКО КИСЕЛО МАДЖАРОВ ЗНП 2% 400 ГР РП",
+          "price": 0.69,
+          "retail": 0.89,
+          "claimed_pct": 22,
+          "category": "7",
+          "verdict": "green",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 28,
+          "min_30_prior": 0.69,
+          "median_90": 0.96
         },
         {
           "name": "ПАСТА ЗА ЗЪБИ SENSODYNE WHITENING 75 МЛ",
@@ -7728,18 +7753,6 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 25,
           "min_30_prior": 4.15,
           "median_90": 5.57
-        },
-        {
-          "name": "МЛЯКО КИСЕЛО МАДЖАРОВ ЗНП 2% 400 ГР РП",
-          "price": 0.69,
-          "retail": 0.89,
-          "claimed_pct": 22,
-          "category": "7",
-          "verdict": "green",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 25,
-          "min_30_prior": 0.69,
-          "median_90": 0.925
         },
         {
           "name": "КОРИ ЗА БАНИЦА КАНАП ПЪЛНОЗ. РЪЧНО ТОЧЕНИ 400 ГР ОХЛ.",
@@ -8366,6 +8379,30 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 2.55
         },
         {
+          "name": "ЧАЙ БИО H&H ДОБРО УТРО 20 БР 40 ГР КУТИЯ",
+          "price": 2.79,
+          "retail": 3.34,
+          "claimed_pct": 16,
+          "category": "72",
+          "verdict": "green",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 22,
+          "min_30_prior": 2.79,
+          "median_90": 3.57
+        },
+        {
+          "name": "ЧАЙ БИО H&H ЛАКРИЦ И ОРИЕНТ. ПОДПРАВКИ 20 БР 40 ГР КУТИЯ",
+          "price": 2.79,
+          "retail": 3.34,
+          "claimed_pct": 16,
+          "category": "72",
+          "verdict": "green",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 22,
+          "min_30_prior": 2.79,
+          "median_90": 3.57
+        },
+        {
           "name": "ДОМАТИ БИО HARMONICA ПАСИРАНИ 680 ГР",
           "price": 2.39,
           "retail": 3.06,
@@ -8567,7 +8604,7 @@ window.SAVECHECK_BROCHURES = {
           "observed_on": "2026-10-09",
           "omnibus_pct": 21,
           "min_30_prior": 2.99,
-          "median_90": 3.775
+          "median_90": 3.78
         },
         {
           "name": "БИСКВИТИ РОДЕН КРАЙ ОБИКНОВЕНИ 190 ГР",
@@ -8678,6 +8715,30 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 8.99
         },
         {
+          "name": "ЧАЙ БИО H&H ЗЕЛЕН С МЕД МАНУКА 20 БР 40 ГР КУТИЯ",
+          "price": 2.65,
+          "retail": 3.12,
+          "claimed_pct": 15,
+          "category": "72",
+          "verdict": "green",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 20,
+          "min_30_prior": 2.65,
+          "median_90": 3.32
+        },
+        {
+          "name": "ЧАЙ БИО H&H ШИПКА 20 БР 40 ГР КУТИЯ",
+          "price": 2.84,
+          "retail": 3.34,
+          "claimed_pct": 15,
+          "category": "72",
+          "verdict": "green",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 20,
+          "min_30_prior": 2.84,
+          "median_90": 3.57
+        },
+        {
           "name": "*ЛЮТЕНИЦА PHILICON ТРАКИЙСКА 600 ГР ТО БУРКАН",
           "price": 1.99,
           "retail": 2.5,
@@ -8688,6 +8749,42 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 20,
           "min_30_prior": 1.99,
           "median_90": 2.5
+        },
+        {
+          "name": "ЧАЙ БИО H&H ЕХИНАЦЕЯ И ЧЕРВ. БОРОВИНКА 20 БР 40 ГР КУТИЯ",
+          "price": 2.65,
+          "retail": 3.12,
+          "claimed_pct": 15,
+          "category": "72",
+          "verdict": "green",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 20,
+          "min_30_prior": 2.65,
+          "median_90": 3.32
+        },
+        {
+          "name": "ЧАЙ БИО H&H ЛЕКА НОЩ 20 БР 20 ГР КУТИЯ",
+          "price": 2.65,
+          "retail": 3.12,
+          "claimed_pct": 15,
+          "category": "72",
+          "verdict": "green",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 20,
+          "min_30_prior": 2.65,
+          "median_90": 3.32
+        },
+        {
+          "name": "ЧАЙ БИО H&H ЛИМОН И ДЖИНДЖИФИЛ 20 БР 30 ГР КУТИЯ",
+          "price": 2.65,
+          "retail": 3.12,
+          "claimed_pct": 15,
+          "category": "72",
+          "verdict": "green",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 20,
+          "min_30_prior": 2.65,
+          "median_90": 3.32
         },
         {
           "name": "БИСКВИТИ ДЕТСТВО МОЕ PETIT BEURRE МАСЛО 220 ГР ПАКЕТ",
@@ -8726,11 +8823,83 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 1.15
         },
         {
+          "name": "ЧАЙ БИО H&H ЗЕЛЕН С КОКОС 20 БР 40 ГР КУТИЯ",
+          "price": 2.65,
+          "retail": 3.12,
+          "claimed_pct": 15,
+          "category": "72",
+          "verdict": "green",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 20,
+          "min_30_prior": 2.65,
+          "median_90": 3.32
+        },
+        {
+          "name": "ЧАЙ БИО H&H ЗЕЛЕН С МАРОКАНСКА МЕНТА 20 БР 40 ГР КУТИЯ",
+          "price": 2.65,
+          "retail": 3.12,
+          "claimed_pct": 15,
+          "category": "72",
+          "verdict": "green",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 20,
+          "min_30_prior": 2.65,
+          "median_90": 3.32
+        },
+        {
           "name": "ШОКОЛАД БИО CACHET МЛЕЧЕН С КАРАМЕЛ И СОЛ 40% КАКАО 90 ГР",
           "price": 3.49,
           "retail": 4.16,
           "claimed_pct": 16,
           "category": "69",
+          "verdict": "green",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 20,
+          "min_30_prior": 3.49,
+          "median_90": 4.34
+        },
+        {
+          "name": "ШАМПОАН MALANDRA ЗА МАЗНИ КОРЕНИ И СУХИ КРАИЩА 250 МЛ",
+          "price": 3.49,
+          "retail": 4.34,
+          "claimed_pct": 20,
+          "category": "82",
+          "verdict": "green",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 20,
+          "min_30_prior": 3.49,
+          "median_90": 4.34
+        },
+        {
+          "name": "ШАМПОАН MALANDRA ЗА СУХА КОСА 250 МЛ",
+          "price": 3.49,
+          "retail": 4.34,
+          "claimed_pct": 20,
+          "category": "82",
+          "verdict": "green",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 20,
+          "min_30_prior": 3.49,
+          "median_90": 4.34
+        },
+        {
+          "name": "ШАМПОАН MALANDRA ХИДРАТИРАЩ 250 МЛ",
+          "price": 3.49,
+          "retail": 4.34,
+          "claimed_pct": 20,
+          "category": "82",
+          "verdict": "green",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 20,
+          "min_30_prior": 3.49,
+          "median_90": 4.34
+        },
+        {
+          "name": "ШАМПОАН MALANDRA ПРОТИВ КОСОПАД 250 МЛ",
+          "price": 3.49,
+          "retail": 4.34,
+          "claimed_pct": 20,
+          "category": "82",
           "verdict": "green",
           "observed_on": "2026-10-09",
           "omnibus_pct": 20,
@@ -8858,30 +9027,6 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 0.95
         },
         {
-          "name": "ЧАЙ БИО H&H ДОБРО УТРО 20 БР 40 ГР КУТИЯ",
-          "price": 2.79,
-          "retail": 3.34,
-          "claimed_pct": 16,
-          "category": "72",
-          "verdict": "green",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 19,
-          "min_30_prior": 2.79,
-          "median_90": 3.455
-        },
-        {
-          "name": "ЧАЙ БИО H&H ЛАКРИЦ И ОРИЕНТ. ПОДПРАВКИ 20 БР 40 ГР КУТИЯ",
-          "price": 2.79,
-          "retail": 3.34,
-          "claimed_pct": 16,
-          "category": "72",
-          "verdict": "green",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 19,
-          "min_30_prior": 2.79,
-          "median_90": 3.455
-        },
-        {
           "name": "КАШКАВАЛ ОТ КРАВЕ МЛЯКО Ф ВКУС НАСИПЕН Б-Я",
           "price": 6.28,
           "retail": 7.66,
@@ -8916,90 +9061,6 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 18,
           "min_30_prior": 3.79,
           "median_90": 4.6
-        },
-        {
-          "name": "ЧАЙ БИО H&H ЗЕЛЕН С МЕД МАНУКА 20 БР 40 ГР КУТИЯ",
-          "price": 2.65,
-          "retail": 3.12,
-          "claimed_pct": 15,
-          "category": "72",
-          "verdict": "green",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 18,
-          "min_30_prior": 2.65,
-          "median_90": 3.22
-        },
-        {
-          "name": "ЧАЙ БИО H&H ШИПКА 20 БР 40 ГР КУТИЯ",
-          "price": 2.84,
-          "retail": 3.34,
-          "claimed_pct": 15,
-          "category": "72",
-          "verdict": "green",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 18,
-          "min_30_prior": 2.84,
-          "median_90": 3.455
-        },
-        {
-          "name": "ЧАЙ БИО H&H ЕХИНАЦЕЯ И ЧЕРВ. БОРОВИНКА 20 БР 40 ГР КУТИЯ",
-          "price": 2.65,
-          "retail": 3.12,
-          "claimed_pct": 15,
-          "category": "72",
-          "verdict": "green",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 18,
-          "min_30_prior": 2.65,
-          "median_90": 3.22
-        },
-        {
-          "name": "ЧАЙ БИО H&H ЛЕКА НОЩ 20 БР 20 ГР КУТИЯ",
-          "price": 2.65,
-          "retail": 3.12,
-          "claimed_pct": 15,
-          "category": "72",
-          "verdict": "green",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 18,
-          "min_30_prior": 2.65,
-          "median_90": 3.22
-        },
-        {
-          "name": "ЧАЙ БИО H&H ЛИМОН И ДЖИНДЖИФИЛ 20 БР 30 ГР КУТИЯ",
-          "price": 2.65,
-          "retail": 3.12,
-          "claimed_pct": 15,
-          "category": "72",
-          "verdict": "green",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 18,
-          "min_30_prior": 2.65,
-          "median_90": 3.22
-        },
-        {
-          "name": "ЧАЙ БИО H&H ЗЕЛЕН С КОКОС 20 БР 40 ГР КУТИЯ",
-          "price": 2.65,
-          "retail": 3.12,
-          "claimed_pct": 15,
-          "category": "72",
-          "verdict": "green",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 18,
-          "min_30_prior": 2.65,
-          "median_90": 3.22
-        },
-        {
-          "name": "ЧАЙ БИО H&H ЗЕЛЕН С МАРОКАНСКА МЕНТА 20 БР 40 ГР КУТИЯ",
-          "price": 2.65,
-          "retail": 3.12,
-          "claimed_pct": 15,
-          "category": "72",
-          "verdict": "green",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 18,
-          "min_30_prior": 2.65,
-          "median_90": 3.22
         },
         {
           "name": "ШАМПОАН AROMA NATURAL БИЛКИ НОРМАЛНА КОСА 400 МЛ",
@@ -9290,6 +9351,18 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 3.93
         },
         {
+          "name": "ВИНО КАБЕРНЕ СОВ. РЕЗЕРВА 750 МЛ ДОМЕЙН БОЙАР",
+          "price": 4.59,
+          "retail": 5.15,
+          "claimed_pct": 11,
+          "category": "76",
+          "verdict": "green",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 16,
+          "min_30_prior": 4.59,
+          "median_90": 5.49
+        },
+        {
           "name": "ЧАЙ БИО YOGI СПОКОЙСТВИЕ 17 БР 30.6 ГР",
           "price": 3.45,
           "retail": 4.09,
@@ -9324,6 +9397,42 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 16,
           "min_30_prior": 1.59,
           "median_90": 1.89
+        },
+        {
+          "name": "ВИНО МЕРЛО РЕЗЕРВА 750 МЛ ДОМЕЙН БОЙАР",
+          "price": 4.59,
+          "retail": 5.15,
+          "claimed_pct": 11,
+          "category": "76",
+          "verdict": "green",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 16,
+          "min_30_prior": 4.59,
+          "median_90": 5.49
+        },
+        {
+          "name": "ВИНО ТРАМИНЕР ДОМЕЙН БОЙАР СЕЛЕКШЪН 750 МЛ",
+          "price": 4.59,
+          "retail": 5.09,
+          "claimed_pct": 10,
+          "category": "75",
+          "verdict": "green",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 16,
+          "min_30_prior": 4.59,
+          "median_90": 5.49
+        },
+        {
+          "name": "ВИНО ШАРДОНЕ ДОМЕЙН БОЙАР СЕЛЕКШЪН 750 МЛ",
+          "price": 4.59,
+          "retail": 5.09,
+          "claimed_pct": 10,
+          "category": "75",
+          "verdict": "green",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 16,
+          "min_30_prior": 4.59,
+          "median_90": 5.49
         },
         {
           "name": "КЪРПИ АНТИБАКТ. РАБОТЛИВИ РЪЦЕ 24 БР ПАКЕТ",
@@ -9890,18 +9999,6 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 8.18
         },
         {
-          "name": "ВИНО КАБЕРНЕ СОВ. РЕЗЕРВА 750 МЛ ДОМЕЙН БОЙАР",
-          "price": 4.59,
-          "retail": 5.15,
-          "claimed_pct": 11,
-          "category": "76",
-          "verdict": "green",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 14,
-          "min_30_prior": 4.59,
-          "median_90": 5.32
-        },
-        {
           "name": "ЛЮТЕНИЦА ДЕРОНИ ГОРНОТРАКИЙСКА 520 ГР БУРКАН",
           "price": 3.29,
           "retail": 3.83,
@@ -9912,18 +10009,6 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 14,
           "min_30_prior": 3.29,
           "median_90": 3.83
-        },
-        {
-          "name": "ВИНО МЕРЛО РЕЗЕРВА 750 МЛ ДОМЕЙН БОЙАР",
-          "price": 4.59,
-          "retail": 5.15,
-          "claimed_pct": 11,
-          "category": "76",
-          "verdict": "green",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 14,
-          "min_30_prior": 4.59,
-          "median_90": 5.32
         },
         {
           "name": "ОЛИО СЛЪНЧОГЛЕДОВО VITAL DROP 1 Л PET",
@@ -9972,30 +10057,6 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 13,
           "min_30_prior": 0.68,
           "median_90": 0.78
-        },
-        {
-          "name": "ВИНО ТРАМИНЕР ДОМЕЙН БОЙАР СЕЛЕКШЪН 750 МЛ",
-          "price": 4.59,
-          "retail": 5.09,
-          "claimed_pct": 10,
-          "category": "75",
-          "verdict": "green",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 13,
-          "min_30_prior": 4.59,
-          "median_90": 5.29
-        },
-        {
-          "name": "ВИНО ШАРДОНЕ ДОМЕЙН БОЙАР СЕЛЕКШЪН 750 МЛ",
-          "price": 4.59,
-          "retail": 5.09,
-          "claimed_pct": 10,
-          "category": "75",
-          "verdict": "green",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 13,
-          "min_30_prior": 4.59,
-          "median_90": 5.29
         },
         {
           "name": "БОБ ФАМИЛЕКС ЧЕРВЕН 400 ГР КОНСЕРВА",
@@ -10080,54 +10141,6 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 12,
           "min_30_prior": 1.12,
           "median_90": 1.27
-        },
-        {
-          "name": "ШАМПОАН MALANDRA ЗА МАЗНИ КОРЕНИ И СУХИ КРАИЩА 250 МЛ",
-          "price": 3.49,
-          "retail": 4.34,
-          "claimed_pct": 20,
-          "category": "82",
-          "verdict": "green",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 12,
-          "min_30_prior": 3.49,
-          "median_90": 3.965
-        },
-        {
-          "name": "ШАМПОАН MALANDRA ЗА СУХА КОСА 250 МЛ",
-          "price": 3.49,
-          "retail": 4.34,
-          "claimed_pct": 20,
-          "category": "82",
-          "verdict": "green",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 12,
-          "min_30_prior": 3.49,
-          "median_90": 3.965
-        },
-        {
-          "name": "ШАМПОАН MALANDRA ХИДРАТИРАЩ 250 МЛ",
-          "price": 3.49,
-          "retail": 4.34,
-          "claimed_pct": 20,
-          "category": "82",
-          "verdict": "green",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 12,
-          "min_30_prior": 3.49,
-          "median_90": 3.965
-        },
-        {
-          "name": "ШАМПОАН MALANDRA ПРОТИВ КОСОПАД 250 МЛ",
-          "price": 3.49,
-          "retail": 4.34,
-          "claimed_pct": 20,
-          "category": "82",
-          "verdict": "green",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 12,
-          "min_30_prior": 3.49,
-          "median_90": 3.965
         },
         {
           "name": "ВИНО ШАРДОНЕ 750 МЛ СТАРОСЕЛ",
@@ -10308,6 +10321,18 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 10,
           "min_30_prior": 2.69,
           "median_90": 2.99
+        },
+        {
+          "name": "МЛЯКО КИСЕЛО КАЙМАКАНИ ФЕРМЕРСКО 3.6% 400 ГР FARM",
+          "price": 0.71,
+          "retail": 0.79,
+          "claimed_pct": 10,
+          "category": "7",
+          "verdict": "green",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 10,
+          "min_30_prior": 0.71,
+          "median_90": 0.79
         },
         {
           "name": "ЧАЙ AHMAD SLEEP 20 БР Х 1.5 Г КУТИЯ",
@@ -10597,6 +10622,19 @@ window.SAVECHECK_BROCHURES = {
           "basket_id": "pasta"
         },
         {
+          "name": "СИРЕНЕ КРАВЕ КИСЕЛОВО 350 ГР ВАКУУМ",
+          "price": 3.15,
+          "retail": 3.56,
+          "claimed_pct": 12,
+          "category": "9",
+          "verdict": "yellow",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 12,
+          "min_30_prior": 3.15,
+          "median_90": 3.56,
+          "basket_id": "feta"
+        },
+        {
           "name": "САКАРЕЛА ДОМАШНО САЛАМУРЕНО СИРЕНЕ ОТ КРАВЕ МЛЯКО Б-Я ДАР",
           "price": 8.29,
           "retail": 9.45,
@@ -10620,32 +10658,6 @@ window.SAVECHECK_BROCHURES = {
           "omnibus_pct": 10,
           "min_30_prior": 4.14,
           "median_90": 4.6,
-          "basket_id": "feta"
-        },
-        {
-          "name": "СИРЕНЕ КРАВЕ MEDA ВАКУУМ КГ FARM",
-          "price": 12.05,
-          "retail": 13.39,
-          "claimed_pct": 10,
-          "category": "9",
-          "verdict": "yellow",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 7,
-          "min_30_prior": 12.05,
-          "median_90": 12.89,
-          "basket_id": "feta"
-        },
-        {
-          "name": "СИРЕНЕ КРАВЕ КИСЕЛОВО 350 ГР ВАКУУМ",
-          "price": 3.15,
-          "retail": 3.56,
-          "claimed_pct": 12,
-          "category": "9",
-          "verdict": "yellow",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 6,
-          "min_30_prior": 3.15,
-          "median_90": 3.355,
           "basket_id": "feta"
         },
         {
@@ -11045,6 +11057,18 @@ window.SAVECHECK_BROCHURES = {
           "median_90": 28.63
         },
         {
+          "name": "КАФЕ DALLMAYR CLASSIC 250 Г МЛЯНО ВАКУУМ *",
+          "price": 4.99,
+          "retail": 7.31,
+          "claimed_pct": 32,
+          "category": "70",
+          "verdict": "yellow",
+          "observed_on": "2026-10-09",
+          "omnibus_pct": 19,
+          "min_30_prior": 4.99,
+          "median_90": 6.15
+        },
+        {
           "name": "ПЮРЕ БИО BIONINO ТИКВА И КАРТОФ 190 ГР 4+М",
           "price": 1.25,
           "retail": 1.48,
@@ -11070,30 +11094,6 @@ window.SAVECHECK_BROCHURES = {
         },
         {
           "name": "ПЮРЕ БИО BIONINO ЯБЪЛКА 190 ГР 4+М",
-          "price": 1.25,
-          "retail": 1.48,
-          "claimed_pct": 16,
-          "category": "64",
-          "verdict": "yellow",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 16,
-          "min_30_prior": 1.25,
-          "median_90": 1.48
-        },
-        {
-          "name": "ПЮРЕ БИО BIONINO ЯБЪЛКИ И БОРОВИНКИ 190 ГР 4+М",
-          "price": 1.25,
-          "retail": 1.48,
-          "claimed_pct": 16,
-          "category": "64",
-          "verdict": "yellow",
-          "observed_on": "2026-10-09",
-          "omnibus_pct": 16,
-          "min_30_prior": 1.25,
-          "median_90": 1.48
-        },
-        {
-          "name": "ПЮРЕ БИО BIONINO ЯБЪЛКИ И СЛИВИ 190 ГР 4+М",
           "price": 1.25,
           "retail": 1.48,
           "claimed_pct": 16,
